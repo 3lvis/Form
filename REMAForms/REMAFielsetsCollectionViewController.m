@@ -32,8 +32,6 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
 
     if (!self) return nil;
 
-    self.collectionView.contentSize = [[UIScreen mainScreen] bounds].size;
-
     return self;
 }
 

@@ -21,17 +21,9 @@
     self = [super init];
     if (!self) return nil;
 
-    self.estimatedItemSize = CGSizeMake(100.0f, 60.0f);
     _items = items;
 
     return self;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *text = self.items[indexPath.row];
-    return [text sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15.0f]}];
 }
 
 @end

@@ -24,6 +24,7 @@
     if (!self) return nil;
 
     self.contentView.backgroundColor = [UIColor redColor];
+
     [self.contentView addSubview:self.fieldLabel];
 
     return self;
@@ -35,8 +36,7 @@
 {
     _text = text;
 
-    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
-    self.fieldLabel.attributedText = attributedText;
+    self.fieldLabel.text = text;
 
     [self setNeedsDisplay];
 }
@@ -53,23 +53,6 @@
     _fieldLabel.numberOfLines = 10;
 
     return _fieldLabel;
-}
-
-//- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes
-//{
-//    UICollectionViewLayoutAttributes *attributes = [super preferredLayoutAttributesFittingAttributes:layoutAttributes];
-//    attributes.size = CGSizeMake(5.0f, 60.0f);
-//
-//    return attributes;
-//}
-
-- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
-    UICollectionViewLayoutAttributes *attr = [layoutAttributes copy];
-    CGSize size = [self.fieldLabel sizeThatFits:CGSizeMake(CGRectGetWidth(layoutAttributes.frame),CGFLOAT_MAX)];
-    CGRect newFrame = attr.frame;
-    newFrame.size.height = size.height;
-    attr.frame = newFrame;
-    return attr;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size
