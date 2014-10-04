@@ -9,8 +9,11 @@
 #import "REMAFielsetsCollectionViewController.h"
 #import "REMAFieldsetHeaderCollectionReusableView.h"
 #import "REMAFieldCollectionViewCell.h"
+#import "REMAFormsCollectionViewLayout.h"
 
 @interface REMAFielsetsCollectionViewController ()
+
+@property (nonatomic, strong) NSArray *items;
 
 @end
 
@@ -18,6 +21,34 @@
 
 static NSString * const REMAFieldReuseIdentifier = @"REMAFieldReuseIdentifier";
 static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeaderReuseIdentifier";
+
+#pragma mark - Initializers
+
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)aLayout
+{
+    REMAFormsCollectionViewLayout *layout = [[REMAFormsCollectionViewLayout alloc] initWithItems:self.items];
+    
+    self = [super initWithCollectionViewLayout:layout];
+
+    if (!self) return nil;
+
+    self.collectionView.contentSize = [[UIScreen mainScreen] bounds].size;
+
+    return self;
+}
+
+#pragma mark - Getters
+
+- (NSArray *)items
+{
+    if (_items) return _items;
+
+    _items = @[@"One", @"treeee", @"Hello there wha", @"Never mind, just walking", @"Nope"];
+
+    return _items;
+}
+
+#pragma mark - View Lifecycle
 
 - (void)viewDidLoad
 {
@@ -31,24 +62,26 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 10;
+    return 100;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20;
+    return self.items.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     REMAFieldCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REMAFieldReuseIdentifier forIndexPath:indexPath];
 
+    cell.text = self.items[indexPath.row];
+
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(320, 44);
+    return CGSizeMake(320.0f, 44.0f);
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath

@@ -10,4 +10,6 @@
 
 @interface REMAFieldCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, copy) NSString *text;
+
 @end
