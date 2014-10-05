@@ -7,13 +7,19 @@
 //
 
 #import "REMAFielsetsCollectionViewController.h"
+
 #import "REMAFieldsetHeaderCollectionReusableView.h"
 #import "REMAFieldCollectionViewCell.h"
 #import "REMAFormsCollectionViewLayout.h"
 
+#import "UIScreen+HYPLiveBounds.h"
+
+#import "REMAFieldset.h"
+#import "REMAFormField.h"
+
 @interface REMAFielsetsCollectionViewController ()
 
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSArray *fieldsets;
 
 @end
 
@@ -24,10 +30,8 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
 
 #pragma mark - Initializers
 
-- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)aLayout
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout
 {
-    REMAFormsCollectionViewLayout *layout = [[REMAFormsCollectionViewLayout alloc] initWithItems:self.items];
-    
     self = [super initWithCollectionViewLayout:layout];
 
     if (!self) return nil;
@@ -37,13 +41,13 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
 
 #pragma mark - Getters
 
-- (NSArray *)items
+- (NSArray *)fieldsets
 {
-    if (_items) return _items;
+    if (_fieldsets) return _fieldsets;
 
-    _items = @[@"One", @"treeee", @"Hello there wha", @"Never mind, just walking", @"Nope"];
+    _fieldsets = [REMAFieldset fieldsets];
 
-    return _items;
+    return _fieldsets;
 }
 
 #pragma mark - View Lifecycle
@@ -60,19 +64,21 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 100;
+    return self.fieldsets.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.items.count;
+    REMAFieldset *fieldset = self.fieldsets[section];
+
+    return [fieldset numberOfFields];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     REMAFieldCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REMAFieldReuseIdentifier forIndexPath:indexPath];
 
-    cell.text = self.items[indexPath.row];
+    cell.text = @"Hello world";//self.fieldsets[indexPath.row];
 
     return cell;
 }
@@ -92,6 +98,24 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
     reusableview.headerLabel.text = [NSString stringWithFormat:@"Fieldset #%li", indexPath.section + 1];
 
     return reusableview;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    REMAFieldset *fieldset = self.fieldsets[indexPath.section];
+    NSArray *fields = fieldset.fields;
+    REMAFormField *field = fields[indexPath.row];
+
+    NSLog(@"field: %@ (%@)", field.title, field.size);
+    CGFloat marginX = 20.0f;
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    NSLog(@"total width: %f", CGRectGetWidth(bounds));
+    CGFloat width = floor(CGRectGetWidth(bounds) * ([field.size floatValue] / 100.0f) - marginX);
+    NSLog(@"width: %f", width);
+    NSLog(@" ");
+
+    return CGSizeMake(width, 50.0f);
 }
 
 @end

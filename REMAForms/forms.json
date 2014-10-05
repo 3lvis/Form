@@ -4,140 +4,142 @@
     "title": "Personopplysninger",
     "sections": [
       {
-        "rows": [
+        "id": null,
+        "type": null,
+        "fields": [
           {
-            "fields": [
-              {
-                "id": "first_name",
-                "title": "Fornavn",
-                "type": "name",
-                "size": 25,
-                "values": null,
-                "validations": {
-                  "required": true,
-                  "min_length" : 2
-                }
-              },
-              {
-                "id": "last_name",
-                "title": "Etternavn",
-                "type": "name",
-                "size": 25,
-                "values": null,
-                "validations": {
-                  "required": true,
-                  "min_length" : 2
-                }
-              },
-              {
-                "id": "display_name",
-                "title": "Visningsnavn",
-                "type": "text",
-                "size": 25,
-                "values": null,
-                "validations": {
-                  "required": true
-                }
-              },
-              {
-                "id": "social_security_number",
-                "title": "Fødselsnummer (11 siffer)",
-                "type": "social_security_number",
-                "size": 25,
-                "values": null,
-                "validations": {
-                  "required": true,
-                  "min_length": 11,
-                  "max_length": 11
-                }
-              }
-            ]
+            "id": "first_name",
+            "title": "Fornavn",
+            "type": "name",
+            "size": 25,
+            "values": null,
+            "validations": {
+              "required": true,
+              "min_length" : 2
+            }
           },
           {
-            "fields": [
-              {
-                "id": "address",
-                "title": "Gateadresse",
-                "type": "text",
-                "size": 60,
-                "values": null,
-                "validations": {
-                  "required": true
-                }
-              },
-              {
-                "id": "postal_code",
-                "title": "Postnummer",
-                "type": "text",
-                "size": 15,
-                "values": null,
-                "validations": {
-                  "required": true,
-                  "max_length": 4,
-                  "format": "\\d{4}"
-                }
-              },
-              {
-                "id": "city",
-                "title": "Sted",
-                "type": "select",
-                "size": 25,
-                "values": [
-                  {
-                    "id": "oslo",
-                    "title": "Oslo"
-                  },
-                  {
-                    "id": "telemark",
-                    "title": "Telemark"
-                  },
-                  {
-                    "id": "vestfold",
-                    "title": "Vestføld"
-                  }
-                ]
-              }
-            ]
+            "id": "last_name",
+            "title": "Etternavn",
+            "type": "name",
+            "size": 25,
+            "values": null,
+            "validations": {
+              "required": true,
+              "min_length" : 2
+            }
           },
           {
-            "fields": [
+            "id": "display_name",
+            "title": "Visningsnavn",
+            "type": "text",
+            "size": 25,
+            "values": null,
+            "validations": {
+              "required": true
+            }
+          },
+          {
+            "id": "social_security_number",
+            "title": "Fødselsnummer (11 siffer)",
+            "type": "social_security_number",
+            "size": 25,
+            "values": null,
+            "validations": {
+              "required": true,
+              "min_length": 11,
+              "max_length": 11
+            }
+          }
+        ]
+      },
+      {
+        "id": null,
+        "type": null,
+        "fields": [
+          {
+            "id": "address",
+            "title": "Gateadresse",
+            "type": "text",
+            "size": 60,
+            "values": null,
+            "validations": {
+              "required": true
+            }
+          },
+          {
+            "id": "postal_code",
+            "title": "Postnummer",
+            "type": "text",
+            "size": 15,
+            "values": null,
+            "validations": {
+              "required": true,
+              "max_length": 4,
+              "format": "\\d{4}"
+            }
+          },
+          {
+            "id": "city",
+            "title": "Sted",
+            "type": "select",
+            "size": 25,
+            "values": [
               {
-                "id": "phone_number",
-                "title": "Telefonnummer",
-                "type": "phone_number",
-                "size": 25
+                "id": "oslo",
+                "title": "Oslo"
               },
               {
-                "id": "email_address",
-                "title": "E-post",
-                "type": "email",
-                "size": 40,
-                "values": null,
-                "validations": {
-                  "format": "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,8}",
-                  "required": true
-                }
+                "id": "telemark",
+                "title": "Telemark"
               },
               {
-                "id": "bank_account_number",
-                "title": "Lønnskonto (11 siffer)",
-                "type": "text",
-                "size": 35,
-                "values": null,
-                "validations": {
-                  "required": true,
-                  "min_length": 11,
-                  "max_length": 11
-                }
+                "id": "vestfold",
+                "title": "Vestføld"
               }
             ]
           }
         ]
       },
       {
+        "id": null,
+        "type": null,
+        "fields": [
+          {
+            "id": "phone_number",
+            "title": "Telefonnummer",
+            "type": "phone_number",
+            "size": 25
+          },
+          {
+            "id": "email_address",
+            "title": "E-post",
+            "type": "email",
+            "size": 40,
+            "values": null,
+            "validations": {
+              "format": "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,8}",
+              "required": true
+            }
+          },
+          {
+            "id": "bank_account_number",
+            "title": "Lønnskonto (11 siffer)",
+            "type": "text",
+            "size": 35,
+            "values": null,
+            "validations": {
+              "required": true,
+              "min_length": 11,
+              "max_length": 11
+            }
+          }
+        ]
+      },
+      {
         "id": "picture_url",
         "type": "picture",
-        "rows": null
+        "fields": null
       }
     ]
   },
@@ -146,345 +148,347 @@
     "title": "Ansattelsesforholdet",
     "sections": [
       {
-        "rows": [
+        "id": null,
+        "type": null,
+        "fields": [
           {
-            "fields": [
+            "id": "position",
+            "title": "Stillingstype",
+            "type": "select",
+            "size": 37.5,
+            "values": [
               {
-                "id": "position",
-                "title": "Stillingstype",
-                "type": "select",
-                "size": 37.5,
-                "values": [
-                  {
-                    "id": "butikkmedarbeider",
-                    "title": "Butikkmedarbeider"
-                  },
-                  {
-                    "id": "ekstrahjelp",
-                    "title": "Ekstrahjelp"
-                  }
-                ],
-                "validations": {
-                  "required": true
-                }
+                "id": "butikkmedarbeider",
+                "title": "Butikkmedarbeider"
               },
               {
-                "id": "employment_type",
-                "title": "Arbeidsforholdet",
-                "type": "select",
-                "size": 25,
-                "values": [
-                  {
-                    "id": "fast",
-                    "title": "Fast"
-                  },
-                  {
-                    "id": "midlertidig",
-                    "title": "Midlertidig"
-                  }
-                ]
+                "id": "ekstrahjelp",
+                "title": "Ekstrahjelp"
+              }
+            ],
+            "validations": {
+              "required": true
+            }
+          },
+          {
+            "id": "employment_type",
+            "title": "Arbeidsforholdet",
+            "type": "select",
+            "size": 25,
+            "values": [
+              {
+                "id": "fast",
+                "title": "Fast"
               },
               {
-                "id": "nearest_executive",
-                "title": "Nærmeste overordnet",
-                "type": "text",
-                "size": 37.5,
-                "validations" : {
-                  "required" : true
-                }
+                "id": "midlertidig",
+                "title": "Midlertidig"
               }
             ]
-         },
-         {
-            "fields" : [
+          },
+          {
+            "id": "nearest_executive",
+            "title": "Nærmeste overordnet",
+            "type": "text",
+            "size": 37.5,
+            "validations" : {
+              "required" : true
+            }
+          }
+        ]
+      },
+      {
+        "id": null,
+        "type": null,
+        "fields" : [
+          {
+            "id": "temporary_employee_type",
+            "title": "Vikartype",
+            "type": "select",
+            "size": 50,
+            "values": [
               {
-                "id": "temporary_employee_type",
-                "title": "Vikartype",
-                "type": "select",
-                "size": 50,
-                "values": [
-                  {
-                    "id": "vikar",
-                    "title": "Vikar"
-                  },
-                  {
-                    "id": "ferievikar",
-                    "title": "Ferievikar"
-                  }
-                ]
+                "id": "vikar",
+                "title": "Vikar"
               },
               {
-                "id": "temporary_employee_reason",
-                "title": "Vikar for/ekstra info",
-                "size": 50,
-                "type": "text"
+                "id": "ferievikar",
+                "title": "Ferievikar"
               }
             ]
-         },
-         {
-            "fields" : [
+          },
+          {
+            "id": "temporary_employee_reason",
+            "title": "Vikar for/ekstra info",
+            "size": 50,
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": null,
+        "type": null,
+        "fields" : [
+          {
+            "id": "start_date",
+            "title": "Ansettelsesdato",
+            "type": "date",
+            "size": 25,
+            "values": null,
+            "validations": {
+              "required" : true
+            }
+          },
+          {
+            "id": "end_date",
+            "title": "Sluttdato",
+            "type": "date",
+            "size": 25,
+            "values": null
+          },
+          {
+            "id": "hours_per_week",
+            "title": "Antall timer per uke",
+            "type": "float",
+            "size": 25,
+            "validations": {
+              "required": true,
+              "min_length": 1,
+              "max_length": 4
+            }
+          },
+          {
+            "id": "employment_percent",
+            "title": "Stillingsprosent",
+            "type": "numeric",
+            "size": 25
+          }
+        ]
+      },
+      {
+        "id": null,
+        "type": null,
+        "fields" : [
+          {
+            "id": "remuneration",
+            "title": "Lønn",
+            "type": "select",
+            "size": 25,
+            "values": [
               {
-                "id": "start_date",
-                "title": "Ansettelsesdato",
-                "type": "date",
-                "size": 25,
-                "values": null,
-                "validations": {
-                  "required" : true
-                }
+                "id": "no_wage",
+                "title": "Ingen lønn"
               },
               {
-                "id": "end_date",
-                "title": "Sluttdato",
-                "type": "date",
-                "size": 25,
-                "values": null
+                "id": "hourly_wage",
+                "title": "Timelønn"
               },
               {
-                "id": "hours_per_week",
-                "title": "Antall timer per uke",
-                "type": "float",
-                "size": 25,
-                "validations": {
-                  "required": true,
-                  "min_length": 1,
-                  "max_length": 4
-                }
+                "id": "monthly_wage",
+                "title": "Fastlønn"
               },
               {
-                "id": "employment_percent",
-                "title": "Stillingsprosent",
-                "type": "numeric",
-                "size": 25
+                "id": "hourly_and_monthly_wage",
+                "title": "Timelønn & Fastlønn"
               }
             ]
           }
         ]
-      }, {
-        "rows" : [
-         {
-            "fields" : [
-            {
-                "id": "remuneration",
-                "title": "Lønn",
-                "type": "select",
-                "size": 25,
-                "values": [
-                  {
-                    "id": "no_wage",
-                    "title": "Ingen lønn"
-                  },
-                  {
-                    "id": "hourly_wage",
-                    "title": "Timelønn"
-                  },
-                  {
-                    "id": "monthly_wage",
-                    "title": "Fastlønn"
-                  },
-                  {
-                    "id": "hourly_and_monthly_wage",
-                    "title": "Timelønn & Fastlønn"
-                  }
-                ]
+      },
+      {
+        "id": null,
+        "type": null,
+        "fields" : [
+          {
+            "id": "fixed_pay_level",
+            "title": "Månedslønn",
+            "type": "select",
+            "size": 25,
+            "values": [
+              {
+                "id": "ungdom_under_16",
+                "title": "Ungdom under 16 år"
+              },
+              {
+                "id": "ungdom_16_18",
+                "title": "Ungdom 16-18 år"
+              },
+              {
+                "id": "trinn_1",
+                "title": "Trinn 1"
+              },
+              {
+                "id": "trinn_2",
+                "title": "Trinn 2"
+              },
+              {
+                "id": "trinn_3",
+                "title": "Trinn 3 (25 år)"
+              },
+              {
+                "id": "trinn_4",
+                "title": "Trinn 4"
+              },
+              {
+                "id": "trinn_5",
+                "title": "Trinn 5"
+              },
+              {
+                "id": "trinn_6",
+                "title": "Trinn 6"
+              },
+              {
+                "id": "laerling_1",
+                "title": "Lærling 1 år"
+              },
+              {
+                "id": "laerling_2",
+                "title": "Lærling 2 år"
               }
             ]
-         },
-         {
-            "fields" : [
+          },
+          {
+            "id": "fixed_pay_premium",
+            "title": "Påslag (kr)",
+            "type": "number",
+            "size": 25,
+            "values": null,
+            "validations" : {
+              "required" : true
+            }
+          },
+          {
+            "id": "fixed_pay_total",
+            "title": "Total",
+            "type": "number",
+            "size": 25,
+            "values": null
+          },
+          {
+            "id": "fixed_pay_entry_date",
+            "title": "Fra dato",
+            "type": "date",
+            "size": 25,
+            "values": null
+          },
+          {
+            "id": "hourly_pay_level",
+            "title": "Timelønn",
+            "type": "select",
+            "size": 25,
+            "values": [
               {
-                "id": "fixed_pay_level",
-                "title": "Månedslønn",
-                "type": "select",
-                "size": 25,
-                "values": [
-                  {
-                    "id": "ungdom_under_16",
-                    "title": "Ungdom under 16 år"
-                  },
-                  {
-                    "id": "ungdom_16_18",
-                    "title": "Ungdom 16-18 år"
-                  },
-                  {
-                    "id": "trinn_1",
-                    "title": "Trinn 1"
-                  },
-                  {
-                    "id": "trinn_2",
-                    "title": "Trinn 2"
-                  },
-                  {
-                    "id": "trinn_3",
-                    "title": "Trinn 3 (25 år)"
-                  },
-                  {
-                    "id": "trinn_4",
-                    "title": "Trinn 4"
-                  },
-                  {
-                    "id": "trinn_5",
-                    "title": "Trinn 5"
-                  },
-                  {
-                    "id": "trinn_6",
-                    "title": "Trinn 6"
-                  },
-                  {
-                    "id": "laerling_1",
-                    "title": "Lærling 1 år"
-                  },
-                  {
-                    "id": "laerling_2",
-                    "title": "Lærling 2 år"
-                  }
-                ]
+                "id": "ungdom_under_16",
+                "title": "Ungdom under 16 år"
               },
               {
-                "id": "fixed_pay_premium",
-                "title": "Påslag (kr)",
-                "type": "number",
-                "size": 25,
-                "values": null,
-                "validations" : {
-                  "required" : true
-                }
+                "id": "ungdom_16_18",
+                "title": "Ungdom 16-18 år"
               },
               {
-                "id": "fixed_pay_total",
-                "title": "Total",
-                "type": "number",
-                "size": 25,
-                "values": null
+                "id": "trinn_1",
+                "title": "Trinn 1"
               },
               {
-                "id": "fixed_pay_entry_date",
-                "title": "Fra dato",
-                "type": "date",
-                "size": 25,
-                "values": null
+                "id": "trinn_2",
+                "title": "Trinn 2"
               },
               {
-                "id": "hourly_pay_level",
-                "title": "Timelønn",
-                "type": "select",
-                "size": 25,
-                "values": [
-                  {
-                    "id": "ungdom_under_16",
-                    "title": "Ungdom under 16 år"
-                  },
-                  {
-                    "id": "ungdom_16_18",
-                    "title": "Ungdom 16-18 år"
-                  },
-                  {
-                    "id": "trinn_1",
-                    "title": "Trinn 1"
-                  },
-                  {
-                    "id": "trinn_2",
-                    "title": "Trinn 2"
-                  },
-                  {
-                    "id": "trinn_3",
-                    "title": "Trinn 3 (25 år)"
-                  },
-                  {
-                    "id": "trinn_4",
-                    "title": "Trinn 4"
-                  },
-                  {
-                    "id": "trinn_5",
-                    "title": "Trinn 5"
-                  },
-                  {
-                    "id": "trinn_6",
-                    "title": "Trinn 6"
-                  },
-                  {
-                    "id": "laerling_1",
-                    "title": "Lærling 1 år"
-                  },
-                  {
-                    "id": "laerling_2",
-                    "title": "Lærling 2 år"
-                  }
-                ]
+                "id": "trinn_3",
+                "title": "Trinn 3 (25 år)"
               },
               {
-                "id": "hourly_pay_premium",
-                "title": "Påslag (kr)",
-                "type": "number",
-                "size": 25,
-                "values": null,
-                "validations" : {
-                  "required" : true
-                }
+                "id": "trinn_4",
+                "title": "Trinn 4"
               },
               {
-                "id": "hourly_pay_total",
-                "title": "Total",
-                "type": "number",
-                "size": 25,
-                "values": null
+                "id": "trinn_5",
+                "title": "Trinn 5"
               },
               {
-                "id": "hourly_pay_entry_date",
-                "title": "Fra dato",
-                "type": "date",
-                "size": 25,
-                "values": null
+                "id": "trinn_6",
+                "title": "Trinn 6"
+              },
+              {
+                "id": "laerling_1",
+                "title": "Lærling 1 år"
+              },
+              {
+                "id": "laerling_2",
+                "title": "Lærling 2 år"
+              }
+            ]
+          },
+          {
+            "id": "hourly_pay_premium",
+            "title": "Påslag (kr)",
+            "type": "number",
+            "size": 25,
+            "values": null,
+            "validations" : {
+              "required" : true
+            }
+          },
+          {
+            "id": "hourly_pay_total",
+            "title": "Total",
+            "type": "number",
+            "size": 25,
+            "values": null
+          },
+          {
+            "id": "hourly_pay_entry_date",
+            "title": "Fra dato",
+            "type": "date",
+            "size": 25,
+            "values": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "type": null,
+        "fields" : [
+          {
+            "id": "other_terms",
+            "title": "Øvrige betingelser",
+            "type": "text",
+            "size": 65
+          },
+          {
+            "id": "student",
+            "title": "Skolelev",
+            "type": "select",
+            "size": 15,
+            "values": [
+              {
+                "id": "1",
+                "title": "Ja"
+              },
+              {
+                "id": "2",
+                "title": "Nei"
+              }
+            ]
+          },
+          {
+            "id": "collective_agreement",
+            "title": "Tariffavtale",
+            "type": "select",
+            "size": 20,
+            "values": [
+              {
+                "id": "ja",
+                "title": "Ja"
+              },
+              {
+                "id": "nei",
+                "title": "Nei"
               }
             ]
           }
-        ]
-      }, {
-        "rows" : [
-         {
-            "fields" : [
-              {
-                "id": "other_terms",
-                "title": "Øvrige betingelser",
-                "type": "text",
-                "size": 65
-              },
-              {
-                "id": "student",
-                "title": "Skolelev",
-                "type": "select",
-                "size": 15,
-                "values": [
-                  {
-                    "id": "1",
-                    "title": "Ja"
-                  },
-                  {
-                    "id": "2",
-                    "title": "Nei"
-                  }
-                ]
-              },
-              {
-                "id": "collective_agreement",
-                "title": "Tariffavtale",
-                "type": "select",
-                "size": 20,
-                "values": [
-                  {
-                    "id": "ja",
-                    "title": "Ja"
-                  },
-                  {
-                    "id": "nei",
-                    "title": "Nei"
-                  }
-                ]
-              }
             ]
-         }
-        ]
-      }
+        }
     ]
   },
   {
@@ -492,40 +496,38 @@
     "title": "Pårørende",
     "sections": [
       {
-        "rows": [
+        "id": null,
+        "type": null,
+        "fields": [
           {
-            "fields": [
-              {
-                "id": "relative_name_1",
-                "title": "Navn på pårørende 1",
-                "type": "text",
-                "size": 70,
-                "validations": {
-                  "required": true
-                }
-              },
-              {
-                "id": "relative_telefonummer_1",
-                "title": "Telefonnummer",
-                "type": "phone_number",
-                "size": 30
-              },
-              {
-                "id": "relative_name_2",
-                "title": "Navn på pårørende 2",
-                "type": "text",
-                "size": 70,
-                "validations": {
-                  "required": true
-                }
-              },
-              {
-                "id": "relative_telefonummer_1",
-                "title": "Telefonnummer",
-                "type": "phone_number",
-                "size": 30
-              }
-            ]
+            "id": "relative_name_1",
+            "title": "Navn på pårørende 1",
+            "type": "text",
+            "size": 70,
+            "validations": {
+              "required": true
+            }
+          },
+          {
+            "id": "relative_telefonummer_1",
+            "title": "Telefonnummer",
+            "type": "phone_number",
+            "size": 30
+          },
+          {
+            "id": "relative_name_2",
+            "title": "Navn på pårørende 2",
+            "type": "text",
+            "size": 70,
+            "validations": {
+              "required": true
+            }
+          },
+          {
+            "id": "relative_telefonummer_1",
+            "title": "Telefonnummer",
+            "type": "phone_number",
+            "size": 30
           }
         ]
       }

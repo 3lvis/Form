@@ -6,10 +6,20 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
+@class REMAFormSection;
+
+@protocol REMAFormsCollectionViewLayoutDataSource;
 
 @interface REMAFormsCollectionViewLayout : UICollectionViewFlowLayout
 
-- (instancetype)initWithItems:(NSArray *)items;
+@property (nonatomic, weak) id <REMAFormsCollectionViewLayoutDataSource> dataSource;
+
+@end
+
+@protocol REMAFormsCollectionViewLayoutDataSource <NSObject>
+
+- (REMAFormSection *)formLayoutSection;
 
 @end
