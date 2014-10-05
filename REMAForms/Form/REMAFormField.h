@@ -32,6 +32,7 @@ typedef NS_ENUM(NSInteger, REMAFormFieldType) {
 @property (nonatomic, strong) NSString *typeString;
 @property (nonatomic, strong) NSDictionary *validations;
 @property (nonatomic) REMAFormFieldType type;
+@property (nonatomic) BOOL sectionSeparator;
 
 + (REMAFormField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(REMAFormSection *)section;
 

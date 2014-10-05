@@ -23,9 +23,10 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.contentView.backgroundColor = [UIColor redColor];
-
     [self.contentView addSubview:self.fieldLabel];
+
+    self.contentView.layer.borderWidth = 1.0f;
+    self.contentView.layer.borderColor = [UIColor whiteColor].CGColor;
 
     return self;
 }

@@ -77,7 +77,12 @@
                 field.values = values;
                 [fields addObject:field];
             }];
-            
+
+            REMAFormField *field = [REMAFormField new];
+            field.sectionSeparator = YES;
+            field.position = @(fields.count);
+            [fields addObject:field];
+
             section.fields = fields;
             [sections addObject:section];
         }];

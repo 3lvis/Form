@@ -33,7 +33,6 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout
 {
     self = [super initWithCollectionViewLayout:layout];
-
     if (!self) return nil;
 
     return self;
@@ -78,6 +77,16 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
 {
     REMAFieldCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REMAFieldReuseIdentifier forIndexPath:indexPath];
 
+    REMAFieldset *fieldset = self.fieldsets[indexPath.section];
+    NSArray *fields = fieldset.fields;
+    REMAFormField *field = fields[indexPath.row];
+
+    if (field.sectionSeparator) {
+        cell.contentView.backgroundColor = [UIColor brownColor];
+    } else {
+        cell.contentView.backgroundColor = [UIColor redColor];
+    }
+
     cell.text = @"Hello world";//self.fieldsets[indexPath.row];
 
     return cell;
@@ -104,18 +113,24 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     REMAFieldset *fieldset = self.fieldsets[indexPath.section];
+
     NSArray *fields = fieldset.fields;
-    REMAFormField *field = fields[indexPath.row];
 
-    NSLog(@"field: %@ (%@)", field.title, field.size);
-    CGFloat marginX = 20.0f;
     CGRect bounds = [[UIScreen mainScreen] bounds];
-    NSLog(@"total width: %f", CGRectGetWidth(bounds));
-    CGFloat width = floor(CGRectGetWidth(bounds) * ([field.size floatValue] / 100.0f) - marginX);
-    NSLog(@"width: %f", width);
-    NSLog(@" ");
+    CGFloat deviceWidth = CGRectGetWidth(bounds) - 40;
+    CGFloat width = 0.0f;
+    CGFloat height = 0.0f;
 
-    return CGSizeMake(width, 50.0f);
+    REMAFormField *field = fields[indexPath.row];
+    if (field.sectionSeparator) {
+        width = deviceWidth;
+        height = 5.0f;
+    } else {
+        width = floor(deviceWidth * ([field.size floatValue] / 100.0f));
+        height = 50.0f;
+    }
+
+    return CGSizeMake(width, height);
 }
 
 @end

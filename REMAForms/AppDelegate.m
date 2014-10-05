@@ -25,7 +25,9 @@
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(50.0f, 50.0f);
     layout.sectionInset = UIEdgeInsetsMake(20.0f, 20.0f, 60.0f, 20.0f);
-    
+    layout.minimumLineSpacing = 0.0f;
+    layout.minimumInteritemSpacing = 0.0f;
+
     REMAFielsetsCollectionViewController *controllers = [[REMAFielsetsCollectionViewController alloc] initWithCollectionViewLayout:layout];
 
     self.window.rootViewController = controllers;
