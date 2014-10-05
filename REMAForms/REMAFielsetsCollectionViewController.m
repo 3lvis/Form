@@ -10,7 +10,6 @@
 
 #import "REMAFieldsetHeaderCollectionReusableView.h"
 #import "REMAFieldCollectionViewCell.h"
-#import "REMAFormsCollectionViewLayout.h"
 
 #import "UIScreen+HYPLiveBounds.h"
 
@@ -73,9 +72,11 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
     return [fieldset numberOfFields];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    REMAFieldCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REMAFieldReuseIdentifier forIndexPath:indexPath];
+    REMAFieldCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REMAFieldReuseIdentifier
+                                                                                  forIndexPath:indexPath];
 
     REMAFieldset *fieldset = self.fieldsets[indexPath.section];
     NSArray *fields = fieldset.fields;
@@ -87,17 +88,20 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
         cell.contentView.backgroundColor = [UIColor redColor];
     }
 
-    cell.text = @"Hello world";//self.fieldsets[indexPath.row];
+    cell.text = field.title;
 
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
+referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(320.0f, 44.0f);
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    return CGSizeMake(CGRectGetWidth(bounds), REMAFieldsetHeaderHeight);
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if (kind != UICollectionElementKindSectionHeader) return nil;
 
@@ -117,7 +121,7 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
     NSArray *fields = fieldset.fields;
 
     CGRect bounds = [[UIScreen mainScreen] bounds];
-    CGFloat deviceWidth = CGRectGetWidth(bounds) - 40;
+    CGFloat deviceWidth = CGRectGetWidth(bounds) - (REMAFieldsetMargin * 2);
     CGFloat width = 0.0f;
     CGFloat height = 0.0f;
 
@@ -127,10 +131,18 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
         height = 5.0f;
     } else {
         width = floor(deviceWidth * ([field.size floatValue] / 100.0f));
-        height = 50.0f;
+        height = REMAFieldsetItemHeight;
     }
 
     return CGSizeMake(width, height);
+}
+
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                 duration:(NSTimeInterval)duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
+    [self.collectionViewLayout invalidateLayout];
 }
 
 @end

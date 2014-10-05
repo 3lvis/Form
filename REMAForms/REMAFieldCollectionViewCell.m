@@ -38,32 +38,30 @@
     _text = text;
 
     self.fieldLabel.text = text;
-
-    [self setNeedsDisplay];
 }
 
 #pragma mark - Getters
 
 - (UILabel *)fieldLabel
 {
-    if (!_fieldLabel) return _fieldLabel;
+    if (_fieldLabel) return _fieldLabel;
 
-    _fieldLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 60.0f)];
+    _fieldLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _fieldLabel.backgroundColor = [UIColor grayColor];
     _fieldLabel.textColor = [UIColor blueColor];
-    _fieldLabel.numberOfLines = 10;
 
     return _fieldLabel;
 }
 
-- (CGSize)sizeThatFits:(CGSize)size
+- (void)layoutSubviews
 {
-    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:self.text];
-    CGSize labelSize = attributedText.size;
+    [super layoutSubviews];
 
-    self.fieldLabel.frame = CGRectMake(0.0f, 0.0f, labelSize.width, labelSize.height);
-
-    return labelSize;
+    CGFloat margin = REMAFieldCellMargin;
+    CGRect frame = self.contentView.frame;
+    frame.origin.x = margin;
+    frame.size.width = CGRectGetWidth(frame) - 2 * margin;
+    self.fieldLabel.frame = frame;
 }
 
 @end

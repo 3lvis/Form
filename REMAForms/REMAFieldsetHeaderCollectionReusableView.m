@@ -34,8 +34,12 @@
 {
     if (_headerLabel) return _headerLabel;
 
-    _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    CGFloat width = CGRectGetWidth(bounds) - (REMAFieldsetTitleMargin * 2);
+
+    _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(REMAFieldsetTitleMargin, 0.0f, width, REMAFieldsetHeaderHeight)];
     _headerLabel.backgroundColor = [UIColor greenColor];
+    _headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     return _headerLabel;
 }

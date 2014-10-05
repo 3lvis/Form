@@ -8,6 +8,8 @@
 
 @import UIKit;
 
+static const NSInteger REMAFieldCellMargin = 10.0f;
+
 @interface REMAFieldCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, copy) NSString *text;
