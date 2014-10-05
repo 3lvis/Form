@@ -11,8 +11,6 @@
 #import "REMAFieldsetHeaderCollectionReusableView.h"
 #import "REMAFieldCollectionViewCell.h"
 
-#import "UIScreen+HYPLiveBounds.h"
-
 #import "REMAFieldset.h"
 #import "REMAFormField.h"
 
