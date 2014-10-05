@@ -21,9 +21,7 @@
 		146D7AC319E09853004A31CE /* REMAPostalCodeInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7ABA19E09853004A31CE /* REMAPostalCodeInputValidator.m */; };
 		146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7ABC19E09853004A31CE /* REMASocialSecurityNumberInputValidator.m */; };
 		146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7ACD19E09953004A31CE /* NSDictionary+Networking.m */; };
-		146D7AD519E09953004A31CE /* NSIndexPath+REMAAdjacent.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7ACF19E09953004A31CE /* NSIndexPath+REMAAdjacent.m */; };
 		146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AD119E09953004A31CE /* NSString+ZENInflections.m */; };
-		146D7AD719E09953004A31CE /* UIScreen+HYPLiveBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AD319E09953004A31CE /* UIScreen+HYPLiveBounds.m */; };
 		146DEA3819E0929B00D9E3FF /* REMAFieldRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA2D19E0929B00D9E3FF /* REMAFieldRule.m */; };
 		146DEA3919E0929B00D9E3FF /* REMAFieldset.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA2F19E0929B00D9E3FF /* REMAFieldset.m */; };
 		146DEA3A19E0929B00D9E3FF /* REMAFieldValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA3119E0929B00D9E3FF /* REMAFieldValue.m */; };
@@ -78,12 +76,8 @@
 		146D7ABC19E09853004A31CE /* REMASocialSecurityNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMASocialSecurityNumberInputValidator.m; sourceTree = "<group>"; };
 		146D7ACC19E09953004A31CE /* NSDictionary+Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Networking.h"; sourceTree = "<group>"; };
 		146D7ACD19E09953004A31CE /* NSDictionary+Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Networking.m"; sourceTree = "<group>"; };
-		146D7ACE19E09953004A31CE /* NSIndexPath+REMAAdjacent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+REMAAdjacent.h"; sourceTree = "<group>"; };
-		146D7ACF19E09953004A31CE /* NSIndexPath+REMAAdjacent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+REMAAdjacent.m"; sourceTree = "<group>"; };
 		146D7AD019E09953004A31CE /* NSString+ZENInflections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZENInflections.h"; sourceTree = "<group>"; };
 		146D7AD119E09953004A31CE /* NSString+ZENInflections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZENInflections.m"; sourceTree = "<group>"; };
-		146D7AD219E09953004A31CE /* UIScreen+HYPLiveBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+HYPLiveBounds.h"; sourceTree = "<group>"; };
-		146D7AD319E09953004A31CE /* UIScreen+HYPLiveBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+HYPLiveBounds.m"; sourceTree = "<group>"; };
 		146DEA2C19E0929B00D9E3FF /* REMAFieldRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldRule.h; sourceTree = "<group>"; };
 		146DEA2D19E0929B00D9E3FF /* REMAFieldRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldRule.m; sourceTree = "<group>"; };
 		146DEA2E19E0929B00D9E3FF /* REMAFieldset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldset.h; sourceTree = "<group>"; };
@@ -173,12 +167,8 @@
 			children = (
 				146D7ACC19E09953004A31CE /* NSDictionary+Networking.h */,
 				146D7ACD19E09953004A31CE /* NSDictionary+Networking.m */,
-				146D7ACE19E09953004A31CE /* NSIndexPath+REMAAdjacent.h */,
-				146D7ACF19E09953004A31CE /* NSIndexPath+REMAAdjacent.m */,
 				146D7AD019E09953004A31CE /* NSString+ZENInflections.h */,
 				146D7AD119E09953004A31CE /* NSString+ZENInflections.m */,
-				146D7AD219E09953004A31CE /* UIScreen+HYPLiveBounds.h */,
-				146D7AD319E09953004A31CE /* UIScreen+HYPLiveBounds.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -378,10 +368,8 @@
 				146D7ABD19E09853004A31CE /* REMABankAccountNumberInputValidator.m in Sources */,
 				146DEA3A19E0929B00D9E3FF /* REMAFieldValue.m in Sources */,
 				146D7AA919E0983C004A31CE /* REMAFormatter.m in Sources */,
-				146D7AD719E09953004A31CE /* UIScreen+HYPLiveBounds.m in Sources */,
 				441B77CE19DED095006AF67C /* REMAFieldsetHeaderCollectionReusableView.m in Sources */,
 				146DEA3B19E0929B00D9E3FF /* REMAFormField.m in Sources */,
-				146D7AD519E09953004A31CE /* NSIndexPath+REMAAdjacent.m in Sources */,
 				146D7ABF19E09853004A31CE /* REMAInputValidator.m in Sources */,
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
 				146D7AA819E0983C004A31CE /* REMABankAccountNumberFormatter.m in Sources */,
