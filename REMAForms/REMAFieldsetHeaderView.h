@@ -9,7 +9,7 @@
 @import UIKit;
 
 static const CGFloat REMAFieldsetTitleMargin = 20.0f;
-static const CGFloat REMAFieldsetHeaderHeight = 50.0f;
+static const CGFloat REMAFieldsetHeaderHeight = 55.0f;
 
 static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeaderReuseIdentifier";
 

@@ -8,9 +8,9 @@
 
 #import "REMAFieldCollectionViewCell.h"
 
-@interface REMAFieldCollectionViewCell ()
+#import "UIColor+ANDYHex.h"
 
-@property (nonatomic, strong) UILabel *fieldLabel;
+@interface REMAFieldCollectionViewCell ()
 
 @end
 
@@ -31,15 +31,6 @@
     return self;
 }
 
-#pragma mark - Setters
-
-- (void)setText:(NSString *)text
-{
-    _text = text;
-
-    self.fieldLabel.text = text;
-}
-
 #pragma mark - Getters
 
 - (UILabel *)fieldLabel
@@ -47,7 +38,7 @@
     if (_fieldLabel) return _fieldLabel;
 
     _fieldLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _fieldLabel.backgroundColor = [UIColor grayColor];
+    _fieldLabel.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
     _fieldLabel.textColor = [UIColor blueColor];
 
     return _fieldLabel;

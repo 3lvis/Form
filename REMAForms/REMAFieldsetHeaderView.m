@@ -38,7 +38,7 @@
     CGFloat width = CGRectGetWidth(bounds) - (REMAFieldsetTitleMargin * 2);
 
     _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(REMAFieldsetTitleMargin, 0.0f, width, REMAFieldsetHeaderHeight)];
-    _headerLabel.backgroundColor = [UIColor greenColor];
+    _headerLabel.backgroundColor = [UIColor whiteColor];
     _headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     return _headerLabel;

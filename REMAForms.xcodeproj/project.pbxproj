@@ -35,6 +35,7 @@
 		441B77C019DEC4F4006AF67C /* REMAFormsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77BF19DEC4F4006AF67C /* REMAFormsTests.m */; };
 		441B77CB19DEC647006AF67C /* REMAFielsetsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */; };
 		441B77CE19DED095006AF67C /* REMAFieldsetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */; };
+		4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */; };
 		445568AE19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */; };
 		44F244A919E2914D00146A01 /* REMAFielsetsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */; };
 /* End PBXBuildFile section */
@@ -106,6 +107,8 @@
 		441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFielsetsCollectionViewController.m; sourceTree = "<group>"; };
 		441B77CC19DED095006AF67C /* REMAFieldsetHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldsetHeaderView.h; sourceTree = "<group>"; };
 		441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldsetHeaderView.m; sourceTree = "<group>"; };
+		4441A9DF19E2B9490068498D /* UIColor+ANDYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ANDYHex.h"; sourceTree = "<group>"; };
+		4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ANDYHex.m"; sourceTree = "<group>"; };
 		445568AC19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldCollectionViewCell.h; sourceTree = "<group>"; };
 		445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldCollectionViewCell.m; sourceTree = "<group>"; };
 		44F244A719E2914D00146A01 /* REMAFielsetsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetsLayout.h; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 		146D7ACB19E09953004A31CE /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				4441A9DF19E2B9490068498D /* UIColor+ANDYHex.h */,
+				4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */,
 				146D7ACC19E09953004A31CE /* NSDictionary+Networking.h */,
 				146D7ACD19E09953004A31CE /* NSDictionary+Networking.m */,
 				146D7AD019E09953004A31CE /* NSString+ZENInflections.h */,
@@ -376,6 +381,7 @@
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
 				146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */,
 				146DEA3C19E0929B00D9E3FF /* REMAFormSection.m in Sources */,
+				4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */,
 				146D7ABD19E09853004A31CE /* REMABankAccountNumberInputValidator.m in Sources */,
 				146DEA3A19E0929B00D9E3FF /* REMAFieldValue.m in Sources */,
 				146D7AA919E0983C004A31CE /* REMAFormatter.m in Sources */,

@@ -16,6 +16,8 @@
 #import "REMAFieldset.h"
 #import "REMAFormField.h"
 
+#import "UIColor+ANDYHex.h"
+
 @interface REMAFielsetsCollectionViewController () <REMAFielsetsLayoutDataSource>
 
 @property (nonatomic, strong) NSArray *fieldsets;
@@ -51,6 +53,8 @@
 {
     [super viewDidLoad];
 
+    self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
+
     [self.collectionView registerClass:[REMAFieldCollectionViewCell class] forCellWithReuseIdentifier:REMAFieldReuseIdentifier];
 
     [self.collectionView registerClass:[REMAFieldsetHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -81,13 +85,13 @@
     NSArray *fields = fieldset.fields;
     REMAFormField *field = fields[indexPath.row];
 
-    if (field.sectionSeparator) {
-        cell.contentView.backgroundColor = [UIColor brownColor];
-    } else {
-        cell.contentView.backgroundColor = [UIColor redColor];
-    }
+    cell.fieldLabel.text = field.title;
 
-    cell.text = field.title;
+    if (field.sectionSeparator) {
+        cell.fieldLabel.backgroundColor = [UIColor colorFromHex:@"C6C6C6"];
+    } else {
+        cell.fieldLabel.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
+    }
 
     return cell;
 }
