@@ -29,6 +29,7 @@
 		146DEA3B19E0929B00D9E3FF /* REMAFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA3319E0929B00D9E3FF /* REMAFormField.m */; };
 		146DEA3C19E0929B00D9E3FF /* REMAFormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA3519E0929B00D9E3FF /* REMAFormSection.m */; };
 		1478934C19DFCC9000BC2497 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 1478934B19DFCC9000BC2497 /* forms.json */; };
+		14AD563819E301D60099DB09 /* REMAFielsetsCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AD563719E301D60099DB09 /* REMAFielsetsCollectionViewDataSource.m */; };
 		441B77A619DEC4F4006AF67C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A519DEC4F4006AF67C /* main.m */; };
 		441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A819DEC4F4006AF67C /* AppDelegate.m */; };
 		441B77B119DEC4F4006AF67C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 441B77B019DEC4F4006AF67C /* Images.xcassets */; };
@@ -101,6 +102,8 @@
 		146DEA3419E0929B00D9E3FF /* REMAFormSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFormSection.h; sourceTree = "<group>"; };
 		146DEA3519E0929B00D9E3FF /* REMAFormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFormSection.m; sourceTree = "<group>"; };
 		1478934B19DFCC9000BC2497 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
+		14AD563619E301D60099DB09 /* REMAFielsetsCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetsCollectionViewDataSource.h; sourceTree = "<group>"; };
+		14AD563719E301D60099DB09 /* REMAFielsetsCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFielsetsCollectionViewDataSource.m; sourceTree = "<group>"; };
 		441B77A019DEC4F3006AF67C /* REMAForms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = REMAForms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		441B77A419DEC4F4006AF67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		441B77A519DEC4F4006AF67C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 				445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */,
 				441B77C919DEC647006AF67C /* REMAFielsetsCollectionViewController.h */,
 				441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */,
+				14AD563619E301D60099DB09 /* REMAFielsetsCollectionViewDataSource.h */,
+				14AD563719E301D60099DB09 /* REMAFielsetsCollectionViewDataSource.m */,
 				44F244A719E2914D00146A01 /* REMAFielsetsLayout.h */,
 				44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */,
 				146D7A9919E09801004A31CE /* REMAValidator.h */,
@@ -415,6 +420,7 @@
 				441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */,
 				146DEA3819E0929B00D9E3FF /* REMAFieldRule.m in Sources */,
 				44F244A919E2914D00146A01 /* REMAFielsetsLayout.m in Sources */,
+				14AD563819E301D60099DB09 /* REMAFielsetsCollectionViewDataSource.m in Sources */,
 				146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */,
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
 				146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */,
