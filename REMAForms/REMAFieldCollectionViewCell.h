@@ -9,6 +9,7 @@
 @import UIKit;
 
 static const NSInteger REMAFieldCellMargin = 10.0f;
+static const NSInteger REMAFieldCellItemHeight = 50.0f;
 
 static NSString * const REMAFieldReuseIdentifier = @"REMAFieldReuseIdentifier";
 

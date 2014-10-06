@@ -11,17 +11,28 @@
 #import "REMAFieldsetHeaderView.h"
 #import "REMAFieldCollectionViewCell.h"
 #import "REMAFielsetBackgroundView.h"
+#import "REMAFielsetsLayout.h"
 
 #import "REMAFieldset.h"
 #import "REMAFormField.h"
 
-@interface REMAFielsetsCollectionViewController ()
+@interface REMAFielsetsCollectionViewController () <REMAFielsetsLayoutDataSource>
 
 @property (nonatomic, strong) NSArray *fieldsets;
 
 @end
 
 @implementation REMAFielsetsCollectionViewController
+
+- (instancetype)initWithCollectionViewLayout:(REMAFielsetsLayout *)layout
+{
+    self = [super initWithCollectionViewLayout:layout];
+    if (!self) return nil;
+
+    layout.dataSource = self;
+
+    return self;
+}
 
 #pragma mark - Getters
 
@@ -91,14 +102,26 @@ referenceSizeForHeaderInSection:(NSInteger)section
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    if (kind != UICollectionElementKindSectionHeader) return nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+        REMAFieldsetHeaderView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                                  withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier
+                                                                                         forIndexPath:indexPath];
+        reusableview.headerLabel.text = [NSString stringWithFormat:@"Fieldset #%li", indexPath.section + 1];
 
-    REMAFieldsetHeaderView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                                                withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier
-                                                                                                       forIndexPath:indexPath];
-    reusableview.headerLabel.text = [NSString stringWithFormat:@"Fieldset #%li", indexPath.section + 1];
+        return reusableview;
+    }
 
-    return reusableview;
+    REMAFielsetBackgroundView *backgroundView = [self.collectionView dequeueReusableSupplementaryViewOfKind:REMAFieldsetBackgroundKind withReuseIdentifier:REMAFieldsetBackgroundReuseIdentifier forIndexPath:indexPath];
+
+    return backgroundView;
+}
+
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                 duration:(NSTimeInterval)duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
+    [self.collectionViewLayout invalidateLayout];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
@@ -119,18 +142,10 @@ referenceSizeForHeaderInSection:(NSInteger)section
         height = 5.0f;
     } else {
         width = floor(deviceWidth * ([field.size floatValue] / 100.0f));
-        height = REMAFieldsetItemHeight;
+        height = REMAFieldCellItemHeight;
     }
 
     return CGSizeMake(width, height);
-}
-
-- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                 duration:(NSTimeInterval)duration
-{
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-
-    [self.collectionViewLayout invalidateLayout];
 }
 
 @end

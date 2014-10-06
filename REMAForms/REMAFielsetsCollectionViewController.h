@@ -10,7 +10,6 @@
 
 static const NSInteger REMAFieldsetMargin = 20.0f;
 static const NSInteger REMAFieldsetMarginBottom = 60.0f;
-static const NSInteger REMAFieldsetItemHeight = 50.0f;
 
 @interface REMAFielsetsCollectionViewController : UICollectionViewController
 

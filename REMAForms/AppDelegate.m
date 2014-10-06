@@ -7,7 +7,10 @@
 //
 
 #import "AppDelegate.h"
+
 #import "REMAFielsetsCollectionViewController.h"
+#import "REMAFielsetBackgroundView.h"
+#import "REMAFielsetsLayout.h"
 
 @interface AppDelegate ()
 
@@ -19,10 +22,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.sectionInset = UIEdgeInsetsMake(REMAFieldsetMargin, REMAFieldsetMargin, REMAFieldsetMarginBottom, REMAFieldsetMargin);
-    layout.minimumLineSpacing = 0.0f;
-    layout.minimumInteritemSpacing = 0.0f;
+    REMAFielsetsLayout *layout = [[REMAFielsetsLayout alloc] init];
 
     REMAFielsetsCollectionViewController *controllers = [[REMAFielsetsCollectionViewController alloc] initWithCollectionViewLayout:layout];
 

@@ -36,6 +36,7 @@
 		441B77CB19DEC647006AF67C /* REMAFielsetsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */; };
 		441B77CE19DED095006AF67C /* REMAFieldsetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */; };
 		445568AE19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */; };
+		44F244A919E2914D00146A01 /* REMAFielsetsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldsetHeaderView.m; sourceTree = "<group>"; };
 		445568AC19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldCollectionViewCell.h; sourceTree = "<group>"; };
 		445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldCollectionViewCell.m; sourceTree = "<group>"; };
+		44F244A719E2914D00146A01 /* REMAFielsetsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetsLayout.h; sourceTree = "<group>"; };
+		44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFielsetsLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +231,8 @@
 				445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */,
 				441B77C919DEC647006AF67C /* REMAFielsetsCollectionViewController.h */,
 				441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */,
+				44F244A719E2914D00146A01 /* REMAFielsetsLayout.h */,
+				44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */,
 				146D7A9919E09801004A31CE /* REMAValidator.h */,
 				146D7A9A19E09801004A31CE /* REMAValidator.m */,
 				1478934B19DFCC9000BC2497 /* forms.json */,
@@ -366,6 +371,7 @@
 				146D7AC319E09853004A31CE /* REMAPostalCodeInputValidator.m in Sources */,
 				441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */,
 				146DEA3819E0929B00D9E3FF /* REMAFieldRule.m in Sources */,
+				44F244A919E2914D00146A01 /* REMAFielsetsLayout.m in Sources */,
 				146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */,
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
 				146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */,
