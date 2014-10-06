@@ -106,7 +106,9 @@ referenceSizeForHeaderInSection:(NSInteger)section
         REMAFieldsetHeaderView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                                                                   withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier
                                                                                          forIndexPath:indexPath];
-        reusableview.headerLabel.text = [NSString stringWithFormat:@"Fieldset #%li", indexPath.section + 1];
+
+        REMAFieldset *fieldset = self.fieldsets[indexPath.section];
+        reusableview.headerLabel.text = fieldset.title;
 
         return reusableview;
     }
@@ -116,7 +118,7 @@ referenceSizeForHeaderInSection:(NSInteger)section
     return backgroundView;
 }
 
-- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                  duration:(NSTimeInterval)duration
 {
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];

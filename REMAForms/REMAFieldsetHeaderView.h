@@ -8,8 +8,8 @@
 
 @import UIKit;
 
-static const NSInteger REMAFieldsetTitleMargin = 20.0f;
-static const NSInteger REMAFieldsetHeaderHeight = 50.0f;
+static const CGFloat REMAFieldsetTitleMargin = 20.0f;
+static const CGFloat REMAFieldsetHeaderHeight = 50.0f;
 
 static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeaderReuseIdentifier";
 
