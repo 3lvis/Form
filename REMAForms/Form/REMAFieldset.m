@@ -41,7 +41,8 @@
             section.id = [sectionDict safeObjectForKey:@"id"];
             section.position = @(sectionIndex);
 
-            if (lastObject == sectionDict) {
+            BOOL isLastSection = (lastObject == sectionDict);
+            if (isLastSection) {
                 section.isLast = YES;
             }
 
@@ -77,10 +78,12 @@
                 [fields addObject:field];
             }];
 
-            REMAFormField *field = [REMAFormField new];
-            field.sectionSeparator = YES;
-            field.position = @(fields.count);
-            [fields addObject:field];
+            if (!isLastSection) {
+                REMAFormField *field = [REMAFormField new];
+                field.sectionSeparator = YES;
+                field.position = @(fields.count);
+                [fields addObject:field];
+            }
 
             section.fields = fields;
             [sections addObject:section];
