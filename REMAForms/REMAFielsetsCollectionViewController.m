@@ -49,7 +49,9 @@
 
     _dataSource = [[REMAFielsetsCollectionViewDataSource alloc] init];
 
-    _dataSource.configureCellBlock = ^(REMAFieldCollectionViewCell *cell, NSIndexPath *indexPath, REMAFormField *field) {
+    _dataSource.configureCellBlock = ^(REMAFieldCollectionViewCell *cell,
+                                       NSIndexPath *indexPath,
+                                       REMAFormField *field) {
         cell.fieldLabel.text = field.title;
 
         if (field.sectionSeparator) {
@@ -60,7 +62,10 @@
     };
 
     __weak id weakSelf = self;
-    _dataSource.configureHeaderViewBlock = ^(REMAFieldsetHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, REMAFieldset *fieldset) {
+    _dataSource.configureHeaderViewBlock = ^(REMAFieldsetHeaderView *headerView,
+                                             NSString *kind,
+                                             NSIndexPath *indexPath,
+                                             REMAFieldset *fieldset) {
         headerView.headerLabel.text = fieldset.title;
         headerView.delegate = weakSelf;
     };
@@ -78,9 +83,11 @@
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 
-    [self.collectionView registerClass:[REMAFieldCollectionViewCell class] forCellWithReuseIdentifier:REMAFieldReuseIdentifier];
+    [self.collectionView registerClass:[REMAFieldCollectionViewCell class]
+            forCellWithReuseIdentifier:REMAFieldReuseIdentifier];
 
-    [self.collectionView registerClass:[REMAFieldsetHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+    [self.collectionView registerClass:[REMAFieldsetHeaderView class]
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                    withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier];
 }
 
@@ -135,7 +142,7 @@ referenceSizeForHeaderInSection:(NSInteger)section
     NSArray *fields = fieldset.fields;
 
     CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-    CGFloat deviceWidth = CGRectGetWidth(bounds) - (REMAFieldsetMargin * 2);
+    CGFloat deviceWidth = CGRectGetWidth(bounds) - (REMAFieldsetMarginHorizontal * 2);
     CGFloat width = 0.0f;
     CGFloat height = 0.0f;
 

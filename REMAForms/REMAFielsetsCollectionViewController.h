@@ -8,8 +8,7 @@
 
 @import UIKit;
 
-static const NSInteger REMAFieldsetMargin = 20.0f;
-
+static const NSInteger REMAFieldsetMarginHorizontal = 20.0f;
 static const NSInteger REMAFieldsetMarginTop = 10.0f;
 static const NSInteger REMAFieldsetMarginBottom = 30.0f;
 

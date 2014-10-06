@@ -32,7 +32,7 @@
     self = [super init];
     if (!self) return nil;
 
-    self.sectionInset = UIEdgeInsetsMake(REMAFieldsetMarginTop, REMAFieldsetMargin, REMAFieldsetMarginBottom, REMAFieldsetMargin);
+    self.sectionInset = UIEdgeInsetsMake(REMAFieldsetMarginTop, REMAFieldsetMarginHorizontal, REMAFieldsetMarginBottom, REMAFieldsetMarginHorizontal);
     self.minimumLineSpacing = 0.0f;
     self.minimumInteritemSpacing = 0.0f;
 
@@ -124,7 +124,9 @@
     NSInteger sectionsCount = [self.collectionView numberOfSections];
 
     for (NSInteger section = 0; section < sectionsCount; section++) {
-        [attributes addObject:[self layoutAttributesForDecorationViewOfKind:REMAFieldsetBackgroundKind atIndexPath:[NSIndexPath indexPathForItem:0 inSection:section]]];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
+        [attributes addObject:[self layoutAttributesForDecorationViewOfKind:REMAFieldsetBackgroundKind
+                                                                atIndexPath:indexPath]];
     }
 
     return attributes;

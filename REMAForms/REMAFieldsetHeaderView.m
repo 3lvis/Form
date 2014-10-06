@@ -37,7 +37,8 @@
     self.layer.shadowRadius = 1;
     self.layer.shadowOpacity = 0.2;
 
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerTappedAction)];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                           action:@selector(headerTappedAction)];
     [self addGestureRecognizer:tapGestureRecognizer];
 
     return self;
