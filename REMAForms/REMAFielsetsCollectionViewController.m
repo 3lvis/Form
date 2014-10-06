@@ -9,7 +9,7 @@
 #import "REMAFielsetsCollectionViewController.h"
 
 #import "REMAFieldsetHeaderView.h"
-#import "REMAFieldCollectionViewCell.h"
+#import "REMABaseFieldCollectionCell.h"
 #import "REMAFielsetBackgroundView.h"
 #import "REMAFielsetsLayout.h"
 #import "REMAFielsetsCollectionViewDataSource.h"

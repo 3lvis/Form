@@ -11,7 +11,7 @@
 
 #import "REMAFielsetsLayout.h"
 
-#import "REMAFieldCollectionViewCell.h"
+#import "REMABaseFieldCollectionCell.h"
 #import "REMAFieldsetHeaderView.h"
 
 #import "REMAFormField.h"

@@ -57,7 +57,6 @@
 		4441A9EB19E2BBC50068498D /* DIN-MEDI.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E619E2BBC50068498D /* DIN-MEDI.OTF */; };
 		4441A9EC19E2BBC50068498D /* DIN-REGU.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E719E2BBC50068498D /* DIN-REGU.OTF */; };
 		4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9EE19E2BC140068498D /* UIFont+Styles.m */; };
-		445568AE19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */; };
 		446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */; };
 		44F244A919E2914D00146A01 /* REMAFielsetsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */; };
 /* End PBXBuildFile section */
@@ -169,8 +168,6 @@
 		4441A9E719E2BBC50068498D /* DIN-REGU.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-REGU.OTF"; sourceTree = "<group>"; };
 		4441A9ED19E2BC140068498D /* UIFont+Styles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Styles.h"; sourceTree = "<group>"; };
 		4441A9EE19E2BC140068498D /* UIFont+Styles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Styles.m"; sourceTree = "<group>"; };
-		445568AC19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldCollectionViewCell.h; sourceTree = "<group>"; };
-		445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldCollectionViewCell.m; sourceTree = "<group>"; };
 		446364CB19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+HYPLiveBounds.h"; sourceTree = "<group>"; };
 		446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+HYPLiveBounds.m"; sourceTree = "<group>"; };
 		44F244A719E2914D00146A01 /* REMAFielsetsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetsLayout.h; sourceTree = "<group>"; };
@@ -336,8 +333,6 @@
 				441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */,
 				143549B319E266410021A84E /* REMAFielsetBackgroundView.h */,
 				143549B419E266410021A84E /* REMAFielsetBackgroundView.m */,
-				445568AC19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.h */,
-				445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */,
 				441B77C919DEC647006AF67C /* REMAFielsetsCollectionViewController.h */,
 				441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */,
 				14AD563619E301D60099DB09 /* REMAFielsetsCollectionViewDataSource.h */,
@@ -495,7 +490,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445568AE19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m in Sources */,
 				146D7AC319E09853004A31CE /* REMAPostalCodeInputValidator.m in Sources */,
 				441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */,
 				146DEA3819E0929B00D9E3FF /* REMAFieldRule.m in Sources */,

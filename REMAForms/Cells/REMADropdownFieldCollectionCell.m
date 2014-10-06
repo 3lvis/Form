@@ -24,7 +24,7 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    [self addSubview:self.dropdownField];
+    [self.contentView addSubview:self.dropdownField];
 
     return self;
 }

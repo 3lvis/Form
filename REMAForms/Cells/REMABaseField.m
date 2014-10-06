@@ -96,10 +96,10 @@
     }
 
     if (self.isAlternative) {
-        drawingRect = CGRectMake(rect.origin.x + 0.5,
-                                 rect.origin.y + 22.0f + 0.5,
-                                 rect.size.width - 1.5,
-                                 44.0f - 1.5);
+        drawingRect = CGRectMake(rect.origin.x + 5.0f,
+                                 rect.origin.y + 30.0f,
+                                 rect.size.width - 10.0f,
+                                 rect.size.height - 55.0f);
     }
 
     UIRectCorner corners;

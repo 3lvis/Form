@@ -28,7 +28,7 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    [self addSubview:self.textField];
+    [self.contentView addSubview:self.textField];
 
     return self;
 }
