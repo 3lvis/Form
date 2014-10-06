@@ -17,6 +17,7 @@
 #import "REMAFormField.h"
 
 #import "UIColor+ANDYHex.h"
+#import "UIScreen+HYPLiveBounds.h"
 
 @interface REMAFielsetsCollectionViewController () <REMAFielsetsLayoutDataSource>
 
@@ -52,6 +53,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 
@@ -99,7 +102,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section
 {
-    CGRect bounds = [[UIScreen mainScreen] bounds];
+    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
     return CGSizeMake(CGRectGetWidth(bounds), REMAFieldsetHeaderHeight);
 }
 
@@ -137,7 +140,7 @@ referenceSizeForHeaderInSection:(NSInteger)section
 
     NSArray *fields = fieldset.fields;
 
-    CGRect bounds = [[UIScreen mainScreen] bounds];
+    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
     CGFloat deviceWidth = CGRectGetWidth(bounds) - (REMAFieldsetMargin * 2);
     CGFloat width = 0.0f;
     CGFloat height = 0.0f;
@@ -145,7 +148,7 @@ referenceSizeForHeaderInSection:(NSInteger)section
     REMAFormField *field = fields[indexPath.row];
     if (field.sectionSeparator) {
         width = deviceWidth;
-        height = 5.0f;
+        height = REMAFieldCellItemSmallHeight;
     } else {
         width = floor(deviceWidth * ([field.size floatValue] / 100.0f));
         height = REMAFieldCellItemHeight;

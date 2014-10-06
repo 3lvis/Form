@@ -65,7 +65,7 @@
 
     for (REMAFormField *field in fields) {
         if (field.sectionSeparator) {
-            height += 5.0f;
+            height += REMAFieldCellItemSmallHeight;
         } else {
             size += [field.size floatValue];
 

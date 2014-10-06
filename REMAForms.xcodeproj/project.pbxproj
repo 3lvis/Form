@@ -36,7 +36,14 @@
 		441B77CB19DEC647006AF67C /* REMAFielsetsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */; };
 		441B77CE19DED095006AF67C /* REMAFieldsetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */; };
 		4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */; };
+		4441A9E819E2BBC50068498D /* DIN-BLAC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */; };
+		4441A9E919E2BBC50068498D /* DIN-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E419E2BBC50068498D /* DIN-BOLD.OTF */; };
+		4441A9EA19E2BBC50068498D /* DIN-LIGH.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E519E2BBC50068498D /* DIN-LIGH.OTF */; };
+		4441A9EB19E2BBC50068498D /* DIN-MEDI.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E619E2BBC50068498D /* DIN-MEDI.OTF */; };
+		4441A9EC19E2BBC50068498D /* DIN-REGU.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E719E2BBC50068498D /* DIN-REGU.OTF */; };
+		4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9EE19E2BC140068498D /* UIFont+Styles.m */; };
 		445568AE19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */; };
+		446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */; };
 		44F244A919E2914D00146A01 /* REMAFielsetsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */; };
 /* End PBXBuildFile section */
 
@@ -109,8 +116,17 @@
 		441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldsetHeaderView.m; sourceTree = "<group>"; };
 		4441A9DF19E2B9490068498D /* UIColor+ANDYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ANDYHex.h"; sourceTree = "<group>"; };
 		4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ANDYHex.m"; sourceTree = "<group>"; };
+		4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-BLAC.OTF"; sourceTree = "<group>"; };
+		4441A9E419E2BBC50068498D /* DIN-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-BOLD.OTF"; sourceTree = "<group>"; };
+		4441A9E519E2BBC50068498D /* DIN-LIGH.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-LIGH.OTF"; sourceTree = "<group>"; };
+		4441A9E619E2BBC50068498D /* DIN-MEDI.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-MEDI.OTF"; sourceTree = "<group>"; };
+		4441A9E719E2BBC50068498D /* DIN-REGU.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-REGU.OTF"; sourceTree = "<group>"; };
+		4441A9ED19E2BC140068498D /* UIFont+Styles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Styles.h"; sourceTree = "<group>"; };
+		4441A9EE19E2BC140068498D /* UIFont+Styles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Styles.m"; sourceTree = "<group>"; };
 		445568AC19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldCollectionViewCell.h; sourceTree = "<group>"; };
 		445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldCollectionViewCell.m; sourceTree = "<group>"; };
+		446364CB19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+HYPLiveBounds.h"; sourceTree = "<group>"; };
+		446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+HYPLiveBounds.m"; sourceTree = "<group>"; };
 		44F244A719E2914D00146A01 /* REMAFielsetsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetsLayout.h; sourceTree = "<group>"; };
 		44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFielsetsLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +190,10 @@
 		146D7ACB19E09953004A31CE /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				446364CB19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.h */,
+				446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */,
+				4441A9ED19E2BC140068498D /* UIFont+Styles.h */,
+				4441A9EE19E2BC140068498D /* UIFont+Styles.m */,
 				4441A9DF19E2B9490068498D /* UIColor+ANDYHex.h */,
 				4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */,
 				146D7ACC19E09953004A31CE /* NSDictionary+Networking.h */,
@@ -222,6 +242,7 @@
 		441B77A219DEC4F3006AF67C /* REMAForms */ = {
 			isa = PBXGroup;
 			children = (
+				4441A9E219E2BBC50068498D /* Fonts */,
 				146D7ACB19E09953004A31CE /* Categories */,
 				146D7AAC19E09853004A31CE /* Input Validators */,
 				146D7A9F19E0983C004A31CE /* Formatters */,
@@ -271,6 +292,18 @@
 				441B77BE19DEC4F4006AF67C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4441A9E219E2BBC50068498D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */,
+				4441A9E419E2BBC50068498D /* DIN-BOLD.OTF */,
+				4441A9E519E2BBC50068498D /* DIN-LIGH.OTF */,
+				4441A9E619E2BBC50068498D /* DIN-MEDI.OTF */,
+				4441A9E719E2BBC50068498D /* DIN-REGU.OTF */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,8 +386,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4441A9E919E2BBC50068498D /* DIN-BOLD.OTF in Resources */,
+				4441A9EA19E2BBC50068498D /* DIN-LIGH.OTF in Resources */,
+				4441A9EC19E2BBC50068498D /* DIN-REGU.OTF in Resources */,
+				4441A9EB19E2BBC50068498D /* DIN-MEDI.OTF in Resources */,
 				441B77B119DEC4F4006AF67C /* Images.xcassets in Resources */,
 				1478934C19DFCC9000BC2497 /* forms.json in Resources */,
+				4441A9E819E2BBC50068498D /* DIN-BLAC.OTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +418,7 @@
 				146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */,
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
 				146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */,
+				446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */,
 				146DEA3C19E0929B00D9E3FF /* REMAFormSection.m in Sources */,
 				4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */,
 				146D7ABD19E09853004A31CE /* REMABankAccountNumberInputValidator.m in Sources */,
@@ -390,6 +429,7 @@
 				146D7ABF19E09853004A31CE /* REMAInputValidator.m in Sources */,
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
 				146D7AA819E0983C004A31CE /* REMABankAccountNumberFormatter.m in Sources */,
+				4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */,
 				146D7AC019E09853004A31CE /* REMANameInputValidator.m in Sources */,
 				146D7AC119E09853004A31CE /* REMANumberInputValidator.m in Sources */,
 				146DEA3919E0929B00D9E3FF /* REMAFieldset.m in Sources */,
@@ -456,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -491,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

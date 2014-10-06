@@ -39,5 +39,13 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DIN-BLAC.OTF</string>
+		<string>DIN-BOLD.OTF</string>
+		<string>DIN-LIGH.OTF</string>
+		<string>DIN-MEDI.OTF</string>
+		<string>DIN-REGU.OTF</string>
+	</array>
 </dict>
 </plist>

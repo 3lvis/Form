@@ -19,6 +19,7 @@
     self = [super initWithFrame:frame];
 
     self.backgroundColor = [UIColor whiteColor];
+    self.opaque = YES;
 
     return self;
 }
