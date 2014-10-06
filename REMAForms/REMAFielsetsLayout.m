@@ -16,6 +16,8 @@
 #import "REMAFieldset.h"
 #import "REMAFormField.h"
 
+#import "UIScreen+HYPLiveBounds.h"
+
 @interface REMAFielsetsLayout ()
 
 @property (nonatomic) CGFloat previousHeight;
@@ -54,11 +56,7 @@
     }
 
     REMAFieldset *fieldset = fieldsets[indexPath.section];
-    NSLog(@"fieldset: %@", fieldset.title);
-    
     NSArray *fields = fieldset.fields;
-    NSLog(@"fields: %ld", (long)fields.count);
-
     CGFloat bottomMargin = 10.0f;
     CGFloat height = REMAFieldsetMarginTop + REMAFieldsetMarginBottom;
     CGFloat size = 0.0f;
@@ -81,11 +79,6 @@
     self.previousHeight = height;
     self.previousY = y;
 
-    NSLog(@"y: %f", y);
-    NSLog(@"height: %f (%f)", height - (REMAFieldsetMarginTop + REMAFieldsetMarginBottom), height);
-    NSLog(@" ");
-
-
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
                                                                                                                withIndexPath:indexPath];
 
@@ -101,6 +94,16 @@
     self.previousY = 0.0f;
 
     NSMutableArray *attributes = [[super layoutAttributesForElementsInRect:rect] mutableCopy];
+
+    for (UICollectionViewLayoutAttributes *element in attributes) {
+        if ([element.representedElementKind isEqualToString:UICollectionElementKindSectionHeader]) {
+            CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+            CGRect frame = element.frame;
+            frame.origin.x = REMAFieldsetHeaderContentMargin;
+            frame.size.width = CGRectGetWidth(bounds) - (2 * REMAFieldsetHeaderContentMargin);
+            element.frame = frame;
+        }
+    }
 
     NSInteger sectionsCount = [self.collectionView numberOfSections];
 

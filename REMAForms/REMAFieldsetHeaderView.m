@@ -26,31 +26,21 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
-    self.opaque = YES;
+    self.backgroundColor = [UIColor whiteColor];
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    
+    [self addSubview:self.headerLabel];
 
-    [self addSubview:self.contentView];
-    [self.contentView addSubview:self.headerLabel];
+    self.layer.masksToBounds = NO;
+    self.layer.cornerRadius = 5;
+    self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.layer.shadowRadius = 1;
+    self.layer.shadowOpacity = 0.2;
 
     return self;
 }
 
 #pragma mark - Getters
-
-- (UIView *)contentView
-{
-    if (_contentView) return _contentView;
-
-    CGRect frame = self.bounds;
-    frame.origin.x = REMAFieldsetHeaderContentMargin;
-    frame.size.width = frame.size.width - (REMAFieldsetHeaderContentMargin * 2);
-
-    _contentView = [[UIView alloc] initWithFrame:frame];
-    _contentView.backgroundColor = [UIColor whiteColor];
-    _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-
-    return _contentView;
-}
 
 - (UILabel *)headerLabel
 {
@@ -60,11 +50,10 @@
     CGFloat width = CGRectGetWidth(bounds) - (REMAFieldsetTitleMargin * 2);
 
     _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(REMAFieldsetTitleMargin, 0.0f, width, REMAFieldsetHeaderHeight)];
-    _headerLabel.backgroundColor = [UIColor whiteColor];
+    _headerLabel.backgroundColor = [UIColor clearColor];
     _headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _headerLabel.font = [UIFont fontWithName:@"DIN-Medium" size:17.0];
     _headerLabel.textColor = [UIColor colorFromHex:@"455C73"];
-    _headerLabel.opaque = YES;
 
     return _headerLabel;
 }

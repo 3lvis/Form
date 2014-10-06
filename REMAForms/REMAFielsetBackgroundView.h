@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-static const NSInteger REMAFielsetBackgroundViewMargin = 10.0f;
+static const NSInteger REMAFielsetBackgroundViewMargin = 15.0f;
 
 static NSString * const REMAFieldsetBackgroundReuseIdentifier = @"REMAFieldsetBackgroundReuseIdentifier";
 static NSString * const REMAFieldsetBackgroundKind = @"REMAFieldsetBackgroundKind";
