@@ -17,7 +17,7 @@
 #import "REMAFormField.h"
 #import "REMAFieldset.h"
 
-typedef void (^REMAFieldConfigureCellBlock)(REMAFieldCollectionViewCell *cell, NSIndexPath *indexPath, REMAFormField *field);
+typedef void (^REMAFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, REMAFormField *field);
 typedef void (^REMAFieldConfigureHeaderViewBlock)(REMAFieldsetHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, REMAFieldset *fieldset);
 
 @interface REMAFielsetsCollectionViewDataSource : NSObject <REMAFielsetsLayoutDataSource, UICollectionViewDataSource>

@@ -14,6 +14,10 @@
 #import "REMAFielsetsLayout.h"
 #import "REMAFielsetsCollectionViewDataSource.h"
 
+#import "REMATextFieldCollectionCell.h"
+#import "REMADropdownFieldCollectionCell.h"
+#import "REMADateFieldCollectionCell.h"
+
 #import "REMAFieldset.h"
 #import "REMAFormField.h"
 
@@ -49,15 +53,15 @@
 
     _dataSource = [[REMAFielsetsCollectionViewDataSource alloc] init];
 
-    _dataSource.configureCellBlock = ^(REMAFieldCollectionViewCell *cell,
+    _dataSource.configureCellBlock = ^(REMABaseFieldCollectionCell *cell,
                                        NSIndexPath *indexPath,
                                        REMAFormField *field) {
-        cell.fieldLabel.text = field.title;
+        cell.field = field;
 
         if (field.sectionSeparator) {
-            cell.fieldLabel.backgroundColor = [UIColor colorFromHex:@"C6C6C6"];
+            cell.backgroundColor = [UIColor colorFromHex:@"C6C6C6"];
         } else {
-            cell.fieldLabel.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
+            cell.backgroundColor = [UIColor whiteColor];
         }
     };
 
@@ -83,8 +87,14 @@
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 
-    [self.collectionView registerClass:[REMAFieldCollectionViewCell class]
-            forCellWithReuseIdentifier:REMAFieldReuseIdentifier];
+    [self.collectionView registerClass:[REMATextFieldCollectionCell class]
+            forCellWithReuseIdentifier:REMATextFieldCellIdentifier];
+
+    [self.collectionView registerClass:[REMADropdownFieldCollectionCell class]
+            forCellWithReuseIdentifier:REMADropdownFieldCellIdentifier];
+
+    [self.collectionView registerClass:[REMADateFieldCollectionCell class]
+            forCellWithReuseIdentifier:REMADateFieldCellIdentifier];
 
     [self.collectionView registerClass:[REMAFieldsetHeaderView class]
             forSupplementaryViewOfKind:UICollectionElementKindSectionHeader

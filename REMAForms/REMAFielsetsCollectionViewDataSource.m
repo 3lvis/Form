@@ -11,6 +11,10 @@
 #import "REMAFielsetsCollectionViewController.h"
 #import "REMAFielsetBackgroundView.h"
 
+#import "REMATextFieldCollectionCell.h"
+#import "REMADropdownFieldCollectionCell.h"
+#import "REMADateFieldCollectionCell.h"
+
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
@@ -56,12 +60,31 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    REMAFieldCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:REMAFieldReuseIdentifier
-                                                                                  forIndexPath:indexPath];
-
     REMAFieldset *fieldset = self.fieldsets[indexPath.section];
     NSArray *fields = fieldset.fields;
     REMAFormField *field = fields[indexPath.row];
+
+    NSString *identifier;
+
+    switch (field.type) {
+        case REMAFormFieldTypeDate:
+            identifier = REMADateFieldCellIdentifier;
+            break;
+        case REMAFormFieldTypeSelect:
+            identifier = REMADropdownFieldCellIdentifier;
+            break;
+
+        case REMAFormFieldTypeDefault:
+        case REMAFormFieldTypeNone:
+        case REMAFormFieldTypeFloat:
+        case REMAFormFieldTypeNumber:
+        case REMAFormFieldTypePicture:
+            identifier = REMATextFieldCellIdentifier;
+            break;
+    }
+
+    id cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
+                                                        forIndexPath:indexPath];
 
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, indexPath, field);
