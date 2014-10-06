@@ -14,8 +14,19 @@ static const CGFloat REMAFieldsetHeaderHeight = 55.0f;
 
 static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeaderReuseIdentifier";
 
+@protocol REMAFieldsetHeaderViewDelegate;
+
 @interface REMAFieldsetHeaderView : UICollectionReusableView
 
 @property (nonatomic, strong) UILabel *headerLabel;
+@property (nonatomic) NSInteger section;
+
+@property (nonatomic, weak) id <REMAFieldsetHeaderViewDelegate> delegate;
+
+@end
+
+@protocol REMAFieldsetHeaderViewDelegate <NSObject>
+
+- (void)fieldsetHeaderViewWasPressed:(REMAFieldsetHeaderView *)headerView;
 
 @end

@@ -19,9 +19,10 @@
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
-@interface REMAFielsetsCollectionViewController () <REMAFielsetsLayoutDataSource>
+@interface REMAFielsetsCollectionViewController () <REMAFielsetsLayoutDataSource, REMAFieldsetHeaderViewDelegate>
 
 @property (nonatomic, strong) NSArray *fieldsets;
+@property (nonatomic, strong) NSMutableArray *collapsedFieldsets;
 
 @end
 
@@ -46,6 +47,15 @@
     _fieldsets = [REMAFieldset fieldsets];
 
     return _fieldsets;
+}
+
+- (NSMutableArray *)collapsedFieldsets
+{
+    if (_collapsedFieldsets) return _collapsedFieldsets;
+
+    _collapsedFieldsets = [NSMutableArray array];
+
+    return _collapsedFieldsets;
 }
 
 #pragma mark - View Lifecycle
@@ -74,7 +84,10 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     REMAFieldset *fieldset = self.fieldsets[section];
-
+    if ([self.collapsedFieldsets containsObject:@(section)]) {
+        return 0;
+    }
+    
     return [fieldset numberOfFields];
 }
 
@@ -115,7 +128,9 @@ referenceSizeForHeaderInSection:(NSInteger)section
                                                                                          forIndexPath:indexPath];
 
         REMAFieldset *fieldset = self.fieldsets[indexPath.section];
+        reusableview.section = indexPath.section;
         reusableview.headerLabel.text = fieldset.title;
+        reusableview.delegate = self;
 
         return reusableview;
     }
@@ -155,6 +170,31 @@ referenceSizeForHeaderInSection:(NSInteger)section
     }
 
     return CGSizeMake(width, height);
+}
+
+#pragma mark - REMAFieldsetHeaderViewDelegate
+
+- (void)fieldsetHeaderViewWasPressed:(REMAFieldsetHeaderView *)headerView
+{
+    BOOL headerIsCollapsed = ([self.collapsedFieldsets containsObject:@(headerView.section)]);
+
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    REMAFieldset *fieldset = self.fieldsets[headerView.section];
+
+    for (NSInteger i = 0; i < fieldset.fields.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:headerView.section];
+        [indexPaths addObject:indexPath];
+    }
+
+    if (headerIsCollapsed) {
+        [self.collapsedFieldsets removeObject:@(headerView.section)];
+        [self.collectionViewLayout invalidateLayout];
+        [self.collectionView insertItemsAtIndexPaths:indexPaths];
+    } else {
+        [self.collapsedFieldsets addObject:@(headerView.section)];
+        [self.collectionViewLayout invalidateLayout];
+        [self.collectionView deleteItemsAtIndexPaths:indexPaths];
+    }
 }
 
 @end

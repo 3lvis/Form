@@ -55,9 +55,24 @@
         abort();
     }
 
+    NSArray *collapsedFieldsets = nil;
+
+    if ([self.dataSource respondsToSelector:@selector(collapsedFieldsets)]) {
+        collapsedFieldsets = [self.dataSource collapsedFieldsets];
+    } else {
+        collapsedFieldsets = [NSArray array];
+    }
+
     REMAFieldset *fieldset = fieldsets[indexPath.section];
-    NSArray *fields = fieldset.fields;
-    CGFloat bottomMargin = 10.0f;
+    NSArray *fields = nil;
+
+    if ([collapsedFieldsets containsObject:@(indexPath.section)]) {
+        fields = [NSArray array];
+    } else {
+        fields = fieldset.fields;
+    }
+
+    CGFloat bottomMargin = REMAFieldsetHeaderContentMargin;
     CGFloat height = REMAFieldsetMarginTop + REMAFieldsetMarginBottom;
     CGFloat size = 0.0f;
 
@@ -79,9 +94,10 @@
     self.previousHeight = height;
     self.previousY = y;
 
+    if (fields.count == 0) y = 0.0f;
+
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
                                                                                                                withIndexPath:indexPath];
-
     attributes.frame = CGRectMake(REMAFielsetBackgroundViewMargin, y, self.collectionViewContentSize.width - (REMAFielsetBackgroundViewMargin * 2), height - bottomMargin);
     attributes.zIndex = -1;
 

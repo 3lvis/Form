@@ -37,6 +37,9 @@
     self.layer.shadowRadius = 1;
     self.layer.shadowOpacity = 0.2;
 
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerTappedAction)];
+    [self addGestureRecognizer:tapGestureRecognizer];
+
     return self;
 }
 
@@ -56,6 +59,15 @@
     _headerLabel.textColor = [UIColor colorFromHex:@"455C73"];
 
     return _headerLabel;
+}
+
+#pragma mark - Actions
+
+- (void)headerTappedAction
+{
+    if ([self.delegate respondsToSelector:@selector(fieldsetHeaderViewWasPressed:)]) {
+        [self.delegate fieldsetHeaderViewWasPressed:self];
+    }
 }
 
 @end

@@ -19,5 +19,6 @@
 @protocol REMAFielsetsLayoutDataSource <NSObject>
 
 - (NSArray *)fieldsets;
+- (NSArray *)collapsedFieldsets;
 
 @end
