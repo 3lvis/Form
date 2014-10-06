@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143549B519E266410021A84E /* REMAFielsetBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143549B419E266410021A84E /* REMAFielsetBackgroundView.m */; };
 		146D7A9B19E09801004A31CE /* REMAValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7A9A19E09801004A31CE /* REMAValidator.m */; };
 		146D7AA819E0983C004A31CE /* REMABankAccountNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AA119E0983C004A31CE /* REMABankAccountNumberFormatter.m */; };
 		146D7AA919E0983C004A31CE /* REMAFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AA319E0983C004A31CE /* REMAFormatter.m */; };
@@ -33,7 +34,7 @@
 		441B77B119DEC4F4006AF67C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 441B77B019DEC4F4006AF67C /* Images.xcassets */; };
 		441B77C019DEC4F4006AF67C /* REMAFormsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77BF19DEC4F4006AF67C /* REMAFormsTests.m */; };
 		441B77CB19DEC647006AF67C /* REMAFielsetsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */; };
-		441B77CE19DED095006AF67C /* REMAFieldsetHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CD19DED095006AF67C /* REMAFieldsetHeaderCollectionReusableView.m */; };
+		441B77CE19DED095006AF67C /* REMAFieldsetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */; };
 		445568AE19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		143549B319E266410021A84E /* REMAFielsetBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetBackgroundView.h; sourceTree = "<group>"; };
+		143549B419E266410021A84E /* REMAFielsetBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFielsetBackgroundView.m; sourceTree = "<group>"; };
 		146D7A9919E09801004A31CE /* REMAValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAValidator.h; sourceTree = "<group>"; };
 		146D7A9A19E09801004A31CE /* REMAValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAValidator.m; sourceTree = "<group>"; };
 		146D7AA019E0983C004A31CE /* REMABankAccountNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMABankAccountNumberFormatter.h; sourceTree = "<group>"; };
@@ -100,8 +103,8 @@
 		441B77BF19DEC4F4006AF67C /* REMAFormsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = REMAFormsTests.m; sourceTree = "<group>"; };
 		441B77C919DEC647006AF67C /* REMAFielsetsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetsCollectionViewController.h; sourceTree = "<group>"; };
 		441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFielsetsCollectionViewController.m; sourceTree = "<group>"; };
-		441B77CC19DED095006AF67C /* REMAFieldsetHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldsetHeaderCollectionReusableView.h; sourceTree = "<group>"; };
-		441B77CD19DED095006AF67C /* REMAFieldsetHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldsetHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		441B77CC19DED095006AF67C /* REMAFieldsetHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldsetHeaderView.h; sourceTree = "<group>"; };
+		441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldsetHeaderView.m; sourceTree = "<group>"; };
 		445568AC19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldCollectionViewCell.h; sourceTree = "<group>"; };
 		445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,8 +220,10 @@
 				146DEA2B19E0929B00D9E3FF /* Form */,
 				441B77A719DEC4F4006AF67C /* AppDelegate.h */,
 				441B77A819DEC4F4006AF67C /* AppDelegate.m */,
-				441B77CC19DED095006AF67C /* REMAFieldsetHeaderCollectionReusableView.h */,
-				441B77CD19DED095006AF67C /* REMAFieldsetHeaderCollectionReusableView.m */,
+				441B77CC19DED095006AF67C /* REMAFieldsetHeaderView.h */,
+				441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */,
+				143549B319E266410021A84E /* REMAFielsetBackgroundView.h */,
+				143549B419E266410021A84E /* REMAFielsetBackgroundView.m */,
 				445568AC19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.h */,
 				445568AD19DED3B200DB0FE9 /* REMAFieldCollectionViewCell.m */,
 				441B77C919DEC647006AF67C /* REMAFielsetsCollectionViewController.h */,
@@ -368,7 +373,7 @@
 				146D7ABD19E09853004A31CE /* REMABankAccountNumberInputValidator.m in Sources */,
 				146DEA3A19E0929B00D9E3FF /* REMAFieldValue.m in Sources */,
 				146D7AA919E0983C004A31CE /* REMAFormatter.m in Sources */,
-				441B77CE19DED095006AF67C /* REMAFieldsetHeaderCollectionReusableView.m in Sources */,
+				441B77CE19DED095006AF67C /* REMAFieldsetHeaderView.m in Sources */,
 				146DEA3B19E0929B00D9E3FF /* REMAFormField.m in Sources */,
 				146D7ABF19E09853004A31CE /* REMAInputValidator.m in Sources */,
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
@@ -378,6 +383,7 @@
 				146DEA3919E0929B00D9E3FF /* REMAFieldset.m in Sources */,
 				146D7AAA19E0983C004A31CE /* REMAPhoneNumberFormatter.m in Sources */,
 				146D7ABE19E09853004A31CE /* REMAFloatInputValidator.m in Sources */,
+				143549B519E266410021A84E /* REMAFielsetBackgroundView.m in Sources */,
 				146D7AAB19E0983C004A31CE /* REMASocialSecurityNumberFormatter.m in Sources */,
 				441B77CB19DEC647006AF67C /* REMAFielsetsCollectionViewController.m in Sources */,
 				146D7A9B19E09801004A31CE /* REMAValidator.m in Sources */,

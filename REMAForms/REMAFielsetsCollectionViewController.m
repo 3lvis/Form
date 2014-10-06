@@ -8,8 +8,9 @@
 
 #import "REMAFielsetsCollectionViewController.h"
 
-#import "REMAFieldsetHeaderCollectionReusableView.h"
+#import "REMAFieldsetHeaderView.h"
 #import "REMAFieldCollectionViewCell.h"
+#import "REMAFielsetBackgroundView.h"
 
 #import "REMAFieldset.h"
 #import "REMAFormField.h"
@@ -21,19 +22,6 @@
 @end
 
 @implementation REMAFielsetsCollectionViewController
-
-static NSString * const REMAFieldReuseIdentifier = @"REMAFieldReuseIdentifier";
-static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeaderReuseIdentifier";
-
-#pragma mark - Initializers
-
-- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout
-{
-    self = [super initWithCollectionViewLayout:layout];
-    if (!self) return nil;
-
-    return self;
-}
 
 #pragma mark - Getters
 
@@ -53,7 +41,9 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
     [super viewDidLoad];
 
     [self.collectionView registerClass:[REMAFieldCollectionViewCell class] forCellWithReuseIdentifier:REMAFieldReuseIdentifier];
-    [self.collectionView registerClass:[REMAFieldsetHeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier];
+
+    [self.collectionView registerClass:[REMAFieldsetHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -103,7 +93,7 @@ referenceSizeForHeaderInSection:(NSInteger)section
 {
     if (kind != UICollectionElementKindSectionHeader) return nil;
 
-    REMAFieldsetHeaderCollectionReusableView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+    REMAFieldsetHeaderView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                                                                                 withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier
                                                                                                        forIndexPath:indexPath];
     reusableview.headerLabel.text = [NSString stringWithFormat:@"Fieldset #%li", indexPath.section + 1];
