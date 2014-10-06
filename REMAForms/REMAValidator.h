@@ -6,6 +6,7 @@
 //
 
 @import Foundation;
+
 #import "REMAformField.h"
 
 @interface REMAValidator : NSObject
