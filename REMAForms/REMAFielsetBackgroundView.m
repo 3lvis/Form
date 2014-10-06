@@ -8,18 +8,32 @@
 
 #import "REMAFielsetBackgroundView.h"
 
+#import "UIColor+ANDYHex.h"
+
 @interface REMAFielsetBackgroundView ()
 
 @end
 
 @implementation REMAFielsetBackgroundView
 
+- (void)drawRect:(CGRect)rect
+{
+    UIRectCorner corners = UIRectCornerBottomLeft | UIRectCornerBottomRight;
+
+    UIBezierPath *rectanglePath = [UIBezierPath bezierPathWithRoundedRect:rect
+                                                        byRoundingCorners:corners
+                                                              cornerRadii:CGSizeMake(5.0f, 5.0f)];
+    [rectanglePath closePath];
+
+    [[UIColor whiteColor] setFill];
+    [rectanglePath fill];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
 
-    self.backgroundColor = [UIColor whiteColor];
-    self.opaque = YES;
+    self.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 
     return self;
 }
