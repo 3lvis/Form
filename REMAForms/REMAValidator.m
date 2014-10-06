@@ -8,7 +8,9 @@
 #import "REMAValidator.h"
 
 @interface REMAValidator ()
+
 @property (nonatomic, strong) NSDictionary *validations;
+
 @end
 
 @implementation REMAValidator
