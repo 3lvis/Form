@@ -15,6 +15,10 @@
 
     if (!valid) return valid;
 
+    if (string.length == 0) {
+        return (text.length > 0);
+    }
+
     NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
     NSCharacterSet *stringSet = [NSCharacterSet characterSetWithCharactersInString:string];
     valid = [alphaNums isSupersetOfSet:stringSet];

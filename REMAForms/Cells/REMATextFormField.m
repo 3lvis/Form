@@ -143,6 +143,11 @@
 {
     self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+
+    if (self.validator) {
+        NSString *text = (textField.text.length == 0) ? nil : self.rawText;
+        self.valid = [self.validator validateText:text];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

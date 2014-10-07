@@ -15,6 +15,10 @@
 
     if (!valid) return valid;
 
+    if (string.length == 0) {
+        return (text.length > 0);
+    }
+
     NSCharacterSet *letterCharacterSet = [NSCharacterSet letterCharacterSet];
     NSCharacterSet *whitespaceCharacterSet = [NSCharacterSet whitespaceCharacterSet];
     NSCharacterSet *stringSet = [NSCharacterSet characterSetWithCharactersInString:string];

@@ -23,7 +23,11 @@ static NSString * const REMAInputValidatorClass = @"REMA%@InputValidator";
 {
     if (!self.validations) return YES;
 
-    NSUInteger textLength = [text length] + 1;
+    NSUInteger textLength = [text length];
+    if (string.length > 0) {
+        textLength++;
+    }
+
     BOOL valid = (self.validations[@"required"] != nil);
 
     if (valid && self.validations[@"max_length"]) {
@@ -31,6 +35,11 @@ static NSString * const REMAInputValidatorClass = @"REMA%@InputValidator";
     }
 
     return valid;
+}
+
+- (BOOL)validateText:(NSString *)text
+{
+    return [self validateReplacementString:nil withText:text];
 }
 
 - (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format

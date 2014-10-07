@@ -14,5 +14,6 @@
 + (Class)validatorClass:(NSString *)string;
 
 - (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text;
+- (BOOL)validateText:(NSString *)text;
 
 @end
