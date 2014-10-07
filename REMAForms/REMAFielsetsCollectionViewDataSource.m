@@ -118,4 +118,52 @@
     return backgroundView;
 }
 
+#pragma mark - Public methods
+
+- (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView
+{
+    BOOL headerIsCollapsed = ([self.collapsedFieldsets containsObject:@(section)]);
+
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    REMAFieldset *fieldset = self.fieldsets[section];
+
+    for (NSInteger i = 0; i < fieldset.fields.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:section];
+        [indexPaths addObject:indexPath];
+    }
+
+    if (headerIsCollapsed) {
+        [self.collapsedFieldsets removeObject:@(section)];
+        [collectionView.collectionViewLayout invalidateLayout];
+        [collectionView insertItemsAtIndexPaths:indexPaths];
+    } else {
+        [self.collapsedFieldsets addObject:@(section)];
+        [collectionView.collectionViewLayout invalidateLayout];
+        [collectionView deleteItemsAtIndexPaths:indexPaths];
+    }
+}
+
+- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    REMAFieldset *fieldset = self.fieldsets[indexPath.section];
+
+    NSArray *fields = fieldset.fields;
+
+    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+    CGFloat deviceWidth = CGRectGetWidth(bounds) - (REMAFieldsetMarginHorizontal * 2);
+    CGFloat width = 0.0f;
+    CGFloat height = 0.0f;
+
+    REMAFormField *field = fields[indexPath.row];
+    if (field.sectionSeparator) {
+        width = deviceWidth;
+        height = REMAFieldCellItemSmallHeight;
+    } else {
+        width = floor(deviceWidth * ([field.size floatValue] / 100.0f));
+        height = REMAFieldCellItemHeight;
+    }
+
+    return CGSizeMake(width, height);
+}
+
 @end

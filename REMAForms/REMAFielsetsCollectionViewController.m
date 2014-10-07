@@ -118,54 +118,17 @@ referenceSizeForHeaderInSection:(NSInteger)section
     [self.collectionViewLayout invalidateLayout];
 }
 
-
 #pragma mark - REMAFieldsetHeaderViewDelegate
 
 - (void)fieldsetHeaderViewWasPressed:(REMAFieldsetHeaderView *)headerView
 {
-    BOOL headerIsCollapsed = ([self.dataSource.collapsedFieldsets containsObject:@(headerView.section)]);
-
-    NSMutableArray *indexPaths = [NSMutableArray array];
-    REMAFieldset *fieldset = self.dataSource.fieldsets[headerView.section];
-
-    for (NSInteger i = 0; i < fieldset.fields.count; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:headerView.section];
-        [indexPaths addObject:indexPath];
-    }
-
-    if (headerIsCollapsed) {
-        [self.dataSource.collapsedFieldsets removeObject:@(headerView.section)];
-        [self.collectionViewLayout invalidateLayout];
-        [self.collectionView insertItemsAtIndexPaths:indexPaths];
-    } else {
-        [self.dataSource.collapsedFieldsets addObject:@(headerView.section)];
-        [self.collectionViewLayout invalidateLayout];
-        [self.collectionView deleteItemsAtIndexPaths:indexPaths];
-    }
+    [self.dataSource collapseFieldsInSection:headerView.section collectionView:self.collectionView];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    REMAFieldset *fieldset = self.dataSource.fieldsets[indexPath.section];
-
-    NSArray *fields = fieldset.fields;
-
-    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-    CGFloat deviceWidth = CGRectGetWidth(bounds) - (REMAFieldsetMarginHorizontal * 2);
-    CGFloat width = 0.0f;
-    CGFloat height = 0.0f;
-
-    REMAFormField *field = fields[indexPath.row];
-    if (field.sectionSeparator) {
-        width = deviceWidth;
-        height = REMAFieldCellItemSmallHeight;
-    } else {
-        width = floor(deviceWidth * ([field.size floatValue] / 100.0f));
-        height = REMAFieldCellItemHeight;
-    }
-
-    return CGSizeMake(width, height);
+    return [self.dataSource sizeForItemAtIndexPath:indexPath];
 }
 
 @end

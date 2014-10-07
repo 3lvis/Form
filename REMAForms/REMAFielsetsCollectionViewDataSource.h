@@ -28,4 +28,7 @@ typedef void (^REMAFieldConfigureHeaderViewBlock)(REMAFieldsetHeaderView *header
 @property (nonatomic, copy) REMAFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) REMAFieldConfigureHeaderViewBlock configureHeaderViewBlock;
 
+- (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
+- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
