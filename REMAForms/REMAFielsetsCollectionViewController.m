@@ -60,7 +60,7 @@
         if (field.sectionSeparator) {
             cell.backgroundColor = [UIColor colorFromHex:@"C6C6C6"];
         } else {
-            cell.backgroundColor = [UIColor whiteColor];
+            cell.backgroundColor = [UIColor clearColor];
         }
     };
 
@@ -118,6 +118,5 @@ referenceSizeForHeaderInSection:(NSInteger)section
 
     [self.collectionViewLayout invalidateLayout];
 }
-
 
 @end
