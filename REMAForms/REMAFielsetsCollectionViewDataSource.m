@@ -159,12 +159,12 @@
 
     if (headerIsCollapsed) {
         [self.collapsedFieldsets removeObject:@(section)];
-        [collectionView.collectionViewLayout invalidateLayout];
         [collectionView insertItemsAtIndexPaths:indexPaths];
+        [collectionView.collectionViewLayout invalidateLayout];
     } else {
         [self.collapsedFieldsets addObject:@(section)];
-        [collectionView.collectionViewLayout invalidateLayout];
         [collectionView deleteItemsAtIndexPaths:indexPaths];
+        [collectionView.collectionViewLayout invalidateLayout];
     }
 }
 
