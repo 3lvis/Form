@@ -81,6 +81,27 @@
     }
 }
 
+- (void)setTextFieldType:(REMATextFieldType)textFieldType
+{
+    _textFieldType = textFieldType;
+
+    switch (textFieldType) {
+        case REMATextFieldTypeDefault     : [self setupDefaultTextField]; break;
+        case REMATextFieldTypeName        : [self setupNameTextField]; break;
+        case REMATextFieldTypeUsername    : [self setupUsernameTextField]; break;
+        case REMATextFieldTypePhoneNumber : [self setupPhoneNumberTextField]; break;
+        case REMATextFieldTypeNumber      : [self setupNumberTextField]; break;
+        case REMATextFieldTypeAddress     : [self setupAddressTextField]; break;
+        case REMATextFieldTypeEmail       : [self setupEmailTextField]; break;
+        case REMATextFieldTypePassword    : [self setupPasswordTextField]; break;
+
+        case REMATextFieldTypeDropdown:
+        case REMATextFieldTypeDate:
+            [self setupDefaultTextField];
+            break;
+    }
+}
+
 #pragma mark - Getters
 
 - (NSString *)rawText
@@ -121,10 +142,6 @@
         valid = [self.validator validateReplacementString:string withText:self.rawText];
     }
 
-    if (valid) {
-        valid = (!self.isEnabled);
-    }
-
     return valid;
 }
 
@@ -132,8 +149,6 @@
 
 - (void)updateLabelUsingContentsOfTextField:(UITextField *)textField
 {
-    NSLog(@"updateLabelUsingContentsOfTextField");
-
     if (self.failed) {
         self.failed = NO;
     }
@@ -141,6 +156,73 @@
     if (!self.isValid) {
         self.valid = YES;
     }
+}
+
+#pragma mark - REMATextFieldType
+
+- (void)setupDefaultTextField
+{
+    self.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    self.autocorrectionType = UITextAutocorrectionTypeDefault;
+    self.keyboardType = UIKeyboardTypeDefault;
+    self.secureTextEntry = NO;
+}
+
+- (void)setupNameTextField
+{
+    self.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.keyboardType = UIKeyboardTypeDefault;
+    self.secureTextEntry = NO;
+}
+
+- (void)setupUsernameTextField
+{
+    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.keyboardType = UIKeyboardTypeNamePhonePad;
+    self.secureTextEntry = NO;
+}
+
+- (void)setupPhoneNumberTextField
+{
+    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.keyboardType = UIKeyboardTypePhonePad;
+    self.secureTextEntry = NO;
+
+}
+
+- (void)setupNumberTextField
+{
+    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.keyboardType = UIKeyboardTypeNumberPad;
+    self.secureTextEntry = NO;
+}
+
+- (void)setupAddressTextField
+{
+    self.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.autocorrectionType = UITextAutocorrectionTypeDefault;
+    self.keyboardType = UIKeyboardTypeASCIICapable;
+    self.secureTextEntry = NO;
+}
+
+- (void)setupEmailTextField
+{
+    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.keyboardType = UIKeyboardTypeEmailAddress;
+    self.secureTextEntry = NO;
+}
+
+- (void)setupPasswordTextField
+{
+    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.keyboardType = UIKeyboardTypeASCIICapable;
+    self.secureTextEntry = YES;
 }
 
 @end

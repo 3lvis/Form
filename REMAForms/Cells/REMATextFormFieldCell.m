@@ -65,10 +65,15 @@
 
 - (void)updateWithField:(REMAFormField *)field
 {
-    self.textField.hidden = (field.sectionSeparator);
     self.headingLabel.hidden = (field.sectionSeparator);
-
     self.headingLabel.text = field.title;
+
+    [self setTypeWithJSONValue:field.typeString];
+
+    self.textField.hidden = (field.sectionSeparator);
+    self.textField.validator = [self.field validator];
+    self.textField.formatter = [self.field formatter];
+    self.textField.rawText = field.fieldValue;
 }
 
 - (void)validate
@@ -113,6 +118,32 @@
     frame.size.height = 20.0f;
 
     return frame;
+}
+
+#pragma mark - Private methods
+
+- (void)setTypeWithJSONValue:(NSString *)type
+{
+    REMATextFieldType textFieldType;
+    if ([type isEqualToString:@"name"]) {
+        textFieldType = REMATextFieldTypeName;
+    } else if ([type isEqualToString:@"username"]) {
+        textFieldType = REMATextFieldTypeUsername;
+    } else if ([type isEqualToString:@"phone"]) {
+        textFieldType = REMATextFieldTypePhoneNumber;
+    } else if ([type isEqualToString:@"number"]) {
+        textFieldType = REMATextFieldTypeNumber;
+    } else if ([type isEqualToString:@"address"]) {
+        textFieldType = REMATextFieldTypeAddress;
+    } else if ([type isEqualToString:@"email"]) {
+        textFieldType = REMATextFieldTypeEmail;
+    } else if ([type isEqualToString:@"date"]) {
+        textFieldType = REMATextFieldTypeDate;
+    } else {
+        textFieldType = REMATextFieldTypeDefault;
+    }
+
+    [self.textField setTextFieldType:textFieldType];
 }
 
 @end
