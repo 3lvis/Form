@@ -1,21 +1,16 @@
 //
-//  REMABaseFieldCell.m
-
+//  REMABaseFormFieldCell.m
+//  REMAForms
 //
-//  Created by Elvis Nunez on 11/08/14.
+//  Created by Elvis Nunez on 07/10/14.
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMABaseFieldCollectionCell.h"
+#import "REMABaseFormFieldCell.h"
 
-@implementation REMABaseFieldCollectionCell
+@implementation REMABaseFormFieldCell
 
-- (void)setCollapsed:(BOOL)collapsed
-{
-    _collapsed = collapsed;
-
-    [self updateFieldWithCollapsed:collapsed];
-}
+#pragma mark - Setters
 
 - (void)setDisabled:(BOOL)disabled
 {
@@ -24,21 +19,18 @@
     [self updateFieldWithDisabled:disabled];
 }
 
-- (void)updateFieldWithDisabled:(BOOL)disabled
-{
-    abort();
-}
-
-- (void)updateFieldWithCollapsed:(BOOL)collapsed
-{
-    abort();
-}
-
 - (void)setField:(REMAFormField *)field
 {
     _field = field;
 
     [self updateWithField:field];
+}
+
+#pragma mark - Overwritables
+
+- (void)updateFieldWithDisabled:(BOOL)disabled
+{
+    abort();
 }
 
 - (void)updateWithField:(REMAFormField *)field

@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSDictionary *validations;
 
 + (Class)validatorClass:(NSString *)string;
+
 - (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text;
 
 @end
