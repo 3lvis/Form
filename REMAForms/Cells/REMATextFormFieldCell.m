@@ -8,13 +8,16 @@
 
 #import "REMATextFormFieldCell.h"
 
+#import "REMATextFormField.h"
+#import "REMAFormFieldHeadingLabel.h"
+
 #import "UIColor+ANDYHex.h"
 #import "UIFont+Styles.h"
 
-@interface REMATextFormFieldCell () <UITextFieldDelegate>
+@interface REMATextFormFieldCell ()
 
-@property (nonatomic, strong) UITextField *textField;
-@property (nonatomic, strong) UILabel *headingLabel;
+@property (nonatomic, strong) REMATextFormField *textField;
+@property (nonatomic, strong) REMAFormFieldHeadingLabel *headingLabel;
 
 @end
 
@@ -35,33 +38,20 @@
 
 #pragma mark - Getters
 
-- (UILabel *)headingLabel
+- (REMAFormFieldHeadingLabel *)headingLabel
 {
     if (_headingLabel) return _headingLabel;
 
-    _headingLabel = [[UILabel alloc] initWithFrame:[self frameForHeadingLabel]];
-    _headingLabel.font = [UIFont REMASmallSize];
-    _headingLabel.textColor = [UIColor colorFromHex:@"28649C"];
+    _headingLabel = [[REMAFormFieldHeadingLabel alloc] initWithFrame:[self frameForHeadingLabel]];
 
     return _headingLabel;
 }
 
-- (UITextField *)textField
+- (REMATextFormField *)textField
 {
     if (_textField) return _textField;
 
-    _textField = [[UITextField alloc] initWithFrame:[self frameForTextField]];
-    _textField.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-    _textField.layer.borderWidth = 1;
-    _textField.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
-    _textField.layer.cornerRadius = 5;
-    _textField.delegate = self;
-    _textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    _textField.font = [UIFont REMATextFieldFont];
-
-    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 20.0f)];
-    _textField.leftView = paddingView;
-    _textField.leftViewMode = UITextFieldViewModeAlways;
+    _textField = [[REMATextFormField alloc] initWithFrame:[self frameForTextField]];
 
     return _textField;
 }
@@ -71,14 +61,6 @@
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
     self.textField.enabled = !disabled;
-
-    if (disabled) {
-        self.textField.backgroundColor = [UIColor colorFromHex:@"F5F5F8"];
-        self.textField.layer.borderColor = [UIColor colorFromHex:@"DEDEDE"].CGColor;
-    } else {
-        self.textField.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-        self.textField.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
-    }
 }
 
 - (void)updateWithField:(REMAFormField *)field
@@ -87,27 +69,11 @@
     self.headingLabel.hidden = (field.sectionSeparator);
 
     self.headingLabel.text = field.title;
-
-    if ([field.title isEqualToString:@"Etternavn"]) {
-        [self updateFieldWithDisabled:YES];
-    }
 }
 
 - (void)validate
 {
     NSLog(@"validation in progress");
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    self.textField.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
-    self.textField.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    self.textField.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-    self.textField.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
 }
 
 #pragma mark - Private methods
