@@ -27,6 +27,8 @@
 
 @implementation REMAFielsetsLayout
 
+#pragma mark - Initializers
+
 - (instancetype)init
 {
     self = [super init];
@@ -40,6 +42,8 @@
 
     return self;
 }
+
+#pragma mark - Private Methods
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {

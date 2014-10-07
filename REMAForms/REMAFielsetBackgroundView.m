@@ -16,6 +16,8 @@
 
 @implementation REMAFielsetBackgroundView
 
+#pragma mark - Drawing
+
 - (void)drawRect:(CGRect)rect
 {
     UIRectCorner corners = UIRectCornerBottomLeft | UIRectCornerBottomRight;
@@ -28,6 +30,8 @@
     [[UIColor whiteColor] setFill];
     [rectanglePath fill];
 }
+
+#pragma mark - Initializers
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

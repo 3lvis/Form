@@ -44,7 +44,7 @@
     return self;
 }
 
-#pragma mark - Delegate
+#pragma mark - Getters
 
 - (REMAFielsetsCollectionViewDataSource *)dataSource
 {
@@ -87,11 +87,26 @@
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 }
 
+#pragma mark - REMAFieldsetHeaderViewDelegate
+
+- (void)fieldsetHeaderViewWasPressed:(REMAFieldsetHeaderView *)headerView
+{
+    [self.dataSource collapseFieldsInSection:headerView.section collectionView:self.collectionView];
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section
 {
     CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
     return CGSizeMake(CGRectGetWidth(bounds), REMAFieldsetHeaderHeight);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.dataSource sizeForItemAtIndexPath:indexPath];
 }
 
 #pragma mark - Rotation Handling
@@ -104,17 +119,5 @@ referenceSizeForHeaderInSection:(NSInteger)section
     [self.collectionViewLayout invalidateLayout];
 }
 
-#pragma mark - REMAFieldsetHeaderViewDelegate
-
-- (void)fieldsetHeaderViewWasPressed:(REMAFieldsetHeaderView *)headerView
-{
-    [self.dataSource collapseFieldsInSection:headerView.section collectionView:self.collectionView];
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [self.dataSource sizeForItemAtIndexPath:indexPath];
-}
 
 @end
