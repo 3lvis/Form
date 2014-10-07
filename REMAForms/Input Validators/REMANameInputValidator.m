@@ -18,8 +18,10 @@
     NSCharacterSet *letterCharacterSet = [NSCharacterSet letterCharacterSet];
     NSCharacterSet *whitespaceCharacterSet = [NSCharacterSet whitespaceCharacterSet];
     NSCharacterSet *stringSet = [NSCharacterSet characterSetWithCharactersInString:string];
-    
-    if ([letterCharacterSet isSupersetOfSet:stringSet] || [whitespaceCharacterSet isSupersetOfSet:stringSet]) {
+
+    BOOL allowsWordsAndWhitespaces = ([letterCharacterSet isSupersetOfSet:stringSet] ||
+                                      [whitespaceCharacterSet isSupersetOfSet:stringSet]);
+    if (allowsWordsAndWhitespaces) {
         return YES;
     }
 
