@@ -160,6 +160,11 @@
         valid = [self.validator validateReplacementString:string withText:self.rawText];
     }
 
+    if (valid) {
+        self.rawText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        return NO;
+    }
+
     return valid;
 }
 
