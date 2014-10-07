@@ -20,6 +20,31 @@
 
 @implementation REMAFielsetsCollectionViewDataSource
 
+#pragma mark - Initializers
+
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
+{
+    self = [super init];
+    if (!self) return nil;
+
+    collectionView.dataSource = self;
+
+    [collectionView registerClass:[REMATextFieldCollectionCell class]
+       forCellWithReuseIdentifier:REMATextFieldCellIdentifier];
+
+    [collectionView registerClass:[REMADropdownFieldCollectionCell class]
+       forCellWithReuseIdentifier:REMADropdownFieldCellIdentifier];
+
+    [collectionView registerClass:[REMADateFieldCollectionCell class]
+       forCellWithReuseIdentifier:REMADateFieldCellIdentifier];
+
+    [collectionView registerClass:[REMAFieldsetHeaderView class]
+       forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+              withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier];
+
+    return self;
+}
+
 #pragma mark - Getters
 
 - (NSArray *)fieldsets

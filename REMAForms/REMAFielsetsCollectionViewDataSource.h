@@ -22,6 +22,8 @@ typedef void (^REMAFieldConfigureHeaderViewBlock)(REMAFieldsetHeaderView *header
 
 @interface REMAFielsetsCollectionViewDataSource : NSObject <REMAFielsetsLayoutDataSource, UICollectionViewDataSource>
 
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
+
 @property (nonatomic, strong) NSArray *fieldsets;
 @property (nonatomic, strong) NSMutableArray *collapsedFieldsets;
 

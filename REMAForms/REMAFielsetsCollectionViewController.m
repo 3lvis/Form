@@ -40,7 +40,6 @@
     if (!self) return nil;
 
     layout.dataSource = self.dataSource;
-    self.collectionView.dataSource = self.dataSource;
 
     return self;
 }
@@ -51,7 +50,7 @@
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[REMAFielsetsCollectionViewDataSource alloc] init];
+    _dataSource = [[REMAFielsetsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView];
 
     _dataSource.configureCellBlock = ^(REMABaseFieldCollectionCell *cell,
                                        NSIndexPath *indexPath,
@@ -86,19 +85,6 @@
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
-
-    [self.collectionView registerClass:[REMATextFieldCollectionCell class]
-            forCellWithReuseIdentifier:REMATextFieldCellIdentifier];
-
-    [self.collectionView registerClass:[REMADropdownFieldCollectionCell class]
-            forCellWithReuseIdentifier:REMADropdownFieldCellIdentifier];
-
-    [self.collectionView registerClass:[REMADateFieldCollectionCell class]
-            forCellWithReuseIdentifier:REMADateFieldCellIdentifier];
-
-    [self.collectionView registerClass:[REMAFieldsetHeaderView class]
-            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                   withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
