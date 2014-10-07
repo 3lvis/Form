@@ -11,9 +11,9 @@
 #import "REMAFielsetsCollectionViewController.h"
 #import "REMAFielsetBackgroundView.h"
 
-#import "REMATextFieldCollectionCell.h"
-#import "REMADropdownFieldCollectionCell.h"
-#import "REMADateFieldCollectionCell.h"
+#import "REMATextFormFieldCell.h"
+//#import "REMADropdownFieldCollectionCell.h"
+//#import "REMADateFieldCollectionCell.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
@@ -29,14 +29,14 @@
 
     collectionView.dataSource = self;
 
-    [collectionView registerClass:[REMATextFieldCollectionCell class]
-       forCellWithReuseIdentifier:REMATextFieldCellIdentifier];
+    [collectionView registerClass:[REMATextFormFieldCell class]
+       forCellWithReuseIdentifier:REMATextFormFieldCellIdentifier];
 
-    [collectionView registerClass:[REMADropdownFieldCollectionCell class]
-       forCellWithReuseIdentifier:REMADropdownFieldCellIdentifier];
-
-    [collectionView registerClass:[REMADateFieldCollectionCell class]
-       forCellWithReuseIdentifier:REMADateFieldCellIdentifier];
+//    [collectionView registerClass:[REMADropdownFieldCollectionCell class]
+//       forCellWithReuseIdentifier:REMADropdownFieldCellIdentifier];
+//
+//    [collectionView registerClass:[REMADateFieldCollectionCell class]
+//       forCellWithReuseIdentifier:REMADateFieldCellIdentifier];
 
     [collectionView registerClass:[REMAFieldsetHeaderView class]
        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -92,19 +92,21 @@
     NSString *identifier;
 
     switch (field.type) {
-        case REMAFormFieldTypeDate:
-            identifier = REMADateFieldCellIdentifier;
-            break;
-        case REMAFormFieldTypeSelect:
-            identifier = REMADropdownFieldCellIdentifier;
-            break;
+//        case REMAFormFieldTypeDate:
+//            identifier = REMADateFieldCellIdentifier;
+//            break;
+//        case REMAFormFieldTypeSelect:
+//            identifier = REMADropdownFieldCellIdentifier;
+//            break;
 
+        case REMAFormFieldTypeDate:
+        case REMAFormFieldTypeSelect:
         case REMAFormFieldTypeDefault:
         case REMAFormFieldTypeNone:
         case REMAFormFieldTypeFloat:
         case REMAFormFieldTypeNumber:
         case REMAFormFieldTypePicture:
-            identifier = REMATextFieldCellIdentifier;
+            identifier = REMATextFormFieldCellIdentifier;
             break;
     }
 

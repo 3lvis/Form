@@ -9,14 +9,14 @@
 #import "REMAFielsetsCollectionViewController.h"
 
 #import "REMAFieldsetHeaderView.h"
-#import "REMABaseFieldCollectionCell.h"
 #import "REMAFielsetBackgroundView.h"
 #import "REMAFielsetsLayout.h"
 #import "REMAFielsetsCollectionViewDataSource.h"
 
-#import "REMATextFieldCollectionCell.h"
-#import "REMADropdownFieldCollectionCell.h"
-#import "REMADateFieldCollectionCell.h"
+#import "REMABaseFormFieldCell.h"
+#import "REMATextFormFieldCell.h"
+//#import "REMADropdownFieldCollectionCell.h"
+//#import "REMADateFieldCollectionCell.h"
 
 #import "REMAFieldset.h"
 #import "REMAFormField.h"
@@ -52,7 +52,7 @@
 
     _dataSource = [[REMAFielsetsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView];
 
-    _dataSource.configureCellBlock = ^(REMABaseFieldCollectionCell *cell,
+    _dataSource.configureCellBlock = ^(REMABaseFormFieldCell *cell,
                                        NSIndexPath *indexPath,
                                        REMAFormField *field) {
         cell.field = field;
