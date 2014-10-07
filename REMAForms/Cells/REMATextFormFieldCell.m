@@ -14,6 +14,14 @@
 #import "UIColor+ANDYHex.h"
 #import "UIFont+Styles.h"
 
+static const CGFloat REMATextFormFieldCellMarginX = 10.0f;
+
+static const CGFloat REMATextFormFieldCellLabelMarginTop = 10.0f;
+static const CGFloat REMATextFormFieldCellLabelHeight = 20.0f;
+
+static const CGFloat REMATextFormFieldCellTextFieldMarginTop = 30.0f;
+static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
+
 @interface REMATextFormFieldCell ()
 
 @property (nonatomic, strong) REMATextFormField *textField;
@@ -68,12 +76,11 @@
     self.headingLabel.hidden = (field.sectionSeparator);
     self.headingLabel.text = field.title;
 
-    [self setTypeWithJSONValue:field.typeString];
-
     self.textField.hidden = (field.sectionSeparator);
     self.textField.validator = [self.field validator];
     self.textField.formatter = [self.field formatter];
     self.textField.rawText = field.fieldValue;
+    self.textField.typeString = field.typeString;
 }
 
 - (void)validate
@@ -93,57 +100,27 @@
 
 - (CGRect)frameForTextField
 {
-    CGFloat marginX = 10.0f;
-    CGFloat marginTop = 30.0f;
-    CGFloat marginBotton = 10.0f;
+    CGFloat marginX = REMATextFormFieldCellMarginX;
+    CGFloat marginTop = REMATextFormFieldCellTextFieldMarginTop;
+    CGFloat marginBotton = REMATextFormFieldCellTextFieldMarginBottom;
 
-    CGRect frame = self.frame;
-    frame.origin.x = marginX;
-    frame.origin.y = marginTop;
-    frame.size.width = CGRectGetWidth(frame) - (marginX * 2);
-    frame.size.height = CGRectGetHeight(frame) - marginTop - marginBotton;
+    CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
+    CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;
+    CGRect frame = CGRectMake(marginX, marginTop, width, height);
 
     return frame;
 }
 
 - (CGRect)frameForHeadingLabel
 {
-    CGFloat marginX = 10.0f;
-    CGFloat marginTop = 10.0f;
+    CGFloat marginX = REMATextFormFieldCellMarginX;
+    CGFloat marginTop = REMATextFormFieldCellLabelMarginTop;
 
-    CGRect frame = self.frame;
-    frame.origin.x = marginX;
-    frame.origin.y = marginTop;
-    frame.size.width = CGRectGetWidth(frame) - (marginX * 2);
-    frame.size.height = 20.0f;
+    CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
+    CGFloat height = REMATextFormFieldCellLabelHeight;
+    CGRect frame = CGRectMake(marginX, marginTop, width, height);
 
     return frame;
-}
-
-#pragma mark - Private methods
-
-- (void)setTypeWithJSONValue:(NSString *)type
-{
-    REMATextFieldType textFieldType;
-    if ([type isEqualToString:@"name"]) {
-        textFieldType = REMATextFieldTypeName;
-    } else if ([type isEqualToString:@"username"]) {
-        textFieldType = REMATextFieldTypeUsername;
-    } else if ([type isEqualToString:@"phone"]) {
-        textFieldType = REMATextFieldTypePhoneNumber;
-    } else if ([type isEqualToString:@"number"]) {
-        textFieldType = REMATextFieldTypeNumber;
-    } else if ([type isEqualToString:@"address"]) {
-        textFieldType = REMATextFieldTypeAddress;
-    } else if ([type isEqualToString:@"email"]) {
-        textFieldType = REMATextFieldTypeEmail;
-    } else if ([type isEqualToString:@"date"]) {
-        textFieldType = REMATextFieldTypeDate;
-    } else {
-        textFieldType = REMATextFieldTypeDefault;
-    }
-
-    [self.textField setTextFieldType:textFieldType];
 }
 
 @end

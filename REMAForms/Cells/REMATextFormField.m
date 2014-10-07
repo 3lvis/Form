@@ -11,6 +11,7 @@
 #import "UIColor+Colors.h"
 #import "UIColor+ANDYHex.h"
 #import "UIFont+Styles.h"
+#import "REMATextFieldTypeManager.h"
 
 @interface REMATextFormField () <UITextFieldDelegate>
 
@@ -81,25 +82,38 @@
     }
 }
 
-- (void)setTextFieldType:(REMATextFieldType)textFieldType
+- (void)setTypeString:(NSString *)typeString
 {
-    _textFieldType = textFieldType;
+    _typeString = typeString;
 
-    switch (textFieldType) {
-        case REMATextFieldTypeDefault     : [self setupDefaultTextField]; break;
-        case REMATextFieldTypeName        : [self setupNameTextField]; break;
-        case REMATextFieldTypeUsername    : [self setupUsernameTextField]; break;
-        case REMATextFieldTypePhoneNumber : [self setupPhoneNumberTextField]; break;
-        case REMATextFieldTypeNumber      : [self setupNumberTextField]; break;
-        case REMATextFieldTypeAddress     : [self setupAddressTextField]; break;
-        case REMATextFieldTypeEmail       : [self setupEmailTextField]; break;
-        case REMATextFieldTypePassword    : [self setupPasswordTextField]; break;
-
-        case REMATextFieldTypeDropdown:
-        case REMATextFieldTypeDate:
-            [self setupDefaultTextField];
-            break;
+    REMATextFieldType type;
+    if ([typeString isEqualToString:@"name"]) {
+        type = REMATextFieldTypeName;
+    } else if ([typeString isEqualToString:@"username"]) {
+        type = REMATextFieldTypeUsername;
+    } else if ([typeString isEqualToString:@"phone"]) {
+        type = REMATextFieldTypePhoneNumber;
+    } else if ([typeString isEqualToString:@"number"]) {
+        type = REMATextFieldTypeNumber;
+    } else if ([typeString isEqualToString:@"address"]) {
+        type = REMATextFieldTypeAddress;
+    } else if ([typeString isEqualToString:@"email"]) {
+        type = REMATextFieldTypeEmail;
+    } else if ([typeString isEqualToString:@"date"]) {
+        type = REMATextFieldTypeDate;
+    } else {
+        type = REMATextFieldTypeDefault;
     }
+
+    self.type = type;
+}
+
+- (void)setType:(REMATextFieldType)type
+{
+    _type = type;
+
+    REMATextFieldTypeManager *typeManager = [[REMATextFieldTypeManager alloc] init];
+    [typeManager setUpType:type forTextField:self];
 }
 
 #pragma mark - Getters
@@ -156,73 +170,6 @@
     if (!self.isValid) {
         self.valid = YES;
     }
-}
-
-#pragma mark - REMATextFieldType
-
-- (void)setupDefaultTextField
-{
-    self.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    self.autocorrectionType = UITextAutocorrectionTypeDefault;
-    self.keyboardType = UIKeyboardTypeDefault;
-    self.secureTextEntry = NO;
-}
-
-- (void)setupNameTextField
-{
-    self.autocapitalizationType = UITextAutocapitalizationTypeWords;
-    self.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.keyboardType = UIKeyboardTypeDefault;
-    self.secureTextEntry = NO;
-}
-
-- (void)setupUsernameTextField
-{
-    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.keyboardType = UIKeyboardTypeNamePhonePad;
-    self.secureTextEntry = NO;
-}
-
-- (void)setupPhoneNumberTextField
-{
-    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.keyboardType = UIKeyboardTypePhonePad;
-    self.secureTextEntry = NO;
-
-}
-
-- (void)setupNumberTextField
-{
-    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.keyboardType = UIKeyboardTypeNumberPad;
-    self.secureTextEntry = NO;
-}
-
-- (void)setupAddressTextField
-{
-    self.autocapitalizationType = UITextAutocapitalizationTypeWords;
-    self.autocorrectionType = UITextAutocorrectionTypeDefault;
-    self.keyboardType = UIKeyboardTypeASCIICapable;
-    self.secureTextEntry = NO;
-}
-
-- (void)setupEmailTextField
-{
-    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.keyboardType = UIKeyboardTypeEmailAddress;
-    self.secureTextEntry = NO;
-}
-
-- (void)setupPasswordTextField
-{
-    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.keyboardType = UIKeyboardTypeASCIICapable;
-    self.secureTextEntry = YES;
 }
 
 @end
