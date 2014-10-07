@@ -149,7 +149,7 @@
 {
     if (!string.length) return YES;
 
-    if ((int)[string characterAtIndex:0] == 10) {
+    if ([string characterAtIndex:0] == 10) {
         [self resignFirstResponder];
         return NO;
     }
