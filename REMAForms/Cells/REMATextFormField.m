@@ -73,12 +73,16 @@
     }
 }
 
-- (void)setFailed:(BOOL)failed
+- (void)setValid:(BOOL)valid
 {
-    _failed = failed;
+    _valid = valid;
 
-    if (failed) {
-        self.textColor = [UIColor remaFieldForeground];
+    if (valid) {
+        self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
+        self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+    } else {
+        self.backgroundColor = [UIColor remaFieldBackgroundInvalid];
+        self.layer.borderColor = [UIColor colorFromHex:@"EC3031"].CGColor;
     }
 }
 
@@ -163,10 +167,6 @@
 
 - (void)updateLabelUsingContentsOfTextField:(UITextField *)textField
 {
-    if (self.failed) {
-        self.failed = NO;
-    }
-
     if (!self.isValid) {
         self.valid = YES;
     }

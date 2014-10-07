@@ -37,7 +37,6 @@ typedef NS_ENUM(NSInteger, REMATextFieldType) {
 @property (nonatomic) REMATextFieldType type;
 
 @property (nonatomic, getter = isValid)    BOOL valid;
-@property (nonatomic, getter = isFailed)   BOOL failed;
 
 @end
 
