@@ -38,12 +38,16 @@ typedef NS_ENUM(NSInteger, REMATextFieldType) {
 
 @property (nonatomic, getter = isValid)    BOOL valid;
 
+@property (nonatomic, weak) id <REMATextFormFieldDelegate> formFieldDelegate;
+
 @end
 
 @protocol REMATextFormFieldDelegate <NSObject>
 
 @optional
 
-- (void)textField:(REMATextFormField *)textField didUpdateWithContent:(id)content;
+- (void)textFormFieldDidBeginEditing:(REMATextFormField *)textField;
+
+- (void)textFormField:(REMATextFormField *)textField didUpdateWithContent:(id)content;
 
 @end

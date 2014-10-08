@@ -8,12 +8,19 @@
 
 #import "REMADropdownFormFieldCell.h"
 
-static const CGFloat REMADropdownFormIconWidth = 38.0f;
+#import "REMAFieldValue.h"
+#import "REMAFieldValuesTableViewController.h"
 
-@interface REMADropdownFormFieldCell ()
+static const CGFloat REMADropdownFormIconWidth = 38.0f;
+static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0f };
+
+@interface REMADropdownFormFieldCell () <REMATextFormFieldDelegate, REMAFieldValuesTableViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) REMATextFormField *textField;
 @property (nonatomic, strong) UIImageView *iconImageView;
+
+@property (nonatomic, strong) UIPopoverController *valuesPopover;
+@property (nonatomic, strong) REMAFieldValuesTableViewController *fieldValuesController;
 
 @end
 
@@ -39,6 +46,7 @@ static const CGFloat REMADropdownFormIconWidth = 38.0f;
     if (_textField) return _textField;
 
     _textField = [[REMATextFormField alloc] initWithFrame:[self frameForTextField]];
+    _textField.formFieldDelegate = self;
 
     return _textField;
 }
@@ -55,6 +63,28 @@ static const CGFloat REMADropdownFormIconWidth = 38.0f;
     return _iconImageView;
 }
 
+- (UIPopoverController *)valuesPopover
+{
+    if (_valuesPopover) return _valuesPopover;
+
+    _valuesPopover = [[UIPopoverController alloc] initWithContentViewController:self.fieldValuesController];
+    _valuesPopover.delegate = self;
+    _valuesPopover.popoverContentSize = REMADropdownPopoverSize;
+    _valuesPopover.backgroundColor = [UIColor whiteColor];
+
+    return _valuesPopover;
+}
+
+- (REMAFieldValuesTableViewController *)fieldValuesController
+{
+    if (_fieldValuesController) return _fieldValuesController;
+
+    _fieldValuesController = [[REMAFieldValuesTableViewController alloc] init];
+    _fieldValuesController.delegate = self;
+
+    return _fieldValuesController;
+}
+
 #pragma mark - Private headers
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
@@ -69,6 +99,8 @@ static const CGFloat REMADropdownFormIconWidth = 38.0f;
     self.textField.formatter = [self.field formatter];
     self.textField.rawText = field.fieldValue;
     self.textField.typeString = field.typeString;
+
+    self.fieldValuesController.field = field;
 }
 
 - (void)validate
@@ -106,6 +138,29 @@ static const CGFloat REMADropdownFormIconWidth = 38.0f;
     frame.size.width = REMADropdownFormIconWidth;
 
     return frame;
+}
+
+#pragma mark - REMATextFormFieldDelegate
+
+- (void)textFormFieldDidBeginEditing:(REMATextFormField *)textField
+{
+    self.fieldValuesController.field = self.field;
+
+    [self.valuesPopover presentPopoverFromRect:self.bounds
+                                        inView:self
+                      permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
+                                      animated:YES];
+}
+
+#pragma mark - REMAFieldValuesTableViewControllerDelegate
+
+- (void)fieldValuesTableViewController:(REMAFieldValuesTableViewController *)fieldValuesTableViewController
+                      didSelectedValue:(REMAFieldValue *)selectedValue
+{
+    self.field.fieldValue = selectedValue.title;
+    [self updateWithField:self.field];
+    
+    [self.valuesPopover dismissPopoverAnimated:YES];
 }
 
 @end

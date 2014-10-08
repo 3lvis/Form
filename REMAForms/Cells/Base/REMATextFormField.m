@@ -109,6 +109,8 @@
         type = REMATextFieldTypeEmail;
     } else if ([typeString isEqualToString:@"date"]) {
         type = REMATextFieldTypeDate;
+    } else if ([typeString isEqualToString:@"select"]) {
+        type = REMATextFieldTypeDropdown;
     } else {
         type = REMATextFieldTypeDefault;
     }
@@ -137,17 +139,17 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+- (BOOL)textFieldShouldBeginEditing:(REMATextFormField *)textField
 {
-    BOOL selectable = (self.type == REMATextFieldTypeDropdown || self.type == REMATextFieldTypeDate);
+    BOOL selectable = (textField.type == REMATextFieldTypeDropdown || textField.type == REMATextFieldTypeDate);
 
     if (selectable) {
-        NSLog(@"selectable");
-    } else {
-        NSLog(@"NOT SELECTABLE");
+        if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
+            [self.formFieldDelegate textFormFieldDidBeginEditing:self];
+        }
     }
 
-    return selectable;
+    return !selectable;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
