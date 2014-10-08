@@ -8,7 +8,7 @@
 
 #import "REMATextFormFieldCell.h"
 
-@interface REMATextFormFieldCell ()
+@interface REMATextFormFieldCell () <REMATextFormFieldDelegate>
 
 @property (nonatomic, strong) REMATextFormField *textField;
 
@@ -35,6 +35,7 @@
     if (_textField) return _textField;
 
     _textField = [[REMATextFormField alloc] initWithFrame:[self frameForTextField]];
+    _textField.formFieldDelegate = self;
 
     return _textField;
 }
@@ -80,6 +81,13 @@
     CGRect frame = CGRectMake(marginX, marginTop, width, height);
 
     return frame;
+}
+
+#pragma mark - REMATextFormFieldDelegate
+
+- (void)textFormField:(REMATextFormField *)textField didUpdateWithText:(NSString *)text
+{
+    self.field.fieldValue = text;
 }
 
 @end

@@ -174,6 +174,11 @@
 
     if (!string.length) {
         self.rawText = resultString;
+
+        if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+            [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+        }
+
         return NO;
     }
 
@@ -190,6 +195,11 @@
 
     if (valid) {
         self.rawText = resultString;
+
+        if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+            [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+        }
+
         return NO;
     }
 

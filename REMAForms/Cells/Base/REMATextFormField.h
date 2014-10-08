@@ -48,6 +48,6 @@ typedef NS_ENUM(NSInteger, REMATextFieldType) {
 
 - (void)textFormFieldDidBeginEditing:(REMATextFormField *)textField;
 
-- (void)textFormField:(REMATextFormField *)textField didUpdateWithContent:(id)content;
+- (void)textFormField:(REMATextFormField *)textField didUpdateWithText:(NSString *)text;
 
 @end
