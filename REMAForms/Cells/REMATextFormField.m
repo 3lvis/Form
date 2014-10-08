@@ -29,12 +29,14 @@
     if (!self) return nil;
 
     self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-    self.layer.borderWidth = 1;
+    self.layer.borderWidth = 1.0f;
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
-    self.layer.cornerRadius = 5;
+    self.layer.cornerRadius = 5.0f;
     self.delegate = self;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     self.font = [UIFont REMATextFieldFont];
+    self.textColor = [UIColor colorFromHex:@"455C73"];
 
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 20.0f)];
     self.leftView = paddingView;

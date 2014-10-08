@@ -12,7 +12,7 @@
 
 static const NSInteger REMAFieldCellMargin = 10.0f;
 static const NSInteger REMAFieldCellItemSmallHeight = 1.0f;
-static const NSInteger REMAFieldCellItemHeight = 100.0f;
+static const NSInteger REMAFieldCellItemHeight = 85.0f;
 
 @interface REMABaseFormFieldCell : UICollectionViewCell
 
