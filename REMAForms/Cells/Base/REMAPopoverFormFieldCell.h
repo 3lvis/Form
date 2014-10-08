@@ -16,4 +16,6 @@
 - (instancetype)initWithFrame:(CGRect)frame contentViewController:(UIViewController *)controller
                andContentSize:(CGSize)contentSize;
 
+- (void)updateContentViewController:(UIViewController *)contentViewController withField:(REMAFormField *)field;
+
 @end

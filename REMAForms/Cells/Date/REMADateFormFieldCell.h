@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMABaseFormFieldCell.h"
+#import "REMAPopoverFormFieldCell.h"
 
 static NSString * const REMADateFormFieldCellIdentifier = @"REMADateFormFieldCellIdentifier";
 
-@interface REMADateFormFieldCell : REMABaseFormFieldCell
+@interface REMADateFormFieldCell : REMAPopoverFormFieldCell
 
 @end

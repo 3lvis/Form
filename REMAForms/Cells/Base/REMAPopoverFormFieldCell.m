@@ -61,7 +61,7 @@
 
 - (void)textFormFieldDidBeginEditing:(REMATextFormField *)textField
 {
-    //self.contentViewController.field = self.field;
+    [self updateContentViewController:self.contentViewController withField:self.field];
 
     if (!self.popoverController.isPopoverVisible) {
         [self.popoverController presentPopoverFromRect:self.bounds
@@ -72,6 +72,24 @@
 }
 
 #pragma mark - Private methods
+
+- (void)updateContentViewController:(UIViewController *)contentViewController withField:(REMAFormField *)field
+{
+    abort();
+}
+
+- (void)updateFieldWithDisabled:(BOOL)disabled
+{
+    self.textField.enabled = !disabled;
+}
+
+- (void)updateWithField:(REMAFormField *)field
+{
+    self.textField.hidden = (field.sectionSeparator);
+    self.textField.validator = [self.field validator];
+    self.textField.formatter = [self.field formatter];
+    self.textField.typeString = field.typeString;
+}
 
 - (void)layoutSubviews
 {

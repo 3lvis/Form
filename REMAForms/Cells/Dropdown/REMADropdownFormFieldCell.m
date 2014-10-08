@@ -63,25 +63,21 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
 
 #pragma mark - Private headers
 
-- (void)updateFieldWithDisabled:(BOOL)disabled
-{
-    self.textField.enabled = !disabled;
-}
-
 - (void)updateWithField:(REMAFormField *)field
 {
-    self.textField.hidden = (field.sectionSeparator);
-    self.textField.validator = [self.field validator];
-    self.textField.formatter = [self.field formatter];
-    self.textField.rawText = field.fieldValue;
-    self.textField.typeString = field.typeString;
+    [super updateWithField:field];
 
-    self.fieldValuesController.field = field;
+    self.textField.rawText = field.fieldValue;
 }
 
 - (void)validate
 {
     NSLog(@"validation in progress");
+}
+
+- (void)updateContentViewController:(UIViewController *)contentViewController withField:(REMAFormField *)field
+{
+    self.fieldValuesController.field = self.field;
 }
 
 #pragma mark - Private methods
