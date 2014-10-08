@@ -1,30 +1,27 @@
 //
-//  REMADropdownFormFieldCell.m
+//  REMADateFormFieldCell.m
 //  REMAForms
 //
 //  Created by Elvis Nunez on 08/10/14.
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMADropdownFormFieldCell.h"
+#import "REMADateFormFieldCell.h"
 
-#import "REMAFieldValue.h"
-#import "REMAFieldValuesTableViewController.h"
+#import "HYPTimeViewController.h"
 
-static const CGFloat REMADropdownFormIconWidth = 38.0f;
-static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0f };
+static NSString * const REMADateFieldFormat = @"yyyy-MM-dd";
 
-@interface REMADropdownFormFieldCell () <REMATextFormFieldDelegate, REMAFieldValuesTableViewControllerDelegate, UIPopoverControllerDelegate>
+@interface REMADateFormFieldCell () <REMATextFormFieldDelegate, HYPTimeViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) REMATextFormField *textField;
-@property (nonatomic, strong) UIImageView *iconImageView;
 
 @property (nonatomic, strong) UIPopoverController *popoverController;
-@property (nonatomic, strong) REMAFieldValuesTableViewController *fieldValuesController;
+@property (nonatomic, strong) HYPTimeViewController *timeViewController;
 
 @end
 
-@implementation REMADropdownFormFieldCell
+@implementation REMADateFormFieldCell
 
 #pragma mark - Initializers
 
@@ -34,7 +31,6 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
     if (!self) return nil;
 
     [self.contentView addSubview:self.textField];
-    [self.contentView addSubview:self.iconImageView];
 
     return self;
 }
@@ -51,38 +47,27 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
     return _textField;
 }
 
-- (UIImageView *)iconImageView
-{
-    if (_iconImageView) return _iconImageView;
-
-    _iconImageView = [[UIImageView alloc] initWithFrame:[self frameForIconImageView]];
-    _iconImageView.image = [UIImage imageNamed:@"ic_mini_arrow_down"];
-    _iconImageView.contentMode = UIViewContentModeRight;
-    _iconImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
-    return _iconImageView;
-}
-
 - (UIPopoverController *)popoverController
 {
     if (_popoverController) return _popoverController;
 
-    _popoverController = [[UIPopoverController alloc] initWithContentViewController:self.fieldValuesController];
+    _popoverController = [[UIPopoverController alloc] initWithContentViewController:self.timeViewController];
     _popoverController.delegate = self;
-    _popoverController.popoverContentSize = REMADropdownPopoverSize;
+    _popoverController.popoverContentSize = REMADatePopoverSize;
     _popoverController.backgroundColor = [UIColor whiteColor];
 
     return _popoverController;
 }
 
-- (REMAFieldValuesTableViewController *)fieldValuesController
+- (HYPTimeViewController *)timeViewController
 {
-    if (_fieldValuesController) return _fieldValuesController;
+    if (_timeViewController) return _timeViewController;
 
-    _fieldValuesController = [[REMAFieldValuesTableViewController alloc] init];
-    _fieldValuesController.delegate = self;
+    _timeViewController = [[HYPTimeViewController alloc] initWithDate:[NSDate date]];
+    _timeViewController.delegate = self;
+    _timeViewController.birthdayPicker = YES;
 
-    return _fieldValuesController;
+    return _timeViewController;
 }
 
 #pragma mark - Private headers
@@ -94,13 +79,16 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
 
 - (void)updateWithField:(REMAFormField *)field
 {
+    if (field.fieldValue) {
+        NSDateFormatter *formatter = [NSDateFormatter new];
+        formatter.dateFormat = REMADateFieldFormat;
+        self.textField.rawText = [formatter stringFromDate:field.fieldValue];
+    }
+
     self.textField.hidden = (field.sectionSeparator);
     self.textField.validator = [self.field validator];
     self.textField.formatter = [self.field formatter];
-    self.textField.rawText = field.fieldValue;
     self.textField.typeString = field.typeString;
-
-    self.fieldValuesController.field = field;
 }
 
 - (void)validate
@@ -115,7 +103,6 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
     [super layoutSubviews];
 
     self.textField.frame = [self frameForTextField];
-    self.iconImageView.frame = [self frameForIconImageView];
 }
 
 - (CGRect)frameForTextField
@@ -131,20 +118,13 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
     return frame;
 }
 
-- (CGRect)frameForIconImageView
-{
-    CGRect frame = [self frameForTextField];
-    frame.origin.x = frame.size.width - REMADropdownFormIconWidth;
-    frame.size.width = REMADropdownFormIconWidth;
-
-    return frame;
-}
-
 #pragma mark - REMATextFormFieldDelegate
 
 - (void)textFormFieldDidBeginEditing:(REMATextFormField *)textField
 {
-    self.fieldValuesController.field = self.field;
+    if (self.field.fieldValue) {
+        self.timeViewController.currentDate = self.field.fieldValue;
+    }
 
     if (!self.popoverController.isPopoverVisible) {
         [self.popoverController presentPopoverFromRect:self.bounds
@@ -154,14 +134,14 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
     }
 }
 
-#pragma mark - REMAFieldValuesTableViewControllerDelegate
+#pragma mark - HYPTimeViewControllerDelegate
 
-- (void)fieldValuesTableViewController:(REMAFieldValuesTableViewController *)fieldValuesTableViewController
-                      didSelectedValue:(REMAFieldValue *)selectedValue
+- (void)timeController:(HYPTimeViewController *)timeController didChangedDate:(NSDate *)date
 {
-    self.field.fieldValue = selectedValue.title;
+    self.field.fieldValue = date;
+
     [self updateWithField:self.field];
-    
+
     [self.popoverController dismissPopoverAnimated:YES];
 }
 

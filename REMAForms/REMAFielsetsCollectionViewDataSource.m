@@ -13,8 +13,7 @@
 
 #import "REMATextFormFieldCell.h"
 #import "REMADropdownFormFieldCell.h"
-
-//#import "REMADateFieldCollectionCell.h"
+#import "REMADateFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
@@ -35,9 +34,9 @@
 
     [collectionView registerClass:[REMADropdownFormFieldCell class]
        forCellWithReuseIdentifier:REMADropdownFormFieldCellIdentifier];
-//
-//    [collectionView registerClass:[REMADateFieldCollectionCell class]
-//       forCellWithReuseIdentifier:REMADateFieldCellIdentifier];
+
+    [collectionView registerClass:[REMADateFormFieldCell class]
+       forCellWithReuseIdentifier:REMADateFormFieldCellIdentifier];
 
     [collectionView registerClass:[REMAFieldsetHeaderView class]
        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -93,14 +92,13 @@
     NSString *identifier;
 
     switch (field.type) {
-//        case REMAFormFieldTypeDate:
-//            identifier = REMADateFieldCellIdentifier;
-//            break;
+        case REMAFormFieldTypeDate:
+            identifier = REMADateFormFieldCellIdentifier;
+            break;
         case REMAFormFieldTypeSelect:
             identifier = REMADropdownFormFieldCellIdentifier;
             break;
 
-        case REMAFormFieldTypeDate:
         case REMAFormFieldTypeDefault:
         case REMAFormFieldTypeNone:
         case REMAFormFieldTypeFloat:
