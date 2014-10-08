@@ -10,13 +10,21 @@
 
 #import "REMAFormFieldHeadingLabel.h"
 
+#import "REMATextFormField.h"
+#import "REMAFormFieldHeadingLabel.h"
+
 #import "REMAFormField.h"
+
+#import "UIColor+ANDYHex.h"
+#import "UIFont+Styles.h"
 
 static const NSInteger REMAFieldCellMargin = 10.0f;
 static const NSInteger REMAFieldCellItemSmallHeight = 1.0f;
 static const NSInteger REMAFieldCellItemHeight = 85.0f;
 
 static const CGFloat REMATextFormFieldCellMarginX = 10.0f;
+static const CGFloat REMATextFormFieldCellTextFieldMarginTop = 30.0f;
+static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
 
 @interface REMABaseFormFieldCell : UICollectionViewCell
 

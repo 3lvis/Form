@@ -38,6 +38,9 @@ static const CGFloat REMATextFormFieldCellLabelHeight = 20.0f;
 {
     _field = field;
 
+    self.headingLabel.hidden = (field.sectionSeparator);
+    self.headingLabel.text = field.title;
+
     [self updateWithField:field];
 }
 

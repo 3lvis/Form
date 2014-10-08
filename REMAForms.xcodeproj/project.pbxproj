@@ -52,6 +52,8 @@
 		445DAF8D19E529B0006F8052 /* REMATextFieldTypeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 445DAF8819E529B0006F8052 /* REMATextFieldTypeManager.m */; };
 		445DAF8E19E529B0006F8052 /* REMATextFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 445DAF8A19E529B0006F8052 /* REMATextFormField.m */; };
 		445DAF9119E52A03006F8052 /* REMADropdownFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 445DAF9019E52A03006F8052 /* REMADropdownFormFieldCell.m */; };
+		445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */; };
+		445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */; };
 		446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */; };
 		44F244A919E2914D00146A01 /* REMAFielsetsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */; };
 /* End PBXBuildFile section */
@@ -153,6 +155,8 @@
 		445DAF8A19E529B0006F8052 /* REMATextFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMATextFormField.m; sourceTree = "<group>"; };
 		445DAF8F19E52A03006F8052 /* REMADropdownFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMADropdownFormFieldCell.h; sourceTree = "<group>"; };
 		445DAF9019E52A03006F8052 /* REMADropdownFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMADropdownFormFieldCell.m; sourceTree = "<group>"; };
+		445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_mini_arrow_down.png; sourceTree = "<group>"; };
+		445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_arrow_down@2x.png"; sourceTree = "<group>"; };
 		446364CB19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+HYPLiveBounds.h"; sourceTree = "<group>"; };
 		446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+HYPLiveBounds.m"; sourceTree = "<group>"; };
 		44F244A719E2914D00146A01 /* REMAFielsetsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetsLayout.h; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 		441B77A219DEC4F3006AF67C /* REMAForms */ = {
 			isa = PBXGroup;
 			children = (
+				445DAF9219E52D76006F8052 /* Images */,
 				4426BF5E19E3D4140048A596 /* Cells */,
 				4441A9E219E2BBC50068498D /* Fonts */,
 				146D7ACB19E09953004A31CE /* Categories */,
@@ -370,6 +375,16 @@
 			path = ../../../REMAforms/REMAForms/Cells/Base;
 			sourceTree = "<group>";
 		};
+		445DAF9219E52D76006F8052 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */,
+				445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */,
+			);
+			name = Images;
+			path = ../../REMAforms/REMAForms/Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -452,10 +467,12 @@
 			files = (
 				4441A9E919E2BBC50068498D /* DIN-BOLD.OTF in Resources */,
 				4441A9EA19E2BBC50068498D /* DIN-LIGH.OTF in Resources */,
+				445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */,
 				4441A9EC19E2BBC50068498D /* DIN-REGU.OTF in Resources */,
 				4441A9EB19E2BBC50068498D /* DIN-MEDI.OTF in Resources */,
 				441B77B119DEC4F4006AF67C /* Images.xcassets in Resources */,
 				1478934C19DFCC9000BC2497 /* forms.json in Resources */,
+				445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */,
 				4441A9E819E2BBC50068498D /* DIN-BLAC.OTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

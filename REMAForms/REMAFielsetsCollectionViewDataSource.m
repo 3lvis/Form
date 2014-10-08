@@ -100,6 +100,7 @@
             identifier = REMADropdownFormFieldCellIdentifier;
             break;
 
+        case REMAFormFieldTypeDate:
         case REMAFormFieldTypeDefault:
         case REMAFormFieldTypeNone:
         case REMAFormFieldTypeFloat:
@@ -108,7 +109,7 @@
             identifier = REMATextFormFieldCellIdentifier;
             break;
     }
-
+    
     id cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
                                                         forIndexPath:indexPath];
 

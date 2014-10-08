@@ -137,6 +137,19 @@
 
 #pragma mark - UITextFieldDelegate
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    BOOL selectable = (self.type == REMATextFieldTypeDropdown || self.type == REMATextFieldTypeDate);
+
+    if (selectable) {
+        NSLog(@"selectable");
+    } else {
+        NSLog(@"NOT SELECTABLE");
+    }
+
+    return selectable;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     self.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];

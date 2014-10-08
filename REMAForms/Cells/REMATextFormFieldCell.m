@@ -8,15 +8,6 @@
 
 #import "REMATextFormFieldCell.h"
 
-#import "REMATextFormField.h"
-#import "REMAFormFieldHeadingLabel.h"
-
-#import "UIColor+ANDYHex.h"
-#import "UIFont+Styles.h"
-
-static const CGFloat REMATextFormFieldCellTextFieldMarginTop = 30.0f;
-static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
-
 @interface REMATextFormFieldCell ()
 
 @property (nonatomic, strong) REMATextFormField *textField;
@@ -57,9 +48,6 @@ static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
 
 - (void)updateWithField:(REMAFormField *)field
 {
-    self.headingLabel.hidden = (field.sectionSeparator);
-    self.headingLabel.text = field.title;
-
     self.textField.hidden = (field.sectionSeparator);
     self.textField.validator = [self.field validator];
     self.textField.formatter = [self.field formatter];
