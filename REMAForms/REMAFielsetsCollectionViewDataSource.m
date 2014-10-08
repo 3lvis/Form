@@ -12,7 +12,8 @@
 #import "REMAFielsetBackgroundView.h"
 
 #import "REMATextFormFieldCell.h"
-//#import "REMADropdownFieldCollectionCell.h"
+#import "REMADropdownFormFieldCell.h"
+
 //#import "REMADateFieldCollectionCell.h"
 
 #import "UIColor+ANDYHex.h"
@@ -32,8 +33,8 @@
     [collectionView registerClass:[REMATextFormFieldCell class]
        forCellWithReuseIdentifier:REMATextFormFieldCellIdentifier];
 
-//    [collectionView registerClass:[REMADropdownFieldCollectionCell class]
-//       forCellWithReuseIdentifier:REMADropdownFieldCellIdentifier];
+    [collectionView registerClass:[REMADropdownFormFieldCell class]
+       forCellWithReuseIdentifier:REMADropdownFormFieldCellIdentifier];
 //
 //    [collectionView registerClass:[REMADateFieldCollectionCell class]
 //       forCellWithReuseIdentifier:REMADateFieldCellIdentifier];
@@ -95,12 +96,10 @@
 //        case REMAFormFieldTypeDate:
 //            identifier = REMADateFieldCellIdentifier;
 //            break;
-//        case REMAFormFieldTypeSelect:
-//            identifier = REMADropdownFieldCellIdentifier;
-//            break;
-
-        case REMAFormFieldTypeDate:
         case REMAFormFieldTypeSelect:
+            identifier = REMADropdownFormFieldCellIdentifier;
+            break;
+
         case REMAFormFieldTypeDefault:
         case REMAFormFieldTypeNone:
         case REMAFormFieldTypeFloat:

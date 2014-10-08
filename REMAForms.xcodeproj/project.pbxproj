@@ -40,7 +40,6 @@
 		441B77CB19DEC647006AF67C /* REMAFielsetsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CA19DEC647006AF67C /* REMAFielsetsCollectionViewController.m */; };
 		441B77CE19DED095006AF67C /* REMAFieldsetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */; };
 		4426BF6119E3D4460048A596 /* REMATextFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4426BF6019E3D4460048A596 /* REMATextFormFieldCell.m */; };
-		4426BF6419E3D4AB0048A596 /* REMABaseFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4426BF6319E3D4AB0048A596 /* REMABaseFormFieldCell.m */; };
 		4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */; };
 		4441A9E819E2BBC50068498D /* DIN-BLAC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */; };
 		4441A9E919E2BBC50068498D /* DIN-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E419E2BBC50068498D /* DIN-BOLD.OTF */; };
@@ -48,10 +47,12 @@
 		4441A9EB19E2BBC50068498D /* DIN-MEDI.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E619E2BBC50068498D /* DIN-MEDI.OTF */; };
 		4441A9EC19E2BBC50068498D /* DIN-REGU.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E719E2BBC50068498D /* DIN-REGU.OTF */; };
 		4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9EE19E2BC140068498D /* UIFont+Styles.m */; };
+		445DAF8B19E529B0006F8052 /* REMABaseFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 445DAF8419E529B0006F8052 /* REMABaseFormFieldCell.m */; };
+		445DAF8C19E529B0006F8052 /* REMAFormFieldHeadingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 445DAF8619E529B0006F8052 /* REMAFormFieldHeadingLabel.m */; };
+		445DAF8D19E529B0006F8052 /* REMATextFieldTypeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 445DAF8819E529B0006F8052 /* REMATextFieldTypeManager.m */; };
+		445DAF8E19E529B0006F8052 /* REMATextFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 445DAF8A19E529B0006F8052 /* REMATextFormField.m */; };
+		445DAF9119E52A03006F8052 /* REMADropdownFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 445DAF9019E52A03006F8052 /* REMADropdownFormFieldCell.m */; };
 		446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */; };
-		447B8EDE19E3E64500251B49 /* REMATextFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 447B8EDD19E3E64500251B49 /* REMATextFormField.m */; };
-		447B8EE119E3E8EA00251B49 /* REMAFormFieldHeadingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 447B8EE019E3E8EA00251B49 /* REMAFormFieldHeadingLabel.m */; };
-		44A0AA0819E3FB7700391C50 /* REMATextFieldTypeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A0AA0719E3FB7700391C50 /* REMATextFieldTypeManager.m */; };
 		44F244A919E2914D00146A01 /* REMAFielsetsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */; };
 /* End PBXBuildFile section */
 
@@ -133,8 +134,6 @@
 		441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldsetHeaderView.m; sourceTree = "<group>"; };
 		4426BF5F19E3D4460048A596 /* REMATextFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMATextFormFieldCell.h; sourceTree = "<group>"; };
 		4426BF6019E3D4460048A596 /* REMATextFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMATextFormFieldCell.m; sourceTree = "<group>"; };
-		4426BF6219E3D4AB0048A596 /* REMABaseFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMABaseFormFieldCell.h; sourceTree = "<group>"; };
-		4426BF6319E3D4AB0048A596 /* REMABaseFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMABaseFormFieldCell.m; sourceTree = "<group>"; };
 		4441A9DF19E2B9490068498D /* UIColor+ANDYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ANDYHex.h"; sourceTree = "<group>"; };
 		4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ANDYHex.m"; sourceTree = "<group>"; };
 		4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-BLAC.OTF"; sourceTree = "<group>"; };
@@ -144,14 +143,18 @@
 		4441A9E719E2BBC50068498D /* DIN-REGU.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-REGU.OTF"; sourceTree = "<group>"; };
 		4441A9ED19E2BC140068498D /* UIFont+Styles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Styles.h"; sourceTree = "<group>"; };
 		4441A9EE19E2BC140068498D /* UIFont+Styles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Styles.m"; sourceTree = "<group>"; };
+		445DAF8319E529B0006F8052 /* REMABaseFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMABaseFormFieldCell.h; sourceTree = "<group>"; };
+		445DAF8419E529B0006F8052 /* REMABaseFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMABaseFormFieldCell.m; sourceTree = "<group>"; };
+		445DAF8519E529B0006F8052 /* REMAFormFieldHeadingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFormFieldHeadingLabel.h; sourceTree = "<group>"; };
+		445DAF8619E529B0006F8052 /* REMAFormFieldHeadingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFormFieldHeadingLabel.m; sourceTree = "<group>"; };
+		445DAF8719E529B0006F8052 /* REMATextFieldTypeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMATextFieldTypeManager.h; sourceTree = "<group>"; };
+		445DAF8819E529B0006F8052 /* REMATextFieldTypeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMATextFieldTypeManager.m; sourceTree = "<group>"; };
+		445DAF8919E529B0006F8052 /* REMATextFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMATextFormField.h; sourceTree = "<group>"; };
+		445DAF8A19E529B0006F8052 /* REMATextFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMATextFormField.m; sourceTree = "<group>"; };
+		445DAF8F19E52A03006F8052 /* REMADropdownFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMADropdownFormFieldCell.h; sourceTree = "<group>"; };
+		445DAF9019E52A03006F8052 /* REMADropdownFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMADropdownFormFieldCell.m; sourceTree = "<group>"; };
 		446364CB19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+HYPLiveBounds.h"; sourceTree = "<group>"; };
 		446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+HYPLiveBounds.m"; sourceTree = "<group>"; };
-		447B8EDC19E3E64500251B49 /* REMATextFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMATextFormField.h; sourceTree = "<group>"; };
-		447B8EDD19E3E64500251B49 /* REMATextFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMATextFormField.m; sourceTree = "<group>"; };
-		447B8EDF19E3E8EA00251B49 /* REMAFormFieldHeadingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFormFieldHeadingLabel.h; sourceTree = "<group>"; };
-		447B8EE019E3E8EA00251B49 /* REMAFormFieldHeadingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFormFieldHeadingLabel.m; sourceTree = "<group>"; };
-		44A0AA0619E3FB7700391C50 /* REMATextFieldTypeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMATextFieldTypeManager.h; sourceTree = "<group>"; };
-		44A0AA0719E3FB7700391C50 /* REMATextFieldTypeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMATextFieldTypeManager.m; sourceTree = "<group>"; };
 		44F244A719E2914D00146A01 /* REMAFielsetsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetsLayout.h; sourceTree = "<group>"; };
 		44F244A819E2914D00146A01 /* REMAFielsetsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFielsetsLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -330,16 +333,11 @@
 		4426BF5E19E3D4140048A596 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4426BF6219E3D4AB0048A596 /* REMABaseFormFieldCell.h */,
-				4426BF6319E3D4AB0048A596 /* REMABaseFormFieldCell.m */,
+				445DAF8219E5298C006F8052 /* Base */,
 				4426BF5F19E3D4460048A596 /* REMATextFormFieldCell.h */,
 				4426BF6019E3D4460048A596 /* REMATextFormFieldCell.m */,
-				447B8EDC19E3E64500251B49 /* REMATextFormField.h */,
-				447B8EDD19E3E64500251B49 /* REMATextFormField.m */,
-				447B8EDF19E3E8EA00251B49 /* REMAFormFieldHeadingLabel.h */,
-				447B8EE019E3E8EA00251B49 /* REMAFormFieldHeadingLabel.m */,
-				44A0AA0619E3FB7700391C50 /* REMATextFieldTypeManager.h */,
-				44A0AA0719E3FB7700391C50 /* REMATextFieldTypeManager.m */,
+				445DAF8F19E52A03006F8052 /* REMADropdownFormFieldCell.h */,
+				445DAF9019E52A03006F8052 /* REMADropdownFormFieldCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -354,6 +352,22 @@
 				4441A9E719E2BBC50068498D /* DIN-REGU.OTF */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		445DAF8219E5298C006F8052 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				445DAF8319E529B0006F8052 /* REMABaseFormFieldCell.h */,
+				445DAF8419E529B0006F8052 /* REMABaseFormFieldCell.m */,
+				445DAF8519E529B0006F8052 /* REMAFormFieldHeadingLabel.h */,
+				445DAF8619E529B0006F8052 /* REMAFormFieldHeadingLabel.m */,
+				445DAF8719E529B0006F8052 /* REMATextFieldTypeManager.h */,
+				445DAF8819E529B0006F8052 /* REMATextFieldTypeManager.m */,
+				445DAF8919E529B0006F8052 /* REMATextFormField.h */,
+				445DAF8A19E529B0006F8052 /* REMATextFormField.m */,
+			);
+			name = Base;
+			path = ../../../REMAforms/REMAForms/Cells/Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -465,16 +479,16 @@
 				441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */,
 				146DEA3819E0929B00D9E3FF /* REMAFieldRule.m in Sources */,
 				44F244A919E2914D00146A01 /* REMAFielsetsLayout.m in Sources */,
+				445DAF9119E52A03006F8052 /* REMADropdownFormFieldCell.m in Sources */,
 				14AD563819E301D60099DB09 /* REMAFielsetsCollectionViewDataSource.m in Sources */,
+				445DAF8E19E529B0006F8052 /* REMATextFormField.m in Sources */,
+				445DAF8D19E529B0006F8052 /* REMATextFieldTypeManager.m in Sources */,
 				146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */,
 				142E4D3619E3410900C22B7E /* NSDate+REMAISO8601.m in Sources */,
-				44A0AA0819E3FB7700391C50 /* REMATextFieldTypeManager.m in Sources */,
-				447B8EDE19E3E64500251B49 /* REMATextFormField.m in Sources */,
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
 				146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */,
 				446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */,
 				146DEA3C19E0929B00D9E3FF /* REMAFormSection.m in Sources */,
-				447B8EE119E3E8EA00251B49 /* REMAFormFieldHeadingLabel.m in Sources */,
 				4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */,
 				146D7ABD19E09853004A31CE /* REMABankAccountNumberInputValidator.m in Sources */,
 				146DEA3A19E0929B00D9E3FF /* REMAFieldValue.m in Sources */,
@@ -486,6 +500,7 @@
 				146D7AA819E0983C004A31CE /* REMABankAccountNumberFormatter.m in Sources */,
 				4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */,
 				146D7AC019E09853004A31CE /* REMANameInputValidator.m in Sources */,
+				445DAF8C19E529B0006F8052 /* REMAFormFieldHeadingLabel.m in Sources */,
 				146D7AC119E09853004A31CE /* REMANumberInputValidator.m in Sources */,
 				146DEA3919E0929B00D9E3FF /* REMAFieldset.m in Sources */,
 				146D7AAA19E0983C004A31CE /* REMAPhoneNumberFormatter.m in Sources */,
@@ -493,7 +508,7 @@
 				143549B519E266410021A84E /* REMAFielsetBackgroundView.m in Sources */,
 				146D7AAB19E0983C004A31CE /* REMASocialSecurityNumberFormatter.m in Sources */,
 				441B77CB19DEC647006AF67C /* REMAFielsetsCollectionViewController.m in Sources */,
-				4426BF6419E3D4AB0048A596 /* REMABaseFormFieldCell.m in Sources */,
+				445DAF8B19E529B0006F8052 /* REMABaseFormFieldCell.m in Sources */,
 				142E4D3F19E3419900C22B7E /* UIColor+Colors.m in Sources */,
 				142E4D4E19E3433E00C22B7E /* NSString+ANDYSizes.m in Sources */,
 				146D7A9B19E09801004A31CE /* REMAValidator.m in Sources */,
