@@ -146,10 +146,12 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
 {
     self.fieldValuesController.field = self.field;
 
-    [self.valuesPopover presentPopoverFromRect:self.bounds
-                                        inView:self
-                      permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
-                                      animated:YES];
+    if (!self.valuesPopover.isPopoverVisible) {
+        [self.valuesPopover presentPopoverFromRect:self.bounds
+                                            inView:self
+                          permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
+                                          animated:YES];
+    }
 }
 
 #pragma mark - REMAFieldValuesTableViewControllerDelegate
