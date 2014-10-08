@@ -15,7 +15,7 @@
 
     if (!valid) return valid;
 
-    if (string.length == 0) {
+    if (!string) {
         return (text.length > 0);
     }
 

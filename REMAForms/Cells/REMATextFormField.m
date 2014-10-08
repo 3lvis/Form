@@ -149,14 +149,18 @@
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
 
     if (self.validator) {
-        NSString *text = (textField.text.length == 0) ? nil : self.rawText;
-        self.valid = [self.validator validateText:text];
+        self.valid = [self.validator validateText:self.rawText];
     }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (!string.length) return YES;
+    NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+
+    if (!string.length) {
+        self.rawText = resultString;
+        return NO;
+    }
 
     if ([string characterAtIndex:0] == 10) {
         [self resignFirstResponder];
@@ -170,7 +174,7 @@
     }
 
     if (valid) {
-        self.rawText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        self.rawText = resultString;
         return NO;
     }
 

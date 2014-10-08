@@ -16,7 +16,7 @@
     if (!valid) return valid;
 
     BOOL hasComa = ([text rangeOfString:@","].location != NSNotFound);
-    BOOL stringIsNilOrComma = ((string.length == 0) || [string isEqualToString:@","]);
+    BOOL stringIsNilOrComma = (!string || [string isEqualToString:@","]);
 
     if (hasComa && stringIsNilOrComma) return NO;
 
