@@ -12,6 +12,8 @@
 
 static NSString * const REMADateFieldFormat = @"yyyy-MM-dd";
 
+static const CGSize REMADatePopoverSize = { 320.0f, 216.0f };
+
 @interface REMADateFormFieldCell () <REMATextFormFieldDelegate, HYPTimeViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) REMATextFormField *textField;

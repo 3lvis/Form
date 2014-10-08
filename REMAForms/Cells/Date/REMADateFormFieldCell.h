@@ -9,7 +9,6 @@
 #import "REMABaseFormFieldCell.h"
 
 static NSString * const REMADateFormFieldCellIdentifier = @"REMADateFormFieldCellIdentifier";
-static const CGSize REMADatePopoverSize = { 320.0f, 216.0f };
 
 @interface REMADateFormFieldCell : REMABaseFormFieldCell
 

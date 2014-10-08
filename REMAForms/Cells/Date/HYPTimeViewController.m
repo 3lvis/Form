@@ -25,6 +25,8 @@ static CGFloat const REMAActionButtonHeight = 45.0f;
 
 static CGFloat const REMAViewVerticalSpacing = 10.0f;
 
+static const CGSize REMATimePopoverSize = { 320.0f, 216.0f };
+
 @interface HYPTimeViewController ()
 
 @property (nonatomic, strong) NSDate *date;
@@ -79,7 +81,7 @@ static CGFloat const REMAViewVerticalSpacing = 10.0f;
     if (_titleLabel) return _titleLabel;
 
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, REMAActionTitleLabelY,
-                                                                  REMADatePopoverSize.width,
+                                                                  REMATimePopoverSize.width,
                                                                   REMAActionTitleLabelHeight)];
     _titleLabel.font = [UIFont REMAMediumSizeBolder];
     _titleLabel.textColor = [UIColor remaDarkBlue];
@@ -97,10 +99,10 @@ static CGFloat const REMAViewVerticalSpacing = 10.0f;
     UIFont *font = [UIFont REMATextFieldFont];
     CGFloat xOffset = REMAActionMessageTextViewX;
     CGFloat yOffset = REMAActionMessageTextViewY;
-    CGFloat height = [NSString heightForString:self.message width:REMADatePopoverSize.width - (xOffset * 2.0f) font:font] + yOffset;
+    CGFloat height = [NSString heightForString:self.message width:REMATimePopoverSize.width - (xOffset * 2.0f) font:font] + yOffset;
     CGFloat y = (self.title) ? CGRectGetMaxY(self.titleLabel.frame) : 0.0f;
 
-    _messageTextView = [[UITextView alloc] initWithFrame:CGRectMake(xOffset, y, REMADatePopoverSize.width - (xOffset * 2.0f), height)];
+    _messageTextView = [[UITextView alloc] initWithFrame:CGRectMake(xOffset, y, REMATimePopoverSize.width - (xOffset * 2.0f), height)];
     _messageTextView.font = font;
     _messageTextView.textColor = [UIColor remaDarkBlue];
     _messageTextView.text = self.message;
@@ -116,8 +118,8 @@ static CGFloat const REMAViewVerticalSpacing = 10.0f;
 
     CGFloat y = (self.message) ? CGRectGetMaxY(self.messageTextView.frame) : 0.0f;
 
-    _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0f, y, REMADatePopoverSize.width,
-                                                                 REMADatePopoverSize.height)];
+    _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0f, y, REMATimePopoverSize.width,
+                                                                 REMATimePopoverSize.height)];
 
     return _datePicker;
 }
@@ -139,7 +141,7 @@ static CGFloat const REMAViewVerticalSpacing = 10.0f;
     }
 
     _actionButton = [[UIButton alloc] initWithFrame:CGRectMake(offset, y,
-                                                               REMADatePopoverSize.width - (offset * 2.0f), height)];
+                                                               REMATimePopoverSize.width - (offset * 2.0f), height)];
     [_actionButton setTitle:self.actionTitle forState:UIControlStateNormal];
     _actionButton.backgroundColor = [UIColor remaRed];
     [_actionButton addTarget:self action:@selector(actionButtonPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -234,7 +236,7 @@ static CGFloat const REMAViewVerticalSpacing = 10.0f;
         CGFloat xOffset = REMAActionMessageTextViewX;
         CGFloat yOffset = REMAActionMessageTextViewY;
         height += [NSString heightForString:self.message
-                                      width:REMADatePopoverSize.width - (xOffset * 2.0f) font:font] + yOffset;
+                                      width:REMATimePopoverSize.width - (xOffset * 2.0f) font:font] + yOffset;
         height += REMAViewVerticalSpacing;
     }
 
