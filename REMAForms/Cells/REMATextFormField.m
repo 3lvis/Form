@@ -28,13 +28,15 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
     self.layer.borderWidth = 1.0f;
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
     self.layer.cornerRadius = 5.0f;
+
     self.delegate = self;
+
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
+    self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
     self.font = [UIFont REMATextFieldFont];
     self.textColor = [UIColor colorFromHex:@"455C73"];
 
@@ -43,8 +45,8 @@
     self.leftViewMode = UITextFieldViewModeAlways;
 
     [self addTarget:self
-                       action:@selector(updateLabelUsingContentsOfTextField:)
-             forControlEvents:UIControlEventEditingChanged];
+             action:@selector(updateLabelUsingContentsOfTextField:)
+   forControlEvents:UIControlEventEditingChanged];
 
     return self;
 }
