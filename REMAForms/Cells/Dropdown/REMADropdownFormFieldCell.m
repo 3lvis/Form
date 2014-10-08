@@ -14,12 +14,10 @@
 static const CGFloat REMADropdownFormIconWidth = 38.0f;
 static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0f };
 
-@interface REMADropdownFormFieldCell () <REMATextFormFieldDelegate, REMAFieldValuesTableViewControllerDelegate, UIPopoverControllerDelegate>
+@interface REMADropdownFormFieldCell () <REMATextFormFieldDelegate, REMAFieldValuesTableViewControllerDelegate>
 
-@property (nonatomic, strong) REMATextFormField *textField;
 @property (nonatomic, strong) UIImageView *iconImageView;
 
-@property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) REMAFieldValuesTableViewController *fieldValuesController;
 
 @end
@@ -30,26 +28,16 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame contentViewController:self.fieldValuesController
+                 andContentSize:REMADropdownPopoverSize];
     if (!self) return nil;
 
-    [self.contentView addSubview:self.textField];
     [self.contentView addSubview:self.iconImageView];
 
     return self;
 }
 
 #pragma mark - Getters
-
-- (REMATextFormField *)textField
-{
-    if (_textField) return _textField;
-
-    _textField = [[REMATextFormField alloc] initWithFrame:[self frameForTextField]];
-    _textField.formFieldDelegate = self;
-
-    return _textField;
-}
 
 - (UIImageView *)iconImageView
 {
@@ -61,18 +49,6 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
     _iconImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     return _iconImageView;
-}
-
-- (UIPopoverController *)popoverController
-{
-    if (_popoverController) return _popoverController;
-
-    _popoverController = [[UIPopoverController alloc] initWithContentViewController:self.fieldValuesController];
-    _popoverController.delegate = self;
-    _popoverController.popoverContentSize = REMADropdownPopoverSize;
-    _popoverController.backgroundColor = [UIColor whiteColor];
-
-    return _popoverController;
 }
 
 - (REMAFieldValuesTableViewController *)fieldValuesController
@@ -114,44 +90,16 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
 {
     [super layoutSubviews];
 
-    self.textField.frame = [self frameForTextField];
     self.iconImageView.frame = [self frameForIconImageView];
-}
-
-- (CGRect)frameForTextField
-{
-    CGFloat marginX = REMATextFormFieldCellMarginX;
-    CGFloat marginTop = REMATextFormFieldCellTextFieldMarginTop;
-    CGFloat marginBotton = REMATextFormFieldCellTextFieldMarginBottom;
-
-    CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
-    CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;
-    CGRect frame = CGRectMake(marginX, marginTop, width, height);
-
-    return frame;
 }
 
 - (CGRect)frameForIconImageView
 {
-    CGRect frame = [self frameForTextField];
+    CGRect frame = self.textField.frame;
     frame.origin.x = frame.size.width - REMADropdownFormIconWidth;
     frame.size.width = REMADropdownFormIconWidth;
 
     return frame;
-}
-
-#pragma mark - REMATextFormFieldDelegate
-
-- (void)textFormFieldDidBeginEditing:(REMATextFormField *)textField
-{
-    self.fieldValuesController.field = self.field;
-
-    if (!self.popoverController.isPopoverVisible) {
-        [self.popoverController presentPopoverFromRect:self.bounds
-                                            inView:self
-                          permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
-                                          animated:YES];
-    }
 }
 
 #pragma mark - REMAFieldValuesTableViewControllerDelegate

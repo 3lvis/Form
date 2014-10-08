@@ -44,6 +44,7 @@
 		441F3F8519E560480055F1FD /* REMAFieldValuesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441F3F8319E560480055F1FD /* REMAFieldValuesTableViewController.m */; };
 		441F3F8919E560840055F1FD /* REMADateFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441F3F8819E560840055F1FD /* REMADateFormFieldCell.m */; };
 		441F3F8C19E5618D0055F1FD /* HYPTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441F3F8B19E5618D0055F1FD /* HYPTimeViewController.m */; };
+		441F3F8F19E566610055F1FD /* REMAPopoverFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441F3F8E19E566610055F1FD /* REMAPopoverFormFieldCell.m */; };
 		4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */; };
 		4441A9E819E2BBC50068498D /* DIN-BLAC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */; };
 		4441A9E919E2BBC50068498D /* DIN-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E419E2BBC50068498D /* DIN-BOLD.OTF */; };
@@ -148,6 +149,8 @@
 		441F3F8819E560840055F1FD /* REMADateFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REMADateFormFieldCell.m; path = REMAForms/Cells/Date/REMADateFormFieldCell.m; sourceTree = SOURCE_ROOT; };
 		441F3F8A19E5618D0055F1FD /* HYPTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPTimeViewController.h; sourceTree = "<group>"; };
 		441F3F8B19E5618D0055F1FD /* HYPTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPTimeViewController.m; sourceTree = "<group>"; };
+		441F3F8D19E566610055F1FD /* REMAPopoverFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REMAPopoverFormFieldCell.h; path = REMAForms/Cells/Base/REMAPopoverFormFieldCell.h; sourceTree = SOURCE_ROOT; };
+		441F3F8E19E566610055F1FD /* REMAPopoverFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REMAPopoverFormFieldCell.m; path = REMAForms/Cells/Base/REMAPopoverFormFieldCell.m; sourceTree = SOURCE_ROOT; };
 		4441A9DF19E2B9490068498D /* UIColor+ANDYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ANDYHex.h"; sourceTree = "<group>"; };
 		4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ANDYHex.m"; sourceTree = "<group>"; };
 		4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-BLAC.OTF"; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 				445DAF8819E529B0006F8052 /* REMATextFieldTypeManager.m */,
 				445DAF8919E529B0006F8052 /* REMATextFormField.h */,
 				445DAF8A19E529B0006F8052 /* REMATextFormField.m */,
+				441F3F8D19E566610055F1FD /* REMAPopoverFormFieldCell.h */,
+				441F3F8E19E566610055F1FD /* REMAPopoverFormFieldCell.m */,
 			);
 			name = Base;
 			path = ../../../REMAforms/REMAForms/Cells/Base;
@@ -551,6 +556,7 @@
 				146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */,
 				142E4D3619E3410900C22B7E /* NSDate+REMAISO8601.m in Sources */,
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
+				441F3F8F19E566610055F1FD /* REMAPopoverFormFieldCell.m in Sources */,
 				146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */,
 				441F3F7E19E560300055F1FD /* REMATextFormFieldCell.m in Sources */,
 				446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */,

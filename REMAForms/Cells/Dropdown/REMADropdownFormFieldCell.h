@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMABaseFormFieldCell.h"
+#import "REMAPopoverFormFieldCell.h"
 
 static NSString * const REMADropdownFormFieldCellIdentifier = @"REMADropdownFormFieldCellIdentifier";
 
-@interface REMADropdownFormFieldCell : REMABaseFormFieldCell
+@interface REMADropdownFormFieldCell : REMAPopoverFormFieldCell
 
 @end
