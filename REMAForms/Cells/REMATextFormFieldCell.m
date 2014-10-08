@@ -14,18 +14,12 @@
 #import "UIColor+ANDYHex.h"
 #import "UIFont+Styles.h"
 
-static const CGFloat REMATextFormFieldCellMarginX = 10.0f;
-
-static const CGFloat REMATextFormFieldCellLabelMarginTop = 10.0f;
-static const CGFloat REMATextFormFieldCellLabelHeight = 20.0f;
-
 static const CGFloat REMATextFormFieldCellTextFieldMarginTop = 30.0f;
 static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
 
 @interface REMATextFormFieldCell ()
 
 @property (nonatomic, strong) REMATextFormField *textField;
-@property (nonatomic, strong) REMAFormFieldHeadingLabel *headingLabel;
 
 @end
 
@@ -38,22 +32,12 @@ static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    [self.contentView addSubview:self.headingLabel];
     [self.contentView addSubview:self.textField];
 
     return self;
 }
 
 #pragma mark - Getters
-
-- (REMAFormFieldHeadingLabel *)headingLabel
-{
-    if (_headingLabel) return _headingLabel;
-
-    _headingLabel = [[REMAFormFieldHeadingLabel alloc] initWithFrame:[self frameForHeadingLabel]];
-
-    return _headingLabel;
-}
 
 - (REMATextFormField *)textField
 {
@@ -94,7 +78,6 @@ static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
 {
     [super layoutSubviews];
 
-    self.headingLabel.frame = [self frameForHeadingLabel];
     self.textField.frame = [self frameForTextField];
 }
 
@@ -106,18 +89,6 @@ static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
 
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
     CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;
-    CGRect frame = CGRectMake(marginX, marginTop, width, height);
-
-    return frame;
-}
-
-- (CGRect)frameForHeadingLabel
-{
-    CGFloat marginX = REMATextFormFieldCellMarginX;
-    CGFloat marginTop = REMATextFormFieldCellLabelMarginTop;
-
-    CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
-    CGFloat height = REMATextFormFieldCellLabelHeight;
     CGRect frame = CGRectMake(marginX, marginTop, width, height);
 
     return frame;
