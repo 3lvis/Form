@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		142E4D3619E3410900C22B7E /* NSDate+REMAISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = 142E4D3519E3410900C22B7E /* NSDate+REMAISO8601.m */; };
 		142E4D3F19E3419900C22B7E /* UIColor+Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 142E4D3E19E3419900C22B7E /* UIColor+Colors.m */; };
-		142E4D4E19E3433E00C22B7E /* NSString+ANDYSizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 142E4D4D19E3433E00C22B7E /* NSString+ANDYSizes.m */; };
 		143549B519E266410021A84E /* REMAFielsetBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143549B419E266410021A84E /* REMAFielsetBackgroundView.m */; };
 		146D7A9B19E09801004A31CE /* REMAValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7A9A19E09801004A31CE /* REMAValidator.m */; };
 		146D7AA819E0983C004A31CE /* REMABankAccountNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AA119E0983C004A31CE /* REMABankAccountNumberFormatter.m */; };
@@ -74,13 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		142E4D3419E3410900C22B7E /* NSDate+REMAISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+REMAISO8601.h"; sourceTree = "<group>"; };
-		142E4D3519E3410900C22B7E /* NSDate+REMAISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+REMAISO8601.m"; sourceTree = "<group>"; };
 		142E4D3D19E3419900C22B7E /* UIColor+Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Colors.h"; sourceTree = "<group>"; };
 		142E4D3E19E3419900C22B7E /* UIColor+Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Colors.m"; sourceTree = "<group>"; };
-		142E4D4C19E3433E00C22B7E /* NSString+ANDYSizes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ANDYSizes.h"; sourceTree = "<group>"; };
-		142E4D4D19E3433E00C22B7E /* NSString+ANDYSizes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ANDYSizes.m"; sourceTree = "<group>"; };
-		142E4D4F19E3437500C22B7E /* REMAObserverCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = REMAObserverCenter.h; sourceTree = "<group>"; };
 		143549B319E266410021A84E /* REMAFielsetBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFielsetBackgroundView.h; sourceTree = "<group>"; };
 		143549B419E266410021A84E /* REMAFielsetBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFielsetBackgroundView.m; sourceTree = "<group>"; };
 		146D7A9919E09801004A31CE /* REMAValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAValidator.h; sourceTree = "<group>"; };
@@ -239,8 +232,6 @@
 			children = (
 				142E4D3D19E3419900C22B7E /* UIColor+Colors.h */,
 				142E4D3E19E3419900C22B7E /* UIColor+Colors.m */,
-				142E4D3419E3410900C22B7E /* NSDate+REMAISO8601.h */,
-				142E4D3519E3410900C22B7E /* NSDate+REMAISO8601.m */,
 				446364CB19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.h */,
 				446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */,
 				4441A9ED19E2BC140068498D /* UIFont+Styles.h */,
@@ -249,8 +240,6 @@
 				4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */,
 				146D7ACC19E09953004A31CE /* NSDictionary+Networking.h */,
 				146D7ACD19E09953004A31CE /* NSDictionary+Networking.m */,
-				142E4D4C19E3433E00C22B7E /* NSString+ANDYSizes.h */,
-				142E4D4D19E3433E00C22B7E /* NSString+ANDYSizes.m */,
 				146D7AD019E09953004A31CE /* NSString+ZENInflections.h */,
 				146D7AD119E09953004A31CE /* NSString+ZENInflections.m */,
 			);
@@ -304,7 +293,6 @@
 				146DEA2B19E0929B00D9E3FF /* Form */,
 				441B77A719DEC4F4006AF67C /* AppDelegate.h */,
 				441B77A819DEC4F4006AF67C /* AppDelegate.m */,
-				142E4D4F19E3437500C22B7E /* REMAObserverCenter.h */,
 				441B77CC19DED095006AF67C /* REMAFieldsetHeaderView.h */,
 				441B77CD19DED095006AF67C /* REMAFieldsetHeaderView.m */,
 				143549B319E266410021A84E /* REMAFielsetBackgroundView.h */,
@@ -554,7 +542,6 @@
 				445DAF8E19E529B0006F8052 /* REMATextFormField.m in Sources */,
 				445DAF8D19E529B0006F8052 /* REMATextFieldTypeManager.m in Sources */,
 				146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */,
-				142E4D3619E3410900C22B7E /* NSDate+REMAISO8601.m in Sources */,
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
 				441F3F8F19E566610055F1FD /* REMAPopoverFormFieldCell.m in Sources */,
 				146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */,
@@ -583,7 +570,6 @@
 				441B77CB19DEC647006AF67C /* REMAFielsetsCollectionViewController.m in Sources */,
 				445DAF8B19E529B0006F8052 /* REMABaseFormFieldCell.m in Sources */,
 				142E4D3F19E3419900C22B7E /* UIColor+Colors.m in Sources */,
-				142E4D4E19E3433E00C22B7E /* NSString+ANDYSizes.m in Sources */,
 				146D7A9B19E09801004A31CE /* REMAValidator.m in Sources */,
 				146D7AC219E09853004A31CE /* REMAPhoneNumberInputValidator.m in Sources */,
 				441F3F8919E560840055F1FD /* REMADateFormFieldCell.m in Sources */,

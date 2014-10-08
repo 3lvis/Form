@@ -8,7 +8,6 @@
 
 #import "HYPTimeViewController.h"
 
-#import "NSString+ANDYSizes.h"
 #import "UIFont+Styles.h"
 #import "UIColor+Colors.h"
 
@@ -99,7 +98,15 @@ static const CGSize REMATimePopoverSize = { 320.0f, 216.0f };
     UIFont *font = [UIFont REMATextFieldFont];
     CGFloat xOffset = REMAActionMessageTextViewX;
     CGFloat yOffset = REMAActionMessageTextViewY;
-    CGFloat height = [NSString heightForString:self.message width:REMATimePopoverSize.width - (xOffset * 2.0f) font:font] + yOffset;
+
+    NSDictionary *attributes = @{ NSFontAttributeName : font };
+    CGFloat width = REMATimePopoverSize.width - (xOffset * 2.0f);
+    CGRect rect = [self.message boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:attributes
+                                       context:nil];
+
+    CGFloat height = CGRectGetHeight(rect) + yOffset;
     CGFloat y = (self.title) ? CGRectGetMaxY(self.titleLabel.frame) : 0.0f;
 
     _messageTextView = [[UITextView alloc] initWithFrame:CGRectMake(xOffset, y, REMATimePopoverSize.width - (xOffset * 2.0f), height)];
@@ -235,8 +242,16 @@ static const CGSize REMATimePopoverSize = { 320.0f, 216.0f };
         UIFont *font = [UIFont REMATextFieldFont];
         CGFloat xOffset = REMAActionMessageTextViewX;
         CGFloat yOffset = REMAActionMessageTextViewY;
-        height += [NSString heightForString:self.message
-                                      width:REMATimePopoverSize.width - (xOffset * 2.0f) font:font] + yOffset;
+
+        NSDictionary *attributes = @{ NSFontAttributeName : font };
+        CGFloat width = REMATimePopoverSize.width - (xOffset * 2.0f);
+        CGRect rect = [self.message boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                              attributes:attributes
+                                                 context:nil];
+
+        height += CGRectGetHeight(rect) + yOffset;
+
         height += REMAViewVerticalSpacing;
     }
 
