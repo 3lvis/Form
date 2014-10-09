@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "441B779F19DEC4F3006AF67C"
-               BuildableName = "REMAForms.app"
-               BlueprintName = "REMAForms"
-               ReferencedContainer = "container:REMAForms.xcodeproj">
+               BuildableName = "HYPForms.app"
+               BlueprintName = "HYPForms"
+               ReferencedContainer = "container:HYPForms.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "441B77B819DEC4F4006AF67C"
-               BuildableName = "REMAFormsTests.xctest"
-               BlueprintName = "REMAFormsTests"
-               ReferencedContainer = "container:REMAForms.xcodeproj">
+               BuildableName = "HYPFormsTests.xctest"
+               BlueprintName = "HYPFormsTests"
+               ReferencedContainer = "container:HYPForms.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "441B77B819DEC4F4006AF67C"
-               BuildableName = "REMAFormsTests.xctest"
-               BlueprintName = "REMAFormsTests"
-               ReferencedContainer = "container:REMAForms.xcodeproj">
+               BuildableName = "HYPFormsTests.xctest"
+               BlueprintName = "HYPFormsTests"
+               ReferencedContainer = "container:HYPForms.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "441B779F19DEC4F3006AF67C"
-            BuildableName = "REMAForms.app"
-            BlueprintName = "REMAForms"
-            ReferencedContainer = "container:REMAForms.xcodeproj">
+            BuildableName = "HYPForms.app"
+            BlueprintName = "HYPForms"
+            ReferencedContainer = "container:HYPForms.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "441B779F19DEC4F3006AF67C"
-            BuildableName = "REMAForms.app"
-            BlueprintName = "REMAForms"
-            ReferencedContainer = "container:REMAForms.xcodeproj">
+            BuildableName = "HYPForms.app"
+            BlueprintName = "HYPForms"
+            ReferencedContainer = "container:HYPForms.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "441B779F19DEC4F3006AF67C"
-            BuildableName = "REMAForms.app"
-            BlueprintName = "REMAForms"
-            ReferencedContainer = "container:REMAForms.xcodeproj">
+            BuildableName = "HYPForms.app"
+            BlueprintName = "HYPForms"
+            ReferencedContainer = "container:HYPForms.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

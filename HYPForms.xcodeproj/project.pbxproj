@@ -31,7 +31,6 @@
 		441B77A619DEC4F4006AF67C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A519DEC4F4006AF67C /* main.m */; };
 		441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A819DEC4F4006AF67C /* AppDelegate.m */; };
 		441B77B119DEC4F4006AF67C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 441B77B019DEC4F4006AF67C /* Images.xcassets */; };
-		441B77C019DEC4F4006AF67C /* REMAFormsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77BF19DEC4F4006AF67C /* REMAFormsTests.m */; };
 		4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */; };
 		4441A9E819E2BBC50068498D /* DIN-BLAC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */; };
 		4441A9E919E2BBC50068498D /* DIN-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E419E2BBC50068498D /* DIN-BOLD.OTF */; };
@@ -59,16 +58,6 @@
 		44D6B67B19E5780F0009BB07 /* REMAFielsetsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D6B66B19E5780F0009BB07 /* REMAFielsetsLayout.m */; };
 		44D6B67F19E578490009BB07 /* HYPTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D6B67E19E578490009BB07 /* HYPTimeViewController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		441B77BA19DEC4F4006AF67C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 441B779819DEC4F3006AF67C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 441B779F19DEC4F3006AF67C;
-			remoteInfo = REMAForms;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		142E4D3D19E3419900C22B7E /* UIColor+Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Colors.h"; sourceTree = "<group>"; };
@@ -112,15 +101,12 @@
 		146DEA3419E0929B00D9E3FF /* REMAFormSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFormSection.h; sourceTree = "<group>"; };
 		146DEA3519E0929B00D9E3FF /* REMAFormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFormSection.m; sourceTree = "<group>"; };
 		1478934B19DFCC9000BC2497 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
-		441B77A019DEC4F3006AF67C /* REMAForms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = REMAForms.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		441B77A019DEC4F3006AF67C /* HYPForms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYPForms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		441B77A419DEC4F4006AF67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		441B77A519DEC4F4006AF67C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		441B77A719DEC4F4006AF67C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		441B77A819DEC4F4006AF67C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		441B77B019DEC4F4006AF67C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		441B77B919DEC4F4006AF67C /* REMAFormsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = REMAFormsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		441B77BE19DEC4F4006AF67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		441B77BF19DEC4F4006AF67C /* REMAFormsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = REMAFormsTests.m; sourceTree = "<group>"; };
 		4441A9DF19E2B9490068498D /* UIColor+ANDYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ANDYHex.h"; sourceTree = "<group>"; };
 		4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ANDYHex.m"; sourceTree = "<group>"; };
 		4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-BLAC.OTF"; sourceTree = "<group>"; };
@@ -170,13 +156,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		441B779D19DEC4F3006AF67C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		441B77B619DEC4F4006AF67C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -266,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				441B77A219DEC4F3006AF67C /* REMAForms */,
-				441B77BC19DEC4F4006AF67C /* REMAFormsTests */,
 				441B77A119DEC4F3006AF67C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -274,8 +252,7 @@
 		441B77A119DEC4F3006AF67C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				441B77A019DEC4F3006AF67C /* REMAForms.app */,
-				441B77B919DEC4F4006AF67C /* REMAFormsTests.xctest */,
+				441B77A019DEC4F3006AF67C /* HYPForms.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,23 +282,6 @@
 			children = (
 				441B77A419DEC4F4006AF67C /* Info.plist */,
 				441B77A519DEC4F4006AF67C /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		441B77BC19DEC4F4006AF67C /* REMAFormsTests */ = {
-			isa = PBXGroup;
-			children = (
-				441B77BF19DEC4F4006AF67C /* REMAFormsTests.m */,
-				441B77BD19DEC4F4006AF67C /* Supporting Files */,
-			);
-			path = REMAFormsTests;
-			sourceTree = "<group>";
-		};
-		441B77BD19DEC4F4006AF67C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				441B77BE19DEC4F4006AF67C /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -437,9 +397,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		441B779F19DEC4F3006AF67C /* REMAForms */ = {
+		441B779F19DEC4F3006AF67C /* HYPForms */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 441B77C319DEC4F4006AF67C /* Build configuration list for PBXNativeTarget "REMAForms" */;
+			buildConfigurationList = 441B77C319DEC4F4006AF67C /* Build configuration list for PBXNativeTarget "HYPForms" */;
 			buildPhases = (
 				441B779C19DEC4F3006AF67C /* Sources */,
 				441B779D19DEC4F3006AF67C /* Frameworks */,
@@ -449,28 +409,10 @@
 			);
 			dependencies = (
 			);
-			name = REMAForms;
+			name = HYPForms;
 			productName = REMAForms;
-			productReference = 441B77A019DEC4F3006AF67C /* REMAForms.app */;
+			productReference = 441B77A019DEC4F3006AF67C /* HYPForms.app */;
 			productType = "com.apple.product-type.application";
-		};
-		441B77B819DEC4F4006AF67C /* REMAFormsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 441B77C619DEC4F4006AF67C /* Build configuration list for PBXNativeTarget "REMAFormsTests" */;
-			buildPhases = (
-				441B77B519DEC4F4006AF67C /* Sources */,
-				441B77B619DEC4F4006AF67C /* Frameworks */,
-				441B77B719DEC4F4006AF67C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				441B77BB19DEC4F4006AF67C /* PBXTargetDependency */,
-			);
-			name = REMAFormsTests;
-			productName = REMAFormsTests;
-			productReference = 441B77B919DEC4F4006AF67C /* REMAFormsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -484,13 +426,9 @@
 					441B779F19DEC4F3006AF67C = {
 						CreatedOnToolsVersion = 6.0.1;
 					};
-					441B77B819DEC4F4006AF67C = {
-						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 441B779F19DEC4F3006AF67C;
-					};
 				};
 			};
-			buildConfigurationList = 441B779B19DEC4F3006AF67C /* Build configuration list for PBXProject "REMAForms" */;
+			buildConfigurationList = 441B779B19DEC4F3006AF67C /* Build configuration list for PBXProject "HYPForms" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -503,8 +441,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				441B779F19DEC4F3006AF67C /* REMAForms */,
-				441B77B819DEC4F4006AF67C /* REMAFormsTests */,
+				441B779F19DEC4F3006AF67C /* HYPForms */,
 			);
 		};
 /* End PBXProject section */
@@ -523,13 +460,6 @@
 				1478934C19DFCC9000BC2497 /* forms.json in Resources */,
 				445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */,
 				4441A9E819E2BBC50068498D /* DIN-BLAC.OTF in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		441B77B719DEC4F4006AF67C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,23 +514,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		441B77B519DEC4F4006AF67C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				441B77C019DEC4F4006AF67C /* REMAFormsTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		441B77BB19DEC4F4006AF67C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 441B779F19DEC4F3006AF67C /* REMAForms */;
-			targetProxy = 441B77BA19DEC4F4006AF67C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		441B77C119DEC4F4006AF67C /* Debug */ = {
@@ -686,7 +600,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = REMAForms/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HYPForms;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -698,49 +612,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = REMAForms/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HYPForms;
 				TARGETED_DEVICE_FAMILY = 2;
-			};
-			name = Release;
-		};
-		441B77C719DEC4F4006AF67C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = REMAFormsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/REMAForms.app/REMAForms";
-			};
-			name = Debug;
-		};
-		441B77C819DEC4F4006AF67C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = REMAFormsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/REMAForms.app/REMAForms";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		441B779B19DEC4F3006AF67C /* Build configuration list for PBXProject "REMAForms" */ = {
+		441B779B19DEC4F3006AF67C /* Build configuration list for PBXProject "HYPForms" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				441B77C119DEC4F4006AF67C /* Debug */,
@@ -749,20 +629,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		441B77C319DEC4F4006AF67C /* Build configuration list for PBXNativeTarget "REMAForms" */ = {
+		441B77C319DEC4F4006AF67C /* Build configuration list for PBXNativeTarget "HYPForms" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				441B77C419DEC4F4006AF67C /* Debug */,
 				441B77C519DEC4F4006AF67C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		441B77C619DEC4F4006AF67C /* Build configuration list for PBXNativeTarget "REMAFormsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				441B77C719DEC4F4006AF67C /* Debug */,
-				441B77C819DEC4F4006AF67C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
