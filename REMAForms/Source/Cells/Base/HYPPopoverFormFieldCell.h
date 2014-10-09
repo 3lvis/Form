@@ -1,5 +1,5 @@
 //
-//  REMAPopoverFormFieldCell.h
+//  HYPPopoverFormFieldCell.h
 
 //
 //  Created by Elvis Nunez on 08/10/14.
@@ -16,6 +16,6 @@
 - (instancetype)initWithFrame:(CGRect)frame contentViewController:(UIViewController *)controller
                andContentSize:(CGSize)contentSize;
 
-- (void)updateContentViewController:(UIViewController *)contentViewController withField:(REMAFormField *)field;
+- (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field;
 
 @end

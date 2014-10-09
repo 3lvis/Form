@@ -1,5 +1,5 @@
 //
-//  REMAFielsetsLayout.m
+//  HYPFielsetsLayout.m
 
 //
 //  Created by Elvis Nunez on 06/10/14.
@@ -13,8 +13,8 @@
 #import "HYPBaseFormFieldCell.h"
 #import "HYPFieldsetHeaderView.h"
 
-#import "REMAFieldset.h"
-#import "REMAFormField.h"
+#import "HYPFieldset.h"
+#import "HYPFormField.h"
 
 #import "UIScreen+HYPLiveBounds.h"
 
@@ -34,11 +34,11 @@
     self = [super init];
     if (!self) return nil;
 
-    self.sectionInset = UIEdgeInsetsMake(REMAFieldsetMarginTop, REMAFieldsetMarginHorizontal, REMAFieldsetMarginBottom, REMAFieldsetMarginHorizontal);
+    self.sectionInset = UIEdgeInsetsMake(HYPFieldsetMarginTop, HYPFieldsetMarginHorizontal, HYPFieldsetMarginBottom, HYPFieldsetMarginHorizontal);
     self.minimumLineSpacing = 0.0f;
     self.minimumInteritemSpacing = 0.0f;
 
-    [self registerClass:[HYPFielsetBackgroundView class] forDecorationViewOfKind:REMAFieldsetBackgroundKind];
+    [self registerClass:[HYPFielsetBackgroundView class] forDecorationViewOfKind:HYPFieldsetBackgroundKind];
 
     return self;
 }
@@ -47,7 +47,7 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
-    if (![elementKind isEqualToString:REMAFieldsetBackgroundKind]) {
+    if (![elementKind isEqualToString:HYPFieldsetBackgroundKind]) {
         return [super layoutAttributesForDecorationViewOfKind:elementKind atIndexPath:indexPath];
     }
 
@@ -67,7 +67,7 @@
         collapsedFieldsets = [NSArray array];
     }
 
-    REMAFieldset *fieldset = fieldsets[indexPath.section];
+    HYPFieldset *fieldset = fieldsets[indexPath.section];
     NSArray *fields = nil;
 
     if ([collapsedFieldsets containsObject:@(indexPath.section)]) {
@@ -76,24 +76,24 @@
         fields = fieldset.fields;
     }
 
-    CGFloat bottomMargin = REMAFieldsetHeaderContentMargin;
-    CGFloat height = REMAFieldsetMarginTop + REMAFieldsetMarginBottom;
+    CGFloat bottomMargin = HYPFieldsetHeaderContentMargin;
+    CGFloat height = HYPFieldsetMarginTop + HYPFieldsetMarginBottom;
     CGFloat size = 0.0f;
 
-    for (REMAFormField *field in fields) {
+    for (HYPFormField *field in fields) {
         if (field.sectionSeparator) {
-            height += REMAFieldCellItemSmallHeight;
+            height += HYPFieldCellItemSmallHeight;
         } else {
             size += [field.size floatValue];
 
             if (size >= 100.0f) {
-                height += REMAFieldCellItemHeight;
+                height += HYPFieldCellItemHeight;
                 size = 0;
             }
         }
     }
 
-    CGFloat y = self.previousHeight + self.previousY + REMAFieldsetHeaderHeight;
+    CGFloat y = self.previousHeight + self.previousY + HYPFieldsetHeaderHeight;
 
     self.previousHeight = height;
     self.previousY = y;
@@ -102,7 +102,7 @@
 
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
                                                                                                                withIndexPath:indexPath];
-    attributes.frame = CGRectMake(REMAFielsetBackgroundViewMargin, y, self.collectionViewContentSize.width - (REMAFielsetBackgroundViewMargin * 2), height - bottomMargin);
+    attributes.frame = CGRectMake(HYPFielsetBackgroundViewMargin, y, self.collectionViewContentSize.width - (HYPFielsetBackgroundViewMargin * 2), height - bottomMargin);
     attributes.zIndex = -1;
 
     return attributes;
@@ -119,8 +119,8 @@
         if ([element.representedElementKind isEqualToString:UICollectionElementKindSectionHeader]) {
             CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
             CGRect frame = element.frame;
-            frame.origin.x = REMAFieldsetHeaderContentMargin;
-            frame.size.width = CGRectGetWidth(bounds) - (2 * REMAFieldsetHeaderContentMargin);
+            frame.origin.x = HYPFieldsetHeaderContentMargin;
+            frame.size.width = CGRectGetWidth(bounds) - (2 * HYPFieldsetHeaderContentMargin);
             element.frame = frame;
         }
     }
@@ -129,7 +129,7 @@
 
     for (NSInteger section = 0; section < sectionsCount; section++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
-        [attributes addObject:[self layoutAttributesForDecorationViewOfKind:REMAFieldsetBackgroundKind
+        [attributes addObject:[self layoutAttributesForDecorationViewOfKind:HYPFieldsetBackgroundKind
                                                                 atIndexPath:indexPath]];
     }
 

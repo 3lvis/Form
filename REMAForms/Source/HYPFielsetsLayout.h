@@ -1,5 +1,5 @@
 //
-//  REMAFielsetsLayout.h
+//  HYPFielsetsLayout.h
 
 //
 //  Created by Elvis Nunez on 06/10/14.
@@ -8,15 +8,15 @@
 
 @import UIKit;
 
-@protocol REMAFielsetsLayoutDataSource;
+@protocol HYPFielsetsLayoutDataSource;
 
 @interface HYPFielsetsLayout : UICollectionViewFlowLayout
 
-@property (nonatomic, weak) id <REMAFielsetsLayoutDataSource> dataSource;
+@property (nonatomic, weak) id <HYPFielsetsLayoutDataSource> dataSource;
 
 @end
 
-@protocol REMAFielsetsLayoutDataSource <NSObject>
+@protocol HYPFielsetsLayoutDataSource <NSObject>
 
 - (NSArray *)fieldsets;
 - (NSArray *)collapsedFieldsets;

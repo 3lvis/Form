@@ -1,5 +1,5 @@
 //
-//  REMAFielsetsCollectionViewDataSource.h
+//  HYPFielsetsCollectionViewDataSource.h
 
 //
 //  Created by Elvis Nunez on 10/6/14.
@@ -14,21 +14,21 @@
 #import "HYPBaseFormFieldCell.h"
 #import "HYPFieldsetHeaderView.h"
 
-#import "REMAFormField.h"
-#import "REMAFieldset.h"
+#import "HYPFormField.h"
+#import "HYPFieldset.h"
 
-typedef void (^REMAFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, REMAFormField *field);
-typedef void (^REMAFieldConfigureHeaderViewBlock)(HYPFieldsetHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, REMAFieldset *fieldset);
+typedef void (^HYPFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, HYPFormField *field);
+typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFieldsetHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPFieldset *fieldset);
 
-@interface HYPFielsetsCollectionViewDataSource : NSObject <REMAFielsetsLayoutDataSource, UICollectionViewDataSource>
+@interface HYPFielsetsCollectionViewDataSource : NSObject <HYPFielsetsLayoutDataSource, UICollectionViewDataSource>
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 
 @property (nonatomic, strong) NSArray *fieldsets;
 @property (nonatomic, strong) NSMutableArray *collapsedFieldsets;
 
-@property (nonatomic, copy) REMAFieldConfigureCellBlock configureCellBlock;
-@property (nonatomic, copy) REMAFieldConfigureHeaderViewBlock configureHeaderViewBlock;
+@property (nonatomic, copy) HYPFieldConfigureCellBlock configureCellBlock;
+@property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;
 
 - (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;

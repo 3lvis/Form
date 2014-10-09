@@ -1,5 +1,5 @@
 //
-//  REMADropdownFormFieldCell.h
+//  HYPDropdownFormFieldCell.h
 
 //
 //  Created by Elvis Nunez on 08/10/14.
@@ -8,7 +8,7 @@
 
 #import "HYPPopoverFormFieldCell.h"
 
-static NSString * const REMADropdownFormFieldCellIdentifier = @"REMADropdownFormFieldCellIdentifier";
+static NSString * const HYPDropdownFormFieldCellIdentifier = @"HYPDropdownFormFieldCellIdentifier";
 
 @interface HYPDropdownFormFieldCell : HYPPopoverFormFieldCell
 

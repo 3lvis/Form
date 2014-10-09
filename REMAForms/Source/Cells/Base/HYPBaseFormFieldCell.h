@@ -1,5 +1,5 @@
 //
-//  REMABaseFormFieldCell.h
+//  HYPBaseFormFieldCell.h
 
 //
 //  Created by Elvis Nunez on 07/10/14.
@@ -13,28 +13,28 @@
 #import "HYPTextFormField.h"
 #import "HYPFormFieldHeadingLabel.h"
 
-#import "REMAFormField.h"
+#import "HYPFormField.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIFont+Styles.h"
 
-static const NSInteger REMAFieldCellMargin = 10.0f;
-static const NSInteger REMAFieldCellItemSmallHeight = 1.0f;
-static const NSInteger REMAFieldCellItemHeight = 85.0f;
+static const NSInteger HYPFieldCellMargin = 10.0f;
+static const NSInteger HYPFieldCellItemSmallHeight = 1.0f;
+static const NSInteger HYPFieldCellItemHeight = 85.0f;
 
-static const CGFloat REMATextFormFieldCellMarginX = 10.0f;
-static const CGFloat REMATextFormFieldCellTextFieldMarginTop = 30.0f;
-static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
+static const CGFloat HYPTextFormFieldCellMarginX = 10.0f;
+static const CGFloat HYPTextFormFieldCellTextFieldMarginTop = 30.0f;
+static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
 
 @interface HYPBaseFormFieldCell : UICollectionViewCell
 
 @property (nonatomic, strong) HYPFormFieldHeadingLabel *headingLabel;
 
-@property (nonatomic, strong) REMAFormField *field;
+@property (nonatomic, strong) HYPFormField *field;
 @property (nonatomic, getter = isDisabled) BOOL disabled;
 
 - (void)updateFieldWithDisabled:(BOOL)disabled;
-- (void)updateWithField:(REMAFormField *)field;
+- (void)updateWithField:(HYPFormField *)field;
 - (void)validate;
 
 @end

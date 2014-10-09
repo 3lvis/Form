@@ -1,5 +1,5 @@
 //
-//  REMAPopoverFormFieldCell.m
+//  HYPPopoverFormFieldCell.m
 
 //
 //  Created by Elvis Nunez on 08/10/14.
@@ -8,7 +8,7 @@
 
 #import "HYPPopoverFormFieldCell.h"
 
-@interface HYPPopoverFormFieldCell () <REMATextFormFieldDelegate, UIPopoverControllerDelegate>
+@interface HYPPopoverFormFieldCell () <HYPTextFormFieldDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIViewController *contentViewController;
 @property (nonatomic) CGSize contentSize;
@@ -57,7 +57,7 @@
     return _popoverController;
 }
 
-#pragma mark - REMATextFormFieldDelegate
+#pragma mark - HYPTextFormFieldDelegate
 
 - (void)textFormFieldDidBeginEditing:(HYPTextFormField *)textField
 {
@@ -73,7 +73,7 @@
 
 #pragma mark - Private methods
 
-- (void)updateContentViewController:(UIViewController *)contentViewController withField:(REMAFormField *)field
+- (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     abort();
 }
@@ -83,7 +83,7 @@
     self.textField.enabled = !disabled;
 }
 
-- (void)updateWithField:(REMAFormField *)field
+- (void)updateWithField:(HYPFormField *)field
 {
     self.textField.hidden = (field.sectionSeparator);
     self.textField.validator = [self.field validator];
@@ -100,9 +100,9 @@
 
 - (CGRect)frameForTextField
 {
-    CGFloat marginX = REMATextFormFieldCellMarginX;
-    CGFloat marginTop = REMATextFormFieldCellTextFieldMarginTop;
-    CGFloat marginBotton = REMATextFormFieldCellTextFieldMarginBottom;
+    CGFloat marginX = HYPTextFormFieldCellMarginX;
+    CGFloat marginTop = HYPTextFormFieldCellTextFieldMarginTop;
+    CGFloat marginBotton = HYPTextFormFieldCellTextFieldMarginBottom;
 
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
     CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;

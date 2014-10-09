@@ -1,5 +1,5 @@
 //
-//  REMATextFieldTypeManager.h
+//  HYPTextFieldTypeManager.h
 
 //
 //  Created by Elvis Nunez on 07/10/14.
@@ -13,6 +13,6 @@
 
 @interface HYPTextFieldTypeManager : NSObject
 
-- (void)setUpType:(REMATextFieldType)type forTextField:(UITextField *)textField;
+- (void)setUpType:(HYPTextFieldType)type forTextField:(UITextField *)textField;
 
 @end

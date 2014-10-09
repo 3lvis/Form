@@ -1,5 +1,5 @@
 //
-//  REMAFielsetBackgroundCollectionReusableView.h
+//  HYPFielsetBackgroundCollectionReusableView.h
 
 //
 //  Created by Elvis Nunez on 10/6/14.
@@ -8,10 +8,10 @@
 
 @import UIKit;
 
-static const NSInteger REMAFielsetBackgroundViewMargin = 15.0f;
+static const NSInteger HYPFielsetBackgroundViewMargin = 15.0f;
 
-static NSString * const REMAFieldsetBackgroundReuseIdentifier = @"REMAFieldsetBackgroundReuseIdentifier";
-static NSString * const REMAFieldsetBackgroundKind = @"REMAFieldsetBackgroundKind";
+static NSString * const HYPFieldsetBackgroundReuseIdentifier = @"HYPFieldsetBackgroundReuseIdentifier";
+static NSString * const HYPFieldsetBackgroundKind = @"HYPFieldsetBackgroundKind";
 
 @interface HYPFielsetBackgroundView : UICollectionReusableView
 

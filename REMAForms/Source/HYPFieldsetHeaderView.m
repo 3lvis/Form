@@ -1,5 +1,5 @@
 //
-//  REMAFieldsetHeaderCollectionReusableView.m
+//  HYPFieldsetHeaderCollectionReusableView.m
 
 //
 //  Created by Elvis Nunez on 03/10/14.
@@ -51,9 +51,9 @@
     if (_headerLabel) return _headerLabel;
 
     CGRect bounds = [[UIScreen mainScreen] bounds];
-    CGFloat width = CGRectGetWidth(bounds) - (REMAFieldsetTitleMargin * 2);
+    CGFloat width = CGRectGetWidth(bounds) - (HYPFieldsetTitleMargin * 2);
 
-    _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(REMAFieldsetTitleMargin, 0.0f, width, REMAFieldsetHeaderHeight)];
+    _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(HYPFieldsetTitleMargin, 0.0f, width, HYPFieldsetHeaderHeight)];
     _headerLabel.backgroundColor = [UIColor clearColor];
     _headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _headerLabel.font = [UIFont fontWithName:@"DIN-Medium" size:17.0];

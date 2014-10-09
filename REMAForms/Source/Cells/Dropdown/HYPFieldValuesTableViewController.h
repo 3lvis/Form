@@ -1,5 +1,5 @@
 //
-//  REMAFieldValuesTableViewController.h
+//  HYPFieldValuesTableViewController.h
 
 //
 //  Created by Elvis Nunez on 03/09/14.
@@ -8,23 +8,23 @@
 
 @import UIKit;
 
-@class REMAFieldValue;
-@class REMAFormField;
+@class HYPFieldValue;
+@class HYPFormField;
 
-@protocol REMAFieldValuesTableViewControllerDelegate;
+@protocol HYPFieldValuesTableViewControllerDelegate;
 
 @interface HYPFieldValuesTableViewController : UITableViewController
 
-@property (nonatomic, weak) REMAFormField *field;
+@property (nonatomic, weak) HYPFormField *field;
 
-@property (nonatomic, weak) id <REMAFieldValuesTableViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <HYPFieldValuesTableViewControllerDelegate> delegate;
 
 @end
 
 
-@protocol REMAFieldValuesTableViewControllerDelegate <NSObject>
+@protocol HYPFieldValuesTableViewControllerDelegate <NSObject>
 
 - (void)fieldValuesTableViewController:(HYPFieldValuesTableViewController *)fieldValuesTableViewController
-                      didSelectedValue:(REMAFieldValue *)selectedValue;
+                      didSelectedValue:(HYPFieldValue *)selectedValue;
 
 @end

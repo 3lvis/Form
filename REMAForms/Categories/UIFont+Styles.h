@@ -10,18 +10,18 @@
 
 @interface UIFont (Styles)
 
-+ (UIFont *)REMALargeSize;
-+ (UIFont *)REMALargeSizeRegular;
-+ (UIFont *)REMALargeSizeBold;
-+ (UIFont *)REMAMediumSize;
-+ (UIFont *)REMAMediumSizeBold;
-+ (UIFont *)REMAMediumSizeBolder;
-+ (UIFont *)REMAMediumSizeLight;
-+ (UIFont *)REMASmallSizeBold;
-+ (UIFont *)REMASmallSize;
-+ (UIFont *)REMASmallSizeLight;
-+ (UIFont *)REMASmallSizeMedium;
-+ (UIFont *)REMALabelFont;
-+ (UIFont *)REMATextFieldFont;
++ (UIFont *)HYPLargeSize;
++ (UIFont *)HYPLargeSizeRegular;
++ (UIFont *)HYPLargeSizeBold;
++ (UIFont *)HYPMediumSize;
++ (UIFont *)HYPMediumSizeBold;
++ (UIFont *)HYPMediumSizeBolder;
++ (UIFont *)HYPMediumSizeLight;
++ (UIFont *)HYPSmallSizeBold;
++ (UIFont *)HYPSmallSize;
++ (UIFont *)HYPSmallSizeLight;
++ (UIFont *)HYPSmallSizeMedium;
++ (UIFont *)HYPLabelFont;
++ (UIFont *)HYPTextFieldFont;
 
 @end

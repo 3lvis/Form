@@ -1,5 +1,5 @@
 //
-//  REMADateFormFieldCell.m
+//  HYPDateFormFieldCell.m
 
 //
 //  Created by Elvis Nunez on 08/10/14.
@@ -10,11 +10,11 @@
 
 #import "HYPTimeViewController.h"
 
-static NSString * const REMADateFieldFormat = @"yyyy-MM-dd";
+static NSString * const HYPDateFieldFormat = @"yyyy-MM-dd";
 
-static const CGSize REMADatePopoverSize = { 320.0f, 216.0f };
+static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
-@interface HYPDateFormFieldCell () <REMATextFormFieldDelegate, HYPTimeViewControllerDelegate, UIPopoverControllerDelegate>
+@interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPTimeViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) HYPTextFormField *textField;
 
@@ -30,7 +30,7 @@ static const CGSize REMADatePopoverSize = { 320.0f, 216.0f };
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame contentViewController:self.timeViewController
-                 andContentSize:REMADatePopoverSize];
+                 andContentSize:HYPDatePopoverSize];
     if (!self) return nil;
 
     return self;
@@ -51,13 +51,13 @@ static const CGSize REMADatePopoverSize = { 320.0f, 216.0f };
 
 #pragma mark - Private headers
 
-- (void)updateWithField:(REMAFormField *)field
+- (void)updateWithField:(HYPFormField *)field
 {
     [super updateWithField:field];
 
     if (field.fieldValue) {
         NSDateFormatter *formatter = [NSDateFormatter new];
-        formatter.dateFormat = REMADateFieldFormat;
+        formatter.dateFormat = HYPDateFieldFormat;
         self.textField.rawText = [formatter stringFromDate:field.fieldValue];
     }
 }
@@ -67,7 +67,7 @@ static const CGSize REMADatePopoverSize = { 320.0f, 216.0f };
     NSLog(@"validation in progress");
 }
 
-- (void)updateContentViewController:(UIViewController *)contentViewController withField:(REMAFormField *)field
+- (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     if (self.field.fieldValue) {
         self.timeViewController.currentDate = self.field.fieldValue;

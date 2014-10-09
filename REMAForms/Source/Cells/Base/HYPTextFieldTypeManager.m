@@ -1,5 +1,5 @@
 //
-//  REMATextFieldTypeManager.m
+//  HYPTextFieldTypeManager.m
 
 //
 //  Created by Elvis Nunez on 07/10/14.
@@ -10,26 +10,26 @@
 
 @implementation HYPTextFieldTypeManager
 
-- (void)setUpType:(REMATextFieldType)type forTextField:(UITextField *)textField
+- (void)setUpType:(HYPTextFieldType)type forTextField:(UITextField *)textField
 {
     switch (type) {
-        case REMATextFieldTypeDefault     : [self setupDefaultTextField:textField]; break;
-        case REMATextFieldTypeName        : [self setupNameTextField:textField]; break;
-        case REMATextFieldTypeUsername    : [self setupUsernameTextField:textField]; break;
-        case REMATextFieldTypePhoneNumber : [self setupPhoneNumberTextField:textField]; break;
-        case REMATextFieldTypeNumber      : [self setupNumberTextField:textField]; break;
-        case REMATextFieldTypeAddress     : [self setupAddressTextField:textField]; break;
-        case REMATextFieldTypeEmail       : [self setupEmailTextField:textField]; break;
-        case REMATextFieldTypePassword    : [self setupPasswordTextField:textField]; break;
+        case HYPTextFieldTypeDefault     : [self setupDefaultTextField:textField]; break;
+        case HYPTextFieldTypeName        : [self setupNameTextField:textField]; break;
+        case HYPTextFieldTypeUsername    : [self setupUsernameTextField:textField]; break;
+        case HYPTextFieldTypePhoneNumber : [self setupPhoneNumberTextField:textField]; break;
+        case HYPTextFieldTypeNumber      : [self setupNumberTextField:textField]; break;
+        case HYPTextFieldTypeAddress     : [self setupAddressTextField:textField]; break;
+        case HYPTextFieldTypeEmail       : [self setupEmailTextField:textField]; break;
+        case HYPTextFieldTypePassword    : [self setupPasswordTextField:textField]; break;
 
-        case REMATextFieldTypeDropdown:
-        case REMATextFieldTypeDate:
+        case HYPTextFieldTypeDropdown:
+        case HYPTextFieldTypeDate:
             [self setupDefaultTextField:textField];
             break;
     }
 }
 
-#pragma mark - REMATextFieldType
+#pragma mark - HYPTextFieldType
 
 - (void)setupDefaultTextField:(UITextField *)textField
 {

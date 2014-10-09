@@ -1,5 +1,5 @@
 //
-//  REMABaseFormFieldCell.m
+//  HYPBaseFormFieldCell.m
 
 //
 //  Created by Elvis Nunez on 07/10/14.
@@ -8,8 +8,8 @@
 
 #import "HYPBaseFormFieldCell.h"
 
-static const CGFloat REMATextFormFieldCellLabelMarginTop = 10.0f;
-static const CGFloat REMATextFormFieldCellLabelHeight = 20.0f;
+static const CGFloat HYPTextFormFieldCellLabelMarginTop = 10.0f;
+static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
 
 @implementation HYPBaseFormFieldCell
 
@@ -34,7 +34,7 @@ static const CGFloat REMATextFormFieldCellLabelHeight = 20.0f;
     [self updateFieldWithDisabled:disabled];
 }
 
-- (void)setField:(REMAFormField *)field
+- (void)setField:(HYPFormField *)field
 {
     _field = field;
 
@@ -62,7 +62,7 @@ static const CGFloat REMATextFormFieldCellLabelHeight = 20.0f;
     abort();
 }
 
-- (void)updateWithField:(REMAFormField *)field
+- (void)updateWithField:(HYPFormField *)field
 {
     abort();
 }
@@ -83,11 +83,11 @@ static const CGFloat REMATextFormFieldCellLabelHeight = 20.0f;
 
 - (CGRect)frameForHeadingLabel
 {
-    CGFloat marginX = REMATextFormFieldCellMarginX;
-    CGFloat marginTop = REMATextFormFieldCellLabelMarginTop;
+    CGFloat marginX = HYPTextFormFieldCellMarginX;
+    CGFloat marginTop = HYPTextFormFieldCellLabelMarginTop;
 
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
-    CGFloat height = REMATextFormFieldCellLabelHeight;
+    CGFloat height = HYPTextFormFieldCellLabelHeight;
     CGRect frame = CGRectMake(marginX, marginTop, width, height);
 
     return frame;

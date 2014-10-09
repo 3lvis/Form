@@ -10,34 +10,34 @@
 
 @interface UIColor (Colors)
 
-+ (UIColor *)remaCoreBlue;
-+ (UIColor *)remaDarkBlue;
-+ (UIColor *)remaCallToAction;
-+ (UIColor *)remaCallToActionPressed;
-+ (UIColor *)remaBackground;
++ (UIColor *)HYPCoreBlue;
++ (UIColor *)HYPDarkBlue;
++ (UIColor *)HYPCallToAction;
++ (UIColor *)HYPCallToActionPressed;
++ (UIColor *)HYPBackground;
 
-+ (UIColor *)remaLightGray;
-+ (UIColor *)remaDarkGray;
++ (UIColor *)HYPLightGray;
++ (UIColor *)HYPDarkGray;
 
-+ (UIColor *)remaFieldForeground;
-+ (UIColor *)remaFieldForegroundActive;
-+ (UIColor *)remaFieldForegroundInvalid;
-+ (UIColor *)remaFieldForegroundDisabled;
++ (UIColor *)HYPFieldForeground;
++ (UIColor *)HYPFieldForegroundActive;
++ (UIColor *)HYPFieldForegroundInvalid;
++ (UIColor *)HYPFieldForegroundDisabled;
 
-+ (UIColor *)remaFieldBackground;
-+ (UIColor *)remaFieldBackgroundActive;
-+ (UIColor *)remaFieldBackgroundInvalid;
-+ (UIColor *)remaFieldBackgroundDisabled;
++ (UIColor *)HYPFieldBackground;
++ (UIColor *)HYPFieldBackgroundActive;
++ (UIColor *)HYPFieldBackgroundInvalid;
++ (UIColor *)HYPFieldBackgroundDisabled;
 
-+ (UIColor *)remaFieldBorder;
-+ (UIColor *)remaFieldBorderActive;
-+ (UIColor *)remaFieldBorderInvalid;
-+ (UIColor *)remaFieldBorderDisabled;
++ (UIColor *)HYPFieldBorder;
++ (UIColor *)HYPFieldBorderActive;
++ (UIColor *)HYPFieldBorderInvalid;
++ (UIColor *)HYPFieldBorderDisabled;
 
-+ (UIColor *)remaBlue;
-+ (UIColor *)remaGreen;
-+ (UIColor *)remaYellow;
-+ (UIColor *)remaRed;
++ (UIColor *)HYPBlue;
++ (UIColor *)HYPGreen;
++ (UIColor *)HYPYellow;
++ (UIColor *)HYPRed;
 
 + (UIColor *)tableCellBackground;
 + (UIColor *)tableCellBorder;
@@ -48,6 +48,6 @@
 + (UIColor *)messageViewForeground;
 + (UIColor *)messageViewBackground;
 
-+ (UIColor *)remaShadowColor;
++ (UIColor *)HYPShadowColor;
 
 @end

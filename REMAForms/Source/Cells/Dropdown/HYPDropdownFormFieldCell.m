@@ -1,5 +1,5 @@
 //
-//  REMADropdownFormFieldCell.m
+//  HYPDropdownFormFieldCell.m
 
 //
 //  Created by Elvis Nunez on 08/10/14.
@@ -8,13 +8,13 @@
 
 #import "HYPDropdownFormFieldCell.h"
 
-#import "REMAFieldValue.h"
+#import "HYPFieldValue.h"
 #import "HYPFieldValuesTableViewController.h"
 
-static const CGFloat REMADropdownFormIconWidth = 38.0f;
-static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0f };
+static const CGFloat HYPDropdownFormIconWidth = 38.0f;
+static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f };
 
-@interface HYPDropdownFormFieldCell () <REMATextFormFieldDelegate, REMAFieldValuesTableViewControllerDelegate>
+@interface HYPDropdownFormFieldCell () <HYPTextFormFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *iconImageView;
 
@@ -29,7 +29,7 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame contentViewController:self.fieldValuesController
-                 andContentSize:REMADropdownPopoverSize];
+                 andContentSize:HYPDropdownPopoverSize];
     if (!self) return nil;
 
     [self.contentView addSubview:self.iconImageView];
@@ -63,7 +63,7 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
 
 #pragma mark - Private headers
 
-- (void)updateWithField:(REMAFormField *)field
+- (void)updateWithField:(HYPFormField *)field
 {
     [super updateWithField:field];
 
@@ -75,7 +75,7 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
     NSLog(@"validation in progress");
 }
 
-- (void)updateContentViewController:(UIViewController *)contentViewController withField:(REMAFormField *)field
+- (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     self.fieldValuesController.field = self.field;
 }
@@ -92,16 +92,16 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
 - (CGRect)frameForIconImageView
 {
     CGRect frame = self.textField.frame;
-    frame.origin.x = frame.size.width - REMADropdownFormIconWidth;
-    frame.size.width = REMADropdownFormIconWidth;
+    frame.origin.x = frame.size.width - HYPDropdownFormIconWidth;
+    frame.size.width = HYPDropdownFormIconWidth;
 
     return frame;
 }
 
-#pragma mark - REMAFieldValuesTableViewControllerDelegate
+#pragma mark - HYPFieldValuesTableViewControllerDelegate
 
 - (void)fieldValuesTableViewController:(HYPFieldValuesTableViewController *)fieldValuesTableViewController
-                      didSelectedValue:(REMAFieldValue *)selectedValue
+                      didSelectedValue:(HYPFieldValue *)selectedValue
 {
     self.field.fieldValue = selectedValue.title;
     [self updateWithField:self.field];

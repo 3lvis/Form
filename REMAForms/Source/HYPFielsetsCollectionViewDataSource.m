@@ -1,5 +1,5 @@
 //
-//  REMAFielsetsCollectionViewDataSource.m
+//  HYPFielsetsCollectionViewDataSource.m
 
 //
 //  Created by Elvis Nunez on 10/6/14.
@@ -30,17 +30,17 @@
     collectionView.dataSource = self;
 
     [collectionView registerClass:[HYPTextFormFieldCell class]
-       forCellWithReuseIdentifier:REMATextFormFieldCellIdentifier];
+       forCellWithReuseIdentifier:HYPTextFormFieldCellIdentifier];
 
     [collectionView registerClass:[HYPDropdownFormFieldCell class]
-       forCellWithReuseIdentifier:REMADropdownFormFieldCellIdentifier];
+       forCellWithReuseIdentifier:HYPDropdownFormFieldCellIdentifier];
 
     [collectionView registerClass:[HYPDateFormFieldCell class]
-       forCellWithReuseIdentifier:REMADateFormFieldCellIdentifier];
+       forCellWithReuseIdentifier:HYPDateFormFieldCellIdentifier];
 
     [collectionView registerClass:[HYPFieldsetHeaderView class]
        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-              withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier];
+              withReuseIdentifier:HYPFieldsetHeaderReuseIdentifier];
 
     return self;
 }
@@ -51,7 +51,7 @@
 {
     if (_fieldsets) return _fieldsets;
 
-    _fieldsets = [REMAFieldset fieldsets];
+    _fieldsets = [HYPFieldset fieldsets];
 
     return _fieldsets;
 }
@@ -74,7 +74,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    REMAFieldset *fieldset = self.fieldsets[section];
+    HYPFieldset *fieldset = self.fieldsets[section];
     if ([self.collapsedFieldsets containsObject:@(section)]) {
         return 0;
     }
@@ -85,26 +85,26 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    REMAFieldset *fieldset = self.fieldsets[indexPath.section];
+    HYPFieldset *fieldset = self.fieldsets[indexPath.section];
     NSArray *fields = fieldset.fields;
-    REMAFormField *field = fields[indexPath.row];
+    HYPFormField *field = fields[indexPath.row];
 
     NSString *identifier;
 
     switch (field.type) {
-        case REMAFormFieldTypeDate:
-            identifier = REMADateFormFieldCellIdentifier;
+        case HYPFormFieldTypeDate:
+            identifier = HYPDateFormFieldCellIdentifier;
             break;
-        case REMAFormFieldTypeSelect:
-            identifier = REMADropdownFormFieldCellIdentifier;
+        case HYPFormFieldTypeSelect:
+            identifier = HYPDropdownFormFieldCellIdentifier;
             break;
 
-        case REMAFormFieldTypeDefault:
-        case REMAFormFieldTypeNone:
-        case REMAFormFieldTypeFloat:
-        case REMAFormFieldTypeNumber:
-        case REMAFormFieldTypePicture:
-            identifier = REMATextFormFieldCellIdentifier;
+        case HYPFormFieldTypeDefault:
+        case HYPFormFieldTypeNone:
+        case HYPFormFieldTypeFloat:
+        case HYPFormFieldTypeNumber:
+        case HYPFormFieldTypePicture:
+            identifier = HYPTextFormFieldCellIdentifier;
             break;
     }
     
@@ -123,10 +123,10 @@
 {
     if (kind == UICollectionElementKindSectionHeader) {
         HYPFieldsetHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                                  withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier
+                                                                                  withReuseIdentifier:HYPFieldsetHeaderReuseIdentifier
                                                                                          forIndexPath:indexPath];
 
-        REMAFieldset *fieldset = self.fieldsets[indexPath.section];
+        HYPFieldset *fieldset = self.fieldsets[indexPath.section];
         headerView.section = indexPath.section;
 
         if (self.configureHeaderViewBlock) {
@@ -136,8 +136,8 @@
         return headerView;
     }
 
-    HYPFielsetBackgroundView *backgroundView = [collectionView dequeueReusableSupplementaryViewOfKind:REMAFieldsetBackgroundKind
-                                                                                   withReuseIdentifier:REMAFieldsetBackgroundReuseIdentifier
+    HYPFielsetBackgroundView *backgroundView = [collectionView dequeueReusableSupplementaryViewOfKind:HYPFieldsetBackgroundKind
+                                                                                   withReuseIdentifier:HYPFieldsetBackgroundReuseIdentifier
                                                                                           forIndexPath:indexPath];
 
     return backgroundView;
@@ -150,7 +150,7 @@
     BOOL headerIsCollapsed = ([self.collapsedFieldsets containsObject:@(section)]);
 
     NSMutableArray *indexPaths = [NSMutableArray array];
-    REMAFieldset *fieldset = self.fieldsets[section];
+    HYPFieldset *fieldset = self.fieldsets[section];
 
     for (NSInteger i = 0; i < fieldset.fields.count; i++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:section];
@@ -170,22 +170,22 @@
 
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    REMAFieldset *fieldset = self.fieldsets[indexPath.section];
+    HYPFieldset *fieldset = self.fieldsets[indexPath.section];
 
     NSArray *fields = fieldset.fields;
 
     CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-    CGFloat deviceWidth = CGRectGetWidth(bounds) - (REMAFieldsetMarginHorizontal * 2);
+    CGFloat deviceWidth = CGRectGetWidth(bounds) - (HYPFieldsetMarginHorizontal * 2);
     CGFloat width = 0.0f;
     CGFloat height = 0.0f;
 
-    REMAFormField *field = fields[indexPath.row];
+    HYPFormField *field = fields[indexPath.row];
     if (field.sectionSeparator) {
         width = deviceWidth;
-        height = REMAFieldCellItemSmallHeight;
+        height = HYPFieldCellItemSmallHeight;
     } else {
         width = floor(deviceWidth * ([field.size floatValue] / 100.0f));
-        height = REMAFieldCellItemHeight;
+        height = HYPFieldCellItemHeight;
     }
 
     return CGSizeMake(width, height);

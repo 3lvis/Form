@@ -1,5 +1,5 @@
 //
-//  REMAFieldsetHeaderCollectionReusableView.h
+//  HYPFieldsetHeaderCollectionReusableView.h
 
 //
 //  Created by Elvis Nunez on 03/10/14.
@@ -8,24 +8,24 @@
 
 @import UIKit;
 
-static const CGFloat REMAFieldsetHeaderContentMargin = 10.0f;
-static const CGFloat REMAFieldsetTitleMargin = 20.0f;
-static const CGFloat REMAFieldsetHeaderHeight = 55.0f;
+static const CGFloat HYPFieldsetHeaderContentMargin = 10.0f;
+static const CGFloat HYPFieldsetTitleMargin = 20.0f;
+static const CGFloat HYPFieldsetHeaderHeight = 55.0f;
 
-static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeaderReuseIdentifier";
+static NSString * const HYPFieldsetHeaderReuseIdentifier = @"HYPFieldsetHeaderReuseIdentifier";
 
-@protocol REMAFieldsetHeaderViewDelegate;
+@protocol HYPFieldsetHeaderViewDelegate;
 
 @interface HYPFieldsetHeaderView : UICollectionReusableView
 
 @property (nonatomic, strong) UILabel *headerLabel;
 @property (nonatomic) NSInteger section;
 
-@property (nonatomic, weak) id <REMAFieldsetHeaderViewDelegate> delegate;
+@property (nonatomic, weak) id <HYPFieldsetHeaderViewDelegate> delegate;
 
 @end
 
-@protocol REMAFieldsetHeaderViewDelegate <NSObject>
+@protocol HYPFieldsetHeaderViewDelegate <NSObject>
 
 - (void)fieldsetHeaderViewWasPressed:(HYPFieldsetHeaderView *)headerView;
 

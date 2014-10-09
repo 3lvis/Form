@@ -1,5 +1,5 @@
 //
-//  REMAFormFieldHeadingLabel.m
+//  HYPFormFieldHeadingLabel.m
 
 //
 //  Created by Elvis Nunez on 07/10/14.
@@ -18,7 +18,7 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.font = [UIFont REMASmallSize];
+    self.font = [UIFont HYPSmallSize];
     self.textColor = [UIColor colorFromHex:@"28649C"];
 
     return self;

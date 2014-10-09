@@ -1,5 +1,5 @@
 //
-//  REMAFielsetBackgroundCollectionReusableView.m
+//  HYPFielsetBackgroundCollectionReusableView.m
 
 //
 //  Created by Elvis Nunez on 10/6/14.

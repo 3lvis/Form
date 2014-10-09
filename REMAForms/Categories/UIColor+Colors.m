@@ -14,117 +14,117 @@
 
 #pragma mark - Color scheme
 
-+ (UIColor *)remaCoreBlue
++ (UIColor *)HYPCoreBlue
 {
     return [UIColor colorFromHex:@"28649C"];
 }
 
-+ (UIColor *)remaDarkBlue
++ (UIColor *)HYPDarkBlue
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)remaCallToAction
++ (UIColor *)HYPCallToAction
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)remaCallToActionPressed
++ (UIColor *)HYPCallToActionPressed
 {
     return [UIColor colorFromHex:@"008ED9"];
 }
 
-+ (UIColor *)remaBackground
++ (UIColor *)HYPBackground
 {
     return [UIColor colorFromHex:@"DAE2EA"];
 }
 
-+ (UIColor *)remaLightGray
++ (UIColor *)HYPLightGray
 {
     return [UIColor colorFromHex:@"F5F5F8"];
 }
 
-+ (UIColor *)remaDarkGray
++ (UIColor *)HYPDarkGray
 {
     return [UIColor colorFromHex:@"979797"];
 }
 
-+ (UIColor *)remaFieldForeground
++ (UIColor *)HYPFieldForeground
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)remaFieldForegroundActive
++ (UIColor *)HYPFieldForegroundActive
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)remaFieldForegroundInvalid
++ (UIColor *)HYPFieldForegroundInvalid
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)remaFieldForegroundDisabled
++ (UIColor *)HYPFieldForegroundDisabled
 {
     return [UIColor colorFromHex:@"C6C6C6"];
 }
 
-+ (UIColor *)remaFieldBackground
++ (UIColor *)HYPFieldBackground
 {
     return [UIColor colorFromHex:@"E1F5FF"];
 }
 
-+ (UIColor *)remaFieldBackgroundActive
++ (UIColor *)HYPFieldBackgroundActive
 {
     return [UIColor colorFromHex:@"C0EAFF"];
 }
 
-+ (UIColor *)remaFieldBackgroundInvalid
++ (UIColor *)HYPFieldBackgroundInvalid
 {
     return [UIColor colorFromHex:@"FFD7D7"];
 }
 
-+ (UIColor *)remaFieldBackgroundDisabled
++ (UIColor *)HYPFieldBackgroundDisabled
 {
     return [UIColor colorFromHex:@"FFFFFF"];
 }
 
-+ (UIColor *)remaFieldBorder
++ (UIColor *)HYPFieldBorder
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)remaFieldBorderActive
++ (UIColor *)HYPFieldBorderActive
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)remaFieldBorderInvalid
++ (UIColor *)HYPFieldBorderInvalid
 {
     return [UIColor colorFromHex:@"EC3031"];
 }
 
-+ (UIColor *)remaFieldBorderDisabled
++ (UIColor *)HYPFieldBorderDisabled
 {
     return [UIColor colorFromHex:@"C6C6C6"];
 }
 
-+ (UIColor *)remaBlue
++ (UIColor *)HYPBlue
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)remaGreen
++ (UIColor *)HYPGreen
 {
     return [UIColor colorFromHex:@"69C204"];
 }
 
-+ (UIColor *)remaYellow
++ (UIColor *)HYPYellow
 {
     return [UIColor colorFromHex:@"FEC22E"];
 }
 
-+ (UIColor *)remaRed
++ (UIColor *)HYPRed
 {
     return [UIColor colorFromHex:@"EC3031"];
 }
@@ -138,17 +138,17 @@
 
 + (UIColor *)tableCellBorder
 {
-    return [UIColor remaDarkBlue];
+    return [UIColor HYPDarkBlue];
 }
 
 + (UIColor *)borderColor
 {
-    return [UIColor remaBlue];
+    return [UIColor HYPBlue];
 }
 
 + (UIColor *)windowBackgroundColor
 {
-    return [UIColor remaBackground];
+    return [UIColor HYPBackground];
 }
 
 + (UIColor *)navigationForgroundColor
@@ -158,7 +158,7 @@
 
 + (UIColor *)navigationBackgroundColor
 {
-    return [UIColor remaCoreBlue];
+    return [UIColor HYPCoreBlue];
 }
 
 + (UIColor *)messageViewForeground
@@ -168,10 +168,10 @@
 
 + (UIColor *)messageViewBackground
 {
-    return [UIColor remaRed];
+    return [UIColor HYPRed];
 }
 
-+ (UIColor *)remaShadowColor
++ (UIColor *)HYPShadowColor
 {
     return [UIColor colorWithRed: 0.271 green: 0.361 blue: 0.451 alpha: 0.46];
 }

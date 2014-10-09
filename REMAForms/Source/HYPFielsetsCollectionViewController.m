@@ -1,5 +1,5 @@
 //
-//  REMAFielsetsCollectionViewController.m
+//  HYPFielsetsCollectionViewController.m
 
 //
 //  Created by Elvis Nunez on 03/10/14.
@@ -15,13 +15,13 @@
 
 #import "HYPBaseFormFieldCell.h"
 
-#import "REMAFieldset.h"
-#import "REMAFormField.h"
+#import "HYPFieldset.h"
+#import "HYPFormField.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
-@interface HYPFielsetsCollectionViewController () <REMAFieldsetHeaderViewDelegate>
+@interface HYPFielsetsCollectionViewController () <HYPFieldsetHeaderViewDelegate>
 
 @property (nonatomic, strong) HYPFielsetsCollectionViewDataSource *dataSource;
 
@@ -51,7 +51,7 @@
 
     _dataSource.configureCellBlock = ^(HYPBaseFormFieldCell *cell,
                                        NSIndexPath *indexPath,
-                                       REMAFormField *field) {
+                                       HYPFormField *field) {
         cell.field = field;
 
         if (field.sectionSeparator) {
@@ -65,7 +65,7 @@
     _dataSource.configureHeaderViewBlock = ^(HYPFieldsetHeaderView *headerView,
                                              NSString *kind,
                                              NSIndexPath *indexPath,
-                                             REMAFieldset *fieldset) {
+                                             HYPFieldset *fieldset) {
         headerView.headerLabel.text = fieldset.title;
         headerView.delegate = weakSelf;
     };
@@ -84,7 +84,7 @@
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 }
 
-#pragma mark - REMAFieldsetHeaderViewDelegate
+#pragma mark - HYPFieldsetHeaderViewDelegate
 
 - (void)fieldsetHeaderViewWasPressed:(HYPFieldsetHeaderView *)headerView
 {
@@ -97,7 +97,7 @@
 referenceSizeForHeaderInSection:(NSInteger)section
 {
     CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-    return CGSizeMake(CGRectGetWidth(bounds), REMAFieldsetHeaderHeight);
+    return CGSizeMake(CGRectGetWidth(bounds), HYPFieldsetHeaderHeight);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout

@@ -1,5 +1,5 @@
 //
-//  REMATextFormFieldCell.h
+//  HYPTextFormFieldCell.h
 
 //
 //  Created by Elvis Nunez on 07/10/14.
@@ -10,7 +10,7 @@
 
 #import "HYPBaseFormFieldCell.h"
 
-static NSString * const REMATextFormFieldCellIdentifier = @"REMATextFormFieldCellIdentifier";
+static NSString * const HYPTextFormFieldCellIdentifier = @"HYPTextFormFieldCellIdentifier";
 
 @interface HYPTextFormFieldCell : HYPBaseFormFieldCell
 

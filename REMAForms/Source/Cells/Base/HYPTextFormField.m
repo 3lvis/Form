@@ -1,5 +1,5 @@
 //
-//  REMATextField.m
+//  HYPTextField.m
 
 //
 //  Created by Elvis Nunez on 07/10/14.
@@ -37,7 +37,7 @@
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-    self.font = [UIFont REMATextFieldFont];
+    self.font = [UIFont HYPTextFieldFont];
     self.textColor = [UIColor colorFromHex:@"455C73"];
 
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 20.0f)];
@@ -85,7 +85,7 @@
         self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
         self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
     } else {
-        self.backgroundColor = [UIColor remaFieldBackgroundInvalid];
+        self.backgroundColor = [UIColor HYPFieldBackgroundInvalid];
         self.layer.borderColor = [UIColor colorFromHex:@"EC3031"].CGColor;
     }
 }
@@ -94,31 +94,31 @@
 {
     _typeString = typeString;
 
-    REMATextFieldType type;
+    HYPTextFieldType type;
     if ([typeString isEqualToString:@"name"]) {
-        type = REMATextFieldTypeName;
+        type = HYPTextFieldTypeName;
     } else if ([typeString isEqualToString:@"username"]) {
-        type = REMATextFieldTypeUsername;
+        type = HYPTextFieldTypeUsername;
     } else if ([typeString isEqualToString:@"phone"]) {
-        type = REMATextFieldTypePhoneNumber;
+        type = HYPTextFieldTypePhoneNumber;
     } else if ([typeString isEqualToString:@"number"]) {
-        type = REMATextFieldTypeNumber;
+        type = HYPTextFieldTypeNumber;
     } else if ([typeString isEqualToString:@"address"]) {
-        type = REMATextFieldTypeAddress;
+        type = HYPTextFieldTypeAddress;
     } else if ([typeString isEqualToString:@"email"]) {
-        type = REMATextFieldTypeEmail;
+        type = HYPTextFieldTypeEmail;
     } else if ([typeString isEqualToString:@"date"]) {
-        type = REMATextFieldTypeDate;
+        type = HYPTextFieldTypeDate;
     } else if ([typeString isEqualToString:@"select"]) {
-        type = REMATextFieldTypeDropdown;
+        type = HYPTextFieldTypeDropdown;
     } else {
-        type = REMATextFieldTypeDefault;
+        type = HYPTextFieldTypeDefault;
     }
 
     self.type = type;
 }
 
-- (void)setType:(REMATextFieldType)type
+- (void)setType:(HYPTextFieldType)type
 {
     _type = type;
 
@@ -141,7 +141,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(HYPTextFormField *)textField
 {
-    BOOL selectable = (textField.type == REMATextFieldTypeDropdown || textField.type == REMATextFieldTypeDate);
+    BOOL selectable = (textField.type == HYPTextFieldTypeDropdown || textField.type == HYPTextFieldTypeDate);
 
     if (selectable) {
         if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {

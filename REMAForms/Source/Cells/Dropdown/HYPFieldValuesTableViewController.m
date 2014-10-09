@@ -1,5 +1,5 @@
 //
-//  REMAFieldValuesTableViewController.m
+//  HYPFieldValuesTableViewController.m
 
 //
 //  Created by Elvis Nunez on 03/09/14.
@@ -8,13 +8,13 @@
 
 #import "HYPFieldValuesTableViewController.h"
 
-#import "REMAFieldValue.h"
-#import "REMAFormField.h"
+#import "HYPFieldValue.h"
+#import "HYPFormField.h"
 
 #import "UIFont+Styles.h"
 #import "UIColor+Colors.h"
 
-static NSString * const REMADropdownCellIdentifier = @"REMADropdownCellIdentifier";
+static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier";
 
 @interface HYPFieldValuesTableViewController ()
 
@@ -26,7 +26,7 @@ static NSString * const REMADropdownCellIdentifier = @"REMADropdownCellIdentifie
 
 #pragma mark - Setters
 
-- (void)setField:(REMAFormField *)field
+- (void)setField:(HYPFormField *)field
 {
     _field = field;
 
@@ -43,7 +43,7 @@ static NSString * const REMADropdownCellIdentifier = @"REMADropdownCellIdentifie
 
     self.clearsSelectionOnViewWillAppear = NO;
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:REMADropdownCellIdentifier];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:HYPDropdownCellIdentifier];
 }
 
 #pragma mark - Table View Data Source
@@ -55,9 +55,9 @@ static NSString * const REMADropdownCellIdentifier = @"REMADropdownCellIdentifie
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:REMADropdownCellIdentifier];
-    cell.textLabel.font = [UIFont REMAMediumSize];
-    cell.textLabel.textColor = [UIColor remaDarkBlue];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HYPDropdownCellIdentifier];
+    cell.textLabel.font = [UIFont HYPMediumSize];
+    cell.textLabel.textColor = [UIColor HYPDarkBlue];
     cell.textLabel.highlightedTextColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
 
@@ -65,10 +65,10 @@ static NSString * const REMADropdownCellIdentifier = @"REMADropdownCellIdentifie
     cell.backgroundColor = [UIColor whiteColor];
 
     UIView *selectedBackgroundView = [[UIView alloc] init];
-    selectedBackgroundView.backgroundColor = [UIColor remaCallToActionPressed];
+    selectedBackgroundView.backgroundColor = [UIColor HYPCallToActionPressed];
     cell.selectedBackgroundView = selectedBackgroundView;
 
-    REMAFieldValue *fieldValue = self.values[indexPath.row];
+    HYPFieldValue *fieldValue = self.values[indexPath.row];
     cell.textLabel.text = fieldValue.title;
 
     if ([self.field.fieldValue isEqualToString:fieldValue.title]) {
@@ -80,7 +80,7 @@ static NSString * const REMADropdownCellIdentifier = @"REMADropdownCellIdentifie
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    REMAFieldValue *fieldValue = self.values[indexPath.row];
+    HYPFieldValue *fieldValue = self.values[indexPath.row];
 
     if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
         [self.delegate fieldValuesTableViewController:self didSelectedValue:fieldValue];

@@ -8,24 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		142E4D3F19E3419900C22B7E /* UIColor+Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 142E4D3E19E3419900C22B7E /* UIColor+Colors.m */; };
-		146D7AA819E0983C004A31CE /* REMABankAccountNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AA119E0983C004A31CE /* REMABankAccountNumberFormatter.m */; };
-		146D7AA919E0983C004A31CE /* REMAFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AA319E0983C004A31CE /* REMAFormatter.m */; };
-		146D7AAA19E0983C004A31CE /* REMAPhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AA519E0983C004A31CE /* REMAPhoneNumberFormatter.m */; };
-		146D7AAB19E0983C004A31CE /* REMASocialSecurityNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AA719E0983C004A31CE /* REMASocialSecurityNumberFormatter.m */; };
-		146D7ABD19E09853004A31CE /* REMABankAccountNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AAE19E09853004A31CE /* REMABankAccountNumberInputValidator.m */; };
-		146D7ABE19E09853004A31CE /* REMAFloatInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AB019E09853004A31CE /* REMAFloatInputValidator.m */; };
-		146D7ABF19E09853004A31CE /* REMAInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AB219E09853004A31CE /* REMAInputValidator.m */; };
-		146D7AC019E09853004A31CE /* REMANameInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AB419E09853004A31CE /* REMANameInputValidator.m */; };
-		146D7AC119E09853004A31CE /* REMANumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AB619E09853004A31CE /* REMANumberInputValidator.m */; };
-		146D7AC219E09853004A31CE /* REMAPhoneNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AB819E09853004A31CE /* REMAPhoneNumberInputValidator.m */; };
-		146D7AC319E09853004A31CE /* REMAPostalCodeInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7ABA19E09853004A31CE /* REMAPostalCodeInputValidator.m */; };
-		146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7ABC19E09853004A31CE /* REMASocialSecurityNumberInputValidator.m */; };
 		146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AD119E09953004A31CE /* NSString+ZENInflections.m */; };
-		146DEA3819E0929B00D9E3FF /* REMAFieldRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA2D19E0929B00D9E3FF /* REMAFieldRule.m */; };
-		146DEA3919E0929B00D9E3FF /* REMAFieldset.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA2F19E0929B00D9E3FF /* REMAFieldset.m */; };
-		146DEA3A19E0929B00D9E3FF /* REMAFieldValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA3119E0929B00D9E3FF /* REMAFieldValue.m */; };
-		146DEA3B19E0929B00D9E3FF /* REMAFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA3319E0929B00D9E3FF /* REMAFormField.m */; };
-		146DEA3C19E0929B00D9E3FF /* REMAFormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA3519E0929B00D9E3FF /* REMAFormSection.m */; };
+		146DEA3819E0929B00D9E3FF /* HYPFieldRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA2D19E0929B00D9E3FF /* HYPFieldRule.m */; };
+		146DEA3919E0929B00D9E3FF /* HYPFieldset.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA2F19E0929B00D9E3FF /* HYPFieldset.m */; };
+		146DEA3A19E0929B00D9E3FF /* HYPFieldValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA3119E0929B00D9E3FF /* HYPFieldValue.m */; };
+		146DEA3B19E0929B00D9E3FF /* HYPFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA3319E0929B00D9E3FF /* HYPFormField.m */; };
+		146DEA3C19E0929B00D9E3FF /* HYPFormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA3519E0929B00D9E3FF /* HYPFormSection.m */; };
 		1478934C19DFCC9000BC2497 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 1478934B19DFCC9000BC2497 /* forms.json */; };
 		441B77A619DEC4F4006AF67C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A519DEC4F4006AF67C /* main.m */; };
 		441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A819DEC4F4006AF67C /* AppDelegate.m */; };
@@ -40,7 +28,19 @@
 		445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */; };
 		445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */; };
 		446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */; };
-		44D6B64519E577A80009BB07 /* REMAValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D6B64419E577A80009BB07 /* REMAValidator.m */; };
+		447BCA9119E6CBD100E6838A /* HYPBankAccountNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA7919E6CBD100E6838A /* HYPBankAccountNumberFormatter.m */; };
+		447BCA9219E6CBD100E6838A /* HYPFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA7B19E6CBD100E6838A /* HYPFormatter.m */; };
+		447BCA9319E6CBD100E6838A /* HYPPhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA7D19E6CBD100E6838A /* HYPPhoneNumberFormatter.m */; };
+		447BCA9419E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA7F19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m */; };
+		447BCA9519E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8219E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m */; };
+		447BCA9619E6CBD100E6838A /* HYPFloatInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8419E6CBD100E6838A /* HYPFloatInputValidator.m */; };
+		447BCA9719E6CBD100E6838A /* HYPInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8619E6CBD100E6838A /* HYPInputValidator.m */; };
+		447BCA9819E6CBD100E6838A /* HYPNameInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8819E6CBD100E6838A /* HYPNameInputValidator.m */; };
+		447BCA9919E6CBD100E6838A /* HYPNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8A19E6CBD100E6838A /* HYPNumberInputValidator.m */; };
+		447BCA9A19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8C19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m */; };
+		447BCA9B19E6CBD100E6838A /* HYPPostalCodeInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8E19E6CBD100E6838A /* HYPPostalCodeInputValidator.m */; };
+		447BCA9C19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA9019E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m */; };
+		44D6B64519E577A80009BB07 /* HYPValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D6B64419E577A80009BB07 /* HYPValidator.m */; };
 		44D6B66C19E5780F0009BB07 /* HYPBaseFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D6B64A19E5780F0009BB07 /* HYPBaseFormFieldCell.m */; };
 		44D6B66E19E5780F0009BB07 /* HYPFormFieldHeadingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D6B64E19E5780F0009BB07 /* HYPFormFieldHeadingLabel.m */; };
 		44D6B66F19E5780F0009BB07 /* HYPPopoverFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D6B65019E5780F0009BB07 /* HYPPopoverFormFieldCell.m */; };
@@ -61,42 +61,18 @@
 /* Begin PBXFileReference section */
 		142E4D3D19E3419900C22B7E /* UIColor+Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Colors.h"; sourceTree = "<group>"; };
 		142E4D3E19E3419900C22B7E /* UIColor+Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Colors.m"; sourceTree = "<group>"; };
-		146D7AA019E0983C004A31CE /* REMABankAccountNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMABankAccountNumberFormatter.h; sourceTree = "<group>"; };
-		146D7AA119E0983C004A31CE /* REMABankAccountNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMABankAccountNumberFormatter.m; sourceTree = "<group>"; };
-		146D7AA219E0983C004A31CE /* REMAFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFormatter.h; sourceTree = "<group>"; };
-		146D7AA319E0983C004A31CE /* REMAFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFormatter.m; sourceTree = "<group>"; };
-		146D7AA419E0983C004A31CE /* REMAPhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAPhoneNumberFormatter.h; sourceTree = "<group>"; };
-		146D7AA519E0983C004A31CE /* REMAPhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAPhoneNumberFormatter.m; sourceTree = "<group>"; };
-		146D7AA619E0983C004A31CE /* REMASocialSecurityNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMASocialSecurityNumberFormatter.h; sourceTree = "<group>"; };
-		146D7AA719E0983C004A31CE /* REMASocialSecurityNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMASocialSecurityNumberFormatter.m; sourceTree = "<group>"; };
-		146D7AAD19E09853004A31CE /* REMABankAccountNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMABankAccountNumberInputValidator.h; sourceTree = "<group>"; };
-		146D7AAE19E09853004A31CE /* REMABankAccountNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMABankAccountNumberInputValidator.m; sourceTree = "<group>"; };
-		146D7AAF19E09853004A31CE /* REMAFloatInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFloatInputValidator.h; sourceTree = "<group>"; };
-		146D7AB019E09853004A31CE /* REMAFloatInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFloatInputValidator.m; sourceTree = "<group>"; };
-		146D7AB119E09853004A31CE /* REMAInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAInputValidator.h; sourceTree = "<group>"; };
-		146D7AB219E09853004A31CE /* REMAInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAInputValidator.m; sourceTree = "<group>"; };
-		146D7AB319E09853004A31CE /* REMANameInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMANameInputValidator.h; sourceTree = "<group>"; };
-		146D7AB419E09853004A31CE /* REMANameInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMANameInputValidator.m; sourceTree = "<group>"; };
-		146D7AB519E09853004A31CE /* REMANumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMANumberInputValidator.h; sourceTree = "<group>"; };
-		146D7AB619E09853004A31CE /* REMANumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMANumberInputValidator.m; sourceTree = "<group>"; };
-		146D7AB719E09853004A31CE /* REMAPhoneNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAPhoneNumberInputValidator.h; sourceTree = "<group>"; };
-		146D7AB819E09853004A31CE /* REMAPhoneNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAPhoneNumberInputValidator.m; sourceTree = "<group>"; };
-		146D7AB919E09853004A31CE /* REMAPostalCodeInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAPostalCodeInputValidator.h; sourceTree = "<group>"; };
-		146D7ABA19E09853004A31CE /* REMAPostalCodeInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAPostalCodeInputValidator.m; sourceTree = "<group>"; };
-		146D7ABB19E09853004A31CE /* REMASocialSecurityNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMASocialSecurityNumberInputValidator.h; sourceTree = "<group>"; };
-		146D7ABC19E09853004A31CE /* REMASocialSecurityNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMASocialSecurityNumberInputValidator.m; sourceTree = "<group>"; };
 		146D7AD019E09953004A31CE /* NSString+ZENInflections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZENInflections.h"; sourceTree = "<group>"; };
 		146D7AD119E09953004A31CE /* NSString+ZENInflections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZENInflections.m"; sourceTree = "<group>"; };
-		146DEA2C19E0929B00D9E3FF /* REMAFieldRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldRule.h; sourceTree = "<group>"; };
-		146DEA2D19E0929B00D9E3FF /* REMAFieldRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldRule.m; sourceTree = "<group>"; };
-		146DEA2E19E0929B00D9E3FF /* REMAFieldset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldset.h; sourceTree = "<group>"; };
-		146DEA2F19E0929B00D9E3FF /* REMAFieldset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldset.m; sourceTree = "<group>"; };
-		146DEA3019E0929B00D9E3FF /* REMAFieldValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldValue.h; sourceTree = "<group>"; };
-		146DEA3119E0929B00D9E3FF /* REMAFieldValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFieldValue.m; sourceTree = "<group>"; };
-		146DEA3219E0929B00D9E3FF /* REMAFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFormField.h; sourceTree = "<group>"; };
-		146DEA3319E0929B00D9E3FF /* REMAFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFormField.m; sourceTree = "<group>"; };
-		146DEA3419E0929B00D9E3FF /* REMAFormSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFormSection.h; sourceTree = "<group>"; };
-		146DEA3519E0929B00D9E3FF /* REMAFormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAFormSection.m; sourceTree = "<group>"; };
+		146DEA2C19E0929B00D9E3FF /* HYPFieldRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFieldRule.h; sourceTree = "<group>"; };
+		146DEA2D19E0929B00D9E3FF /* HYPFieldRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFieldRule.m; sourceTree = "<group>"; };
+		146DEA2E19E0929B00D9E3FF /* HYPFieldset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFieldset.h; sourceTree = "<group>"; };
+		146DEA2F19E0929B00D9E3FF /* HYPFieldset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFieldset.m; sourceTree = "<group>"; };
+		146DEA3019E0929B00D9E3FF /* HYPFieldValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFieldValue.h; sourceTree = "<group>"; };
+		146DEA3119E0929B00D9E3FF /* HYPFieldValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFieldValue.m; sourceTree = "<group>"; };
+		146DEA3219E0929B00D9E3FF /* HYPFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormField.h; sourceTree = "<group>"; };
+		146DEA3319E0929B00D9E3FF /* HYPFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormField.m; sourceTree = "<group>"; };
+		146DEA3419E0929B00D9E3FF /* HYPFormSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormSection.h; sourceTree = "<group>"; };
+		146DEA3519E0929B00D9E3FF /* HYPFormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormSection.m; sourceTree = "<group>"; };
 		1478934B19DFCC9000BC2497 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
 		441B77A019DEC4F3006AF67C /* HYPForms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYPForms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		441B77A419DEC4F4006AF67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,8 +93,32 @@
 		445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_arrow_down@2x.png"; sourceTree = "<group>"; };
 		446364CB19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+HYPLiveBounds.h"; sourceTree = "<group>"; };
 		446364CC19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+HYPLiveBounds.m"; sourceTree = "<group>"; };
-		44D6B64319E577A80009BB07 /* REMAValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REMAValidator.h; path = ../../../REMAforms/REMAForms/Form/REMAValidator.h; sourceTree = "<group>"; };
-		44D6B64419E577A80009BB07 /* REMAValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = REMAValidator.m; path = ../../../REMAforms/REMAForms/Form/REMAValidator.m; sourceTree = "<group>"; };
+		447BCA7819E6CBD100E6838A /* HYPBankAccountNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberFormatter.h; sourceTree = "<group>"; };
+		447BCA7919E6CBD100E6838A /* HYPBankAccountNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberFormatter.m; sourceTree = "<group>"; };
+		447BCA7A19E6CBD100E6838A /* HYPFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormatter.h; sourceTree = "<group>"; };
+		447BCA7B19E6CBD100E6838A /* HYPFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormatter.m; sourceTree = "<group>"; };
+		447BCA7C19E6CBD100E6838A /* HYPPhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPhoneNumberFormatter.h; sourceTree = "<group>"; };
+		447BCA7D19E6CBD100E6838A /* HYPPhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPhoneNumberFormatter.m; sourceTree = "<group>"; };
+		447BCA7E19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSocialSecurityNumberFormatter.h; sourceTree = "<group>"; };
+		447BCA7F19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberFormatter.m; sourceTree = "<group>"; };
+		447BCA8119E6CBD100E6838A /* HYPBankAccountNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberInputValidator.h; sourceTree = "<group>"; };
+		447BCA8219E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberInputValidator.m; sourceTree = "<group>"; };
+		447BCA8319E6CBD100E6838A /* HYPFloatInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFloatInputValidator.h; sourceTree = "<group>"; };
+		447BCA8419E6CBD100E6838A /* HYPFloatInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFloatInputValidator.m; sourceTree = "<group>"; };
+		447BCA8519E6CBD100E6838A /* HYPInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPInputValidator.h; sourceTree = "<group>"; };
+		447BCA8619E6CBD100E6838A /* HYPInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPInputValidator.m; sourceTree = "<group>"; };
+		447BCA8719E6CBD100E6838A /* HYPNameInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPNameInputValidator.h; sourceTree = "<group>"; };
+		447BCA8819E6CBD100E6838A /* HYPNameInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPNameInputValidator.m; sourceTree = "<group>"; };
+		447BCA8919E6CBD100E6838A /* HYPNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPNumberInputValidator.h; sourceTree = "<group>"; };
+		447BCA8A19E6CBD100E6838A /* HYPNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPNumberInputValidator.m; sourceTree = "<group>"; };
+		447BCA8B19E6CBD100E6838A /* HYPPhoneNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPhoneNumberInputValidator.h; sourceTree = "<group>"; };
+		447BCA8C19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPhoneNumberInputValidator.m; sourceTree = "<group>"; };
+		447BCA8D19E6CBD100E6838A /* HYPPostalCodeInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeInputValidator.h; sourceTree = "<group>"; };
+		447BCA8E19E6CBD100E6838A /* HYPPostalCodeInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeInputValidator.m; sourceTree = "<group>"; };
+		447BCA8F19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSocialSecurityNumberInputValidator.h; sourceTree = "<group>"; };
+		447BCA9019E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberInputValidator.m; sourceTree = "<group>"; };
+		44D6B64319E577A80009BB07 /* HYPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYPValidator.h; path = ../../../REMAforms/REMAForms/Form/HYPValidator.h; sourceTree = "<group>"; };
+		44D6B64419E577A80009BB07 /* HYPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYPValidator.m; path = ../../../REMAforms/REMAForms/Form/HYPValidator.m; sourceTree = "<group>"; };
 		44D6B64919E5780F0009BB07 /* HYPBaseFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBaseFormFieldCell.h; sourceTree = "<group>"; };
 		44D6B64A19E5780F0009BB07 /* HYPBaseFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBaseFormFieldCell.m; sourceTree = "<group>"; };
 		44D6B64D19E5780F0009BB07 /* HYPFormFieldHeadingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormFieldHeadingLabel.h; sourceTree = "<group>"; };
@@ -162,44 +162,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		146D7A9F19E0983C004A31CE /* Formatters */ = {
-			isa = PBXGroup;
-			children = (
-				146D7AA019E0983C004A31CE /* REMABankAccountNumberFormatter.h */,
-				146D7AA119E0983C004A31CE /* REMABankAccountNumberFormatter.m */,
-				146D7AA219E0983C004A31CE /* REMAFormatter.h */,
-				146D7AA319E0983C004A31CE /* REMAFormatter.m */,
-				146D7AA419E0983C004A31CE /* REMAPhoneNumberFormatter.h */,
-				146D7AA519E0983C004A31CE /* REMAPhoneNumberFormatter.m */,
-				146D7AA619E0983C004A31CE /* REMASocialSecurityNumberFormatter.h */,
-				146D7AA719E0983C004A31CE /* REMASocialSecurityNumberFormatter.m */,
-			);
-			path = Formatters;
-			sourceTree = "<group>";
-		};
-		146D7AAC19E09853004A31CE /* Input Validators */ = {
-			isa = PBXGroup;
-			children = (
-				146D7AAD19E09853004A31CE /* REMABankAccountNumberInputValidator.h */,
-				146D7AAE19E09853004A31CE /* REMABankAccountNumberInputValidator.m */,
-				146D7AAF19E09853004A31CE /* REMAFloatInputValidator.h */,
-				146D7AB019E09853004A31CE /* REMAFloatInputValidator.m */,
-				146D7AB119E09853004A31CE /* REMAInputValidator.h */,
-				146D7AB219E09853004A31CE /* REMAInputValidator.m */,
-				146D7AB319E09853004A31CE /* REMANameInputValidator.h */,
-				146D7AB419E09853004A31CE /* REMANameInputValidator.m */,
-				146D7AB519E09853004A31CE /* REMANumberInputValidator.h */,
-				146D7AB619E09853004A31CE /* REMANumberInputValidator.m */,
-				146D7AB719E09853004A31CE /* REMAPhoneNumberInputValidator.h */,
-				146D7AB819E09853004A31CE /* REMAPhoneNumberInputValidator.m */,
-				146D7AB919E09853004A31CE /* REMAPostalCodeInputValidator.h */,
-				146D7ABA19E09853004A31CE /* REMAPostalCodeInputValidator.m */,
-				146D7ABB19E09853004A31CE /* REMASocialSecurityNumberInputValidator.h */,
-				146D7ABC19E09853004A31CE /* REMASocialSecurityNumberInputValidator.m */,
-			);
-			path = "Input Validators";
-			sourceTree = "<group>";
-		};
 		146D7ACB19E09953004A31CE /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,18 +182,18 @@
 		146DEA2B19E0929B00D9E3FF /* Form */ = {
 			isa = PBXGroup;
 			children = (
-				44D6B64319E577A80009BB07 /* REMAValidator.h */,
-				44D6B64419E577A80009BB07 /* REMAValidator.m */,
-				146DEA2C19E0929B00D9E3FF /* REMAFieldRule.h */,
-				146DEA2D19E0929B00D9E3FF /* REMAFieldRule.m */,
-				146DEA2E19E0929B00D9E3FF /* REMAFieldset.h */,
-				146DEA2F19E0929B00D9E3FF /* REMAFieldset.m */,
-				146DEA3019E0929B00D9E3FF /* REMAFieldValue.h */,
-				146DEA3119E0929B00D9E3FF /* REMAFieldValue.m */,
-				146DEA3219E0929B00D9E3FF /* REMAFormField.h */,
-				146DEA3319E0929B00D9E3FF /* REMAFormField.m */,
-				146DEA3419E0929B00D9E3FF /* REMAFormSection.h */,
-				146DEA3519E0929B00D9E3FF /* REMAFormSection.m */,
+				44D6B64319E577A80009BB07 /* HYPValidator.h */,
+				44D6B64419E577A80009BB07 /* HYPValidator.m */,
+				146DEA2C19E0929B00D9E3FF /* HYPFieldRule.h */,
+				146DEA2D19E0929B00D9E3FF /* HYPFieldRule.m */,
+				146DEA2E19E0929B00D9E3FF /* HYPFieldset.h */,
+				146DEA2F19E0929B00D9E3FF /* HYPFieldset.m */,
+				146DEA3019E0929B00D9E3FF /* HYPFieldValue.h */,
+				146DEA3119E0929B00D9E3FF /* HYPFieldValue.m */,
+				146DEA3219E0929B00D9E3FF /* HYPFormField.h */,
+				146DEA3319E0929B00D9E3FF /* HYPFormField.m */,
+				146DEA3419E0929B00D9E3FF /* HYPFormSection.h */,
+				146DEA3519E0929B00D9E3FF /* HYPFormSection.m */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -256,12 +218,12 @@
 			isa = PBXGroup;
 			children = (
 				44D6B64619E577CC0009BB07 /* Source */,
+				447BCA7719E6CBD100E6838A /* Formatters */,
+				447BCA8019E6CBD100E6838A /* Input Validators */,
 				44D6B67C19E578490009BB07 /* Libraries */,
 				445DAF9219E52D76006F8052 /* Images */,
 				4441A9E219E2BBC50068498D /* Fonts */,
 				146D7ACB19E09953004A31CE /* Categories */,
-				146D7AAC19E09853004A31CE /* Input Validators */,
-				146D7A9F19E0983C004A31CE /* Formatters */,
 				146DEA2B19E0929B00D9E3FF /* Form */,
 				441B77A719DEC4F4006AF67C /* AppDelegate.h */,
 				441B77A819DEC4F4006AF67C /* AppDelegate.m */,
@@ -301,6 +263,46 @@
 			);
 			name = Images;
 			path = ../../REMAforms/REMAForms/Images;
+			sourceTree = "<group>";
+		};
+		447BCA7719E6CBD100E6838A /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				447BCA7819E6CBD100E6838A /* HYPBankAccountNumberFormatter.h */,
+				447BCA7919E6CBD100E6838A /* HYPBankAccountNumberFormatter.m */,
+				447BCA7A19E6CBD100E6838A /* HYPFormatter.h */,
+				447BCA7B19E6CBD100E6838A /* HYPFormatter.m */,
+				447BCA7C19E6CBD100E6838A /* HYPPhoneNumberFormatter.h */,
+				447BCA7D19E6CBD100E6838A /* HYPPhoneNumberFormatter.m */,
+				447BCA7E19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.h */,
+				447BCA7F19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m */,
+			);
+			name = Formatters;
+			path = ../../REMAforms/REMAForms/Formatters;
+			sourceTree = "<group>";
+		};
+		447BCA8019E6CBD100E6838A /* Input Validators */ = {
+			isa = PBXGroup;
+			children = (
+				447BCA8119E6CBD100E6838A /* HYPBankAccountNumberInputValidator.h */,
+				447BCA8219E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m */,
+				447BCA8319E6CBD100E6838A /* HYPFloatInputValidator.h */,
+				447BCA8419E6CBD100E6838A /* HYPFloatInputValidator.m */,
+				447BCA8519E6CBD100E6838A /* HYPInputValidator.h */,
+				447BCA8619E6CBD100E6838A /* HYPInputValidator.m */,
+				447BCA8719E6CBD100E6838A /* HYPNameInputValidator.h */,
+				447BCA8819E6CBD100E6838A /* HYPNameInputValidator.m */,
+				447BCA8919E6CBD100E6838A /* HYPNumberInputValidator.h */,
+				447BCA8A19E6CBD100E6838A /* HYPNumberInputValidator.m */,
+				447BCA8B19E6CBD100E6838A /* HYPPhoneNumberInputValidator.h */,
+				447BCA8C19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m */,
+				447BCA8D19E6CBD100E6838A /* HYPPostalCodeInputValidator.h */,
+				447BCA8E19E6CBD100E6838A /* HYPPostalCodeInputValidator.m */,
+				447BCA8F19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.h */,
+				447BCA9019E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m */,
+			);
+			name = "Input Validators";
+			path = "../../REMAforms/REMAForms/Input Validators";
 			sourceTree = "<group>";
 		};
 		44D6B64619E577CC0009BB07 /* Source */ = {
@@ -467,44 +469,44 @@
 			files = (
 				44D6B67919E5780F0009BB07 /* HYPFielsetsCollectionViewController.m in Sources */,
 				44D6B67419E5780F0009BB07 /* HYPDropdownFormFieldCell.m in Sources */,
+				447BCA9219E6CBD100E6838A /* HYPFormatter.m in Sources */,
 				44D6B67619E5780F0009BB07 /* HYPTextFormFieldCell.m in Sources */,
-				146D7AC319E09853004A31CE /* REMAPostalCodeInputValidator.m in Sources */,
 				44D6B66F19E5780F0009BB07 /* HYPPopoverFormFieldCell.m in Sources */,
 				441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */,
+				447BCA9619E6CBD100E6838A /* HYPFloatInputValidator.m in Sources */,
 				44D6B67319E5780F0009BB07 /* HYPDateFormFieldCell.m in Sources */,
-				146DEA3819E0929B00D9E3FF /* REMAFieldRule.m in Sources */,
+				146DEA3819E0929B00D9E3FF /* HYPFieldRule.m in Sources */,
+				447BCA9519E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m in Sources */,
 				44D6B67A19E5780F0009BB07 /* HYPFielsetsCollectionViewDataSource.m in Sources */,
-				146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */,
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
 				446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */,
+				447BCA9C19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m in Sources */,
+				447BCA9A19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m in Sources */,
 				44D6B66E19E5780F0009BB07 /* HYPFormFieldHeadingLabel.m in Sources */,
-				146DEA3C19E0929B00D9E3FF /* REMAFormSection.m in Sources */,
+				447BCA9B19E6CBD100E6838A /* HYPPostalCodeInputValidator.m in Sources */,
+				146DEA3C19E0929B00D9E3FF /* HYPFormSection.m in Sources */,
+				447BCA9719E6CBD100E6838A /* HYPInputValidator.m in Sources */,
 				4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */,
-				146D7ABD19E09853004A31CE /* REMABankAccountNumberInputValidator.m in Sources */,
-				146DEA3A19E0929B00D9E3FF /* REMAFieldValue.m in Sources */,
+				146DEA3A19E0929B00D9E3FF /* HYPFieldValue.m in Sources */,
+				447BCA9819E6CBD100E6838A /* HYPNameInputValidator.m in Sources */,
 				44D6B67B19E5780F0009BB07 /* HYPFielsetsLayout.m in Sources */,
-				146D7AA919E0983C004A31CE /* REMAFormatter.m in Sources */,
 				44D6B67719E5780F0009BB07 /* HYPFieldsetHeaderView.m in Sources */,
-				146DEA3B19E0929B00D9E3FF /* REMAFormField.m in Sources */,
+				146DEA3B19E0929B00D9E3FF /* HYPFormField.m in Sources */,
 				44D6B66C19E5780F0009BB07 /* HYPBaseFormFieldCell.m in Sources */,
+				447BCA9919E6CBD100E6838A /* HYPNumberInputValidator.m in Sources */,
 				44D6B67519E5780F0009BB07 /* HYPFieldValuesTableViewController.m in Sources */,
 				44D6B67119E5780F0009BB07 /* HYPTextFormField.m in Sources */,
-				146D7ABF19E09853004A31CE /* REMAInputValidator.m in Sources */,
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
-				146D7AA819E0983C004A31CE /* REMABankAccountNumberFormatter.m in Sources */,
-				44D6B64519E577A80009BB07 /* REMAValidator.m in Sources */,
+				447BCA9419E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m in Sources */,
+				44D6B64519E577A80009BB07 /* HYPValidator.m in Sources */,
+				447BCA9119E6CBD100E6838A /* HYPBankAccountNumberFormatter.m in Sources */,
 				4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */,
-				146D7AC019E09853004A31CE /* REMANameInputValidator.m in Sources */,
-				146D7AC119E09853004A31CE /* REMANumberInputValidator.m in Sources */,
+				447BCA9319E6CBD100E6838A /* HYPPhoneNumberFormatter.m in Sources */,
 				44D6B67819E5780F0009BB07 /* HYPFielsetBackgroundView.m in Sources */,
 				44D6B67F19E578490009BB07 /* HYPTimeViewController.m in Sources */,
-				146DEA3919E0929B00D9E3FF /* REMAFieldset.m in Sources */,
+				146DEA3919E0929B00D9E3FF /* HYPFieldset.m in Sources */,
 				44D6B67019E5780F0009BB07 /* HYPTextFieldTypeManager.m in Sources */,
-				146D7AAA19E0983C004A31CE /* REMAPhoneNumberFormatter.m in Sources */,
-				146D7ABE19E09853004A31CE /* REMAFloatInputValidator.m in Sources */,
-				146D7AAB19E0983C004A31CE /* REMASocialSecurityNumberFormatter.m in Sources */,
 				142E4D3F19E3419900C22B7E /* UIColor+Colors.m in Sources */,
-				146D7AC219E09853004A31CE /* REMAPhoneNumberInputValidator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

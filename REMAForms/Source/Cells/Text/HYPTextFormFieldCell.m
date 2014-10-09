@@ -1,5 +1,5 @@
 //
-//  REMATextFormFieldCell.m
+//  HYPTextFormFieldCell.m
 
 //
 //  Created by Elvis Nunez on 07/10/14.
@@ -8,7 +8,7 @@
 
 #import "HYPTextFormFieldCell.h"
 
-@interface HYPTextFormFieldCell () <REMATextFormFieldDelegate>
+@interface HYPTextFormFieldCell () <HYPTextFormFieldDelegate>
 
 @property (nonatomic, strong) HYPTextFormField *textField;
 
@@ -47,7 +47,7 @@
     self.textField.enabled = !disabled;
 }
 
-- (void)updateWithField:(REMAFormField *)field
+- (void)updateWithField:(HYPFormField *)field
 {
     self.textField.hidden = (field.sectionSeparator);
     self.textField.validator = [self.field validator];
@@ -72,9 +72,9 @@
 
 - (CGRect)frameForTextField
 {
-    CGFloat marginX = REMATextFormFieldCellMarginX;
-    CGFloat marginTop = REMATextFormFieldCellTextFieldMarginTop;
-    CGFloat marginBotton = REMATextFormFieldCellTextFieldMarginBottom;
+    CGFloat marginX = HYPTextFormFieldCellMarginX;
+    CGFloat marginTop = HYPTextFormFieldCellTextFieldMarginTop;
+    CGFloat marginBotton = HYPTextFormFieldCellTextFieldMarginBottom;
 
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
     CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;
@@ -83,7 +83,7 @@
     return frame;
 }
 
-#pragma mark - REMATextFormFieldDelegate
+#pragma mark - HYPTextFormFieldDelegate
 
 - (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
 {

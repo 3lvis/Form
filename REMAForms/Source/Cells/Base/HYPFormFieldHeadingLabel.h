@@ -1,5 +1,5 @@
 //
-//  REMAFormFieldHeadingLabel.h
+//  HYPFormFieldHeadingLabel.h
 
 //
 //  Created by Elvis Nunez on 07/10/14.

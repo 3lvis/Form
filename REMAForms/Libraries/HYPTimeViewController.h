@@ -1,6 +1,6 @@
 //
 //  HYPTimeViewController.h
-//  RemaDrifts
+//  HYPDrifts
 //
 //  Created by Elvis Nunez on 1/22/13.
 //  Copyright (c) 2013 Hyper. All rights reserved.
