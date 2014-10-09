@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMABaseFormFieldCell.h"
+#import "HYPBaseFormFieldCell.h"
 
-@interface REMAPopoverFormFieldCell : REMABaseFormFieldCell
+@interface HYPPopoverFormFieldCell : HYPBaseFormFieldCell
 
-@property (nonatomic, strong) REMATextFormField *textField;
+@property (nonatomic, strong) HYPTextFormField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 
 - (instancetype)initWithFrame:(CGRect)frame contentViewController:(UIViewController *)controller

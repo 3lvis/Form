@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface REMAFormFieldHeadingLabel : UILabel
+@interface HYPFormFieldHeadingLabel : UILabel
 
 @end

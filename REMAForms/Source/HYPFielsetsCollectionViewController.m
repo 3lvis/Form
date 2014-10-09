@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMAFielsetsCollectionViewController.h"
+#import "HYPFielsetsCollectionViewController.h"
 
-#import "REMAFieldsetHeaderView.h"
-#import "REMAFielsetBackgroundView.h"
-#import "REMAFielsetsLayout.h"
-#import "REMAFielsetsCollectionViewDataSource.h"
+#import "HYPFieldsetHeaderView.h"
+#import "HYPFielsetBackgroundView.h"
+#import "HYPFielsetsLayout.h"
+#import "HYPFielsetsCollectionViewDataSource.h"
 
-#import "REMABaseFormFieldCell.h"
+#import "HYPBaseFormFieldCell.h"
 
 #import "REMAFieldset.h"
 #import "REMAFormField.h"
@@ -21,17 +21,17 @@
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
-@interface REMAFielsetsCollectionViewController () <REMAFieldsetHeaderViewDelegate>
+@interface HYPFielsetsCollectionViewController () <REMAFieldsetHeaderViewDelegate>
 
-@property (nonatomic, strong) REMAFielsetsCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) HYPFielsetsCollectionViewDataSource *dataSource;
 
 @end
 
-@implementation REMAFielsetsCollectionViewController
+@implementation HYPFielsetsCollectionViewController
 
 #pragma mark - Initialization
 
-- (instancetype)initWithCollectionViewLayout:(REMAFielsetsLayout *)layout
+- (instancetype)initWithCollectionViewLayout:(HYPFielsetsLayout *)layout
 {
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
@@ -43,13 +43,13 @@
 
 #pragma mark - Getters
 
-- (REMAFielsetsCollectionViewDataSource *)dataSource
+- (HYPFielsetsCollectionViewDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[REMAFielsetsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView];
+    _dataSource = [[HYPFielsetsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView];
 
-    _dataSource.configureCellBlock = ^(REMABaseFormFieldCell *cell,
+    _dataSource.configureCellBlock = ^(HYPBaseFormFieldCell *cell,
                                        NSIndexPath *indexPath,
                                        REMAFormField *field) {
         cell.field = field;
@@ -62,7 +62,7 @@
     };
 
     __weak id weakSelf = self;
-    _dataSource.configureHeaderViewBlock = ^(REMAFieldsetHeaderView *headerView,
+    _dataSource.configureHeaderViewBlock = ^(HYPFieldsetHeaderView *headerView,
                                              NSString *kind,
                                              NSIndexPath *indexPath,
                                              REMAFieldset *fieldset) {
@@ -86,7 +86,7 @@
 
 #pragma mark - REMAFieldsetHeaderViewDelegate
 
-- (void)fieldsetHeaderViewWasPressed:(REMAFieldsetHeaderView *)headerView
+- (void)fieldsetHeaderViewWasPressed:(HYPFieldsetHeaderView *)headerView
 {
     [self.dataSource collapseFieldsInSection:headerView.section collectionView:self.collectionView];
 }

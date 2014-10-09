@@ -10,7 +10,7 @@
 
 @protocol REMAFielsetsLayoutDataSource;
 
-@interface REMAFielsetsLayout : UICollectionViewFlowLayout
+@interface HYPFielsetsLayout : UICollectionViewFlowLayout
 
 @property (nonatomic, weak) id <REMAFielsetsLayoutDataSource> dataSource;
 

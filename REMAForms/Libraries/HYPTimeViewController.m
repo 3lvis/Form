@@ -11,7 +11,7 @@
 #import "UIFont+Styles.h"
 #import "UIColor+Colors.h"
 
-#import "REMADateFormFieldCell.h"
+#import "HYPDateFormFieldCell.h"
 
 static CGFloat const REMAActionTitleLabelY = 10.0f;
 static CGFloat const REMAActionTitleLabelHeight = 40.0f;

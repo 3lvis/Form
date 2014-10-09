@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMAFieldValuesTableViewController.h"
+#import "HYPFieldValuesTableViewController.h"
 
 #import "REMAFieldValue.h"
 #import "REMAFormField.h"
@@ -16,13 +16,13 @@
 
 static NSString * const REMADropdownCellIdentifier = @"REMADropdownCellIdentifier";
 
-@interface REMAFieldValuesTableViewController ()
+@interface HYPFieldValuesTableViewController ()
 
 @property (nonatomic, strong) NSArray *values;
 
 @end
 
-@implementation REMAFieldValuesTableViewController
+@implementation HYPFieldValuesTableViewController
 
 #pragma mark - Setters
 

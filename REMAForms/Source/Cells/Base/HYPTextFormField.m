@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMATextFormField.h"
+#import "HYPTextFormField.h"
 
 #import "UIColor+Colors.h"
 #import "UIColor+ANDYHex.h"
 #import "UIFont+Styles.h"
-#import "REMATextFieldTypeManager.h"
+#import "HYPTextFieldTypeManager.h"
 
-@interface REMATextFormField () <UITextFieldDelegate>
+@interface HYPTextFormField () <UITextFieldDelegate>
 
 @end
 
-@implementation REMATextFormField
+@implementation HYPTextFormField
 
 @synthesize rawText = _rawText;
 
@@ -122,7 +122,7 @@
 {
     _type = type;
 
-    REMATextFieldTypeManager *typeManager = [[REMATextFieldTypeManager alloc] init];
+    HYPTextFieldTypeManager *typeManager = [[HYPTextFieldTypeManager alloc] init];
     [typeManager setUpType:type forTextField:self];
 }
 
@@ -139,7 +139,7 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(REMATextFormField *)textField
+- (BOOL)textFieldShouldBeginEditing:(HYPTextFormField *)textField
 {
     BOOL selectable = (textField.type == REMATextFieldTypeDropdown || textField.type == REMATextFieldTypeDate);
 

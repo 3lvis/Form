@@ -16,7 +16,7 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
 
 @protocol REMAFieldsetHeaderViewDelegate;
 
-@interface REMAFieldsetHeaderView : UICollectionReusableView
+@interface HYPFieldsetHeaderView : UICollectionReusableView
 
 @property (nonatomic, strong) UILabel *headerLabel;
 @property (nonatomic) NSInteger section;
@@ -27,6 +27,6 @@ static NSString * const REMAFieldsetHeaderReuseIdentifier = @"REMAFieldsetHeader
 
 @protocol REMAFieldsetHeaderViewDelegate <NSObject>
 
-- (void)fieldsetHeaderViewWasPressed:(REMAFieldsetHeaderView *)headerView;
+- (void)fieldsetHeaderViewWasPressed:(HYPFieldsetHeaderView *)headerView;
 
 @end

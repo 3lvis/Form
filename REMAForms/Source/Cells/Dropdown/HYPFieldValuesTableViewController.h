@@ -13,7 +13,7 @@
 
 @protocol REMAFieldValuesTableViewControllerDelegate;
 
-@interface REMAFieldValuesTableViewController : UITableViewController
+@interface HYPFieldValuesTableViewController : UITableViewController
 
 @property (nonatomic, weak) REMAFormField *field;
 
@@ -24,7 +24,7 @@
 
 @protocol REMAFieldValuesTableViewControllerDelegate <NSObject>
 
-- (void)fieldValuesTableViewController:(REMAFieldValuesTableViewController *)fieldValuesTableViewController
+- (void)fieldValuesTableViewController:(HYPFieldValuesTableViewController *)fieldValuesTableViewController
                       didSelectedValue:(REMAFieldValue *)selectedValue;
 
 @end

@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMAFormFieldHeadingLabel.h"
+#import "HYPFormFieldHeadingLabel.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIFont+Styles.h"
 
-@implementation REMAFormFieldHeadingLabel
+@implementation HYPFormFieldHeadingLabel
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMATextFormFieldCell.h"
+#import "HYPTextFormFieldCell.h"
 
-@interface REMATextFormFieldCell () <REMATextFormFieldDelegate>
+@interface HYPTextFormFieldCell () <REMATextFormFieldDelegate>
 
-@property (nonatomic, strong) REMATextFormField *textField;
+@property (nonatomic, strong) HYPTextFormField *textField;
 
 @end
 
-@implementation REMATextFormFieldCell
+@implementation HYPTextFormFieldCell
 
 #pragma mark - Initializers
 
@@ -30,11 +30,11 @@
 
 #pragma mark - Getters
 
-- (REMATextFormField *)textField
+- (HYPTextFormField *)textField
 {
     if (_textField) return _textField;
 
-    _textField = [[REMATextFormField alloc] initWithFrame:[self frameForTextField]];
+    _textField = [[HYPTextFormField alloc] initWithFrame:[self frameForTextField]];
     _textField.formFieldDelegate = self;
 
     return _textField;
@@ -85,7 +85,7 @@
 
 #pragma mark - REMATextFormFieldDelegate
 
-- (void)textFormField:(REMATextFormField *)textField didUpdateWithText:(NSString *)text
+- (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
 {
     self.field.fieldValue = text;
 }

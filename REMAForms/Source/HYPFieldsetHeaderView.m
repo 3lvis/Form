@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMAFieldsetHeaderView.h"
+#import "HYPFieldsetHeaderView.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
-@interface REMAFieldsetHeaderView ()
+@interface HYPFieldsetHeaderView ()
 
 @property (nonatomic, strong) UIView *contentView;
 
 @end
 
-@implementation REMAFieldsetHeaderView
+@implementation HYPFieldsetHeaderView
 
 #pragma mark - Initializers
 

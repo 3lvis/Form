@@ -8,10 +8,10 @@
 
 @import UIKit;
 
-#import "REMAFormFieldHeadingLabel.h"
+#import "HYPFormFieldHeadingLabel.h"
 
-#import "REMATextFormField.h"
-#import "REMAFormFieldHeadingLabel.h"
+#import "HYPTextFormField.h"
+#import "HYPFormFieldHeadingLabel.h"
 
 #import "REMAFormField.h"
 
@@ -26,9 +26,9 @@ static const CGFloat REMATextFormFieldCellMarginX = 10.0f;
 static const CGFloat REMATextFormFieldCellTextFieldMarginTop = 30.0f;
 static const CGFloat REMATextFormFieldCellTextFieldMarginBottom = 10.0f;
 
-@interface REMABaseFormFieldCell : UICollectionViewCell
+@interface HYPBaseFormFieldCell : UICollectionViewCell
 
-@property (nonatomic, strong) REMAFormFieldHeadingLabel *headingLabel;
+@property (nonatomic, strong) HYPFormFieldHeadingLabel *headingLabel;
 
 @property (nonatomic, strong) REMAFormField *field;
 @property (nonatomic, getter = isDisabled) BOOL disabled;

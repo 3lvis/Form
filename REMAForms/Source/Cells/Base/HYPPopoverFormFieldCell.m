@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMAPopoverFormFieldCell.h"
+#import "HYPPopoverFormFieldCell.h"
 
-@interface REMAPopoverFormFieldCell () <REMATextFormFieldDelegate, UIPopoverControllerDelegate>
+@interface HYPPopoverFormFieldCell () <REMATextFormFieldDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIViewController *contentViewController;
 @property (nonatomic) CGSize contentSize;
 
 @end
 
-@implementation REMAPopoverFormFieldCell
+@implementation HYPPopoverFormFieldCell
 
 #pragma mark - Initializers
 
@@ -35,11 +35,11 @@
 
 #pragma mark - Getters
 
-- (REMATextFormField *)textField
+- (HYPTextFormField *)textField
 {
     if (_textField) return _textField;
 
-    _textField = [[REMATextFormField alloc] initWithFrame:[self frameForTextField]];
+    _textField = [[HYPTextFormField alloc] initWithFrame:[self frameForTextField]];
     _textField.formFieldDelegate = self;
 
     return _textField;
@@ -59,7 +59,7 @@
 
 #pragma mark - REMATextFormFieldDelegate
 
-- (void)textFormFieldDidBeginEditing:(REMATextFormField *)textField
+- (void)textFormFieldDidBeginEditing:(HYPTextFormField *)textField
 {
     [self updateContentViewController:self.contentViewController withField:self.field];
 

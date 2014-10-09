@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMATextFieldTypeManager.h"
+#import "HYPTextFieldTypeManager.h"
 
-@implementation REMATextFieldTypeManager
+@implementation HYPTextFieldTypeManager
 
 - (void)setUpType:(REMATextFieldType)type forTextField:(UITextField *)textField
 {

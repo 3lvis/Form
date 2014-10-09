@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 
-#import "REMAFielsetsCollectionViewController.h"
-#import "REMAFielsetBackgroundView.h"
-#import "REMAFielsetsLayout.h"
+#import "HYPFielsetsCollectionViewController.h"
+#import "HYPFielsetBackgroundView.h"
+#import "HYPFielsetsLayout.h"
 
 @interface AppDelegate ()
 
@@ -22,9 +22,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    REMAFielsetsLayout *layout = [[REMAFielsetsLayout alloc] init];
+    HYPFielsetsLayout *layout = [[HYPFielsetsLayout alloc] init];
 
-    REMAFielsetsCollectionViewController *controllers = [[REMAFielsetsCollectionViewController alloc] initWithCollectionViewLayout:layout];
+    HYPFielsetsCollectionViewController *controllers = [[HYPFielsetsCollectionViewController alloc] initWithCollectionViewLayout:layout];
 
     self.window.rootViewController = controllers;
 

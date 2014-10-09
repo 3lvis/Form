@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMAFielsetBackgroundView.h"
+#import "HYPFielsetBackgroundView.h"
 
 #import "UIColor+ANDYHex.h"
 
-@interface REMAFielsetBackgroundView ()
+@interface HYPFielsetBackgroundView ()
 
 @end
 
-@implementation REMAFielsetBackgroundView
+@implementation HYPFielsetBackgroundView
 
 #pragma mark - Drawing
 

@@ -9,18 +9,18 @@
 @import Foundation;
 @import UIKit;
 
-#import "REMAFielsetsLayout.h"
+#import "HYPFielsetsLayout.h"
 
-#import "REMABaseFormFieldCell.h"
-#import "REMAFieldsetHeaderView.h"
+#import "HYPBaseFormFieldCell.h"
+#import "HYPFieldsetHeaderView.h"
 
 #import "REMAFormField.h"
 #import "REMAFieldset.h"
 
 typedef void (^REMAFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, REMAFormField *field);
-typedef void (^REMAFieldConfigureHeaderViewBlock)(REMAFieldsetHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, REMAFieldset *fieldset);
+typedef void (^REMAFieldConfigureHeaderViewBlock)(HYPFieldsetHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, REMAFieldset *fieldset);
 
-@interface REMAFielsetsCollectionViewDataSource : NSObject <REMAFielsetsLayoutDataSource, UICollectionViewDataSource>
+@interface HYPFielsetsCollectionViewDataSource : NSObject <REMAFielsetsLayoutDataSource, UICollectionViewDataSource>
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 

@@ -6,23 +6,23 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMADropdownFormFieldCell.h"
+#import "HYPDropdownFormFieldCell.h"
 
 #import "REMAFieldValue.h"
-#import "REMAFieldValuesTableViewController.h"
+#import "HYPFieldValuesTableViewController.h"
 
 static const CGFloat REMADropdownFormIconWidth = 38.0f;
 static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0f };
 
-@interface REMADropdownFormFieldCell () <REMATextFormFieldDelegate, REMAFieldValuesTableViewControllerDelegate>
+@interface HYPDropdownFormFieldCell () <REMATextFormFieldDelegate, REMAFieldValuesTableViewControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *iconImageView;
 
-@property (nonatomic, strong) REMAFieldValuesTableViewController *fieldValuesController;
+@property (nonatomic, strong) HYPFieldValuesTableViewController *fieldValuesController;
 
 @end
 
-@implementation REMADropdownFormFieldCell
+@implementation HYPDropdownFormFieldCell
 
 #pragma mark - Initializers
 
@@ -51,11 +51,11 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
     return _iconImageView;
 }
 
-- (REMAFieldValuesTableViewController *)fieldValuesController
+- (HYPFieldValuesTableViewController *)fieldValuesController
 {
     if (_fieldValuesController) return _fieldValuesController;
 
-    _fieldValuesController = [[REMAFieldValuesTableViewController alloc] init];
+    _fieldValuesController = [[HYPFieldValuesTableViewController alloc] init];
     _fieldValuesController.delegate = self;
 
     return _fieldValuesController;
@@ -100,7 +100,7 @@ static const CGSize REMADropdownPopoverSize = { .width = 320.0f, .height = 240.0
 
 #pragma mark - REMAFieldValuesTableViewControllerDelegate
 
-- (void)fieldValuesTableViewController:(REMAFieldValuesTableViewController *)fieldValuesTableViewController
+- (void)fieldValuesTableViewController:(HYPFieldValuesTableViewController *)fieldValuesTableViewController
                       didSelectedValue:(REMAFieldValue *)selectedValue
 {
     self.field.fieldValue = selectedValue.title;

@@ -6,19 +6,19 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMAFielsetsCollectionViewDataSource.h"
+#import "HYPFielsetsCollectionViewDataSource.h"
 
-#import "REMAFielsetsCollectionViewController.h"
-#import "REMAFielsetBackgroundView.h"
+#import "HYPFielsetsCollectionViewController.h"
+#import "HYPFielsetBackgroundView.h"
 
-#import "REMATextFormFieldCell.h"
-#import "REMADropdownFormFieldCell.h"
-#import "REMADateFormFieldCell.h"
+#import "HYPTextFormFieldCell.h"
+#import "HYPDropdownFormFieldCell.h"
+#import "HYPDateFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
-@implementation REMAFielsetsCollectionViewDataSource
+@implementation HYPFielsetsCollectionViewDataSource
 
 #pragma mark - Initializers
 
@@ -29,16 +29,16 @@
 
     collectionView.dataSource = self;
 
-    [collectionView registerClass:[REMATextFormFieldCell class]
+    [collectionView registerClass:[HYPTextFormFieldCell class]
        forCellWithReuseIdentifier:REMATextFormFieldCellIdentifier];
 
-    [collectionView registerClass:[REMADropdownFormFieldCell class]
+    [collectionView registerClass:[HYPDropdownFormFieldCell class]
        forCellWithReuseIdentifier:REMADropdownFormFieldCellIdentifier];
 
-    [collectionView registerClass:[REMADateFormFieldCell class]
+    [collectionView registerClass:[HYPDateFormFieldCell class]
        forCellWithReuseIdentifier:REMADateFormFieldCellIdentifier];
 
-    [collectionView registerClass:[REMAFieldsetHeaderView class]
+    [collectionView registerClass:[HYPFieldsetHeaderView class]
        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
               withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier];
 
@@ -122,7 +122,7 @@
            viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if (kind == UICollectionElementKindSectionHeader) {
-        REMAFieldsetHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+        HYPFieldsetHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                                                                   withReuseIdentifier:REMAFieldsetHeaderReuseIdentifier
                                                                                          forIndexPath:indexPath];
 
@@ -136,7 +136,7 @@
         return headerView;
     }
 
-    REMAFielsetBackgroundView *backgroundView = [collectionView dequeueReusableSupplementaryViewOfKind:REMAFieldsetBackgroundKind
+    HYPFielsetBackgroundView *backgroundView = [collectionView dequeueReusableSupplementaryViewOfKind:REMAFieldsetBackgroundKind
                                                                                    withReuseIdentifier:REMAFieldsetBackgroundReuseIdentifier
                                                                                           forIndexPath:indexPath];
 

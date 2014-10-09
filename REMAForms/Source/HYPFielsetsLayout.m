@@ -6,26 +6,26 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMAFielsetsLayout.h"
+#import "HYPFielsetsLayout.h"
 
-#import "REMAFielsetsCollectionViewController.h"
-#import "REMAFielsetBackgroundView.h"
-#import "REMABaseFormFieldCell.h"
-#import "REMAFieldsetHeaderView.h"
+#import "HYPFielsetsCollectionViewController.h"
+#import "HYPFielsetBackgroundView.h"
+#import "HYPBaseFormFieldCell.h"
+#import "HYPFieldsetHeaderView.h"
 
 #import "REMAFieldset.h"
 #import "REMAFormField.h"
 
 #import "UIScreen+HYPLiveBounds.h"
 
-@interface REMAFielsetsLayout ()
+@interface HYPFielsetsLayout ()
 
 @property (nonatomic) CGFloat previousHeight;
 @property (nonatomic) CGFloat previousY;
 
 @end
 
-@implementation REMAFielsetsLayout
+@implementation HYPFielsetsLayout
 
 #pragma mark - Initializers
 
@@ -38,7 +38,7 @@
     self.minimumLineSpacing = 0.0f;
     self.minimumInteritemSpacing = 0.0f;
 
-    [self registerClass:[REMAFielsetBackgroundView class] forDecorationViewOfKind:REMAFieldsetBackgroundKind];
+    [self registerClass:[HYPFielsetBackgroundView class] forDecorationViewOfKind:REMAFieldsetBackgroundKind];
 
     return self;
 }

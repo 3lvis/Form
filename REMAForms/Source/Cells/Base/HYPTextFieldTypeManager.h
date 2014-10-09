@@ -9,9 +9,9 @@
 @import Foundation;
 @import UIKit;
 
-#import "REMATextFormField.h"
+#import "HYPTextFormField.h"
 
-@interface REMATextFieldTypeManager : NSObject
+@interface HYPTextFieldTypeManager : NSObject
 
 - (void)setUpType:(REMATextFieldType)type forTextField:(UITextField *)textField;
 

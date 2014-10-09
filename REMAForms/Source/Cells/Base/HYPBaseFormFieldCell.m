@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMABaseFormFieldCell.h"
+#import "HYPBaseFormFieldCell.h"
 
 static const CGFloat REMATextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat REMATextFormFieldCellLabelHeight = 20.0f;
 
-@implementation REMABaseFormFieldCell
+@implementation HYPBaseFormFieldCell
 
 #pragma mark - Initializers
 
@@ -46,11 +46,11 @@ static const CGFloat REMATextFormFieldCellLabelHeight = 20.0f;
 
 #pragma mark - Getters
 
-- (REMAFormFieldHeadingLabel *)headingLabel
+- (HYPFormFieldHeadingLabel *)headingLabel
 {
     if (_headingLabel) return _headingLabel;
 
-    _headingLabel = [[REMAFormFieldHeadingLabel alloc] initWithFrame:[self frameForHeadingLabel]];
+    _headingLabel = [[HYPFormFieldHeadingLabel alloc] initWithFrame:[self frameForHeadingLabel]];
 
     return _headingLabel;
 }

@@ -8,10 +8,10 @@
 
 @import UIKit;
 
-#import "REMABaseFormFieldCell.h"
+#import "HYPBaseFormFieldCell.h"
 
 static NSString * const REMATextFormFieldCellIdentifier = @"REMATextFormFieldCellIdentifier";
 
-@interface REMATextFormFieldCell : REMABaseFormFieldCell
+@interface HYPTextFormFieldCell : HYPBaseFormFieldCell
 
 @end

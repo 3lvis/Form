@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, REMATextFieldType) {
 
 @protocol REMATextFormFieldDelegate;
 
-@interface REMATextFormField : UITextField
+@interface HYPTextFormField : UITextField
 
 @property (nonatomic, copy) NSString *rawText;
 
@@ -46,8 +46,8 @@ typedef NS_ENUM(NSInteger, REMATextFieldType) {
 
 @optional
 
-- (void)textFormFieldDidBeginEditing:(REMATextFormField *)textField;
+- (void)textFormFieldDidBeginEditing:(HYPTextFormField *)textField;
 
-- (void)textFormField:(REMATextFormField *)textField didUpdateWithText:(NSString *)text;
+- (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text;
 
 @end

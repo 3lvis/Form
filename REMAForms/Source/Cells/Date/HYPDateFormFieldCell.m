@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "REMADateFormFieldCell.h"
+#import "HYPDateFormFieldCell.h"
 
 #import "HYPTimeViewController.h"
 
@@ -14,16 +14,16 @@ static NSString * const REMADateFieldFormat = @"yyyy-MM-dd";
 
 static const CGSize REMADatePopoverSize = { 320.0f, 216.0f };
 
-@interface REMADateFormFieldCell () <REMATextFormFieldDelegate, HYPTimeViewControllerDelegate, UIPopoverControllerDelegate>
+@interface HYPDateFormFieldCell () <REMATextFormFieldDelegate, HYPTimeViewControllerDelegate, UIPopoverControllerDelegate>
 
-@property (nonatomic, strong) REMATextFormField *textField;
+@property (nonatomic, strong) HYPTextFormField *textField;
 
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) HYPTimeViewController *timeViewController;
 
 @end
 
-@implementation REMADateFormFieldCell
+@implementation HYPDateFormFieldCell
 
 #pragma mark - Initializers
 
