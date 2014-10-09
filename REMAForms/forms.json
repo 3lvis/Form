@@ -4,15 +4,12 @@
     "title": "Personopplysninger",
     "sections": [
       {
-        "id": null,
-        "type": null,
         "fields": [
           {
             "id": "first_name",
             "title": "Fornavn",
             "type": "name",
             "size": 25,
-            "values": null,
             "validations": {
               "required": true,
               "min_length" : 2
@@ -23,7 +20,6 @@
             "title": "Etternavn",
             "type": "name",
             "size": 25,
-            "values": null,
             "validations": {
               "required": true,
               "min_length" : 2
@@ -34,7 +30,6 @@
             "title": "Visningsnavn",
             "type": "text",
             "size": 25,
-            "values": null,
             "validations": {
               "required": true
             }
@@ -44,7 +39,6 @@
             "title": "Fødselsnummer (11 siffer)",
             "type": "social_security_number",
             "size": 25,
-            "values": null,
             "validations": {
               "required": true,
               "min_length": 11,
@@ -54,15 +48,12 @@
         ]
       },
       {
-        "id": null,
-        "type": null,
         "fields": [
           {
             "id": "address",
             "title": "Gateadresse",
             "type": "text",
             "size": 60,
-            "values": null,
             "validations": {
               "required": true
             }
@@ -72,7 +63,6 @@
             "title": "Postnummer",
             "type": "text",
             "size": 15,
-            "values": null,
             "validations": {
               "required": true,
               "max_length": 4,
@@ -102,8 +92,6 @@
         ]
       },
       {
-        "id": null,
-        "type": null,
         "fields": [
           {
             "id": "phone_number",
@@ -116,7 +104,6 @@
             "title": "E-post",
             "type": "email",
             "size": 40,
-            "values": null,
             "validations": {
               "format": "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,8}",
               "required": true
@@ -127,7 +114,6 @@
             "title": "Lønnskonto (11 siffer)",
             "type": "text",
             "size": 35,
-            "values": null,
             "validations": {
               "required": true,
               "min_length": 11,
@@ -138,8 +124,7 @@
       },
       {
         "id": "picture_url",
-        "type": "picture",
-        "fields": null
+        "type": "picture"
       }
     ]
   },
@@ -148,8 +133,6 @@
     "title": "Ansattelsesforholdet",
     "sections": [
       {
-        "id": null,
-        "type": null,
         "fields": [
           {
             "id": "position",
@@ -198,8 +181,6 @@
         ]
       },
       {
-        "id": null,
-        "type": null,
         "fields" : [
           {
             "id": "temporary_employee_type",
@@ -226,15 +207,12 @@
         ]
       },
       {
-        "id": null,
-        "type": null,
         "fields" : [
           {
             "id": "start_date",
             "title": "Ansettelsesdato",
             "type": "date",
             "size": 25,
-            "values": null,
             "validations": {
               "required" : true
             }
@@ -243,8 +221,7 @@
             "id": "end_date",
             "title": "Sluttdato",
             "type": "date",
-            "size": 25,
-            "values": null
+            "size": 25
           },
           {
             "id": "hours_per_week",
@@ -266,8 +243,6 @@
         ]
       },
       {
-        "id": null,
-        "type": null,
         "fields" : [
           {
             "id": "remuneration",
@@ -296,8 +271,6 @@
         ]
       },
       {
-        "id": null,
-        "type": null,
         "fields" : [
           {
             "id": "fixed_pay_level",
@@ -352,7 +325,6 @@
             "title": "Påslag (kr)",
             "type": "number",
             "size": 25,
-            "values": null,
             "validations" : {
               "required" : true
             }
@@ -361,15 +333,13 @@
             "id": "fixed_pay_total",
             "title": "Total",
             "type": "number",
-            "size": 25,
-            "values": null
+            "size": 25
           },
           {
             "id": "fixed_pay_entry_date",
             "title": "Fra dato",
             "type": "date",
-            "size": 25,
-            "values": null
+            "size": 25
           },
           {
             "id": "hourly_pay_level",
@@ -424,7 +394,6 @@
             "title": "Påslag (kr)",
             "type": "number",
             "size": 25,
-            "values": null,
             "validations" : {
               "required" : true
             }
@@ -433,21 +402,17 @@
             "id": "hourly_pay_total",
             "title": "Total",
             "type": "number",
-            "size": 25,
-            "values": null
+            "size": 25
           },
           {
             "id": "hourly_pay_entry_date",
             "title": "Fra dato",
             "type": "date",
-            "size": 25,
-            "values": null
+            "size": 25
           }
         ]
       },
       {
-        "id": null,
-        "type": null,
         "fields" : [
           {
             "id": "other_terms",
@@ -496,8 +461,6 @@
     "title": "Pårørende",
     "sections": [
       {
-        "id": null,
-        "type": null,
         "fields": [
           {
             "id": "relative_name_1",

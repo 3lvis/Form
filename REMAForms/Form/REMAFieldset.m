@@ -12,7 +12,6 @@
 #import "REMAFieldValue.h"
 #import "REMAFieldRule.h"
 
-#import "NSDictionary+Networking.h"
 #import "NSString+ZENInflections.h"
 
 @implementation REMAFieldset
@@ -26,19 +25,19 @@
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *fieldsetDict, NSUInteger fieldsetIndex, BOOL *stop) {
 
         REMAFieldset *fieldset = [REMAFieldset new];
-        fieldset.id = [fieldsetDict safeObjectForKey:@"id"];
-        fieldset.title = [fieldsetDict safeObjectForKey:@"title"];
+        fieldset.id = [fieldsetDict objectForKey:@"id"];
+        fieldset.title = [fieldsetDict objectForKey:@"title"];
         fieldset.position = @(fieldsetIndex);
 
         NSMutableArray *sections = [NSMutableArray array];
-        NSArray *dataSourceSections = [fieldsetDict safeObjectForKey:@"sections"];
+        NSArray *dataSourceSections = [fieldsetDict objectForKey:@"sections"];
         NSDictionary *lastObject = [dataSourceSections lastObject];
 
         [dataSourceSections enumerateObjectsUsingBlock:^(NSDictionary *sectionDict, NSUInteger sectionIndex, BOOL *stop) {
 
             REMAFormSection *section = [REMAFormSection new];
-            section.type = [section typeFromTypeString:[sectionDict safeObjectForKey:@"type"]];
-            section.id = [sectionDict safeObjectForKey:@"id"];
+            section.type = [section typeFromTypeString:[sectionDict objectForKey:@"type"]];
+            section.id = [sectionDict objectForKey:@"id"];
             section.position = @(sectionIndex);
 
             BOOL isLastSection = (lastObject == sectionDict);
@@ -46,30 +45,30 @@
                 section.isLast = YES;
             }
 
-            NSArray *dataSourceFields = [sectionDict safeObjectForKey:@"fields"];
+            NSArray *dataSourceFields = [sectionDict objectForKey:@"fields"];
             NSMutableArray *fields = [NSMutableArray array];
 
             [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
 
-                NSString *remoteID = [fieldDict safeObjectForKey:@"id"];
+                NSString *remoteID = [fieldDict objectForKey:@"id"];
                 NSString *propertyName = [remoteID zen_camelCase];
 
                 REMAFormField *field = [REMAFormField new];
                 field.id   = propertyName;
-                field.title = [fieldDict safeObjectForKey:@"title"];
-                field.typeString  = [fieldDict safeObjectForKey:@"type"];
-                field.type = [field typeFromTypeString:[fieldDict safeObjectForKey:@"type"]];
-                field.size  = [fieldDict safeObjectForKey:@"size"];
+                field.title = [fieldDict objectForKey:@"title"];
+                field.typeString  = [fieldDict objectForKey:@"type"];
+                field.type = [field typeFromTypeString:[fieldDict objectForKey:@"type"]];
+                field.size  = [fieldDict objectForKey:@"size"];
                 field.position = @(fieldIndex);
-                field.validations = [fieldDict safeObjectForKey:@"validations"];
+                field.validations = [fieldDict objectForKey:@"validations"];
 
                 NSMutableArray *values = [NSMutableArray array];
-                NSArray *dataSourceValues = [fieldDict safeObjectForKey:@"values"];
+                NSArray *dataSourceValues = [fieldDict objectForKey:@"values"];
 
                 for (NSDictionary *valueDict in dataSourceValues) {
                     REMAFieldValue *value = [REMAFieldValue new];
-                    value.id = [valueDict safeObjectForKey:@"id"];
-                    value.title = [valueDict safeObjectForKey:@"title"];
+                    value.id = [valueDict objectForKey:@"id"];
+                    value.title = [valueDict objectForKey:@"title"];
 
                     [values addObject:value];
                 }

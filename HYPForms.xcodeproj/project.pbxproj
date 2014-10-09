@@ -20,7 +20,6 @@
 		146D7AC219E09853004A31CE /* REMAPhoneNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AB819E09853004A31CE /* REMAPhoneNumberInputValidator.m */; };
 		146D7AC319E09853004A31CE /* REMAPostalCodeInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7ABA19E09853004A31CE /* REMAPostalCodeInputValidator.m */; };
 		146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7ABC19E09853004A31CE /* REMASocialSecurityNumberInputValidator.m */; };
-		146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7ACD19E09953004A31CE /* NSDictionary+Networking.m */; };
 		146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D7AD119E09953004A31CE /* NSString+ZENInflections.m */; };
 		146DEA3819E0929B00D9E3FF /* REMAFieldRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA2D19E0929B00D9E3FF /* REMAFieldRule.m */; };
 		146DEA3919E0929B00D9E3FF /* REMAFieldset.m in Sources */ = {isa = PBXBuildFile; fileRef = 146DEA2F19E0929B00D9E3FF /* REMAFieldset.m */; };
@@ -86,8 +85,6 @@
 		146D7ABA19E09853004A31CE /* REMAPostalCodeInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMAPostalCodeInputValidator.m; sourceTree = "<group>"; };
 		146D7ABB19E09853004A31CE /* REMASocialSecurityNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMASocialSecurityNumberInputValidator.h; sourceTree = "<group>"; };
 		146D7ABC19E09853004A31CE /* REMASocialSecurityNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMASocialSecurityNumberInputValidator.m; sourceTree = "<group>"; };
-		146D7ACC19E09953004A31CE /* NSDictionary+Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Networking.h"; sourceTree = "<group>"; };
-		146D7ACD19E09953004A31CE /* NSDictionary+Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Networking.m"; sourceTree = "<group>"; };
 		146D7AD019E09953004A31CE /* NSString+ZENInflections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZENInflections.h"; sourceTree = "<group>"; };
 		146D7AD119E09953004A31CE /* NSString+ZENInflections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZENInflections.m"; sourceTree = "<group>"; };
 		146DEA2C19E0929B00D9E3FF /* REMAFieldRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMAFieldRule.h; sourceTree = "<group>"; };
@@ -214,8 +211,6 @@
 				4441A9EE19E2BC140068498D /* UIFont+Styles.m */,
 				4441A9DF19E2B9490068498D /* UIColor+ANDYHex.h */,
 				4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */,
-				146D7ACC19E09953004A31CE /* NSDictionary+Networking.h */,
-				146D7ACD19E09953004A31CE /* NSDictionary+Networking.m */,
 				146D7AD019E09953004A31CE /* NSString+ZENInflections.h */,
 				146D7AD119E09953004A31CE /* NSString+ZENInflections.m */,
 			);
@@ -481,7 +476,6 @@
 				44D6B67A19E5780F0009BB07 /* REMAFielsetsCollectionViewDataSource.m in Sources */,
 				146D7AC419E09853004A31CE /* REMASocialSecurityNumberInputValidator.m in Sources */,
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
-				146D7AD419E09953004A31CE /* NSDictionary+Networking.m in Sources */,
 				446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */,
 				44D6B66E19E5780F0009BB07 /* REMAFormFieldHeadingLabel.m in Sources */,
 				146DEA3C19E0929B00D9E3FF /* REMAFormSection.m in Sources */,
