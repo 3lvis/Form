@@ -117,8 +117,8 @@
 		447BCA8E19E6CBD100E6838A /* HYPPostalCodeInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeInputValidator.m; sourceTree = "<group>"; };
 		447BCA8F19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSocialSecurityNumberInputValidator.h; sourceTree = "<group>"; };
 		447BCA9019E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberInputValidator.m; sourceTree = "<group>"; };
-		44D6B64319E577A80009BB07 /* HYPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYPValidator.h; path = ../../../REMAforms/REMAForms/Form/HYPValidator.h; sourceTree = "<group>"; };
-		44D6B64419E577A80009BB07 /* HYPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYPValidator.m; path = ../../../REMAforms/REMAForms/Form/HYPValidator.m; sourceTree = "<group>"; };
+		44D6B64319E577A80009BB07 /* HYPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPValidator.h; sourceTree = "<group>"; };
+		44D6B64419E577A80009BB07 /* HYPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPValidator.m; sourceTree = "<group>"; };
 		44D6B64919E5780F0009BB07 /* HYPBaseFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBaseFormFieldCell.h; sourceTree = "<group>"; };
 		44D6B64A19E5780F0009BB07 /* HYPBaseFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBaseFormFieldCell.m; sourceTree = "<group>"; };
 		44D6B64D19E5780F0009BB07 /* HYPFormFieldHeadingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormFieldHeadingLabel.h; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 		441B779719DEC4F3006AF67C = {
 			isa = PBXGroup;
 			children = (
-				441B77A219DEC4F3006AF67C /* REMAForms */,
+				441B77A219DEC4F3006AF67C /* HYPForms */,
 				441B77A119DEC4F3006AF67C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -214,7 +214,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		441B77A219DEC4F3006AF67C /* REMAForms */ = {
+		441B77A219DEC4F3006AF67C /* HYPForms */ = {
 			isa = PBXGroup;
 			children = (
 				44D6B64619E577CC0009BB07 /* Source */,
@@ -231,7 +231,7 @@
 				441B77B019DEC4F4006AF67C /* Images.xcassets */,
 				441B77A319DEC4F3006AF67C /* Supporting Files */,
 			);
-			path = REMAForms;
+			path = HYPForms;
 			sourceTree = "<group>";
 		};
 		441B77A319DEC4F3006AF67C /* Supporting Files */ = {
@@ -261,8 +261,7 @@
 				445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */,
 				445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */,
 			);
-			name = Images;
-			path = ../../REMAforms/REMAForms/Images;
+			path = Images;
 			sourceTree = "<group>";
 		};
 		447BCA7719E6CBD100E6838A /* Formatters */ = {
@@ -277,8 +276,7 @@
 				447BCA7E19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.h */,
 				447BCA7F19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m */,
 			);
-			name = Formatters;
-			path = ../../REMAforms/REMAForms/Formatters;
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		447BCA8019E6CBD100E6838A /* Input Validators */ = {
@@ -301,8 +299,7 @@
 				447BCA8F19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.h */,
 				447BCA9019E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m */,
 			);
-			name = "Input Validators";
-			path = "../../REMAforms/REMAForms/Input Validators";
+			path = "Input Validators";
 			sourceTree = "<group>";
 		};
 		44D6B64619E577CC0009BB07 /* Source */ = {
@@ -320,8 +317,7 @@
 				44D6B66A19E5780F0009BB07 /* HYPFielsetsLayout.h */,
 				44D6B66B19E5780F0009BB07 /* HYPFielsetsLayout.m */,
 			);
-			name = Source;
-			path = ../../REMAforms/REMAForms/Source;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		44D6B64719E5780F0009BB07 /* Cells */ = {
@@ -387,8 +383,7 @@
 				44D6B67D19E578490009BB07 /* HYPTimeViewController.h */,
 				44D6B67E19E578490009BB07 /* HYPTimeViewController.m */,
 			);
-			name = Libraries;
-			path = ../../REMAforms/REMAForms/Libraries;
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -594,7 +589,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				INFOPLIST_FILE = REMAForms/Info.plist;
+				INFOPLIST_FILE = HYPForms/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HYPForms;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -606,7 +601,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				INFOPLIST_FILE = REMAForms/Info.plist;
+				INFOPLIST_FILE = HYPForms/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HYPForms;
 				TARGETED_DEVICE_FAMILY = 2;
