@@ -8,7 +8,6 @@
 
 #import "REMAFieldValuesTableViewController.h"
 
-#import "REMABaseTableViewCell.h"
 #import "REMAFieldValue.h"
 #import "REMAFormField.h"
 
@@ -44,7 +43,7 @@ static NSString * const REMADropdownCellIdentifier = @"REMADropdownCellIdentifie
 
     self.clearsSelectionOnViewWillAppear = NO;
 
-    [self.tableView registerClass:[REMABaseTableViewCell class] forCellReuseIdentifier:REMADropdownCellIdentifier];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:REMADropdownCellIdentifier];
 }
 
 #pragma mark - Table View Data Source
@@ -57,6 +56,17 @@ static NSString * const REMADropdownCellIdentifier = @"REMADropdownCellIdentifie
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:REMADropdownCellIdentifier];
+    cell.textLabel.font = [UIFont REMAMediumSize];
+    cell.textLabel.textColor = [UIColor remaDarkBlue];
+    cell.textLabel.highlightedTextColor = [UIColor whiteColor];
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
+
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.backgroundColor = [UIColor whiteColor];
+
+    UIView *selectedBackgroundView = [[UIView alloc] init];
+    selectedBackgroundView.backgroundColor = [UIColor remaCallToActionPressed];
+    cell.selectedBackgroundView = selectedBackgroundView;
 
     REMAFieldValue *fieldValue = self.values[indexPath.row];
     cell.textLabel.text = fieldValue.title;
