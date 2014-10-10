@@ -13,10 +13,16 @@
 #import "HYPFieldRule.h"
 
 #import "NSString+ZENInflections.h"
+#import "NSDictionary+HYPSafeValueForKey.h"
 
 @implementation HYPForm
 
 + (NSArray *)forms
+{
+    return [self formsUsingInitialValuesFromDictionary:nil];
+}
+
++ (NSArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
 {
     NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
 
@@ -25,19 +31,19 @@
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
         HYPForm *form = [HYPForm new];
-        form.id = [formDict objectForKey:@"id"];
-        form.title = [formDict objectForKey:@"title"];
+        form.id = [formDict hyp_safeObjectForKey:@"id"];
+        form.title = [formDict hyp_safeObjectForKey:@"title"];
         form.position = @(formIndex);
 
         NSMutableArray *sections = [NSMutableArray array];
-        NSArray *dataSourceSections = [formDict objectForKey:@"sections"];
+        NSArray *dataSourceSections = [formDict hyp_safeObjectForKey:@"sections"];
         NSDictionary *lastObject = [dataSourceSections lastObject];
 
         [dataSourceSections enumerateObjectsUsingBlock:^(NSDictionary *sectionDict, NSUInteger sectionIndex, BOOL *stop) {
 
             HYPFormSection *section = [HYPFormSection new];
-            section.type = [section typeFromTypeString:[sectionDict objectForKey:@"type"]];
-            section.id = [sectionDict objectForKey:@"id"];
+            section.type = [section typeFromTypeString:[sectionDict hyp_safeObjectForKey:@"type"]];
+            section.id = [sectionDict hyp_safeObjectForKey:@"id"];
             section.position = @(sectionIndex);
 
             BOOL isLastSection = (lastObject == sectionDict);
@@ -45,35 +51,42 @@
                 section.isLast = YES;
             }
 
-            NSArray *dataSourceFields = [sectionDict objectForKey:@"fields"];
+            NSArray *dataSourceFields = [sectionDict hyp_safeObjectForKey:@"fields"];
             NSMutableArray *fields = [NSMutableArray array];
 
             [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
 
-                NSString *remoteID = [fieldDict objectForKey:@"id"];
+                NSString *remoteID = [fieldDict hyp_safeObjectForKey:@"id"];
                 NSString *propertyName = [remoteID zen_camelCase];
 
                 HYPFormField *field = [HYPFormField new];
                 field.id   = propertyName;
-                field.title = [fieldDict objectForKey:@"title"];
-                field.typeString  = [fieldDict objectForKey:@"type"];
-                field.type = [field typeFromTypeString:[fieldDict objectForKey:@"type"]];
-                field.size  = [fieldDict objectForKey:@"size"];
+                field.title = [fieldDict hyp_safeObjectForKey:@"title"];
+                field.typeString  = [fieldDict hyp_safeObjectForKey:@"type"];
+                field.type = [field typeFromTypeString:[fieldDict hyp_safeObjectForKey:@"type"]];
+                field.size  = [fieldDict hyp_safeObjectForKey:@"size"];
                 field.position = @(fieldIndex);
-                field.validations = [fieldDict objectForKey:@"validations"];
+                field.validations = [fieldDict hyp_safeObjectForKey:@"validations"];
 
-                NSMutableArray *values = [NSMutableArray array];
-                NSArray *dataSourceValues = [fieldDict objectForKey:@"values"];
-
-                for (NSDictionary *valueDict in dataSourceValues) {
-                    HYPFieldValue *value = [HYPFieldValue new];
-                    value.id = [valueDict objectForKey:@"id"];
-                    value.title = [valueDict objectForKey:@"title"];
-
-                    [values addObject:value];
+                if (dictionary && [dictionary valueForKey:remoteID]) {
+                    field.fieldValue = [dictionary valueForKey:remoteID];
                 }
 
-                field.values = values;
+                NSMutableArray *values = [NSMutableArray array];
+                NSArray *dataSourceValues = [fieldDict hyp_safeObjectForKey:@"values"];
+
+                if (dataSourceValues) {
+                    for (NSDictionary *valueDict in dataSourceValues) {
+                        HYPFieldValue *value = [HYPFieldValue new];
+                        value.id = [valueDict hyp_safeObjectForKey:@"id"];
+                        value.title = [valueDict hyp_safeObjectForKey:@"title"];
+
+                        [values addObject:value];
+                    }
+                    
+                    field.values = values;
+                }
+
                 [fields addObject:field];
             }];
 

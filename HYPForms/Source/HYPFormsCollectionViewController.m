@@ -24,6 +24,7 @@
 @interface HYPFormsCollectionViewController () <HYPFormHeaderViewDelegate>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
+@property (nonatomic, copy) NSDictionary *setUpDictionary;
 
 @end
 
@@ -31,11 +32,30 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithCollectionViewLayout:(HYPFormsLayout *)layout
+- (instancetype)init
+{
+    HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
+    self = [self initWithCollectionViewLayout:layout andDictionary:nil];
+    if (!self) return nil;
+
+    return self;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+    HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
+    self = [self initWithCollectionViewLayout:layout andDictionary:dictionary];
+    if (!self) return nil;
+
+    return self;
+}
+
+- (instancetype)initWithCollectionViewLayout:(HYPFormsLayout *)layout andDictionary:(NSDictionary *)dictionary
 {
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
+    _setUpDictionary = dictionary;
     layout.dataSource = self.dataSource;
 
     return self;
@@ -47,7 +67,7 @@
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView];
+    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView andDictionary:self.setUpDictionary];
 
     _dataSource.configureCellBlock = ^(HYPBaseFormFieldCell *cell,
                                        NSIndexPath *indexPath,

@@ -261,7 +261,7 @@
                   "id":"remuneration",
                   "title":"Lønn",
                   "type":"select",
-                  "size":25,
+                  "size":100,
                   "values":[
                      {
                         "id":"no_wage",

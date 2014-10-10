@@ -18,6 +18,8 @@
 		441B77A619DEC4F4006AF67C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A519DEC4F4006AF67C /* main.m */; };
 		441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A819DEC4F4006AF67C /* AppDelegate.m */; };
 		441B77B119DEC4F4006AF67C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 441B77B019DEC4F4006AF67C /* Images.xcassets */; };
+		443A4AD019E7D86500B3CC83 /* NSDictionary+HYPSafeValueForKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 443A4ACF19E7D86500B3CC83 /* NSDictionary+HYPSafeValueForKey.m */; };
+		443A4AD319E7EDDC00B3CC83 /* NSDate+HYPISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = 443A4AD219E7EDDC00B3CC83 /* NSDate+HYPISO8601.m */; };
 		4441A9E119E2B9490068498D /* UIColor+ANDYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */; };
 		4441A9E819E2BBC50068498D /* DIN-BLAC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */; };
 		4441A9E919E2BBC50068498D /* DIN-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E419E2BBC50068498D /* DIN-BOLD.OTF */; };
@@ -80,6 +82,10 @@
 		441B77A719DEC4F4006AF67C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		441B77A819DEC4F4006AF67C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		441B77B019DEC4F4006AF67C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		443A4ACE19E7D86500B3CC83 /* NSDictionary+HYPSafeValueForKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HYPSafeValueForKey.h"; sourceTree = "<group>"; };
+		443A4ACF19E7D86500B3CC83 /* NSDictionary+HYPSafeValueForKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HYPSafeValueForKey.m"; sourceTree = "<group>"; };
+		443A4AD119E7EDDC00B3CC83 /* NSDate+HYPISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HYPISO8601.h"; sourceTree = "<group>"; };
+		443A4AD219E7EDDC00B3CC83 /* NSDate+HYPISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HYPISO8601.m"; sourceTree = "<group>"; };
 		4441A9DF19E2B9490068498D /* UIColor+ANDYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ANDYHex.h"; sourceTree = "<group>"; };
 		4441A9E019E2B9490068498D /* UIColor+ANDYHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ANDYHex.m"; sourceTree = "<group>"; };
 		4441A9E319E2BBC50068498D /* DIN-BLAC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-BLAC.OTF"; sourceTree = "<group>"; };
@@ -217,6 +223,7 @@
 		441B77A219DEC4F3006AF67C /* HYPForms */ = {
 			isa = PBXGroup;
 			children = (
+				443A4ACD19E7D84B00B3CC83 /* Categories */,
 				44D6B64619E577CC0009BB07 /* Source */,
 				447BCA7719E6CBD100E6838A /* Formatters */,
 				447BCA8019E6CBD100E6838A /* Input Validators */,
@@ -241,6 +248,18 @@
 				441B77A519DEC4F4006AF67C /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		443A4ACD19E7D84B00B3CC83 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				443A4AD119E7EDDC00B3CC83 /* NSDate+HYPISO8601.h */,
+				443A4AD219E7EDDC00B3CC83 /* NSDate+HYPISO8601.m */,
+				443A4ACE19E7D86500B3CC83 /* NSDictionary+HYPSafeValueForKey.h */,
+				443A4ACF19E7D86500B3CC83 /* NSDictionary+HYPSafeValueForKey.m */,
+			);
+			name = Categories;
+			path = Source/Categories;
 			sourceTree = "<group>";
 		};
 		4441A9E219E2BBC50068498D /* Fonts */ = {
@@ -473,6 +492,7 @@
 				146DEA3819E0929B00D9E3FF /* HYPFieldRule.m in Sources */,
 				447BCA9519E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m in Sources */,
 				44D6B67A19E5780F0009BB07 /* HYPFormsCollectionViewDataSource.m in Sources */,
+				443A4AD319E7EDDC00B3CC83 /* NSDate+HYPISO8601.m in Sources */,
 				146D7AD619E09953004A31CE /* NSString+ZENInflections.m in Sources */,
 				446364CD19E2BE3F005D04AD /* UIScreen+HYPLiveBounds.m in Sources */,
 				447BCA9C19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m in Sources */,
@@ -494,6 +514,7 @@
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
 				447BCA9419E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m in Sources */,
 				44D6B64519E577A80009BB07 /* HYPValidator.m in Sources */,
+				443A4AD019E7D86500B3CC83 /* NSDictionary+HYPSafeValueForKey.m in Sources */,
 				447BCA9119E6CBD100E6838A /* HYPBankAccountNumberFormatter.m in Sources */,
 				4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */,
 				447BCA9319E6CBD100E6838A /* HYPPhoneNumberFormatter.m in Sources */,

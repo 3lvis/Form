@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 
-#import "HYPFielsetsCollectionViewController.h"
-#import "HYPFielsetBackgroundView.h"
-#import "HYPFielsetsLayout.h"
+#import "HYPFormsCollectionViewController.h"
+#import "HYPFormBackgroundView.h"
+#import "HYPFormsLayout.h"
 
 @interface AppDelegate ()
 
@@ -22,9 +22,22 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    HYPFielsetsLayout *layout = [[HYPFielsetsLayout alloc] init];
+    NSDictionary *dictionary = @{ @"address" : @"Burger Park",
+                                  @"bank_account_number" : @"11111111111",
+                                  @"city" : @"Telemark",
+                                  @"email_address" : @"christoffer@hyper.no",
+                                  @"end_date" : @"2017-10-31T23:00:00+00:00",
+                                  @"first_name" : @"Chris",
+                                  @"hours_per_week" : @37,
+                                  @"last_name" : @"Winterkvist",
+                                  @"phone_number" : @"41399880",
+                                  @"postal_code" : @"6414",
+                                  @"social_security_number" : @"28118240000",
+                                  @"start_date" : @"2014-10-31T23:00:00+00:00",
+                                  @"worker_id" : @"120000"
+                                  };
 
-    HYPFielsetsCollectionViewController *controllers = [[HYPFielsetsCollectionViewController alloc] initWithCollectionViewLayout:layout];
+    HYPFormsCollectionViewController *controllers = [[HYPFormsCollectionViewController alloc] initWithDictionary:dictionary];
 
     self.window.rootViewController = controllers;
 

@@ -18,14 +18,32 @@
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
+@interface HYPFormsCollectionViewDataSource ()
+
+@property (nonatomic, strong) NSMutableDictionary *resultsDictionary;
+
+@end
+
 @implementation HYPFormsCollectionViewDataSource
 
 #pragma mark - Initializers
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
 {
+    self = [self initWithCollectionView:collectionView andDictionary:nil];
+    if (!self) return nil;
+
+    return self;
+}
+
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView andDictionary:(NSDictionary *)dictionary
+{
     self = [super init];
     if (!self) return nil;
+
+    if (dictionary) {
+        _resultsDictionary = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+    }
 
     collectionView.dataSource = self;
 
@@ -51,7 +69,11 @@
 {
     if (_forms) return _forms;
 
-    _forms = [HYPForm forms];
+    if (self.resultsDictionary) {
+        _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.resultsDictionary];
+    } else {
+        _forms = [HYPForm forms];
+    }
 
     return _forms;
 }

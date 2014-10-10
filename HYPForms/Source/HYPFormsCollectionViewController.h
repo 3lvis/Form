@@ -14,4 +14,6 @@ static const NSInteger HYPFormMarginBottom = 30.0f;
 
 @interface HYPFormsCollectionViewController : UICollectionViewController
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @end
