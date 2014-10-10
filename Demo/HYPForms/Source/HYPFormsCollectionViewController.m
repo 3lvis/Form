@@ -32,26 +32,9 @@
 
 #pragma mark - Initialization
 
-- (instancetype)init
-{
-    HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
-    self = [self initWithCollectionViewLayout:layout andDictionary:nil];
-    if (!self) return nil;
-
-    return self;
-}
-
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
-    self = [self initWithCollectionViewLayout:layout andDictionary:dictionary];
-    if (!self) return nil;
-
-    return self;
-}
-
-- (instancetype)initWithCollectionViewLayout:(HYPFormsLayout *)layout andDictionary:(NSDictionary *)dictionary
-{
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
