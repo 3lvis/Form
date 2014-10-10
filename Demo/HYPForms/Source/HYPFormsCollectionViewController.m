@@ -8,17 +8,8 @@
 
 #import "HYPFormsCollectionViewController.h"
 
-#import "HYPFormHeaderView.h"
-#import "HYPFormBackgroundView.h"
-#import "HYPFormsLayout.h"
 #import "HYPFormsCollectionViewDataSource.h"
 
-#import "HYPBaseFormFieldCell.h"
-
-#import "HYPForm.h"
-#import "HYPFormField.h"
-
-#import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
 @interface HYPFormsCollectionViewController () <HYPFormHeaderViewDelegate>
@@ -50,7 +41,8 @@
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView andDictionary:self.setUpDictionary];
+    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
+                                                                     andDictionary:self.setUpDictionary];
 
     _dataSource.configureCellBlock = ^(HYPBaseFormFieldCell *cell,
                                        NSIndexPath *indexPath,
