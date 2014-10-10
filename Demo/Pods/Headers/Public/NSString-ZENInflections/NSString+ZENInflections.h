@@ -1,0 +1,1 @@
+../../../NSString-ZENInflections/NSString-ZENInflections/NSString+ZENInflections.h

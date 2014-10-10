@@ -1,4 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 platform :ios, '7.0'
 
 pod 'UIScreen-HYPLiveBounds'
 pod 'NSString-ZENInflections'
+pod 'UIColor-ANDYHex', :git => 'https://github.com/NSElvis/UIColor-ANDYHex.git'
+pod 'NSDictionary-HYPSafeValue', :git => 'https://github.com/hyperoslo/NSDictionary-HYPSafeValue.git'
