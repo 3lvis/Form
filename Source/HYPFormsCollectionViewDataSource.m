@@ -1,5 +1,5 @@
 //
-//  HYPFielsetsCollectionViewDataSource.m
+//  HYPFormsCollectionViewDataSource.m
 
 //
 //  Created by Elvis Nunez on 10/6/14.
@@ -10,6 +10,7 @@
 
 #import "HYPFormsCollectionViewController.h"
 #import "HYPFormBackgroundView.h"
+#import "HYPFormsLayout.h"
 
 #import "HYPTextFormFieldCell.h"
 #import "HYPDropdownFormFieldCell.h"

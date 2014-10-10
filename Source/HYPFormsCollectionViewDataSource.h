@@ -1,5 +1,5 @@
 //
-//  HYPFielsetsCollectionViewDataSource.h
+//  HYPFormsCollectionViewDataSource.h
 
 //
 //  Created by Elvis Nunez on 10/6/14.
@@ -20,7 +20,7 @@
 typedef void (^HYPFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, HYPFormField *field);
 typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPForm *form);
 
-@interface HYPFormsCollectionViewDataSource : NSObject <HYPFielsetsLayoutDataSource, UICollectionViewDataSource>
+@interface HYPFormsCollectionViewDataSource : NSObject <HYPFormsLayoutDataSource, UICollectionViewDataSource>
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView andDictionary:(NSDictionary *)dictionary;

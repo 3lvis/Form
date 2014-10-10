@@ -1,5 +1,5 @@
 //
-//  HYPFielsetsCollectionViewController.h
+//  HYPFormsCollectionViewController.h
 
 //
 //  Created by Elvis Nunez on 03/10/14.
@@ -7,10 +7,6 @@
 //
 
 @import UIKit;
-
-static const NSInteger HYPFormMarginHorizontal = 20.0f;
-static const NSInteger HYPFormMarginTop = 10.0f;
-static const NSInteger HYPFormMarginBottom = 30.0f;
 
 @interface HYPFormsCollectionViewController : UICollectionViewController
 
