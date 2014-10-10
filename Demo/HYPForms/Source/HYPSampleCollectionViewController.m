@@ -6,20 +6,18 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "HYPFormsCollectionViewController.h"
+#import "HYPSampleCollectionViewController.h"
 
 #import "HYPFormsCollectionViewDataSource.h"
 
-#import "UIScreen+HYPLiveBounds.h"
-
-@interface HYPFormsCollectionViewController () <HYPFormHeaderViewDelegate>
+@interface HYPSampleCollectionViewController () <HYPFormHeaderViewDelegate>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *setUpDictionary;
 
 @end
 
-@implementation HYPFormsCollectionViewController
+@implementation HYPSampleCollectionViewController
 
 #pragma mark - Initialization
 
@@ -86,29 +84,10 @@
     [self.dataSource collapseFieldsInSection:headerView.section collectionView:self.collectionView];
 }
 
-#pragma mark - UICollectionViewDelegateFlowLayout
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
-referenceSizeForHeaderInSection:(NSInteger)section
-{
-    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-    return CGSizeMake(CGRectGetWidth(bounds), HYPFormHeaderHeight);
-}
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.dataSource sizeForItemAtIndexPath:indexPath];
-}
-
-#pragma mark - Rotation Handling
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                duration:(NSTimeInterval)duration
-{
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-
-    [self.collectionViewLayout invalidateLayout];
 }
 
 @end

@@ -8,7 +8,9 @@
 
 @import UIKit;
 
-@interface HYPFormsCollectionViewController : UICollectionViewController
+#import "HYPFormsCollectionViewController.h"
+
+@interface HYPSampleCollectionViewController : HYPFormsCollectionViewController
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

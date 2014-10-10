@@ -8,7 +8,6 @@
 
 #import "HYPFormsCollectionViewDataSource.h"
 
-#import "HYPFormsCollectionViewController.h"
 #import "HYPFormBackgroundView.h"
 #import "HYPFormsLayout.h"
 

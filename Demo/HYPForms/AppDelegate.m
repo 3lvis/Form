@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "HYPFormsCollectionViewController.h"
+#import "HYPSampleCollectionViewController.h"
 #import "HYPFormBackgroundView.h"
 #import "HYPFormsLayout.h"
 
@@ -37,7 +37,7 @@
                                   @"worker_id" : @"120000"
                                   };
 
-    HYPFormsCollectionViewController *controllers = [[HYPFormsCollectionViewController alloc] initWithDictionary:dictionary];
+    HYPSampleCollectionViewController *controllers = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];
 
     self.window.rootViewController = controllers;
 
