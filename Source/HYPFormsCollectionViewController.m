@@ -120,7 +120,7 @@ referenceSizeForHeaderInSection:(NSInteger)section
     return CGSizeMake(CGRectGetWidth(bounds), HYPFormHeaderHeight);
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.dataSource sizeForItemAtIndexPath:indexPath];
