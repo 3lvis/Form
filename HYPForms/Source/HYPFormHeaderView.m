@@ -1,23 +1,23 @@
 //
-//  HYPFieldsetHeaderCollectionReusableView.m
+//  HYPFormHeaderView.m
 
 //
 //  Created by Elvis Nunez on 03/10/14.
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "HYPFieldsetHeaderView.h"
+#import "HYPFormHeaderView.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
-@interface HYPFieldsetHeaderView ()
+@interface HYPFormHeaderView ()
 
 @property (nonatomic, strong) UIView *contentView;
 
 @end
 
-@implementation HYPFieldsetHeaderView
+@implementation HYPFormHeaderView
 
 #pragma mark - Initializers
 
@@ -51,9 +51,9 @@
     if (_headerLabel) return _headerLabel;
 
     CGRect bounds = [[UIScreen mainScreen] bounds];
-    CGFloat width = CGRectGetWidth(bounds) - (HYPFieldsetTitleMargin * 2);
+    CGFloat width = CGRectGetWidth(bounds) - (HYPFormTitleMargin * 2);
 
-    _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(HYPFieldsetTitleMargin, 0.0f, width, HYPFieldsetHeaderHeight)];
+    _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(HYPFormTitleMargin, 0.0f, width, HYPFormHeaderHeight)];
     _headerLabel.backgroundColor = [UIColor clearColor];
     _headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _headerLabel.font = [UIFont fontWithName:@"DIN-Medium" size:17.0];
@@ -66,8 +66,8 @@
 
 - (void)headerTappedAction
 {
-    if ([self.delegate respondsToSelector:@selector(fieldsetHeaderViewWasPressed:)]) {
-        [self.delegate fieldsetHeaderViewWasPressed:self];
+    if ([self.delegate respondsToSelector:@selector(formHeaderViewWasPressed:)]) {
+        [self.delegate formHeaderViewWasPressed:self];
     }
 }
 

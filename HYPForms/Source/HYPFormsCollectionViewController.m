@@ -6,32 +6,32 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "HYPFielsetsCollectionViewController.h"
+#import "HYPFormsCollectionViewController.h"
 
-#import "HYPFieldsetHeaderView.h"
-#import "HYPFielsetBackgroundView.h"
-#import "HYPFielsetsLayout.h"
-#import "HYPFielsetsCollectionViewDataSource.h"
+#import "HYPFormHeaderView.h"
+#import "HYPFormBackgroundView.h"
+#import "HYPFormsLayout.h"
+#import "HYPFormsCollectionViewDataSource.h"
 
 #import "HYPBaseFormFieldCell.h"
 
-#import "HYPFieldset.h"
+#import "HYPForm.h"
 #import "HYPFormField.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
-@interface HYPFielsetsCollectionViewController () <HYPFieldsetHeaderViewDelegate>
+@interface HYPFormsCollectionViewController () <HYPFormHeaderViewDelegate>
 
-@property (nonatomic, strong) HYPFielsetsCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 
 @end
 
-@implementation HYPFielsetsCollectionViewController
+@implementation HYPFormsCollectionViewController
 
 #pragma mark - Initialization
 
-- (instancetype)initWithCollectionViewLayout:(HYPFielsetsLayout *)layout
+- (instancetype)initWithCollectionViewLayout:(HYPFormsLayout *)layout
 {
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
@@ -43,11 +43,11 @@
 
 #pragma mark - Getters
 
-- (HYPFielsetsCollectionViewDataSource *)dataSource
+- (HYPFormsCollectionViewDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[HYPFielsetsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView];
+    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView];
 
     _dataSource.configureCellBlock = ^(HYPBaseFormFieldCell *cell,
                                        NSIndexPath *indexPath,
@@ -62,11 +62,11 @@
     };
 
     __weak id weakSelf = self;
-    _dataSource.configureHeaderViewBlock = ^(HYPFieldsetHeaderView *headerView,
+    _dataSource.configureHeaderViewBlock = ^(HYPFormHeaderView *headerView,
                                              NSString *kind,
                                              NSIndexPath *indexPath,
-                                             HYPFieldset *fieldset) {
-        headerView.headerLabel.text = fieldset.title;
+                                             HYPForm *form) {
+        headerView.headerLabel.text = form.title;
         headerView.delegate = weakSelf;
     };
 
@@ -84,9 +84,9 @@
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 }
 
-#pragma mark - HYPFieldsetHeaderViewDelegate
+#pragma mark - HYPFormHeaderViewDelegate
 
-- (void)fieldsetHeaderViewWasPressed:(HYPFieldsetHeaderView *)headerView
+- (void)formHeaderViewWasPressed:(HYPFormHeaderView *)headerView
 {
     [self.dataSource collapseFieldsInSection:headerView.section collectionView:self.collectionView];
 }
@@ -97,7 +97,7 @@
 referenceSizeForHeaderInSection:(NSInteger)section
 {
     CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-    return CGSizeMake(CGRectGetWidth(bounds), HYPFieldsetHeaderHeight);
+    return CGSizeMake(CGRectGetWidth(bounds), HYPFormHeaderHeight);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout

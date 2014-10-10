@@ -6,26 +6,26 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "HYPFielsetsLayout.h"
+#import "HYPFormsLayout.h"
 
-#import "HYPFielsetsCollectionViewController.h"
-#import "HYPFielsetBackgroundView.h"
+#import "HYPFormsCollectionViewController.h"
+#import "HYPFormBackgroundView.h"
 #import "HYPBaseFormFieldCell.h"
-#import "HYPFieldsetHeaderView.h"
+#import "HYPFormHeaderView.h"
 
-#import "HYPFieldset.h"
+#import "HYPForm.h"
 #import "HYPFormField.h"
 
 #import "UIScreen+HYPLiveBounds.h"
 
-@interface HYPFielsetsLayout ()
+@interface HYPFormsLayout ()
 
 @property (nonatomic) CGFloat previousHeight;
 @property (nonatomic) CGFloat previousY;
 
 @end
 
-@implementation HYPFielsetsLayout
+@implementation HYPFormsLayout
 
 #pragma mark - Initializers
 
@@ -34,11 +34,11 @@
     self = [super init];
     if (!self) return nil;
 
-    self.sectionInset = UIEdgeInsetsMake(HYPFieldsetMarginTop, HYPFieldsetMarginHorizontal, HYPFieldsetMarginBottom, HYPFieldsetMarginHorizontal);
+    self.sectionInset = UIEdgeInsetsMake(HYPFormMarginTop, HYPFormMarginHorizontal, HYPFormMarginBottom, HYPFormMarginHorizontal);
     self.minimumLineSpacing = 0.0f;
     self.minimumInteritemSpacing = 0.0f;
 
-    [self registerClass:[HYPFielsetBackgroundView class] forDecorationViewOfKind:HYPFieldsetBackgroundKind];
+    [self registerClass:[HYPFormBackgroundView class] forDecorationViewOfKind:HYPFormBackgroundKind];
 
     return self;
 }
@@ -47,37 +47,37 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
-    if (![elementKind isEqualToString:HYPFieldsetBackgroundKind]) {
+    if (![elementKind isEqualToString:HYPFormBackgroundKind]) {
         return [super layoutAttributesForDecorationViewOfKind:elementKind atIndexPath:indexPath];
     }
 
-    NSArray *fieldsets = nil;
+    NSArray *forms = nil;
 
-    if ([self.dataSource respondsToSelector:@selector(fieldsets)]) {
-        fieldsets = [self.dataSource fieldsets];
+    if ([self.dataSource respondsToSelector:@selector(forms)]) {
+        forms = [self.dataSource forms];
     } else {
         abort();
     }
 
-    NSArray *collapsedFieldsets = nil;
+    NSArray *collapsedForms = nil;
 
-    if ([self.dataSource respondsToSelector:@selector(collapsedFieldsets)]) {
-        collapsedFieldsets = [self.dataSource collapsedFieldsets];
+    if ([self.dataSource respondsToSelector:@selector(collapsedForms)]) {
+        collapsedForms = [self.dataSource collapsedForms];
     } else {
-        collapsedFieldsets = [NSArray array];
+        collapsedForms = [NSArray array];
     }
 
-    HYPFieldset *fieldset = fieldsets[indexPath.section];
+    HYPForm *form = forms[indexPath.section];
     NSArray *fields = nil;
 
-    if ([collapsedFieldsets containsObject:@(indexPath.section)]) {
+    if ([collapsedForms containsObject:@(indexPath.section)]) {
         fields = [NSArray array];
     } else {
-        fields = fieldset.fields;
+        fields = form.fields;
     }
 
-    CGFloat bottomMargin = HYPFieldsetHeaderContentMargin;
-    CGFloat height = HYPFieldsetMarginTop + HYPFieldsetMarginBottom;
+    CGFloat bottomMargin = HYPFormHeaderContentMargin;
+    CGFloat height = HYPFormMarginTop + HYPFormMarginBottom;
     CGFloat size = 0.0f;
 
     for (HYPFormField *field in fields) {
@@ -93,7 +93,7 @@
         }
     }
 
-    CGFloat y = self.previousHeight + self.previousY + HYPFieldsetHeaderHeight;
+    CGFloat y = self.previousHeight + self.previousY + HYPFormHeaderHeight;
 
     self.previousHeight = height;
     self.previousY = y;
@@ -102,7 +102,7 @@
 
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
                                                                                                                withIndexPath:indexPath];
-    attributes.frame = CGRectMake(HYPFielsetBackgroundViewMargin, y, self.collectionViewContentSize.width - (HYPFielsetBackgroundViewMargin * 2), height - bottomMargin);
+    attributes.frame = CGRectMake(HYPFormBackgroundViewMargin, y, self.collectionViewContentSize.width - (HYPFormBackgroundViewMargin * 2), height - bottomMargin);
     attributes.zIndex = -1;
 
     return attributes;
@@ -119,8 +119,8 @@
         if ([element.representedElementKind isEqualToString:UICollectionElementKindSectionHeader]) {
             CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
             CGRect frame = element.frame;
-            frame.origin.x = HYPFieldsetHeaderContentMargin;
-            frame.size.width = CGRectGetWidth(bounds) - (2 * HYPFieldsetHeaderContentMargin);
+            frame.origin.x = HYPFormHeaderContentMargin;
+            frame.size.width = CGRectGetWidth(bounds) - (2 * HYPFormHeaderContentMargin);
             element.frame = frame;
         }
     }
@@ -129,7 +129,7 @@
 
     for (NSInteger section = 0; section < sectionsCount; section++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
-        [attributes addObject:[self layoutAttributesForDecorationViewOfKind:HYPFieldsetBackgroundKind
+        [attributes addObject:[self layoutAttributesForDecorationViewOfKind:HYPFormBackgroundKind
                                                                 atIndexPath:indexPath]];
     }
 

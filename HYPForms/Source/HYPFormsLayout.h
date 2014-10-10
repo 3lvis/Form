@@ -10,7 +10,7 @@
 
 @protocol HYPFielsetsLayoutDataSource;
 
-@interface HYPFielsetsLayout : UICollectionViewFlowLayout
+@interface HYPFormsLayout : UICollectionViewFlowLayout
 
 @property (nonatomic, weak) id <HYPFielsetsLayoutDataSource> dataSource;
 
@@ -18,7 +18,7 @@
 
 @protocol HYPFielsetsLayoutDataSource <NSObject>
 
-- (NSArray *)fieldsets;
-- (NSArray *)collapsedFieldsets;
+- (NSArray *)forms;
+- (NSArray *)collapsedForms;
 
 @end

@@ -1,11 +1,11 @@
 //
-//  HYPFieldset.m
+//  HYPForm.m
 //
 //  Created by Elvis Nunez on 08/07/14.
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "HYPFieldset.h"
+#import "HYPForm.h"
 
 #import "HYPFormSection.h"
 #import "HYPFormField.h"
@@ -14,23 +14,23 @@
 
 #import "NSString+ZENInflections.h"
 
-@implementation HYPFieldset
+@implementation HYPForm
 
-+ (NSArray *)fieldsets
++ (NSArray *)forms
 {
     NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
 
-    NSMutableArray *fieldsets = [NSMutableArray array];
+    NSMutableArray *forms = [NSMutableArray array];
 
-    [JSON enumerateObjectsUsingBlock:^(NSDictionary *fieldsetDict, NSUInteger fieldsetIndex, BOOL *stop) {
+    [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
-        HYPFieldset *fieldset = [HYPFieldset new];
-        fieldset.id = [fieldsetDict objectForKey:@"id"];
-        fieldset.title = [fieldsetDict objectForKey:@"title"];
-        fieldset.position = @(fieldsetIndex);
+        HYPForm *form = [HYPForm new];
+        form.id = [formDict objectForKey:@"id"];
+        form.title = [formDict objectForKey:@"title"];
+        form.position = @(formIndex);
 
         NSMutableArray *sections = [NSMutableArray array];
-        NSArray *dataSourceSections = [fieldsetDict objectForKey:@"sections"];
+        NSArray *dataSourceSections = [formDict objectForKey:@"sections"];
         NSDictionary *lastObject = [dataSourceSections lastObject];
 
         [dataSourceSections enumerateObjectsUsingBlock:^(NSDictionary *sectionDict, NSUInteger sectionIndex, BOOL *stop) {
@@ -88,11 +88,11 @@
             [sections addObject:section];
         }];
 
-        fieldset.sections = sections;
-        [fieldsets addObject:fieldset];
+        form.sections = sections;
+        [forms addObject:form];
     }];
 
-    return fieldsets;
+    return forms;
 }
 
 + (id)JSONObjectWithContentsOfFile:(NSString*)fileName

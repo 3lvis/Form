@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "HYPFielsetsCollectionViewDataSource.h"
+#import "HYPFormsCollectionViewDataSource.h"
 
-#import "HYPFielsetsCollectionViewController.h"
-#import "HYPFielsetBackgroundView.h"
+#import "HYPFormsCollectionViewController.h"
+#import "HYPFormBackgroundView.h"
 
 #import "HYPTextFormFieldCell.h"
 #import "HYPDropdownFormFieldCell.h"
@@ -18,7 +18,7 @@
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 
-@implementation HYPFielsetsCollectionViewDataSource
+@implementation HYPFormsCollectionViewDataSource
 
 #pragma mark - Initializers
 
@@ -38,55 +38,55 @@
     [collectionView registerClass:[HYPDateFormFieldCell class]
        forCellWithReuseIdentifier:HYPDateFormFieldCellIdentifier];
 
-    [collectionView registerClass:[HYPFieldsetHeaderView class]
+    [collectionView registerClass:[HYPFormHeaderView class]
        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-              withReuseIdentifier:HYPFieldsetHeaderReuseIdentifier];
+              withReuseIdentifier:HYPFormHeaderReuseIdentifier];
 
     return self;
 }
 
 #pragma mark - Getters
 
-- (NSArray *)fieldsets
+- (NSArray *)forms
 {
-    if (_fieldsets) return _fieldsets;
+    if (_forms) return _forms;
 
-    _fieldsets = [HYPFieldset fieldsets];
+    _forms = [HYPForm forms];
 
-    return _fieldsets;
+    return _forms;
 }
 
-- (NSMutableArray *)collapsedFieldsets
+- (NSMutableArray *)collapsedForms
 {
-    if (_collapsedFieldsets) return _collapsedFieldsets;
+    if (_collapsedForms) return _collapsedForms;
 
-    _collapsedFieldsets = [NSMutableArray array];
+    _collapsedForms = [NSMutableArray array];
 
-    return _collapsedFieldsets;
+    return _collapsedForms;
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.fieldsets.count;
+    return self.forms.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    HYPFieldset *fieldset = self.fieldsets[section];
-    if ([self.collapsedFieldsets containsObject:@(section)]) {
+    HYPForm *form = self.forms[section];
+    if ([self.collapsedForms containsObject:@(section)]) {
         return 0;
     }
 
-    return [fieldset numberOfFields];
+    return [form numberOfFields];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HYPFieldset *fieldset = self.fieldsets[indexPath.section];
-    NSArray *fields = fieldset.fields;
+    HYPForm *form = self.forms[indexPath.section];
+    NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
 
     NSString *identifier;
@@ -122,22 +122,22 @@
            viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if (kind == UICollectionElementKindSectionHeader) {
-        HYPFieldsetHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                                  withReuseIdentifier:HYPFieldsetHeaderReuseIdentifier
+        HYPFormHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                                  withReuseIdentifier:HYPFormHeaderReuseIdentifier
                                                                                          forIndexPath:indexPath];
 
-        HYPFieldset *fieldset = self.fieldsets[indexPath.section];
+        HYPForm *form = self.forms[indexPath.section];
         headerView.section = indexPath.section;
 
         if (self.configureHeaderViewBlock) {
-            self.configureHeaderViewBlock(headerView, kind, indexPath, fieldset);
+            self.configureHeaderViewBlock(headerView, kind, indexPath, form);
         }
 
         return headerView;
     }
 
-    HYPFielsetBackgroundView *backgroundView = [collectionView dequeueReusableSupplementaryViewOfKind:HYPFieldsetBackgroundKind
-                                                                                   withReuseIdentifier:HYPFieldsetBackgroundReuseIdentifier
+    HYPFormBackgroundView *backgroundView = [collectionView dequeueReusableSupplementaryViewOfKind:HYPFormBackgroundKind
+                                                                                   withReuseIdentifier:HYPFormBackgroundReuseIdentifier
                                                                                           forIndexPath:indexPath];
 
     return backgroundView;
@@ -147,22 +147,22 @@
 
 - (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView
 {
-    BOOL headerIsCollapsed = ([self.collapsedFieldsets containsObject:@(section)]);
+    BOOL headerIsCollapsed = ([self.collapsedForms containsObject:@(section)]);
 
     NSMutableArray *indexPaths = [NSMutableArray array];
-    HYPFieldset *fieldset = self.fieldsets[section];
+    HYPForm *form = self.forms[section];
 
-    for (NSInteger i = 0; i < fieldset.fields.count; i++) {
+    for (NSInteger i = 0; i < form.fields.count; i++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:section];
         [indexPaths addObject:indexPath];
     }
 
     if (headerIsCollapsed) {
-        [self.collapsedFieldsets removeObject:@(section)];
+        [self.collapsedForms removeObject:@(section)];
         [collectionView insertItemsAtIndexPaths:indexPaths];
         [collectionView.collectionViewLayout invalidateLayout];
     } else {
-        [self.collapsedFieldsets addObject:@(section)];
+        [self.collapsedForms addObject:@(section)];
         [collectionView deleteItemsAtIndexPaths:indexPaths];
         [collectionView.collectionViewLayout invalidateLayout];
     }
@@ -170,12 +170,12 @@
 
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HYPFieldset *fieldset = self.fieldsets[indexPath.section];
+    HYPForm *form = self.forms[indexPath.section];
 
-    NSArray *fields = fieldset.fields;
+    NSArray *fields = form.fields;
 
     CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-    CGFloat deviceWidth = CGRectGetWidth(bounds) - (HYPFieldsetMarginHorizontal * 2);
+    CGFloat deviceWidth = CGRectGetWidth(bounds) - (HYPFormMarginHorizontal * 2);
     CGFloat width = 0.0f;
     CGFloat height = 0.0f;
 

@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "HYPFieldset.h"
+#import "HYPForm.h"
 #import "HYPFormField.h"
 #import "HYPFormSection.h"
 #import "HYPValidator.h"

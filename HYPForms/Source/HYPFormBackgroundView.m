@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-#import "HYPFielsetBackgroundView.h"
+#import "HYPFormBackgroundView.h"
 
 #import "UIColor+ANDYHex.h"
 
-@interface HYPFielsetBackgroundView ()
+@interface HYPFormBackgroundView ()
 
 @end
 
-@implementation HYPFielsetBackgroundView
+@implementation HYPFormBackgroundView
 
 #pragma mark - Drawing
 

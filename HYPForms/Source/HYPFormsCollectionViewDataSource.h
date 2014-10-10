@@ -9,23 +9,23 @@
 @import Foundation;
 @import UIKit;
 
-#import "HYPFielsetsLayout.h"
+#import "HYPFormsLayout.h"
 
 #import "HYPBaseFormFieldCell.h"
-#import "HYPFieldsetHeaderView.h"
+#import "HYPFormHeaderView.h"
 
 #import "HYPFormField.h"
-#import "HYPFieldset.h"
+#import "HYPForm.h"
 
 typedef void (^HYPFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, HYPFormField *field);
-typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFieldsetHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPFieldset *fieldset);
+typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPForm *form);
 
-@interface HYPFielsetsCollectionViewDataSource : NSObject <HYPFielsetsLayoutDataSource, UICollectionViewDataSource>
+@interface HYPFormsCollectionViewDataSource : NSObject <HYPFielsetsLayoutDataSource, UICollectionViewDataSource>
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 
-@property (nonatomic, strong) NSArray *fieldsets;
-@property (nonatomic, strong) NSMutableArray *collapsedFieldsets;
+@property (nonatomic, strong) NSArray *forms;
+@property (nonatomic, strong) NSMutableArray *collapsedForms;
 
 @property (nonatomic, copy) HYPFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;
