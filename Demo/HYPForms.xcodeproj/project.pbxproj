@@ -30,6 +30,18 @@
 		4408F19B19E81EA6005AE53F /* HYPFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F18519E81EA6005AE53F /* HYPFormField.m */; };
 		4408F19C19E81EA6005AE53F /* HYPFormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F18719E81EA6005AE53F /* HYPFormSection.m */; };
 		4408F19D19E81EA6005AE53F /* HYPValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F18919E81EA6005AE53F /* HYPValidator.m */; };
+		4408F1B819E81F67005AE53F /* HYPBankAccountNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1A019E81F67005AE53F /* HYPBankAccountNumberFormatter.m */; };
+		4408F1B919E81F67005AE53F /* HYPFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1A219E81F67005AE53F /* HYPFormatter.m */; };
+		4408F1BA19E81F67005AE53F /* HYPPhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1A419E81F67005AE53F /* HYPPhoneNumberFormatter.m */; };
+		4408F1BB19E81F67005AE53F /* HYPSocialSecurityNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1A619E81F67005AE53F /* HYPSocialSecurityNumberFormatter.m */; };
+		4408F1BC19E81F67005AE53F /* HYPBankAccountNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1A919E81F67005AE53F /* HYPBankAccountNumberInputValidator.m */; };
+		4408F1BD19E81F67005AE53F /* HYPFloatInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1AB19E81F67005AE53F /* HYPFloatInputValidator.m */; };
+		4408F1BE19E81F67005AE53F /* HYPInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1AD19E81F67005AE53F /* HYPInputValidator.m */; };
+		4408F1BF19E81F67005AE53F /* HYPNameInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1AF19E81F67005AE53F /* HYPNameInputValidator.m */; };
+		4408F1C019E81F67005AE53F /* HYPNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1B119E81F67005AE53F /* HYPNumberInputValidator.m */; };
+		4408F1C119E81F67005AE53F /* HYPPhoneNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1B319E81F67005AE53F /* HYPPhoneNumberInputValidator.m */; };
+		4408F1C219E81F67005AE53F /* HYPPostalCodeInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1B519E81F67005AE53F /* HYPPostalCodeInputValidator.m */; };
+		4408F1C319E81F67005AE53F /* HYPSocialSecurityNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1B719E81F67005AE53F /* HYPSocialSecurityNumberInputValidator.m */; };
 		441B77A619DEC4F4006AF67C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A519DEC4F4006AF67C /* main.m */; };
 		441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 441B77A819DEC4F4006AF67C /* AppDelegate.m */; };
 		441B77B119DEC4F4006AF67C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 441B77B019DEC4F4006AF67C /* Images.xcassets */; };
@@ -41,18 +53,6 @@
 		4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9EE19E2BC140068498D /* UIFont+Styles.m */; };
 		445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */; };
 		445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */; };
-		447BCA9119E6CBD100E6838A /* HYPBankAccountNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA7919E6CBD100E6838A /* HYPBankAccountNumberFormatter.m */; };
-		447BCA9219E6CBD100E6838A /* HYPFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA7B19E6CBD100E6838A /* HYPFormatter.m */; };
-		447BCA9319E6CBD100E6838A /* HYPPhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA7D19E6CBD100E6838A /* HYPPhoneNumberFormatter.m */; };
-		447BCA9419E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA7F19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m */; };
-		447BCA9519E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8219E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m */; };
-		447BCA9619E6CBD100E6838A /* HYPFloatInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8419E6CBD100E6838A /* HYPFloatInputValidator.m */; };
-		447BCA9719E6CBD100E6838A /* HYPInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8619E6CBD100E6838A /* HYPInputValidator.m */; };
-		447BCA9819E6CBD100E6838A /* HYPNameInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8819E6CBD100E6838A /* HYPNameInputValidator.m */; };
-		447BCA9919E6CBD100E6838A /* HYPNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8A19E6CBD100E6838A /* HYPNumberInputValidator.m */; };
-		447BCA9A19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8C19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m */; };
-		447BCA9B19E6CBD100E6838A /* HYPPostalCodeInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA8E19E6CBD100E6838A /* HYPPostalCodeInputValidator.m */; };
-		447BCA9C19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 447BCA9019E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m */; };
 		44D6B67F19E578490009BB07 /* HYPTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D6B67E19E578490009BB07 /* HYPTimeViewController.m */; };
 		890DF4637B5C51A0210949DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9243ED4871CF70DD889729A /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -104,6 +104,30 @@
 		4408F18719E81EA6005AE53F /* HYPFormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormSection.m; sourceTree = "<group>"; };
 		4408F18819E81EA6005AE53F /* HYPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPValidator.h; sourceTree = "<group>"; };
 		4408F18919E81EA6005AE53F /* HYPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPValidator.m; sourceTree = "<group>"; };
+		4408F19F19E81F67005AE53F /* HYPBankAccountNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberFormatter.h; sourceTree = "<group>"; };
+		4408F1A019E81F67005AE53F /* HYPBankAccountNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberFormatter.m; sourceTree = "<group>"; };
+		4408F1A119E81F67005AE53F /* HYPFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormatter.h; sourceTree = "<group>"; };
+		4408F1A219E81F67005AE53F /* HYPFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormatter.m; sourceTree = "<group>"; };
+		4408F1A319E81F67005AE53F /* HYPPhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPhoneNumberFormatter.h; sourceTree = "<group>"; };
+		4408F1A419E81F67005AE53F /* HYPPhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPhoneNumberFormatter.m; sourceTree = "<group>"; };
+		4408F1A519E81F67005AE53F /* HYPSocialSecurityNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSocialSecurityNumberFormatter.h; sourceTree = "<group>"; };
+		4408F1A619E81F67005AE53F /* HYPSocialSecurityNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberFormatter.m; sourceTree = "<group>"; };
+		4408F1A819E81F67005AE53F /* HYPBankAccountNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberInputValidator.h; sourceTree = "<group>"; };
+		4408F1A919E81F67005AE53F /* HYPBankAccountNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberInputValidator.m; sourceTree = "<group>"; };
+		4408F1AA19E81F67005AE53F /* HYPFloatInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFloatInputValidator.h; sourceTree = "<group>"; };
+		4408F1AB19E81F67005AE53F /* HYPFloatInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFloatInputValidator.m; sourceTree = "<group>"; };
+		4408F1AC19E81F67005AE53F /* HYPInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPInputValidator.h; sourceTree = "<group>"; };
+		4408F1AD19E81F67005AE53F /* HYPInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPInputValidator.m; sourceTree = "<group>"; };
+		4408F1AE19E81F67005AE53F /* HYPNameInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPNameInputValidator.h; sourceTree = "<group>"; };
+		4408F1AF19E81F67005AE53F /* HYPNameInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPNameInputValidator.m; sourceTree = "<group>"; };
+		4408F1B019E81F67005AE53F /* HYPNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPNumberInputValidator.h; sourceTree = "<group>"; };
+		4408F1B119E81F67005AE53F /* HYPNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPNumberInputValidator.m; sourceTree = "<group>"; };
+		4408F1B219E81F67005AE53F /* HYPPhoneNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPhoneNumberInputValidator.h; sourceTree = "<group>"; };
+		4408F1B319E81F67005AE53F /* HYPPhoneNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPhoneNumberInputValidator.m; sourceTree = "<group>"; };
+		4408F1B419E81F67005AE53F /* HYPPostalCodeInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeInputValidator.h; sourceTree = "<group>"; };
+		4408F1B519E81F67005AE53F /* HYPPostalCodeInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeInputValidator.m; sourceTree = "<group>"; };
+		4408F1B619E81F67005AE53F /* HYPSocialSecurityNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSocialSecurityNumberInputValidator.h; sourceTree = "<group>"; };
+		4408F1B719E81F67005AE53F /* HYPSocialSecurityNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberInputValidator.m; sourceTree = "<group>"; };
 		441B77A019DEC4F3006AF67C /* HYPForms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYPForms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		441B77A419DEC4F4006AF67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		441B77A519DEC4F4006AF67C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -119,30 +143,6 @@
 		4441A9EE19E2BC140068498D /* UIFont+Styles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Styles.m"; sourceTree = "<group>"; };
 		445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_mini_arrow_down.png; sourceTree = "<group>"; };
 		445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_arrow_down@2x.png"; sourceTree = "<group>"; };
-		447BCA7819E6CBD100E6838A /* HYPBankAccountNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberFormatter.h; sourceTree = "<group>"; };
-		447BCA7919E6CBD100E6838A /* HYPBankAccountNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberFormatter.m; sourceTree = "<group>"; };
-		447BCA7A19E6CBD100E6838A /* HYPFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormatter.h; sourceTree = "<group>"; };
-		447BCA7B19E6CBD100E6838A /* HYPFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormatter.m; sourceTree = "<group>"; };
-		447BCA7C19E6CBD100E6838A /* HYPPhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPhoneNumberFormatter.h; sourceTree = "<group>"; };
-		447BCA7D19E6CBD100E6838A /* HYPPhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPhoneNumberFormatter.m; sourceTree = "<group>"; };
-		447BCA7E19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSocialSecurityNumberFormatter.h; sourceTree = "<group>"; };
-		447BCA7F19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberFormatter.m; sourceTree = "<group>"; };
-		447BCA8119E6CBD100E6838A /* HYPBankAccountNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberInputValidator.h; sourceTree = "<group>"; };
-		447BCA8219E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberInputValidator.m; sourceTree = "<group>"; };
-		447BCA8319E6CBD100E6838A /* HYPFloatInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFloatInputValidator.h; sourceTree = "<group>"; };
-		447BCA8419E6CBD100E6838A /* HYPFloatInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFloatInputValidator.m; sourceTree = "<group>"; };
-		447BCA8519E6CBD100E6838A /* HYPInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPInputValidator.h; sourceTree = "<group>"; };
-		447BCA8619E6CBD100E6838A /* HYPInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPInputValidator.m; sourceTree = "<group>"; };
-		447BCA8719E6CBD100E6838A /* HYPNameInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPNameInputValidator.h; sourceTree = "<group>"; };
-		447BCA8819E6CBD100E6838A /* HYPNameInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPNameInputValidator.m; sourceTree = "<group>"; };
-		447BCA8919E6CBD100E6838A /* HYPNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPNumberInputValidator.h; sourceTree = "<group>"; };
-		447BCA8A19E6CBD100E6838A /* HYPNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPNumberInputValidator.m; sourceTree = "<group>"; };
-		447BCA8B19E6CBD100E6838A /* HYPPhoneNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPhoneNumberInputValidator.h; sourceTree = "<group>"; };
-		447BCA8C19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPhoneNumberInputValidator.m; sourceTree = "<group>"; };
-		447BCA8D19E6CBD100E6838A /* HYPPostalCodeInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeInputValidator.h; sourceTree = "<group>"; };
-		447BCA8E19E6CBD100E6838A /* HYPPostalCodeInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeInputValidator.m; sourceTree = "<group>"; };
-		447BCA8F19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSocialSecurityNumberInputValidator.h; sourceTree = "<group>"; };
-		447BCA9019E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberInputValidator.m; sourceTree = "<group>"; };
 		44D6B67D19E578490009BB07 /* HYPTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPTimeViewController.h; sourceTree = "<group>"; };
 		44D6B67E19E578490009BB07 /* HYPTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPTimeViewController.m; sourceTree = "<group>"; };
 		B9243ED4871CF70DD889729A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +177,8 @@
 		4408F15B19E81EA6005AE53F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4408F19E19E81F67005AE53F /* Formatters */,
+				4408F1A719E81F67005AE53F /* Input Validators */,
 				4408F15C19E81EA6005AE53F /* Cells */,
 				4408F17319E81EA6005AE53F /* HYPFormBackgroundView.h */,
 				4408F17419E81EA6005AE53F /* HYPFormBackgroundView.m */,
@@ -270,6 +272,44 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		4408F19E19E81F67005AE53F /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				4408F19F19E81F67005AE53F /* HYPBankAccountNumberFormatter.h */,
+				4408F1A019E81F67005AE53F /* HYPBankAccountNumberFormatter.m */,
+				4408F1A119E81F67005AE53F /* HYPFormatter.h */,
+				4408F1A219E81F67005AE53F /* HYPFormatter.m */,
+				4408F1A319E81F67005AE53F /* HYPPhoneNumberFormatter.h */,
+				4408F1A419E81F67005AE53F /* HYPPhoneNumberFormatter.m */,
+				4408F1A519E81F67005AE53F /* HYPSocialSecurityNumberFormatter.h */,
+				4408F1A619E81F67005AE53F /* HYPSocialSecurityNumberFormatter.m */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		4408F1A719E81F67005AE53F /* Input Validators */ = {
+			isa = PBXGroup;
+			children = (
+				4408F1A819E81F67005AE53F /* HYPBankAccountNumberInputValidator.h */,
+				4408F1A919E81F67005AE53F /* HYPBankAccountNumberInputValidator.m */,
+				4408F1AA19E81F67005AE53F /* HYPFloatInputValidator.h */,
+				4408F1AB19E81F67005AE53F /* HYPFloatInputValidator.m */,
+				4408F1AC19E81F67005AE53F /* HYPInputValidator.h */,
+				4408F1AD19E81F67005AE53F /* HYPInputValidator.m */,
+				4408F1AE19E81F67005AE53F /* HYPNameInputValidator.h */,
+				4408F1AF19E81F67005AE53F /* HYPNameInputValidator.m */,
+				4408F1B019E81F67005AE53F /* HYPNumberInputValidator.h */,
+				4408F1B119E81F67005AE53F /* HYPNumberInputValidator.m */,
+				4408F1B219E81F67005AE53F /* HYPPhoneNumberInputValidator.h */,
+				4408F1B319E81F67005AE53F /* HYPPhoneNumberInputValidator.m */,
+				4408F1B419E81F67005AE53F /* HYPPostalCodeInputValidator.h */,
+				4408F1B519E81F67005AE53F /* HYPPostalCodeInputValidator.m */,
+				4408F1B619E81F67005AE53F /* HYPSocialSecurityNumberInputValidator.h */,
+				4408F1B719E81F67005AE53F /* HYPSocialSecurityNumberInputValidator.m */,
+			);
+			path = "Input Validators";
+			sourceTree = "<group>";
+		};
 		441B779719DEC4F3006AF67C = {
 			isa = PBXGroup;
 			children = (
@@ -292,8 +332,6 @@
 		441B77A219DEC4F3006AF67C /* HYPForms */ = {
 			isa = PBXGroup;
 			children = (
-				447BCA7719E6CBD100E6838A /* Formatters */,
-				447BCA8019E6CBD100E6838A /* Input Validators */,
 				44D6B67C19E578490009BB07 /* Libraries */,
 				445DAF9219E52D76006F8052 /* Images */,
 				4441A9E219E2BBC50068498D /* Fonts */,
@@ -335,44 +373,6 @@
 				445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		447BCA7719E6CBD100E6838A /* Formatters */ = {
-			isa = PBXGroup;
-			children = (
-				447BCA7819E6CBD100E6838A /* HYPBankAccountNumberFormatter.h */,
-				447BCA7919E6CBD100E6838A /* HYPBankAccountNumberFormatter.m */,
-				447BCA7A19E6CBD100E6838A /* HYPFormatter.h */,
-				447BCA7B19E6CBD100E6838A /* HYPFormatter.m */,
-				447BCA7C19E6CBD100E6838A /* HYPPhoneNumberFormatter.h */,
-				447BCA7D19E6CBD100E6838A /* HYPPhoneNumberFormatter.m */,
-				447BCA7E19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.h */,
-				447BCA7F19E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m */,
-			);
-			path = Formatters;
-			sourceTree = "<group>";
-		};
-		447BCA8019E6CBD100E6838A /* Input Validators */ = {
-			isa = PBXGroup;
-			children = (
-				447BCA8119E6CBD100E6838A /* HYPBankAccountNumberInputValidator.h */,
-				447BCA8219E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m */,
-				447BCA8319E6CBD100E6838A /* HYPFloatInputValidator.h */,
-				447BCA8419E6CBD100E6838A /* HYPFloatInputValidator.m */,
-				447BCA8519E6CBD100E6838A /* HYPInputValidator.h */,
-				447BCA8619E6CBD100E6838A /* HYPInputValidator.m */,
-				447BCA8719E6CBD100E6838A /* HYPNameInputValidator.h */,
-				447BCA8819E6CBD100E6838A /* HYPNameInputValidator.m */,
-				447BCA8919E6CBD100E6838A /* HYPNumberInputValidator.h */,
-				447BCA8A19E6CBD100E6838A /* HYPNumberInputValidator.m */,
-				447BCA8B19E6CBD100E6838A /* HYPPhoneNumberInputValidator.h */,
-				447BCA8C19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m */,
-				447BCA8D19E6CBD100E6838A /* HYPPostalCodeInputValidator.h */,
-				447BCA8E19E6CBD100E6838A /* HYPPostalCodeInputValidator.m */,
-				447BCA8F19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.h */,
-				447BCA9019E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m */,
-			);
-			path = "Input Validators";
 			sourceTree = "<group>";
 		};
 		44D6B67C19E578490009BB07 /* Libraries */ = {
@@ -512,42 +512,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				447BCA9219E6CBD100E6838A /* HYPFormatter.m in Sources */,
 				4408F19719E81EA6005AE53F /* HYPFormsLayout.m in Sources */,
 				441B77A919DEC4F4006AF67C /* AppDelegate.m in Sources */,
-				447BCA9619E6CBD100E6838A /* HYPFloatInputValidator.m in Sources */,
-				447BCA9519E6CBD100E6838A /* HYPBankAccountNumberInputValidator.m in Sources */,
 				4408F19519E81EA6005AE53F /* HYPFormsCollectionViewController.m in Sources */,
+				4408F1C119E81F67005AE53F /* HYPPhoneNumberInputValidator.m in Sources */,
 				4408F19B19E81EA6005AE53F /* HYPFormField.m in Sources */,
-				447BCA9C19E6CBD100E6838A /* HYPSocialSecurityNumberInputValidator.m in Sources */,
-				447BCA9A19E6CBD100E6838A /* HYPPhoneNumberInputValidator.m in Sources */,
 				4408F19819E81EA6005AE53F /* HYPFieldRule.m in Sources */,
 				4408F18B19E81EA6005AE53F /* HYPFormFieldHeadingLabel.m in Sources */,
+				4408F1BF19E81F67005AE53F /* HYPNameInputValidator.m in Sources */,
+				4408F1B919E81F67005AE53F /* HYPFormatter.m in Sources */,
 				4408F19919E81EA6005AE53F /* HYPFieldValue.m in Sources */,
 				4408F19219E81EA6005AE53F /* HYPTextFormFieldCell.m in Sources */,
 				4408F18A19E81EA6005AE53F /* HYPBaseFormFieldCell.m in Sources */,
 				4408F19419E81EA6005AE53F /* HYPFormHeaderView.m in Sources */,
 				4408F18E19E81EA6005AE53F /* HYPTextFormField.m in Sources */,
 				4408F19C19E81EA6005AE53F /* HYPFormSection.m in Sources */,
-				447BCA9B19E6CBD100E6838A /* HYPPostalCodeInputValidator.m in Sources */,
+				4408F1C219E81F67005AE53F /* HYPPostalCodeInputValidator.m in Sources */,
 				4408F19D19E81EA6005AE53F /* HYPValidator.m in Sources */,
-				447BCA9719E6CBD100E6838A /* HYPInputValidator.m in Sources */,
-				447BCA9819E6CBD100E6838A /* HYPNameInputValidator.m in Sources */,
-				447BCA9919E6CBD100E6838A /* HYPNumberInputValidator.m in Sources */,
+				4408F1C319E81F67005AE53F /* HYPSocialSecurityNumberInputValidator.m in Sources */,
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
+				4408F1BA19E81F67005AE53F /* HYPPhoneNumberFormatter.m in Sources */,
+				4408F1BD19E81F67005AE53F /* HYPFloatInputValidator.m in Sources */,
 				4408F19019E81EA6005AE53F /* HYPDropdownFormFieldCell.m in Sources */,
 				4408F19619E81EA6005AE53F /* HYPFormsCollectionViewDataSource.m in Sources */,
 				4408F15A19E81E2F005AE53F /* NSDate+HYPISO8601.m in Sources */,
-				447BCA9419E6CBD100E6838A /* HYPSocialSecurityNumberFormatter.m in Sources */,
 				4408F19319E81EA6005AE53F /* HYPFormBackgroundView.m in Sources */,
 				4408F19A19E81EA6005AE53F /* HYPForm.m in Sources */,
 				4408F18F19E81EA6005AE53F /* HYPDateFormFieldCell.m in Sources */,
-				447BCA9119E6CBD100E6838A /* HYPBankAccountNumberFormatter.m in Sources */,
+				4408F1BB19E81F67005AE53F /* HYPSocialSecurityNumberFormatter.m in Sources */,
 				4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */,
+				4408F1BE19E81F67005AE53F /* HYPInputValidator.m in Sources */,
 				4408F18D19E81EA6005AE53F /* HYPTextFieldTypeManager.m in Sources */,
+				4408F1B819E81F67005AE53F /* HYPBankAccountNumberFormatter.m in Sources */,
+				4408F1C019E81F67005AE53F /* HYPNumberInputValidator.m in Sources */,
+				4408F1BC19E81F67005AE53F /* HYPBankAccountNumberInputValidator.m in Sources */,
 				4408F18C19E81EA6005AE53F /* HYPPopoverFormFieldCell.m in Sources */,
 				4408F19119E81EA6005AE53F /* HYPFieldValuesTableViewController.m in Sources */,
-				447BCA9319E6CBD100E6838A /* HYPPhoneNumberFormatter.m in Sources */,
 				44D6B67F19E578490009BB07 /* HYPTimeViewController.m in Sources */,
 				142E4D3F19E3419900C22B7E /* UIColor+Colors.m in Sources */,
 			);
