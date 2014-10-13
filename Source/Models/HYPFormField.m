@@ -11,7 +11,6 @@
 #import "HYPValidator.h"
 #import "HYPFormatter.h"
 #import "HYPInputValidator.h"
-#import "NSDate+HYPISO8601.h"
 #import "HYPFieldValue.h"
 #import "HYPClassFactory.h"
 
@@ -34,9 +33,11 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             resultValue = [fieldValue stringValue];
             break;
 
-        case HYPFormFieldTypeDate:
-            resultValue = [NSDate hyp_dateFromISO8601String:fieldValue];
-            break;
+        case HYPFormFieldTypeDate: {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"];
+            resultValue = [formatter dateFromString:fieldValue];
+        } break;
 
         default: break;
     }
