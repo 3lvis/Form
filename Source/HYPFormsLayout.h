@@ -27,7 +27,3 @@ static const NSInteger HYPFormMarginBottom = 30.0f;
 - (NSMutableDictionary *)deletedFields;
 
 @end
-
-@protocol UICollectionViewDelegateLeftAlignedLayout <UICollectionViewDelegateFlowLayout>
-
-@end

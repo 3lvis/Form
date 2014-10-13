@@ -35,6 +35,10 @@
 
 @end
 
+@protocol UICollectionViewDelegateLeftAlignedLayout <UICollectionViewDelegateFlowLayout>
+
+@end
+
 @interface HYPFormsLayout ()
 
 @property (nonatomic) CGFloat previousHeight;
