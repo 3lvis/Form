@@ -304,11 +304,15 @@
                   "values":[
                      {
                         "id":"ungdom_under_16",
-                        "title":"Ungdom under 16 år"
+                        "title":"Ungdom under 16 år",
+                        "action":"hide",
+                        "fields":["first_name","last_name"]
                      },
                      {
                         "id":"ungdom_16_18",
-                        "title":"Ungdom 16-18 år"
+                        "title":"Ungdom 16-18 år",
+                        "action":"show",
+                        "fields":["first_name","last_name"]
                      },
                      {
                         "id":"trinn_1",

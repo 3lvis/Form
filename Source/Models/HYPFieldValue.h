@@ -7,10 +7,20 @@
 
 @import Foundation;
 
+typedef NS_ENUM(NSInteger, HYPFieldValueActionType) {
+    HYPFieldValueActionShow = 0,
+    HYPFieldValueActionHide,
+    HYPFieldValueActionEnable,
+    HYPFieldValueActionDisable,
+    HYPFieldValueActionNone
+};
+
 @interface HYPFieldValue : NSObject
 
-@property (nonatomic, strong) NSString *id;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSArray *rules;
+@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *actionTypeString;
+@property (nonatomic) HYPFieldValueActionType actionType;
+@property (nonatomic, strong) NSArray *fields;
 
 @end

@@ -81,6 +81,8 @@
                         HYPFieldValue *value = [HYPFieldValue new];
                         value.id = [valueDict hyp_safeValueForKey:@"id"];
                         value.title = [valueDict hyp_safeValueForKey:@"title"];
+                        value.fields = [valueDict hyp_safeValueForKey:@"fields"];
+                        value.actionTypeString = [valueDict hyp_safeValueForKey:@"action"];
 
                         [values addObject:value];
                     }
