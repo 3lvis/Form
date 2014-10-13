@@ -6,6 +6,18 @@
 // project.
 
 
+// HYPNorwegianAccountNumber
+#define COCOAPODS_POD_AVAILABLE_HYPNorwegianAccountNumber
+#define COCOAPODS_VERSION_MAJOR_HYPNorwegianAccountNumber 1
+#define COCOAPODS_VERSION_MINOR_HYPNorwegianAccountNumber 2
+#define COCOAPODS_VERSION_PATCH_HYPNorwegianAccountNumber 0
+
+// HYPNorwegianSSN
+#define COCOAPODS_POD_AVAILABLE_HYPNorwegianSSN
+#define COCOAPODS_VERSION_MAJOR_HYPNorwegianSSN 1
+#define COCOAPODS_VERSION_MINOR_HYPNorwegianSSN 4
+#define COCOAPODS_VERSION_PATCH_HYPNorwegianSSN 0
+
 // NSDictionary-HYPSafeValue
 #define COCOAPODS_POD_AVAILABLE_NSDictionary_HYPSafeValue
 #define COCOAPODS_VERSION_MAJOR_NSDictionary_HYPSafeValue 0

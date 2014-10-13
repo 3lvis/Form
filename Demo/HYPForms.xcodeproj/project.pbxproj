@@ -26,7 +26,6 @@
 		4408F19A19E81EA6005AE53F /* HYPForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F18319E81EA6005AE53F /* HYPForm.m */; };
 		4408F19B19E81EA6005AE53F /* HYPFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F18519E81EA6005AE53F /* HYPFormField.m */; };
 		4408F19C19E81EA6005AE53F /* HYPFormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F18719E81EA6005AE53F /* HYPFormSection.m */; };
-		4408F19D19E81EA6005AE53F /* HYPValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F18919E81EA6005AE53F /* HYPValidator.m */; };
 		4408F1B819E81F67005AE53F /* HYPBankAccountNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1A019E81F67005AE53F /* HYPBankAccountNumberFormatter.m */; };
 		4408F1B919E81F67005AE53F /* HYPFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1A219E81F67005AE53F /* HYPFormatter.m */; };
 		4408F1BA19E81F67005AE53F /* HYPPhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F1A419E81F67005AE53F /* HYPPhoneNumberFormatter.m */; };
@@ -54,6 +53,9 @@
 		4445D51B19EBC78A0034A5D7 /* UIFont+REMAStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51819EBC78A0034A5D7 /* UIFont+REMAStyles.m */; };
 		445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */; };
 		445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */; };
+		44BDD18C19EBD644008E9CA9 /* HYPBankAccountNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDD18719EBD644008E9CA9 /* HYPBankAccountNumberValidator.m */; };
+		44BDD18D19EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDD18919EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m */; };
+		44BDD18E19EBD644008E9CA9 /* HYPValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDD18B19EBD644008E9CA9 /* HYPValidator.m */; };
 		44D5600819EBB9580087067E /* HYPBlankFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D5600719EBB9580087067E /* HYPBlankFormFieldCell.m */; };
 		44D5600B19EBBDA30087067E /* HYPClassFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D5600A19EBBDA30087067E /* HYPClassFactory.m */; };
 		890DF4637B5C51A0210949DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9243ED4871CF70DD889729A /* libPods.a */; };
@@ -98,8 +100,6 @@
 		4408F18519E81EA6005AE53F /* HYPFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormField.m; sourceTree = "<group>"; };
 		4408F18619E81EA6005AE53F /* HYPFormSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormSection.h; sourceTree = "<group>"; };
 		4408F18719E81EA6005AE53F /* HYPFormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormSection.m; sourceTree = "<group>"; };
-		4408F18819E81EA6005AE53F /* HYPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPValidator.h; sourceTree = "<group>"; };
-		4408F18919E81EA6005AE53F /* HYPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPValidator.m; sourceTree = "<group>"; };
 		4408F19F19E81F67005AE53F /* HYPBankAccountNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberFormatter.h; sourceTree = "<group>"; };
 		4408F1A019E81F67005AE53F /* HYPBankAccountNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberFormatter.m; sourceTree = "<group>"; };
 		4408F1A119E81F67005AE53F /* HYPFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormatter.h; sourceTree = "<group>"; };
@@ -147,6 +147,12 @@
 		4445D51819EBC78A0034A5D7 /* UIFont+REMAStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+REMAStyles.m"; sourceTree = "<group>"; };
 		445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_mini_arrow_down.png; sourceTree = "<group>"; };
 		445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_arrow_down@2x.png"; sourceTree = "<group>"; };
+		44BDD18619EBD644008E9CA9 /* HYPBankAccountNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberValidator.h; sourceTree = "<group>"; };
+		44BDD18719EBD644008E9CA9 /* HYPBankAccountNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberValidator.m; sourceTree = "<group>"; };
+		44BDD18819EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSocialSecurityNumberValidator.h; sourceTree = "<group>"; };
+		44BDD18919EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberValidator.m; sourceTree = "<group>"; };
+		44BDD18A19EBD644008E9CA9 /* HYPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPValidator.h; sourceTree = "<group>"; };
+		44BDD18B19EBD644008E9CA9 /* HYPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPValidator.m; sourceTree = "<group>"; };
 		44D5600619EBB9580087067E /* HYPBlankFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBlankFormFieldCell.h; sourceTree = "<group>"; };
 		44D5600719EBB9580087067E /* HYPBlankFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBlankFormFieldCell.m; sourceTree = "<group>"; };
 		44D5600919EBBDA30087067E /* HYPClassFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPClassFactory.h; sourceTree = "<group>"; };
@@ -170,6 +176,7 @@
 		4408F15B19E81EA6005AE53F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				44BDD18519EBD644008E9CA9 /* Validators */,
 				4408F19E19E81F67005AE53F /* Formatters */,
 				4408F1A719E81F67005AE53F /* Input Validators */,
 				4408F15C19E81EA6005AE53F /* Cells */,
@@ -262,8 +269,6 @@
 				4408F18519E81EA6005AE53F /* HYPFormField.m */,
 				4408F18619E81EA6005AE53F /* HYPFormSection.h */,
 				4408F18719E81EA6005AE53F /* HYPFormSection.m */,
-				4408F18819E81EA6005AE53F /* HYPValidator.h */,
-				4408F18919E81EA6005AE53F /* HYPValidator.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,6 +397,19 @@
 				445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		44BDD18519EBD644008E9CA9 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				44BDD18619EBD644008E9CA9 /* HYPBankAccountNumberValidator.h */,
+				44BDD18719EBD644008E9CA9 /* HYPBankAccountNumberValidator.m */,
+				44BDD18819EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.h */,
+				44BDD18919EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m */,
+				44BDD18A19EBD644008E9CA9 /* HYPValidator.h */,
+				44BDD18B19EBD644008E9CA9 /* HYPValidator.m */,
+			);
+			path = Validators;
 			sourceTree = "<group>";
 		};
 		A2614FE9D8D55BAB932782D8 /* Pods */ = {
@@ -533,20 +551,22 @@
 				4445D51A19EBC78A0034A5D7 /* UIColor+REMAColors.m in Sources */,
 				4408F1B919E81F67005AE53F /* HYPFormatter.m in Sources */,
 				4408F19919E81EA6005AE53F /* HYPFieldValue.m in Sources */,
+				44BDD18C19EBD644008E9CA9 /* HYPBankAccountNumberValidator.m in Sources */,
 				4408F19219E81EA6005AE53F /* HYPTextFormFieldCell.m in Sources */,
 				4408F18A19E81EA6005AE53F /* HYPBaseFormFieldCell.m in Sources */,
 				4408F19419E81EA6005AE53F /* HYPFormHeaderView.m in Sources */,
 				4408F18E19E81EA6005AE53F /* HYPTextFormField.m in Sources */,
 				4408F19C19E81EA6005AE53F /* HYPFormSection.m in Sources */,
 				4408F1C219E81F67005AE53F /* HYPPostalCodeInputValidator.m in Sources */,
-				4408F19D19E81EA6005AE53F /* HYPValidator.m in Sources */,
 				4408F1C319E81F67005AE53F /* HYPSocialSecurityNumberInputValidator.m in Sources */,
 				4445D51219EBC6B80034A5D7 /* HYPFormTimeViewController.m in Sources */,
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
+				44BDD18D19EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m in Sources */,
 				4408F1BA19E81F67005AE53F /* HYPPhoneNumberFormatter.m in Sources */,
 				4408F1BD19E81F67005AE53F /* HYPFloatInputValidator.m in Sources */,
 				4408F19019E81EA6005AE53F /* HYPDropdownFormFieldCell.m in Sources */,
 				4408F19619E81EA6005AE53F /* HYPFormsCollectionViewDataSource.m in Sources */,
+				44BDD18E19EBD644008E9CA9 /* HYPValidator.m in Sources */,
 				4408F1C719E8244E005AE53F /* HYPSampleCollectionViewController.m in Sources */,
 				4408F19319E81EA6005AE53F /* HYPFormBackgroundView.m in Sources */,
 				4408F19A19E81EA6005AE53F /* HYPForm.m in Sources */,

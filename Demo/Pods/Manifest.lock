@@ -1,10 +1,14 @@
 PODS:
+  - HYPNorwegianAccountNumber (1.2)
+  - HYPNorwegianSSN (1.4)
   - NSDictionary-HYPSafeValue (0.1)
   - NSString-ZENInflections (1.1)
   - UIColor-ANDYHex (1.0)
   - UIScreen-HYPLiveBounds (1.3)
 
 DEPENDENCIES:
+  - HYPNorwegianAccountNumber
+  - HYPNorwegianSSN
   - NSDictionary-HYPSafeValue (from `https://github.com/hyperoslo/NSDictionary-HYPSafeValue.git`)
   - NSString-ZENInflections
   - UIColor-ANDYHex (from `https://github.com/NSElvis/UIColor-ANDYHex.git`)
@@ -17,6 +21,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
 SPEC CHECKSUMS:
+  HYPNorwegianAccountNumber: 521cfc3c46be403dfc8eb6a592b9f059b96dd13e
+  HYPNorwegianSSN: 2d14aacd43f523200c8182413a1270e27bccf408
   NSDictionary-HYPSafeValue: 9a25ceab076296c03fbabef1d05a334149bdb9f2
   NSString-ZENInflections: 68e691d2a37c8f33fc624b71326a3a654d07b6df
   UIColor-ANDYHex: 064f9460456713688a70ac86fd5b3287f1670759

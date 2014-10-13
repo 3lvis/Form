@@ -67,7 +67,7 @@
                 field.size  = [fieldDict hyp_safeValueForKey:@"size"];
                 field.position = @(fieldIndex);
                 field.validations = [fieldDict hyp_safeValueForKey:@"validations"];
-                field.disabled = [fieldDict hyp_safeValueForKey:@"disabled"];
+                field.disabled = [[fieldDict hyp_safeValueForKey:@"disabled"] boolValue];
 
                 if (dictionary && [dictionary valueForKey:remoteID]) {
                     field.fieldValue = [dictionary valueForKey:remoteID];
