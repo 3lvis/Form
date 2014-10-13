@@ -1,76 +1,76 @@
 //
-//  UIFont+Styles.m
+//  UIFont+REMAStyles.m
 
 //
 //  Created by Christoffer Winterkvist on 5/12/14.
-//  Copyright (c) 2014 Hyper. All rights reserved.
+//  Copyright (c) 2014 REMAer. All rights reserved.
 //
 
-#import "UIFont+Styles.h"
+#import "UIFont+REMAStyles.h"
 
-@implementation UIFont (Styles)
+@implementation UIFont (REMAStyles)
 
-+ (UIFont *)HYPLargeSize
++ (UIFont *)REMALargeSize
 {
     return [UIFont fontWithName:@"DIN-Medium" size:20.0];
 }
 
-+ (UIFont *)HYPLargeSizeBold
++ (UIFont *)REMALargeSizeBold
 {
     return [UIFont fontWithName:@"DIN-Bold" size:20.0];
 }
 
-+ (UIFont *)HYPLargeSizeRegular
++ (UIFont *)REMALargeSizeRegular
 {
     return [UIFont fontWithName:@"DIN-Regular" size:20.0];
 }
 
-+ (UIFont *)HYPMediumSize
++ (UIFont *)REMAMediumSize
 {
     return [UIFont fontWithName:@"DIN-Medium" size:17.0];
 }
 
-+ (UIFont *)HYPMediumSizeBolder
++ (UIFont *)REMAMediumSizeBolder
 {
     return [UIFont fontWithName:@"DIN-Bold" size:17.0];
 }
 
-+ (UIFont *)HYPMediumSizeBold
++ (UIFont *)REMAMediumSizeBold
 {
     return [UIFont fontWithName:@"DIN-Medium" size:17.0];
 }
 
-+ (UIFont *)HYPMediumSizeLight
++ (UIFont *)REMAMediumSizeLight
 {
     return [UIFont fontWithName:@"DIN-Light" size:17.0];
 }
 
-+ (UIFont *)HYPSmallSizeBold
++ (UIFont *)REMASmallSizeBold
 {
     return [UIFont fontWithName:@"DIN-Bold" size:14.0];
 }
 
-+ (UIFont *)HYPSmallSize
++ (UIFont *)REMASmallSize
 {
     return [UIFont fontWithName:@"DIN-Regular" size:14.0];
 }
 
-+ (UIFont *)HYPSmallSizeLight
++ (UIFont *)REMASmallSizeLight
 {
     return [UIFont fontWithName:@"DIN-Light" size:14.0];
 }
 
-+ (UIFont *)HYPSmallSizeMedium
++ (UIFont *)REMASmallSizeMedium
 {
     return [UIFont fontWithName:@"DIN-Medium" size:14.0];
 }
 
-+ (UIFont *)HYPLabelFont
++ (UIFont *)REMALabelFont
 {
     return [UIFont fontWithName:@"DIN-Light" size:13.0];
 }
 
-+ (UIFont *)HYPTextFieldFont
++ (UIFont *)REMATextFieldFont
 {
     return [UIFont fontWithName:@"DIN-Regular" size:15.0];
 }

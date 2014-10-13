@@ -8,9 +8,9 @@
 
 #import "HYPTextFormField.h"
 
-#import "UIColor+Colors.h"
+#import "UIColor+REMAColors.h"
 #import "UIColor+ANDYHex.h"
-#import "UIFont+Styles.h"
+#import "UIFont+REMAStyles.h"
 #import "HYPTextFieldTypeManager.h"
 
 @interface HYPTextFormField () <UITextFieldDelegate>
@@ -39,7 +39,7 @@
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-    self.font = [UIFont HYPTextFieldFont];
+    self.font = [UIFont REMATextFieldFont];
     self.textColor = [UIColor colorFromHex:@"455C73"];
 
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 20.0f)];
@@ -87,7 +87,7 @@
         self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
         self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
     } else {
-        self.backgroundColor = [UIColor HYPFieldBackgroundInvalid];
+        self.backgroundColor = [UIColor REMAFieldBackgroundInvalid];
         self.layer.borderColor = [UIColor colorFromHex:@"EC3031"].CGColor;
     }
 }

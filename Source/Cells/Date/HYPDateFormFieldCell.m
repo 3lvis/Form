@@ -8,18 +8,18 @@
 
 #import "HYPDateFormFieldCell.h"
 
-#import "HYPTimeViewController.h"
+#import "HYPFormTimeViewController.h"
 
 static NSString * const HYPDateFieldFormat = @"yyyy-MM-dd";
 
 static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
-@interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPTimeViewControllerDelegate, UIPopoverControllerDelegate>
+@interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) HYPTextFormField *textField;
 
 @property (nonatomic, strong) UIPopoverController *popoverController;
-@property (nonatomic, strong) HYPTimeViewController *timeViewController;
+@property (nonatomic, strong) HYPFormTimeViewController *timeViewController;
 
 @end
 
@@ -38,11 +38,11 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
 #pragma mark - Getters
 
-- (HYPTimeViewController *)timeViewController
+- (HYPFormTimeViewController *)timeViewController
 {
     if (_timeViewController) return _timeViewController;
 
-    _timeViewController = [[HYPTimeViewController alloc] initWithDate:[NSDate date]];
+    _timeViewController = [[HYPFormTimeViewController alloc] initWithDate:[NSDate date]];
     _timeViewController.delegate = self;
     _timeViewController.birthdayPicker = YES;
 
@@ -76,7 +76,7 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
 #pragma mark - HYPTimeViewControllerDelegate
 
-- (void)timeController:(HYPTimeViewController *)timeController didChangedDate:(NSDate *)date
+- (void)timeController:(HYPFormTimeViewController *)timeController didChangedDate:(NSDate *)date
 {
     self.field.fieldValue = date;
 

@@ -11,8 +11,8 @@
 #import "HYPFieldValue.h"
 #import "HYPFormField.h"
 
-#import "UIFont+Styles.h"
-#import "UIColor+Colors.h"
+#import "UIFont+REMAStyles.h"
+#import "UIColor+REMAColors.h"
 
 static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier";
 
@@ -56,8 +56,8 @@ static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier"
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HYPDropdownCellIdentifier];
-    cell.textLabel.font = [UIFont HYPMediumSize];
-    cell.textLabel.textColor = [UIColor HYPDarkBlue];
+    cell.textLabel.font = [UIFont REMAMediumSize];
+    cell.textLabel.textColor = [UIColor REMADarkBlue];
     cell.textLabel.highlightedTextColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
 
@@ -65,7 +65,7 @@ static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier"
     cell.backgroundColor = [UIColor whiteColor];
 
     UIView *selectedBackgroundView = [[UIView alloc] init];
-    selectedBackgroundView.backgroundColor = [UIColor HYPCallToActionPressed];
+    selectedBackgroundView.backgroundColor = [UIColor REMACallToActionPressed];
     cell.selectedBackgroundView = selectedBackgroundView;
 
     HYPFieldValue *fieldValue = self.values[indexPath.row];

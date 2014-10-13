@@ -1,17 +1,17 @@
 //
-//  HYPTimeViewController.m
+//  HYPFormTimeViewController.m
 //  HYPDrifts
 //
 //  Created by Elvis Nunez on 1/22/13.
 //  Copyright (c) 2013 Hyper. All rights reserved.
 //
 
-#import "HYPTimeViewController.h"
+#import "HYPFormTimeViewController.h"
 
-#import "UIFont+Styles.h"
-#import "UIColor+Colors.h"
+#import "UIColor+REMAColors.h"
+#import "UIFont+REMAStyles.m"
 
-#import "HYPDateFormFieldCell.h"
+static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
 static CGFloat const HYPActionTitleLabelY = 10.0f;
 static CGFloat const HYPActionTitleLabelHeight = 40.0f;
@@ -24,14 +24,12 @@ static CGFloat const HYPActionButtonHeight = 45.0f;
 
 static CGFloat const HYPViewVerticalSpacing = 10.0f;
 
-static const CGSize HYPTimePopoverSize = { 320.0f, 216.0f };
-
-@interface HYPTimeViewController ()
+@interface HYPFormTimeViewController ()
 
 @property (nonatomic, strong) NSDate *date;
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
-@property (nonatomic, copy) HYPTimeViewActionBlock actionBlock;
+@property (nonatomic, copy) HYPFormTimeViewActionBlock actionBlock;
 
 @property (nonatomic, copy) NSString *actionTitle;
 @property (nonatomic, copy) NSString *message;
@@ -42,7 +40,7 @@ static const CGSize HYPTimePopoverSize = { 320.0f, 216.0f };
 
 @end
 
-@implementation HYPTimeViewController
+@implementation HYPFormTimeViewController
 
 #pragma mark - Initialization
 
@@ -57,7 +55,7 @@ static const CGSize HYPTimePopoverSize = { 320.0f, 216.0f };
 }
 
 - (id)initWithDate:(NSDate *)date title:(NSString *)title message:(NSString *)message
-       actionTitle:(NSString *)actionTitle actionBlock:(HYPTimeViewActionBlock)actionBlock
+       actionTitle:(NSString *)actionTitle actionBlock:(HYPFormTimeViewActionBlock)actionBlock
 {
     self = [self initWithDate:date];
     if (!self) return nil;
@@ -80,12 +78,12 @@ static const CGSize HYPTimePopoverSize = { 320.0f, 216.0f };
     if (_titleLabel) return _titleLabel;
 
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, HYPActionTitleLabelY,
-                                                                  HYPTimePopoverSize.width,
+                                                                  HYPDatePopoverSize.width,
                                                                   HYPActionTitleLabelHeight)];
-    _titleLabel.font = [UIFont HYPMediumSizeBolder];
-    _titleLabel.textColor = [UIColor HYPDarkBlue];
+    _titleLabel.font = [UIFont REMAMediumSizeBolder];
+    _titleLabel.textColor = [UIColor REMADarkBlue];
     _titleLabel.text = self.title;
-    _titleLabel.backgroundColor = [UIColor HYPLightGray];
+    _titleLabel.backgroundColor = [UIColor REMALightGray];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
 
     return _titleLabel;
@@ -95,26 +93,25 @@ static const CGSize HYPTimePopoverSize = { 320.0f, 216.0f };
 {
     if (_messageTextView) return _messageTextView;
 
-    UIFont *font = [UIFont HYPTextFieldFont];
+    
+    UIFont *font = [UIFont REMATextFieldFont];
     CGFloat xOffset = HYPActionMessageTextViewX;
     CGFloat yOffset = HYPActionMessageTextViewY;
 
     NSDictionary *attributes = @{ NSFontAttributeName : font };
-    CGFloat width = HYPTimePopoverSize.width - (xOffset * 2.0f);
-    CGRect rect = [self.message boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+    CGRect rect = [self.message boundingRectWithSize:CGSizeMake(HYPDatePopoverSize.width - (xOffset * 2.0f), CGFLOAT_MAX)
                                        options:NSStringDrawingUsesLineFragmentOrigin
                                     attributes:attributes
                                        context:nil];
-
-    CGFloat height = CGRectGetHeight(rect) + yOffset;
+    CGFloat height =CGRectGetHeight(rect) + yOffset;
     CGFloat y = (self.title) ? CGRectGetMaxY(self.titleLabel.frame) : 0.0f;
 
-    _messageTextView = [[UITextView alloc] initWithFrame:CGRectMake(xOffset, y, HYPTimePopoverSize.width - (xOffset * 2.0f), height)];
+    _messageTextView = [[UITextView alloc] initWithFrame:CGRectMake(xOffset, y, HYPDatePopoverSize.width - (xOffset * 2.0f), height)];
     _messageTextView.font = font;
-    _messageTextView.textColor = [UIColor HYPDarkBlue];
+    _messageTextView.textColor = [UIColor REMADarkBlue];
     _messageTextView.text = self.message;
     _messageTextView.scrollEnabled = NO;
-    _messageTextView.backgroundColor = [UIColor HYPLightGray];
+    _messageTextView.backgroundColor = [UIColor REMALightGray];
 
     return _messageTextView;
 }
@@ -125,8 +122,8 @@ static const CGSize HYPTimePopoverSize = { 320.0f, 216.0f };
 
     CGFloat y = (self.message) ? CGRectGetMaxY(self.messageTextView.frame) : 0.0f;
 
-    _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0f, y, HYPTimePopoverSize.width,
-                                                                 HYPTimePopoverSize.height)];
+    _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0f, y, HYPDatePopoverSize.width,
+                                                                 HYPDatePopoverSize.height)];
 
     return _datePicker;
 }
@@ -148,12 +145,12 @@ static const CGSize HYPTimePopoverSize = { 320.0f, 216.0f };
     }
 
     _actionButton = [[UIButton alloc] initWithFrame:CGRectMake(offset, y,
-                                                               HYPTimePopoverSize.width - (offset * 2.0f), height)];
+                                                               HYPDatePopoverSize.width - (offset * 2.0f), height)];
     [_actionButton setTitle:self.actionTitle forState:UIControlStateNormal];
-    _actionButton.backgroundColor = [UIColor HYPRed];
+    _actionButton.backgroundColor = [UIColor REMARed];
     [_actionButton addTarget:self action:@selector(actionButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     _actionButton.layer.cornerRadius = 5.0f;
-    _actionButton.titleLabel.font = [UIFont HYPLargeSizeBold];
+    _actionButton.titleLabel.font = [UIFont REMALargeSizeBold];
 
     return _actionButton;
 }
@@ -172,6 +169,13 @@ static const CGSize HYPTimePopoverSize = { 320.0f, 216.0f };
     _actionButtonColor = actionButtonColor;
 
     self.actionButton.backgroundColor = actionButtonColor;
+}
+
+- (void)setMinimumDate:(NSDate *)minimumDate
+{
+    _minimumDate = minimumDate;
+
+    self.datePicker.minimumDate = self.minimumDate;
 }
 
 #pragma mark - View Lifecycle
@@ -239,18 +243,16 @@ static const CGSize HYPTimePopoverSize = { 320.0f, 216.0f };
     }
 
     if (self.message) {
-        UIFont *font = [UIFont HYPTextFieldFont];
+        UIFont *font = [UIFont REMATextFieldFont];
         CGFloat xOffset = HYPActionMessageTextViewX;
         CGFloat yOffset = HYPActionMessageTextViewY;
 
         NSDictionary *attributes = @{ NSFontAttributeName : font };
-        CGFloat width = HYPTimePopoverSize.width - (xOffset * 2.0f);
-        CGRect rect = [self.message boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+        CGRect rect = [self.message boundingRectWithSize:CGSizeMake(HYPDatePopoverSize.width - (xOffset * 2.0f), CGFLOAT_MAX)
                                                  options:NSStringDrawingUsesLineFragmentOrigin
                                               attributes:attributes
                                                  context:nil];
-
-        height += CGRectGetHeight(rect) + yOffset;
+        height =CGRectGetHeight(rect) + yOffset;
 
         height += HYPViewVerticalSpacing;
     }

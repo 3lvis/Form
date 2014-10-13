@@ -16,7 +16,7 @@
 #import "HYPFormField.h"
 
 #import "UIColor+ANDYHex.h"
-#import "UIFont+Styles.h"
+#import "UIFont+REMAStyles.h"
 
 static const NSInteger HYPFieldCellMargin = 10.0f;
 static const NSInteger HYPFieldCellItemSmallHeight = 1.0f;
