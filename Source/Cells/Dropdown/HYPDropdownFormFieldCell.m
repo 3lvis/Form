@@ -67,7 +67,18 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 {
     [super updateWithField:field];
 
-    self.textField.rawText = field.fieldValue;
+    if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+        HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
+        self.textField.rawText = fieldValue.title;
+    } else {
+
+        for (HYPFieldValue *fieldValue in field.values) {
+            if ([fieldValue.id isEqualToString:field.rawFieldValue]) {
+                self.textField.rawText = fieldValue.title;
+                return;
+            }
+        }
+    }
 }
 
 - (void)validate
@@ -103,7 +114,7 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 - (void)fieldValuesTableViewController:(HYPFieldValuesTableViewController *)fieldValuesTableViewController
                       didSelectedValue:(HYPFieldValue *)selectedValue
 {
-    self.field.fieldValue = selectedValue.title;
+    self.field.fieldValue = selectedValue;
     [self updateWithField:self.field];
     
     [self.popoverController dismissPopoverAnimated:YES];

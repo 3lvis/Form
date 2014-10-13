@@ -12,6 +12,7 @@
 #import "HYPFormatter.h"
 #import "HYPInputValidator.h"
 #import "NSDate+HYPISO8601.h"
+#import "HYPFieldValue.h"
 
 static NSString * const HYPFormFieldSelectType = @"select";
 static NSString * const HYPInputValidatorSelector = @"validateString:text:";
@@ -46,6 +47,10 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 - (id)rawFieldValue
 {
+    if ([self.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+        return [self.fieldValue id];
+    }
+
     switch (self.type) {
         case HYPFormFieldTypeFloat:
             return @([self.fieldValue floatValue]);
