@@ -191,11 +191,33 @@
                   "values":[
                      {
                         "id":"fast",
-                        "title":"Fast"
+                        "title":"Fast",
+                        "action": "hide",
+                        "targets": [
+                          {
+                              "id": "temporary_employee_type",
+                              "type": "field"
+                          },
+                          {
+                              "id": "temporary_employee_reason",
+                              "type": "field"
+                          }
+                        ]
                      },
                      {
                         "id":"midlertidig",
-                        "title":"Midlertidig"
+                        "title":"Midlertidig",
+                        "action": "show",
+                        "targets": [
+                          {
+                              "id": "temporary_employee_type",
+                              "type": "field"
+                          },
+                          {
+                              "id": "temporary_employee_reason",
+                              "type": "field"
+                          }
+                        ]
                      }
                   ],
                   "validations":{
