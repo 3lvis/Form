@@ -102,7 +102,8 @@
     return currentItemAttributes;
 }
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind
+                                                                  atIndexPath:(NSIndexPath *)indexPath
 {
     if (![elementKind isEqualToString:HYPFormBackgroundKind]) {
         return [super layoutAttributesForDecorationViewOfKind:elementKind atIndexPath:indexPath];
@@ -121,7 +122,10 @@
 
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
                                                                                                                withIndexPath:indexPath];
-    attributes.frame = CGRectMake(HYPFormBackgroundViewMargin, y, self.collectionViewContentSize.width - (HYPFormBackgroundViewMargin * 2), height - bottomMargin);
+    attributes.frame = CGRectMake(HYPFormBackgroundViewMargin,
+                                  y,
+                                  self.collectionViewContentSize.width - (HYPFormBackgroundViewMargin * 2),
+                                  height - bottomMargin);
     attributes.zIndex = -1;
 
     return attributes;
