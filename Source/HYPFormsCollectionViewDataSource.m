@@ -25,8 +25,6 @@
 @property (nonatomic, strong) NSMutableDictionary *resultsDictionary;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-@property (nonatomic, strong) NSMutableArray *deletedIndexPaths;
-
 @end
 
 @implementation HYPFormsCollectionViewDataSource
@@ -96,22 +94,13 @@
     return _collapsedForms;
 }
 
-- (NSMutableArray *)deletedFields
+- (NSMutableDictionary *)deletedFields
 {
     if (_deletedFields) return _deletedFields;
 
-    _deletedFields = [NSMutableArray array];
+    _deletedFields = [NSMutableDictionary dictionary];
 
     return _deletedFields;
-}
-
-- (NSMutableArray *)deletedIndexPaths
-{
-    if (_deletedIndexPaths) return _deletedIndexPaths;
-
-    _deletedIndexPaths = [NSMutableArray array];
-
-    return _deletedIndexPaths;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -294,54 +283,52 @@
 
 - (void)showTargets:(NSArray *)targets
 {
-    NSMutableArray *array = [self.deletedFields copy];
+    NSMutableArray *insertedIndexPaths = [NSMutableArray array];
 
     [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
-        for (HYPFormField *field in array) {
-            if ([target.id isEqualToString:[field.id zen_rubyCase]]) {
-                HYPForm *form = self.forms[[field.section.form.position integerValue]];
-                HYPFormSection *section = form.sections[[field.section.position integerValue]];
-                [section.fields insertObject:field atIndex:[field.position integerValue]];
-                [self.deletedFields removeObject:field];
-            }
+        NSString *key = [target.id zen_camelCase];
+        HYPFormField *field = [self.deletedFields objectForKey:key];
+        if (field) {
+            [insertedIndexPaths addObject:[field.indexPath copy]];
+            HYPForm *form = self.forms[[field.section.form.position integerValue]];
+            HYPFormSection *section = form.sections[[field.section.position integerValue]];
+            [section.fields insertObject:field atIndex:[field.position integerValue]];
+            [self.deletedFields removeObjectForKey:key];
         }
     }];
 
-    [self.collectionView insertItemsAtIndexPaths:self.deletedIndexPaths];
-    [self.collectionView.collectionViewLayout invalidateLayout];
-
-    [self.deletedIndexPaths removeAllObjects];
-    [self.deletedFields removeAllObjects];
+    if (insertedIndexPaths.count > 0) {
+        [self.collectionView insertItemsAtIndexPaths:insertedIndexPaths];
+        [self.collectionView.collectionViewLayout invalidateLayout];
+    }
 }
 
 - (void)hideTargets:(NSArray *)targets
 {
+    NSMutableArray *deletedFields = [NSMutableArray array];
+
     [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
-
-        NSInteger section = 0;
-        NSInteger row = 0;
-
-        for (HYPForm *form in self.forms) {
-            for (HYPFormField *field in form.fields) {
-                if ([[field.id zen_rubyCase] isEqualToString:target.id]) {
-                    [self.deletedFields addObject:field];
-                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
-                    [self.deletedIndexPaths addObject:indexPath];
-                }
-                row++;
+        [self findFieldForTarget:target completion:^(HYPFormField *field) {
+            if (field && ![self.deletedFields objectForKey:field.id]) {
+                [deletedFields addObject:field];
+                [self.deletedFields addEntriesFromDictionary:@{field.id : field}];
             }
-            section++;
-        }
+        }];
     }];
 
-    for (HYPFormField *field in self.deletedFields) {
+    NSMutableArray *deletedIndexPaths = [NSMutableArray array];
+
+    for (HYPFormField *field in deletedFields) {
+        [deletedIndexPaths addObject:field.indexPath];
         HYPForm *form = self.forms[[field.section.form.position integerValue]];
         HYPFormSection *section = form.sections[[field.section.position integerValue]];
         [section.fields removeObjectAtIndex:[field.position integerValue]];
     }
 
-    [self.collectionView deleteItemsAtIndexPaths:self.deletedIndexPaths];
-    [self.collectionView.collectionViewLayout invalidateLayout];
+    if (deletedIndexPaths.count > 0) {
+        [self.collectionView deleteItemsAtIndexPaths:deletedIndexPaths];
+        [self.collectionView.collectionViewLayout invalidateLayout];
+    }
 }
 
 - (void)enableTargets:(NSArray *)targets
@@ -356,6 +343,29 @@
     // look for the fields
     // get their index paths
     // disable them
+}
+
+- (void)findFieldForTarget:(HYPFormTarget *)target completion:(void (^)(HYPFormField *field))completion
+{
+    __block BOOL found = NO;
+
+    [self.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
+        [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
+            if ([[field.id zen_rubyCase] isEqualToString:target.id]) {
+                field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
+
+                if (completion) {
+                    completion(field);
+                }
+
+                found = YES;
+            }
+        }];
+    }];
+
+    if (!found) {
+        completion(nil);
+    }
 }
 
 @end

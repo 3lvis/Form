@@ -188,7 +188,8 @@
     } else {
         fields = [NSMutableArray arrayWithArray:form.fields];
 
-        for (HYPFormField *deletedField in [self.dataSource deletedFields]) {
+        NSMutableDictionary *deletedFields = [self.dataSource deletedFields];
+        for (HYPFormField *deletedField in [deletedFields allValues]) {
             if ([deletedField.section.form.position integerValue] == section) {
                 [fields insertObject:deletedField atIndex:[deletedField.position integerValue]];
             }
