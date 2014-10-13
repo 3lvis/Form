@@ -13,7 +13,14 @@
                   "validations":{
                      "required":true,
                      "min_length":2
-                  }
+                  },
+                  "action": "update",
+                  "targets": [
+                    {
+                        "id": "display_name",
+                        "type": "string"
+                    }
+                   ]
                },
                {
                   "id":"last_name",
@@ -29,7 +36,8 @@
                   "id":"display_name",
                   "title":"Visningsnavn",
                   "type":"text",
-                  "size":25
+                  "size":25,
+                  "formula": "first_name last_name"
                },
                {
                   "id":"social_security_number",
