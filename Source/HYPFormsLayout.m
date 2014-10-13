@@ -63,7 +63,7 @@
     return self;
 }
 
-#pragma mark - Private Methods
+#pragma mark - Overwrited Methods
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -201,5 +201,8 @@
     
     return attributes;
 }
+
+#pragma mark - Private Methods
+
 
 @end
