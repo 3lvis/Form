@@ -25,6 +25,8 @@
 @property (nonatomic, strong) NSMutableDictionary *resultsDictionary;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
+@property (nonatomic, strong) NSMutableArray *deletedIndexPaths;
+
 @end
 
 @implementation HYPFormsCollectionViewDataSource
@@ -101,6 +103,15 @@
     _deletedFields = [NSMutableArray array];
 
     return _deletedFields;
+}
+
+- (NSMutableArray *)deletedIndexPaths
+{
+    if (_deletedIndexPaths) return _deletedIndexPaths;
+
+    _deletedIndexPaths = [NSMutableArray array];
+
+    return _deletedIndexPaths;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -262,14 +273,25 @@
 
 - (void)showFieldsWithIDs:(NSArray *)fieldIDs
 {
-    // look for the removed fields in the array
-    // get their index paths and add them
+    NSMutableArray *array = [self.deletedFields copy];
+
+    [fieldIDs enumerateObjectsUsingBlock:^(NSString *fieldID, NSUInteger idx, BOOL *stop) {
+        for (HYPFormField *field in array) {
+            if ([fieldID isEqualToString:[field.id zen_rubyCase]]) {
+                HYPForm *form = self.forms[[field.section.form.position integerValue]];
+                HYPFormSection *section = form.sections[[field.section.position integerValue]];
+                [section.fields insertObject:field atIndex:[field.position integerValue]];
+                [self.deletedFields removeObject:field];
+            }
+        }
+    }];
+
+    [self.collectionView insertItemsAtIndexPaths:self.deletedIndexPaths];
+    [self.collectionView.collectionViewLayout invalidateLayout];
 }
 
 - (void)deleteFieldsWithIDs:(NSArray *)fieldIDs
 {
-    NSMutableArray *deletedIndexPaths = [NSMutableArray array];
-
     [fieldIDs enumerateObjectsUsingBlock:^(NSString *fieldID, NSUInteger idx, BOOL *stop) {
 
         NSInteger section = 0;
@@ -280,7 +302,7 @@
                 if ([[field.id zen_rubyCase] isEqualToString:fieldID]) {
                     [self.deletedFields addObject:field];
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
-                    [deletedIndexPaths addObject:indexPath];
+                    [self.deletedIndexPaths addObject:indexPath];
                 }
                 row++;
             }
@@ -294,13 +316,8 @@
         [section.fields removeObjectAtIndex:[field.position integerValue]];
     }
 
-    [self.collectionView deleteItemsAtIndexPaths:deletedIndexPaths];
+    [self.collectionView deleteItemsAtIndexPaths:self.deletedIndexPaths];
     [self.collectionView.collectionViewLayout invalidateLayout];
-
-    // look for the fields
-    // add them to the array
-    // get their index paths
-    // remove them from the collection view
 }
 
 - (void)enableFieldsWithIDs:(NSArray *)fieldIDs
