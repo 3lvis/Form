@@ -108,54 +108,10 @@
         return [super layoutAttributesForDecorationViewOfKind:elementKind atIndexPath:indexPath];
     }
 
-    NSArray *forms = nil;
-
-    if ([self.dataSource respondsToSelector:@selector(forms)]) {
-        forms = [self.dataSource forms];
-    } else {
-        abort();
-    }
-
-    NSArray *collapsedForms = nil;
-
-    if ([self.dataSource respondsToSelector:@selector(collapsedForms)]) {
-        collapsedForms = [self.dataSource collapsedForms];
-    } else {
-        collapsedForms = [NSArray array];
-    }
-
-    HYPForm *form = forms[indexPath.section];
-    NSMutableArray *fields = nil;
-
-    if ([collapsedForms containsObject:@(indexPath.section)]) {
-        fields = [NSMutableArray array];
-    } else {
-        fields = [NSMutableArray arrayWithArray:form.fields];
-
-        for (HYPFormField *deletedField in [self.dataSource deletedFields]) {
-            if ([deletedField.section.form.position integerValue] == indexPath.section) {
-                [fields insertObject:deletedField atIndex:[deletedField.position integerValue]];
-            }
-        }
-    }
+    NSMutableArray *fields = [self fieldsAtSection:indexPath.section];
 
     CGFloat bottomMargin = HYPFormHeaderContentMargin;
-    CGFloat height = HYPFormMarginTop + HYPFormMarginBottom;
-    CGFloat width = 0.0f;
-
-    for (HYPFormField *field in fields) {
-        if (field.sectionSeparator) {
-            height += HYPFieldCellItemSmallHeight;
-        } else {
-            width += [field.size floatValue];
-
-            if (width >= 100.0f) {
-                height += HYPFieldCellItemHeight;
-                width = 0;
-            }
-        }
-    }
-
+    CGFloat height = [self heightForFields:fields];
     CGFloat y = self.previousHeight + self.previousY + HYPFormHeaderHeight;
 
     self.previousHeight = height;
@@ -204,5 +160,61 @@
 
 #pragma mark - Private Methods
 
+- (NSMutableArray *)fieldsAtSection:(NSInteger)section
+{
+    NSArray *forms = nil;
+
+    if ([self.dataSource respondsToSelector:@selector(forms)]) {
+        forms = [self.dataSource forms];
+    } else {
+        abort();
+    }
+
+    NSArray *collapsedForms = nil;
+
+    if ([self.dataSource respondsToSelector:@selector(collapsedForms)]) {
+        collapsedForms = [self.dataSource collapsedForms];
+    } else {
+        collapsedForms = [NSArray array];
+    }
+
+    HYPForm *form = forms[section];
+    NSMutableArray *fields = nil;
+
+    if ([collapsedForms containsObject:@(section)]) {
+        fields = [NSMutableArray array];
+    } else {
+        fields = [NSMutableArray arrayWithArray:form.fields];
+
+        for (HYPFormField *deletedField in [self.dataSource deletedFields]) {
+            if ([deletedField.section.form.position integerValue] == section) {
+                [fields insertObject:deletedField atIndex:[deletedField.position integerValue]];
+            }
+        }
+    }
+
+    return fields;
+}
+
+- (CGFloat)heightForFields:(NSArray *)fields
+{
+    CGFloat height = HYPFormMarginTop + HYPFormMarginBottom;
+    CGFloat width = 0.0f;
+
+    for (HYPFormField *field in fields) {
+        if (field.sectionSeparator) {
+            height += HYPFieldCellItemSmallHeight;
+        } else {
+            width += [field.size floatValue];
+
+            if (width >= 100.0f) {
+                height += HYPFieldCellItemHeight;
+                width = 0;
+            }
+        }
+    }
+
+    return height;
+}
 
 @end
