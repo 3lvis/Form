@@ -26,14 +26,14 @@
                                   @"bank_account_number" : @"11111111111",
                                   @"city" : @"Telemark",
                                   @"email_address" : @"christoffer@hyper.no",
-                                  @"end_date" : @"2017-10-31T23:00:00+00:00",
+                                  @"end_date" : @"2017-10-31 23:00:00 +00:00",
                                   @"first_name" : @"Chris",
                                   @"hours_per_week" : @37,
                                   @"last_name" : @"Winterkvist",
                                   @"phone_number" : @"41399880",
                                   @"postal_code" : @"6414",
                                   @"social_security_number" : @"28118240000",
-                                  @"start_date" : @"2014-10-31T23:00:00+00:00",
+                                  @"start_date" : @"2014-10-31 23:00:00 +00:00",
                                   @"worker_id" : @"120000"
                                   };
 

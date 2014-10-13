@@ -48,7 +48,6 @@
 		4441A9EB19E2BBC50068498D /* DIN-MEDI.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E619E2BBC50068498D /* DIN-MEDI.OTF */; };
 		4441A9EC19E2BBC50068498D /* DIN-REGU.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E719E2BBC50068498D /* DIN-REGU.OTF */; };
 		4445D51219EBC6B80034A5D7 /* HYPFormTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51119EBC6B80034A5D7 /* HYPFormTimeViewController.m */; };
-		4445D51919EBC78A0034A5D7 /* NSDate+HYPISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51419EBC78A0034A5D7 /* NSDate+HYPISO8601.m */; };
 		4445D51A19EBC78A0034A5D7 /* UIColor+REMAColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51619EBC78A0034A5D7 /* UIColor+REMAColors.m */; };
 		4445D51B19EBC78A0034A5D7 /* UIFont+REMAStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51819EBC78A0034A5D7 /* UIFont+REMAStyles.m */; };
 		445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */; };
@@ -139,8 +138,6 @@
 		4441A9E719E2BBC50068498D /* DIN-REGU.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-REGU.OTF"; sourceTree = "<group>"; };
 		4445D51019EBC6B80034A5D7 /* HYPFormTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormTimeViewController.h; sourceTree = "<group>"; };
 		4445D51119EBC6B80034A5D7 /* HYPFormTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormTimeViewController.m; sourceTree = "<group>"; };
-		4445D51319EBC78A0034A5D7 /* NSDate+HYPISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HYPISO8601.h"; sourceTree = "<group>"; };
-		4445D51419EBC78A0034A5D7 /* NSDate+HYPISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HYPISO8601.m"; sourceTree = "<group>"; };
 		4445D51519EBC78A0034A5D7 /* UIColor+REMAColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+REMAColors.h"; sourceTree = "<group>"; };
 		4445D51619EBC78A0034A5D7 /* UIColor+REMAColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+REMAColors.m"; sourceTree = "<group>"; };
 		4445D51719EBC78A0034A5D7 /* UIFont+REMAStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+REMAStyles.h"; sourceTree = "<group>"; };
@@ -378,8 +375,6 @@
 		4445D50F19EBC6B80034A5D7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				4445D51319EBC78A0034A5D7 /* NSDate+HYPISO8601.h */,
-				4445D51419EBC78A0034A5D7 /* NSDate+HYPISO8601.m */,
 				4445D51519EBC78A0034A5D7 /* UIColor+REMAColors.h */,
 				4445D51619EBC78A0034A5D7 /* UIColor+REMAColors.m */,
 				4445D51719EBC78A0034A5D7 /* UIFont+REMAStyles.h */,
@@ -571,7 +566,6 @@
 				4408F19319E81EA6005AE53F /* HYPFormBackgroundView.m in Sources */,
 				4408F19A19E81EA6005AE53F /* HYPForm.m in Sources */,
 				4408F18F19E81EA6005AE53F /* HYPDateFormFieldCell.m in Sources */,
-				4445D51919EBC78A0034A5D7 /* NSDate+HYPISO8601.m in Sources */,
 				4408F1BB19E81F67005AE53F /* HYPSocialSecurityNumberFormatter.m in Sources */,
 				4408F1BE19E81F67005AE53F /* HYPInputValidator.m in Sources */,
 				4408F18D19E81EA6005AE53F /* HYPTextFieldTypeManager.m in Sources */,
