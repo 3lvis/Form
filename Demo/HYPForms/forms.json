@@ -521,7 +521,7 @@
                   "id":"fixed_pay_entry_date",
                   "title":"Fra dato",
                   "type":"date",
-                  "size":17.5,
+                  "size":17.5
                },
                {
                   "id":"hourly_pay_level",
@@ -600,7 +600,7 @@
                   "id":"hourly_pay_entry_date",
                   "title":"Fra dato",
                   "type":"date",
-                  "size":17.5,
+                  "size":17.5
                }
             ]
          },
