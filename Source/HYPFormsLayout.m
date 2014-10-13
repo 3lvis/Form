@@ -18,6 +18,23 @@
 
 #import "UIScreen+HYPLiveBounds.h"
 
+@interface UICollectionViewLayoutAttributes (HYPLeftAligned)
+
+- (void)leftAlignFrameWithSectionInset:(UIEdgeInsets)sectionInset;
+
+@end
+
+@implementation UICollectionViewLayoutAttributes (HYPLeftAligned)
+
+- (void)leftAlignFrameWithSectionInset:(UIEdgeInsets)sectionInset
+{
+    CGRect frame = self.frame;
+    frame.origin.x = sectionInset.left;
+    self.frame = frame;
+}
+
+@end
+
 @interface HYPFormsLayout ()
 
 @property (nonatomic) CGFloat previousHeight;
@@ -47,6 +64,43 @@
 }
 
 #pragma mark - Private Methods
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewLayoutAttributes *currentItemAttributes = [super layoutAttributesForItemAtIndexPath:indexPath];
+
+    BOOL isFirstItemInSection = (indexPath.item == 0);
+    CGFloat layoutWidth = CGRectGetWidth(self.collectionView.frame) - self.sectionInset.left - self.sectionInset.right;
+
+    if (isFirstItemInSection) {
+        [currentItemAttributes leftAlignFrameWithSectionInset:self.sectionInset];
+
+        return currentItemAttributes;
+    }
+
+    NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
+    CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
+    CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width;
+    CGRect currentFrame = currentItemAttributes.frame;
+
+    CGRect strecthedCurrentFrame = CGRectMake(self.sectionInset.left,
+                                              currentFrame.origin.y,
+                                              layoutWidth,
+                                              currentFrame.size.height);
+
+    BOOL isFirstItemInRow = !CGRectIntersectsRect(previousFrame, strecthedCurrentFrame);
+
+    if (isFirstItemInRow) {
+        [currentItemAttributes leftAlignFrameWithSectionInset:self.sectionInset];
+        return currentItemAttributes;
+    }
+
+    CGRect frame = currentItemAttributes.frame;
+    frame.origin.x = previousFrameRightPoint + self.minimumInteritemSpacing;
+    currentItemAttributes.frame = frame;
+
+    return currentItemAttributes;
+}
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
@@ -87,21 +141,21 @@
 
     CGFloat bottomMargin = HYPFormHeaderContentMargin;
     CGFloat height = HYPFormMarginTop + HYPFormMarginBottom;
-    CGFloat size = 0.0f;
+    CGFloat width = 0.0f;
 
     for (HYPFormField *field in fields) {
         if (field.sectionSeparator) {
             height += HYPFieldCellItemSmallHeight;
         } else {
-            size += [field.size floatValue];
+            width += [field.size floatValue];
 
-            if (size >= 100.0f) {
+            if (width >= 100.0f) {
                 height += HYPFieldCellItemHeight;
-                size = 0;
+                width = 0;
             }
         }
     }
-    
+
     CGFloat y = self.previousHeight + self.previousY + HYPFormHeaderHeight;
 
     self.previousHeight = height;
@@ -131,6 +185,9 @@
             frame.origin.x = HYPFormHeaderContentMargin;
             frame.size.width = CGRectGetWidth(bounds) - (2 * HYPFormHeaderContentMargin);
             element.frame = frame;
+        } else if (!element.representedElementKind) {
+            NSIndexPath *indexPath = element.indexPath;
+            element.frame = [self layoutAttributesForItemAtIndexPath:indexPath].frame;
         }
     }
 
@@ -141,7 +198,7 @@
         [attributes addObject:[self layoutAttributesForDecorationViewOfKind:HYPFormBackgroundKind
                                                                 atIndexPath:indexPath]];
     }
-
+    
     return attributes;
 }
 

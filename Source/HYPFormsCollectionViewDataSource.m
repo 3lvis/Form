@@ -288,6 +288,9 @@
 
     [self.collectionView insertItemsAtIndexPaths:self.deletedIndexPaths];
     [self.collectionView.collectionViewLayout invalidateLayout];
+
+    [self.deletedIndexPaths removeAllObjects];
+    [self.deletedFields removeAllObjects];
 }
 
 - (void)deleteFieldsWithIDs:(NSArray *)fieldIDs
