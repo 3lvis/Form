@@ -34,9 +34,11 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             break;
 
         case HYPFormFieldTypeDate: {
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"];
-            resultValue = [formatter dateFromString:fieldValue];
+            if ([fieldValue isKindOfClass:[NSString class]]) {
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"];
+                resultValue = [formatter dateFromString:fieldValue];
+            }
         } break;
 
         default: break;
