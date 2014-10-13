@@ -276,7 +276,7 @@
                   "id":"end_date",
                   "title":"Sluttdato",
                   "type":"date",
-                  "size":25,
+                  "size":25
                },
                {
                   "id":"hours_per_week",
@@ -308,15 +308,104 @@
                   "values":[
                      {
                         "id":"no_wage",
-                        "title":"Ingen lønn"
+                        "title":"Ingen lønn",
+                        "action": "hide",
+                        "targets": [
+                          {
+                              "id": "fixed_pay_level",
+                              "type": "field"
+                          },
+                          {
+                              "id": "fixed_pay_premium_currency",
+                              "type": "field"
+                          },
+                          {
+                              "id": "fixed_pay_premium_percent",
+                              "type": "field"
+                          },
+                          {
+                              "id": "fixed_pay_total",
+                              "type": "field"
+                          },
+                          {
+                              "id": "fixed_pay_entry_date",
+                              "type": "field"
+                          },
+                          {
+                              "id": "hourly_pay_level",
+                              "type": "field"
+                          },
+                          {
+                              "id": "hourly_pay_premium_currency",
+                              "type": "field"
+                          },
+                          {
+                              "id": "hourly_pay_premium_percent",
+                              "type": "field"
+                          },
+                          {
+                              "id": "hourly_pay_total",
+                              "type": "field"
+                          },
+                          {
+                              "id": "hourly_pay_entry_date",
+                              "type": "field"
+                          }
+                        ]
                      },
                      {
                         "id":"hourly_wage",
-                        "title":"Timelønn"
+                        "title":"Timelønn",
+                        "action": "show",
+                        "targets": [
+                          {
+                              "id": "hourly_pay_level",
+                              "type": "field"
+                          },
+                          {
+                              "id": "hourly_pay_premium_currency",
+                              "type": "field"
+                          },
+                          {
+                              "id": "hourly_pay_premium_percent",
+                              "type": "field"
+                          },
+                          {
+                              "id": "hourly_pay_total",
+                              "type": "field"
+                          },
+                          {
+                              "id": "hourly_pay_entry_date",
+                              "type": "field"
+                          }
+                        ]
                      },
                      {
                         "id":"monthly_wage",
-                        "title":"Fastlønn"
+                        "title":"Fastlønn",
+                        "action": "show",
+                        "targets": [
+                          {
+                              "id": "fixed_pay_level",
+                              "type": "field"
+                          },
+                          {
+                              "id": "fixed_pay_premium_currency",
+                              "type": "field"
+                          },
+                          {
+                              "id": "fixed_pay_premium_percent",
+                              "type": "field"
+                          },
+                          {
+                              "id": "fixed_pay_total",
+                              "type": "field"
+                          },
+                          {
+                              "id": "fixed_pay_entry_date",
+                              "type": "field"
+                          }
+                        ]
                      }
                   ],
                   "validations":{
