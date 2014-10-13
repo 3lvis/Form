@@ -30,7 +30,14 @@
                   "validations":{
                      "required":true,
                      "min_length":2
-                  }
+                  },
+                  "action": "update",
+                  "targets": [
+                    {
+                        "id": "display_name",
+                        "type": "field"
+                    }
+                   ]
                },
                {
                   "id":"display_name",
