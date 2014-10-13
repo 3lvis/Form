@@ -72,33 +72,35 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 - (id)inputValidator
 {
-    HYPInputValidator *validator;
-    Class fieldValidator = [HYPInputValidator validatorClass:self.id];
-    Class typeValidator = [HYPInputValidator validatorClass:self.typeString];
+    HYPInputValidator *inputValidator;
+    Class fieldValidator = [HYPClassFactory classFromString:self.id withSuffix:@"InputValidator"];
+    Class typeValidator = [HYPClassFactory classFromString:self.typeString withSuffix:@"InputValidator"];
     SEL selector = NSSelectorFromString(HYPInputValidatorSelector);
 
     if (fieldValidator && [fieldValidator instanceMethodForSelector:selector]) {
-        validator = [[fieldValidator alloc] init];
+        inputValidator = [[fieldValidator alloc] init];
     } else if (typeValidator && [typeValidator instanceMethodForSelector:selector]) {
-        validator = [[typeValidator alloc] init];
+        inputValidator = [[typeValidator alloc] init];
     }
 
-    if (validator) {
-        validator.validations = self.validations;
+    if (inputValidator) {
+        inputValidator.validations = self.validations;
     }
 
-    return validator;
+    return inputValidator;
 }
 
 - (id)formatter
 {
-    HYPFormatter *formatter = nil;
-
-    Class formatterClass = [HYPFormatter formatterClass:self.typeString];
+    HYPFormatter *formatter;
+    Class fieldFormatter = [HYPClassFactory classFromString:self.id withSuffix:@"Formatter"];
+    Class typeFormatter = [HYPClassFactory classFromString:self.typeString withSuffix:@"Formatter"];
     SEL selector = NSSelectorFromString(HYPFormatterSelector);
 
-    if (formatterClass && [formatterClass instanceMethodForSelector:selector]) {
-        formatter = [[formatterClass alloc] init];
+    if (fieldFormatter && [fieldFormatter instanceMethodForSelector:selector]) {
+        formatter = [[fieldFormatter alloc] init];
+    } else if (typeFormatter && [typeFormatter instanceMethodForSelector:selector]) {
+        formatter = [[typeFormatter alloc] init];
     }
 
     return formatter;

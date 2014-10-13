@@ -11,6 +11,10 @@
 
 + (Class)classFromString:(NSString *)string withSuffix:(NSString *)suffix
 {
+    if (!string || string.length == 0) {
+        return nil;
+    }
+    
     NSMutableString *mutableString = [[NSMutableString alloc] initWithString:string];
     NSString *firstLetter = [[mutableString substringToIndex:1] uppercaseString];
     [mutableString replaceCharactersInRange:NSMakeRange(0,1)
