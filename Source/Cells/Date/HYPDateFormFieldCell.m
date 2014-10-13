@@ -60,6 +60,9 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
         formatter.dateFormat = HYPDateFieldFormat;
         self.textField.rawText = [formatter stringFromDate:field.fieldValue];
     }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormFieldDidUpdateNotification
+                                                        object:self.field];
 }
 
 - (void)validate
@@ -83,6 +86,9 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
     [self updateWithField:self.field];
 
     [self.popoverController dismissPopoverAnimated:YES];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormFieldDidUpdateNotification
+                                                        object:self.field];
 }
 
 @end

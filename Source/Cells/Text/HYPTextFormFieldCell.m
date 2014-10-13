@@ -94,6 +94,9 @@
 - (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
 {
     self.field.fieldValue = text;
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormFieldDidUpdateNotification
+                                                        object:self.field];
 }
 
 @end
