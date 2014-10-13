@@ -15,6 +15,8 @@
 
 @interface HYPTextFormField () <UITextFieldDelegate>
 
+@property (nonatomic, getter = isModified) BOOL modified;
+
 @end
 
 @implementation HYPTextFormField
@@ -156,6 +158,7 @@
 {
     self.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+    self.modified = NO;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -163,13 +166,17 @@
     self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
 
-    if (self.validator) {
-        self.valid = [self.validator validateText:self.rawText];
+    if (self.modified) {
+        if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
+            [self.formFieldDelegate textFormFieldDidEndEditing:self];
+        }
     }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    self.modified = YES;
+
     NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
 
     if (!string.length) {
@@ -189,8 +196,8 @@
 
     BOOL valid = YES;
 
-    if (self.validator) {
-        valid = [self.validator validateReplacementString:string withText:self.rawText];
+    if (self.inputValidator) {
+        valid = [self.inputValidator validateReplacementString:string withText:self.rawText];
     }
 
     if (valid) {

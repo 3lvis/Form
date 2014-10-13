@@ -13,6 +13,7 @@
 #import "HYPInputValidator.h"
 #import "NSDate+HYPISO8601.h"
 #import "HYPFieldValue.h"
+#import "HYPClassFactory.h"
 
 static NSString * const HYPFormFieldSelectType = @"select";
 static NSString * const HYPInputValidatorSelector = @"validateString:text:";
@@ -69,7 +70,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     }
 }
 
-- (id)validator
+- (id)inputValidator
 {
     HYPInputValidator *validator;
     Class fieldValidator = [HYPInputValidator validatorClass:self.id];
@@ -131,7 +132,12 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 - (BOOL)isValid
 {
-    HYPValidator *validator = [[HYPValidator alloc] initWithValidations:self.validations];
+    id validator;
+    Class validatorClass;
+
+    validatorClass = ([HYPClassFactory classFromString:self.id withSuffix:@"Validator"]) ?: [HYPValidator class];
+    validator = [[validatorClass alloc] initWithValidations:self.validations];
+
     return [validator validateFieldValue:self.fieldValue];
 }
 

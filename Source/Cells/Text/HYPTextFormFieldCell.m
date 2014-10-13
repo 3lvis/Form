@@ -49,17 +49,17 @@
 
 - (void)updateWithField:(HYPFormField *)field
 {
-    self.textField.hidden     = (field.sectionSeparator);
-    self.textField.validator  = [self.field validator];
-    self.textField.formatter  = [self.field formatter];
-    self.textField.rawText    = field.fieldValue;
-    self.textField.typeString = field.typeString;
-    self.textField.enabled    = !field.disabled;
+    self.textField.hidden          = (field.sectionSeparator);
+    self.textField.inputValidator  = [self.field inputValidator];
+    self.textField.formatter       = [self.field formatter];
+    self.textField.rawText         = field.fieldValue;
+    self.textField.typeString      = field.typeString;
+    self.textField.enabled         = !field.disabled;
 }
 
 - (void)validate
 {
-    NSLog(@"validation in progress");
+    [self.textField setValid:self.field.isValid];
 }
 
 #pragma mark - Private methods
@@ -85,6 +85,11 @@
 }
 
 #pragma mark - HYPTextFormFieldDelegate
+
+- (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField
+{
+    [self.textField setValid:self.field.isValid];
+}
 
 - (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
 {

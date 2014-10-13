@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
 
 @property (nonatomic, copy) NSString *rawText;
 
-@property (nonatomic, strong) HYPInputValidator *validator;
+@property (nonatomic, strong) HYPInputValidator *inputValidator;
 @property (nonatomic, strong) HYPFormatter *formatter;
 
 @property (nonatomic, copy) NSString *typeString;
@@ -47,6 +47,8 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
 @optional
 
 - (void)textFormFieldDidBeginEditing:(HYPTextFormField *)textField;
+
+- (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField;
 
 - (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text;
 
