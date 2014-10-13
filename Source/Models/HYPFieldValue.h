@@ -21,6 +21,6 @@ typedef NS_ENUM(NSInteger, HYPFieldValueActionType) {
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *actionTypeString;
 @property (nonatomic) HYPFieldValueActionType actionType;
-@property (nonatomic, strong) NSArray *fields;
+@property (nonatomic, strong) NSArray *targets;
 
 @end

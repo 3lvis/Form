@@ -11,6 +11,7 @@
 #import "HYPFormField.h"
 #import "HYPFieldValue.h"
 #import "HYPFieldRule.h"
+#import "HYPFormTarget.h"
 
 #import "NSString+ZENInflections.h"
 #import "NSDictionary+HYPSafeValue.h"
@@ -81,9 +82,19 @@
                         HYPFieldValue *value = [HYPFieldValue new];
                         value.id = [valueDict hyp_safeValueForKey:@"id"];
                         value.title = [valueDict hyp_safeValueForKey:@"title"];
-                        value.fields = [valueDict hyp_safeValueForKey:@"fields"];
                         value.actionTypeString = [valueDict hyp_safeValueForKey:@"action"];
 
+                        NSMutableArray *targets = [NSMutableArray array];
+                        NSArray *dataSourceTargets = [valueDict hyp_safeValueForKey:@"targets"];
+
+                        for (NSDictionary *targetDict in dataSourceTargets) {
+                            HYPFormTarget *target = [HYPFormTarget new];
+                            target.id = [targetDict hyp_safeValueForKey:@"id"];
+                            target.typeString = [targetDict hyp_safeValueForKey:@"type"];
+                            [targets addObject:target];
+                        }
+
+                        value.targets = targets;
                         [values addObject:value];
                     }
 

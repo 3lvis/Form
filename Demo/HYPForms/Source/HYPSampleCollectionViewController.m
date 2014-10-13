@@ -124,24 +124,7 @@
         HYPFormField *field = sender.object;
 
         if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
-            HYPFieldValue *value = (HYPFieldValue *)field.fieldValue;
-            if (value.fields.count > 0) {
-                switch (value.actionType) {
-                    case HYPFieldValueActionShow:
-                        [self.dataSource showFieldsWithIDs:value.fields];
-                        break;
-                    case HYPFieldValueActionHide:
-                        [self.dataSource deleteFieldsWithIDs:value.fields];
-                        break;
-                    case HYPFieldValueActionEnable:
-                        [self.dataSource enableFieldsWithIDs:value.fields];
-                        break;
-                    case HYPFieldValueActionDisable:
-                        [self.dataSource disableFieldsWithIDs:value.fields];
-                        break;
-                    case HYPFieldValueActionNone: break;
-                }
-            }
+            [self.dataSource processTargetsForFieldValue:field.fieldValue];
         }
     }
 }

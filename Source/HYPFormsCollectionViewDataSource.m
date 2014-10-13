@@ -271,13 +271,34 @@
     [self.collectionView reloadData];
 }
 
-- (void)showFieldsWithIDs:(NSArray *)fieldIDs
+- (void)processTargetsForFieldValue:(HYPFieldValue *)fieldValue
+{
+    if (fieldValue.targets.count > 0) {
+        switch (fieldValue.actionType) {
+            case HYPFieldValueActionShow:
+                [self showTargets:fieldValue.targets];
+                break;
+            case HYPFieldValueActionHide:
+                [self hideTargets:fieldValue.targets];
+                break;
+            case HYPFieldValueActionEnable:
+                [self enableTargets:fieldValue.targets];
+                break;
+            case HYPFieldValueActionDisable:
+                [self disableTargets:fieldValue.targets];
+                break;
+            case HYPFieldValueActionNone: break;
+        }
+    }
+}
+
+- (void)showTargets:(NSArray *)targets
 {
     NSMutableArray *array = [self.deletedFields copy];
 
-    [fieldIDs enumerateObjectsUsingBlock:^(NSString *fieldID, NSUInteger idx, BOOL *stop) {
+    [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
         for (HYPFormField *field in array) {
-            if ([fieldID isEqualToString:[field.id zen_rubyCase]]) {
+            if ([target.id isEqualToString:[field.id zen_rubyCase]]) {
                 HYPForm *form = self.forms[[field.section.form.position integerValue]];
                 HYPFormSection *section = form.sections[[field.section.position integerValue]];
                 [section.fields insertObject:field atIndex:[field.position integerValue]];
@@ -293,16 +314,16 @@
     [self.deletedFields removeAllObjects];
 }
 
-- (void)deleteFieldsWithIDs:(NSArray *)fieldIDs
+- (void)hideTargets:(NSArray *)targets
 {
-    [fieldIDs enumerateObjectsUsingBlock:^(NSString *fieldID, NSUInteger idx, BOOL *stop) {
+    [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
 
         NSInteger section = 0;
         NSInteger row = 0;
 
         for (HYPForm *form in self.forms) {
             for (HYPFormField *field in form.fields) {
-                if ([[field.id zen_rubyCase] isEqualToString:fieldID]) {
+                if ([[field.id zen_rubyCase] isEqualToString:target.id]) {
                     [self.deletedFields addObject:field];
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
                     [self.deletedIndexPaths addObject:indexPath];
@@ -323,14 +344,14 @@
     [self.collectionView.collectionViewLayout invalidateLayout];
 }
 
-- (void)enableFieldsWithIDs:(NSArray *)fieldIDs
+- (void)enableTargets:(NSArray *)targets
 {
     // look for the fields
     // get their index paths
     // enable them
 }
 
-- (void)disableFieldsWithIDs:(NSArray *)fieldIDs
+- (void)disableTargets:(NSArray *)targets
 {
     // look for the fields
     // get their index paths

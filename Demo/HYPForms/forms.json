@@ -18,7 +18,7 @@
                   "targets": [
                     {
                         "id": "display_name",
-                        "type": "string"
+                        "type": "field"
                     }
                    ]
                },
@@ -313,14 +313,32 @@
                      {
                         "id":"ungdom_under_16",
                         "title":"Ungdom under 16 år",
-                        "action":"hide",
-                        "fields":["first_name","last_name"]
+                        "action": "hide",
+                        "targets": [
+                          {
+                              "id": "first_name",
+                              "type": "field"
+                          },
+                          {
+                              "id": "last_name",
+                              "type": "field"
+                          }
+                        ]
                      },
                      {
                         "id":"ungdom_16_18",
                         "title":"Ungdom 16-18 år",
-                        "action":"show",
-                        "fields":["first_name","last_name"]
+                        "action": "show",
+                        "targets": [
+                          {
+                              "id": "first_name",
+                              "type": "field"
+                          },
+                          {
+                              "id": "last_name",
+                              "type": "field"
+                          }
+                        ]
                      },
                      {
                         "id":"trinn_1",

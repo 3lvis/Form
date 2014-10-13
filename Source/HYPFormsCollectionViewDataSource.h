@@ -17,6 +17,8 @@
 #import "HYPFormField.h"
 #import "HYPForm.h"
 #import "HYPFormSection.h"
+#import "HYPFieldValue.h"
+#import "HYPFormTarget.h"
 
 typedef void (^HYPFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, HYPFormField *field);
 typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPForm *form);
@@ -40,9 +42,6 @@ typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, 
 - (BOOL)formFieldsAreValid;
 - (void)resetForms;
 
-- (void)showFieldsWithIDs:(NSArray *)fieldIDs;
-- (void)deleteFieldsWithIDs:(NSArray *)fieldIDs;
-- (void)enableFieldsWithIDs:(NSArray *)fieldIDs;
-- (void)disableFieldsWithIDs:(NSArray *)fieldIDs;
+- (void)processTargetsForFieldValue:(HYPFieldValue *)fieldValue;
 
 @end
