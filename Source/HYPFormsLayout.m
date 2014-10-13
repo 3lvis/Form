@@ -33,9 +33,12 @@
     self = [super init];
     if (!self) return nil;
 
+    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+
     self.sectionInset = UIEdgeInsetsMake(HYPFormMarginTop, HYPFormMarginHorizontal, HYPFormMarginBottom, HYPFormMarginHorizontal);
     self.minimumLineSpacing = 0.0f;
     self.minimumInteritemSpacing = 0.0f;
+    self.headerReferenceSize = CGSizeMake(CGRectGetWidth(bounds), HYPFormHeaderHeight);
 
     [self registerClass:[HYPFormBackgroundView class] forDecorationViewOfKind:HYPFormBackgroundKind];
 
