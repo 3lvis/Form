@@ -192,7 +192,7 @@
                      {
                         "id":"fast",
                         "title":"Fast",
-                        "action": "hide",
+                        "action": "show",
                         "targets": [
                           {
                               "id": "temporary_employee_type",
@@ -207,7 +207,7 @@
                      {
                         "id":"midlertidig",
                         "title":"Midlertidig",
-                        "action": "show",
+                        "action": "hide",
                         "targets": [
                           {
                               "id": "temporary_employee_type",
