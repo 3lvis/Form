@@ -14,6 +14,7 @@
 
 #import "HYPForm.h"
 #import "HYPFormField.h"
+#import "HYPFormSection.h"
 
 #import "UIScreen+HYPLiveBounds.h"
 
@@ -70,12 +71,18 @@
     }
 
     HYPForm *form = forms[indexPath.section];
-    NSArray *fields = nil;
+    NSMutableArray *fields = nil;
 
     if ([collapsedForms containsObject:@(indexPath.section)]) {
-        fields = [NSArray array];
+        fields = [NSMutableArray array];
     } else {
-        fields = form.fields;
+        fields = [NSMutableArray arrayWithArray:form.fields];
+
+        for (HYPFormField *deletedField in [self.dataSource deletedFields]) {
+            if ([deletedField.section.form.position integerValue] == indexPath.section) {
+                [fields insertObject:deletedField atIndex:[deletedField.position integerValue]];
+            }
+        }
     }
 
     CGFloat bottomMargin = HYPFormHeaderContentMargin;
@@ -94,7 +101,7 @@
             }
         }
     }
-
+    
     CGFloat y = self.previousHeight + self.previousY + HYPFormHeaderHeight;
 
     self.previousHeight = height;

@@ -17,12 +17,12 @@
 
 @implementation HYPForm
 
-+ (NSArray *)forms
++ (NSMutableArray *)forms
 {
     return [self formsUsingInitialValuesFromDictionary:nil];
 }
 
-+ (NSArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
++ (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
 {
     NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
 
@@ -90,6 +90,7 @@
                     field.values = values;
                 }
 
+                field.section = section;
                 [fields addObject:field];
             }];
 
@@ -97,10 +98,12 @@
                 HYPFormField *field = [HYPFormField new];
                 field.sectionSeparator = YES;
                 field.position = @(fields.count);
+                field.section = section;
                 [fields addObject:field];
             }
 
             section.fields = fields;
+            section.form = form;
             [sections addObject:section];
         }];
 

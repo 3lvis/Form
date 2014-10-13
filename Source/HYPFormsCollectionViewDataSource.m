@@ -18,6 +18,7 @@
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
+#import "NSString+ZENInflections.h"
 
 @interface HYPFormsCollectionViewDataSource ()
 
@@ -71,7 +72,7 @@
 
 #pragma mark - Getters
 
-- (NSArray *)forms
+- (NSMutableArray *)forms
 {
     if (_forms) return _forms;
 
@@ -91,6 +92,15 @@
     _collapsedForms = [NSMutableArray array];
 
     return _collapsedForms;
+}
+
+- (NSMutableArray *)deletedFields
+{
+    if (_deletedFields) return _deletedFields;
+
+    _deletedFields = [NSMutableArray array];
+
+    return _deletedFields;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -248,6 +258,63 @@
 {
     self.forms = nil;
     [self.collectionView reloadData];
+}
+
+- (void)showFieldsWithIDs:(NSArray *)fieldIDs
+{
+    // look for the removed fields in the array
+    // get their index paths and add them
+}
+
+- (void)deleteFieldsWithIDs:(NSArray *)fieldIDs
+{
+    NSMutableArray *deletedIndexPaths = [NSMutableArray array];
+
+    [fieldIDs enumerateObjectsUsingBlock:^(NSString *fieldID, NSUInteger idx, BOOL *stop) {
+
+        NSInteger section = 0;
+        NSInteger row = 0;
+
+        for (HYPForm *form in self.forms) {
+            for (HYPFormField *field in form.fields) {
+                if ([[field.id zen_rubyCase] isEqualToString:fieldID]) {
+                    [self.deletedFields addObject:field];
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+                    [deletedIndexPaths addObject:indexPath];
+                }
+                row++;
+            }
+            section++;
+        }
+    }];
+
+    for (HYPFormField *field in self.deletedFields) {
+        HYPForm *form = self.forms[[field.section.form.position integerValue]];
+        HYPFormSection *section = form.sections[[field.section.position integerValue]];
+        [section.fields removeObjectAtIndex:[field.position integerValue]];
+    }
+
+    [self.collectionView deleteItemsAtIndexPaths:deletedIndexPaths];
+    [self.collectionView.collectionViewLayout invalidateLayout];
+
+    // look for the fields
+    // add them to the array
+    // get their index paths
+    // remove them from the collection view
+}
+
+- (void)enableFieldsWithIDs:(NSArray *)fieldIDs
+{
+    // look for the fields
+    // get their index paths
+    // enable them
+}
+
+- (void)disableFieldsWithIDs:(NSArray *)fieldIDs
+{
+    // look for the fields
+    // get their index paths
+    // disable them
 }
 
 @end
