@@ -69,8 +69,8 @@
                 field.validations = [fieldDict hyp_safeValueForKey:@"validations"];
                 field.disabled = [[fieldDict hyp_safeValueForKey:@"disabled"] boolValue];
 
-                if (dictionary && [dictionary valueForKey:remoteID]) {
-                    field.fieldValue = [dictionary valueForKey:remoteID];
+                if (dictionary && [dictionary hyp_safeValueForKey:remoteID]) {
+                    field.fieldValue = [dictionary hyp_safeValueForKey:remoteID];
                 }
 
                 NSMutableArray *values = [NSMutableArray array];
@@ -86,7 +86,7 @@
 
                         [values addObject:value];
                     }
-                    
+
                     field.values = values;
                 }
 

@@ -89,9 +89,6 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     self.fieldValuesController.field = self.field;
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormFieldDidUpdateNotification
-                                                        object:self.field];
 }
 
 #pragma mark - Private methods
@@ -119,8 +116,11 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 {
     self.field.fieldValue = selectedValue;
     [self updateWithField:self.field];
-    
+
     [self.popoverController dismissPopoverAnimated:YES];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormFieldDidUpdateNotification
+                                                        object:self.field];
 }
 
 @end
