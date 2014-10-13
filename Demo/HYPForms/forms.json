@@ -10,7 +10,6 @@
                   "title":"Fornavn",
                   "type":"name",
                   "size":25,
-                  "values":null,
                   "validations":{
                      "required":true,
                      "min_length":2
@@ -21,7 +20,6 @@
                   "title":"Etternavn",
                   "type":"name",
                   "size":25,
-                  "values":null,
                   "validations":{
                      "required":true,
                      "min_length":2
@@ -31,15 +29,13 @@
                   "id":"display_name",
                   "title":"Visningsnavn",
                   "type":"text",
-                  "size":25,
-                  "values":null
+                  "size":25
                },
                {
                   "id":"social_security_number",
                   "title":"Fødselsnummer (11 siffer)",
                   "type":"text",
                   "size":25,
-                  "values":null,
                   "validations":{
                      "required":true,
                      "min_length":11,
@@ -51,11 +47,25 @@
          {
             "fields":[
                {
+                  "id":"country_code",
+                  "title":"Land",
+                  "type":"select",
+                  "size":20,
+                  "values": [
+                     {
+                        "id":"norway",
+                        "title":"Norge"
+                     }
+                  ],
+                  "validations":{
+                     "required":true
+                  }
+               },
+               {
                   "id":"address",
                   "title":"Gateadresse",
                   "type":"text",
-                  "size":60,
-                  "values":null,
+                  "size":40,
                   "validations":{
                      "required":true
                   }
@@ -65,7 +75,6 @@
                   "title":"Postnummer",
                   "type":"text",
                   "size":15,
-                  "values":null,
                   "validations":{
                      "required":true,
                      "max_length":4,
@@ -90,7 +99,8 @@
                         "id":"vestfold",
                         "title":"Vestføld"
                      }
-                  ]
+                  ],
+                  "disabled": true
                }
             ]
          },
@@ -101,7 +111,6 @@
                   "title":"Telefonnummer",
                   "type":"text",
                   "size":25,
-                  "values":null,
                   "validations":{
                      "required":true,
                      "format":"[0-9]{8,14}",
@@ -114,7 +123,6 @@
                   "title":"E-post",
                   "type":"email",
                   "size":40,
-                  "values":null,
                   "validations":{
                      "format":"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,8}",
                      "required":true
@@ -125,7 +133,6 @@
                   "title":"Lønnskonto (11 siffer)",
                   "type":"text",
                   "size":35,
-                  "values":null,
                   "validations":{
                      "required":true,
                      "min_length":11,
@@ -224,7 +231,6 @@
                   "title":"Ansettelsesdato",
                   "type":"date",
                   "size":25,
-                  "values":null,
                   "validations":{
                      "required":true
                   }
@@ -234,7 +240,6 @@
                   "title":"Sluttdato",
                   "type":"date",
                   "size":25,
-                  "values":null
                },
                {
                   "id":"hours_per_week",
@@ -251,7 +256,8 @@
                   "id":"employment_percent",
                   "title":"Stillingsprosent",
                   "type":"numeric",
-                  "size":25
+                  "size":25,
+                  "disabled": true
                }
             ]
          },
@@ -261,7 +267,7 @@
                   "id":"remuneration",
                   "title":"Lønn",
                   "type":"select",
-                  "size":100,
+                  "size":33,
                   "values":[
                      {
                         "id":"no_wage",
@@ -274,15 +280,17 @@
                      {
                         "id":"monthly_wage",
                         "title":"Fastlønn"
-                     },
-                     {
-                        "id":"hourly_and_monthly_wage",
-                        "title":"Timelønn & Fastlønn"
                      }
                   ],
                   "validations":{
                      "required":true
                   }
+               },
+               {
+                  "id":"blank",
+                  "title":"",
+                  "type":"blank",
+                  "size":67
                }
             ]
          },
@@ -292,7 +300,7 @@
                   "id":"fixed_pay_level",
                   "title":"Månedslønn",
                   "type":"select",
-                  "size":25,
+                  "size":27.5,
                   "values":[
                      {
                         "id":"ungdom_under_16",
@@ -337,11 +345,19 @@
                   ]
                },
                {
-                  "id":"fixed_pay_premium",
+                  "id":"fixed_pay_premium_currency",
                   "title":"Påslag (kr)",
                   "type":"number",
-                  "size":25,
-                  "values":null,
+                  "size":17.5,
+                  "validations":{
+                     "required":true
+                  }
+               },
+               {
+                  "id":"fixed_pay_premium_percent",
+                  "title":"Påslag (%)",
+                  "type":"number",
+                  "size":17.5,
                   "validations":{
                      "required":true
                   }
@@ -350,21 +366,20 @@
                   "id":"fixed_pay_total",
                   "title":"Total",
                   "type":"number",
-                  "size":25,
-                  "values":null
+                  "size":20,
+                  "disabled": true
                },
                {
                   "id":"fixed_pay_entry_date",
                   "title":"Fra dato",
                   "type":"date",
-                  "size":25,
-                  "values":null
+                  "size":17.5,
                },
                {
                   "id":"hourly_pay_level",
                   "title":"Timelønn",
                   "type":"select",
-                  "size":25,
+                  "size":27.5,
                   "values":[
                      {
                         "id":"ungdom_under_16",
@@ -409,11 +424,19 @@
                   ]
                },
                {
-                  "id":"hourly_pay_premium",
+                  "id":"hourly_pay_premium_currency",
                   "title":"Påslag (kr)",
                   "type":"number",
-                  "size":25,
-                  "values":null,
+                  "size":17.5,
+                  "validations":{
+                     "required":true
+                  }
+               },
+               {
+                  "id":"hourly_pay_premium_percent",
+                  "title":"Påslag (%)",
+                  "type":"number",
+                  "size":17.5,
                   "validations":{
                      "required":true
                   }
@@ -422,15 +445,14 @@
                   "id":"hourly_pay_total",
                   "title":"Total",
                   "type":"number",
-                  "size":25,
-                  "values":null
+                  "size":20,
+                  "disabled": true
                },
                {
                   "id":"hourly_pay_entry_date",
                   "title":"Fra dato",
                   "type":"date",
-                  "size":25,
-                  "values":null
+                  "size":17.5,
                }
             ]
          },
@@ -438,7 +460,7 @@
             "fields":[
                {
                   "id":"other_terms",
-                  "title":"øvrige betingelser",
+                  "title":"Øvrige betingelser",
                   "type":"text",
                   "size":65
                },

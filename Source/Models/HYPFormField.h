@@ -13,6 +13,7 @@
 typedef NS_ENUM(NSInteger, HYPFormFieldType) {
     HYPFormFieldTypeDefault = 0,
     HYPFormFieldTypeNone,
+    HYPFormFieldTypeBlank,
     HYPFormFieldTypeSelect,
     HYPFormFieldTypeDate,
     HYPFormFieldTypePicture,

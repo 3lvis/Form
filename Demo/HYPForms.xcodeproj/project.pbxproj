@@ -54,6 +54,7 @@
 		444D8F1919E826A5004B6AA2 /* HYPFormsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444D8F1819E826A5004B6AA2 /* HYPFormsCollectionViewController.m */; };
 		445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */; };
 		445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */; };
+		44D5600819EBB9580087067E /* HYPBlankFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D5600719EBB9580087067E /* HYPBlankFormFieldCell.m */; };
 		44D6B67F19E578490009BB07 /* HYPTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D6B67E19E578490009BB07 /* HYPTimeViewController.m */; };
 		890DF4637B5C51A0210949DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9243ED4871CF70DD889729A /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -146,6 +147,8 @@
 		444D8F1819E826A5004B6AA2 /* HYPFormsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormsCollectionViewController.m; sourceTree = "<group>"; };
 		445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_mini_arrow_down.png; sourceTree = "<group>"; };
 		445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_arrow_down@2x.png"; sourceTree = "<group>"; };
+		44D5600619EBB9580087067E /* HYPBlankFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBlankFormFieldCell.h; sourceTree = "<group>"; };
+		44D5600719EBB9580087067E /* HYPBlankFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBlankFormFieldCell.m; sourceTree = "<group>"; };
 		44D6B67D19E578490009BB07 /* HYPTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPTimeViewController.h; sourceTree = "<group>"; };
 		44D6B67E19E578490009BB07 /* HYPTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPTimeViewController.m; sourceTree = "<group>"; };
 		B9243ED4871CF70DD889729A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +222,8 @@
 				4408F16119E81EA6005AE53F /* HYPFormFieldHeadingLabel.m */,
 				4408F16219E81EA6005AE53F /* HYPPopoverFormFieldCell.h */,
 				4408F16319E81EA6005AE53F /* HYPPopoverFormFieldCell.m */,
+				44D5600619EBB9580087067E /* HYPBlankFormFieldCell.h */,
+				44D5600719EBB9580087067E /* HYPBlankFormFieldCell.m */,
 				4408F16419E81EA6005AE53F /* HYPTextFieldTypeManager.h */,
 				4408F16519E81EA6005AE53F /* HYPTextFieldTypeManager.m */,
 				4408F16619E81EA6005AE53F /* HYPTextFormField.h */,
@@ -560,6 +565,7 @@
 				4408F1C019E81F67005AE53F /* HYPNumberInputValidator.m in Sources */,
 				4408F1BC19E81F67005AE53F /* HYPBankAccountNumberInputValidator.m in Sources */,
 				4408F18C19E81EA6005AE53F /* HYPPopoverFormFieldCell.m in Sources */,
+				44D5600819EBB9580087067E /* HYPBlankFormFieldCell.m in Sources */,
 				4408F19119E81EA6005AE53F /* HYPFieldValuesTableViewController.m in Sources */,
 				44D6B67F19E578490009BB07 /* HYPTimeViewController.m in Sources */,
 				444D8F1919E826A5004B6AA2 /* HYPFormsCollectionViewController.m in Sources */,

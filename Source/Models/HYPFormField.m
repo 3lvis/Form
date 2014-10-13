@@ -53,11 +53,14 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             return @([self.fieldValue integerValue]);
 
         case HYPFormFieldTypeDefault:
-        case HYPFormFieldTypeNone:
         case HYPFormFieldTypeSelect:
         case HYPFormFieldTypeDate:
         case HYPFormFieldTypePicture:
             return self.fieldValue;
+
+        case HYPFormFieldTypeNone:
+        case HYPFormFieldTypeBlank:
+            return nil;
     }
 }
 
@@ -114,6 +117,8 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         return HYPFormFieldTypeFloat;
     } else if ([typeString isEqualToString:@"number"]) {
         return HYPFormFieldTypeNumber;
+    } else if ([typeString isEqualToString:@"blank"]) {
+        return HYPFormFieldTypeBlank;
     }
 
     return HYPFormFieldTypeDefault;
