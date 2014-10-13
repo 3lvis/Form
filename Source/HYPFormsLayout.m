@@ -120,12 +120,10 @@
 
     if (fields.count == 0) y = 0.0f;
 
+    CGFloat width = self.collectionViewContentSize.width - (HYPFormBackgroundViewMargin * 2);
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
                                                                                                                withIndexPath:indexPath];
-    attributes.frame = CGRectMake(HYPFormBackgroundViewMargin,
-                                  y,
-                                  self.collectionViewContentSize.width - (HYPFormBackgroundViewMargin * 2),
-                                  height - bottomMargin);
+    attributes.frame = CGRectMake(HYPFormBackgroundViewMargin, y, width, height - bottomMargin);
     attributes.zIndex = -1;
 
     return attributes;
