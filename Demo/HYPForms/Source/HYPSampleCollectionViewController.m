@@ -90,4 +90,14 @@
     return [self.dataSource sizeForItemAtIndexPath:indexPath];
 }
 
+#pragma mark - Rotation Handling
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
+    [self.collectionViewLayout invalidateLayout];
+}
+
 @end

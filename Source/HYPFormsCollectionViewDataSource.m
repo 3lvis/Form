@@ -22,6 +22,7 @@
 @interface HYPFormsCollectionViewDataSource ()
 
 @property (nonatomic, strong) NSMutableDictionary *resultsDictionary;
+@property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
 
@@ -46,6 +47,7 @@
         _resultsDictionary = [NSMutableDictionary dictionaryWithDictionary:dictionary];
     }
 
+    _collectionView = collectionView;
     collectionView.dataSource = self;
 
     [collectionView registerClass:[HYPBlankFormFieldCell class]
@@ -219,6 +221,33 @@
     }
 
     return CGSizeMake(width, height);
+}
+
+- (void)validateForms
+{
+    NSArray *cells = [self.collectionView visibleCells];
+    for (HYPBaseFormFieldCell *cell in cells) {
+        [cell validate];
+    }
+}
+
+- (BOOL)formFieldsAreValid
+{
+    for (HYPForm *form in self.forms) {
+        for (HYPFormField *field in form.fields) {
+            if (![field isValid]) {
+                return NO;
+            }
+        }
+    }
+
+    return YES;
+}
+
+- (void)resetForms
+{
+    self.forms = nil;
+    [self.collectionView reloadData];
 }
 
 @end

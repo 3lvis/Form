@@ -51,7 +51,6 @@
 		4441A9EB19E2BBC50068498D /* DIN-MEDI.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E619E2BBC50068498D /* DIN-MEDI.OTF */; };
 		4441A9EC19E2BBC50068498D /* DIN-REGU.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 4441A9E719E2BBC50068498D /* DIN-REGU.OTF */; };
 		4441A9EF19E2BC140068498D /* UIFont+Styles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441A9EE19E2BC140068498D /* UIFont+Styles.m */; };
-		444D8F1919E826A5004B6AA2 /* HYPFormsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444D8F1819E826A5004B6AA2 /* HYPFormsCollectionViewController.m */; };
 		445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */; };
 		445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */; };
 		44D5600819EBB9580087067E /* HYPBlankFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D5600719EBB9580087067E /* HYPBlankFormFieldCell.m */; };
@@ -144,8 +143,6 @@
 		4441A9E719E2BBC50068498D /* DIN-REGU.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-REGU.OTF"; sourceTree = "<group>"; };
 		4441A9ED19E2BC140068498D /* UIFont+Styles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Styles.h"; sourceTree = "<group>"; };
 		4441A9EE19E2BC140068498D /* UIFont+Styles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Styles.m"; sourceTree = "<group>"; };
-		444D8F1719E826A5004B6AA2 /* HYPFormsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormsCollectionViewController.h; sourceTree = "<group>"; };
-		444D8F1819E826A5004B6AA2 /* HYPFormsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormsCollectionViewController.m; sourceTree = "<group>"; };
 		445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_mini_arrow_down.png; sourceTree = "<group>"; };
 		445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_arrow_down@2x.png"; sourceTree = "<group>"; };
 		44D5600619EBB9580087067E /* HYPBlankFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBlankFormFieldCell.h; sourceTree = "<group>"; };
@@ -198,8 +195,6 @@
 				4408F17A19E81EA6005AE53F /* HYPFormsCollectionViewDataSource.m */,
 				4408F17B19E81EA6005AE53F /* HYPFormsLayout.h */,
 				4408F17C19E81EA6005AE53F /* HYPFormsLayout.m */,
-				444D8F1719E826A5004B6AA2 /* HYPFormsCollectionViewController.h */,
-				444D8F1819E826A5004B6AA2 /* HYPFormsCollectionViewController.m */,
 			);
 			name = Source;
 			path = ../Source;
@@ -574,7 +569,6 @@
 				44D5600819EBB9580087067E /* HYPBlankFormFieldCell.m in Sources */,
 				4408F19119E81EA6005AE53F /* HYPFieldValuesTableViewController.m in Sources */,
 				44D6B67F19E578490009BB07 /* HYPTimeViewController.m in Sources */,
-				444D8F1919E826A5004B6AA2 /* HYPFormsCollectionViewController.m in Sources */,
 				142E4D3F19E3419900C22B7E /* UIColor+Colors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

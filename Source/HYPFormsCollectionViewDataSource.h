@@ -34,4 +34,8 @@ typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, 
 - (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 
+- (void)validateForms;
+- (BOOL)formFieldsAreValid;
+- (void)resetForms;
+
 @end
