@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 @property (nonatomic, strong) NSDictionary *validations;
 @property (nonatomic) HYPFormFieldType type;
 @property (nonatomic) BOOL sectionSeparator;
+@property (nonatomic) BOOL disabled;
 
 + (HYPFormField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(HYPFormSection *)section;
 

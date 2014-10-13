@@ -49,11 +49,12 @@
 
 - (void)updateWithField:(HYPFormField *)field
 {
-    self.textField.hidden = (field.sectionSeparator);
-    self.textField.validator = [self.field validator];
-    self.textField.formatter = [self.field formatter];
-    self.textField.rawText = field.fieldValue;
+    self.textField.hidden     = (field.sectionSeparator);
+    self.textField.validator  = [self.field validator];
+    self.textField.formatter  = [self.field formatter];
+    self.textField.rawText    = field.fieldValue;
     self.textField.typeString = field.typeString;
+    self.textField.enabled    = !field.disabled;
 }
 
 - (void)validate
