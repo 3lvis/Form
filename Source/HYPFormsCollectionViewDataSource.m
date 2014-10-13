@@ -322,7 +322,20 @@
         [deletedIndexPaths addObject:field.indexPath];
         HYPForm *form = self.forms[[field.section.form.position integerValue]];
         HYPFormSection *section = form.sections[[field.section.position integerValue]];
-        [section.fields removeObjectAtIndex:[field.position integerValue]];
+
+        __block NSInteger index = 0;
+        __block BOOL found = NO;
+        [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
+            if ([aField.id isEqualToString:field.id]) {
+                index = idx;
+                found = YES;
+                *stop = YES;
+            }
+        }];
+
+        if (found) {
+            [section.fields removeObjectAtIndex:index];
+        }
     }
 
     if (deletedIndexPaths.count > 0) {
