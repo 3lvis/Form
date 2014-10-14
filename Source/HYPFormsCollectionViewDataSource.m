@@ -393,10 +393,14 @@
 
 - (void)updateTargets:(NSArray *)targets
 {
+    NSMutableArray *updatedIndexPaths = [NSMutableArray array];
+
     [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
         if (target.type == HYPFormTargetTypeSection) return;
 
         HYPFormField *field = [self fieldForTarget:target];
+        [updatedIndexPaths addObject:field.indexPath];
+
         NSArray *fieldIDs = [field.formula hyp_words];
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
         for (NSString *fieldID in fieldIDs) {
@@ -416,7 +420,7 @@
         }
     }];
 
-    [self.collectionView reloadData];
+    [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
 }
 
 #pragma mark - Target helpers
