@@ -281,6 +281,8 @@
         [self enableTargets:enabledTargets];
         [self disableTargets:disabledTargets];
         [self updateTargets:updatedTargets];
+
+        [self.collectionView.collectionViewLayout invalidateLayout];
     }];
 }
 
@@ -303,16 +305,17 @@
             HYPFormSection *section = [self.deletedSections objectForKey:target.id];
             if (section) {
                 [self.deletedSections removeObjectForKey:section.id];
-                [insertedIndexPaths addObjectsFromArray:[self insertedIndexPathsForSection:section]];
-                HYPForm *form = self.forms[[section.form.position integerValue]];
-                [form.sections insertObject:section atIndex:[section.position integerValue]];
+                [self insertedIndexPathsAndSectionIndexForSection:section completion:^(NSArray *indexPaths, NSInteger index) {
+                    [insertedIndexPaths addObjectsFromArray:indexPaths];
+                    HYPForm *form = self.forms[[section.form.position integerValue]];
+                    [form.sections insertObject:section atIndex:index];
+                }];
             }
         }
     }];
 
     if (insertedIndexPaths.count > 0) {
         [self.collectionView insertItemsAtIndexPaths:insertedIndexPaths];
-        [self.collectionView.collectionViewLayout invalidateLayout];
     }
 }
 
@@ -362,7 +365,6 @@
 
     if (deletedIndexPaths.count > 0) {
         [self.collectionView deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
-        [self.collectionView.collectionViewLayout invalidateLayout];
     }
 }
 
@@ -492,7 +494,8 @@
     }
 }
 
-- (NSArray *)insertedIndexPathsForSection:(HYPFormSection *)section
+- (void)insertedIndexPathsAndSectionIndexForSection:(HYPFormSection *)section
+                                         completion:(void (^)(NSArray *indexPaths, NSInteger index))completion
 {
     NSMutableArray *indexPaths = [NSMutableArray array];
 
@@ -500,9 +503,11 @@
     HYPForm *form = self.forms[formIndex];
 
     NSInteger fieldsIndex = 0;
+    NSInteger sectionIndex = 0;
     for (HYPFormSection *aSection in form.sections) {
         if ([aSection.position integerValue] < [section.position integerValue]) {
             fieldsIndex += aSection.fields.count;
+            sectionIndex++;
         }
     }
 
@@ -511,7 +516,9 @@
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
     }
 
-    return indexPaths;
+    if (completion) {
+        completion(indexPaths, sectionIndex);
+    }
 }
 
 @end
