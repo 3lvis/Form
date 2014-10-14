@@ -22,7 +22,7 @@
     [mutableString replaceCharactersInRange:NSMakeRange(0,1)
                                  withString:firstLetter];
 
-    NSString *classString = [NSString stringWithFormat:@"%@%@%@", @"HYP", mutableString, suffix];
+    NSString *classString = [NSString stringWithFormat:@"HYP%@%@", mutableString, suffix];
 
     return NSClassFromString(classString);
 }
