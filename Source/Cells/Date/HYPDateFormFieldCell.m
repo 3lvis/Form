@@ -84,8 +84,9 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
     [self.popoverController dismissPopoverAnimated:YES];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormFieldDidUpdateNotification
-                                                        object:self.field];
+    if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
+        [self.delegate fieldCell:self updatedWithField:self.field];
+    }
 }
 
 @end

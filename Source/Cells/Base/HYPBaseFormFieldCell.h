@@ -26,6 +26,8 @@ static const CGFloat HYPTextFormFieldCellMarginX = 10.0f;
 static const CGFloat HYPTextFormFieldCellTextFieldMarginTop = 30.0f;
 static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
 
+@protocol HYPBaseFormFieldCellDelegate;
+
 @interface HYPBaseFormFieldCell : UICollectionViewCell
 
 @property (nonatomic, strong) HYPFormFieldHeadingLabel *headingLabel;
@@ -33,8 +35,16 @@ static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
 @property (nonatomic, strong) HYPFormField *field;
 @property (nonatomic, getter = isDisabled) BOOL disabled;
 
+@property (nonatomic, weak) id <HYPBaseFormFieldCellDelegate> delegate;
+
 - (void)updateFieldWithDisabled:(BOOL)disabled;
 - (void)updateWithField:(HYPFormField *)field;
 - (void)validate;
+
+@end
+
+@protocol HYPBaseFormFieldCellDelegate <NSObject>
+
+- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(HYPFormField *)field;
 
 @end

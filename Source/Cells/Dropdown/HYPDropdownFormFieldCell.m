@@ -119,8 +119,9 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 
     [self.popoverController dismissPopoverAnimated:YES];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormFieldDidUpdateNotification
-                                                        object:self.field];
+    if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
+        [self.delegate fieldCell:self updatedWithField:self.field];
+    }
 }
 
 @end

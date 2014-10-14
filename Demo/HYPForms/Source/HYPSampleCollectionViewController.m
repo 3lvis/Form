@@ -21,15 +21,6 @@
 
 @implementation HYPSampleCollectionViewController
 
-#pragma mark - Deallocation
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:HYPFormFieldDidUpdateNotification
-                                                  object:nil];
-}
-
 #pragma mark - Initialization
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
@@ -86,11 +77,6 @@
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(formFieldDidUpdate:)
-                                                 name:HYPFormFieldDidUpdateNotification
-                                               object:nil];
 }
 
 #pragma mark - HYPFormHeaderViewDelegate
@@ -114,19 +100,6 @@
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 
     [self.collectionViewLayout invalidateLayout];
-}
-
-#pragma mark - Observer Actions
-
-- (void)formFieldDidUpdate:(NSNotification *)sender
-{
-    if ([sender.object isKindOfClass:[HYPFormField class]]) {
-        HYPFormField *field = sender.object;
-
-        if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
-            [self.dataSource processTargetsForFieldValue:field.fieldValue];
-        }
-    }
 }
 
 @end

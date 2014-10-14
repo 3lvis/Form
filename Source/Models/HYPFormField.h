@@ -21,8 +21,6 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
     HYPFormFieldTypeNumber
 };
 
-static NSString * const HYPFormFieldDidUpdateNotification = @"HYPFormFieldDidUpdateNotification";
-
 @interface HYPFormField : NSObject
 
 @property (nonatomic, strong) NSString *id;
