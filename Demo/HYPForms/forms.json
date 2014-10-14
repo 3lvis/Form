@@ -201,6 +201,11 @@
                     "id":"ansattelsesforholdet-1",
                     "type":"section",
                     "action":"hide"
+                  },
+                  {
+                    "id":"end_date",
+                    "type":"field",
+                    "action":"hide"
                   }
                 ]
               },
@@ -211,6 +216,11 @@
                   {
                     "id":"ansattelsesforholdet-1",
                     "type":"section",
+                    "action":"show"
+                  },
+                  {
+                    "id":"end_date",
+                    "type":"field",
                     "action":"show"
                   }
                 ]
