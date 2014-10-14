@@ -302,10 +302,10 @@
         } else {
             HYPFormSection *section = [self.deletedSections objectForKey:target.id];
             if (section) {
-                [insertedIndexPaths addObjectsFromArray:section.indexPaths];
+                [self.deletedSections removeObjectForKey:section.id];
+                [insertedIndexPaths addObjectsFromArray:[self insertedIndexPathsForSection:section]];
                 HYPForm *form = self.forms[[section.form.position integerValue]];
                 [form.sections insertObject:section atIndex:[section.position integerValue]];
-                [self.deletedSections removeObjectForKey:section.id];
             }
         }
     }];
@@ -490,6 +490,28 @@
     if (completion) {
         completion(found, index);
     }
+}
+
+- (NSArray *)insertedIndexPathsForSection:(HYPFormSection *)section
+{
+    NSMutableArray *indexPaths = [NSMutableArray array];
+
+    NSInteger formIndex = [section.form.position integerValue];
+    HYPForm *form = self.forms[formIndex];
+
+    NSInteger fieldsIndex = 0;
+    for (HYPFormSection *aSection in form.sections) {
+        if ([aSection.position integerValue] < [section.position integerValue]) {
+            fieldsIndex += aSection.fields.count;
+        }
+    }
+
+    NSInteger fieldsInSectionCount = fieldsIndex + section.fields.count;
+    for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
+    }
+
+    return indexPaths;
 }
 
 @end
