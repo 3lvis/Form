@@ -6,6 +6,7 @@
 //
 
 #import "HYPClassFactory.h"
+#import "NSString+ZENInflections.h"
 
 @implementation HYPClassFactory
 
@@ -14,8 +15,9 @@
     if (!string || string.length == 0) {
         return nil;
     }
-    
-    NSMutableString *mutableString = [[NSMutableString alloc] initWithString:string];
+
+    NSString *propertyName = [string zen_camelCase];
+    NSMutableString *mutableString = [[NSMutableString alloc] initWithString:propertyName];
     NSString *firstLetter = [[mutableString substringToIndex:1] uppercaseString];
     [mutableString replaceCharactersInRange:NSMakeRange(0,1)
                                  withString:firstLetter];

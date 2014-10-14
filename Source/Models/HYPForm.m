@@ -12,7 +12,6 @@
 #import "HYPFieldValue.h"
 #import "HYPFormTarget.h"
 
-#import "NSString+ZENInflections.h"
 #import "NSDictionary+HYPSafeValue.h"
 
 @implementation HYPForm
@@ -57,10 +56,9 @@
             [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
 
                 NSString *remoteID = [fieldDict hyp_safeValueForKey:@"id"];
-                NSString *propertyName = [remoteID zen_camelCase];
 
                 HYPFormField *field = [HYPFormField new];
-                field.id   = propertyName;
+                field.id   = remoteID;
                 field.title = [fieldDict hyp_safeValueForKey:@"title"];
                 field.typeString  = [fieldDict hyp_safeValueForKey:@"type"];
                 field.type = [field typeFromTypeString:[fieldDict hyp_safeValueForKey:@"type"]];

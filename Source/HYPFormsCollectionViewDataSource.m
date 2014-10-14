@@ -18,7 +18,6 @@
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
-#import "NSString+ZENInflections.h"
 #import "NSString+HYPWordExtractor.h"
 
 @interface HYPFormsCollectionViewDataSource ()
@@ -293,7 +292,7 @@
 
     [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
         if (target.type == HYPFormTargetTypeField) {
-            NSString *key = [target.id zen_camelCase];
+            NSString *key = target.id;
             HYPFormField *field = [self.deletedFields objectForKey:key];
             if (field) {
                 [insertedIndexPaths addObject:[field.indexPath copy]];
@@ -392,7 +391,9 @@
         [self findFieldForTarget:target completion:^(HYPFormField *field) {
             NSArray *fieldIDs = [field.formula hyp_words];
             for (NSString *fieldID in fieldIDs) {
-                NSLog(@"id: %@", fieldID);
+                NSLog(@"fieldID: %@", fieldID);
+                NSLog(@"target.id: %@", target.value.field.id);
+                NSLog(@" ");
             }
         }];
     }];
@@ -408,7 +409,7 @@
 
     [self.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
         [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
-            if ([[field.id zen_rubyCase] isEqualToString:target.id]) {
+            if ([field.id isEqualToString:target.id]) {
                 field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
 
                 if (completion) {
