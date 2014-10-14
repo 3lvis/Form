@@ -20,7 +20,7 @@
 #import "UIScreen+HYPLiveBounds.h"
 #import "NSString+HYPWordExtractor.h"
 
-@interface HYPFormsCollectionViewDataSource ()
+@interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *resultsDictionary;
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -44,9 +44,7 @@
     self = [super init];
     if (!self) return nil;
 
-    if (dictionary) {
-        _resultsDictionary = [NSMutableDictionary dictionaryWithDictionary:dictionary];
-    }
+    [self.resultsDictionary addEntriesFromDictionary:dictionary];
 
     _collectionView = collectionView;
     collectionView.dataSource = self;
@@ -72,15 +70,20 @@
 
 #pragma mark - Getters
 
+- (NSMutableDictionary *)resultsDictionary
+{
+    if (_resultsDictionary) return _resultsDictionary;
+
+    _resultsDictionary = [NSMutableDictionary dictionary];
+
+    return _resultsDictionary;
+}
+
 - (NSMutableArray *)forms
 {
     if (_forms) return _forms;
 
-    if (self.resultsDictionary) {
-        _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.resultsDictionary];
-    } else {
-        _forms = [HYPForm forms];
-    }
+    _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.resultsDictionary];
 
     return _forms;
 }
@@ -159,8 +162,9 @@
             break;
     }
 
-    id cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
-                                                        forIndexPath:indexPath];
+    HYPBaseFormFieldCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
+                                                                           forIndexPath:indexPath];
+    cell.delegate = self;
 
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, indexPath, field);
@@ -174,8 +178,8 @@
 {
     if (kind == UICollectionElementKindSectionHeader) {
         HYPFormHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                                  withReuseIdentifier:HYPFormHeaderReuseIdentifier
-                                                                                         forIndexPath:indexPath];
+                                                                           withReuseIdentifier:HYPFormHeaderReuseIdentifier
+                                                                                  forIndexPath:indexPath];
 
         HYPForm *form = self.forms[indexPath.section];
         headerView.section = indexPath.section;
@@ -188,8 +192,8 @@
     }
 
     HYPFormBackgroundView *backgroundView = [collectionView dequeueReusableSupplementaryViewOfKind:HYPFormBackgroundKind
-                                                                                   withReuseIdentifier:HYPFormBackgroundReuseIdentifier
-                                                                                          forIndexPath:indexPath];
+                                                                               withReuseIdentifier:HYPFormBackgroundReuseIdentifier
+                                                                                      forIndexPath:indexPath];
 
     return backgroundView;
 }
@@ -307,10 +311,10 @@
                 [self.deletedSections removeObjectForKey:section.id];
                 [self insertedIndexPathsAndSectionIndexForSection:section
                                                        completion:^(NSArray *indexPaths, NSInteger index) {
-                    [insertedIndexPaths addObjectsFromArray:indexPaths];
-                    HYPForm *form = self.forms[[section.form.position integerValue]];
-                    [form.sections insertObject:section atIndex:index];
-                }];
+                                                           [insertedIndexPaths addObjectsFromArray:indexPaths];
+                                                           HYPForm *form = self.forms[[section.form.position integerValue]];
+                                                           [form.sections insertObject:section atIndex:index];
+                                                       }];
             }
         }
     }];
@@ -391,14 +395,7 @@
         NSArray *fieldIDs = [field.formula hyp_words];
         for (NSString *fieldID in fieldIDs) {
             NSLog(@"fieldID: %@", fieldID);
-            if ([target.value.field.id isEqualToString:fieldID]) {
-                HYPFormField *foundField = target.value.field;
-                NSLog(@"fieldValue 1: %@", foundField.fieldValue);
-            } else {
-                HYPFormField *foundField = [self fieldForTarget:target];
-                NSLog(@"fieldValue 2: %@", foundField.fieldValue);
-            }
-            NSLog(@" ");
+            NSLog(@"fieldValue: %@", [self.resultsDictionary objectForKey:fieldID]);
         }
     }];
 }
@@ -533,9 +530,20 @@
     for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
     }
-
+    
     if (completion) {
         completion(indexPaths, sectionIndex);
+    }
+}
+
+#pragma mark - HYPBaseFormFieldCellDelegate
+
+- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(HYPFormField *)field
+{
+    [self.resultsDictionary setObject:field.fieldValue forKey:field.id];
+    
+    if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+        [self processTargetsForFieldValue:field.fieldValue];
     }
 }
 
