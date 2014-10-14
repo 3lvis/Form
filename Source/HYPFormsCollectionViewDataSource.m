@@ -305,7 +305,8 @@
             HYPFormSection *section = [self.deletedSections objectForKey:target.id];
             if (section) {
                 [self.deletedSections removeObjectForKey:section.id];
-                [self insertedIndexPathsAndSectionIndexForSection:section completion:^(NSArray *indexPaths, NSInteger index) {
+                [self insertedIndexPathsAndSectionIndexForSection:section
+                                                       completion:^(NSArray *indexPaths, NSInteger index) {
                     [insertedIndexPaths addObjectsFromArray:indexPaths];
                     HYPForm *form = self.forms[[section.form.position integerValue]];
                     [form.sections insertObject:section atIndex:index];
@@ -416,7 +417,8 @@
     }
 }
 
-- (void)sectionAndIndexForField:(HYPFormField *)field completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
+- (void)sectionAndIndexForField:(HYPFormField *)field
+                     completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
 {
     HYPForm *form = self.forms[[field.section.form.position integerValue]];
     HYPFormSection *section = form.sections[[field.section.position integerValue]];
@@ -450,7 +452,9 @@
         }
 
         __block NSInteger fieldsIndex = 0;
-        [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger sectionIndex, BOOL *sectionStop) {
+        [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection,
+                                                    NSUInteger sectionIndex,
+                                                    BOOL *sectionStop) {
             if ([aSection.id isEqualToString:target.id]) {
                 NSInteger fieldsInSectionCount = fieldsIndex + aSection.fields.count;
                 for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
