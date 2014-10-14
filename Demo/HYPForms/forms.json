@@ -198,13 +198,8 @@
                 "title":"Fast",
                 "targets":[
                   {
-                    "id":"temporary_employee_type",
-                    "type":"field",
-                    "action":"show"
-                  },
-                  {
-                    "id":"temporary_employee_reason",
-                    "type":"field",
+                    "id":"ansattelsesforholdet-2",
+                    "type":"section",
                     "action":"show"
                   }
                 ]
@@ -214,13 +209,8 @@
                 "title":"Midlertidig",
                 "targets":[
                   {
-                    "id":"temporary_employee_type",
-                    "type":"field",
-                    "action":"hide"
-                  },
-                  {
-                    "id":"temporary_employee_reason",
-                    "type":"field",
+                    "id":"ansattelsesforholdet-2",
+                    "type":"section",
                     "action":"hide"
                   }
                 ]
@@ -320,53 +310,13 @@
                 "title":"Ingen lønn",
                 "targets":[
                   {
-                    "id":"fixed_pay_level",
-                    "type":"field",
+                    "id":"ansattelsesforholdet-5",
+                    "type":"section",
                     "action":"hide"
                   },
                   {
-                    "id":"fixed_pay_premium_currency",
-                    "type":"field",
-                    "action":"hide"
-                  },
-                  {
-                    "id":"fixed_pay_premium_percent",
-                    "type":"field",
-                    "action":"hide"
-                  },
-                  {
-                    "id":"fixed_pay_total",
-                    "type":"field",
-                    "action":"hide"
-                  },
-                  {
-                    "id":"fixed_pay_entry_date",
-                    "type":"field",
-                    "action":"hide"
-                  },
-                  {
-                    "id":"hourly_pay_level",
-                    "type":"field",
-                    "action":"hide"
-                  },
-                  {
-                    "id":"hourly_pay_premium_currency",
-                    "type":"field",
-                    "action":"hide"
-                  },
-                  {
-                    "id":"hourly_pay_premium_percent",
-                    "type":"field",
-                    "action":"hide"
-                  },
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"hide"
-                  },
-                  {
-                    "id":"hourly_pay_entry_date",
-                    "type":"field",
+                    "id":"ansattelsesforholdet-6",
+                    "type":"section",
                     "action":"hide"
                   }
                 ]
@@ -376,28 +326,13 @@
                 "title":"Timelønn",
                 "targets":[
                   {
-                    "id":"hourly_pay_level",
-                    "type":"field",
-                    "action":"show"
+                    "id":"ansattelsesforholdet-5",
+                    "type":"section",
+                    "action":"hide"
                   },
                   {
-                    "id":"hourly_pay_premium_currency",
-                    "type":"field",
-                    "action":"show"
-                  },
-                  {
-                    "id":"hourly_pay_premium_percent",
-                    "type":"field",
-                    "action":"show"
-                  },
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"show"
-                  },
-                  {
-                    "id":"hourly_pay_entry_date",
-                    "type":"field",
+                    "id":"ansattelsesforholdet-6",
+                    "type":"section",
                     "action":"show"
                   }
                 ]
@@ -407,29 +342,14 @@
                 "title":"Fastlønn",
                 "targets":[
                   {
-                    "id":"fixed_pay_level",
-                    "type":"field",
+                    "id":"ansattelsesforholdet-5",
+                    "type":"section",
                     "action":"show"
                   },
                   {
-                    "id":"fixed_pay_premium_currency",
-                    "type":"field",
-                    "action":"show"
-                  },
-                  {
-                    "id":"fixed_pay_premium_percent",
-                    "type":"field",
-                    "action":"show"
-                  },
-                  {
-                    "id":"fixed_pay_total",
-                    "type":"field",
-                    "action":"show"
-                  },
-                  {
-                    "id":"fixed_pay_entry_date",
-                    "type":"field",
-                    "action":"show"
+                    "id":"ansattelsesforholdet-6",
+                    "type":"section",
+                    "action":"hide"
                   }
                 ]
               }
@@ -527,7 +447,12 @@
             "title":"Fra dato",
             "type":"date",
             "size":17.5
-          },
+          }
+        ]
+      },
+      {
+        "id": "ansattelsesforholdet-6",
+        "fields":[
           {
             "id":"hourly_pay_level",
             "title":"Timelønn",
@@ -610,7 +535,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-6",
+        "id": "ansattelsesforholdet-7",
         "fields":[
           {
             "id":"other_terms",
