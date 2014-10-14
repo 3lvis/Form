@@ -10,7 +10,6 @@
 #import "HYPFormSection.h"
 #import "HYPFormField.h"
 #import "HYPFieldValue.h"
-#import "HYPFieldRule.h"
 #import "HYPFormTarget.h"
 
 #import "NSString+ZENInflections.h"
@@ -92,16 +91,17 @@
                             target.typeString = [targetDict hyp_safeValueForKey:@"type"];
                             target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
 
+                            target.value = value;
                             [targets addObject:target];
                         }
 
                         value.targets = targets;
+                        value.field = field;
                         [values addObject:value];
                     }
-
-                    field.values = values;
                 }
 
+                field.values = values;
                 field.section = section;
                 [fields addObject:field];
             }];
