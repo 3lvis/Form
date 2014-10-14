@@ -4,6 +4,7 @@
     "title":"Personopplysninger",
     "sections":[
       {
+        "id": "personopplysninger-1",
         "fields":[
           {
             "id":"first_name",
@@ -60,6 +61,7 @@
         ]
       },
       {
+        "id": "personopplysninger-2",
         "fields":[
           {
             "id":"country_code",
@@ -120,6 +122,7 @@
         ]
       },
       {
+        "id": "personopplysninger-3",
         "fields":[
           {
             "id":"phone_number",
@@ -163,6 +166,7 @@
     "title":"Ansattelsesforholdet",
     "sections":[
       {
+        "id": "ansattelsesforholdet-1",
         "fields":[
           {
             "id":"position",
@@ -238,6 +242,7 @@
         ]
       },
       {
+        "id": "ansattelsesforholdet-2",
         "fields":[
           {
             "id":"temporary_employee_type",
@@ -264,6 +269,7 @@
         ]
       },
       {
+        "id": "ansattelsesforholdet-3",
         "fields":[
           {
             "id":"start_date",
@@ -301,6 +307,7 @@
         ]
       },
       {
+        "id": "ansattelsesforholdet-4",
         "fields":[
           {
             "id":"remuneration",
@@ -440,6 +447,7 @@
         ]
       },
       {
+        "id": "ansattelsesforholdet-5",
         "fields":[
           {
             "id":"fixed_pay_level",
@@ -602,6 +610,7 @@
         ]
       },
       {
+        "id": "ansattelsesforholdet-6",
         "fields":[
           {
             "id":"other_terms",
