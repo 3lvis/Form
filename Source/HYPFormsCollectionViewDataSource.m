@@ -329,10 +329,10 @@
         }
     }];
 
-    NSMutableArray *deletedIndexPaths = [NSMutableArray array];
+    NSMutableSet *deletedIndexPaths = [NSMutableSet set];
 
     for (HYPFormField *field in deletedFields) {
-        [deletedIndexPaths addObject:[field.indexPath copy]];
+        [deletedIndexPaths addObject:field.indexPath];
         [self sectionAndIndexForField:field completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
             if (found) {
                 [section.fields removeObjectAtIndex:index];
@@ -341,7 +341,7 @@
     }
 
     for (HYPFormSection *section in deletedSections) {
-        [deletedIndexPaths addObjectsFromArray:[section.indexPaths copy]];
+        [deletedIndexPaths addObjectsFromArray:section.indexPaths];
         HYPForm *form = self.forms[[section.form.position integerValue]];
         [self indexForSection:section completion:^(BOOL found, NSInteger index) {
             if (found) {
@@ -351,7 +351,7 @@
     }
 
     if (deletedIndexPaths.count > 0) {
-        [self.collectionView deleteItemsAtIndexPaths:deletedIndexPaths];
+        [self.collectionView deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
         [self.collectionView.collectionViewLayout invalidateLayout];
     }
 }
