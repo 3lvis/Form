@@ -262,23 +262,17 @@
 
 - (void)processTargetsForFieldValue:(HYPFieldValue *)fieldValue
 {
-    if (fieldValue.targets.count > 0) {
-        switch (fieldValue.actionType) {
-            case HYPFieldValueActionShow:
-                [self showTargets:fieldValue.targets];
-                break;
-            case HYPFieldValueActionHide:
-                [self hideTargets:fieldValue.targets];
-                break;
-            case HYPFieldValueActionEnable:
-                [self enableTargets:fieldValue.targets];
-                break;
-            case HYPFieldValueActionDisable:
-                [self disableTargets:fieldValue.targets];
-                break;
-            case HYPFieldValueActionNone: break;
-        }
-    }
+    [fieldValue filteredTargets:^(NSArray *shownTargets,
+                                  NSArray *hiddenTargets,
+                                  NSArray *enabledTargets,
+                                  NSArray *disabledTargets,
+                                  NSArray *updatedTargets) {
+        [self showTargets:shownTargets];
+        [self hideTargets:hiddenTargets];
+        [self enableTargets:enabledTargets];
+        [self disableTargets:disabledTargets];
+        [self updateTargets:updatedTargets];
+    }];
 }
 
 - (void)showTargets:(NSArray *)targets
@@ -345,6 +339,13 @@
     // look for the fields
     // get their index paths
     // disable them
+}
+
+- (void)updateTargets:(NSArray *)targets
+{
+    // look for the fields
+    // get their index paths
+    // update them
 }
 
 - (void)findFieldForTarget:(HYPFormTarget *)target completion:(void (^)(HYPFormField *field))completion

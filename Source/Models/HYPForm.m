@@ -82,7 +82,6 @@
                         HYPFieldValue *value = [HYPFieldValue new];
                         value.id = [valueDict hyp_safeValueForKey:@"id"];
                         value.title = [valueDict hyp_safeValueForKey:@"title"];
-                        value.actionTypeString = [valueDict hyp_safeValueForKey:@"action"];
 
                         NSMutableArray *targets = [NSMutableArray array];
                         NSArray *dataSourceTargets = [valueDict hyp_safeValueForKey:@"targets"];
@@ -91,6 +90,8 @@
                             HYPFormTarget *target = [HYPFormTarget new];
                             target.id = [targetDict hyp_safeValueForKey:@"id"];
                             target.typeString = [targetDict hyp_safeValueForKey:@"type"];
+                            target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
+
                             [targets addObject:target];
                         }
 

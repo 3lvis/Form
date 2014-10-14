@@ -14,10 +14,22 @@ typedef NS_ENUM(NSInteger, HYPFormTargetType) {
     HYPFormTargetTypeNone
 };
 
+typedef NS_ENUM(NSInteger, HYPFormTargetActionType) {
+    HYPFormTargetActionShow = 0,
+    HYPFormTargetActionHide,
+    HYPFormTargetActionEnable,
+    HYPFormTargetActionDisable,
+    HYPFormTargetActionUpdate,
+    HYPFormTargetActionNone
+};
+
 @interface HYPFormTarget : NSObject
 
-@property (nonatomic, strong) NSString *id;
-@property (nonatomic, strong) NSString *typeString;
+@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *typeString;
+@property (nonatomic, copy) NSString *actionTypeString;
+
 @property (nonatomic) HYPFormTargetType type;
+@property (nonatomic) HYPFormTargetActionType actionType;
 
 @end
