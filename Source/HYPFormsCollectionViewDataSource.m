@@ -319,23 +319,12 @@
     NSMutableArray *deletedIndexPaths = [NSMutableArray array];
 
     for (HYPFormField *field in deletedFields) {
-        [deletedIndexPaths addObject:field.indexPath];
-        HYPForm *form = self.forms[[field.section.form.position integerValue]];
-        HYPFormSection *section = form.sections[[field.section.position integerValue]];
-
-        __block NSInteger index = 0;
-        __block BOOL found = NO;
-        [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
-            if ([aField.id isEqualToString:field.id]) {
-                index = idx;
-                found = YES;
-                *stop = YES;
+        [deletedIndexPaths addObject:[field.indexPath copy]];
+        [self indexAndSectionForField:field completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
+            if (found) {
+                [section.fields removeObjectAtIndex:index];
             }
         }];
-
-        if (found) {
-            [section.fields removeObjectAtIndex:index];
-        }
     }
 
     if (deletedIndexPaths.count > 0) {
@@ -378,6 +367,26 @@
 
     if (!found) {
         completion(nil);
+    }
+}
+
+- (void)indexAndSectionForField:(HYPFormField *)field completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
+{
+    HYPForm *form = self.forms[[field.section.form.position integerValue]];
+    HYPFormSection *section = form.sections[[field.section.position integerValue]];
+
+    __block NSInteger index = 0;
+    __block BOOL found = NO;
+    [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
+        if ([aField.id isEqualToString:field.id]) {
+            index = idx;
+            found = YES;
+            *stop = YES;
+        }
+    }];
+
+    if (completion) {
+        completion(found, section, index);
     }
 }
 
