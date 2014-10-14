@@ -200,7 +200,7 @@
                   {
                     "id":"ansattelsesforholdet-2",
                     "type":"section",
-                    "action":"show"
+                    "action":"hide"
                   }
                 ]
               },
@@ -211,7 +211,7 @@
                   {
                     "id":"ansattelsesforholdet-2",
                     "type":"section",
-                    "action":"hide"
+                    "action":"show"
                   }
                 ]
               }
