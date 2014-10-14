@@ -320,7 +320,7 @@
 
     for (HYPFormField *field in deletedFields) {
         [deletedIndexPaths addObject:[field.indexPath copy]];
-        [self indexAndSectionForField:field completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
+        [self sectionAndIndexForField:field completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
             if (found) {
                 [section.fields removeObjectAtIndex:index];
             }
@@ -370,7 +370,7 @@
     }
 }
 
-- (void)indexAndSectionForField:(HYPFormField *)field completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
+- (void)sectionAndIndexForField:(HYPFormField *)field completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
 {
     HYPForm *form = self.forms[[field.section.form.position integerValue]];
     HYPFormSection *section = form.sections[[field.section.position integerValue]];
