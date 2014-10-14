@@ -377,6 +377,10 @@
     // update them
 }
 
+#pragma mark - Target helpers
+
+#pragma mark Fields
+
 - (void)findFieldForTarget:(HYPFormTarget *)target completion:(void (^)(HYPFormField *field))completion
 {
     __block BOOL found = NO;
@@ -419,6 +423,8 @@
         completion(found, section, index);
     }
 }
+
+#pragma mark Sections
 
 - (void)findSectionForTarget:(HYPFormTarget *)target completion:(void (^)(HYPFormSection *section))completion
 {
