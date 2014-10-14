@@ -14,13 +14,13 @@
                      "required":true,
                      "min_length":2
                   },
-                  "targets": [
-                    {
-                        "id": "display_name",
-                        "type": "field",
-                        "action": "update"
-                    }
-                   ]
+                  "targets":[
+                     {
+                        "id":"display_name",
+                        "type":"field",
+                        "action":"update"
+                     }
+                  ]
                },
                {
                   "id":"last_name",
@@ -31,20 +31,20 @@
                      "required":true,
                      "min_length":2
                   },
-                  "targets": [
-                    {
-                        "id": "display_name",
-                        "type": "field",
-                        "action": "update"
-                    }
-                   ]
+                  "targets":[
+                     {
+                        "id":"display_name",
+                        "type":"field",
+                        "action":"update"
+                     }
+                  ]
                },
                {
                   "id":"display_name",
                   "title":"Visningsnavn",
                   "type":"text",
                   "size":25,
-                  "formula": "first_name last_name"
+                  "formula":"first_name last_name"
                },
                {
                   "id":"social_security_number",
@@ -66,7 +66,7 @@
                   "title":"Land",
                   "type":"select",
                   "size":20,
-                  "values": [
+                  "values":[
                      {
                         "id":"norway",
                         "title":"Norge"
@@ -115,7 +115,7 @@
                         "title":"Vestføld"
                      }
                   ],
-                  "disabled": true
+                  "disabled":true
                }
             ]
          },
@@ -192,33 +192,33 @@
                      {
                         "id":"fast",
                         "title":"Fast",
-                        "targets": [
-                          {
-                              "id": "temporary_employee_type",
-                              "type": "field",
-                              "action": "show"
-                          },
-                          {
-                              "id": "temporary_employee_reason",
-                              "type": "field",
-                              "action": "show"
-                          }
+                        "targets":[
+                           {
+                              "id":"temporary_employee_type",
+                              "type":"field",
+                              "action":"show"
+                           },
+                           {
+                              "id":"temporary_employee_reason",
+                              "type":"field",
+                              "action":"show"
+                           }
                         ]
                      },
                      {
                         "id":"midlertidig",
                         "title":"Midlertidig",
-                        "targets": [
-                          {
-                              "id": "temporary_employee_type",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "temporary_employee_reason",
-                              "type": "field",
-                              "action": "hide"
-                          }
+                        "targets":[
+                           {
+                              "id":"temporary_employee_type",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"temporary_employee_reason",
+                              "type":"field",
+                              "action":"hide"
+                           }
                         ]
                      }
                   ],
@@ -296,7 +296,7 @@
                   "title":"Stillingsprosent",
                   "type":"numeric",
                   "size":25,
-                  "disabled": true
+                  "disabled":true
                }
             ]
          },
@@ -311,119 +311,119 @@
                      {
                         "id":"no_wage",
                         "title":"Ingen lønn",
-                        "targets": [
-                          {
-                              "id": "fixed_pay_level",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "fixed_pay_premium_currency",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "fixed_pay_premium_percent",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "fixed_pay_total",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "fixed_pay_entry_date",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "hourly_pay_level",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "hourly_pay_premium_currency",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "hourly_pay_premium_percent",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "hourly_pay_total",
-                              "type": "field",
-                              "action": "hide"
-                          },
-                          {
-                              "id": "hourly_pay_entry_date",
-                              "type": "field",
-                              "action": "hide"
-                          }
+                        "targets":[
+                           {
+                              "id":"fixed_pay_level",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"fixed_pay_premium_currency",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"fixed_pay_premium_percent",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"fixed_pay_total",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"fixed_pay_entry_date",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"hourly_pay_level",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"hourly_pay_premium_currency",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"hourly_pay_premium_percent",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"hourly_pay_total",
+                              "type":"field",
+                              "action":"hide"
+                           },
+                           {
+                              "id":"hourly_pay_entry_date",
+                              "type":"field",
+                              "action":"hide"
+                           }
                         ]
                      },
                      {
                         "id":"hourly_wage",
                         "title":"Timelønn",
-                        "targets": [
-                          {
-                              "id": "hourly_pay_level",
-                              "type": "field",
-                              "action": "show"
-                          },
-                          {
-                              "id": "hourly_pay_premium_currency",
-                              "type": "field",
-                              "action": "show"
-                          },
-                          {
-                              "id": "hourly_pay_premium_percent",
-                              "type": "field",
-                              "action": "show"
-                          },
-                          {
-                              "id": "hourly_pay_total",
-                              "type": "field",
-                              "action": "show"
-                          },
-                          {
-                              "id": "hourly_pay_entry_date",
-                              "type": "field",
-                              "action": "show"
-                          }
+                        "targets":[
+                           {
+                              "id":"hourly_pay_level",
+                              "type":"field",
+                              "action":"show"
+                           },
+                           {
+                              "id":"hourly_pay_premium_currency",
+                              "type":"field",
+                              "action":"show"
+                           },
+                           {
+                              "id":"hourly_pay_premium_percent",
+                              "type":"field",
+                              "action":"show"
+                           },
+                           {
+                              "id":"hourly_pay_total",
+                              "type":"field",
+                              "action":"show"
+                           },
+                           {
+                              "id":"hourly_pay_entry_date",
+                              "type":"field",
+                              "action":"show"
+                           }
                         ]
                      },
                      {
                         "id":"monthly_wage",
                         "title":"Fastlønn",
-                        "targets": [
-                          {
-                              "id": "fixed_pay_level",
-                              "type": "field",
-                              "action": "show"
-                          },
-                          {
-                              "id": "fixed_pay_premium_currency",
-                              "type": "field",
-                              "action": "show"
-                          },
-                          {
-                              "id": "fixed_pay_premium_percent",
-                              "type": "field",
-                              "action": "show"
-                          },
-                          {
-                              "id": "fixed_pay_total",
-                              "type": "field",
-                              "action": "show"
-                          },
-                          {
-                              "id": "fixed_pay_entry_date",
-                              "type": "field",
-                              "action": "show"
-                          }
+                        "targets":[
+                           {
+                              "id":"fixed_pay_level",
+                              "type":"field",
+                              "action":"show"
+                           },
+                           {
+                              "id":"fixed_pay_premium_currency",
+                              "type":"field",
+                              "action":"show"
+                           },
+                           {
+                              "id":"fixed_pay_premium_percent",
+                              "type":"field",
+                              "action":"show"
+                           },
+                           {
+                              "id":"fixed_pay_total",
+                              "type":"field",
+                              "action":"show"
+                           },
+                           {
+                              "id":"fixed_pay_entry_date",
+                              "type":"field",
+                              "action":"show"
+                           }
                         ]
                      }
                   ],
@@ -512,7 +512,7 @@
                   "title":"Total",
                   "type":"number",
                   "size":20,
-                  "disabled": true
+                  "disabled":true
                },
                {
                   "id":"fixed_pay_entry_date",
@@ -591,7 +591,7 @@
                   "title":"Total",
                   "type":"number",
                   "size":20,
-                  "disabled": true
+                  "disabled":true
                },
                {
                   "id":"hourly_pay_entry_date",
