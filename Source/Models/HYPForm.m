@@ -16,11 +16,6 @@
 
 @implementation HYPForm
 
-+ (NSMutableArray *)forms
-{
-    return [self formsUsingInitialValuesFromDictionary:nil];
-}
-
 + (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
 {
     NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
@@ -68,7 +63,7 @@
                 field.disabled = [[fieldDict hyp_safeValueForKey:@"disabled"] boolValue];
                 field.formula = [fieldDict hyp_safeValueForKey:@"formula"];
 
-                if (dictionary && [dictionary hyp_safeValueForKey:remoteID]) {
+                if ([dictionary hyp_safeValueForKey:remoteID]) {
                     field.fieldValue = [dictionary hyp_safeValueForKey:remoteID];
                 }
 

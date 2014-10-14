@@ -16,7 +16,6 @@
 
 @property (nonatomic) BOOL shouldValidate;
 
-+ (NSMutableArray *)forms;
 + (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary;
 
 - (NSArray *)fields;
