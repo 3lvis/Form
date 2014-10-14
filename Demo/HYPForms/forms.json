@@ -4,7 +4,7 @@
     "title":"Personopplysninger",
     "sections":[
       {
-        "id": "personopplysninger-1",
+        "id": "personopplysninger-0",
         "fields":[
           {
             "id":"first_name",
@@ -61,7 +61,7 @@
         ]
       },
       {
-        "id": "personopplysninger-2",
+        "id": "personopplysninger-1",
         "fields":[
           {
             "id":"country_code",
@@ -122,7 +122,7 @@
         ]
       },
       {
-        "id": "personopplysninger-3",
+        "id": "personopplysninger-2",
         "fields":[
           {
             "id":"phone_number",
@@ -166,7 +166,7 @@
     "title":"Ansattelsesforholdet",
     "sections":[
       {
-        "id": "ansattelsesforholdet-1",
+        "id": "ansattelsesforholdet-0",
         "fields":[
           {
             "id":"position",
@@ -198,7 +198,7 @@
                 "title":"Fast",
                 "targets":[
                   {
-                    "id":"ansattelsesforholdet-2",
+                    "id":"ansattelsesforholdet-1",
                     "type":"section",
                     "action":"hide"
                   }
@@ -209,7 +209,7 @@
                 "title":"Midlertidig",
                 "targets":[
                   {
-                    "id":"ansattelsesforholdet-2",
+                    "id":"ansattelsesforholdet-1",
                     "type":"section",
                     "action":"show"
                   }
@@ -232,7 +232,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-2",
+        "id": "ansattelsesforholdet-1",
         "fields":[
           {
             "id":"temporary_employee_type",
@@ -259,7 +259,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-3",
+        "id": "ansattelsesforholdet-2",
         "fields":[
           {
             "id":"start_date",
@@ -297,7 +297,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-4",
+        "id": "ansattelsesforholdet-3",
         "fields":[
           {
             "id":"remuneration",
@@ -310,12 +310,12 @@
                 "title":"Ingen lønn",
                 "targets":[
                   {
-                    "id":"ansattelsesforholdet-5",
+                    "id":"ansattelsesforholdet-4",
                     "type":"section",
                     "action":"hide"
                   },
                   {
-                    "id":"ansattelsesforholdet-6",
+                    "id":"ansattelsesforholdet-5",
                     "type":"section",
                     "action":"hide"
                   }
@@ -326,12 +326,12 @@
                 "title":"Timelønn",
                 "targets":[
                   {
-                    "id":"ansattelsesforholdet-5",
+                    "id":"ansattelsesforholdet-4",
                     "type":"section",
                     "action":"hide"
                   },
                   {
-                    "id":"ansattelsesforholdet-6",
+                    "id":"ansattelsesforholdet-5",
                     "type":"section",
                     "action":"show"
                   }
@@ -342,12 +342,12 @@
                 "title":"Fastlønn",
                 "targets":[
                   {
-                    "id":"ansattelsesforholdet-5",
+                    "id":"ansattelsesforholdet-4",
                     "type":"section",
                     "action":"show"
                   },
                   {
-                    "id":"ansattelsesforholdet-6",
+                    "id":"ansattelsesforholdet-5",
                     "type":"section",
                     "action":"hide"
                   }
@@ -367,7 +367,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-5",
+        "id": "ansattelsesforholdet-4",
         "fields":[
           {
             "id":"fixed_pay_level",
@@ -451,7 +451,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-6",
+        "id": "ansattelsesforholdet-5",
         "fields":[
           {
             "id":"hourly_pay_level",
@@ -535,7 +535,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-7",
+        "id": "ansattelsesforholdet-6",
         "fields":[
           {
             "id":"other_terms",
