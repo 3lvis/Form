@@ -401,8 +401,9 @@
                 if ([value isKindOfClass:[HYPFieldValue class]]) {
                     HYPFieldValue *fieldValue = (HYPFieldValue *)value;
                     [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
-                } else
+                } else {
                     [values addEntriesFromDictionary:@{fieldID : value}];
+                }
             }
         }
         NSNumber *result = [field.formula runFormulaWithDictionary:values];
@@ -540,7 +541,7 @@
     for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
     }
-    
+
     if (completion) {
         completion(indexPaths, sectionIndex);
     }
@@ -551,7 +552,7 @@
 - (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(HYPFormField *)field
 {
     [self.valuesDictionary setObject:field.fieldValue forKey:field.id];
-    
+
     if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         [self processTargetsForFieldValue:field.fieldValue];
     }
