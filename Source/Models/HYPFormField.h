@@ -48,5 +48,6 @@ static NSString * const HYPFormFieldDidUpdateNotification = @"HYPFormFieldDidUpd
 - (id)rawFieldValue;
 - (id)inputValidator;
 - (id)formatter;
+- (void)executeFormula;
 
 @end

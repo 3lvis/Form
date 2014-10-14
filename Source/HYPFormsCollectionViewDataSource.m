@@ -19,6 +19,7 @@
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 #import "NSString+ZENInflections.h"
+#import "NSString+HYPWordExtractor.h"
 
 @interface HYPFormsCollectionViewDataSource ()
 
@@ -385,9 +386,16 @@
 
 - (void)updateTargets:(NSArray *)targets
 {
-    // look for the fields
-    // get their index paths
-    // update them
+    [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
+        if (target.type == HYPFormTargetTypeSection) return;
+
+        [self findFieldForTarget:target completion:^(HYPFormField *field) {
+            NSArray *fieldIDs = [field.formula hyp_words];
+            for (NSString *fieldID in fieldIDs) {
+                NSLog(@"id: %@", fieldID);
+            }
+        }];
+    }];
 }
 
 #pragma mark - Target helpers
