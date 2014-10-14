@@ -19,6 +19,7 @@
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 #import "NSString+HYPWordExtractor.h"
+#import "NSString+HYPFormula.h"
 
 @interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate>
 
@@ -393,12 +394,19 @@
 
         HYPFormField *field = [self fieldForTarget:target];
         NSArray *fieldIDs = [field.formula hyp_words];
-        NSMutableDictionary *valuesDict = [NSMutableDictionary dictionary];
+        NSMutableDictionary *values = [NSMutableDictionary dictionary];
         for (NSString *fieldID in fieldIDs) {
             id value = [self.valuesDictionary objectForKey:fieldID];
-            [valuesDict addEntriesFromDictionary:@{fieldID : value}];
+            if (value) {
+                if ([value isKindOfClass:[HYPFieldValue class]]) {
+                    HYPFieldValue *fieldValue = (HYPFieldValue *)value;
+                    [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                } else
+                    [values addEntriesFromDictionary:@{fieldID : value}];
+            }
         }
-
+        NSNumber *result = [field.formula runFormulaWithDictionary:values];
+        [self.valuesDictionary setObject:result forKey:field.id];
     }];
 }
 
