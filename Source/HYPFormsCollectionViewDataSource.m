@@ -327,12 +327,11 @@
 
     [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
         if (target.type == HYPFormTargetTypeField) {
-            [self findFieldForTarget:target completion:^(HYPFormField *field) {
-                if (field && ![self.deletedFields objectForKey:field.id]) {
-                    [deletedFields addObject:field];
-                    [self.deletedFields addEntriesFromDictionary:@{field.id : field}];
-                }
-            }];
+            HYPFormField *field = [self fieldForTarget:target];
+            if (field && ![self.deletedFields objectForKey:field.id]) {
+                [deletedFields addObject:field];
+                [self.deletedFields addEntriesFromDictionary:@{field.id : field}];
+            }
         } else if (target.type == HYPFormTargetTypeSection) {
             [self findSectionForTarget:target completion:^(HYPFormSection *section) {
                 if (section && ![self.deletedSections objectForKey:section.id]) {
@@ -388,14 +387,19 @@
     [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
         if (target.type == HYPFormTargetTypeSection) return;
 
-        [self findFieldForTarget:target completion:^(HYPFormField *field) {
-            NSArray *fieldIDs = [field.formula hyp_words];
-            for (NSString *fieldID in fieldIDs) {
-                NSLog(@"fieldID: %@", fieldID);
-                NSLog(@"target.id: %@", target.value.field.id);
-                NSLog(@" ");
+        HYPFormField *field = [self fieldForTarget:target];
+        NSArray *fieldIDs = [field.formula hyp_words];
+        for (NSString *fieldID in fieldIDs) {
+            NSLog(@"fieldID: %@", fieldID);
+            if ([target.value.field.id isEqualToString:fieldID]) {
+                HYPFormField *foundField = target.value.field;
+                NSLog(@"fieldValue 1: %@", foundField.fieldValue);
+            } else {
+                HYPFormField *foundField = [self fieldForTarget:target];
+                NSLog(@"fieldValue 2: %@", foundField.fieldValue);
             }
-        }];
+            NSLog(@" ");
+        }
     }];
 }
 
@@ -403,27 +407,28 @@
 
 #pragma mark Fields
 
-- (void)findFieldForTarget:(HYPFormTarget *)target completion:(void (^)(HYPFormField *field))completion
+- (HYPFormField *)fieldForTarget:(HYPFormTarget *)target
 {
     __block BOOL found = NO;
+    __block HYPFormField *foundField = nil;
 
     [self.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
+        if (found) {
+            *formStop = YES;
+        }
+
         [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
             if ([field.id isEqualToString:target.id]) {
                 field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
-
-                if (completion) {
-                    completion(field);
-                }
+                foundField = field;
 
                 found = YES;
+                *fieldStop = YES;
             }
         }];
     }];
 
-    if (!found) {
-        completion(nil);
-    }
+    return foundField;
 }
 
 - (void)sectionAndIndexForField:(HYPFormField *)field
