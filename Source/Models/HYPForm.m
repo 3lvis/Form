@@ -182,7 +182,7 @@
 {
     for (HYPFormSection *section in self.sections) {
         for (HYPFormField *field in section.fields) {
-            NSLog(@"field key: %@ --- value: %@", field.id, field.fieldValue);
+            NSLog(@"field key: %@ --- value: %@ --- position: %@", field.id, field.fieldValue, field.position);
         }
     }
 }
