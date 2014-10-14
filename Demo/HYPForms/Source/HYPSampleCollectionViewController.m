@@ -10,6 +10,8 @@
 
 #import "HYPFormsCollectionViewDataSource.h"
 
+#import "HYPFieldValue.h"
+
 @interface HYPSampleCollectionViewController () <HYPFormHeaderViewDelegate>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
@@ -114,13 +116,16 @@
     [self.collectionViewLayout invalidateLayout];
 }
 
-#pragma mark - Observer actions
+#pragma mark - Observer Actions
 
 - (void)formFieldDidUpdate:(NSNotification *)sender
 {
     if ([sender.object isKindOfClass:[HYPFormField class]]) {
         HYPFormField *field = sender.object;
-        NSLog(@"updated: %@", field.rawFieldValue);
+
+        if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+            [self.dataSource processTargetsForFieldValue:field.fieldValue];
+        }
     }
 }
 

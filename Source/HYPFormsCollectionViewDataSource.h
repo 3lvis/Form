@@ -16,6 +16,9 @@
 
 #import "HYPFormField.h"
 #import "HYPForm.h"
+#import "HYPFormSection.h"
+#import "HYPFieldValue.h"
+#import "HYPFormTarget.h"
 
 typedef void (^HYPFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, HYPFormField *field);
 typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPForm *form);
@@ -25,8 +28,10 @@ typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView andDictionary:(NSDictionary *)dictionary;
 
-@property (nonatomic, strong) NSArray *forms;
+@property (nonatomic, strong) NSMutableArray *forms;
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
+@property (nonatomic, strong) NSMutableDictionary *deletedFields;
+@property (nonatomic, strong) NSMutableDictionary *deletedSections;
 
 @property (nonatomic, copy) HYPFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;
@@ -37,5 +42,7 @@ typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, 
 - (void)validateForms;
 - (BOOL)formFieldsAreValid;
 - (void)resetForms;
+
+- (void)processTargetsForFieldValue:(HYPFieldValue *)fieldValue;
 
 @end

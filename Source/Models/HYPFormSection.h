@@ -8,6 +8,8 @@
 @import CoreGraphics;
 @import Foundation;
 
+@class HYPForm;
+
 typedef NS_ENUM(NSInteger, HYPFormSectionType) {
     HYPFormSectionTypeDefault = 0,
     HYPFormSectionTypePicture
@@ -15,14 +17,17 @@ typedef NS_ENUM(NSInteger, HYPFormSectionType) {
 
 @interface HYPFormSection : NSObject
 
-@property (nonatomic, strong) NSArray *fields;
+@property (nonatomic, strong) NSMutableArray *fields;
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSNumber *position;
 @property (nonatomic) HYPFormSectionType type;
+@property (nonatomic, strong) HYPForm *form;
 
 @property (nonatomic) BOOL shouldValidate;
 @property (nonatomic) BOOL containsSpecialField;
 @property (nonatomic) BOOL isLast;
+
+@property (nonatomic, strong) NSArray *indexPaths;
 
 - (HYPFormSectionType)typeFromTypeString:(NSString *)typeString;
 - (NSUInteger)breakpoints;

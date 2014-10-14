@@ -33,9 +33,11 @@ static NSString * const HYPFormFieldDidUpdateNotification = @"HYPFormFieldDidUpd
 @property (nonatomic, strong) id fieldValue;
 @property (nonatomic, strong) NSString *typeString;
 @property (nonatomic, strong) NSDictionary *validations;
+@property (nonatomic, strong) HYPFormSection *section;
 @property (nonatomic) HYPFormFieldType type;
 @property (nonatomic) BOOL sectionSeparator;
 @property (nonatomic) BOOL disabled;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 + (HYPFormField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(HYPFormSection *)section;
 

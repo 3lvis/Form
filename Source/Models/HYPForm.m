@@ -10,19 +10,19 @@
 #import "HYPFormSection.h"
 #import "HYPFormField.h"
 #import "HYPFieldValue.h"
-#import "HYPFieldRule.h"
+#import "HYPFormTarget.h"
 
 #import "NSString+ZENInflections.h"
 #import "NSDictionary+HYPSafeValue.h"
 
 @implementation HYPForm
 
-+ (NSArray *)forms
++ (NSMutableArray *)forms
 {
     return [self formsUsingInitialValuesFromDictionary:nil];
 }
 
-+ (NSArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
++ (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
 {
     NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
 
@@ -82,12 +82,27 @@
                         value.id = [valueDict hyp_safeValueForKey:@"id"];
                         value.title = [valueDict hyp_safeValueForKey:@"title"];
 
+                        NSMutableArray *targets = [NSMutableArray array];
+                        NSArray *dataSourceTargets = [valueDict hyp_safeValueForKey:@"targets"];
+
+                        for (NSDictionary *targetDict in dataSourceTargets) {
+                            HYPFormTarget *target = [HYPFormTarget new];
+                            target.id = [targetDict hyp_safeValueForKey:@"id"];
+                            target.typeString = [targetDict hyp_safeValueForKey:@"type"];
+                            target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
+
+                            target.value = value;
+                            [targets addObject:target];
+                        }
+
+                        value.targets = targets;
+                        value.field = field;
                         [values addObject:value];
                     }
-
-                    field.values = values;
                 }
 
+                field.values = values;
+                field.section = section;
                 [fields addObject:field];
             }];
 
@@ -95,10 +110,12 @@
                 HYPFormField *field = [HYPFormField new];
                 field.sectionSeparator = YES;
                 field.position = @(fields.count);
+                field.section = section;
                 [fields addObject:field];
             }
 
             section.fields = fields;
+            section.form = form;
             [sections addObject:section];
         }];
 
@@ -148,11 +165,24 @@
     return count;
 }
 
+- (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections
+{
+    NSInteger count = 0;
+
+    for (HYPFormSection *section in self.sections) {
+        if (![deletedSections objectForKey:section.id]) {
+            count += section.fields.count;
+        }
+    }
+
+    return count;
+}
+
 - (void)printFieldValues
 {
     for (HYPFormSection *section in self.sections) {
         for (HYPFormField *field in section.fields) {
-            NSLog(@"field key: %@ --- value: %@", field.id, field.fieldValue);
+            NSLog(@"field key: %@ --- value: %@ --- position: %@", field.id, field.fieldValue, field.position);
         }
     }
 }

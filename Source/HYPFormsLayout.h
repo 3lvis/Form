@@ -24,5 +24,7 @@ static const NSInteger HYPFormMarginBottom = 30.0f;
 
 - (NSArray *)forms;
 - (NSArray *)collapsedForms;
+- (NSMutableDictionary *)deletedFields;
+- (NSMutableDictionary *)deletedSections;
 
 @end

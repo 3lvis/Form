@@ -18,6 +18,7 @@
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
+#import "NSString+ZENInflections.h"
 
 @interface HYPFormsCollectionViewDataSource ()
 
@@ -71,7 +72,7 @@
 
 #pragma mark - Getters
 
-- (NSArray *)forms
+- (NSMutableArray *)forms
 {
     if (_forms) return _forms;
 
@@ -93,6 +94,24 @@
     return _collapsedForms;
 }
 
+- (NSMutableDictionary *)deletedFields
+{
+    if (_deletedFields) return _deletedFields;
+
+    _deletedFields = [NSMutableDictionary dictionary];
+
+    return _deletedFields;
+}
+
+- (NSMutableDictionary *)deletedSections
+{
+    if (_deletedSections) return _deletedSections;
+
+    _deletedSections = [NSMutableDictionary dictionary];
+
+    return _deletedSections;
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -107,7 +126,7 @@
         return 0;
     }
 
-    return [form numberOfFields];
+    return [form numberOfFields:self.deletedSections];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -248,6 +267,258 @@
 {
     self.forms = nil;
     [self.collectionView reloadData];
+}
+
+- (void)processTargetsForFieldValue:(HYPFieldValue *)fieldValue
+{
+    [fieldValue filteredTargets:^(NSArray *shownTargets,
+                                  NSArray *hiddenTargets,
+                                  NSArray *enabledTargets,
+                                  NSArray *disabledTargets,
+                                  NSArray *updatedTargets) {
+        [self showTargets:shownTargets];
+        [self hideTargets:hiddenTargets];
+        [self enableTargets:enabledTargets];
+        [self disableTargets:disabledTargets];
+        [self updateTargets:updatedTargets];
+
+        [self.collectionView.collectionViewLayout invalidateLayout];
+    }];
+}
+
+- (void)showTargets:(NSArray *)targets
+{
+    NSMutableArray *insertedIndexPaths = [NSMutableArray array];
+
+    [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
+        if (target.type == HYPFormTargetTypeField) {
+            NSString *key = [target.id zen_camelCase];
+            HYPFormField *field = [self.deletedFields objectForKey:key];
+            if (field) {
+                [insertedIndexPaths addObject:[field.indexPath copy]];
+                HYPForm *form = self.forms[[field.section.form.position integerValue]];
+                HYPFormSection *section = form.sections[[field.section.position integerValue]];
+                [section.fields insertObject:field atIndex:[field.position integerValue]];
+                [self.deletedFields removeObjectForKey:key];
+            }
+        } else {
+            HYPFormSection *section = [self.deletedSections objectForKey:target.id];
+            if (section) {
+                [self.deletedSections removeObjectForKey:section.id];
+                [self insertedIndexPathsAndSectionIndexForSection:section completion:^(NSArray *indexPaths, NSInteger index) {
+                    [insertedIndexPaths addObjectsFromArray:indexPaths];
+                    HYPForm *form = self.forms[[section.form.position integerValue]];
+                    [form.sections insertObject:section atIndex:index];
+                }];
+            }
+        }
+    }];
+
+    if (insertedIndexPaths.count > 0) {
+        [self.collectionView insertItemsAtIndexPaths:insertedIndexPaths];
+    }
+}
+
+- (void)hideTargets:(NSArray *)targets
+{
+    NSMutableArray *deletedFields = [NSMutableArray array];
+    NSMutableArray *deletedSections = [NSMutableArray array];
+
+    [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
+        if (target.type == HYPFormTargetTypeField) {
+            [self findFieldForTarget:target completion:^(HYPFormField *field) {
+                if (field && ![self.deletedFields objectForKey:field.id]) {
+                    [deletedFields addObject:field];
+                    [self.deletedFields addEntriesFromDictionary:@{field.id : field}];
+                }
+            }];
+        } else if (target.type == HYPFormTargetTypeSection) {
+            [self findSectionForTarget:target completion:^(HYPFormSection *section) {
+                if (section && ![self.deletedSections objectForKey:section.id]) {
+                    [deletedSections addObject:section];
+                    [self.deletedSections addEntriesFromDictionary:@{section.id : section}];
+                }
+            }];
+        }
+    }];
+
+    NSMutableSet *deletedIndexPaths = [NSMutableSet set];
+
+    for (HYPFormField *field in deletedFields) {
+        [deletedIndexPaths addObject:field.indexPath];
+        [self sectionAndIndexForField:field completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
+            if (found) {
+                [section.fields removeObjectAtIndex:index];
+            }
+        }];
+    }
+
+    for (HYPFormSection *section in deletedSections) {
+        [deletedIndexPaths addObjectsFromArray:section.indexPaths];
+        HYPForm *form = self.forms[[section.form.position integerValue]];
+        [self indexForSection:section completion:^(BOOL found, NSInteger index) {
+            if (found) {
+                [form.sections removeObjectAtIndex:index];
+            }
+        }];
+    }
+
+    if (deletedIndexPaths.count > 0) {
+        [self.collectionView deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
+    }
+}
+
+- (void)enableTargets:(NSArray *)targets
+{
+    // look for the fields
+    // get their index paths
+    // enable them
+}
+
+- (void)disableTargets:(NSArray *)targets
+{
+    // look for the fields
+    // get their index paths
+    // disable them
+}
+
+- (void)updateTargets:(NSArray *)targets
+{
+    // look for the fields
+    // get their index paths
+    // update them
+}
+
+#pragma mark - Target helpers
+
+#pragma mark Fields
+
+- (void)findFieldForTarget:(HYPFormTarget *)target completion:(void (^)(HYPFormField *field))completion
+{
+    __block BOOL found = NO;
+
+    [self.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
+        [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
+            if ([[field.id zen_rubyCase] isEqualToString:target.id]) {
+                field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
+
+                if (completion) {
+                    completion(field);
+                }
+
+                found = YES;
+            }
+        }];
+    }];
+
+    if (!found) {
+        completion(nil);
+    }
+}
+
+- (void)sectionAndIndexForField:(HYPFormField *)field completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
+{
+    HYPForm *form = self.forms[[field.section.form.position integerValue]];
+    HYPFormSection *section = form.sections[[field.section.position integerValue]];
+
+    __block NSInteger index = 0;
+    __block BOOL found = NO;
+    [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
+        if ([aField.id isEqualToString:field.id]) {
+            index = idx;
+            found = YES;
+            *stop = YES;
+        }
+    }];
+
+    if (completion) {
+        completion(found, section, index);
+    }
+}
+
+#pragma mark Sections
+
+- (void)findSectionForTarget:(HYPFormTarget *)target completion:(void (^)(HYPFormSection *section))completion
+{
+    __block BOOL found = NO;
+
+    __block NSMutableArray *indexPaths = [NSMutableArray array];
+
+    [self.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
+        if (found) {
+            *formStop = YES;
+        }
+
+        __block NSInteger fieldsIndex = 0;
+        [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger sectionIndex, BOOL *sectionStop) {
+            if ([aSection.id isEqualToString:target.id]) {
+                NSInteger fieldsInSectionCount = fieldsIndex + aSection.fields.count;
+                for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
+                    [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
+                }
+                aSection.indexPaths = indexPaths;
+
+                if (completion) {
+                    completion(aSection);
+                }
+
+                found = YES;
+                *sectionStop = YES;
+            }
+
+            fieldsIndex += aSection.fields.count;
+        }];
+    }];
+
+    if (!found) {
+        completion(nil);
+    }
+}
+
+- (void)indexForSection:(HYPFormSection *)section completion:(void (^)(BOOL found, NSInteger index))completion
+{
+    HYPForm *form = self.forms[[section.form.position integerValue]];
+
+    __block NSInteger index = 0;
+    __block BOOL found = NO;
+    [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger idx, BOOL *stop) {
+        if ([aSection.id isEqualToString:section.id]) {
+            index = idx;
+            found = YES;
+            *stop = YES;
+        }
+    }];
+
+    if (completion) {
+        completion(found, index);
+    }
+}
+
+- (void)insertedIndexPathsAndSectionIndexForSection:(HYPFormSection *)section
+                                         completion:(void (^)(NSArray *indexPaths, NSInteger index))completion
+{
+    NSMutableArray *indexPaths = [NSMutableArray array];
+
+    NSInteger formIndex = [section.form.position integerValue];
+    HYPForm *form = self.forms[formIndex];
+
+    NSInteger fieldsIndex = 0;
+    NSInteger sectionIndex = 0;
+    for (HYPFormSection *aSection in form.sections) {
+        if ([aSection.position integerValue] < [section.position integerValue]) {
+            fieldsIndex += aSection.fields.count;
+            sectionIndex++;
+        }
+    }
+
+    NSInteger fieldsInSectionCount = fieldsIndex + section.fields.count;
+    for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
+    }
+
+    if (completion) {
+        completion(indexPaths, sectionIndex);
+    }
 }
 
 @end

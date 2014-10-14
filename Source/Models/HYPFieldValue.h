@@ -7,10 +7,20 @@
 
 @import Foundation;
 
+#import "HYPFormField.h"
+
 @interface HYPFieldValue : NSObject
 
-@property (nonatomic, strong) NSString *id;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSArray *rules;
+@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, strong) NSArray *targets;
+@property (nonatomic, strong) HYPFormField *field;
+
+- (void)filteredTargets:(void (^)(NSArray *shownTargets,
+                                  NSArray *hiddenTargets,
+                                  NSArray *enabledTargets,
+                                  NSArray *disabledTargets,
+                                  NSArray *updatedTargets))targets;
+
 
 @end
