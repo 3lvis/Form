@@ -393,10 +393,12 @@
 
         HYPFormField *field = [self fieldForTarget:target];
         NSArray *fieldIDs = [field.formula hyp_words];
+        NSMutableDictionary *valuesDict = [NSMutableDictionary dictionary];
         for (NSString *fieldID in fieldIDs) {
-            NSLog(@"fieldID: %@", fieldID);
-            NSLog(@"fieldValue: %@", [self.valuesDictionary objectForKey:fieldID]);
+            id value = [self.valuesDictionary objectForKey:fieldID];
+            [valuesDict addEntriesFromDictionary:@{fieldID : value}];
         }
+
     }];
 }
 

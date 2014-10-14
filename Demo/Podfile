@@ -9,3 +9,4 @@ pod 'NSDictionary-HYPSafeValue', :git => 'https://github.com/hyperoslo/NSDiction
 pod 'HYPNorwegianSSN'
 pod 'HYPNorwegianAccountNumber'
 pod 'NSString-HYPWordExtractor', :git => 'https://github.com/hyperoslo/NSString-HYPWordExtractor.git'
+pod 'NSString-HYPFormula', :git => 'https://github.com/hyperoslo/NSString-HYPFormula.git'
