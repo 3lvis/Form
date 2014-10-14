@@ -31,6 +31,7 @@ typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, 
 @property (nonatomic, strong) NSMutableArray *forms;
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
 @property (nonatomic, strong) NSMutableDictionary *deletedFields;
+@property (nonatomic, strong) NSMutableDictionary *deletedSections;
 
 @property (nonatomic, copy) HYPFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;

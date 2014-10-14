@@ -165,6 +165,19 @@
     return count;
 }
 
+- (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections
+{
+    NSInteger count = 0;
+
+    for (HYPFormSection *section in self.sections) {
+        if (![deletedSections objectForKey:section.id]) {
+            count += section.fields.count;
+        }
+    }
+
+    return count;
+}
+
 - (void)printFieldValues
 {
     for (HYPFormSection *section in self.sections) {

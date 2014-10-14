@@ -27,6 +27,8 @@ typedef NS_ENUM(NSInteger, HYPFormSectionType) {
 @property (nonatomic) BOOL containsSpecialField;
 @property (nonatomic) BOOL isLast;
 
+@property (nonatomic, strong) NSArray *indexPaths;
+
 - (HYPFormSectionType)typeFromTypeString:(NSString *)typeString;
 - (NSUInteger)breakpoints;
 

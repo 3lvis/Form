@@ -11,7 +11,7 @@
 
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSArray *sections;
+@property (nonatomic, strong) NSMutableArray *sections;
 @property (nonatomic, strong) NSNumber *position;
 
 @property (nonatomic) BOOL shouldValidate;
@@ -22,6 +22,7 @@
 - (NSArray *)fields;
 
 - (NSInteger)numberOfFields;
+- (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections;
 
 - (void)printFieldValues;
 
