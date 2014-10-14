@@ -160,7 +160,7 @@
         [attributes addObject:[self layoutAttributesForDecorationViewOfKind:HYPFormBackgroundKind
                                                                 atIndexPath:indexPath]];
     }
-    
+
     return attributes;
 }
 
@@ -219,6 +219,10 @@
                 width = 0;
             }
         }
+    }
+
+    if (width > 0) {
+        height += HYPFieldCellItemHeight;
     }
 
     return height;
