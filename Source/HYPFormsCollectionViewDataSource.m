@@ -22,7 +22,7 @@
 
 @interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate>
 
-@property (nonatomic, strong) NSMutableDictionary *resultsDictionary;
+@property (nonatomic, strong) NSMutableDictionary *valuesDictionary;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
@@ -44,7 +44,7 @@
     self = [super init];
     if (!self) return nil;
 
-    [self.resultsDictionary addEntriesFromDictionary:dictionary];
+    [self.valuesDictionary addEntriesFromDictionary:dictionary];
 
     _collectionView = collectionView;
     collectionView.dataSource = self;
@@ -70,20 +70,20 @@
 
 #pragma mark - Getters
 
-- (NSMutableDictionary *)resultsDictionary
+- (NSMutableDictionary *)valuesDictionary
 {
-    if (_resultsDictionary) return _resultsDictionary;
+    if (_valuesDictionary) return _valuesDictionary;
 
-    _resultsDictionary = [NSMutableDictionary dictionary];
+    _valuesDictionary = [NSMutableDictionary dictionary];
 
-    return _resultsDictionary;
+    return _valuesDictionary;
 }
 
 - (NSMutableArray *)forms
 {
     if (_forms) return _forms;
 
-    _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.resultsDictionary];
+    _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.valuesDictionary];
 
     return _forms;
 }
@@ -395,7 +395,7 @@
         NSArray *fieldIDs = [field.formula hyp_words];
         for (NSString *fieldID in fieldIDs) {
             NSLog(@"fieldID: %@", fieldID);
-            NSLog(@"fieldValue: %@", [self.resultsDictionary objectForKey:fieldID]);
+            NSLog(@"fieldValue: %@", [self.valuesDictionary objectForKey:fieldID]);
         }
     }];
 }
@@ -540,7 +540,7 @@
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(HYPFormField *)field
 {
-    [self.resultsDictionary setObject:field.fieldValue forKey:field.id];
+    [self.valuesDictionary setObject:field.fieldValue forKey:field.id];
     
     if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         [self processTargetsForFieldValue:field.fieldValue];
