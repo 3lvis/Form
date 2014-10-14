@@ -139,6 +139,10 @@
     HYPForm *form = self.forms[indexPath.section];
     NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
+    id value = [self.valuesDictionary objectForKey:field.id];
+    if (value) {
+        field.fieldValue = value;
+    }
 
     NSString *identifier;
 
@@ -406,9 +410,13 @@
                 }
             }
         }
-        NSNumber *result = [field.formula runFormulaWithDictionary:values];
-        [self.valuesDictionary setObject:result forKey:field.id];
+        if ([values allValues].count == fieldIDs.count) {
+            NSNumber *result = [field.formula runFormulaWithDictionary:values];
+            [self.valuesDictionary setObject:result forKey:field.id];
+        }
     }];
+
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Target helpers
