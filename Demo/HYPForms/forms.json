@@ -377,43 +377,53 @@
             "values":[
               {
                 "id":"ungdom_under_16",
-                "title":"Ungdom under 16 år"
+                "title":"Ungdom under 16 år",
+                "value":100
               },
               {
                 "id":"ungdom_16_18",
-                "title":"Ungdom 16-18 år"
+                "title":"Ungdom 16-18 år",
+                "value":200
               },
               {
                 "id":"trinn_1",
-                "title":"Trinn 1"
+                "title":"Trinn 1",
+                "value":10
               },
               {
                 "id":"trinn_2",
-                "title":"Trinn 2"
+                "title":"Trinn 2",
+                "value":20
               },
               {
                 "id":"trinn_3",
-                "title":"Trinn 3 (25 år)"
+                "title":"Trinn 3 (25 år)",
+                "value":30
               },
               {
                 "id":"trinn_4",
-                "title":"Trinn 4"
+                "title":"Trinn 4",
+                "value":40
               },
               {
                 "id":"trinn_5",
-                "title":"Trinn 5"
+                "title":"Trinn 5",
+                "value":50
               },
               {
                 "id":"trinn_6",
-                "title":"Trinn 6"
+                "title":"Trinn 6",
+                "value":60,
               },
               {
                 "id":"laerling_1",
-                "title":"Lærling 1 år"
+                "title":"Lærling 1 år",
+                "value":1000,
               },
               {
                 "id":"laerling_2",
-                "title":"Lærling 2 år"
+                "title":"Lærling 2 år",
+                "value":2000
               }
             ]
           },
@@ -440,7 +450,8 @@
             "title":"Total",
             "type":"number",
             "size":20,
-            "disabled":true
+            "disabled":true,
+            "formula":"fixed_pay_level + fixed_pay_premium_currency"
           },
           {
             "id":"fixed_pay_entry_date",

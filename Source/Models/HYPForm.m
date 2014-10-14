@@ -68,6 +68,7 @@
                 field.position = @(fieldIndex);
                 field.validations = [fieldDict hyp_safeValueForKey:@"validations"];
                 field.disabled = [[fieldDict hyp_safeValueForKey:@"disabled"] boolValue];
+                field.formula = [fieldDict hyp_safeValueForKey:@"formula"];
 
                 if (dictionary && [dictionary hyp_safeValueForKey:remoteID]) {
                     field.fieldValue = [dictionary hyp_safeValueForKey:remoteID];
@@ -78,9 +79,10 @@
 
                 if (dataSourceValues) {
                     for (NSDictionary *valueDict in dataSourceValues) {
-                        HYPFieldValue *value = [HYPFieldValue new];
-                        value.id = [valueDict hyp_safeValueForKey:@"id"];
-                        value.title = [valueDict hyp_safeValueForKey:@"title"];
+                        HYPFieldValue *fieldValue = [HYPFieldValue new];
+                        fieldValue.id = [valueDict hyp_safeValueForKey:@"id"];
+                        fieldValue.title = [valueDict hyp_safeValueForKey:@"title"];
+                        fieldValue.value = [valueDict hyp_safeValueForKey:@"value"];
 
                         NSMutableArray *targets = [NSMutableArray array];
                         NSArray *dataSourceTargets = [valueDict hyp_safeValueForKey:@"targets"];
@@ -91,13 +93,13 @@
                             target.typeString = [targetDict hyp_safeValueForKey:@"type"];
                             target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
 
-                            target.value = value;
+                            target.value = fieldValue;
                             [targets addObject:target];
                         }
 
-                        value.targets = targets;
-                        value.field = field;
-                        [values addObject:value];
+                        fieldValue.targets = targets;
+                        fieldValue.field = field;
+                        [values addObject:fieldValue];
                     }
                 }
 

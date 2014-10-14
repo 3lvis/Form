@@ -38,6 +38,7 @@ static NSString * const HYPFormFieldDidUpdateNotification = @"HYPFormFieldDidUpd
 @property (nonatomic) BOOL sectionSeparator;
 @property (nonatomic) BOOL disabled;
 @property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSString *formula;
 
 + (HYPFormField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(HYPFormSection *)section;
 

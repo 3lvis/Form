@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) NSArray *targets;
 @property (nonatomic, strong) HYPFormField *field;
+@property (nonatomic, strong) NSNumber *value;
 
 - (void)filteredTargets:(void (^)(NSArray *shownTargets,
                                   NSArray *hiddenTargets,
