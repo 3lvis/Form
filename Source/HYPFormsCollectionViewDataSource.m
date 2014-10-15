@@ -579,7 +579,7 @@
     for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
     }
-    
+
     if (completion) {
         completion(indexPaths, sectionIndex);
     }
