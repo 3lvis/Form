@@ -146,6 +146,11 @@
               "min_length":11,
               "max_length":11
             }
+          },
+          {
+            "id":"image",
+            "type":"custom",
+            "size":100
           }
         ]
       }
