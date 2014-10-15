@@ -22,6 +22,7 @@
 
 typedef void (^HYPFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, HYPFormField *field);
 typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPForm *form);
+typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field);
 
 @interface HYPFormsCollectionViewDataSource : NSObject <HYPFormsLayoutDataSource, UICollectionViewDataSource>
 
@@ -35,6 +36,7 @@ typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, 
 
 @property (nonatomic, copy) HYPFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;
+@property (nonatomic, copy) HYPFieldConfigureFieldUpdatedBlock configureFieldUpdatedBlock;
 
 - (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -42,7 +44,5 @@ typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, 
 - (void)validateForms;
 - (BOOL)formFieldsAreValid;
 - (void)resetForms;
-
-- (void)processTargetsForFieldValue:(HYPFieldValue *)fieldValue;
 
 @end

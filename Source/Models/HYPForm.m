@@ -12,15 +12,9 @@
 #import "HYPFieldValue.h"
 #import "HYPFormTarget.h"
 
-#import "NSString+ZENInflections.h"
 #import "NSDictionary+HYPSafeValue.h"
 
 @implementation HYPForm
-
-+ (NSMutableArray *)forms
-{
-    return [self formsUsingInitialValuesFromDictionary:nil];
-}
 
 + (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
 {
@@ -57,10 +51,9 @@
             [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
 
                 NSString *remoteID = [fieldDict hyp_safeValueForKey:@"id"];
-                NSString *propertyName = [remoteID zen_camelCase];
 
                 HYPFormField *field = [HYPFormField new];
-                field.id   = propertyName;
+                field.id   = remoteID;
                 field.title = [fieldDict hyp_safeValueForKey:@"title"];
                 field.typeString  = [fieldDict hyp_safeValueForKey:@"type"];
                 field.type = [field typeFromTypeString:[fieldDict hyp_safeValueForKey:@"type"]];
@@ -68,8 +61,10 @@
                 field.position = @(fieldIndex);
                 field.validations = [fieldDict hyp_safeValueForKey:@"validations"];
                 field.disabled = [[fieldDict hyp_safeValueForKey:@"disabled"] boolValue];
+                field.formula = [fieldDict hyp_safeValueForKey:@"formula"];
+                field.targets = [self targetsUsingArray:[fieldDict hyp_safeValueForKey:@"targets"]];
 
-                if (dictionary && [dictionary hyp_safeValueForKey:remoteID]) {
+                if ([dictionary hyp_safeValueForKey:remoteID]) {
                     field.fieldValue = [dictionary hyp_safeValueForKey:remoteID];
                 }
 
@@ -78,26 +73,19 @@
 
                 if (dataSourceValues) {
                     for (NSDictionary *valueDict in dataSourceValues) {
-                        HYPFieldValue *value = [HYPFieldValue new];
-                        value.id = [valueDict hyp_safeValueForKey:@"id"];
-                        value.title = [valueDict hyp_safeValueForKey:@"title"];
+                        HYPFieldValue *fieldValue = [HYPFieldValue new];
+                        fieldValue.id = [valueDict hyp_safeValueForKey:@"id"];
+                        fieldValue.title = [valueDict hyp_safeValueForKey:@"title"];
+                        fieldValue.value = [valueDict hyp_safeValueForKey:@"value"];
 
-                        NSMutableArray *targets = [NSMutableArray array];
-                        NSArray *dataSourceTargets = [valueDict hyp_safeValueForKey:@"targets"];
-
-                        for (NSDictionary *targetDict in dataSourceTargets) {
-                            HYPFormTarget *target = [HYPFormTarget new];
-                            target.id = [targetDict hyp_safeValueForKey:@"id"];
-                            target.typeString = [targetDict hyp_safeValueForKey:@"type"];
-                            target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
-
-                            target.value = value;
-                            [targets addObject:target];
+                        NSArray *targets = [self targetsUsingArray:[valueDict hyp_safeValueForKey:@"targets"]];
+                        for (HYPFormTarget *target in targets) {
+                            target.value = fieldValue;
                         }
 
-                        value.targets = targets;
-                        value.field = field;
-                        [values addObject:value];
+                        fieldValue.targets = targets;
+                        fieldValue.field = field;
+                        [values addObject:fieldValue];
                     }
                 }
 
@@ -124,6 +112,21 @@
     }];
 
     return forms;
+}
+
++ (NSArray *)targetsUsingArray:(NSArray *)array
+{
+    NSMutableArray *targets = [NSMutableArray array];
+
+    for (NSDictionary *targetDict in array) {
+        HYPFormTarget *target = [HYPFormTarget new];
+        target.id = [targetDict hyp_safeValueForKey:@"id"];
+        target.typeString = [targetDict hyp_safeValueForKey:@"type"];
+        target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
+        [targets addObject:target];
+    }
+
+    return targets;
 }
 
 + (id)JSONObjectWithContentsOfFile:(NSString*)fileName

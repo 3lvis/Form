@@ -34,7 +34,8 @@
                                   @"postal_code" : @"6414",
                                   @"social_security_number" : @"28118240000",
                                   @"start_date" : @"2014-10-31 23:00:00 +00:00",
-                                  @"worker_id" : @"120000"
+                                  @"worker_id" : @"120000",
+                                  @"employment_type" : @"fast"
                                   };
 
     HYPSampleCollectionViewController *controllers = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];

@@ -95,8 +95,9 @@
 {
     self.field.fieldValue = text;
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormFieldDidUpdateNotification
-                                                        object:self.field];
+    if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
+        [self.delegate fieldCell:self updatedWithField:self.field];
+    }
 }
 
 @end

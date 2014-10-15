@@ -9,7 +9,6 @@
 
 @interface HYPFormatter : NSObject
 
-+ (Class)formatterClass:(NSString *)string;
 - (NSString *)formatString:(NSString *)string reverse:(BOOL)reverse;
 
 @end

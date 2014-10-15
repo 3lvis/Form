@@ -4,7 +4,7 @@
     "title":"Personopplysninger",
     "sections":[
       {
-        "id": "personopplysninger-0",
+        "id":"personopplysninger-0",
         "fields":[
           {
             "id":"first_name",
@@ -61,7 +61,7 @@
         ]
       },
       {
-        "id": "personopplysninger-1",
+        "id":"personopplysninger-1",
         "fields":[
           {
             "id":"country_code",
@@ -122,7 +122,7 @@
         ]
       },
       {
-        "id": "personopplysninger-2",
+        "id":"personopplysninger-2",
         "fields":[
           {
             "id":"phone_number",
@@ -166,7 +166,7 @@
     "title":"Ansattelsesforholdet",
     "sections":[
       {
-        "id": "ansattelsesforholdet-0",
+        "id":"ansattelsesforholdet-0",
         "fields":[
           {
             "id":"position",
@@ -242,7 +242,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-1",
+        "id":"ansattelsesforholdet-1",
         "fields":[
           {
             "id":"temporary_employee_type",
@@ -269,7 +269,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-2",
+        "id":"ansattelsesforholdet-2",
         "fields":[
           {
             "id":"start_date",
@@ -307,7 +307,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-3",
+        "id":"ansattelsesforholdet-3",
         "fields":[
           {
             "id":"remuneration",
@@ -377,7 +377,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-4",
+        "id":"ansattelsesforholdet-4",
         "fields":[
           {
             "id":"fixed_pay_level",
@@ -387,43 +387,123 @@
             "values":[
               {
                 "id":"ungdom_under_16",
-                "title":"Ungdom under 16 år"
+                "title":"Ungdom under 16 år",
+                "value":100,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"ungdom_16_18",
-                "title":"Ungdom 16-18 år"
+                "title":"Ungdom 16-18 år",
+                "value":200,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_1",
-                "title":"Trinn 1"
+                "title":"Trinn 1",
+                "value":10,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_2",
-                "title":"Trinn 2"
+                "title":"Trinn 2",
+                "value":20,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_3",
-                "title":"Trinn 3 (25 år)"
+                "title":"Trinn 3 (25 år)",
+                "value":30,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_4",
-                "title":"Trinn 4"
+                "title":"Trinn 4",
+                "value":40,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_5",
-                "title":"Trinn 5"
+                "title":"Trinn 5",
+                "value":50,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_6",
-                "title":"Trinn 6"
+                "title":"Trinn 6",
+                "value":60,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"laerling_1",
-                "title":"Lærling 1 år"
+                "title":"Lærling 1 år",
+                "value":1000,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"laerling_2",
-                "title":"Lærling 2 år"
+                "title":"Lærling 2 år",
+                "value":2000,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               }
             ]
           },
@@ -434,7 +514,14 @@
             "size":17.5,
             "validations":{
               "required":true
-            }
+            },
+            "targets":[
+              {
+                "id":"fixed_pay_total",
+                "type":"field",
+                "action":"update"
+              }
+            ]
           },
           {
             "id":"fixed_pay_premium_percent",
@@ -450,7 +537,8 @@
             "title":"Total",
             "type":"number",
             "size":20,
-            "disabled":true
+            "disabled":true,
+            "formula":"fixed_pay_level + fixed_pay_premium_currency"
           },
           {
             "id":"fixed_pay_entry_date",
@@ -461,7 +549,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-5",
+        "id":"ansattelsesforholdet-5",
         "fields":[
           {
             "id":"hourly_pay_level",
@@ -471,43 +559,123 @@
             "values":[
               {
                 "id":"ungdom_under_16",
-                "title":"Ungdom under 16 år"
+                "title":"Ungdom under 16 år",
+                "value":100,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"ungdom_16_18",
-                "title":"Ungdom 16-18 år"
+                "title":"Ungdom 16-18 år",
+                "value":200,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_1",
-                "title":"Trinn 1"
+                "title":"Trinn 1",
+                "value":10,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_2",
-                "title":"Trinn 2"
+                "title":"Trinn 2",
+                "value":20,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_3",
-                "title":"Trinn 3 (25 år)"
+                "title":"Trinn 3 (25 år)",
+                "value":30,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_4",
-                "title":"Trinn 4"
+                "title":"Trinn 4",
+                "value":40,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_5",
-                "title":"Trinn 5"
+                "title":"Trinn 5",
+                "value":50,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"trinn_6",
-                "title":"Trinn 6"
+                "title":"Trinn 6",
+                "value":60,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"laerling_1",
-                "title":"Lærling 1 år"
+                "title":"Lærling 1 år",
+                "value":1000,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":"laerling_2",
-                "title":"Lærling 2 år"
+                "title":"Lærling 2 år",
+                "value":2000,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               }
             ]
           },
@@ -545,7 +713,7 @@
         ]
       },
       {
-        "id": "ansattelsesforholdet-6",
+        "id":"ansattelsesforholdet-6",
         "fields":[
           {
             "id":"other_terms",

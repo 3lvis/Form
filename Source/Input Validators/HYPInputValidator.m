@@ -7,17 +7,8 @@
 
 #import "HYPInputValidator.h"
 #import "HYPNumberInputValidator.h"
-#import "NSString+ZENInflections.h"
-
-static NSString * const HYPInputValidatorClass = @"HYP%@InputValidator";
 
 @implementation HYPInputValidator
-
-+ (Class)validatorClass:(NSString *)string
-{
-    NSString *classString = [NSString stringWithFormat:HYPInputValidatorClass, [string zen_upperCamelCase]];
-    return NSClassFromString(classString);
-}
 
 - (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text
 {

@@ -30,7 +30,9 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     switch (self.type) {
         case HYPFormFieldTypeNumber:
         case HYPFormFieldTypeFloat:
-            resultValue = [fieldValue stringValue];
+            if (![fieldValue isKindOfClass:[NSString class]]) {
+                resultValue = [fieldValue stringValue];
+            }
             break;
 
         case HYPFormFieldTypeDate: {
@@ -144,6 +146,13 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     validator = [[validatorClass alloc] initWithValidations:self.validations];
 
     return [validator validateFieldValue:self.fieldValue];
+}
+
+#pragma mark - Public Methods
+
+- (void)executeFormula
+{
+    NSLog(@"this is the formula: %@", self.formula);
 }
 
 @end

@@ -21,8 +21,6 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
     HYPFormFieldTypeNumber
 };
 
-static NSString * const HYPFormFieldDidUpdateNotification = @"HYPFormFieldDidUpdateNotification";
-
 @interface HYPFormField : NSObject
 
 @property (nonatomic, strong) NSString *id;
@@ -38,6 +36,8 @@ static NSString * const HYPFormFieldDidUpdateNotification = @"HYPFormFieldDidUpd
 @property (nonatomic) BOOL sectionSeparator;
 @property (nonatomic) BOOL disabled;
 @property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSString *formula;
+@property (nonatomic, strong) NSArray *targets;
 
 + (HYPFormField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(HYPFormSection *)section;
 
@@ -47,5 +47,6 @@ static NSString * const HYPFormFieldDidUpdateNotification = @"HYPFormFieldDidUpd
 - (id)rawFieldValue;
 - (id)inputValidator;
 - (id)formatter;
+- (void)executeFormula;
 
 @end
