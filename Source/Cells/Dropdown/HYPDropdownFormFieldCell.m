@@ -80,7 +80,7 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
         }
     }
 
-    [self performSelector:@selector(goNutsWithField:) withObject:field afterDelay:0.5];
+    [self performSelector:@selector(goNutsWithField:) withObject:field afterDelay:1.0];
 }
 
 - (void)goNutsWithField:(HYPFormField *)field

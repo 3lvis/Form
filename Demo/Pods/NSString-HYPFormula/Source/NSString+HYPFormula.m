@@ -28,6 +28,10 @@
 
 - (id)runFormula
 {
+    if ([self rangeOfString:@". "].location != NSNotFound) {
+        return nil;
+    }
+
     NSExpression *expression = [NSExpression expressionWithFormat:self];
     id value = [expression expressionValueWithObject:nil context:nil];
     return value;

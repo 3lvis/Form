@@ -445,7 +445,9 @@
         BOOL valuesForAllFieldsAreAvailable = ([values allValues].count == fieldIDs.count);
         if (valuesForAllFieldsAreAvailable) {
             NSNumber *result = [field.formula runFormulaWithDictionary:values];
-            [self.valuesDictionary setObject:result forKey:field.id];
+            if (result) {
+                [self.valuesDictionary setObject:result forKey:field.id];
+            }
         }
     }];
 

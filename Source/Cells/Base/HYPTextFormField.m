@@ -105,6 +105,8 @@
         type = HYPTextFieldTypePhoneNumber;
     } else if ([typeString isEqualToString:@"number"]) {
         type = HYPTextFieldTypeNumber;
+    } else if ([typeString isEqualToString:@"float"]) {
+        type = HYPTextFieldTypeFloat;
     } else if ([typeString isEqualToString:@"address"]) {
         type = HYPTextFieldTypeAddress;
     } else if ([typeString isEqualToString:@"email"]) {

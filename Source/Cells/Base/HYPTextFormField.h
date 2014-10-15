@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
     HYPTextFieldTypeUsername,
     HYPTextFieldTypePhoneNumber,
     HYPTextFieldTypeNumber,
+    HYPTextFieldTypeFloat,
     HYPTextFieldTypeAddress,
     HYPTextFieldTypeEmail,
     HYPTextFieldTypePassword,
