@@ -425,7 +425,7 @@
 
         [updatedIndexPaths addObject:field.indexPath];
 
-        NSArray *fieldIDs = [field.formula hyp_words];
+        NSArray *fieldIDs = [field.formula hyp_variables];
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
 
         for (NSString *fieldID in fieldIDs) {
