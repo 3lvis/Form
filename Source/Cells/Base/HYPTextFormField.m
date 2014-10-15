@@ -115,6 +115,7 @@
         type = HYPTextFieldTypeDropdown;
     } else {
         type = HYPTextFieldTypeDefault;
+        abort();
     }
 
     self.type = type;
