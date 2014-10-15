@@ -441,7 +441,8 @@
                         [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
                         [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
                     } else {
-                        [self.valuesDictionary setObject:@"" forKey:field.id];
+                        [self.valuesDictionary setObject:@"0" forKey:field.id];
+                        [values addEntriesFromDictionary:@{fieldID : @"0"}];
                     }
                 }
             }
