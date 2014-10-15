@@ -81,21 +81,6 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
     }
 }
 
-- (void)goNutsWithField:(HYPFormField *)field
-{
-    if (self.field.fieldValue && [self.field.fieldValue isKindOfClass:[NSString class]]) {
-        if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
-            for (HYPFieldValue *fieldValue in self.field.values) {
-                if ([fieldValue.id isEqualToString:self.field.fieldValue]) {
-                    self.field.fieldValue = fieldValue;
-                    [self.delegate fieldCell:self updatedWithField:self.field];
-                    break;
-                }
-            }
-        }
-    }
-}
-
 - (void)validate
 {
     NSLog(@"validation in progress");
