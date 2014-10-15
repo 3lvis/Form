@@ -229,15 +229,6 @@
             "validations":{
               "required":true
             }
-          },
-          {
-            "id":"nearest_executive",
-            "title":"Nærmeste overordnet",
-            "type":"text",
-            "size":37.5,
-            "validations":{
-              "required":true
-            }
           }
         ]
       },
