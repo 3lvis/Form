@@ -71,6 +71,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
         case HYPFormFieldTypeNone:
         case HYPFormFieldTypeBlank:
+        case HYPFormFieldTypeImage:
             return nil;
     }
 }
@@ -132,6 +133,8 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         return HYPFormFieldTypeNumber;
     } else if ([typeString isEqualToString:@"blank"]) {
         return HYPFormFieldTypeBlank;
+    } else if ([typeString isEqualToString:@"image"]) {
+        return HYPFormFieldTypeImage;
     }
 
     return HYPFormFieldTypeDefault;

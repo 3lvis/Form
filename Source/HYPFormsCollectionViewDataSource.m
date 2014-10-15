@@ -15,6 +15,7 @@
 #import "HYPDropdownFormFieldCell.h"
 #import "HYPDateFormFieldCell.h"
 #import "HYPBlankFormFieldCell.h"
+#import "HYPImageFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
@@ -61,6 +62,9 @@
 
     [collectionView registerClass:[HYPDateFormFieldCell class]
        forCellWithReuseIdentifier:HYPDateFormFieldCellIdentifier];
+
+    [collectionView registerClass:[HYPImageFormFieldCell class]
+       forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
 
     [collectionView registerClass:[HYPFormHeaderView class]
        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -165,10 +169,16 @@
         case HYPFormFieldTypeBlank:
             identifier = HYPBlankFormFieldCellIdentifier;
             break;
+
+        case HYPFormFieldTypeImage:
+            identifier = HYPImageFormFieldCellIdentifier;
+            break;
     }
 
     HYPBaseFormFieldCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
                                                                            forIndexPath:indexPath];
+    if (field.type == HYPFormFieldTypeImage) return cell;
+    
     cell.delegate = self;
 
     if (self.configureCellBlock) {

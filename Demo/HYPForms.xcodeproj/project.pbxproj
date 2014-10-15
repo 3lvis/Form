@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1427D96519EEACEB0076EC20 /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1427D96419EEACEB0076EC20 /* HYPImageFormFieldCell.m */; };
 		1478934C19DFCC9000BC2497 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 1478934B19DFCC9000BC2497 /* forms.json */; };
 		14B4C17919EC37FF00B1FE1A /* HYPFormTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */; };
 		14BF16C819EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */; };
@@ -62,6 +63,8 @@
 
 /* Begin PBXFileReference section */
 		07105CF419C6385F89E04B13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		1427D96319EEACEB0076EC20 /* HYPImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPImageFormFieldCell.h; sourceTree = "<group>"; };
+		1427D96419EEACEB0076EC20 /* HYPImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPImageFormFieldCell.m; sourceTree = "<group>"; };
 		1478934B19DFCC9000BC2497 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
 		14B4C17719EC37FF00B1FE1A /* HYPFormTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormTarget.h; sourceTree = "<group>"; };
 		14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormTarget.m; sourceTree = "<group>"; };
@@ -170,6 +173,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1427D96219EEACC70076EC20 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				1427D96319EEACEB0076EC20 /* HYPImageFormFieldCell.h */,
+				1427D96419EEACEB0076EC20 /* HYPImageFormFieldCell.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		4408F15B19E81EA6005AE53F /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +211,7 @@
 				4408F16819E81EA6005AE53F /* Date */,
 				4408F16B19E81EA6005AE53F /* Dropdown */,
 				4408F17019E81EA6005AE53F /* Text */,
+				1427D96219EEACC70076EC20 /* Custom */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -551,6 +564,7 @@
 				44BDD18D19EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m in Sources */,
 				4408F1BA19E81F67005AE53F /* HYPPhoneNumberFormatter.m in Sources */,
 				4408F1BD19E81F67005AE53F /* HYPFloatInputValidator.m in Sources */,
+				1427D96519EEACEB0076EC20 /* HYPImageFormFieldCell.m in Sources */,
 				14B4C17919EC37FF00B1FE1A /* HYPFormTarget.m in Sources */,
 				4408F19019E81EA6005AE53F /* HYPDropdownFormFieldCell.m in Sources */,
 				4408F19619E81EA6005AE53F /* HYPFormsCollectionViewDataSource.m in Sources */,
