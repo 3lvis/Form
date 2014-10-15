@@ -12,24 +12,41 @@
 
 - (NSArray *)hyp_words
 {
-    return [self hyp_parseWords:[NSMutableArray new]];
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789ABCDEFGHIJKOLMNOPQRSTUVWXYZÅÄÆÖØabcdefghijkolmnopqrstuvwxyzåäæöø_"];
+
+    return [self hyp_parseWords:[NSMutableArray new] withCharacterSet:set];
 }
 
 - (NSSet *)hyp_uniqueWords
 {
-    return [self hyp_parseWords:[NSMutableSet new]];
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789ABCDEFGHIJKOLMNOPQRSTUVWXYZÅÄÆÖØabcdefghijkolmnopqrstuvwxyzåäæöø_"];
+
+    return [self hyp_parseWords:[NSMutableSet new] withCharacterSet:set];
+}
+
+- (NSArray *)hyp_variables
+{
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKOLMNOPQRSTUVWXYZÅÄÆÖØabcdefghijkolmnopqrstuvwxyzåäæöø_"];
+
+    return [self hyp_parseWords:[NSMutableArray new] withCharacterSet:set];
+}
+
+- (NSSet *)hyp_uniqueVariables
+{
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKOLMNOPQRSTUVWXYZÅÄÆÖØabcdefghijkolmnopqrstuvwxyzåäæöø_"];
+
+    return [self hyp_parseWords:[NSMutableSet new] withCharacterSet:set];
 }
 
 #pragma mark - Private methods
 
-- (id)hyp_parseWords:(id)container
+- (id)hyp_parseWords:(id)container withCharacterSet:(NSCharacterSet *)set
 {
-    NSCharacterSet *validSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789ABCDEFGHIJKOLMNOPQRSTUVWXYZÅÄÆÖØabcdefghijkolmnopqrstuvwxyzåäæöø_"];
     NSScanner *scanner = [NSScanner scannerWithString:self];
     NSString *word;
-    
+
     while (!scanner.isAtEnd) {
-        if ([scanner scanCharactersFromSet:validSet intoString:&word]) {
+        if ([scanner scanCharactersFromSet:set intoString:&word]) {
             [container addObject:word];
         }
 

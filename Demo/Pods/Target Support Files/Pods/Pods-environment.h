@@ -33,7 +33,7 @@
 // NSString-HYPWordExtractor
 #define COCOAPODS_POD_AVAILABLE_NSString_HYPWordExtractor
 #define COCOAPODS_VERSION_MAJOR_NSString_HYPWordExtractor 1
-#define COCOAPODS_VERSION_MINOR_NSString_HYPWordExtractor 0
+#define COCOAPODS_VERSION_MINOR_NSString_HYPWordExtractor 1
 #define COCOAPODS_VERSION_PATCH_NSString_HYPWordExtractor 0
 
 // NSString-ZENInflections
