@@ -439,7 +439,8 @@
             }
         }
 
-        if ([values allValues].count == fieldIDs.count) {
+        BOOL valuesForAllFieldsAreAvailable = ([values allValues].count == fieldIDs.count);
+        if (valuesForAllFieldsAreAvailable) {
             NSNumber *result = [field.formula runFormulaWithDictionary:values];
             [self.valuesDictionary setObject:result forKey:field.id];
         }
