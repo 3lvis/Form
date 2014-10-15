@@ -418,8 +418,11 @@
 
     [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
         if (target.type == HYPFormTargetTypeSection) return;
+        if ([self.deletedFields objectForKey:target.id]) return;
 
         HYPFormField *field = [self fieldForTarget:target];
+        if (!field) return;
+
         [updatedIndexPaths addObject:field.indexPath];
 
         NSArray *fieldIDs = [field.formula hyp_words];
