@@ -201,6 +201,11 @@
                     "id":"ansattelsesforholdet-1",
                     "type":"section",
                     "action":"hide"
+                  },
+                  {
+                    "id":"end_date",
+                    "type":"field",
+                    "action":"hide"
                   }
                 ]
               },
@@ -211,6 +216,11 @@
                   {
                     "id":"ansattelsesforholdet-1",
                     "type":"section",
+                    "action":"show"
+                  },
+                  {
+                    "id":"end_date",
+                    "type":"field",
                     "action":"show"
                   }
                 ]
@@ -504,7 +514,14 @@
             "size":17.5,
             "validations":{
               "required":true
-            }
+            },
+            "targets":[
+              {
+                "id":"fixed_pay_total",
+                "type":"field",
+                "action":"update"
+              }
+            ]
           },
           {
             "id":"fixed_pay_premium_percent",

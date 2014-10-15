@@ -62,6 +62,7 @@
                 field.validations = [fieldDict hyp_safeValueForKey:@"validations"];
                 field.disabled = [[fieldDict hyp_safeValueForKey:@"disabled"] boolValue];
                 field.formula = [fieldDict hyp_safeValueForKey:@"formula"];
+                field.targets = [self targetsUsingArray:[fieldDict hyp_safeValueForKey:@"targets"]];
 
                 if ([dictionary hyp_safeValueForKey:remoteID]) {
                     field.fieldValue = [dictionary hyp_safeValueForKey:remoteID];
@@ -77,17 +78,9 @@
                         fieldValue.title = [valueDict hyp_safeValueForKey:@"title"];
                         fieldValue.value = [valueDict hyp_safeValueForKey:@"value"];
 
-                        NSMutableArray *targets = [NSMutableArray array];
-                        NSArray *dataSourceTargets = [valueDict hyp_safeValueForKey:@"targets"];
-
-                        for (NSDictionary *targetDict in dataSourceTargets) {
-                            HYPFormTarget *target = [HYPFormTarget new];
-                            target.id = [targetDict hyp_safeValueForKey:@"id"];
-                            target.typeString = [targetDict hyp_safeValueForKey:@"type"];
-                            target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
-
+                        NSArray *targets = [self targetsUsingArray:[valueDict hyp_safeValueForKey:@"targets"]];
+                        for (HYPFormTarget *target in targets) {
                             target.value = fieldValue;
-                            [targets addObject:target];
                         }
 
                         fieldValue.targets = targets;
@@ -119,6 +112,21 @@
     }];
 
     return forms;
+}
+
++ (NSArray *)targetsUsingArray:(NSArray *)array
+{
+    NSMutableArray *targets = [NSMutableArray array];
+
+    for (NSDictionary *targetDict in array) {
+        HYPFormTarget *target = [HYPFormTarget new];
+        target.id = [targetDict hyp_safeValueForKey:@"id"];
+        target.typeString = [targetDict hyp_safeValueForKey:@"type"];
+        target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
+        [targets addObject:target];
+    }
+
+    return targets;
 }
 
 + (id)JSONObjectWithContentsOfFile:(NSString*)fileName

@@ -17,11 +17,4 @@
 @property (nonatomic, strong) HYPFormField *field;
 @property (nonatomic, strong) NSNumber *value;
 
-- (void)filteredTargets:(void (^)(NSArray *shownTargets,
-                                  NSArray *hiddenTargets,
-                                  NSArray *enabledTargets,
-                                  NSArray *disabledTargets,
-                                  NSArray *updatedTargets))targets;
-
-
 @end

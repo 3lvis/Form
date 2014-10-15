@@ -65,6 +65,10 @@
         headerView.delegate = weakSelf;
     };
 
+    _dataSource.configureFieldUpdatedBlock = ^(id cell, HYPFormField *field) {
+        NSLog(@"field updated: %@ --- %@", field.id, field.fieldValue);
+    };
+
     return _dataSource;
 }
 

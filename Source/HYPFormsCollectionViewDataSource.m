@@ -278,21 +278,42 @@
     [self.collectionView reloadData];
 }
 
-- (void)processTargetsForFieldValue:(HYPFieldValue *)fieldValue
-{
-    [fieldValue filteredTargets:^(NSArray *shownTargets,
-                                  NSArray *hiddenTargets,
-                                  NSArray *enabledTargets,
-                                  NSArray *disabledTargets,
-                                  NSArray *updatedTargets) {
-        [self showTargets:shownTargets];
-        [self hideTargets:hiddenTargets];
-        [self enableTargets:enabledTargets];
-        [self disableTargets:disabledTargets];
-        [self updateTargets:updatedTargets];
+#pragma mark - HYPBaseFormFieldCellDelegate
 
-        [self.collectionView.collectionViewLayout invalidateLayout];
-    }];
+- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(HYPFormField *)field
+{
+    if (self.configureFieldUpdatedBlock) {
+        self.configureFieldUpdatedBlock(fieldCell, field);
+    }
+
+    [self.valuesDictionary setObject:field.fieldValue forKey:field.id];
+
+    if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+        HYPFieldValue *fieldValue = field.fieldValue;
+        [self processTargets:fieldValue.targets];
+    } else if (field.targets.count > 0) {
+        [self processTargets:field.targets];
+    }
+}
+
+#pragma mark - Targets Procesing
+
+- (void)processTargets:(NSArray *)targets
+{
+    [HYPFormTarget filteredTargets:targets
+                          filtered:^(NSArray *shownTargets,
+                                     NSArray *hiddenTargets,
+                                     NSArray *enabledTargets,
+                                     NSArray *disabledTargets,
+                                     NSArray *updatedTargets) {
+                              [self showTargets:shownTargets];
+                              [self hideTargets:hiddenTargets];
+                              [self enableTargets:enabledTargets];
+                              [self disableTargets:disabledTargets];
+                              [self updateTargets:updatedTargets];
+
+                              [self.collectionView.collectionViewLayout invalidateLayout];
+                          }];
 }
 
 - (void)showTargets:(NSArray *)targets
@@ -393,30 +414,39 @@
 
 - (void)updateTargets:(NSArray *)targets
 {
+    NSMutableArray *updatedIndexPaths = [NSMutableArray array];
+
     [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
         if (target.type == HYPFormTargetTypeSection) return;
 
         HYPFormField *field = [self fieldForTarget:target];
+        [updatedIndexPaths addObject:field.indexPath];
+
         NSArray *fieldIDs = [field.formula hyp_words];
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
+
         for (NSString *fieldID in fieldIDs) {
             id value = [self.valuesDictionary objectForKey:fieldID];
             if (value) {
                 if ([value isKindOfClass:[HYPFieldValue class]]) {
                     HYPFieldValue *fieldValue = (HYPFieldValue *)value;
                     [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
-                } else {
+                } else if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
                     [values addEntriesFromDictionary:@{fieldID : value}];
+                } else {
+                    [self.valuesDictionary setObject:@"" forKey:field.id];
                 }
             }
         }
-        if ([values allValues].count == fieldIDs.count) {
+
+        BOOL valuesForAllFieldsAreAvailable = ([values allValues].count == fieldIDs.count);
+        if (valuesForAllFieldsAreAvailable) {
             NSNumber *result = [field.formula runFormulaWithDictionary:values];
             [self.valuesDictionary setObject:result forKey:field.id];
         }
     }];
 
-    [self.collectionView reloadData];
+    [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
 }
 
 #pragma mark - Target helpers
@@ -552,17 +582,6 @@
 
     if (completion) {
         completion(indexPaths, sectionIndex);
-    }
-}
-
-#pragma mark - HYPBaseFormFieldCellDelegate
-
-- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(HYPFormField *)field
-{
-    [self.valuesDictionary setObject:field.fieldValue forKey:field.id];
-
-    if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
-        [self processTargetsForFieldValue:field.fieldValue];
     }
 }
 
