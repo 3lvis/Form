@@ -282,6 +282,10 @@
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(HYPFormField *)field
 {
+    if (self.configureFieldUpdatedBlock) {
+        self.configureFieldUpdatedBlock(fieldCell, field);
+    }
+
     [self.valuesDictionary setObject:field.fieldValue forKey:field.id];
 
     if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
