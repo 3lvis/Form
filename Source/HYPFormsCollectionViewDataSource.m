@@ -424,21 +424,21 @@
 
         NSArray *fieldIDs = [field.formula hyp_words];
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
+
         for (NSString *fieldID in fieldIDs) {
             id value = [self.valuesDictionary objectForKey:fieldID];
             if (value) {
                 if ([value isKindOfClass:[HYPFieldValue class]]) {
                     HYPFieldValue *fieldValue = (HYPFieldValue *)value;
                     [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                } else if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
+                    [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
-                    if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
-                        [values addEntriesFromDictionary:@{fieldID : value}];
-                    } else {
-                        [self.valuesDictionary setObject:@"" forKey:field.id];
-                    }
+                    [self.valuesDictionary setObject:@"" forKey:field.id];
                 }
             }
         }
+
         if ([values allValues].count == fieldIDs.count) {
             NSNumber *result = [field.formula runFormulaWithDictionary:values];
             [self.valuesDictionary setObject:result forKey:field.id];
