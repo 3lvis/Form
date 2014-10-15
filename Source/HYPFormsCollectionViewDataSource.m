@@ -437,12 +437,17 @@
                 } else if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
                     [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
-                    [self.valuesDictionary setObject:@"" forKey:field.id];
+                    if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+                        [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
+                    } else {
+                        [self.valuesDictionary setObject:@"" forKey:field.id];
+                    }
                 }
             }
         }
 
         BOOL valuesForAllFieldsAreAvailable = ([values allValues].count == fieldIDs.count);
+
         if (valuesForAllFieldsAreAvailable) {
             NSNumber *result = [field.formula runFormulaWithDictionary:values];
             if (result) {

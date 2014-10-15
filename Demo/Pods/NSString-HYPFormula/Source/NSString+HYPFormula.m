@@ -29,6 +29,7 @@
 - (id)runFormula
 {
     NSString *formula = self;
+    NSLog(@"formula: %@", formula);
     formula = [self stringByReplacingOccurrencesOfString:@"," withString:@"."];
 
     if ([formula rangeOfString:@". "].location != NSNotFound) {

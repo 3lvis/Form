@@ -316,7 +316,6 @@
             "title":"Stillingsprosent",
             "type":"number",
             "size":25,
-            "disabled":true,
             "formula":"(hours_per_week / 37.5) * 100"
           }
         ]
@@ -550,7 +549,7 @@
             "type":"number",
             "size":20,
             "disabled":true,
-            "formula":"fixed_pay_level + fixed_pay_premium_currency"
+            "formula":"(fixed_pay_level * (employment_percent / 100)) + fixed_pay_premium_currency"
           },
           {
             "id":"fixed_pay_entry_date",
@@ -719,7 +718,7 @@
             "type":"number",
             "size":20,
             "disabled":true,
-            "formula":"hourly_pay_level + hourly_pay_premium_currency"
+            "formula":"(hourly_pay_level * employment_percent) + hourly_pay_premium_currency"
           },
           {
             "id":"hourly_pay_entry_date",
