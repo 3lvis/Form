@@ -526,10 +526,7 @@
             "id":"fixed_pay_premium_percent",
             "title":"Påslag (%)",
             "type":"number",
-            "size":17.5,
-            "validations":{
-              "required":true
-            }
+            "size":17.5
           },
           {
             "id":"fixed_pay_premium_currency",
@@ -698,10 +695,7 @@
             "id":"hourly_pay_premium_percent",
             "title":"Påslag (%)",
             "type":"number",
-            "size":17.5,
-            "validations":{
-              "required":true
-            }
+            "size":17.5
           },
           {
             "id":"hourly_pay_premium_currency",
