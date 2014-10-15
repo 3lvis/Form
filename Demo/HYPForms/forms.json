@@ -563,7 +563,7 @@
                 "value":100,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -575,7 +575,7 @@
                 "value":200,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -587,7 +587,7 @@
                 "value":10,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -599,7 +599,7 @@
                 "value":20,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -611,7 +611,7 @@
                 "value":30,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -623,7 +623,7 @@
                 "value":40,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -635,7 +635,7 @@
                 "value":50,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -647,7 +647,7 @@
                 "value":60,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -659,7 +659,7 @@
                 "value":1000,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -671,7 +671,7 @@
                 "value":2000,
                 "targets":[
                   {
-                    "id":"fixed_pay_total",
+                    "id":"hourly_pay_total",
                     "type":"field",
                     "action":"update"
                   }
@@ -686,7 +686,14 @@
             "size":17.5,
             "validations":{
               "required":true
-            }
+            },
+            "targets":[
+              {
+                "id":"hourly_pay_total",
+                "type":"field",
+                "action":"update"
+              }
+            ]
           },
           {
             "id":"hourly_pay_premium_percent",
@@ -702,7 +709,8 @@
             "title":"Total",
             "type":"number",
             "size":20,
-            "disabled":true
+            "disabled":true,
+            "formula":"hourly_pay_level + hourly_pay_premium_currency"
           },
           {
             "id":"hourly_pay_entry_date",
