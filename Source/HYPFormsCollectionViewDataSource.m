@@ -255,7 +255,12 @@
         height = HYPFieldCellItemSmallHeight;
     } else {
         width = floor(deviceWidth * ([field.size floatValue] / 100.0f));
-        height = HYPFieldCellItemHeight;
+
+        if (field.type == HYPFormFieldTypeImage) {
+            height = HYPImageFormFieldCellItemHeight;
+        } else {
+            height = HYPFieldCellItemHeight;
+        }
     }
 
     return CGSizeMake(width, height);

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1427D96519EEACEB0076EC20 /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1427D96419EEACEB0076EC20 /* HYPImageFormFieldCell.m */; };
+		145721C319EF260600195051 /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145721C219EF260600195051 /* camera-icon@2x.png */; };
 		1478934C19DFCC9000BC2497 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 1478934B19DFCC9000BC2497 /* forms.json */; };
 		14B4C17919EC37FF00B1FE1A /* HYPFormTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */; };
 		14BF16C819EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */; };
@@ -51,7 +52,6 @@
 		4445D51219EBC6B80034A5D7 /* HYPFormTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51119EBC6B80034A5D7 /* HYPFormTimeViewController.m */; };
 		4445D51A19EBC78A0034A5D7 /* UIColor+REMAColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51619EBC78A0034A5D7 /* UIColor+REMAColors.m */; };
 		4445D51B19EBC78A0034A5D7 /* UIFont+REMAStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51819EBC78A0034A5D7 /* UIFont+REMAStyles.m */; };
-		445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */; };
 		445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */; };
 		44BDD18C19EBD644008E9CA9 /* HYPBankAccountNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDD18719EBD644008E9CA9 /* HYPBankAccountNumberValidator.m */; };
 		44BDD18D19EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDD18919EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m */; };
@@ -65,6 +65,7 @@
 		07105CF419C6385F89E04B13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1427D96319EEACEB0076EC20 /* HYPImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPImageFormFieldCell.h; sourceTree = "<group>"; };
 		1427D96419EEACEB0076EC20 /* HYPImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPImageFormFieldCell.m; sourceTree = "<group>"; };
+		145721C219EF260600195051 /* camera-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon@2x.png"; sourceTree = "<group>"; };
 		1478934B19DFCC9000BC2497 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
 		14B4C17719EC37FF00B1FE1A /* HYPFormTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormTarget.h; sourceTree = "<group>"; };
 		14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormTarget.m; sourceTree = "<group>"; };
@@ -145,7 +146,6 @@
 		4445D51619EBC78A0034A5D7 /* UIColor+REMAColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+REMAColors.m"; sourceTree = "<group>"; };
 		4445D51719EBC78A0034A5D7 /* UIFont+REMAStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+REMAStyles.h"; sourceTree = "<group>"; };
 		4445D51819EBC78A0034A5D7 /* UIFont+REMAStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+REMAStyles.m"; sourceTree = "<group>"; };
-		445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_mini_arrow_down.png; sourceTree = "<group>"; };
 		445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_arrow_down@2x.png"; sourceTree = "<group>"; };
 		44BDD18619EBD644008E9CA9 /* HYPBankAccountNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberValidator.h; sourceTree = "<group>"; };
 		44BDD18719EBD644008E9CA9 /* HYPBankAccountNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberValidator.m; sourceTree = "<group>"; };
@@ -393,7 +393,7 @@
 		445DAF9219E52D76006F8052 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				445DAF9319E52D76006F8052 /* ic_mini_arrow_down.png */,
+				145721C219EF260600195051 /* camera-icon@2x.png */,
 				445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */,
 			);
 			path = Images;
@@ -490,7 +490,7 @@
 			files = (
 				4441A9E919E2BBC50068498D /* DIN-BOLD.OTF in Resources */,
 				4441A9EA19E2BBC50068498D /* DIN-LIGH.OTF in Resources */,
-				445DAF9519E52D76006F8052 /* ic_mini_arrow_down.png in Resources */,
+				145721C319EF260600195051 /* camera-icon@2x.png in Resources */,
 				4441A9EC19E2BBC50068498D /* DIN-REGU.OTF in Resources */,
 				4441A9EB19E2BBC50068498D /* DIN-MEDI.OTF in Resources */,
 				441B77B119DEC4F4006AF67C /* Images.xcassets in Resources */,

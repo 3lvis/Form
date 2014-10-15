@@ -10,6 +10,8 @@
 
 static NSString * const HYPImageFormFieldCellIdentifier = @"HYPImageFormFieldCellIdentifier";
 
+static const NSInteger HYPImageFormFieldCellItemHeight = 130.0f;
+
 @interface HYPImageFormFieldCell : UICollectionViewCell
 
 @end
