@@ -295,14 +295,22 @@
               "required":true,
               "min_length":1,
               "max_length":4
-            }
+            },
+            "targets":[
+              {
+                "id":"employment_percent",
+                "type":"field",
+                "action":"update"
+              }
+            ]
           },
           {
             "id":"employment_percent",
             "title":"Stillingsprosent",
             "type":"numeric",
             "size":25,
-            "disabled":true
+            "disabled":true,
+            "formula":"(hours_per_week / 37.5) * 100"
           }
         ]
       },
