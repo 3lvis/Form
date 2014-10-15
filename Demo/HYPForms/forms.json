@@ -172,7 +172,7 @@
             "id":"position",
             "title":"Stillingstype",
             "type":"select",
-            "size":37.5,
+            "size":40,
             "values":[
               {
                 "id":"butikkmedarbeider",
@@ -191,7 +191,7 @@
             "id":"employment_type",
             "title":"Arbeidsforholdet",
             "type":"select",
-            "size":25,
+            "size":30,
             "values":[
               {
                 "id":"fast",
@@ -229,7 +229,23 @@
             "validations":{
               "required":true
             }
-          }
+          },
+          {
+                "id":"include_in_daily_plan",
+                "title":"Meld på dagsplan",
+                "type":"select",
+                "size":30,
+                "values":[
+                  {
+                    "id":"ja",
+                    "title":"Ja"
+                  },
+                  {
+                    "id":"nei",
+                    "title":"Nei"
+                  }
+                ]
+           }
         ]
       },
       {
