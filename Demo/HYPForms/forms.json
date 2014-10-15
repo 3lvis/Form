@@ -307,7 +307,7 @@
           {
             "id":"employment_percent",
             "title":"Stillingsprosent",
-            "type":"numeric",
+            "type":"number",
             "size":25,
             "disabled":true,
             "formula":"(hours_per_week / 37.5) * 100"
