@@ -499,6 +499,15 @@
             ]
           },
           {
+            "id":"fixed_pay_premium_percent",
+            "title":"Påslag (%)",
+            "type":"number",
+            "size":17.5,
+            "validations":{
+              "required":true
+            }
+          },
+          {
             "id":"fixed_pay_premium_currency",
             "title":"Påslag (kr)",
             "type":"number",
@@ -513,15 +522,6 @@
                 "action":"update"
               }
             ]
-          },
-          {
-            "id":"fixed_pay_premium_percent",
-            "title":"Påslag (%)",
-            "type":"number",
-            "size":17.5,
-            "validations":{
-              "required":true
-            }
           },
           {
             "id":"fixed_pay_total",
@@ -671,6 +671,15 @@
             ]
           },
           {
+            "id":"hourly_pay_premium_percent",
+            "title":"Påslag (%)",
+            "type":"number",
+            "size":17.5,
+            "validations":{
+              "required":true
+            }
+          },
+          {
             "id":"hourly_pay_premium_currency",
             "title":"Påslag (kr)",
             "type":"number",
@@ -685,15 +694,6 @@
                 "action":"update"
               }
             ]
-          },
-          {
-            "id":"hourly_pay_premium_percent",
-            "title":"Påslag (%)",
-            "type":"number",
-            "size":17.5,
-            "validations":{
-              "required":true
-            }
           },
           {
             "id":"hourly_pay_total",
