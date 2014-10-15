@@ -427,7 +427,7 @@
               {
                 "id":"trinn_1",
                 "title":"Trinn 1",
-                "value":10,
+                "value":160,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -596,7 +596,7 @@
               {
                 "id":"trinn_1",
                 "title":"Trinn 1",
-                "value":10,
+                "value":160,
                 "targets":[
                   {
                     "id":"hourly_pay_total",
