@@ -439,6 +439,7 @@
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
                         [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
+                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
                     } else {
                         [self.valuesDictionary setObject:@"" forKey:field.id];
                     }
