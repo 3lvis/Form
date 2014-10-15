@@ -43,6 +43,4 @@ typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, 
 - (BOOL)formFieldsAreValid;
 - (void)resetForms;
 
-- (void)processTargetsForFieldValue:(HYPFieldValue *)fieldValue;
-
 @end
