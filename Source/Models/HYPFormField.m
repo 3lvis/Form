@@ -148,11 +148,4 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return [validator validateFieldValue:self.fieldValue];
 }
 
-#pragma mark - Public Methods
-
-- (void)executeFormula
-{
-    NSLog(@"this is the formula: %@", self.formula);
-}
-
 @end

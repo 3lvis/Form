@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
-  s.name = "NSString-HYPWordExtractor"
-  s.version = "1.1"
-  s.summary = "A super easy way of extracting all or only unique words from an NSString"
+  s.name = "HYPNorwegianAccountNumber"
+  s.version = "1.2"
+  s.summary = "Makes validating Norwegian account numbers easy as pie"
   s.description = <<-DESC
-                   * A super easy way of extracting all or only unique words from an NSString
+                   * Makes validating Norwegian account numbers easy as pie
                    DESC
-  s.homepage = "https://github.com/hyperoslo/NSString-HYPWordExtractor"
+  s.homepage = "https://github.com/hyperoslo/HYPNorwegianAccountNumber"
   s.license = {
     :type => 'MIT',
     :file => 'LICENSE.md'
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.social_media_url = "https://twitter.com/hyperoslo"
   s.platform = :ios, '6.0'
   s.source = {
-    :git => 'https://github.com/hyperoslo/NSString-HYPWordExtractor.git',
+    :git => 'https://github.com/hyperoslo/HYPNorwegianAccountNumber.git',
     :tag => s.version.to_s
   }
   s.source_files = 'Source/'

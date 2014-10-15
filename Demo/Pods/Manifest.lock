@@ -3,14 +3,14 @@ PODS:
   - HYPNorwegianSSN (1.4)
   - NSDictionary-HYPSafeValue (0.1)
   - NSString-HYPFormula (1.0)
-  - NSString-HYPWordExtractor (1.0)
+  - NSString-HYPWordExtractor (1.1)
   - NSString-ZENInflections (1.1)
   - UIColor-ANDYHex (1.0)
   - UIScreen-HYPLiveBounds (1.3)
 
 DEPENDENCIES:
-  - HYPNorwegianAccountNumber
-  - HYPNorwegianSSN
+  - HYPNorwegianAccountNumber (from `https://github.com/hyperoslo/HYPNorwegianAccountNumber.git`)
+  - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
   - NSDictionary-HYPSafeValue (from `https://github.com/hyperoslo/NSDictionary-HYPSafeValue.git`)
   - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`)
   - NSString-HYPWordExtractor (from `https://github.com/hyperoslo/NSString-HYPWordExtractor.git`)
@@ -19,6 +19,10 @@ DEPENDENCIES:
   - UIScreen-HYPLiveBounds
 
 EXTERNAL SOURCES:
+  HYPNorwegianAccountNumber:
+    :git: https://github.com/hyperoslo/HYPNorwegianAccountNumber.git
+  HYPNorwegianSSN:
+    :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSDictionary-HYPSafeValue:
     :git: https://github.com/hyperoslo/NSDictionary-HYPSafeValue.git
   NSString-HYPFormula:
@@ -29,11 +33,11 @@ EXTERNAL SOURCES:
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
 SPEC CHECKSUMS:
-  HYPNorwegianAccountNumber: 521cfc3c46be403dfc8eb6a592b9f059b96dd13e
-  HYPNorwegianSSN: 2d14aacd43f523200c8182413a1270e27bccf408
+  HYPNorwegianAccountNumber: 8ab481a23a13c1bd0135abe8c30e2af894f6c001
+  HYPNorwegianSSN: 26cfa41b00d8f9ad6fed42138ac39325adb279ab
   NSDictionary-HYPSafeValue: 9a25ceab076296c03fbabef1d05a334149bdb9f2
   NSString-HYPFormula: 6cbe41c62e75dcd507a1252a3235b790db599958
-  NSString-HYPWordExtractor: 5a4757896ae2370968b0def9f6153a8bea2ae0b4
+  NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
   NSString-ZENInflections: 68e691d2a37c8f33fc624b71326a3a654d07b6df
   UIColor-ANDYHex: 064f9460456713688a70ac86fd5b3287f1670759
   UIScreen-HYPLiveBounds: b9910aa6f80f12638aec07463e960b5528a99e45
