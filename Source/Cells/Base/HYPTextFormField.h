@@ -21,7 +21,8 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
     HYPTextFieldTypeEmail,
     HYPTextFieldTypePassword,
     HYPTextFieldTypeDropdown,
-    HYPTextFieldTypeDate
+    HYPTextFieldTypeDate,
+    HYPTextFieldTypeUnknown
 };
 
 @protocol HYPTextFormFieldDelegate;

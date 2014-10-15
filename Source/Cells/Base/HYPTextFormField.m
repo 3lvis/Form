@@ -113,9 +113,12 @@
         type = HYPTextFieldTypeDate;
     } else if ([typeString isEqualToString:@"select"]) {
         type = HYPTextFieldTypeDropdown;
-    } else {
+    } else if ([typeString isEqualToString:@"text"]) {
         type = HYPTextFieldTypeDefault;
-        abort();
+    } else if (!typeString.length) {
+        type = HYPTextFieldTypeDefault;
+    } else {
+        type = HYPTextFieldTypeUnknown;
     }
 
     self.type = type;
