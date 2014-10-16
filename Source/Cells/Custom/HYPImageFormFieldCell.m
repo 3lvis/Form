@@ -81,7 +81,8 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
     infoLabel.font = [UIFont REMASmallSize];
     infoLabel.textColor = [UIColor REMACoreBlue];
-    infoLabel.text = NSLocalizedString(@"Bildet som lastes opp blir den ansattes profilbilde i ulike REMA-systemer.", @"Bildet som lastes opp blir den ansattes profilbilde i ulike REMA-systemer.");
+    infoLabel.text = NSLocalizedString(@"Bildet som lastes opp blir den ansattes profilbilde i ulike REMA-systemer.",
+                                       @"Bildet som lastes opp blir den ansattes profilbilde i ulike REMA-systemer.");
     infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
     infoLabel.numberOfLines = 0;
 
