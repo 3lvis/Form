@@ -3,7 +3,7 @@ PODS:
   - HYPNorwegianAccountNumber (1.2)
   - HYPNorwegianSSN (1.4)
   - NSDictionary-HYPSafeValue (0.1)
-  - NSString-HYPFormula (1.2)
+  - NSString-HYPFormula (1.3)
   - NSString-HYPWordExtractor (1.1)
   - NSString-ZENInflections (1.1)
   - UIColor-ANDYHex (1.0)
@@ -41,7 +41,7 @@ SPEC CHECKSUMS:
   HYPNorwegianAccountNumber: 8ab481a23a13c1bd0135abe8c30e2af894f6c001
   HYPNorwegianSSN: 26cfa41b00d8f9ad6fed42138ac39325adb279ab
   NSDictionary-HYPSafeValue: 9a25ceab076296c03fbabef1d05a334149bdb9f2
-  NSString-HYPFormula: 3fc5181b880fa1dc394cc0d5800c814e44bc95fb
+  NSString-HYPFormula: 4c912a862ed4e57d4b900d2e0c197b48475c29c1
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
   NSString-ZENInflections: 68e691d2a37c8f33fc624b71326a3a654d07b6df
   UIColor-ANDYHex: 064f9460456713688a70ac86fd5b3287f1670759

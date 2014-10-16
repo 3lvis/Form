@@ -78,10 +78,14 @@
 - (BOOL)isValidExpression
 {
     NSString *string = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-
     NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"(1234567890)"];
+    NSCharacterSet *verboseSet = [NSCharacterSet characterSetWithCharactersInString:@"1234567890.,+-*/%() "];
     char firstCharacter = [string characterAtIndex:0];
     char lastCharacter  = [string characterAtIndex:string.length-1];
+
+    if (![[string stringByTrimmingCharactersInSet:verboseSet] isEqualToString:@""]) {
+        return NO;
+    }
 
     if (![set characterIsMember:lastCharacter]) {
         return NO;
