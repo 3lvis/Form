@@ -178,7 +178,7 @@
     HYPBaseFormFieldCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
                                                                            forIndexPath:indexPath];
     if (field.type == HYPFormFieldTypeImage) return cell;
-    
+
     cell.delegate = self;
 
     if (self.configureCellBlock) {
@@ -466,8 +466,8 @@
                         [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
                         [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
                     } else {
-                        [self.valuesDictionary setObject:@"0" forKey:field.id];
-                        [values addEntriesFromDictionary:@{fieldID : @"0"}];
+                        [self.valuesDictionary setObject:@"" forKey:field.id];
+                        [values addEntriesFromDictionary:@{fieldID : @""}];
                     }
                 }
             }
