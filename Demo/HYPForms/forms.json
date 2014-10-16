@@ -100,16 +100,1732 @@
             "size":25,
             "values":[
               {
-                "id":"oslo",
-                "title":"Oslo"
+                "id": "HALDEN",
+                "title": "Halden"
               },
               {
-                "id":"telemark",
-                "title":"Telemark"
+                "id": "MOSS",
+                "title": "Moss"
               },
               {
-                "id":"vestfold",
-                "title":"Vestføld"
+                "id": "SARPSBORG",
+                "title": "Sarpsborg"
+              },
+              {
+                "id": "FREDRIKSTAD",
+                "title": "Fredrikstad"
+              },
+              {
+                "id": "HVALER",
+                "title": "Hvaler"
+              },
+              {
+                "id": "AREMARK",
+                "title": "Aremark"
+              },
+              {
+                "id": "MARKER",
+                "title": "Marker"
+              },
+              {
+                "id": "RØMSKOG",
+                "title": "Rømskog"
+              },
+              {
+                "id": "TRØGSTAD",
+                "title": "Trøgstad"
+              },
+              {
+                "id": "SPYDEBERG",
+                "title": "Spydeberg"
+              },
+              {
+                "id": "ASKIM",
+                "title": "Askim"
+              },
+              {
+                "id": "EIDSBERG",
+                "title": "Eidsberg"
+              },
+              {
+                "id": "SKIPTVET",
+                "title": "Skiptvet"
+              },
+              {
+                "id": "RAKKESTAD",
+                "title": "Rakkestad"
+              },
+              {
+                "id": "RÅDE",
+                "title": "Råde"
+              },
+              {
+                "id": "RYGGE",
+                "title": "Rygge"
+              },
+              {
+                "id": "VÅLER",
+                "title": "Våler"
+              },
+              {
+                "id": "HOBØL",
+                "title": "Hobøl"
+              },
+              {
+                "id": "VESTBY",
+                "title": "Vestby"
+              },
+              {
+                "id": "SKI",
+                "title": "Ski"
+              },
+              {
+                "id": "ÅS",
+                "title": "Ås"
+              },
+              {
+                "id": "FROGN",
+                "title": "Frogn"
+              },
+              {
+                "id": "NESODDEN",
+                "title": "Nesodden"
+              },
+              {
+                "id": "OPPEGÅRD",
+                "title": "Oppegård"
+              },
+              {
+                "id": "BÆRUM",
+                "title": "Bærum"
+              },
+              {
+                "id": "ASKER",
+                "title": "Asker"
+              },
+              {
+                "id": "AURSKOG-HØLAND",
+                "title": "Aurskog-høland"
+              },
+              {
+                "id": "SØRUM",
+                "title": "Sørum"
+              },
+              {
+                "id": "FET",
+                "title": "Fet"
+              },
+              {
+                "id": "RÆLINGEN",
+                "title": "Rælingen"
+              },
+              {
+                "id": "ENEBAKK",
+                "title": "Enebakk"
+              },
+              {
+                "id": "LØRENSKOG",
+                "title": "Lørenskog"
+              },
+              {
+                "id": "SKEDSMO",
+                "title": "Skedsmo"
+              },
+              {
+                "id": "NITTEDAL",
+                "title": "Nittedal"
+              },
+              {
+                "id": "GJERDRUM",
+                "title": "Gjerdrum"
+              },
+              {
+                "id": "ULLENSAKER",
+                "title": "Ullensaker"
+              },
+              {
+                "id": "NES",
+                "title": "Nes"
+              },
+              {
+                "id": "EIDSVOLL",
+                "title": "Eidsvoll"
+              },
+              {
+                "id": "NANNESTAD",
+                "title": "Nannestad"
+              },
+              {
+                "id": "HURDAL",
+                "title": "Hurdal"
+              },
+              {
+                "id": "OSLO",
+                "title": "Oslo"
+              },
+              {
+                "id": "KONGSVINGER",
+                "title": "Kongsvinger"
+              },
+              {
+                "id": "HAMAR",
+                "title": "Hamar"
+              },
+              {
+                "id": "RINGSAKER",
+                "title": "Ringsaker"
+              },
+              {
+                "id": "LØTEN",
+                "title": "Løten"
+              },
+              {
+                "id": "STANGE",
+                "title": "Stange"
+              },
+              {
+                "id": "NORD-ODAL",
+                "title": "Nord-odal"
+              },
+              {
+                "id": "SØR-ODAL",
+                "title": "Sør-odal"
+              },
+              {
+                "id": "EIDSKOG",
+                "title": "Eidskog"
+              },
+              {
+                "id": "GRUE",
+                "title": "Grue"
+              },
+              {
+                "id": "ÅSNES",
+                "title": "Åsnes"
+              },
+              {
+                "id": "VÅLER",
+                "title": "Våler"
+              },
+              {
+                "id": "ELVERUM",
+                "title": "Elverum"
+              },
+              {
+                "id": "TRYSIL",
+                "title": "Trysil"
+              },
+              {
+                "id": "ÅMOT",
+                "title": "Åmot"
+              },
+              {
+                "id": "STOR-ELVDAL",
+                "title": "Stor-elvdal"
+              },
+              {
+                "id": "RENDALEN",
+                "title": "Rendalen"
+              },
+              {
+                "id": "ENGERDAL",
+                "title": "Engerdal"
+              },
+              {
+                "id": "TOLGA",
+                "title": "Tolga"
+              },
+              {
+                "id": "TYNSET",
+                "title": "Tynset"
+              },
+              {
+                "id": "ALVDAL",
+                "title": "Alvdal"
+              },
+              {
+                "id": "FOLLDAL",
+                "title": "Folldal"
+              },
+              {
+                "id": "OS (HEDMARK)",
+                "title": "Os (hedmark)"
+              },
+              {
+                "id": "LILLEHAMMER",
+                "title": "Lillehammer"
+              },
+              {
+                "id": "GJØVIK",
+                "title": "Gjøvik"
+              },
+              {
+                "id": "DOVRE",
+                "title": "Dovre"
+              },
+              {
+                "id": "LESJA",
+                "title": "Lesja"
+              },
+              {
+                "id": "SKJÅK",
+                "title": "Skjåk"
+              },
+              {
+                "id": "LOM",
+                "title": "Lom"
+              },
+              {
+                "id": "VÅGÅ",
+                "title": "Vågå"
+              },
+              {
+                "id": "NORD-FRON",
+                "title": "Nord-fron"
+              },
+              {
+                "id": "SEL",
+                "title": "Sel"
+              },
+              {
+                "id": "SØR-FRON",
+                "title": "Sør-fron"
+              },
+              {
+                "id": "RINGEBU",
+                "title": "Ringebu"
+              },
+              {
+                "id": "ØYER",
+                "title": "Øyer"
+              },
+              {
+                "id": "GAUSDAL",
+                "title": "Gausdal"
+              },
+              {
+                "id": "ØSTRE TOTEN",
+                "title": "Østre toten"
+              },
+              {
+                "id": "VESTRE TOTEN",
+                "title": "Vestre toten"
+              },
+              {
+                "id": "JEVNAKER",
+                "title": "Jevnaker"
+              },
+              {
+                "id": "LUNNER",
+                "title": "Lunner"
+              },
+              {
+                "id": "GRAN",
+                "title": "Gran"
+              },
+              {
+                "id": "SØNDRE LAND",
+                "title": "Søndre land"
+              },
+              {
+                "id": "NORDRE LAND",
+                "title": "Nordre land"
+              },
+              {
+                "id": "SØR-AURDAL",
+                "title": "Sør-aurdal"
+              },
+              {
+                "id": "ETNEDAL",
+                "title": "Etnedal"
+              },
+              {
+                "id": "NORD-AURDAL",
+                "title": "Nord-aurdal"
+              },
+              {
+                "id": "VESTRE SLIDRE",
+                "title": "Vestre slidre"
+              },
+              {
+                "id": "ØYSTRE SLIDRE",
+                "title": "Øystre slidre"
+              },
+              {
+                "id": "VANG",
+                "title": "Vang"
+              },
+              {
+                "id": "DRAMMEN",
+                "title": "Drammen"
+              },
+              {
+                "id": "KONGSBERG",
+                "title": "Kongsberg"
+              },
+              {
+                "id": "RINGERIKE",
+                "title": "Ringerike"
+              },
+              {
+                "id": "HOLE",
+                "title": "Hole"
+              },
+              {
+                "id": "FLÅ",
+                "title": "Flå"
+              },
+              {
+                "id": "NES",
+                "title": "Nes"
+              },
+              {
+                "id": "GOL",
+                "title": "Gol"
+              },
+              {
+                "id": "HEMSEDAL",
+                "title": "Hemsedal"
+              },
+              {
+                "id": "ÅL",
+                "title": "Ål"
+              },
+              {
+                "id": "HOL",
+                "title": "Hol"
+              },
+              {
+                "id": "SIGDAL",
+                "title": "Sigdal"
+              },
+              {
+                "id": "KRØDSHERAD",
+                "title": "Krødsherad"
+              },
+              {
+                "id": "MODUM",
+                "title": "Modum"
+              },
+              {
+                "id": "ØVRE EIKER",
+                "title": "Øvre eiker"
+              },
+              {
+                "id": "NEDRE EIKER",
+                "title": "Nedre eiker"
+              },
+              {
+                "id": "LIER",
+                "title": "Lier"
+              },
+              {
+                "id": "RØYKEN",
+                "title": "Røyken"
+              },
+              {
+                "id": "HURUM",
+                "title": "Hurum"
+              },
+              {
+                "id": "FLESBERG",
+                "title": "Flesberg"
+              },
+              {
+                "id": "ROLLAG",
+                "title": "Rollag"
+              },
+              {
+                "id": "NORE OG UVDAL",
+                "title": "Nore og uvdal"
+              },
+              {
+                "id": "HORTEN",
+                "title": "Horten"
+              },
+              {
+                "id": "HOLMESTRAND",
+                "title": "Holmestrand"
+              },
+              {
+                "id": "TØNSBERG",
+                "title": "Tønsberg"
+              },
+              {
+                "id": "SANDEFJORD",
+                "title": "Sandefjord"
+              },
+              {
+                "id": "LARVIK",
+                "title": "Larvik"
+              },
+              {
+                "id": "SVELVIK",
+                "title": "Svelvik"
+              },
+              {
+                "id": "SANDE (V.)",
+                "title": "Sande (v.)"
+              },
+              {
+                "id": "HOF",
+                "title": "Hof"
+              },
+              {
+                "id": "RE",
+                "title": "Re"
+              },
+              {
+                "id": "ANDEBU",
+                "title": "Andebu"
+              },
+              {
+                "id": "STOKKE",
+                "title": "Stokke"
+              },
+              {
+                "id": "NØTTERØY",
+                "title": "Nøtterøy"
+              },
+              {
+                "id": "TJØME",
+                "title": "Tjøme"
+              },
+              {
+                "id": "LARDAL",
+                "title": "Lardal"
+              },
+              {
+                "id": "PORSGRUNN",
+                "title": "Porsgrunn"
+              },
+              {
+                "id": "SKIEN",
+                "title": "Skien"
+              },
+              {
+                "id": "NOTODDEN",
+                "title": "Notodden"
+              },
+              {
+                "id": "SILJAN",
+                "title": "Siljan"
+              },
+              {
+                "id": "BAMBLE",
+                "title": "Bamble"
+              },
+              {
+                "id": "KRAGERØ",
+                "title": "Kragerø"
+              },
+              {
+                "id": "DRANGEDAL",
+                "title": "Drangedal"
+              },
+              {
+                "id": "NOME",
+                "title": "Nome"
+              },
+              {
+                "id": "BØ (TEL.)",
+                "title": "Bø (tel.)"
+              },
+              {
+                "id": "SAUHERAD",
+                "title": "Sauherad"
+              },
+              {
+                "id": "TINN",
+                "title": "Tinn"
+              },
+              {
+                "id": "HJARTDAL",
+                "title": "Hjartdal"
+              },
+              {
+                "id": "SELJORD",
+                "title": "Seljord"
+              },
+              {
+                "id": "KVITESEID",
+                "title": "Kviteseid"
+              },
+              {
+                "id": "NISSEDAL",
+                "title": "Nissedal"
+              },
+              {
+                "id": "FYRESDAL",
+                "title": "Fyresdal"
+              },
+              {
+                "id": "TOKKE",
+                "title": "Tokke"
+              },
+              {
+                "id": "VINJE",
+                "title": "Vinje"
+              },
+              {
+                "id": "RISØR",
+                "title": "Risør"
+              },
+              {
+                "id": "GRIMSTAD",
+                "title": "Grimstad"
+              },
+              {
+                "id": "ARENDAL",
+                "title": "Arendal"
+              },
+              {
+                "id": "GJERSTAD",
+                "title": "Gjerstad"
+              },
+              {
+                "id": "VEGÅRSHEI",
+                "title": "Vegårshei"
+              },
+              {
+                "id": "TVEDESTRAND",
+                "title": "Tvedestrand"
+              },
+              {
+                "id": "FROLAND",
+                "title": "Froland"
+              },
+              {
+                "id": "LILLESAND",
+                "title": "Lillesand"
+              },
+              {
+                "id": "BIRKENES",
+                "title": "Birkenes"
+              },
+              {
+                "id": "ÅMLI",
+                "title": "Åmli"
+              },
+              {
+                "id": "IVELAND",
+                "title": "Iveland"
+              },
+              {
+                "id": "EVJE OG HORNNES",
+                "title": "Evje og hornnes"
+              },
+              {
+                "id": "BYGLAND",
+                "title": "Bygland"
+              },
+              {
+                "id": "VALLE",
+                "title": "Valle"
+              },
+              {
+                "id": "BYKLE",
+                "title": "Bykle"
+              },
+              {
+                "id": "KRISTIANSAND",
+                "title": "Kristiansand"
+              },
+              {
+                "id": "MANDAL",
+                "title": "Mandal"
+              },
+              {
+                "id": "FARSUND",
+                "title": "Farsund"
+              },
+              {
+                "id": "FLEKKEFJORD",
+                "title": "Flekkefjord"
+              },
+              {
+                "id": "VENNESLA",
+                "title": "Vennesla"
+              },
+              {
+                "id": "SONGDALEN",
+                "title": "Songdalen"
+              },
+              {
+                "id": "SØGNE",
+                "title": "Søgne"
+              },
+              {
+                "id": "MARNARDAL",
+                "title": "Marnardal"
+              },
+              {
+                "id": "ÅSERAL",
+                "title": "Åseral"
+              },
+              {
+                "id": "AUDNEDAL",
+                "title": "Audnedal"
+              },
+              {
+                "id": "LINDESNES",
+                "title": "Lindesnes"
+              },
+              {
+                "id": "LYNGDAL",
+                "title": "Lyngdal"
+              },
+              {
+                "id": "HÆGEBOSTAD",
+                "title": "Hægebostad"
+              },
+              {
+                "id": "KVINESDAL",
+                "title": "Kvinesdal"
+              },
+              {
+                "id": "SIRDAL",
+                "title": "Sirdal"
+              },
+              {
+                "id": "EIGERSUND",
+                "title": "Eigersund"
+              },
+              {
+                "id": "SANDNES",
+                "title": "Sandnes"
+              },
+              {
+                "id": "STAVANGER",
+                "title": "Stavanger"
+              },
+              {
+                "id": "HAUGESUND",
+                "title": "Haugesund"
+              },
+              {
+                "id": "SOKNDAL",
+                "title": "Sokndal"
+              },
+              {
+                "id": "LUND",
+                "title": "Lund"
+              },
+              {
+                "id": "BJERKREIM",
+                "title": "Bjerkreim"
+              },
+              {
+                "id": "HÅ",
+                "title": "Hå"
+              },
+              {
+                "id": "KLEPP",
+                "title": "Klepp"
+              },
+              {
+                "id": "TIME",
+                "title": "Time"
+              },
+              {
+                "id": "GJESDAL",
+                "title": "Gjesdal"
+              },
+              {
+                "id": "SOLA",
+                "title": "Sola"
+              },
+              {
+                "id": "RANDABERG",
+                "title": "Randaberg"
+              },
+              {
+                "id": "FORSAND",
+                "title": "Forsand"
+              },
+              {
+                "id": "STRAND",
+                "title": "Strand"
+              },
+              {
+                "id": "HJELMELAND",
+                "title": "Hjelmeland"
+              },
+              {
+                "id": "SULDAL",
+                "title": "Suldal"
+              },
+              {
+                "id": "SAUDA",
+                "title": "Sauda"
+              },
+              {
+                "id": "FINNØY",
+                "title": "Finnøy"
+              },
+              {
+                "id": "RENNESØY",
+                "title": "Rennesøy"
+              },
+              {
+                "id": "KVITSØY",
+                "title": "Kvitsøy"
+              },
+              {
+                "id": "BOKN",
+                "title": "Bokn"
+              },
+              {
+                "id": "TYSVÆR",
+                "title": "Tysvær"
+              },
+              {
+                "id": "KARMØY",
+                "title": "Karmøy"
+              },
+              {
+                "id": "UTSIRA",
+                "title": "Utsira"
+              },
+              {
+                "id": "VINDAFJORD",
+                "title": "Vindafjord"
+              },
+              {
+                "id": "BERGEN",
+                "title": "Bergen"
+              },
+              {
+                "id": "ETNE",
+                "title": "Etne"
+              },
+              {
+                "id": "SVEIO",
+                "title": "Sveio"
+              },
+              {
+                "id": "BØMLO",
+                "title": "Bømlo"
+              },
+              {
+                "id": "STORD",
+                "title": "Stord"
+              },
+              {
+                "id": "FITJAR",
+                "title": "Fitjar"
+              },
+              {
+                "id": "TYSNES",
+                "title": "Tysnes"
+              },
+              {
+                "id": "KVINNHERAD",
+                "title": "Kvinnherad"
+              },
+              {
+                "id": "JONDAL",
+                "title": "Jondal"
+              },
+              {
+                "id": "ODDA",
+                "title": "Odda"
+              },
+              {
+                "id": "ULLENSVANG",
+                "title": "Ullensvang"
+              },
+              {
+                "id": "EIDFJORD",
+                "title": "Eidfjord"
+              },
+              {
+                "id": "ULVIK",
+                "title": "Ulvik"
+              },
+              {
+                "id": "GRANVIN",
+                "title": "Granvin"
+              },
+              {
+                "id": "VOSS",
+                "title": "Voss"
+              },
+              {
+                "id": "KVAM",
+                "title": "Kvam"
+              },
+              {
+                "id": "FUSA",
+                "title": "Fusa"
+              },
+              {
+                "id": "SAMNANGER",
+                "title": "Samnanger"
+              },
+              {
+                "id": "OS (HORDALAND)",
+                "title": "Os (hordaland)"
+              },
+              {
+                "id": "AUSTEVOLL",
+                "title": "Austevoll"
+              },
+              {
+                "id": "SUND",
+                "title": "Sund"
+              },
+              {
+                "id": "FJELL",
+                "title": "Fjell"
+              },
+              {
+                "id": "ASKØY",
+                "title": "Askøy"
+              },
+              {
+                "id": "VAKSDAL",
+                "title": "Vaksdal"
+              },
+              {
+                "id": "MODALEN",
+                "title": "Modalen"
+              },
+              {
+                "id": "OSTERØY",
+                "title": "Osterøy"
+              },
+              {
+                "id": "MELAND",
+                "title": "Meland"
+              },
+              {
+                "id": "ØYGARDEN",
+                "title": "Øygarden"
+              },
+              {
+                "id": "RADØY",
+                "title": "Radøy"
+              },
+              {
+                "id": "LINDÅS",
+                "title": "Lindås"
+              },
+              {
+                "id": "AUSTRHEIM",
+                "title": "Austrheim"
+              },
+              {
+                "id": "FEDJE",
+                "title": "Fedje"
+              },
+              {
+                "id": "MASFJORDEN",
+                "title": "Masfjorden"
+              },
+              {
+                "id": "FLORA",
+                "title": "Flora"
+              },
+              {
+                "id": "GULEN",
+                "title": "Gulen"
+              },
+              {
+                "id": "SOLUND",
+                "title": "Solund"
+              },
+              {
+                "id": "HYLLESTAD",
+                "title": "Hyllestad"
+              },
+              {
+                "id": "HØYANGER",
+                "title": "Høyanger"
+              },
+              {
+                "id": "VIK",
+                "title": "Vik"
+              },
+              {
+                "id": "BALESTRAND",
+                "title": "Balestrand"
+              },
+              {
+                "id": "LEIKANGER",
+                "title": "Leikanger"
+              },
+              {
+                "id": "SOGNDAL",
+                "title": "Sogndal"
+              },
+              {
+                "id": "AURLAND",
+                "title": "Aurland"
+              },
+              {
+                "id": "LÆRDAL",
+                "title": "Lærdal"
+              },
+              {
+                "id": "ÅRDAL",
+                "title": "Årdal"
+              },
+              {
+                "id": "LUSTER",
+                "title": "Luster"
+              },
+              {
+                "id": "ASKVOLL",
+                "title": "Askvoll"
+              },
+              {
+                "id": "FJALER",
+                "title": "Fjaler"
+              },
+              {
+                "id": "GAULAR",
+                "title": "Gaular"
+              },
+              {
+                "id": "JØLSTER",
+                "title": "Jølster"
+              },
+              {
+                "id": "FØRDE",
+                "title": "Førde"
+              },
+              {
+                "id": "NAUSTDAL",
+                "title": "Naustdal"
+              },
+              {
+                "id": "BREMANGER",
+                "title": "Bremanger"
+              },
+              {
+                "id": "VÅGSØY",
+                "title": "Vågsøy"
+              },
+              {
+                "id": "SELJE",
+                "title": "Selje"
+              },
+              {
+                "id": "EID",
+                "title": "Eid"
+              },
+              {
+                "id": "HORNINDAL",
+                "title": "Hornindal"
+              },
+              {
+                "id": "GLOPPEN",
+                "title": "Gloppen"
+              },
+              {
+                "id": "STRYN",
+                "title": "Stryn"
+              },
+              {
+                "id": "MOLDE",
+                "title": "Molde"
+              },
+              {
+                "id": "ÅLESUND",
+                "title": "Ålesund"
+              },
+              {
+                "id": "KRISTIANSUND",
+                "title": "Kristiansund"
+              },
+              {
+                "id": "VANYLVEN",
+                "title": "Vanylven"
+              },
+              {
+                "id": "SANDE (M.R.)",
+                "title": "Sande (m.r.)"
+              },
+              {
+                "id": "HERØY (M.R.)",
+                "title": "Herøy (m.r.)"
+              },
+              {
+                "id": "ULSTEIN",
+                "title": "Ulstein"
+              },
+              {
+                "id": "HAREID",
+                "title": "Hareid"
+              },
+              {
+                "id": "VOLDA",
+                "title": "Volda"
+              },
+              {
+                "id": "ØRSTA",
+                "title": "Ørsta"
+              },
+              {
+                "id": "ØRSKOG",
+                "title": "Ørskog"
+              },
+              {
+                "id": "NORDDAL",
+                "title": "Norddal"
+              },
+              {
+                "id": "STRANDA",
+                "title": "Stranda"
+              },
+              {
+                "id": "STORDAL",
+                "title": "Stordal"
+              },
+              {
+                "id": "SYKKYLVEN",
+                "title": "Sykkylven"
+              },
+              {
+                "id": "SKODJE",
+                "title": "Skodje"
+              },
+              {
+                "id": "SULA",
+                "title": "Sula"
+              },
+              {
+                "id": "GISKE",
+                "title": "Giske"
+              },
+              {
+                "id": "HARAM",
+                "title": "Haram"
+              },
+              {
+                "id": "VESTNES",
+                "title": "Vestnes"
+              },
+              {
+                "id": "RAUMA",
+                "title": "Rauma"
+              },
+              {
+                "id": "NESSET",
+                "title": "Nesset"
+              },
+              {
+                "id": "MIDSUND",
+                "title": "Midsund"
+              },
+              {
+                "id": "SANDØY",
+                "title": "Sandøy"
+              },
+              {
+                "id": "AUKRA",
+                "title": "Aukra"
+              },
+              {
+                "id": "FRÆNA",
+                "title": "Fræna"
+              },
+              {
+                "id": "EIDE",
+                "title": "Eide"
+              },
+              {
+                "id": "AVERØY",
+                "title": "Averøy"
+              },
+              {
+                "id": "GJEMNES",
+                "title": "Gjemnes"
+              },
+              {
+                "id": "TINGVOLL",
+                "title": "Tingvoll"
+              },
+              {
+                "id": "SUNNDAL",
+                "title": "Sunndal"
+              },
+              {
+                "id": "SURNADAL",
+                "title": "Surnadal"
+              },
+              {
+                "id": "RINDAL",
+                "title": "Rindal"
+              },
+              {
+                "id": "HALSA",
+                "title": "Halsa"
+              },
+              {
+                "id": "SMØLA",
+                "title": "Smøla"
+              },
+              {
+                "id": "AURE",
+                "title": "Aure"
+              },
+              {
+                "id": "TRONDHEIM",
+                "title": "Trondheim"
+              },
+              {
+                "id": "HEMNE",
+                "title": "Hemne"
+              },
+              {
+                "id": "SNILLFJORD",
+                "title": "Snillfjord"
+              },
+              {
+                "id": "HITRA",
+                "title": "Hitra"
+              },
+              {
+                "id": "FRØYA",
+                "title": "Frøya"
+              },
+              {
+                "id": "ØRLAND",
+                "title": "Ørland"
+              },
+              {
+                "id": "AGDENES",
+                "title": "Agdenes"
+              },
+              {
+                "id": "RISSA",
+                "title": "Rissa"
+              },
+              {
+                "id": "BJUGN",
+                "title": "Bjugn"
+              },
+              {
+                "id": "ÅFJORD",
+                "title": "Åfjord"
+              },
+              {
+                "id": "ROAN",
+                "title": "Roan"
+              },
+              {
+                "id": "OSEN",
+                "title": "Osen"
+              },
+              {
+                "id": "OPPDAL",
+                "title": "Oppdal"
+              },
+              {
+                "id": "RENNEBU",
+                "title": "Rennebu"
+              },
+              {
+                "id": "MELDAL",
+                "title": "Meldal"
+              },
+              {
+                "id": "ORKDAL",
+                "title": "Orkdal"
+              },
+              {
+                "id": "RØROS",
+                "title": "Røros"
+              },
+              {
+                "id": "HOLTÅLEN",
+                "title": "Holtålen"
+              },
+              {
+                "id": "MIDTRE GAULDAL",
+                "title": "Midtre gauldal"
+              },
+              {
+                "id": "MELHUS",
+                "title": "Melhus"
+              },
+              {
+                "id": "SKAUN",
+                "title": "Skaun"
+              },
+              {
+                "id": "KLÆBU",
+                "title": "Klæbu"
+              },
+              {
+                "id": "MALVIK",
+                "title": "Malvik"
+              },
+              {
+                "id": "SELBU",
+                "title": "Selbu"
+              },
+              {
+                "id": "TYDAL",
+                "title": "Tydal"
+              },
+              {
+                "id": "STEINKJER",
+                "title": "Steinkjer"
+              },
+              {
+                "id": "NAMSOS",
+                "title": "Namsos"
+              },
+              {
+                "id": "MERÅKER",
+                "title": "Meråker"
+              },
+              {
+                "id": "STJØRDAL",
+                "title": "Stjørdal"
+              },
+              {
+                "id": "FROSTA",
+                "title": "Frosta"
+              },
+              {
+                "id": "LEKSVIK",
+                "title": "Leksvik"
+              },
+              {
+                "id": "LEVANGER",
+                "title": "Levanger"
+              },
+              {
+                "id": "VERDAL",
+                "title": "Verdal"
+              },
+              {
+                "id": "VERRAN",
+                "title": "Verran"
+              },
+              {
+                "id": "NAMDALSEID",
+                "title": "Namdalseid"
+              },
+              {
+                "id": "SNÅSA",
+                "title": "Snåsa"
+              },
+              {
+                "id": "LIERNE",
+                "title": "Lierne"
+              },
+              {
+                "id": "RØYRVIK",
+                "title": "Røyrvik"
+              },
+              {
+                "id": "NAMSSKOGAN",
+                "title": "Namsskogan"
+              },
+              {
+                "id": "GRONG",
+                "title": "Grong"
+              },
+              {
+                "id": "HØYLANDET",
+                "title": "Høylandet"
+              },
+              {
+                "id": "OVERHALLA",
+                "title": "Overhalla"
+              },
+              {
+                "id": "FOSNES",
+                "title": "Fosnes"
+              },
+              {
+                "id": "FLATANGER",
+                "title": "Flatanger"
+              },
+              {
+                "id": "VIKNA",
+                "title": "Vikna"
+              },
+              {
+                "id": "NÆRØY",
+                "title": "Nærøy"
+              },
+              {
+                "id": "LEKA",
+                "title": "Leka"
+              },
+              {
+                "id": "INDERØY",
+                "title": "Inderøy"
+              },
+              {
+                "id": "BODØ",
+                "title": "Bodø"
+              },
+              {
+                "id": "NARVIK",
+                "title": "Narvik"
+              },
+              {
+                "id": "BINDAL",
+                "title": "Bindal"
+              },
+              {
+                "id": "SØMNA",
+                "title": "Sømna"
+              },
+              {
+                "id": "BRØNNØY",
+                "title": "Brønnøy"
+              },
+              {
+                "id": "VEGA",
+                "title": "Vega"
+              },
+              {
+                "id": "VEVELSTAD",
+                "title": "Vevelstad"
+              },
+              {
+                "id": "HERØY (N.)",
+                "title": "Herøy (n.)"
+              },
+              {
+                "id": "ALSTAHAUG",
+                "title": "Alstahaug"
+              },
+              {
+                "id": "LEIRFJORD",
+                "title": "Leirfjord"
+              },
+              {
+                "id": "VEFSN",
+                "title": "Vefsn"
+              },
+              {
+                "id": "GRANE",
+                "title": "Grane"
+              },
+              {
+                "id": "HATTFJELLDAL",
+                "title": "Hattfjelldal"
+              },
+              {
+                "id": "DØNNA",
+                "title": "Dønna"
+              },
+              {
+                "id": "NESNA",
+                "title": "Nesna"
+              },
+              {
+                "id": "HEMNES",
+                "title": "Hemnes"
+              },
+              {
+                "id": "RANA",
+                "title": "Rana"
+              },
+              {
+                "id": "LURØY",
+                "title": "Lurøy"
+              },
+              {
+                "id": "TRÆNA",
+                "title": "Træna"
+              },
+              {
+                "id": "RØDØY",
+                "title": "Rødøy"
+              },
+              {
+                "id": "MELØY",
+                "title": "Meløy"
+              },
+              {
+                "id": "GILDESKÅL",
+                "title": "Gildeskål"
+              },
+              {
+                "id": "BEIARN",
+                "title": "Beiarn"
+              },
+              {
+                "id": "SALTDAL",
+                "title": "Saltdal"
+              },
+              {
+                "id": "FAUSKE",
+                "title": "Fauske"
+              },
+              {
+                "id": "SØRFOLD",
+                "title": "Sørfold"
+              },
+              {
+                "id": "STEIGEN",
+                "title": "Steigen"
+              },
+              {
+                "id": "HAMARØY",
+                "title": "Hamarøy"
+              },
+              {
+                "id": "TYSFJORD",
+                "title": "Tysfjord"
+              },
+              {
+                "id": "LØDINGEN",
+                "title": "Lødingen"
+              },
+              {
+                "id": "TJELDSUND",
+                "title": "Tjeldsund"
+              },
+              {
+                "id": "EVENES",
+                "title": "Evenes"
+              },
+              {
+                "id": "BALLANGEN",
+                "title": "Ballangen"
+              },
+              {
+                "id": "RØST",
+                "title": "Røst"
+              },
+              {
+                "id": "VÆRØY",
+                "title": "Værøy"
+              },
+              {
+                "id": "FLAKSTAD",
+                "title": "Flakstad"
+              },
+              {
+                "id": "VESTVÅGØY",
+                "title": "Vestvågøy"
+              },
+              {
+                "id": "VÅGAN",
+                "title": "Vågan"
+              },
+              {
+                "id": "HADSEL",
+                "title": "Hadsel"
+              },
+              {
+                "id": "BØ (N.)",
+                "title": "Bø (n.)"
+              },
+              {
+                "id": "ØKSNES",
+                "title": "Øksnes"
+              },
+              {
+                "id": "SORTLAND",
+                "title": "Sortland"
+              },
+              {
+                "id": "ANDØY",
+                "title": "Andøy"
+              },
+              {
+                "id": "MOSKENES",
+                "title": "Moskenes"
+              },
+              {
+                "id": "TROMSØ",
+                "title": "Tromsø"
+              },
+              {
+                "id": "HARSTAD",
+                "title": "Harstad"
+              },
+              {
+                "id": "KVÆFJORD",
+                "title": "Kvæfjord"
+              },
+              {
+                "id": "SKÅNLAND",
+                "title": "Skånland"
+              },
+              {
+                "id": "IBESTAD",
+                "title": "Ibestad"
+              },
+              {
+                "id": "GRATANGEN",
+                "title": "Gratangen"
+              },
+              {
+                "id": "LAVANGEN",
+                "title": "Lavangen"
+              },
+              {
+                "id": "BARDU",
+                "title": "Bardu"
+              },
+              {
+                "id": "SALANGEN",
+                "title": "Salangen"
+              },
+              {
+                "id": "MÅLSELV",
+                "title": "Målselv"
+              },
+              {
+                "id": "SØRREISA",
+                "title": "Sørreisa"
+              },
+              {
+                "id": "DYRØY",
+                "title": "Dyrøy"
+              },
+              {
+                "id": "TRANØY",
+                "title": "Tranøy"
+              },
+              {
+                "id": "TORSKEN",
+                "title": "Torsken"
+              },
+              {
+                "id": "BERG",
+                "title": "Berg"
+              },
+              {
+                "id": "LENVIK",
+                "title": "Lenvik"
+              },
+              {
+                "id": "BALSFJORD",
+                "title": "Balsfjord"
+              },
+              {
+                "id": "KARLSØY",
+                "title": "Karlsøy"
+              },
+              {
+                "id": "LYNGEN",
+                "title": "Lyngen"
+              },
+              {
+                "id": "STORFJORD",
+                "title": "Storfjord"
+              },
+              {
+                "id": "GÁIVUOTNA KÅFJORD",
+                "title": "Gáivuotna kåfjord"
+              },
+              {
+                "id": "SKJERVØY",
+                "title": "Skjervøy"
+              },
+              {
+                "id": "NORDREISA",
+                "title": "Nordreisa"
+              },
+              {
+                "id": "KVÆNANGEN",
+                "title": "Kvænangen"
+              },
+              {
+                "id": "VARDØ",
+                "title": "Vardø"
+              },
+              {
+                "id": "VADSØ",
+                "title": "Vadsø"
+              },
+              {
+                "id": "HAMMERFEST",
+                "title": "Hammerfest"
+              },
+              {
+                "id": "GUOVDAGEAIDNU KAUTOKEINO",
+                "title": "Guovdageaidnu kautokeino"
+              },
+              {
+                "id": "ALTA",
+                "title": "Alta"
+              },
+              {
+                "id": "LOPPA",
+                "title": "Loppa"
+              },
+              {
+                "id": "HASVIK",
+                "title": "Hasvik"
+              },
+              {
+                "id": "KVALSUND",
+                "title": "Kvalsund"
+              },
+              {
+                "id": "MÅSØY",
+                "title": "Måsøy"
+              },
+              {
+                "id": "NORDKAPP",
+                "title": "Nordkapp"
+              },
+              {
+                "id": "PORSANGER PORSÁNGU PORSANKI",
+                "title": "Porsanger porsángu porsanki"
+              },
+              {
+                "id": "KARASJOHKA KARASJOK",
+                "title": "Karasjohka karasjok"
+              },
+              {
+                "id": "LEBESBY",
+                "title": "Lebesby"
+              },
+              {
+                "id": "GAMVIK",
+                "title": "Gamvik"
+              },
+              {
+                "id": "BERLEVÅG",
+                "title": "Berlevåg"
+              },
+              {
+                "id": "DEATNU TANA",
+                "title": "Deatnu tana"
+              },
+              {
+                "id": "UNJARGGA NESSEBY",
+                "title": "Unjargga nesseby"
+              },
+              {
+                "id": "BÅTSFJORD",
+                "title": "Båtsfjord"
+              },
+              {
+                "id": "SØR-VARANGER",
+                "title": "Sør-varanger"
+              },
+              {
+                "id": "SPITSBERGEN",
+                "title": "Spitsbergen"
+              },
+              {
+                "id": "BJØRNØYA",
+                "title": "Bjørnøya"
+              },
+              {
+                "id": "HOPEN",
+                "title": "Hopen"
+              },
+              {
+                "id": "JAN MAYEN",
+                "title": "Jan mayen"
               }
             ],
             "disabled":true
@@ -168,12 +1884,28 @@
             "size":40,
             "values":[
               {
-                "id":"butikkmedarbeider",
-                "title":"Butikkmedarbeider"
+                "id": 1,
+                "title": "Kjøpmann"
               },
               {
-                "id":"ekstrahjelp",
-                "title":"Ekstrahjelp"
+                "id": 2,
+                "title": "NK"
+              },
+              {
+                "id": 3,
+                "title": "Butikkmedarbeider"
+              },
+              {
+                "id": 4,
+                "title": "Lærling"
+              },
+              {
+                "id": 5,
+                "title": "Praktikant (Nav, o.l.)"
+              },
+              {
+                "id": 6,
+                "title": "Renholder"
               }
             ],
             "validations":{
@@ -251,12 +1983,16 @@
             "size":50,
             "values":[
               {
-                "id":"vikar",
-                "title":"Vikar"
+                "id": 1,
+                "title": "Vikar"
               },
               {
-                "id":"ferievikar",
-                "title":"Ferievikar"
+                "id": 2,
+                "title": "Ferievikar"
+              },
+              {
+                "id": 3,
+                "title": "Tilkallingsvikar Ekstrahjelp"
               }
             ]
           },
@@ -334,7 +2070,7 @@
             "size":33,
             "values":[
               {
-                "id":"no_wage",
+                "id":4,
                 "title":"Ingen lønn",
                 "targets":[
                   {
@@ -350,7 +2086,7 @@
                 ]
               },
               {
-                "id":"hourly_wage",
+                "id":1,
                 "title":"Timelønn",
                 "targets":[
                   {
@@ -366,7 +2102,7 @@
                 ]
               },
               {
-                "id":"monthly_wage",
+                "id":2,
                 "title":"Fastlønn",
                 "targets":[
                   {
@@ -404,9 +2140,9 @@
             "size":27.5,
             "values":[
               {
-                "id":"ungdom_under_16",
-                "title":"Ungdom under 16 år",
-                "value":100,
+                "title": "Ungdom under 16 år ",
+                "id": 1,
+                "value": 17900,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -416,9 +2152,9 @@
                 ]
               },
               {
-                "id":"ungdom_16_18",
-                "title":"Ungdom 16-18 år",
-                "value":200,
+                "title": "Ungdom 16-18 år ",
+                "id": 2,
+                "value": 18387,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -428,9 +2164,9 @@
                 ]
               },
               {
-                "id":"trinn_1",
-                "title":"Trinn 1",
-                "value":160,
+                "title": "Trinn 0 Sett påslag",
+                "id": 3,
+                "value": 0,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -440,9 +2176,9 @@
                 ]
               },
               {
-                "id":"trinn_2",
-                "title":"Trinn 2",
-                "value":20,
+                "title": "Trinn 1",
+                "id": 4,
+                "value": 24176,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -452,9 +2188,9 @@
                 ]
               },
               {
-                "id":"trinn_3",
-                "title":"Trinn 3 (25 år)",
-                "value":30,
+                "title": "Trinn 2",
+                "id": 5,
+                "value": 24314,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -464,9 +2200,9 @@
                 ]
               },
               {
-                "id":"trinn_4",
-                "title":"Trinn 4",
-                "value":40,
+                "title": "Trinn 3 (25 år)",
+                "id": 6,
+                "value": 24652,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -476,9 +2212,9 @@
                 ]
               },
               {
-                "id":"trinn_5",
-                "title":"Trinn 5",
-                "value":50,
+                "title": "Trinn 4",
+                "id": 7,
+                "value": 25235,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -488,9 +2224,9 @@
                 ]
               },
               {
-                "id":"trinn_6",
-                "title":"Trinn 6",
-                "value":60,
+                "title": "Trinn 5",
+                "id": 8,
+                "value": 26169,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -500,9 +2236,9 @@
                 ]
               },
               {
-                "id":"laerling_1",
-                "title":"Lærling 1 år",
-                "value":1000,
+                "title": "Trinn 6",
+                "id": 9,
+                "value": 29193,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -512,9 +2248,45 @@
                 ]
               },
               {
-                "id":"laerling_2",
-                "title":"Lærling 2 år",
-                "value":2000,
+                "title": "Lærlinger 1. år",
+                "id": 10,
+                "value": 11677,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title": "Lærlinger 2. år",
+                "id": 11,
+                "value": 11516,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title": "Faglærte 1. år",
+                "id": 12,
+                "value": 29193,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title": "Faglærte 2. år",
+                "id": 13,
+                "value": 30737,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -523,6 +2295,7 @@
                   }
                 ]
               }
+
             ]
           },
           {
@@ -580,125 +2353,162 @@
             "size":27.5,
             "values":[
               {
-                "id":"ungdom_under_16",
-                "title":"Ungdom under 16 år",
-                "value":100,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"ungdom_16_18",
-                "title":"Ungdom 16-18 år",
-                "value":200,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_1",
-                "title":"Trinn 1",
-                "value":160,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_2",
-                "title":"Trinn 2",
-                "value":20,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_3",
-                "title":"Trinn 3 (25 år)",
-                "value":30,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_4",
-                "title":"Trinn 4",
-                "value":40,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_5",
-                "title":"Trinn 5",
-                "value":50,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_6",
-                "title":"Trinn 6",
-                "value":60,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"laerling_1",
-                "title":"Lærling 1 år",
-                "value":1000,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"laerling_2",
-                "title":"Lærling 2 år",
-                "value":2000,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
+              "title": "Ungdom under 16 år ",
+              "value": 110.15,
+              "id": 1,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
               }
+              ]
+            },
+            {
+              "title": "Ungdom 16-18 år ",
+              "value": 113.15,
+              "id": 2,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 0 Sett påslag",
+              "value": 0,
+              "id": 3,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 1",
+              "value": 148.77,
+              "id": 4,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 2",
+              "value": 149.62,
+              "id": 5,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 3 (25 år)",
+              "value": 151.7,
+              "id": 6,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 4",
+              "value": 155.29,
+              "id": 7,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 5",
+              "value": 161.04,
+              "id": 8,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 6",
+              "value": 179.65,
+              "id": 9,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Lærlinger 1. år",
+              "value": 71.86,
+              "id": 10,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Lærlinger 2. år",
+              "value": 107.79,
+              "id": 11,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Faglærte 1. år",
+              "value": 179.65,
+              "id": 12,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Faglærte 2. år",
+              "value": 189.15,
+              "id": 13,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            }
+
             ]
           },
           {

@@ -11,10 +11,12 @@
 
 @interface HYPFieldValue : NSObject
 
-@property (nonatomic, copy) NSString *id;
+@property (nonatomic, strong) id id;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) NSArray *targets;
 @property (nonatomic, strong) HYPFormField *field;
 @property (nonatomic, strong) NSNumber *value;
+
+- (BOOL)identifierIsEqualTo:(id)identifier;
 
 @end
