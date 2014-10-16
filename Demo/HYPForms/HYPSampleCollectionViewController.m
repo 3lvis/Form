@@ -100,12 +100,14 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
+
     return (field.type == HYPFormFieldTypeImage);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
+
     if (field.type == HYPFormFieldTypeImage) {
         [self.imagePicker invokeCamera];
     }
