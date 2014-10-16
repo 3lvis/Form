@@ -308,6 +308,16 @@
                 "id":"employment_percent",
                 "type":"field",
                 "action":"update"
+              },
+              {
+                "id":"fixed_pay_total",
+                "type":"field",
+                "action":"update"
+              },
+              {
+                "id":"hourly_pay_total",
+                "type":"field",
+                "action":"update"
               }
             ]
           },
@@ -316,7 +326,8 @@
             "title":"Stillingsprosent",
             "type":"number",
             "size":25,
-            "formula":"(hours_per_week / 37.5) * 100"
+            "formula":"(hours_per_week / 37.5) * 100",
+            "disabled":true
           }
         ]
       },
@@ -525,7 +536,14 @@
             "id":"fixed_pay_premium_percent",
             "title":"Påslag (%)",
             "type":"number",
-            "size":17.5
+            "size":17.5,
+            "targets":[
+              {
+                "id":"fixed_pay_total",
+                "type":"field",
+                "action":"update"
+              }
+            ]
           },
           {
             "id":"fixed_pay_premium_currency",
@@ -549,7 +567,7 @@
             "type":"number",
             "size":20,
             "disabled":true,
-            "formula":"fixed_pay_level * (employment_percent/100) + fixed_pay_premium_currency"
+            "formula":"fixed_pay_level * (employment_percent.0/100) * 1 + (fixed_pay_premium_percent.0) + fixed_pay_premium_currency"
           },
           {
             "id":"fixed_pay_entry_date",
@@ -694,7 +712,14 @@
             "id":"hourly_pay_premium_percent",
             "title":"Påslag (%)",
             "type":"number",
-            "size":17.5
+            "size":17.5,
+            "targets":[
+              {
+                "id":"hourly_pay_total",
+                "type":"field",
+                "action":"update"
+              }
+            ]
           },
           {
             "id":"hourly_pay_premium_currency",
@@ -718,7 +743,7 @@
             "type":"number",
             "size":20,
             "disabled":true,
-            "formula":"hourly_pay_level * (employment_percent / 100) + hourly_pay_premium_currency"
+            "formula":"hourly_pay_level * (employment_percent.0 / 100) * 1 + (hourly_pay_premium_percent.0) + hourly_pay_premium_currency"
           },
           {
             "id":"hourly_pay_entry_date",
