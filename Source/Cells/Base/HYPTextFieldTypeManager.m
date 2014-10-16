@@ -18,7 +18,7 @@
         case HYPTextFieldTypeUsername    : [self setupUsernameTextField:textField]; break;
         case HYPTextFieldTypePhoneNumber : [self setupPhoneNumberTextField:textField]; break;
         case HYPTextFieldTypeNumber      : [self setupNumberTextField:textField]; break;
-        case HYPTextFieldTypeFloat      : [self setupNumberTextField:textField]; break;
+        case HYPTextFieldTypeFloat       : [self setupNumberTextField:textField]; break;
         case HYPTextFieldTypeAddress     : [self setupAddressTextField:textField]; break;
         case HYPTextFieldTypeEmail       : [self setupEmailTextField:textField]; break;
         case HYPTextFieldTypePassword    : [self setupPasswordTextField:textField]; break;
