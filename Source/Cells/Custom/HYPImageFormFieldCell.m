@@ -113,11 +113,13 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
 
     CGFloat horizontalMargin = HYPImageFormFieldHorizontalMargin;
     CGFloat verticalMargin = HYPImageFormFieldTopMargin;
+
     CGRect frame = self.frame;
     frame.origin.x = horizontalMargin;
     frame.origin.y = verticalMargin;
     frame.size.width = CGRectGetWidth(self.frame) - (horizontalMargin * 2);
     frame.size.height = CGRectGetHeight(self.frame) - verticalMargin;
+
     self.contentView.frame = frame;
 }
 
