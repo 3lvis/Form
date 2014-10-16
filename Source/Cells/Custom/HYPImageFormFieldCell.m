@@ -12,6 +12,23 @@
 #import "UIFont+REMAStyles.h"
 #import "UIColor+REMAColors.h"
 
+static const CGFloat HYPImageFormFieldTopMargin = 20.0f;
+static const CGFloat HYPImageFormFieldHorizontalMargin = 10.0f;
+
+static const CGFloat HYPImageFormFieldCameraY = 20.0f;
+static const CGFloat HYPImageFormFieldCameraSize = 84.0f;
+
+static const CGFloat HYPImageFormFieldLabelsX = 100.0f;
+static const CGFloat HYPImageFormFieldLabelsWidth = 260.0f;
+
+static const CGFloat HYPImageFormFieldLabelY = 25.0f;
+static const CGFloat HYPImageFormFieldLabelHeight = 25.0f;
+
+static const CGFloat HYPImageFormFieldInfoY = 50.0f;
+static const CGFloat HYPImageFormFieldInfoHeight = 60.0f;
+
+static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
+
 @implementation HYPImageFormFieldCell
 
 #pragma mark - Initializers
@@ -36,7 +53,10 @@
 - (UIImageView *)cameraImageView
 {
     UIImage *image = [UIImage imageNamed:@"camera-icon"];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 20.0f, 80.0f, 80.0f)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f,
+                                                                           HYPImageFormFieldCameraY,
+                                                                           HYPImageFormFieldCameraSize,
+                                                                           HYPImageFormFieldCameraSize)];
     imageView.image = image;
 
     return imageView;
@@ -44,7 +64,8 @@
 
 - (UILabel *)label
 {
-    CGRect labelFrame = CGRectMake(100.0f, 25.0f, 260.0f, 25.0f);
+    CGRect labelFrame = CGRectMake(HYPImageFormFieldLabelsX, HYPImageFormFieldLabelY,
+                                   HYPImageFormFieldLabelsWidth, HYPImageFormFieldLabelHeight);
     UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
     label.font = [UIFont REMALargeSize];
     label.textColor = [UIColor REMACoreBlue];
@@ -55,7 +76,8 @@
 
 - (UILabel *)info
 {
-    CGRect infoFrame = CGRectMake(100.0f, 50.0f, 260.0f, 60.0f);
+    CGRect infoFrame = CGRectMake(HYPImageFormFieldLabelsX, HYPImageFormFieldInfoY,
+                                  HYPImageFormFieldLabelsWidth, HYPImageFormFieldInfoHeight);
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
     infoLabel.font = [UIFont REMASmallSize];
     infoLabel.textColor = [UIColor REMACoreBlue];
@@ -68,14 +90,15 @@
 
 - (UIView *)container
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 360.0f, 120.0f)];
+    CGFloat height = CGRectGetHeight(self.frame) - HYPImageFormFieldTopMargin;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, HYPImageFormFieldContainerWidth, height)];
     [view addSubview:[self cameraImageView]];
     [view addSubview:[self label]];
     [view addSubview:[self info]];
     view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 
     CGPoint center = self.contentView.center;
-    center.y -= 10.0f;
+    center.y -= (HYPImageFormFieldTopMargin / 2.0f);
     view.center = center;
 
     return view;
@@ -87,8 +110,8 @@
 {
     [super layoutSubviews];
 
-    CGFloat horizontalMargin = 10.0f;
-    CGFloat verticalMargin = 20.0f;
+    CGFloat horizontalMargin = HYPImageFormFieldHorizontalMargin;
+    CGFloat verticalMargin = HYPImageFormFieldTopMargin;
     CGRect frame = self.frame;
     frame.origin.x = horizontalMargin;
     frame.origin.y = verticalMargin;
