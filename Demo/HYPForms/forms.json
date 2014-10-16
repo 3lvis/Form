@@ -121,8 +121,7 @@
             "size":25,
             "validations":{
               "format":"[0-9]{8,14}",
-              "min_length":8,
-              "max_length":14
+              "min_length":8
             }
           },
           {
