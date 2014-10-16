@@ -473,13 +473,10 @@
             }
         }
 
-        BOOL valuesForAllFieldsAreAvailable = ([values allValues].count == fieldIDs.count);
+        id result = [field.formula hyp_runFormulaWithDictionary:values];
 
-        if (valuesForAllFieldsAreAvailable) {
-            NSNumber *result = [field.formula hyp_runFormulaWithDictionary:values];
-            if (result) {
-                [self.valuesDictionary setObject:result forKey:field.id];
-            }
+        if (result) {
+            [self.valuesDictionary setObject:result forKey:field.id];
         }
     }];
 
