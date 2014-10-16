@@ -10,3 +10,4 @@ pod 'HYPNorwegianSSN', :git => 'https://github.com/hyperoslo/HYPNorwegianSSN.git
 pod 'HYPNorwegianAccountNumber', :git => 'https://github.com/hyperoslo/HYPNorwegianAccountNumber.git'
 pod 'NSString-HYPWordExtractor', :git => 'https://github.com/hyperoslo/NSString-HYPWordExtractor.git'
 pod 'NSString-HYPFormula', :git => 'https://github.com/hyperoslo/NSString-HYPFormula.git'
+pod 'HYPImagePicker', :git => 'https://github.com/hyperoslo/HYPImagePicker.git'

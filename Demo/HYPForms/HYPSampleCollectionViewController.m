@@ -12,10 +12,13 @@
 
 #import "HYPFieldValue.h"
 
-@interface HYPSampleCollectionViewController () <HYPFormHeaderViewDelegate>
+#import "HYPImagePicker.h"
+
+@interface HYPSampleCollectionViewController () <HYPFormHeaderViewDelegate, HYPImagePickerDelegate>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *setUpDictionary;
+@property (nonatomic, strong) HYPImagePicker *imagePicker;
 
 @end
 
@@ -72,6 +75,17 @@
     return _dataSource;
 }
 
+- (HYPImagePicker *)imagePicker
+{
+    if (_imagePicker) return _imagePicker;
+
+    NSString *caption = NSLocalizedString(@"Legg til bilde av den ansatte", @"Legg til bilde av den ansatte");
+    _imagePicker = [[HYPImagePicker alloc] initForViewController:self usingCaption:caption];
+    _imagePicker.delegate = self;
+    
+    return _imagePicker;
+}
+
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad
@@ -91,8 +105,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    // HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
-    // do something awesome
+    HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
+    if (field.type == HYPFormFieldTypeImage) {
+        [self.imagePicker invokeCamera];
+    }
 }
 
 #pragma mark - HYPFormHeaderViewDelegate
@@ -116,6 +132,14 @@
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 
     [self.collectionViewLayout invalidateLayout];
+}
+
+
+#pragma mark - HYPImagePickerDelegate
+
+- (void)imagePicker:(HYPImagePicker *)imagePicker didPickedImage:(UIImage *)image
+{
+    NSLog(@"picture gotten");
 }
 
 @end
