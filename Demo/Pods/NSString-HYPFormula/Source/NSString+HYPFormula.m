@@ -32,8 +32,7 @@
 
 - (id)hyp_runFormula
 {
-    NSString *formula = self;
-    formula = [self stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSString *formula = [self sanitize];
 
     if ([formula rangeOfString:@". "].location != NSNotFound) {
         return nil;
@@ -48,6 +47,29 @@
 {
     NSString *formula = [self hyp_processValues:dictionary];
     return [formula hyp_runFormula];
+}
+
+- (NSString *)sanitize
+{
+    NSString *formula = [self stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSScanner *scanner = [NSScanner scannerWithString:formula];
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890."];
+    NSString *variable;
+
+    while (!scanner.isAtEnd) {
+        if ([scanner scanCharactersFromSet:set intoString:&variable]) {
+            NSUInteger numberOfOccurrences = [[variable componentsSeparatedByString:@"."] count] - 1;
+
+            if (numberOfOccurrences > 1) {
+                NSString *subString = [variable substringToIndex:variable.length-2];
+                formula = [formula stringByReplacingOccurrencesOfString:variable withString:subString];
+            }
+        }
+
+        if (scanner.scanLocation < formula.length) scanner.scanLocation++;
+    }
+
+    return formula;
 }
 
 @end
