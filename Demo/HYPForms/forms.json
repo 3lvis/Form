@@ -120,7 +120,6 @@
             "type":"text",
             "size":25,
             "validations":{
-              "required":true,
               "format":"[0-9]{8,14}",
               "min_length":8,
               "max_length":14
