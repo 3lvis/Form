@@ -164,6 +164,7 @@
 {
     self.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+
     self.modified = NO;
 }
 
@@ -172,10 +173,8 @@
     self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
 
-    if (self.modified) {
-        if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
-            [self.formFieldDelegate textFormFieldDidEndEditing:self];
-        }
+    if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
+        [self.formFieldDelegate textFormFieldDidEndEditing:self];
     }
 }
 
