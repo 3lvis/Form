@@ -10,26 +10,29 @@
 
 @implementation NSString (HYPFormula)
 
-- (NSString *)processValues:(NSDictionary *)values
+- (NSString *)hyp_processValues:(NSDictionary *)values
 {
-    __block NSMutableString *mutableString = [self mutableCopy];
+    NSMutableString *mutableString = [self mutableCopy];
+    NSArray *sortedKeysArray = [[values allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
+        return a.length < b.length;
+    }];
 
-    [values enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+    for (NSString *key in sortedKeysArray) {
+        id value = values[key];
 
-        if (![value isKindOfClass:[NSString class]]) {
-            value = [NSString stringWithFormat:@"%@", value];
+        if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+            value = [value stringValue];
         }
 
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
-    }];
+    }
 
     return [mutableString copy];
 }
 
-- (id)runFormula
+- (id)hyp_runFormula
 {
     NSString *formula = self;
-    NSLog(@"formula: %@", formula);
     formula = [self stringByReplacingOccurrencesOfString:@"," withString:@"."];
 
     if ([formula rangeOfString:@". "].location != NSNotFound) {
@@ -41,10 +44,10 @@
     return value;
 }
 
-- (id)runFormulaWithDictionary:(NSDictionary *)dictionary
+- (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *formula = [self processValues:dictionary];
-    return [formula runFormula];
+    NSString *formula = [self hyp_processValues:dictionary];
+    return [formula hyp_runFormula];
 }
 
 @end

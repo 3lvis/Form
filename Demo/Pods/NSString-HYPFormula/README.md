@@ -10,7 +10,7 @@ NSDictionary *values = @{
     @"hourly_pay"    : @150,
     @"work_per_week" : @32.5
 };
-NSNumber *result = [@"hourly_pay * work_per_week" runFormulaWithDictionary:values];
+NSNumber *result = [@"hourly_pay * work_per_week" hyp_runFormulaWithDictionary:values];
 ```
 
 ## Contributing
