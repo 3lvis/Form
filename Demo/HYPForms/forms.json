@@ -301,7 +301,7 @@
             "validations":{
               "required":true,
               "min_length":1,
-              "max_length":4
+              "max_length":5
             },
             "targets":[
               {
