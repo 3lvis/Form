@@ -11,6 +11,7 @@
 #import "HYPFormBackgroundView.h"
 #import "HYPBaseFormFieldCell.h"
 #import "HYPFormHeaderView.h"
+#import "HYPImageFormFieldCell.h"
 
 #import "HYPForm.h"
 #import "HYPFormField.h"
@@ -215,7 +216,11 @@
             width += [field.size floatValue];
 
             if (width >= 100.0f) {
-                height += HYPFieldCellItemHeight;
+                if (field.type == HYPFormFieldTypeImage) {
+                    height += HYPImageFormFieldCellItemHeight;
+                } else {
+                    height += HYPFieldCellItemHeight;
+                }
                 width = 0;
             }
         }

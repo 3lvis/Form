@@ -57,12 +57,7 @@
               "min_length":11,
               "max_length":11
             }
-          }
-        ]
-      },
-      {
-        "id":"personopplysninger-1",
-        "fields":[
+          },
           {
             "id":"country_code",
             "title":"Land",
@@ -118,12 +113,7 @@
               }
             ],
             "disabled":true
-          }
-        ]
-      },
-      {
-        "id":"personopplysninger-2",
-        "fields":[
+          },
           {
             "id":"phone_number",
             "title":"Telefonnummer",
@@ -156,6 +146,11 @@
               "min_length":11,
               "max_length":11
             }
+          },
+          {
+            "id":"image",
+            "type":"image",
+            "size":100
           }
         ]
       }

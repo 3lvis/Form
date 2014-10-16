@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
     HYPFormFieldTypeDate,
     HYPFormFieldTypePicture,
     HYPFormFieldTypeFloat,
-    HYPFormFieldTypeNumber
+    HYPFormFieldTypeNumber,
+    HYPFormFieldTypeImage
 };
 
 @interface HYPFormField : NSObject
