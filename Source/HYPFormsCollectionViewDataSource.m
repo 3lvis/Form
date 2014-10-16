@@ -458,19 +458,18 @@
             if (value) {
                 if ([value isKindOfClass:[HYPFieldValue class]]) {
                     HYPFieldValue *fieldValue = (HYPFieldValue *)value;
-                    value = fieldValue.value;
-                } else if ([value isKindOfClass:[NSString class]] && [value length] == 0) {
-                    continue;
+                    [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                } else if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
+                    [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                        value = [value stringValue];
-                        [self.valuesDictionary setObject:value forKey:field.id];
-                    } else if (![value isKindOfClass:[NSString class]]) {
-                        value = @"0";
-                        [self.valuesDictionary setObject:value forKey:field.id];
+                        [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
+                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                    } else {
+                        [self.valuesDictionary setObject:@"0" forKey:field.id];
+                        [values addEntriesFromDictionary:@{fieldID : @"0"}];
                     }
                 }
-                [values addEntriesFromDictionary:@{fieldID : value}];
             }
         }
 
