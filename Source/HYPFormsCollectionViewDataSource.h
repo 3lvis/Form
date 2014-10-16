@@ -40,6 +40,7 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 
 - (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (HYPFormField *)formFieldAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)validateForms;
 - (BOOL)formFieldsAreValid;
