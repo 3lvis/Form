@@ -28,14 +28,15 @@
                                   @"email_address" : @"christoffer@hyper.no",
                                   @"end_date" : @"2017-10-31 23:00:00 +00:00",
                                   @"first_name" : @"Chris",
-                                  @"hours_per_week" : @37,
+                                  @"hours_per_week" : @"37,5",
                                   @"last_name" : @"Winterkvist",
                                   @"phone_number" : @"41399880",
                                   @"postal_code" : @"6414",
                                   @"social_security_number" : @"28118240000",
                                   @"start_date" : @"2014-10-31 23:00:00 +00:00",
                                   @"worker_id" : @"120000",
-                                  @"employment_type" : @"fast"
+                                  @"employment_type" : @"fast",
+                                  @"remuneration" : @"no_wage"
                                   };
 
     HYPSampleCollectionViewController *controllers = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];

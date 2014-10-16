@@ -450,7 +450,7 @@
 
         [updatedIndexPaths addObject:field.indexPath];
 
-        NSArray *fieldIDs = [field.formula hyp_words];
+        NSArray *fieldIDs = [field.formula hyp_variables];
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
 
         for (NSString *fieldID in fieldIDs) {
@@ -462,15 +462,24 @@
                 } else if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
                     [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
-                    [self.valuesDictionary setObject:@"" forKey:field.id];
+                    if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+                        [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
+                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                    } else {
+                        [self.valuesDictionary setObject:@"0" forKey:field.id];
+                        [values addEntriesFromDictionary:@{fieldID : @"0"}];
+                    }
                 }
             }
         }
 
         BOOL valuesForAllFieldsAreAvailable = ([values allValues].count == fieldIDs.count);
+
         if (valuesForAllFieldsAreAvailable) {
-            NSNumber *result = [field.formula runFormulaWithDictionary:values];
-            [self.valuesDictionary setObject:result forKey:field.id];
+            NSNumber *result = [field.formula hyp_runFormulaWithDictionary:values];
+            if (result) {
+                [self.valuesDictionary setObject:result forKey:field.id];
+            }
         }
     }];
 

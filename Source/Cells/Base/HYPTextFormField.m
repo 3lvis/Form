@@ -105,6 +105,8 @@
         type = HYPTextFieldTypePhoneNumber;
     } else if ([typeString isEqualToString:@"number"]) {
         type = HYPTextFieldTypeNumber;
+    } else if ([typeString isEqualToString:@"float"]) {
+        type = HYPTextFieldTypeFloat;
     } else if ([typeString isEqualToString:@"address"]) {
         type = HYPTextFieldTypeAddress;
     } else if ([typeString isEqualToString:@"email"]) {
@@ -113,8 +115,12 @@
         type = HYPTextFieldTypeDate;
     } else if ([typeString isEqualToString:@"select"]) {
         type = HYPTextFieldTypeDropdown;
-    } else {
+    } else if ([typeString isEqualToString:@"text"]) {
         type = HYPTextFieldTypeDefault;
+    } else if (!typeString.length) {
+        type = HYPTextFieldTypeDefault;
+    } else {
+        type = HYPTextFieldTypeUnknown;
     }
 
     self.type = type;
