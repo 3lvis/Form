@@ -26,12 +26,9 @@
     self.contentView.layer.borderWidth = 1.0f;
     self.contentView.layer.borderColor = [UIColor colorFromHex:@"D5D5D8"].CGColor;
     self.contentView.layer.cornerRadius = 5.0f;
-    self.contentView.autoresizesSubviews = NO;
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-    [self.contentView addSubview:[self cameraImageView]];
-    [self.contentView addSubview:[self label]];
-    [self.contentView addSubview:[self info]];
+    [self.contentView addSubview:[self container]];
 
     return self;
 }
@@ -39,37 +36,49 @@
 - (UIImageView *)cameraImageView
 {
     UIImage *image = [UIImage imageNamed:@"camera-icon"];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(160.0f, 30.0f, 80.0f, 80.0f)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 20.0f, 80.0f, 80.0f)];
     imageView.image = image;
-    imageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
 
     return imageView;
 }
 
 - (UILabel *)label
 {
-    CGRect labelFrame = CGRectMake(80.0f, 36.0f, 100.0f, 25.0f);
+    CGRect labelFrame = CGRectMake(100.0f, 25.0f, 260.0f, 25.0f);
     UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
     label.font = [UIFont REMALargeSize];
     label.textColor = [UIColor REMACoreBlue];
     label.text = NSLocalizedString(@"Legg til bilde av den ansatte", @"Legg til bilde av den ansatte");
-    label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
 
     return label;
 }
 
 - (UILabel *)info
 {
-    CGRect infoFrame = CGRectMake(80.0f, 52.0f, 100.0f, 60);
+    CGRect infoFrame = CGRectMake(100.0f, 50.0f, 260.0f, 60.0f);
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
     infoLabel.font = [UIFont REMASmallSize];
     infoLabel.textColor = [UIColor REMACoreBlue];
     infoLabel.text = NSLocalizedString(@"Bildet som lastes opp blir den ansattes profilbilde i ulike REMA-systemer.", @"Bildet som lastes opp blir den ansattes profilbilde i ulike REMA-systemer.");
     infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
     infoLabel.numberOfLines = 0;
-    infoLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
 
     return infoLabel;
+}
+
+- (UIView *)container
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 360.0f, 120.0f)];
+    [view addSubview:[self cameraImageView]];
+    [view addSubview:[self label]];
+    [view addSubview:[self info]];
+    view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+
+    CGPoint center = self.contentView.center;
+    center.y -= 10.0f;
+    view.center = center;
+
+    return view;
 }
 
 #pragma mark - Overwritables
