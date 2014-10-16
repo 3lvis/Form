@@ -218,6 +218,26 @@
     return valid;
 }
 
+#pragma mark - UIResponder Overwritables
+
+- (BOOL)becomeFirstResponder
+{
+    if (self.type == HYPTextFieldTypeDropdown || self.type == HYPTextFieldTypeDate) {
+        if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
+            [self.formFieldDelegate textFormFieldDidBeginEditing:self];
+        }
+    }
+
+    return [super becomeFirstResponder];
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    if (self.type == HYPTextFieldTypeDropdown || self.type == HYPTextFieldTypeDate) return NO;
+
+    return [super canBecomeFirstResponder];
+}
+
 #pragma mark - Notifications
 
 - (void)updateLabelUsingContentsOfTextField:(UITextField *)textField
