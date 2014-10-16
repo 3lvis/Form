@@ -2142,9 +2142,9 @@
             "size":27.5,
             "values":[
               {
-                "id":"ungdom_under_16",
-                "title":"Ungdom under 16 år",
-                "value":100,
+                "title": "Ungdom under 16 år ",
+                "id": 1,
+                "value": 17900,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2154,9 +2154,9 @@
                 ]
               },
               {
-                "id":"ungdom_16_18",
-                "title":"Ungdom 16-18 år",
-                "value":200,
+                "title": "Ungdom 16-18 år ",
+                "id": 2,
+                "value": 18387,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2166,9 +2166,9 @@
                 ]
               },
               {
-                "id":"trinn_1",
-                "title":"Trinn 1",
-                "value":160,
+                "title": "Trinn 0 Sett påslag",
+                "id": 3,
+                "value": 0,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2178,9 +2178,9 @@
                 ]
               },
               {
-                "id":"trinn_2",
-                "title":"Trinn 2",
-                "value":20,
+                "title": "Trinn 1",
+                "id": 4,
+                "value": 24176,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2190,9 +2190,9 @@
                 ]
               },
               {
-                "id":"trinn_3",
-                "title":"Trinn 3 (25 år)",
-                "value":30,
+                "title": "Trinn 2",
+                "id": 5,
+                "value": 24314,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2202,9 +2202,9 @@
                 ]
               },
               {
-                "id":"trinn_4",
-                "title":"Trinn 4",
-                "value":40,
+                "title": "Trinn 3 (25 år)",
+                "id": 6,
+                "value": 24652,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2214,9 +2214,9 @@
                 ]
               },
               {
-                "id":"trinn_5",
-                "title":"Trinn 5",
-                "value":50,
+                "title": "Trinn 4",
+                "id": 7,
+                "value": 25235,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2226,9 +2226,9 @@
                 ]
               },
               {
-                "id":"trinn_6",
-                "title":"Trinn 6",
-                "value":60,
+                "title": "Trinn 5",
+                "id": 8,
+                "value": 26169,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2238,9 +2238,9 @@
                 ]
               },
               {
-                "id":"laerling_1",
-                "title":"Lærling 1 år",
-                "value":1000,
+                "title": "Trinn 6",
+                "id": 9,
+                "value": 29193,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2250,9 +2250,45 @@
                 ]
               },
               {
-                "id":"laerling_2",
-                "title":"Lærling 2 år",
-                "value":2000,
+                "title": "Lærlinger 1. år",
+                "id": 10,
+                "value": 11677,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title": "Lærlinger 2. år",
+                "id": 11,
+                "value": 11516,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title": "Faglærte 1. år",
+                "id": 12,
+                "value": 29193,
+                "targets":[
+                  {
+                    "id":"fixed_pay_total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title": "Faglærte 2. år",
+                "id": 13,
+                "value": 30737,
                 "targets":[
                   {
                     "id":"fixed_pay_total",
@@ -2261,6 +2297,7 @@
                   }
                 ]
               }
+
             ]
           },
           {
@@ -2318,125 +2355,162 @@
             "size":27.5,
             "values":[
               {
-                "id":"ungdom_under_16",
-                "title":"Ungdom under 16 år",
-                "value":100,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"ungdom_16_18",
-                "title":"Ungdom 16-18 år",
-                "value":200,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_1",
-                "title":"Trinn 1",
-                "value":160,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_2",
-                "title":"Trinn 2",
-                "value":20,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_3",
-                "title":"Trinn 3 (25 år)",
-                "value":30,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_4",
-                "title":"Trinn 4",
-                "value":40,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_5",
-                "title":"Trinn 5",
-                "value":50,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"trinn_6",
-                "title":"Trinn 6",
-                "value":60,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"laerling_1",
-                "title":"Lærling 1 år",
-                "value":1000,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
-              },
-              {
-                "id":"laerling_2",
-                "title":"Lærling 2 år",
-                "value":2000,
-                "targets":[
-                  {
-                    "id":"hourly_pay_total",
-                    "type":"field",
-                    "action":"update"
-                  }
-                ]
+              "title": "Ungdom under 16 år ",
+              "value": 110.15,
+              "id": 1,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
               }
+              ]
+            },
+            {
+              "title": "Ungdom 16-18 år ",
+              "value": 113.15,
+              "id": 2,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 0 Sett påslag",
+              "value": 0,
+              "id": 3,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 1",
+              "value": 148.77,
+              "id": 4,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 2",
+              "value": 149.62,
+              "id": 5,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 3 (25 år)",
+              "value": 151.7,
+              "id": 6,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 4",
+              "value": 155.29,
+              "id": 7,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 5",
+              "value": 161.04,
+              "id": 8,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Trinn 6",
+              "value": 179.65,
+              "id": 9,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Lærlinger 1. år",
+              "value": 71.86,
+              "id": 10,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Lærlinger 2. år",
+              "value": 107.79,
+              "id": 11,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Faglærte 1. år",
+              "value": 179.65,
+              "id": 12,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            },
+            {
+              "title": "Faglærte 2. år",
+              "value": 189.15,
+              "id": 13,
+              "targets": [
+                {
+                "id": "hourly_pay_total",
+                "type": "field",
+                "action": "update"
+              }
+              ]
+            }
+
             ]
           },
           {
