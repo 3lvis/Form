@@ -111,6 +111,13 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
 {
     [super layoutSubviews];
 
+    self.contentView.frame = [self contentViewFrame];
+}
+
+#pragma mark - Private methods
+
+- (CGRect)contentViewFrame
+{
     CGFloat horizontalMargin = HYPImageFormFieldHorizontalMargin;
     CGFloat verticalMargin = HYPImageFormFieldTopMargin;
 
@@ -120,7 +127,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     frame.size.width = CGRectGetWidth(self.frame) - (horizontalMargin * 2);
     frame.size.height = CGRectGetHeight(self.frame) - verticalMargin;
 
-    self.contentView.frame = frame;
+    return frame;
 }
 
 @end
