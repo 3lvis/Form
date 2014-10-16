@@ -28,7 +28,7 @@
                                   @"email_address" : @"christoffer@hyper.no",
                                   @"end_date" : @"2017-10-31 23:00:00 +00:00",
                                   @"first_name" : @"Chris",
-                                  @"hours_per_week" : @37,
+                                  @"hours_per_week" : @"37,5",
                                   @"last_name" : @"Winterkvist",
                                   @"phone_number" : @"41399880",
                                   @"postal_code" : @"6414",
