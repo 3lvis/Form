@@ -83,6 +83,21 @@
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
+    if (field.type == HYPFormFieldTypeImage) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    // HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
+    // do something awesome
+}
+
 #pragma mark - HYPFormHeaderViewDelegate
 
 - (void)formHeaderViewWasPressed:(HYPFormHeaderView *)headerView

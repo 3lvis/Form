@@ -266,6 +266,16 @@
     return CGSizeMake(width, height);
 }
 
+- (HYPFormField *)formFieldAtIndexPath:(NSIndexPath *)indexPath
+{
+    HYPForm *form = self.forms[indexPath.section];
+    NSArray *fields = form.fields;
+    HYPFormField *field = fields[indexPath.row];
+    return field;
+}
+
+#pragma mark - Validations
+
 - (void)validateForms
 {
     NSArray *cells = [self.collectionView visibleCells];
