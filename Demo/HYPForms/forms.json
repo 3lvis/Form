@@ -1962,11 +1962,11 @@
                 "size":30,
                 "values":[
                   {
-                    "id":"ja",
+                    "id":1,
                     "title":"Ja"
                   },
                   {
-                    "id":"nei",
+                    "id":0,
                     "title":"Nei"
                   }
                 ]
