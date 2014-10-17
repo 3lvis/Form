@@ -11,6 +11,8 @@
 
 - (BOOL)identifierIsEqualTo:(id)identifier
 {
+    if (!identifier) return NO;
+
     if ([self.id isKindOfClass:[NSString class]]) {
         return [self.id isEqualToString:identifier];
     } else if ([self.id isKindOfClass:[NSNumber class]]) {
