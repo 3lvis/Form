@@ -313,6 +313,8 @@
 
     if (!field.fieldValue) {
         [self.valuesDictionary removeObjectForKey:field.id];
+    } else {
+        self.valuesDictionary[field.id] = field.fieldValue;
     }
 
     if (field.fieldValue && [field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
