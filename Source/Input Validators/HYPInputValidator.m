@@ -19,11 +19,9 @@
         textLength++;
     }
 
-    BOOL valid = YES;
+    BOOL valid = (self.validations[@"required"] != nil);
 
-    BOOL required = (self.validations[@"required"]);
-
-    if (required && self.validations[@"max_length"]) {
+    if (valid && self.validations[@"max_length"]) {
         valid = (textLength <= [self.validations[@"max_length"] unsignedIntegerValue]);
     }
 
