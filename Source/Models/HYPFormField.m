@@ -151,4 +151,30 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return [validator validateFieldValue:self.fieldValue];
 }
 
+#pragma mark - Public Methods
+
++ (HYPFormField *)fieldWithID:(NSString *)id inForms:(NSArray *)forms
+{
+    __block BOOL found = NO;
+    __block HYPFormField *foundField = nil;
+
+    [forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
+        if (found) {
+            *formStop = YES;
+        }
+
+        [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
+            if ([field.id isEqualToString:id]) {
+                field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
+                foundField = field;
+
+                found = YES;
+                *fieldStop = YES;
+            }
+        }];
+    }];
+    
+    return foundField;
+}
+
 @end
