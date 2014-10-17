@@ -52,6 +52,8 @@
 
 - (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format
 {
+    if (!fieldValue) return YES;
+
     NSError *error = NULL;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:self.validations[@"format"] options:NSRegularExpressionCaseInsensitive error:&error];
     NSUInteger numberOfMatches = [regex numberOfMatchesInString:fieldValue options:NSMatchingReportProgress range:NSMakeRange(0, fieldValue.length)];
