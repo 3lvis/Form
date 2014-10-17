@@ -21,9 +21,7 @@
 
     BOOL valid = YES;
 
-    BOOL required = (self.validations[@"required"]);
-
-    if (required && self.validations[@"max_length"]) {
+    if (self.validations[@"max_length"]) {
         valid = (textLength <= [self.validations[@"max_length"] unsignedIntegerValue]);
     }
 
