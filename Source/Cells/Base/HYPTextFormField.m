@@ -138,7 +138,7 @@
 
 - (NSString *)rawText
 {
-    if (self.formatter) {
+    if (_rawText && self.formatter) {
         return [self.formatter formatString:_rawText reverse:YES];
     }
 
@@ -183,6 +183,9 @@
     self.modified = YES;
 
     NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if (resultString.length == 0) {
+        resultString = nil;
+    }
 
     if (!string.length) {
         self.rawText = resultString;

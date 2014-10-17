@@ -311,9 +311,11 @@
         self.configureFieldUpdatedBlock(fieldCell, field);
     }
 
-    [self.valuesDictionary setObject:field.fieldValue forKey:field.id];
+    if (!field.fieldValue) {
+        [self.valuesDictionary removeObjectForKey:field.id];
+    }
 
-    if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+    if (field.fieldValue && [field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         HYPFieldValue *fieldValue = field.fieldValue;
         [self processTargets:fieldValue.targets];
     } else if (field.targets.count > 0) {
