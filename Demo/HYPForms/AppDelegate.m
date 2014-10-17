@@ -40,7 +40,8 @@
                                   @"employment_percent" : @"100",
                                   @"fixed_pay_level" : @"17900",
                                   @"fixed_pay_premium_percent" : @"2",
-                                  @"fixed_pay_premium_currency" : @"150"
+                                  @"fixed_pay_premium_currency" : @"150",
+                                  @"position" : @"Butikkmedarbeider"
                                   };
 
     HYPSampleCollectionViewController *controllers = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];
