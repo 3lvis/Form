@@ -22,7 +22,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    NSDictionary *dictionary = @{ @"address" : @"Burger Park",
+    NSDictionary *dictionary = @{ @"address" : @"Burger Park 667",
                                   @"bank_account_number" : @"11111111111",
                                   @"city" : @"Halden",
                                   @"email_address" : @"christoffer@hyper.no",
