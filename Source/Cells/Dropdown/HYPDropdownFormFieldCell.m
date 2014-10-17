@@ -67,13 +67,16 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 {
     [super updateWithField:field];
 
+    if (!field.fieldValue) return;
+
     if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
         self.textField.rawText = fieldValue.title;
-    } else {
+    } else if (field.rawFieldValue) {
 
         for (HYPFieldValue *fieldValue in field.values) {
-            if ([fieldValue identifierIsEqualTo:field.rawFieldValue]) {
+            if ([fieldValue.title isEqualToString:field.fieldValue]) {
+                field.fieldValue = fieldValue;
                 self.textField.rawText = fieldValue.title;
                 break;
             }

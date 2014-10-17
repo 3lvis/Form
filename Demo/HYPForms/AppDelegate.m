@@ -22,9 +22,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    NSDictionary *dictionary = @{ @"address" : @"Burger Park",
+    NSDictionary *dictionary = @{ @"address" : @"Burger Park 667",
                                   @"bank_account_number" : @"11111111111",
-                                  @"city" : @"Telemark",
+                                  @"city" : @"Halden",
                                   @"email_address" : @"christoffer@hyper.no",
                                   @"end_date" : @"2017-10-31 23:00:00 +00:00",
                                   @"first_name" : @"Chris",
@@ -40,7 +40,8 @@
                                   @"employment_percent" : @"100",
                                   @"fixed_pay_level" : @"17900",
                                   @"fixed_pay_premium_percent" : @"2",
-                                  @"fixed_pay_premium_currency" : @"150"
+                                  @"fixed_pay_premium_currency" : @"150",
+                                  @"position" : @"Butikkmedarbeider"
                                   };
 
     HYPSampleCollectionViewController *controllers = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];
