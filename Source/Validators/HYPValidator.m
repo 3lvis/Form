@@ -43,7 +43,7 @@
     }
 
     if (valid && self.validations[@"format"]) {
-        valid = [self validateString:fieldValue ? : @""
+        valid = [self validateString:fieldValue
                           withFormat:self.validations[@"format"]];
     }
 
