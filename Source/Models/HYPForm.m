@@ -17,10 +17,14 @@
 @implementation HYPForm
 
 + (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
+                                         additionalValues:(void (^)(NSMutableDictionary *deletedFields,
+                                                                    NSMutableDictionary *deletedSections))additionalValues
 {
     NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
 
     NSMutableArray *forms = [NSMutableArray array];
+
+    NSMutableArray *targetsToRun = [NSMutableArray array];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
@@ -36,7 +40,6 @@
         [dataSourceSections enumerateObjectsUsingBlock:^(NSDictionary *sectionDict, NSUInteger sectionIndex, BOOL *stop) {
 
             HYPFormSection *section = [HYPFormSection new];
-            section.type = [section typeFromTypeString:[sectionDict hyp_safeValueForKey:@"type"]];
             section.id = [sectionDict hyp_safeValueForKey:@"id"];
             section.position = @(sectionIndex);
 
@@ -78,9 +81,15 @@
                         fieldValue.title = [valueDict hyp_safeValueForKey:@"title"];
                         fieldValue.value = [valueDict hyp_safeValueForKey:@"value"];
 
+                        BOOL needsToRun = (field.fieldValue && [fieldValue identifierIsEqualTo:field.fieldValue]);
+
                         NSArray *targets = [self targetsUsingArray:[valueDict hyp_safeValueForKey:@"targets"]];
                         for (HYPFormTarget *target in targets) {
                             target.value = fieldValue;
+
+                            if (needsToRun && target.actionType == HYPFormTargetActionHide) {
+                                [targetsToRun addObject:target];
+                            }
                         }
 
                         fieldValue.targets = targets;
@@ -110,6 +119,33 @@
         form.sections = sections;
         [forms addObject:form];
     }];
+
+    NSMutableDictionary *fields = [NSMutableDictionary dictionary];
+    NSMutableDictionary *sections = [NSMutableDictionary dictionary];
+
+    for (HYPFormTarget *target in targetsToRun) {
+
+        if (target.type == HYPFormTargetTypeField) {
+
+            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:forms];
+            [fields addEntriesFromDictionary:@{target.id : field}];
+            HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:forms];
+            [section removeField:field inForms:forms];
+
+        } else if (target.type == HYPFormTargetTypeSection) {
+
+            HYPFormSection *section = [HYPFormSection sectionWithID:target.id inForms:forms];
+            [sections addEntriesFromDictionary:@{target.id : section}];
+
+            HYPForm *form = forms[[section.form.position integerValue]];
+            NSInteger index = [section indexInForms:forms];
+            [form.sections removeObjectAtIndex:index];
+        }
+    }
+
+    if (additionalValues) {
+        additionalValues(fields, sections);
+    }
 
     return forms;
 }

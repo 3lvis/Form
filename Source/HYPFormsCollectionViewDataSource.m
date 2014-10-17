@@ -88,7 +88,12 @@
 {
     if (_forms) return _forms;
 
-    _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.valuesDictionary];
+    _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.valuesDictionary
+                                           additionalValues:^(NSMutableDictionary *deletedFields,
+                                                              NSMutableDictionary *deletedSections) {
+        [self.deletedFields addEntriesFromDictionary:deletedFields];
+        [self.deletedSections addEntriesFromDictionary:deletedSections];
+    }];
 
     return _forms;
 }
