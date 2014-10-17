@@ -24,7 +24,7 @@
 
     NSDictionary *dictionary = @{ @"address" : @"Burger Park",
                                   @"bank_account_number" : @"11111111111",
-                                  @"city" : @"Telemark",
+                                  @"city" : @"Halden",
                                   @"email_address" : @"christoffer@hyper.no",
                                   @"end_date" : @"2017-10-31 23:00:00 +00:00",
                                   @"first_name" : @"Chris",
