@@ -75,7 +75,7 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
     } else if (field.rawFieldValue) {
 
         for (HYPFieldValue *fieldValue in field.values) {
-            if ([fieldValue.title isEqualToString:field.fieldValue]) {
+            if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
                 field.fieldValue = fieldValue;
                 self.textField.rawText = fieldValue.title;
                 break;
