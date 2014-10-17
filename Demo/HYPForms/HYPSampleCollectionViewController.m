@@ -136,7 +136,6 @@
     [self.collectionViewLayout invalidateLayout];
 }
 
-
 #pragma mark - HYPImagePickerDelegate
 
 - (void)imagePicker:(HYPImagePicker *)imagePicker didPickedImage:(UIImage *)image
