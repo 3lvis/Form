@@ -280,7 +280,9 @@
 {
     NSArray *cells = [self.collectionView visibleCells];
     for (HYPBaseFormFieldCell *cell in cells) {
-        [cell validate];
+        if ([cell respondsToSelector:@selector(validate)]) {
+            [cell validate];
+        }
     }
 }
 
