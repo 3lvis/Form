@@ -11,10 +11,6 @@
 
 - (NSString *)formatString:(NSString *)string reverse:(BOOL)reverse
 {
-    if (!string) {
-        return @"";
-    }
-
     return string;
 }
 
