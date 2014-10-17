@@ -15,6 +15,7 @@
     if (!self.validations) return YES;
 
     NSUInteger textLength = [text length];
+
     if (string.length > 0) {
         textLength++;
     }
