@@ -29,29 +29,22 @@
 {
     if (!self.validations) return YES;
 
-    BOOL valid = (self.validations[@"required"] != nil);
+    BOOL valid = YES;
+    BOOL required = (self.validations[@"required"]);
 
-    if ([fieldValue isKindOfClass:[NSString class]]) {
-        if (valid && self.validations[@"min_length"]) {
-            valid = ([fieldValue length] >= (NSUInteger)[self.validations[@"min_length"] unsignedIntegerValue]);
-        }
+    if (!fieldValue && !required) return YES;
 
-        if (valid && self.validations[@"max_length"]) {
-            valid = ([fieldValue length] <= [self.validations[@"max_length"] unsignedIntegerValue]);
-        }
-
-        if (valid && self.validations[@"format"]) {
-            valid = [self validateString:fieldValue ? : @""
-                              withFormat:self.validations[@"format"]];
-        }
+    if (self.validations[@"min_length"]) {
+        valid = ([fieldValue length] >= (NSUInteger)[self.validations[@"min_length"] unsignedIntegerValue]);
     }
 
-    if (valid && self.validations[@"required"]) {
-        if ([fieldValue isKindOfClass:[NSString class]]) {
-            valid = ([fieldValue length] > 0);
-        } else if (!fieldValue) {
-            valid = NO;
-        }
+    if (valid && self.validations[@"max_length"]) {
+        valid = ([fieldValue length] <= [self.validations[@"max_length"] unsignedIntegerValue]);
+    }
+
+    if (valid && self.validations[@"format"]) {
+        valid = [self validateString:fieldValue ? : @""
+                          withFormat:self.validations[@"format"]];
     }
 
     return valid;
