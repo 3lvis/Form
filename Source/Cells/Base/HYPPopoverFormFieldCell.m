@@ -90,6 +90,7 @@
     self.textField.formatter      = [self.field formatter];
     self.textField.typeString     = field.typeString;
     self.textField.enabled        = !field.disabled;
+    self.textField.valid          = field.valid;
 }
 
 - (void)layoutSubviews

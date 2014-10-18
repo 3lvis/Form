@@ -55,6 +55,7 @@
     self.textField.rawText         = field.fieldValue;
     self.textField.typeString      = field.typeString;
     self.textField.enabled         = !field.disabled;
+    self.textField.valid           = field.valid;
 }
 
 - (void)validate

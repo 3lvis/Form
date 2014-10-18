@@ -21,6 +21,16 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 @implementation HYPFormField
 
+- (instancetype)init
+{
+    self = [super init];
+    if (!self) return nil;
+
+    _valid = YES;
+
+    return self;
+}
+
 #pragma mark - Setters
 
 - (void)setFieldValue:(id)fieldValue
