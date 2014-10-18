@@ -295,7 +295,7 @@
 {
     for (HYPForm *form in self.forms) {
         for (HYPFormField *field in form.fields) {
-            if (![field isValid]) {
+            if (![field validate]) {
                 return NO;
             }
         }

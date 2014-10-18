@@ -59,7 +59,7 @@
 
 - (void)validate
 {
-    [self.textField setValid:self.field.isValid];
+    [self.textField setValid:[self.field validate]];
 }
 
 #pragma mark - Private methods
@@ -88,7 +88,7 @@
 
 - (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField
 {
-    [self.textField setValid:self.field.isValid];
+    [self.textField setValid:[self.field validate]];
 }
 
 - (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
