@@ -88,7 +88,12 @@
 {
     if (_forms) return _forms;
 
-    _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.valuesDictionary];
+    _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.valuesDictionary
+                                           additionalValues:^(NSMutableDictionary *deletedFields,
+                                                              NSMutableDictionary *deletedSections) {
+        [self.deletedFields addEntriesFromDictionary:deletedFields];
+        [self.deletedSections addEntriesFromDictionary:deletedSections];
+    }];
 
     return _forms;
 }
@@ -353,25 +358,23 @@
 
     [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
         if (target.type == HYPFormTargetTypeField) {
-            NSString *key = target.id;
-            HYPFormField *field = [self.deletedFields objectForKey:key];
+            HYPFormField *field = [self.deletedFields objectForKey:target.id];
             if (field) {
-                [insertedIndexPaths addObject:[field.indexPath copy]];
+                [insertedIndexPaths addObject:field.indexPath];
                 HYPForm *form = self.forms[[field.section.form.position integerValue]];
                 HYPFormSection *section = form.sections[[field.section.position integerValue]];
-                [section.fields insertObject:field atIndex:[field.position integerValue]];
-                [self.deletedFields removeObjectForKey:key];
+                NSInteger fieldIndex = [field indexInForms:self.forms];
+                [section.fields insertObject:field atIndex:fieldIndex];
+                [self.deletedFields removeObjectForKey:target.id];
             }
-        } else {
+        } else if (target.type == HYPFormTargetTypeSection) {
             HYPFormSection *section = [self.deletedSections objectForKey:target.id];
             if (section) {
+                [insertedIndexPaths addObjectsFromArray:section.indexPaths];
+                NSInteger sectionIndex = [section indexInForms:self.forms];
+                HYPForm *form = self.forms[[section.form.position integerValue]];
+                [form.sections insertObject:section atIndex:sectionIndex];
                 [self.deletedSections removeObjectForKey:section.id];
-                [self insertedIndexPathsAndSectionIndexForSection:section
-                                                       completion:^(NSArray *indexPaths, NSInteger index) {
-                                                           [insertedIndexPaths addObjectsFromArray:indexPaths];
-                                                           HYPForm *form = self.forms[[section.form.position integerValue]];
-                                                           [form.sections insertObject:section atIndex:index];
-                                                       }];
             }
         }
     }];

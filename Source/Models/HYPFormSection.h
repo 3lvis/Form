@@ -9,18 +9,13 @@
 @import Foundation;
 
 @class HYPForm;
-
-typedef NS_ENUM(NSInteger, HYPFormSectionType) {
-    HYPFormSectionTypeDefault = 0,
-    HYPFormSectionTypePicture
-};
+@class HYPFormField;
 
 @interface HYPFormSection : NSObject
 
 @property (nonatomic, strong) NSMutableArray *fields;
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSNumber *position;
-@property (nonatomic) HYPFormSectionType type;
 @property (nonatomic, strong) HYPForm *form;
 
 @property (nonatomic) BOOL shouldValidate;
@@ -29,7 +24,14 @@ typedef NS_ENUM(NSInteger, HYPFormSectionType) {
 
 @property (nonatomic, strong) NSArray *indexPaths;
 
-- (HYPFormSectionType)typeFromTypeString:(NSString *)typeString;
-- (NSUInteger)breakpoints;
++ (HYPFormSection *)sectionWithID:(NSString *)id inForms:(NSArray *)forms;
++ (void)sectionAndIndexForField:(HYPFormField *)field
+                        inForms:(NSArray *)forms
+                     completion:(void (^)(BOOL found,
+                                          HYPFormSection *section,
+                                          NSInteger index))completion;
+
+- (NSInteger)indexInForms:(NSArray *)forms;
+- (void)removeField:(HYPFormField *)field inForms:(NSArray *)forms;
 
 @end

@@ -7,6 +7,8 @@
 
 @import Foundation;
 
+@class HYPFormField;
+
 @interface HYPForm : NSObject
 
 @property (nonatomic, strong) NSString *id;
@@ -16,7 +18,9 @@
 
 @property (nonatomic) BOOL shouldValidate;
 
-+ (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary;
++ (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
+                                         additionalValues:(void (^)(NSMutableDictionary *deletedFields,
+                                                                    NSMutableDictionary *deletedSections))additionalValues;
 
 - (NSArray *)fields;
 
