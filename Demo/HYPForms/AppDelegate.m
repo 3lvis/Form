@@ -44,9 +44,11 @@
                                   @"city" : @"HALDEN"
                                   };
 
-    HYPSampleCollectionViewController *controllers = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];
+    HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
+    controller.navigationBarHidden = YES;
 
-    self.window.rootViewController = controllers;
+    self.window.rootViewController = controller;
 
     [self.window makeKeyAndVisible];
 
