@@ -118,7 +118,10 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
                       didSelectedValue:(HYPFieldValue *)selectedValue
 {
     self.field.fieldValue = selectedValue;
+
     [self updateWithField:self.field];
+
+    [self validate];
 
     [self.popoverController dismissPopoverAnimated:YES];
 

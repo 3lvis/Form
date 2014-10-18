@@ -89,12 +89,18 @@
 
 - (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField
 {
-    [self.textField setValid:[self.field validate]];
+    if (self.textField.rawText) {
+        [self.textField setValid:[self.field validate]];
+    }
 }
 
 - (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
 {
     self.field.fieldValue = text;
+
+    if (!self.textField.valid) {
+        [self.textField setValid:[self.field validate]];
+    }
 
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];

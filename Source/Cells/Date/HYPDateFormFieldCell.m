@@ -82,6 +82,8 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
     [self updateWithField:self.field];
 
+    [self validate];
+
     [self.popoverController dismissPopoverAnimated:YES];
 
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
