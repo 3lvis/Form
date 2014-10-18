@@ -47,9 +47,9 @@
     }
 
     if (minimumLength > 0) {
-        if ([fieldValue respondsToSelector:@selector(length)]) {
+        if ([fieldValue isKindOfClass:[NSString class]]) {
             valid = ([fieldValue length] >= minimumLength);
-        } else if ([fieldValue respondsToSelector:@selector(stringValue)]) {
+        } else if ([fieldValue isKindOfClass:[NSNumber class]]) {
             valid = ([[fieldValue stringValue] length] >= minimumLength);
         }
     }
