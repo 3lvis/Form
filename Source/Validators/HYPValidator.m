@@ -47,7 +47,11 @@
     }
 
     if (minimumLength > 0) {
-        valid = ([fieldValue length] >= minimumLength);
+        if ([fieldValue respondsToSelector:@selector(stringValue)]) {
+            valid = ([[fieldValue stringValue] length] >= minimumLength);
+        } else {
+            valid = ([fieldValue length] >= minimumLength);
+        }
     }
 
     if (valid && self.validations[@"max_length"]) {
