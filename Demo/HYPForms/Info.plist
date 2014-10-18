@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>no.hyper.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>no.com.Hyper.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -22,6 +22,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DIN-BLAC.OTF</string>
+		<string>DIN-BOLD.OTF</string>
+		<string>DIN-LIGH.OTF</string>
+		<string>DIN-MEDI.OTF</string>
+		<string>DIN-REGU.OTF</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -38,14 +46,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>DIN-BLAC.OTF</string>
-		<string>DIN-BOLD.OTF</string>
-		<string>DIN-LIGH.OTF</string>
-		<string>DIN-MEDI.OTF</string>
-		<string>DIN-REGU.OTF</string>
 	</array>
 </dict>
 </plist>
