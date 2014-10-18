@@ -26,8 +26,8 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 
 @interface HYPFormsCollectionViewDataSource : NSObject <HYPFormsLayoutDataSource, UICollectionViewDataSource>
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView andDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
+                         andDictionary:(NSDictionary *)dictionary;
 
 @property (nonatomic, strong) NSMutableArray *forms;
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
