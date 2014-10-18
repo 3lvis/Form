@@ -27,9 +27,9 @@
         case HYPTextFieldTypeDate:
             [self setupDefaultTextField:textField];
             break;
+
         case HYPTextFieldTypeUnknown:
             abort();
-            break;
     }
 }
 

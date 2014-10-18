@@ -13,6 +13,7 @@
 		1478934C19DFCC9000BC2497 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 1478934B19DFCC9000BC2497 /* forms.json */; };
 		14B4C17919EC37FF00B1FE1A /* HYPFormTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */; };
 		14BF16C819EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */; };
+		14CCCAAF19F26600005EC649 /* HYPFormsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CCCAAE19F26600005EC649 /* HYPFormsTests.m */; };
 		4408F18A19E81EA6005AE53F /* HYPBaseFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F15F19E81EA6005AE53F /* HYPBaseFormFieldCell.m */; };
 		4408F18B19E81EA6005AE53F /* HYPFormFieldHeadingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F16119E81EA6005AE53F /* HYPFormFieldHeadingLabel.m */; };
 		4408F18C19E81EA6005AE53F /* HYPPopoverFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F16319E81EA6005AE53F /* HYPPopoverFormFieldCell.m */; };
@@ -62,6 +63,16 @@
 		890DF4637B5C51A0210949DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9243ED4871CF70DD889729A /* libPods.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		14CCCAB019F26600005EC649 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 441B779819DEC4F3006AF67C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 441B779F19DEC4F3006AF67C;
+			remoteInfo = HYPForms;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		07105CF419C6385F89E04B13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1427D96319EEACEB0076EC20 /* HYPImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPImageFormFieldCell.h; sourceTree = "<group>"; };
@@ -73,6 +84,9 @@
 		14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormTarget.m; sourceTree = "<group>"; };
 		14BF16C619EE4A0900C1F1C2 /* HYPSampleCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSampleCollectionViewController.h; sourceTree = "<group>"; };
 		14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSampleCollectionViewController.m; sourceTree = "<group>"; };
+		14CCCAAA19F26600005EC649 /* HYPFormsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYPFormsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CCCAAD19F26600005EC649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14CCCAAE19F26600005EC649 /* HYPFormsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPFormsTests.m; sourceTree = "<group>"; };
 		4408F15E19E81EA6005AE53F /* HYPBaseFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBaseFormFieldCell.h; sourceTree = "<group>"; };
 		4408F15F19E81EA6005AE53F /* HYPBaseFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBaseFormFieldCell.m; sourceTree = "<group>"; };
 		4408F16019E81EA6005AE53F /* HYPFormFieldHeadingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormFieldHeadingLabel.h; sourceTree = "<group>"; };
@@ -164,6 +178,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		14CCCAA719F26600005EC649 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		441B779D19DEC4F3006AF67C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,6 +203,23 @@
 				1427D96419EEACEB0076EC20 /* HYPImageFormFieldCell.m */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		14CCCAAB19F26600005EC649 /* HYPFormsTests */ = {
+			isa = PBXGroup;
+			children = (
+				14CCCAAE19F26600005EC649 /* HYPFormsTests.m */,
+				14CCCAAC19F26600005EC649 /* Supporting Files */,
+			);
+			path = HYPFormsTests;
+			sourceTree = "<group>";
+		};
+		14CCCAAC19F26600005EC649 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14CCCAAD19F26600005EC649 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		4408F15B19E81EA6005AE53F /* Source */ = {
@@ -328,6 +366,7 @@
 			children = (
 				4408F15B19E81EA6005AE53F /* Source */,
 				441B77A219DEC4F3006AF67C /* HYPForms */,
+				14CCCAAB19F26600005EC649 /* HYPFormsTests */,
 				441B77A119DEC4F3006AF67C /* Products */,
 				A2614FE9D8D55BAB932782D8 /* Pods */,
 				D3A80C2DC008F84358B1594C /* Frameworks */,
@@ -338,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				441B77A019DEC4F3006AF67C /* HYPForms.app */,
+				14CCCAAA19F26600005EC649 /* HYPFormsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -435,6 +475,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		14CCCAA919F26600005EC649 /* HYPFormsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14CCCAB419F26600005EC649 /* Build configuration list for PBXNativeTarget "HYPFormsTests" */;
+			buildPhases = (
+				14CCCAA619F26600005EC649 /* Sources */,
+				14CCCAA719F26600005EC649 /* Frameworks */,
+				14CCCAA819F26600005EC649 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14CCCAB119F26600005EC649 /* PBXTargetDependency */,
+			);
+			name = HYPFormsTests;
+			productName = HYPFormsTests;
+			productReference = 14CCCAAA19F26600005EC649 /* HYPFormsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		441B779F19DEC4F3006AF67C /* HYPForms */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 441B77C319DEC4F4006AF67C /* Build configuration list for PBXNativeTarget "HYPForms" */;
@@ -463,6 +521,10 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Hyper;
 				TargetAttributes = {
+					14CCCAA919F26600005EC649 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 441B779F19DEC4F3006AF67C;
+					};
 					441B779F19DEC4F3006AF67C = {
 						CreatedOnToolsVersion = 6.0.1;
 					};
@@ -482,11 +544,19 @@
 			projectRoot = "";
 			targets = (
 				441B779F19DEC4F3006AF67C /* HYPForms */,
+				14CCCAA919F26600005EC649 /* HYPFormsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		14CCCAA819F26600005EC649 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		441B779E19DEC4F3006AF67C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -540,6 +610,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		14CCCAA619F26600005EC649 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14CCCAAF19F26600005EC649 /* HYPFormsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		441B779C19DEC4F3006AF67C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -591,7 +669,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		14CCCAB119F26600005EC649 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 441B779F19DEC4F3006AF67C /* HYPForms */;
+			targetProxy = 14CCCAB019F26600005EC649 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		14CCCAB219F26600005EC649 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HYPFormsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYPForms.app/HYPForms";
+			};
+			name = Debug;
+		};
+		14CCCAB319F26600005EC649 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HYPFormsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYPForms.app/HYPForms";
+			};
+			name = Release;
+		};
 		441B77C119DEC4F4006AF67C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -678,6 +800,21 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HYPForms;
 				TARGETED_DEVICE_FAMILY = 2;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-gnu-conditional-omitted-operand",
+					"-Wno-float-equal",
+					"-Wno-assign-enum",
+					"-Wno-language-extension-token",
+					"-Wno-sign-compare",
+					"-Wno-missing-noreturn",
+					"-Wno-overriding-method-mismatch",
+					"-Wno-pedantic",
+					"-Wno-#warnings",
+					"-Wno-method-signatures",
+					"-Wno-super-class-method-mismatch",
+				);
 			};
 			name = Debug;
 		};
@@ -691,12 +828,36 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HYPForms;
 				TARGETED_DEVICE_FAMILY = 2;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-gnu-conditional-omitted-operand",
+					"-Wno-float-equal",
+					"-Wno-assign-enum",
+					"-Wno-language-extension-token",
+					"-Wno-sign-compare",
+					"-Wno-missing-noreturn",
+					"-Wno-overriding-method-mismatch",
+					"-Wno-pedantic",
+					"-Wno-#warnings",
+					"-Wno-method-signatures",
+					"-Wno-super-class-method-mismatch",
+				);
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		14CCCAB419F26600005EC649 /* Build configuration list for PBXNativeTarget "HYPFormsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14CCCAB219F26600005EC649 /* Debug */,
+				14CCCAB319F26600005EC649 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		441B779B19DEC4F3006AF67C /* Build configuration list for PBXProject "HYPForms" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

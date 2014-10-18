@@ -28,17 +28,17 @@
     _actionTypeString = actionTypeString;
 
     if ([actionTypeString isEqualToString:@"show"]) {
-        _actionType = HYPFormTargetActionShow;
+        self.actionType = HYPFormTargetActionShow;
     } else if ([actionTypeString isEqualToString:@"hide"]) {
-        _actionType = HYPFormTargetActionHide;
+        self.actionType = HYPFormTargetActionHide;
     } else if ([actionTypeString isEqualToString:@"enable"]) {
-        _actionType = HYPFormTargetActionEnable;
+        self.actionType = HYPFormTargetActionEnable;
     } else if ([actionTypeString isEqualToString:@"disable"]) {
-        _actionType = HYPFormTargetActionDisable;
+        self.actionType = HYPFormTargetActionDisable;
     } else if ([actionTypeString isEqualToString:@"update"]){
-        _actionType = HYPFormTargetActionUpdate;
+        self.actionType = HYPFormTargetActionUpdate;
     } else {
-        _actionType = HYPFormTargetActionNone;
+        self.actionType = HYPFormTargetActionNone;
     }
 }
 
