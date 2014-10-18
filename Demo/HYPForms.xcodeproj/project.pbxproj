@@ -800,6 +800,21 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HYPForms;
 				TARGETED_DEVICE_FAMILY = 2;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-gnu-conditional-omitted-operand",
+					"-Wno-float-equal",
+					"-Wno-assign-enum",
+					"-Wno-language-extension-token",
+					"-Wno-sign-compare",
+					"-Wno-missing-noreturn",
+					"-Wno-overriding-method-mismatch",
+					"-Wno-pedantic",
+					"-Wno-#warnings",
+					"-Wno-method-signatures",
+					"-Wno-super-class-method-mismatch",
+				);
 			};
 			name = Debug;
 		};
@@ -813,6 +828,21 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HYPForms;
 				TARGETED_DEVICE_FAMILY = 2;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-gnu-conditional-omitted-operand",
+					"-Wno-float-equal",
+					"-Wno-assign-enum",
+					"-Wno-language-extension-token",
+					"-Wno-sign-compare",
+					"-Wno-missing-noreturn",
+					"-Wno-overriding-method-mismatch",
+					"-Wno-pedantic",
+					"-Wno-#warnings",
+					"-Wno-method-signatures",
+					"-Wno-super-class-method-mismatch",
+				);
 			};
 			name = Release;
 		};
@@ -826,6 +856,7 @@
 				14CCCAB319F26600005EC649 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		441B779B19DEC4F3006AF67C /* Build configuration list for PBXProject "HYPForms" */ = {
 			isa = XCConfigurationList;

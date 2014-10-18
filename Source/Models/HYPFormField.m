@@ -43,7 +43,13 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             }
         } break;
 
-        default: break;
+        case HYPFormFieldTypeDefault:
+        case HYPFormFieldTypeNone:
+        case HYPFormFieldTypeBlank:
+        case HYPFormFieldTypeSelect:
+        case HYPFormFieldTypePicture:
+        case HYPFormFieldTypeImage:
+            break;
     }
 
     _fieldValue = resultValue;
