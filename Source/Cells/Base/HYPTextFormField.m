@@ -83,6 +83,8 @@
 {
     _valid = valid;
 
+    if (!self.isEnabled) return;
+
     if (valid) {
         self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
         self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
