@@ -67,7 +67,10 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 {
     [super updateWithField:field];
 
-    if (!field.fieldValue) return;
+    if (!field.fieldValue) {
+        self.textField.rawText = nil;
+        return;
+    }
 
     if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
@@ -86,7 +89,7 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 
 - (void)validate
 {
-    NSLog(@"validation in progress");
+    [self.textField setValid:[self.field validate]];
 }
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
@@ -118,7 +121,10 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
                       didSelectedValue:(HYPFieldValue *)selectedValue
 {
     self.field.fieldValue = selectedValue;
+
     [self updateWithField:self.field];
+
+    [self validate];
 
     [self.popoverController dismissPopoverAnimated:YES];
 

@@ -55,11 +55,12 @@
     self.textField.rawText         = field.fieldValue;
     self.textField.typeString      = field.typeString;
     self.textField.enabled         = !field.disabled;
+    self.textField.valid           = field.valid;
 }
 
 - (void)validate
 {
-    [self.textField setValid:self.field.isValid];
+    [self.textField setValid:[self.field validate]];
 }
 
 #pragma mark - Private methods
@@ -88,12 +89,18 @@
 
 - (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField
 {
-    [self.textField setValid:self.field.isValid];
+    if (self.textField.rawText) {
+        [self.textField setValid:[self.field validate]];
+    }
 }
 
 - (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
 {
     self.field.fieldValue = text;
+
+    if (!self.textField.valid) {
+        [self.textField setValid:[self.field validate]];
+    }
 
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];

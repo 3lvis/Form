@@ -291,10 +291,24 @@
 
 - (void)validateForms
 {
+    NSMutableSet *validatedFields = [NSMutableSet set];
+
     NSArray *cells = [self.collectionView visibleCells];
     for (HYPBaseFormFieldCell *cell in cells) {
         if ([cell respondsToSelector:@selector(validate)]) {
             [cell validate];
+
+            if (cell.field.id) {
+                [validatedFields addObject:cell.field.id];
+            }
+        }
+    }
+
+    for (HYPForm *form in self.forms) {
+        for (HYPFormField *field in form.fields) {
+            if (![validatedFields containsObject:field.id]) {
+                [field validate];
+            }
         }
     }
 }
@@ -303,7 +317,7 @@
 {
     for (HYPForm *form in self.forms) {
         for (HYPFormField *field in form.fields) {
-            if (![field isValid]) {
+            if (![field validate]) {
                 return NO;
             }
         }

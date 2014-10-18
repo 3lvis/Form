@@ -97,6 +97,18 @@
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    [self setToolbarItems:@[[[UIBarButtonItem alloc] initWithTitle:@"Validate"
+                                                             style:UIBarButtonItemStyleDone
+                                                            target:self
+                                                            action:@selector(validateButtonAction)]]];
+
+    [self.navigationController setToolbarHidden:NO animated:YES];
+}
+
 #pragma mark - UICollectionViewDelegate
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -143,6 +155,13 @@
 - (void)imagePicker:(HYPImagePicker *)imagePicker didPickedImage:(UIImage *)image
 {
     NSLog(@"picture gotten");
+}
+
+#pragma mark - Actions
+
+- (void)validateButtonAction
+{
+    [self.dataSource validateForms];
 }
 
 @end

@@ -40,14 +40,18 @@
         return YES;
     }
 
-    minimumLength = [self.validations[@"min_length"] integerValue];
+    if (self.validations[@"min_length"] != nil) {
+        minimumLength = [self.validations[@"min_length"] integerValue];
+    }
 
     if (minimumLength == 0 && required) {
         minimumLength = 1;
     }
 
     if (minimumLength > 0) {
-        if ([fieldValue isKindOfClass:[NSString class]]) {
+        if (!fieldValue) {
+            valid = NO;
+        } else if ([fieldValue isKindOfClass:[NSString class]]) {
             valid = ([fieldValue length] >= minimumLength);
         } else if ([fieldValue isKindOfClass:[NSNumber class]]) {
             valid = ([[fieldValue stringValue] length] >= minimumLength);

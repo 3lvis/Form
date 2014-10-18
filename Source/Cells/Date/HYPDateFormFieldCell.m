@@ -64,7 +64,7 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
 - (void)validate
 {
-    NSLog(@"validation in progress");
+    [self.textField setValid:[self.field validate]];
 }
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
@@ -81,6 +81,8 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
     self.field.fieldValue = date;
 
     [self updateWithField:self.field];
+
+    [self validate];
 
     [self.popoverController dismissPopoverAnimated:YES];
 

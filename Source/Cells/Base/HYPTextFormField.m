@@ -83,6 +83,8 @@
 {
     _valid = valid;
 
+    if (!self.isEnabled) return;
+
     if (valid) {
         self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
         self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
@@ -162,17 +164,11 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    self.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
-    self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
-
     self.modified = NO;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-    self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
-
     if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
         [self.formFieldDelegate textFormFieldDidEndEditing:self];
     }

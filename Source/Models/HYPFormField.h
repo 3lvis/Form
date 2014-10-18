@@ -26,19 +26,23 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSArray *values;
 @property (nonatomic, strong) NSNumber *size;
 @property (nonatomic, strong) NSNumber *position;
 @property (nonatomic, strong) id fieldValue;
 @property (nonatomic, strong) NSString *typeString;
-@property (nonatomic, strong) NSDictionary *validations;
-@property (nonatomic, strong) HYPFormSection *section;
 @property (nonatomic) HYPFormFieldType type;
-@property (nonatomic) BOOL sectionSeparator;
+@property (nonatomic, strong) NSArray *values;
 @property (nonatomic) BOOL disabled;
-@property (nonatomic, strong) NSIndexPath *indexPath;
+
+@property (nonatomic, strong) NSDictionary *validations;
 @property (nonatomic, strong) NSString *formula;
 @property (nonatomic, strong) NSArray *targets;
+
+@property (nonatomic, strong) HYPFormSection *section;
+
+@property (nonatomic) BOOL valid;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic) BOOL sectionSeparator;
 
 + (HYPFormField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(HYPFormSection *)section;
 
@@ -48,7 +52,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 - (NSInteger)indexInForms:(NSArray *)forms;
 
-- (BOOL)isValid;
+- (BOOL)validate;
 - (id)rawFieldValue;
 - (id)inputValidator;
 - (id)formatter;
