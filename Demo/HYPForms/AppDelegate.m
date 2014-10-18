@@ -38,7 +38,7 @@
                                   @"employment_percent" : @"100",
                                   @"fixed_pay_premium_percent" : @"2",
                                   @"fixed_pay_premium_currency" : @"150",
-                                  @"salary_type" : @4,
+                                  @"remuneration" : @2,
                                   @"fixed_pay_level" : @1,
                                   @"position" : @3,
                                   @"city" : @"HALDEN"
