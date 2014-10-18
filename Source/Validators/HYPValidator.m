@@ -6,6 +6,7 @@
 //
 
 #import "HYPValidator.h"
+#import "HYPFieldValue.h"
 
 @interface HYPValidator ()
 
@@ -30,12 +31,23 @@
     if (!self.validations) return YES;
 
     BOOL valid = YES;
-    BOOL required = (self.validations[@"required"]);
+    BOOL required = (self.validations[@"required"] != nil);
+    NSUInteger minimumLength = 0;
 
     if (!fieldValue && !required) return YES;
 
-    if (self.validations[@"min_length"]) {
-        valid = ([fieldValue length] >= (NSUInteger)[self.validations[@"min_length"] unsignedIntegerValue]);
+    if ([fieldValue isKindOfClass:[HYPFieldValue class]]) {
+        return YES;
+    }
+
+    minimumLength = [self.validations[@"min_length"] integerValue];
+
+    if (minimumLength == 0 && required) {
+        minimumLength = 1;
+    }
+
+    if (minimumLength > 0) {
+        valid = ([fieldValue length] >= minimumLength);
     }
 
     if (valid && self.validations[@"max_length"]) {
