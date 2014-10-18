@@ -30,7 +30,7 @@
     if (!self.validations) return YES;
 
     BOOL valid = YES;
-    BOOL required = (self.validations[@"required"]);
+    BOOL required = (self.validations[@"required"] != nil);
 
     if (!fieldValue && !required) return YES;
 
