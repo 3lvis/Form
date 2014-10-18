@@ -107,6 +107,18 @@
                                                object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    [self setToolbarItems:@[[[UIBarButtonItem alloc] initWithTitle:@"Validate"
+                                                             style:UIBarButtonItemStyleDone
+                                                            target:self
+                                                            action:@selector(validateButtonAction)]]];
+
+    [self.navigationController setToolbarHidden:NO animated:YES];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -175,6 +187,13 @@
             self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
         }
     }];
+}
+
+#pragma mark - Actions
+
+- (void)validateButtonAction
+{
+    [self.dataSource validateForms];
 }
 
 @end
