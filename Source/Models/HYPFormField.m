@@ -153,7 +153,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 #pragma mark - Public Methods
 
-+ (HYPFormField *)fieldWithID:(NSString *)id inForms:(NSArray *)forms
++ (HYPFormField *)fieldWithID:(NSString *)id inForms:(NSArray *)forms withIndexPath:(BOOL)withIndexPath
 {
     __block BOOL found = NO;
     __block HYPFormField *foundField = nil;
@@ -165,7 +165,9 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
         [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
             if ([field.id isEqualToString:id]) {
-                field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
+                if (withIndexPath) {
+                    field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
+                }
                 foundField = field;
 
                 found = YES;
@@ -175,6 +177,24 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     }];
     
     return foundField;
+}
+
+- (NSInteger)indexInForms:(NSArray *)forms
+{
+    HYPForm *form = forms[[self.section.form.position integerValue]];
+
+    __block NSInteger index = 0;
+
+    [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger sectionIndex, BOOL *sectionStop) {
+        [aSection.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger fieldIndex, BOOL *fieldStop) {
+            if ([aField.position integerValue] >= [self.position integerValue]) {
+                index = fieldIndex;
+                *fieldStop = YES;
+            }
+        }];
+    }];
+
+    return index;
 }
 
 @end
