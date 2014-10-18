@@ -127,16 +127,27 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:forms];
+            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:forms withIndexPath:YES];
             [fields addEntriesFromDictionary:@{target.id : field}];
+
+        } else if (target.type == HYPFormTargetTypeSection) {
+
+            HYPFormSection *section = [HYPFormSection sectionWithID:target.id inForms:forms];
+            [sections addEntriesFromDictionary:@{target.id : section}];
+        }
+    }
+
+    for (HYPFormTarget *target in targetsToRun) {
+
+        if (target.type == HYPFormTargetTypeField) {
+
+            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:forms withIndexPath:NO];
             HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:forms];
             [section removeField:field inForms:forms];
 
         } else if (target.type == HYPFormTargetTypeSection) {
 
             HYPFormSection *section = [HYPFormSection sectionWithID:target.id inForms:forms];
-            [sections addEntriesFromDictionary:@{target.id : section}];
-
             HYPForm *form = forms[[section.form.position integerValue]];
             NSInteger index = [section indexInForms:forms];
             [form.sections removeObjectAtIndex:index];
@@ -221,7 +232,8 @@
 {
     for (HYPFormSection *section in self.sections) {
         for (HYPFormField *field in section.fields) {
-            NSLog(@"field key: %@ --- value: %@ --- position: %@", field.id, field.fieldValue, field.position);
+            NSLog(@"field key: %@ --- value: %@ (%@ : %@)", field.id, field.fieldValue,
+                  field.section.position, field.position);
         }
     }
 }
