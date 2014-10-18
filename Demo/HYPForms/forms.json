@@ -1884,6 +1884,10 @@
             "size":40,
             "values":[
               {
+                "id": 1,
+                "title": "Kjøpmann"
+              },
+              {
                 "id": 2,
                 "title": "NK"
               },
@@ -2060,7 +2064,7 @@
         "id":"ansattelsesforholdet-3",
         "fields":[
           {
-            "id":"salary_type",
+            "id":"remuneration",
             "title":"Lønn",
             "type":"select",
             "size":33,
