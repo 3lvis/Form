@@ -47,10 +47,10 @@
     }
 
     if (minimumLength > 0) {
-        if ([fieldValue respondsToSelector:@selector(stringValue)]) {
-            valid = ([[fieldValue stringValue] length] >= minimumLength);
-        } else {
+        if ([fieldValue respondsToSelector:@selector(length)]) {
             valid = ([fieldValue length] >= minimumLength);
+        } else if ([fieldValue respondsToSelector:@selector(stringValue)]) {
+            valid = ([[fieldValue stringValue] length] >= minimumLength);
         }
     }
 
