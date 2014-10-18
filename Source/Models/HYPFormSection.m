@@ -31,22 +31,18 @@
         [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection,
                                                     NSUInteger sectionIndex,
                                                     BOOL *sectionStop) {
-            if ([aSection.id isEqualToString:id]) {
-                NSInteger fieldsInSectionCount = fieldsIndex + aSection.fields.count;
-                for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
-                    [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
+            [aSection.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger fieldIndex, BOOL *fieldStop) {
+                if ([aSection.id isEqualToString:id]) {
+                    foundSection = aSection;
+                    [indexPaths addObject:[NSIndexPath indexPathForRow:fieldsIndex inSection:formIndex]];
                 }
-                aSection.indexPaths = indexPaths;
-                foundSection = aSection;
 
-                found = YES;
-                *sectionStop = YES;
-            }
-
-            fieldsIndex += aSection.fields.count;
+                fieldsIndex++;
+            }];
         }];
     }];
 
+    foundSection.indexPaths = indexPaths;
     return foundSection;
 }
 
@@ -83,7 +79,7 @@
     __block NSInteger index = 0;
 
     [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger idx, BOOL *stop) {
-        if ([aSection.id isEqualToString:self.id]) {
+        if ([aSection.position integerValue] >= [self.position integerValue]) {
             index = idx;
             *stop = YES;
         }
