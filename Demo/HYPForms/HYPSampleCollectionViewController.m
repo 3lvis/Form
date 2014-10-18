@@ -97,24 +97,7 @@
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidChangeFrame:)
-                                                 name:UIKeyboardDidChangeFrameNotification
-                                               object:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardDidChangeFrameNotification
-                                                  object:nil];
-}
+#pragma mark - UICollectionViewDelegate
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -160,21 +143,6 @@
 - (void)imagePicker:(HYPImagePicker *)imagePicker didPickedImage:(UIImage *)image
 {
     NSLog(@"picture gotten");
-}
-
-- (void)keyboardDidChangeFrame:(NSNotification *)notification
-{
-    CGRect keyboardEndFrame;
-    [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
-    CGRect keyboardFrame = [self.view convertRect:keyboardEndFrame fromView:nil];
-
-    [UIView animateWithDuration:0.3 animations:^{
-        if (CGRectIntersectsRect(keyboardFrame, self.view.frame)) {
-            self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, CGRectGetHeight(keyboardFrame), 0.0f);
-        } else {
-            self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
-        }
-    }];
 }
 
 @end

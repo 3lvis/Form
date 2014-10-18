@@ -25,23 +25,25 @@
 @interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *valuesDictionary;
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, weak) UICollectionView *collectionView;
 
 @end
 
 @implementation HYPFormsCollectionViewDataSource
 
+#pragma mark - Dealloc
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidChangeFrameNotification
+                                                  object:nil];
+}
+
 #pragma mark - Initializers
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
-{
-    self = [self initWithCollectionView:collectionView andDictionary:nil];
-    if (!self) return nil;
-
-    return self;
-}
-
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView andDictionary:(NSDictionary *)dictionary
+                         andDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
     if (!self) return nil;
@@ -49,6 +51,7 @@
     [self.valuesDictionary addEntriesFromDictionary:dictionary];
 
     _collectionView = collectionView;
+
     collectionView.dataSource = self;
 
     [collectionView registerClass:[HYPBlankFormFieldCell class]
@@ -69,6 +72,11 @@
     [collectionView registerClass:[HYPFormHeaderView class]
        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
               withReuseIdentifier:HYPFormHeaderReuseIdentifier];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidChangeFrame:)
+                                                 name:UIKeyboardDidChangeFrameNotification
+                                               object:nil];
 
     return self;
 }
@@ -626,6 +634,23 @@
     if (completion) {
         completion(indexPaths, sectionIndex);
     }
+}
+
+#pragma mark - Keyboard Support
+
+- (void)keyboardDidChangeFrame:(NSNotification *)notification
+{
+    CGRect keyboardEndFrame;
+    [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    CGRect keyboardFrame = [self.collectionView convertRect:keyboardEndFrame fromView:nil];
+
+    [UIView animateWithDuration:0.3 animations:^{
+        if (CGRectIntersectsRect(keyboardFrame, self.collectionView.frame)) {
+            self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, CGRectGetHeight(keyboardFrame), 0.0f);
+        } else {
+            self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+        }
+    }];
 }
 
 @end
