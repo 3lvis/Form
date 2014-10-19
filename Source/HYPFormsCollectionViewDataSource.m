@@ -99,9 +99,9 @@
     _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.valuesDictionary
                                            additionalValues:^(NSMutableDictionary *deletedFields,
                                                               NSMutableDictionary *deletedSections) {
-        [self.deletedFields addEntriesFromDictionary:deletedFields];
-        [self.deletedSections addEntriesFromDictionary:deletedSections];
-    }];
+                                               [self.deletedFields addEntriesFromDictionary:deletedFields];
+                                               [self.deletedSections addEntriesFromDictionary:deletedSections];
+                                           }];
 
     return _forms;
 }
@@ -156,10 +156,7 @@
     HYPForm *form = self.forms[indexPath.section];
     NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
-    id value = [self.valuesDictionary objectForKey:field.id];
-    if (value) {
-        field.fieldValue = value;
-    }
+    field.fieldValue = [self.valuesDictionary objectForKey:field.id];
 
     NSString *identifier;
 
@@ -510,6 +507,8 @@
 
         if (result) {
             [self.valuesDictionary setObject:result forKey:field.id];
+        } else {
+            [self.valuesDictionary removeObjectForKey:field.id];
         }
     }];
 
