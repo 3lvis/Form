@@ -26,7 +26,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *valuesDictionary;
 @property (nonatomic, weak) UICollectionView *collectionView;
-
+@property (nonatomic) UIEdgeInsets originalInset;
 @end
 
 @implementation HYPFormsCollectionViewDataSource
@@ -53,6 +53,8 @@
     _collectionView = collectionView;
 
     collectionView.dataSource = self;
+
+    _originalInset = collectionView.contentInset;
 
     [collectionView registerClass:[HYPBlankFormFieldCell class]
        forCellWithReuseIdentifier:HYPBlankFormFieldCellIdentifier];
@@ -659,11 +661,13 @@
     [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
     CGRect keyboardFrame = [self.collectionView convertRect:keyboardEndFrame fromView:nil];
 
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3f animations:^{
         if (CGRectIntersectsRect(keyboardFrame, self.collectionView.frame)) {
-            self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, CGRectGetHeight(keyboardFrame), 0.0f);
+            UIEdgeInsets inset = self.originalInset;
+            inset.bottom += CGRectGetHeight(keyboardFrame);
+            self.collectionView.contentInset = inset;
         } else {
-            self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+            self.collectionView.contentInset = self.originalInset;
         }
     }];
 }
