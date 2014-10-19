@@ -156,7 +156,6 @@
     HYPForm *form = self.forms[indexPath.section];
     NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
-    field.fieldValue = [self.valuesDictionary objectForKey:field.id];
 
     NSString *identifier;
 
@@ -504,6 +503,7 @@
         }
 
         id result = [field.formula hyp_runFormulaWithDictionary:values];
+        field.fieldValue = result;
 
         if (result) {
             [self.valuesDictionary setObject:result forKey:field.id];
