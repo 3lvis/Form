@@ -17,7 +17,11 @@
 
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:(NSString *)fieldValue];
 
+#if DEBUG == 1
+    return YES;
+#else
     return ssn.isValid;
+#endif
 }
 
 @end
