@@ -34,11 +34,11 @@
                                   @"social_security_number" : @"28118240000",
                                   @"start_date" : @"2014-10-31 23:00:00 +00:00",
                                   @"worker_id" : @"120000",
-                                  @"employment_type" : @"fast",
+                                  @"employment_type" : @1,
                                   @"employment_percent" : @"100",
                                   @"fixed_pay_premium_percent" : @"2",
                                   @"fixed_pay_premium_currency" : @"150",
-                                  @"remuneration" : @2,
+                                  @"salary_type" : @2,
                                   @"fixed_pay_level" : @1,
                                   @"position" : @3,
                                   @"city" : @"HALDEN"

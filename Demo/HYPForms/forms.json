@@ -1884,10 +1884,6 @@
             "size":40,
             "values":[
               {
-                "id": 1,
-                "title": "Kjøpmann"
-              },
-              {
                 "id": 2,
                 "title": "NK"
               },
@@ -1919,7 +1915,7 @@
             "size":30,
             "values":[
               {
-                "id":"fast",
+                "id":1,
                 "title":"Fast",
                 "targets":[
                   {
@@ -1935,7 +1931,7 @@
                 ]
               },
               {
-                "id":"midlertidig",
+                "id":2,
                 "title":"Midlertidig",
                 "targets":[
                   {
@@ -2064,7 +2060,7 @@
         "id":"ansattelsesforholdet-3",
         "fields":[
           {
-            "id":"remuneration",
+            "id":"salary_type",
             "title":"Lønn",
             "type":"select",
             "size":33,
@@ -2588,11 +2584,11 @@
             "size":20,
             "values":[
               {
-                "id":"ja",
+                "id":1,
                 "title":"Ja"
               },
               {
-                "id":"nei",
+                "id":0,
                 "title":"Nei"
               }
             ]
