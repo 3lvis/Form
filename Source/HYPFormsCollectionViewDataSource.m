@@ -490,7 +490,9 @@
             if (value) {
                 if ([value isKindOfClass:[HYPFieldValue class]]) {
                     HYPFieldValue *fieldValue = (HYPFieldValue *)value;
-                    [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                    if (fieldValue.value) {
+                        [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                    }
                 } else if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
                     [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
