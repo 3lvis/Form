@@ -21,6 +21,7 @@
 #import "UIScreen+HYPLiveBounds.h"
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPFormula.h"
+#import "UIDevice+HYPRealOrientation.h"
 
 @interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate>
 
@@ -35,9 +36,9 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardDidChangeFrameNotification
-                                                  object:nil];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [center removeObserver:self name:UIKeyboardDidHideNotification object:nil];
 }
 
 #pragma mark - Initializers
@@ -76,8 +77,13 @@
               withReuseIdentifier:HYPFormHeaderReuseIdentifier];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidChangeFrame:)
-                                                 name:UIKeyboardDidChangeFrameNotification
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
                                                object:nil];
 
     return self;
@@ -655,20 +661,33 @@
 
 #pragma mark - Keyboard Support
 
-- (void)keyboardDidChangeFrame:(NSNotification *)notification
+- (void)keyboardDidShow:(NSNotification *)notification
 {
     CGRect keyboardEndFrame;
     [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
-    CGRect keyboardFrame = [self.collectionView convertRect:keyboardEndFrame fromView:nil];
 
-    [UIView animateWithDuration:0.3f animations:^{
-        if (CGRectIntersectsRect(keyboardFrame, self.collectionView.frame)) {
-            UIEdgeInsets inset = self.originalInset;
-            inset.bottom += CGRectGetHeight(keyboardFrame);
-            self.collectionView.contentInset = inset;
-        } else {
-            self.collectionView.contentInset = self.originalInset;
+    NSInteger height = CGRectGetHeight(keyboardEndFrame);
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
+        if ([[UIDevice currentDevice] hyp_isLandscape]) {
+            height = CGRectGetWidth(keyboardEndFrame);
         }
+    }
+
+    UIEdgeInsets inset = self.originalInset;
+    inset.bottom += height;
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.collectionView.contentInset = inset;
+    }];
+}
+
+- (void)keyboardDidHide:(NSNotification *)notification
+{
+    CGRect keyboardEndFrame;
+    [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.collectionView.contentInset = self.originalInset;
     }];
 }
 

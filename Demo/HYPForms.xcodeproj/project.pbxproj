@@ -14,6 +14,7 @@
 		14B4C17919EC37FF00B1FE1A /* HYPFormTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */; };
 		14BF16C819EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */; };
 		14CCCAAF19F26600005EC649 /* HYPFormsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CCCAAE19F26600005EC649 /* HYPFormsTests.m */; };
+		14F1554C19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F1554B19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m */; };
 		4408F18A19E81EA6005AE53F /* HYPBaseFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F15F19E81EA6005AE53F /* HYPBaseFormFieldCell.m */; };
 		4408F18B19E81EA6005AE53F /* HYPFormFieldHeadingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F16119E81EA6005AE53F /* HYPFormFieldHeadingLabel.m */; };
 		4408F18C19E81EA6005AE53F /* HYPPopoverFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F16319E81EA6005AE53F /* HYPPopoverFormFieldCell.m */; };
@@ -87,6 +88,8 @@
 		14CCCAAA19F26600005EC649 /* HYPFormsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYPFormsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CCCAAD19F26600005EC649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14CCCAAE19F26600005EC649 /* HYPFormsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPFormsTests.m; sourceTree = "<group>"; };
+		14F1554A19F3EBBC00086002 /* UIDevice+HYPRealOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+HYPRealOrientation.h"; sourceTree = "<group>"; };
+		14F1554B19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+HYPRealOrientation.m"; sourceTree = "<group>"; };
 		4408F15E19E81EA6005AE53F /* HYPBaseFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBaseFormFieldCell.h; sourceTree = "<group>"; };
 		4408F15F19E81EA6005AE53F /* HYPBaseFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBaseFormFieldCell.m; sourceTree = "<group>"; };
 		4408F16019E81EA6005AE53F /* HYPFormFieldHeadingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormFieldHeadingLabel.h; sourceTree = "<group>"; };
@@ -423,6 +426,8 @@
 		4445D50F19EBC6B80034A5D7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				14F1554A19F3EBBC00086002 /* UIDevice+HYPRealOrientation.h */,
+				14F1554B19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m */,
 				4445D51519EBC78A0034A5D7 /* UIColor+REMAColors.h */,
 				4445D51619EBC78A0034A5D7 /* UIColor+REMAColors.m */,
 				4445D51719EBC78A0034A5D7 /* UIFont+REMAStyles.h */,
@@ -644,6 +649,7 @@
 				4445D51219EBC6B80034A5D7 /* HYPFormTimeViewController.m in Sources */,
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
 				44BDD18D19EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m in Sources */,
+				14F1554C19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m in Sources */,
 				4408F1BA19E81F67005AE53F /* HYPPhoneNumberFormatter.m in Sources */,
 				4408F1BD19E81F67005AE53F /* HYPFloatInputValidator.m in Sources */,
 				1427D96519EEACEB0076EC20 /* HYPImageFormFieldCell.m in Sources */,
