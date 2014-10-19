@@ -92,6 +92,10 @@
 {
     [super viewDidLoad];
 
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
@@ -146,6 +150,8 @@
                                 duration:(NSTimeInterval)duration
 {
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
+    [self.view endEditing:YES];
 
     [self.collectionViewLayout invalidateLayout];
 }
