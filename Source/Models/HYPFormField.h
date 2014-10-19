@@ -52,6 +52,8 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 - (NSInteger)indexInForms:(NSArray *)forms;
 
+- (NSMutableDictionary *)valuesForFormulaInForms:(NSArray *)forms;
+
 - (BOOL)validate;
 - (id)rawFieldValue;
 - (id)inputValidator;

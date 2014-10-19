@@ -14,6 +14,8 @@
 #import "HYPFieldValue.h"
 #import "HYPClassFactory.h"
 
+#import "NSString+HYPWordExtractor.h"
+
 static NSString * const HYPFormFieldSelectType = @"select";
 static NSString * const HYPInputValidatorSelector = @"validateString:text:";
 static NSString * const HYPFormatterClass = @"HYP%@Formatter";
@@ -213,6 +215,34 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     }];
 
     return index;
+}
+
+- (NSMutableDictionary *)valuesForFormulaInForms:(NSArray *)forms
+{
+    NSMutableDictionary *values = [NSMutableDictionary dictionary];
+
+    NSArray *fieldIDs = [self.formula hyp_variables];
+
+    for (NSString *fieldID in fieldIDs) {
+        HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:forms withIndexPath:NO];
+        id value = targetField.fieldValue;
+        if (value) {
+            if ([value isKindOfClass:[HYPFieldValue class]]) {
+                HYPFieldValue *fieldValue = (HYPFieldValue *)value;
+                [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+            } else if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
+                [values addEntriesFromDictionary:@{fieldID : value}];
+            } else {
+                if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+                    [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                } else {
+                    [values addEntriesFromDictionary:@{fieldID : @""}];
+                }
+            }
+        }
+    }
+
+    return values;
 }
 
 @end
