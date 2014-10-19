@@ -340,11 +340,10 @@
         self.configureFieldUpdatedBlock(fieldCell, field);
     }
 
-    if (field.fieldValue) {
-        BOOL isFieldValue = ([field.fieldValue isKindOfClass:[HYPFieldValue class]]);
-        self.valuesDictionary[field.id] = (isFieldValue) ? [field.fieldValue id] : field.fieldValue;
-    } else {
+    if (!field.fieldValue) {
         [self.valuesDictionary removeObjectForKey:field.id];
+    } else {
+        self.valuesDictionary[field.id] = field.fieldValue;
     }
 
     if (field.fieldValue && [field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
