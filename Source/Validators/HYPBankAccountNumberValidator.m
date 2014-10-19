@@ -17,7 +17,11 @@
 
     HYPNorwegianAccountNumber *accountNumber = [[HYPNorwegianAccountNumber alloc] initWithString:(NSString *)fieldValue];
 
+#if DEBUG == 1
+    return YES;
+#else
     return accountNumber.isValid;
+#endif
 }
 
 @end
