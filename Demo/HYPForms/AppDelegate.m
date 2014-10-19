@@ -36,10 +36,10 @@
                                   @"worker_id" : @"120000",
                                   @"employment_type" : @1,
                                   @"employment_percent" : @"100",
-                                  @"fixed_pay_premium_percent" : @"2",
-                                  @"fixed_pay_premium_currency" : @"150",
+                                  @"fixed_pay_premium_percent" : @"10",
+                                  @"fixed_pay_premium_currency" : @"10",
                                   @"salary_type" : @2,
-                                  @"fixed_pay_level" : @1,
+                                  @"fixed_pay_level" : @4,
                                   @"position" : @3,
                                   @"city" : @"HALDEN"
                                   };
