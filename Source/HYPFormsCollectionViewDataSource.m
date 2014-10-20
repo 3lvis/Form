@@ -358,6 +358,9 @@
 - (void)resetForms
 {
     self.forms = nil;
+    [self.collapsedForms removeAllObjects];
+    [self.deletedFields removeAllObjects];
+    [self.deletedSections removeAllObjects];
     [self.collectionView reloadData];
 }
 
