@@ -15,11 +15,10 @@
 {
     if (![super validateFieldValue:fieldValue]) return NO;
 
-    HYPNorwegianAccountNumber *accountNumber = [[HYPNorwegianAccountNumber alloc] initWithString:(NSString *)fieldValue];
-
 #if DEBUG == 1
     return YES;
 #else
+    HYPNorwegianAccountNumber *accountNumber = [[HYPNorwegianAccountNumber alloc] initWithString:(NSString *)fieldValue];
     return accountNumber.isValid;
 #endif
 }
