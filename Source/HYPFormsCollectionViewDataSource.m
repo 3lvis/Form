@@ -374,6 +374,9 @@
 
     if (!field.fieldValue) {
         [self.valuesDictionary removeObjectForKey:field.id];
+    } else if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+        HYPFieldValue *fieldValue = field.fieldValue;
+        self.valuesDictionary[field.id] = fieldValue.id;
     } else {
         self.valuesDictionary[field.id] = field.fieldValue;
     }
@@ -517,22 +520,30 @@
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
 
         for (NSString *fieldID in fieldIDs) {
+            HYPFormField *field = [self fieldForTarget:target];
+
             id value = [self.valuesDictionary objectForKey:fieldID];
             if (value) {
-                if ([value isKindOfClass:[HYPFieldValue class]]) {
-                    HYPFieldValue *fieldValue = (HYPFieldValue *)value;
+                HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:self.forms withIndexPath:NO];
+
+                if (targetField.type == HYPFormFieldTypeSelect) {
+
+                    HYPFieldValue *fieldValue = targetField.fieldValue;
                     if (fieldValue.value) {
                         [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
                     }
-                } else if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
-                    [values addEntriesFromDictionary:@{fieldID : value}];
+
                 } else {
-                    if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                        [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
-                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                    if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
+                        [values addEntriesFromDictionary:@{fieldID : value}];
                     } else {
-                        [self.valuesDictionary setObject:@"" forKey:field.id];
-                        [values addEntriesFromDictionary:@{fieldID : @""}];
+                        if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+                            [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
+                            [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                        } else {
+                            [self.valuesDictionary setObject:@"" forKey:field.id];
+                            [values addEntriesFromDictionary:@{fieldID : @""}];
+                        }
                     }
                 }
             }

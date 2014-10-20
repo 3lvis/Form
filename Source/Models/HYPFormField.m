@@ -230,16 +230,20 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:forms withIndexPath:NO];
         id value = targetField.fieldValue;
         if (value) {
-            if ([value isKindOfClass:[HYPFieldValue class]]) {
-                HYPFieldValue *fieldValue = (HYPFieldValue *)value;
-                [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
-            } else if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
-                [values addEntriesFromDictionary:@{fieldID : value}];
+            if (targetField.type == HYPFormFieldTypeSelect) {
+                HYPFieldValue *fieldValue = targetField.fieldValue;
+                if (fieldValue.value) {
+                    [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                }
             } else {
-                if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                    [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
+                    [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
-                    [values addEntriesFromDictionary:@{fieldID : @""}];
+                    if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                    } else {
+                        [values addEntriesFromDictionary:@{fieldID : @""}];
+                    }
                 }
             }
         }
