@@ -77,6 +77,9 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
     switch (self.type) {
         case HYPFormFieldTypeFloat:
+            if ([self.fieldValue isKindOfClass:[NSString class]]) {
+                self.fieldValue = [self.fieldValue stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            }
             return @([self.fieldValue floatValue]);
         case HYPFormFieldTypeNumber:
             return @([self.fieldValue integerValue]);
@@ -195,7 +198,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             }
         }];
     }];
-    
+
     return foundField;
 }
 
