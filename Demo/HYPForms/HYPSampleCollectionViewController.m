@@ -85,10 +85,28 @@
 {
     [super viewDidAppear:animated];
 
-    [self setToolbarItems:@[[[UIBarButtonItem alloc] initWithTitle:@"Validate"
-                                                             style:UIBarButtonItemStyleDone
-                                                            target:self
-                                                            action:@selector(validateButtonAction)]]];
+    UIBarButtonItem *validateButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Validate"
+                                                                           style:UIBarButtonItemStyleDone
+                                                                          target:self
+                                                                          action:@selector(validateButtonAction)];
+
+    UIBarButtonItem *flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                           target:nil
+                                                                                           action:nil];
+
+    UIView *readOnlyView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 40.0f)];
+
+    UILabel *readOnlyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 40.0f)];
+    readOnlyLabel.text = @"Read-only";
+    [readOnlyView addSubview:readOnlyLabel];
+
+    UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(120.0f, 0.0f, 50.0f, 40.0f)];
+    [readOnlySwitch addTarget:self action:@selector(readOnly:) forControlEvents:UIControlEventValueChanged];
+    [readOnlyView addSubview:readOnlySwitch];
+
+    UIBarButtonItem *readOnlyBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:readOnlyView];
+
+    [self setToolbarItems:@[validateButtonItem, flexibleBarButtonItem, readOnlyBarButtonItem]];
 
     [self.navigationController setToolbarHidden:NO animated:YES];
 }
@@ -141,6 +159,11 @@
 - (void)validateButtonAction
 {
     [self.dataSource validateForms];
+}
+
+- (void)readOnly:(id)sender
+{
+    NSLog(@"read only!");
 }
 
 @end
