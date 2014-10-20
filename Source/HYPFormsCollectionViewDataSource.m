@@ -23,11 +23,12 @@
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
 
-@interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate>
+@interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate, HYPFormHeaderViewDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *valuesDictionary;
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic) UIEdgeInsets originalInset;
+@property (nonatomic) BOOL readOnly;
 @end
 
 @implementation HYPFormsCollectionViewDataSource
@@ -45,9 +46,12 @@
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
                          andDictionary:(NSDictionary *)dictionary
+                              readOnly:(BOOL)readOnly
 {
     self = [super init];
     if (!self) return nil;
+
+    _readOnly = readOnly;
 
     [self.valuesDictionary addEntriesFromDictionary:dictionary];
 
@@ -200,6 +204,14 @@
 
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, indexPath, field);
+    } else {
+        cell.field = field;
+
+        if (field.sectionSeparator) {
+            cell.backgroundColor = [UIColor colorFromHex:@"C6C6C6"];
+        } else {
+            cell.backgroundColor = [UIColor clearColor];
+        }
     }
 
     return cell;
@@ -218,6 +230,9 @@
 
         if (self.configureHeaderViewBlock) {
             self.configureHeaderViewBlock(headerView, kind, indexPath, form);
+        } else {
+            headerView.headerLabel.text = form.title;
+            headerView.delegate = self;
         }
 
         return headerView;
@@ -689,6 +704,13 @@
     [UIView animateWithDuration:0.3f animations:^{
         self.collectionView.contentInset = self.originalInset;
     }];
+}
+
+#pragma mark - HYPFormHeaderViewDelegate
+
+- (void)formHeaderViewWasPressed:(HYPFormHeaderView *)headerView
+{
+    [self collapseFieldsInSection:headerView.section collectionView:self.collectionView];
 }
 
 @end
