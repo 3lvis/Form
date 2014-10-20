@@ -18,6 +18,7 @@
 @implementation HYPForm
 
 + (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
+                                                 readOnly:(BOOL)readOnly
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues
 {
@@ -70,8 +71,12 @@
                 field.formula = [fieldDict hyp_safeValueForKey:@"formula"];
                 field.targets = [self targetsUsingArray:[fieldDict hyp_safeValueForKey:@"targets"]];
 
-                if ([dictionary hyp_safeValueForKey:remoteID]) {
-                    field.fieldValue = [dictionary hyp_safeValueForKey:remoteID];
+                if (readOnly) {
+                    field.disabled = YES;
+                }
+
+                if (readOnly && field.type == HYPFormFieldTypeImage) {
+                    return;
                 }
 
                 NSMutableArray *values = [NSMutableArray array];
@@ -84,7 +89,13 @@
                         fieldValue.title = [valueDict hyp_safeValueForKey:@"title"];
                         fieldValue.value = [valueDict hyp_safeValueForKey:@"value"];
 
-                        BOOL needsToRun = (field.fieldValue && [fieldValue identifierIsEqualTo:field.fieldValue]);
+                        BOOL needsToRun = NO;
+
+                        if ([dictionary hyp_safeValueForKey:remoteID]) {
+                            if ([fieldValue identifierIsEqualTo:[dictionary hyp_safeValueForKey:remoteID]]) {
+                                needsToRun = YES;
+                            }
+                        }
 
                         NSArray *targets = [self targetsUsingArray:[valueDict hyp_safeValueForKey:@"targets"]];
                         for (HYPFormTarget *target in targets) {
@@ -98,6 +109,18 @@
                         fieldValue.targets = targets;
                         fieldValue.field = field;
                         [values addObject:fieldValue];
+                    }
+                }
+
+                if ([dictionary hyp_safeValueForKey:remoteID]) {
+                    if (field.type == HYPFormFieldTypeSelect) {
+                        for (HYPFieldValue *value in values) {
+                            if ([value identifierIsEqualTo:[dictionary hyp_safeValueForKey:remoteID]]) {
+                                field.fieldValue = value;
+                            }
+                        }
+                    } else {
+                        field.fieldValue = [dictionary hyp_safeValueForKey:remoteID];
                     }
                 }
 

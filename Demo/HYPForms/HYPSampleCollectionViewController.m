@@ -14,7 +14,9 @@
 
 #import "HYPImagePicker.h"
 
-@interface HYPSampleCollectionViewController () <HYPFormHeaderViewDelegate, HYPImagePickerDelegate>
+#import "UIColor+ANDYHex.h"
+
+@interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *setUpDictionary;
@@ -45,28 +47,8 @@
     if (_dataSource) return _dataSource;
 
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
-                                                                     andDictionary:self.setUpDictionary];
-
-    _dataSource.configureCellBlock = ^(HYPBaseFormFieldCell *cell,
-                                       NSIndexPath *indexPath,
-                                       HYPFormField *field) {
-        cell.field = field;
-
-        if (field.sectionSeparator) {
-            cell.backgroundColor = [UIColor colorFromHex:@"C6C6C6"];
-        } else {
-            cell.backgroundColor = [UIColor clearColor];
-        }
-    };
-
-    __weak id weakSelf = self;
-    _dataSource.configureHeaderViewBlock = ^(HYPFormHeaderView *headerView,
-                                             NSString *kind,
-                                             NSIndexPath *indexPath,
-                                             HYPForm *form) {
-        headerView.headerLabel.text = form.title;
-        headerView.delegate = weakSelf;
-    };
+                                                                     andDictionary:self.setUpDictionary
+                                                                          readOnly:NO];
 
     _dataSource.configureFieldUpdatedBlock = ^(id cell, HYPFormField *field) {
         NSLog(@"field updated: %@ --- %@", field.id, field.fieldValue);
@@ -105,10 +87,32 @@
 {
     [super viewDidAppear:animated];
 
-    [self setToolbarItems:@[[[UIBarButtonItem alloc] initWithTitle:@"Validate"
-                                                             style:UIBarButtonItemStyleDone
-                                                            target:self
-                                                            action:@selector(validateButtonAction)]]];
+    UIBarButtonItem *validateButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Validate"
+                                                                           style:UIBarButtonItemStyleDone
+                                                                          target:self
+                                                                          action:@selector(validateButtonAction)];
+
+    UIBarButtonItem *flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                           target:nil
+                                                                                           action:nil];
+
+    UIView *readOnlyView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 150.0f, 40.0f)];
+
+    UILabel *readOnlyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 90.0f, 40.0f)];
+    readOnlyLabel.text = @"Read-only";
+    readOnlyLabel.textColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlyLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    [readOnlyView addSubview:readOnlyLabel];
+
+    UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(90.0f, 5.0f, 40.0f, 40.0f)];
+    readOnlySwitch.tintColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlySwitch.onTintColor = [UIColor colorFromHex:@"5182AF"];
+    [readOnlySwitch addTarget:self action:@selector(readOnly:) forControlEvents:UIControlEventValueChanged];
+    [readOnlyView addSubview:readOnlySwitch];
+
+    UIBarButtonItem *readOnlyBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:readOnlyView];
+
+    [self setToolbarItems:@[validateButtonItem, flexibleBarButtonItem, readOnlyBarButtonItem]];
 
     [self.navigationController setToolbarHidden:NO animated:YES];
 }
@@ -129,13 +133,6 @@
     if (field.type == HYPFormFieldTypeImage) {
         [self.imagePicker invokeCamera];
     }
-}
-
-#pragma mark - HYPFormHeaderViewDelegate
-
-- (void)formHeaderViewWasPressed:(HYPFormHeaderView *)headerView
-{
-    [self.dataSource collapseFieldsInSection:headerView.section collectionView:self.collectionView];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
@@ -168,6 +165,11 @@
 - (void)validateButtonAction
 {
     [self.dataSource validateForms];
+}
+
+- (void)readOnly:(UISwitch *)sender
+{
+    [self.dataSource disable:sender.isOn];
 }
 
 @end

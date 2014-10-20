@@ -15,11 +15,10 @@
 {
     if (![super validateFieldValue:fieldValue]) return NO;
 
-    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:(NSString *)fieldValue];
-
 #if DEBUG == 1
     return YES;
 #else
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:(NSString *)fieldValue];
     return ssn.isValid;
 #endif
 }
