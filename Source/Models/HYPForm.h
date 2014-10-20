@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL shouldValidate;
 
 + (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
+                                                 readOnly:(BOOL)readOnly
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues;
 

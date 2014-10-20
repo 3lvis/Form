@@ -18,6 +18,7 @@
 @implementation HYPForm
 
 + (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
+                                                 readOnly:(BOOL)readOnly
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues
 {
@@ -70,8 +71,16 @@
                 field.formula = [fieldDict hyp_safeValueForKey:@"formula"];
                 field.targets = [self targetsUsingArray:[fieldDict hyp_safeValueForKey:@"targets"]];
 
+                if (readOnly) {
+                    field.disabled = YES;
+                }
+
                 if ([dictionary hyp_safeValueForKey:remoteID]) {
                     field.fieldValue = [dictionary hyp_safeValueForKey:remoteID];
+                }
+
+                if (readOnly && field.type == HYPFormFieldTypeImage) {
+                    return;
                 }
 
                 NSMutableArray *values = [NSMutableArray array];

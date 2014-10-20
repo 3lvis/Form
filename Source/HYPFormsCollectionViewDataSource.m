@@ -109,6 +109,7 @@
     if (_forms) return _forms;
 
     _forms = [HYPForm formsUsingInitialValuesFromDictionary:self.valuesDictionary
+                                                   readOnly:self.readOnly
                                            additionalValues:^(NSMutableDictionary *deletedFields,
                                                               NSMutableDictionary *deletedSections) {
                                                [self.deletedFields addEntriesFromDictionary:deletedFields];
