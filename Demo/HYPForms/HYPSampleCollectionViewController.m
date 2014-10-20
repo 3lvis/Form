@@ -14,6 +14,8 @@
 
 #import "HYPImagePicker.h"
 
+#import "UIColor+ANDYHex.h"
+
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
@@ -46,7 +48,7 @@
 
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
                                                                      andDictionary:self.setUpDictionary
-                                                                          readOnly:YES];
+                                                                          readOnly:NO];
 
     _dataSource.configureFieldUpdatedBlock = ^(id cell, HYPFormField *field) {
         NSLog(@"field updated: %@ --- %@", field.id, field.fieldValue);
@@ -94,13 +96,17 @@
                                                                                            target:nil
                                                                                            action:nil];
 
-    UIView *readOnlyView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 40.0f)];
+    UIView *readOnlyView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 150.0f, 40.0f)];
 
-    UILabel *readOnlyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 40.0f)];
+    UILabel *readOnlyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 90.0f, 40.0f)];
     readOnlyLabel.text = @"Read-only";
+    readOnlyLabel.textColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlyLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     [readOnlyView addSubview:readOnlyLabel];
 
-    UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(120.0f, 0.0f, 50.0f, 40.0f)];
+    UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(90.0f, 5.0f, 40.0f, 40.0f)];
+    readOnlySwitch.tintColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlySwitch.onTintColor = [UIColor colorFromHex:@"5182AF"];
     [readOnlySwitch addTarget:self action:@selector(readOnly:) forControlEvents:UIControlEventValueChanged];
     [readOnlyView addSubview:readOnlySwitch];
 
@@ -161,9 +167,9 @@
     [self.dataSource validateForms];
 }
 
-- (void)readOnly:(id)sender
+- (void)readOnly:(UISwitch *)sender
 {
-    NSLog(@"read only!");
+    [self.dataSource disable:sender.isOn];
 }
 
 @end

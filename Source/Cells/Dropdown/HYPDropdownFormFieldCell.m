@@ -67,6 +67,8 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 {
     [super updateWithField:field];
 
+    self.iconImageView.hidden = field.disabled;
+
     if (!field.fieldValue) {
         self.textField.rawText = nil;
         return;

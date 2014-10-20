@@ -45,5 +45,6 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 - (void)validateForms;
 - (BOOL)formFieldsAreValid;
 - (void)resetForms;
+- (void)disable:(BOOL)disabled;
 
 @end

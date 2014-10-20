@@ -307,7 +307,16 @@
     return field;
 }
 
-#pragma mark - Validations
+#pragma mark - Public Methods
+
+- (void)disable:(BOOL)disabled
+{
+    self.readOnly = disabled;
+
+    [self resetForms];
+}
+
+#pragma mark Validations
 
 - (void)validateForms
 {
