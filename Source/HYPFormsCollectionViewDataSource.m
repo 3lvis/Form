@@ -307,8 +307,6 @@
     return field;
 }
 
-#pragma mark - Public Methods
-
 - (void)disable:(BOOL)disabled
 {
     self.readOnly = disabled;
@@ -593,8 +591,7 @@
 - (void)sectionAndIndexForField:(HYPFormField *)field
                      completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
 {
-    HYPForm *form = self.forms[[field.section.form.position integerValue]];
-    HYPFormSection *section = form.sections[[field.section.position integerValue]];
+    HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:self.forms];
 
     __block NSInteger index = 0;
     __block BOOL found = NO;
@@ -714,7 +711,7 @@
 
     UIEdgeInsets inset = self.originalInset;
     inset.bottom += height;
-    
+
     [UIView animateWithDuration:0.3f animations:^{
         self.collectionView.contentInset = inset;
     }];
@@ -724,7 +721,7 @@
 {
     CGRect keyboardEndFrame;
     [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
-    
+
     [UIView animateWithDuration:0.3f animations:^{
         self.collectionView.contentInset = self.originalInset;
     }];

@@ -64,7 +64,7 @@
     NSString *caption = NSLocalizedString(@"Legg til bilde av den ansatte", @"Legg til bilde av den ansatte");
     _imagePicker = [[HYPImagePicker alloc] initForViewController:self usingCaption:caption];
     _imagePicker.delegate = self;
-    
+
     return _imagePicker;
 }
 
@@ -115,6 +115,20 @@
     [self setToolbarItems:@[validateButtonItem, flexibleBarButtonItem, readOnlyBarButtonItem]];
 
     [self.navigationController setToolbarHidden:NO animated:YES];
+
+    HYPFormTarget *target = [HYPFormTarget new];
+    target.id = @"collective_agreement";
+    target.typeString = @"field";
+    target.actionTypeString = @"hide";
+
+    HYPFormTarget *target2 = [HYPFormTarget new];
+    target2.id = @"first_name";
+    target2.typeString = @"field";
+    target2.actionTypeString = @"hide";
+
+    [self.dataSource processTargets:@[target, target2]];
+
+    [self.collectionView.collectionViewLayout invalidateLayout];
 }
 
 #pragma mark - UICollectionViewDelegate
