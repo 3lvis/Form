@@ -314,6 +314,27 @@
     [self resetForms];
 }
 
+- (void)reloadWithDictionary:(NSDictionary *)dictionary
+{
+    NSMutableArray *updatedIndexPaths = [NSMutableArray array];
+
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
+        HYPFormField *field = [HYPFormField fieldWithID:key inForms:self.forms withIndexPath:YES];
+        if (!field) return;
+
+        if (field.type == HYPFormFieldTypeSelect) {
+            abort();
+        } else {
+            field.fieldValue = value;
+            [updatedIndexPaths addObject:field.indexPath];
+        }
+    }];
+
+    if (updatedIndexPaths.count > 0) {
+        [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
+    }
+}
+
 #pragma mark Validations
 
 - (void)validateForms
@@ -591,7 +612,8 @@
 - (void)sectionAndIndexForField:(HYPFormField *)field
                      completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
 {
-    HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:self.forms];
+    HYPForm *form = self.forms[[field.section.form.position integerValue]];
+    HYPFormSection *section = form.sections[[field.section.position integerValue]];
 
     __block NSInteger index = 0;
     __block BOOL found = NO;

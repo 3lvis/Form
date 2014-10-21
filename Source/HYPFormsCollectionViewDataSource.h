@@ -29,8 +29,6 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
                          andDictionary:(NSDictionary *)dictionary readOnly:(BOOL)readOnly;
 
-- (void)processTargets:(NSArray *)targets;
-
 @property (nonatomic, strong) NSMutableArray *forms;
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
 @property (nonatomic, strong) NSMutableDictionary *deletedFields;
@@ -40,13 +38,14 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;
 @property (nonatomic, copy) HYPFieldConfigureFieldUpdatedBlock configureFieldUpdatedBlock;
 
-- (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
+- (BOOL)formFieldsAreValid;
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 - (HYPFormField *)formFieldAtIndexPath:(NSIndexPath *)indexPath;
 
-- (void)validateForms;
-- (BOOL)formFieldsAreValid;
 - (void)resetForms;
+- (void)validateForms;
 - (void)disable:(BOOL)disabled;
+- (void)reloadWithDictionary:(NSDictionary *)dictionary;
+- (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
 
 @end
