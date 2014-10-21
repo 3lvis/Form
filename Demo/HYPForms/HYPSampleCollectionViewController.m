@@ -83,18 +83,6 @@
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-    HYPFormTarget *target = [HYPFormTarget new];
-    target.id = @"collective_agreement";
-    target.typeString = @"field";
-    target.actionTypeString = @"hide";
-
-    [self.dataSource processTargets:@[target]];
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -127,6 +115,20 @@
     [self setToolbarItems:@[validateButtonItem, flexibleBarButtonItem, readOnlyBarButtonItem]];
 
     [self.navigationController setToolbarHidden:NO animated:YES];
+
+    HYPFormTarget *target = [HYPFormTarget new];
+    target.id = @"collective_agreement";
+    target.typeString = @"field";
+    target.actionTypeString = @"hide";
+
+    HYPFormTarget *target2 = [HYPFormTarget new];
+    target2.id = @"first_name";
+    target2.typeString = @"field";
+    target2.actionTypeString = @"hide";
+
+    [self.dataSource processTargets:@[target, target2]];
+
+    [self.collectionView.collectionViewLayout invalidateLayout];
 }
 
 #pragma mark - UICollectionViewDelegate
