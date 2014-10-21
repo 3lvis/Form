@@ -64,7 +64,7 @@
     NSString *caption = NSLocalizedString(@"Legg til bilde av den ansatte", @"Legg til bilde av den ansatte");
     _imagePicker = [[HYPImagePicker alloc] initForViewController:self usingCaption:caption];
     _imagePicker.delegate = self;
-    
+
     return _imagePicker;
 }
 
@@ -81,6 +81,18 @@
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    HYPFormTarget *target = [HYPFormTarget new];
+    target.id = @"collective_agreement";
+    target.typeString = @"field";
+    target.actionTypeString = @"hide";
+
+    [self.dataSource processTargets:@[target]];
 }
 
 - (void)viewDidAppear:(BOOL)animated
