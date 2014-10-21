@@ -307,8 +307,6 @@
     return field;
 }
 
-#pragma mark - Public Methods
-
 - (void)disable:(BOOL)disabled
 {
     self.readOnly = disabled;
@@ -714,7 +712,7 @@
 
     UIEdgeInsets inset = self.originalInset;
     inset.bottom += height;
-    
+
     [UIView animateWithDuration:0.3f animations:^{
         self.collectionView.contentInset = inset;
     }];
@@ -724,7 +722,7 @@
 {
     CGRect keyboardEndFrame;
     [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
-    
+
     [UIView animateWithDuration:0.3f animations:^{
         self.collectionView.contentInset = self.originalInset;
     }];
