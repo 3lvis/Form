@@ -591,8 +591,7 @@
 - (void)sectionAndIndexForField:(HYPFormField *)field
                      completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
 {
-    HYPForm *form = self.forms[[field.section.form.position integerValue]];
-    HYPFormSection *section = form.sections[[field.section.position integerValue]];
+    HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:self.forms];
 
     __block NSInteger index = 0;
     __block BOOL found = NO;
