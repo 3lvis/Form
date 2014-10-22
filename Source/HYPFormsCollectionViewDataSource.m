@@ -450,13 +450,9 @@
     [HYPFormTarget filteredTargets:targets
                           filtered:^(NSArray *shownTargets,
                                      NSArray *hiddenTargets,
-                                     NSArray *enabledTargets,
-                                     NSArray *disabledTargets,
                                      NSArray *updatedTargets) {
                               [self showTargets:shownTargets];
                               [self hideTargets:hiddenTargets];
-                              [self enableTargets:enabledTargets];
-                              [self disableTargets:disabledTargets];
                               [self updateTargets:updatedTargets];
 
                               [self.collectionView.collectionViewLayout invalidateLayout];
@@ -541,20 +537,6 @@
     if (deletedIndexPaths.count > 0) {
         [self.collectionView deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
     }
-}
-
-- (void)enableTargets:(NSArray *)targets
-{
-    // look for the fields
-    // get their index paths
-    // enable them
-}
-
-- (void)disableTargets:(NSArray *)targets
-{
-    // look for the fields
-    // get their index paths
-    // disable them
 }
 
 - (void)updateTargets:(NSArray *)targets
