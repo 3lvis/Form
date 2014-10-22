@@ -323,11 +323,14 @@
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
         HYPFormField *field = [HYPFormField fieldWithID:key inForms:self.forms withIndexPath:YES];
-        if (!field) return;
-
-        field.fieldValue = value;
-        [updatedIndexPaths addObject:field.indexPath];
-        [targets addObjectsFromArray:[field safeTargets]];
+        if (field) {
+            field.fieldValue = value;
+            [updatedIndexPaths addObject:field.indexPath];
+            [targets addObjectsFromArray:[field safeTargets]];
+        } else {
+            field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
+            if (field) field.fieldValue = value;
+        }
     }];
 
     if (updatedIndexPaths.count > 0) {
@@ -335,6 +338,36 @@
     }
 
     [self processTargets:targets];
+}
+
+- (HYPFormField *)fieldInDeletedFields:(NSString *)fieldID
+{
+    __block HYPFormField *foundField = nil;
+
+    [self.deletedFields enumerateKeysAndObjectsUsingBlock:^(NSString *key, HYPFormField *field, BOOL *stop) {
+        if ([field.id isEqualToString:fieldID]) {
+            foundField = field;
+            *stop = YES;
+        }
+    }];
+
+    return foundField;
+}
+
+- (HYPFormField *)fieldInDeletedSections:(NSString *)fieldID
+{
+    __block HYPFormField *foundField = nil;
+
+    [self.deletedSections enumerateKeysAndObjectsUsingBlock:^(NSString *key, HYPFormSection *section, BOOL *stop) {
+        [section.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger idx, BOOL *stop) {
+            if ([field.id isEqualToString:fieldID]) {
+                foundField = field;
+                *stop = YES;
+            }
+        }];
+    }];
+
+    return foundField;
 }
 
 #pragma mark Validations
