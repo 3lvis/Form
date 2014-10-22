@@ -164,9 +164,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 - (HYPFieldValue *)fieldValueWithID:(id)fieldValueID
 {
     for (HYPFieldValue *fieldValue in self.values) {
-        if ([fieldValue identifierIsEqualTo:self.fieldValue]) {
-            return fieldValue;
-        }
+        if ([fieldValue identifierIsEqualTo:self.fieldValue]) return fieldValue;
     }
 
     return nil;
