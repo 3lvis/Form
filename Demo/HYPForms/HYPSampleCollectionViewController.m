@@ -92,6 +92,11 @@
                                                                           target:self
                                                                           action:@selector(validateButtonAction)];
 
+    UIBarButtonItem *updateButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Update"
+                                                                           style:UIBarButtonItemStyleDone
+                                                                          target:self
+                                                                          action:@selector(updateButtonAction)];
+
     UIBarButtonItem *flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                            target:nil
                                                                                            action:nil];
@@ -112,7 +117,7 @@
 
     UIBarButtonItem *readOnlyBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:readOnlyView];
 
-    [self setToolbarItems:@[validateButtonItem, flexibleBarButtonItem, readOnlyBarButtonItem]];
+    [self setToolbarItems:@[validateButtonItem, flexibleBarButtonItem, updateButtonItem, flexibleBarButtonItem, readOnlyBarButtonItem]];
 
     [self.navigationController setToolbarHidden:NO animated:YES];
 
@@ -121,12 +126,7 @@
     target.typeString = @"field";
     target.actionTypeString = @"hide";
 
-    HYPFormTarget *target2 = [HYPFormTarget new];
-    target2.id = @"first_name";
-    target2.typeString = @"field";
-    target2.actionTypeString = @"hide";
-
-    [self.dataSource processTargets:@[target, target2]];
+    [self.dataSource processTargets:@[target]];
 
     [self.collectionView.collectionViewLayout invalidateLayout];
 }
@@ -175,6 +175,16 @@
 }
 
 #pragma mark - Actions
+
+- (void)updateButtonAction
+{
+    [self.dataSource reloadWithDictionary:@{@"first_name" : @"Hodo",
+                                            @"salary_type" : @1,
+                                            @"hourly_pay_level" : @1,
+                                            @"hourly_pay_premium_percent" : @10,
+                                            @"hourly_pay_premium_currency" : @10
+                                            }];
+}
 
 - (void)validateButtonAction
 {

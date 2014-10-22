@@ -316,23 +316,25 @@
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
+    [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
+
     NSMutableArray *updatedIndexPaths = [NSMutableArray array];
+    NSMutableArray *targets = [NSMutableArray array];
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
         HYPFormField *field = [HYPFormField fieldWithID:key inForms:self.forms withIndexPath:YES];
         if (!field) return;
 
-        if (field.type == HYPFormFieldTypeSelect) {
-            abort();
-        } else {
-            field.fieldValue = value;
-            [updatedIndexPaths addObject:field.indexPath];
-        }
+        field.fieldValue = value;
+        [updatedIndexPaths addObject:field.indexPath];
+        [targets addObjectsFromArray:[field safeTargets]];
     }];
 
     if (updatedIndexPaths.count > 0) {
         [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
     }
+
+    [self processTargets:targets];
 }
 
 #pragma mark Validations
@@ -613,7 +615,7 @@
                      completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
 {
     HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:self.forms];
-    
+
     __block NSInteger index = 0;
     __block BOOL found = NO;
     [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {

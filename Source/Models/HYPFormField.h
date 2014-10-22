@@ -9,6 +9,7 @@
 @import Foundation;
 
 @class HYPFormSection;
+@class HYPFieldValue;
 
 typedef NS_ENUM(NSInteger, HYPFormFieldType) {
     HYPFormFieldTypeDefault = 0,
@@ -50,9 +51,13 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 - (HYPFormFieldType)typeFromTypeString:(NSString *)typeString;
 
+- (HYPFieldValue *)fieldValueWithID:(id)fieldValueID;
+
 - (NSInteger)indexInForms:(NSArray *)forms;
 
 - (NSMutableDictionary *)valuesForFormulaInForms:(NSArray *)forms;
+
+- (NSArray *)safeTargets;
 
 - (BOOL)validate;
 - (id)rawFieldValue;
