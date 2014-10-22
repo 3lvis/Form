@@ -265,8 +265,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 {
     if (self.type == HYPFormFieldTypeSelect) {
         if ([self.fieldValue isKindOfClass:[HYPFieldValue class]]) {
-            HYPFieldValue *fieldValue = self.fieldValue;
-            if (fieldValue.targets.count > 0) return fieldValue.targets;
+            if ([self.fieldValue targets].count > 0) return [self.fieldValue targets];
         } else {
             HYPFieldValue *fieldValue = [self fieldValueWithID:self.fieldValue];
             if (fieldValue.targets.count > 0) return fieldValue.targets;
