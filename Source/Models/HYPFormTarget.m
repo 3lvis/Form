@@ -49,28 +49,31 @@
                                   NSArray *disabledTargets,
                                   NSArray *updatedTargets))filtered
 {
-    NSMutableArray *shown = [NSMutableArray array];
-    NSMutableArray *hidden = [NSMutableArray array];
-    NSMutableArray *enabled = [NSMutableArray array];
-    NSMutableArray *disabled = [NSMutableArray array];
-    NSMutableArray *updated = [NSMutableArray array];
+    NSMutableDictionary *shown = [NSMutableDictionary dictionary];
+    NSMutableDictionary *hidden = [NSMutableDictionary dictionary];
+    NSMutableDictionary *enabled = [NSMutableDictionary dictionary];
+    NSMutableDictionary *disabled = [NSMutableDictionary dictionary];
+    NSMutableDictionary *updated = [NSMutableDictionary dictionary];
+
+    // TODO: balance show + hide
+    // TODO: balance update + hide
 
     for (HYPFormTarget *target in targets) {
         switch (target.actionType) {
             case HYPFormTargetActionShow:
-                [shown addObject:target];
+                [shown setValue:target forKey:target.id];
                 break;
             case HYPFormTargetActionHide:
-                [hidden addObject:target];
+                [hidden setValue:target forKey:target.id];
                 break;
             case HYPFormTargetActionEnable:
-                [enabled addObject:target];
+                [enabled setValue:target forKey:target.id];
                 break;
             case HYPFormTargetActionDisable:
-                [disabled addObject:target];
+                [disabled setValue:target forKey:target.id];
                 break;
             case HYPFormTargetActionUpdate:
-                [updated addObject:target];
+                [updated setValue:target forKey:target.id];
                 break;
             case HYPFormTargetActionNone:
                 break;
@@ -78,7 +81,7 @@
     }
 
     if (filtered) {
-        filtered(shown, hidden, enabled, disabled, updated);
+        filtered([shown allValues], [hidden allValues], [enabled allValues], [disabled allValues], [updated allValues]);
     }
 }
 
