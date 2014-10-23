@@ -74,10 +74,7 @@
             "id":"address",
             "title":"Gateadresse",
             "type":"text",
-            "size":40,
-            "validations":{
-              "required":true
-            }
+            "size":40
           },
           {
             "id":"postal_code",
