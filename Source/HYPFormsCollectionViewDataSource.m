@@ -463,7 +463,7 @@
 {
     NSMutableArray *insertedIndexPaths = [NSMutableArray array];
 
-    [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
+    for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
             HYPFormField *field = [self.deletedFields objectForKey:target.id];
             if (field) {
@@ -484,7 +484,7 @@
                 [self.deletedSections removeObjectForKey:section.id];
             }
         }
-    }];
+    }
 
     if (insertedIndexPaths.count > 0) {
         [self.collectionView insertItemsAtIndexPaths:insertedIndexPaths];
@@ -496,7 +496,7 @@
     NSMutableArray *deletedFields = [NSMutableArray array];
     NSMutableArray *deletedSections = [NSMutableArray array];
 
-    [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
+    for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
             HYPFormField *field = [self fieldForTarget:target];
             if (field && ![self.deletedFields objectForKey:field.id]) {
@@ -511,7 +511,7 @@
                 }
             }];
         }
-    }];
+    }
 
     NSMutableSet *deletedIndexPaths = [NSMutableSet set];
 
@@ -543,7 +543,7 @@
 {
     NSMutableArray *updatedIndexPaths = [NSMutableArray array];
 
-    [targets enumerateObjectsUsingBlock:^(HYPFormTarget *target, NSUInteger idx, BOOL *stop) {
+    for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeSection) return;
         if ([self.deletedFields objectForKey:target.id]) return;
 
@@ -593,7 +593,7 @@
         } else {
             [self.valuesDictionary removeObjectForKey:field.id];
         }
-    }];
+    }
 
     [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
 }

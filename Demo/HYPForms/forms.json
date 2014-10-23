@@ -50,8 +50,20 @@
             "size":20,
             "values":[
               {
-                "id":"norway",
+                "id":"NO",
                 "title":"Norge"
+              },
+              {
+                "id":"SE",
+                "title":"Sverige"
+              },
+              {
+                "id":"FI",
+                "title":"Finland"
+              },
+              {
+                "id":"RU",
+                "title":"Russland"
               }
             ],
             "validations":{
@@ -1866,7 +1878,7 @@
             "id":"position",
             "title":"Stillingstype",
             "type":"select",
-            "size":40,
+            "size":50,
             "values":[
               {
                 "id": 2,
@@ -1897,7 +1909,7 @@
             "id":"employment_type",
             "title":"Arbeidsforholdet",
             "type":"select",
-            "size":30,
+            "size":50,
             "values":[
               {
                 "id":1,
@@ -1935,23 +1947,7 @@
             "validations":{
               "required":true
             }
-          },
-          {
-                "id":"include_in_daily_plan",
-                "title":"Meld på dagsplan",
-                "type":"select",
-                "size":30,
-                "values":[
-                  {
-                    "id":1,
-                    "title":"Ja"
-                  },
-                  {
-                    "id":0,
-                    "title":"Nei"
-                  }
-                ]
-           }
+          }
         ]
       },
       {
@@ -2555,11 +2551,11 @@
             "size":15,
             "values":[
               {
-                "id":"1",
+                "id":true,
                 "title":"Ja"
               },
               {
-                "id":"2",
+                "id":false,
                 "title":"Nei"
               }
             ]
