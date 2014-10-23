@@ -15,12 +15,10 @@
 {
     if (![super validateFieldValue:fieldValue]) return NO;
 
-#if DEBUG == 1
+#warning Disable validation during testing (HYPBankAccountNumberValidator)
     return YES;
-#else
-    HYPNorwegianAccountNumber *accountNumber = [[HYPNorwegianAccountNumber alloc] initWithString:(NSString *)fieldValue];
-    return accountNumber.isValid;
-#endif
+//    HYPNorwegianAccountNumber *accountNumber = [[HYPNorwegianAccountNumber alloc] initWithString:(NSString *)fieldValue];
+//    return accountNumber.isValid;
 }
 
 @end
