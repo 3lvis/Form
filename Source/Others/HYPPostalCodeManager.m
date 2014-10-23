@@ -9,7 +9,9 @@
 #import "HYPPostalCodeManager.h"
 
 @interface HYPPostalCodeManager ()
+
 @property (nonatomic, retain) NSDictionary *postalCodes;
+
 @end
 
 @implementation HYPPostalCodeManager
