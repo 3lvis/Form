@@ -63,6 +63,7 @@
 		44D5600B19EBBDA30087067E /* HYPClassFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D5600A19EBBDA30087067E /* HYPClassFactory.m */; };
 		890DF4637B5C51A0210949DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9243ED4871CF70DD889729A /* libPods.a */; };
 		BD03AE7919F98D0700DF726E /* HYPPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD03AE7819F98D0700DF726E /* HYPPostalCodeManager.m */; };
+		BD03AE7C19F98DC800DF726E /* HYPPostalCodeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = BD03AE7B19F98DC800DF726E /* HYPPostalCodeValidator.m */; };
 		BD30E7AC19F4FAB6001AFA58 /* HYPFloatFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD30E7AB19F4FAB6001AFA58 /* HYPFloatFormatter.m */; };
 /* End PBXBuildFile section */
 
@@ -181,6 +182,8 @@
 		B9243ED4871CF70DD889729A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD03AE7719F98D0700DF726E /* HYPPostalCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeManager.h; sourceTree = "<group>"; };
 		BD03AE7819F98D0700DF726E /* HYPPostalCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeManager.m; sourceTree = "<group>"; };
+		BD03AE7A19F98DC800DF726E /* HYPPostalCodeValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeValidator.h; sourceTree = "<group>"; };
+		BD03AE7B19F98DC800DF726E /* HYPPostalCodeValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeValidator.m; sourceTree = "<group>"; };
 		BD30E7AA19F4FAB6001AFA58 /* HYPFloatFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFloatFormatter.h; sourceTree = "<group>"; };
 		BD30E7AB19F4FAB6001AFA58 /* HYPFloatFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFloatFormatter.m; sourceTree = "<group>"; };
 		BD7C6C2D19F686130084EF2E /* HYPForms.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = HYPForms.podspec; path = ../HYPForms.podspec; sourceTree = "<group>"; };
@@ -468,6 +471,8 @@
 				44BDD18919EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m */,
 				44BDD18A19EBD644008E9CA9 /* HYPValidator.h */,
 				44BDD18B19EBD644008E9CA9 /* HYPValidator.m */,
+				BD03AE7A19F98DC800DF726E /* HYPPostalCodeValidator.h */,
+				BD03AE7B19F98DC800DF726E /* HYPPostalCodeValidator.m */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -657,6 +662,7 @@
 				4408F19419E81EA6005AE53F /* HYPFormHeaderView.m in Sources */,
 				4408F18E19E81EA6005AE53F /* HYPTextFormField.m in Sources */,
 				4408F19C19E81EA6005AE53F /* HYPFormSection.m in Sources */,
+				BD03AE7C19F98DC800DF726E /* HYPPostalCodeValidator.m in Sources */,
 				4408F1C219E81F67005AE53F /* HYPPostalCodeInputValidator.m in Sources */,
 				4408F1C319E81F67005AE53F /* HYPSocialSecurityNumberInputValidator.m in Sources */,
 				4445D51219EBC6B80034A5D7 /* HYPFormTimeViewController.m in Sources */,

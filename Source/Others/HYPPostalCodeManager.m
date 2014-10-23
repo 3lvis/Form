@@ -16,6 +16,17 @@
 
 @implementation HYPPostalCodeManager
 
++ (instancetype)sharedManager
+{
+    static HYPPostalCodeManager *_sharedManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedManager = [HYPPostalCodeManager new];
+    });
+
+    return _sharedManager;
+}
+
 + (id)JSONObjectWithContentsOfFile:(NSString*)fileName
 {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:[fileName stringByDeletingPathExtension]
