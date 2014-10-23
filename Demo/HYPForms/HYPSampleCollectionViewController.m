@@ -188,7 +188,15 @@
 
 - (void)validateButtonAction
 {
-    [self.dataSource validateForms];
+    if ([self.dataSource formFieldsAreValid]) {
+        [[[UIAlertView alloc] initWithTitle:@"Everything is valid, you get a candy!"
+                                    message:nil
+                                   delegate:nil
+                          cancelButtonTitle:@"No, thanks"
+                          otherButtonTitles:nil, nil] show];
+    } else {
+        [self.dataSource validateForms];
+    }
 }
 
 - (void)readOnly:(UISwitch *)sender
