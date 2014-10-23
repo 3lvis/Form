@@ -31,7 +31,7 @@
                                   @"hours_per_week" : @"37,5",
                                   @"last_name" : @"Winterkvist",
                                   @"phone_number" : @"41399880",
-                                  @"postal_code" : @"6414",
+                                  @"postal_code" : @"0164",
                                   @"social_security_number" : @"28118240000",
                                   @"start_date" : @"2014-10-31 23:00:00 +00:00",
                                   @"worker_id" : @"120000",
