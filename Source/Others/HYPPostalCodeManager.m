@@ -50,13 +50,13 @@
     if (!self) return nil;
 
     NSArray *JSON = [HYPPostalCodeManager JSONObjectWithContentsOfFile:@"postal_codes.json"];
-
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
+
     for (NSDictionary *entry in JSON) {
         [mutableDictionary setValue:entry[@"City"] forKey:entry[@"Code"]];
     }
 
-    self.postalCodes = [mutableDictionary copy];
+    _postalCodes = [mutableDictionary copy];
 
     return self;
 }
