@@ -19,8 +19,6 @@ typedef NS_ENUM(NSInteger, HYPFormTargetType) {
 typedef NS_ENUM(NSInteger, HYPFormTargetActionType) {
     HYPFormTargetActionShow = 0,
     HYPFormTargetActionHide,
-    HYPFormTargetActionEnable,
-    HYPFormTargetActionDisable,
     HYPFormTargetActionUpdate,
     HYPFormTargetActionNone
 };
@@ -38,8 +36,6 @@ typedef NS_ENUM(NSInteger, HYPFormTargetActionType) {
 + (void)filteredTargets:(NSArray*)targets
                filtered:(void (^)(NSArray *shownTargets,
                                   NSArray *hiddenTargets,
-                                  NSArray *enabledTargets,
-                                  NSArray *disabledTargets,
                                   NSArray *updatedTargets))filtered;
 
 @end

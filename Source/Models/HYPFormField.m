@@ -161,6 +161,15 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return HYPFormFieldTypeDefault;
 }
 
+- (HYPFieldValue *)fieldValueWithID:(id)fieldValueID
+{
+    for (HYPFieldValue *fieldValue in self.values) {
+        if ([fieldValue identifierIsEqualTo:self.fieldValue]) return fieldValue;
+    }
+
+    return nil;
+}
+
 - (BOOL)validate
 {
     id validator;
@@ -250,6 +259,22 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     }
 
     return values;
+}
+
+- (NSArray *)safeTargets
+{
+    if (self.type == HYPFormFieldTypeSelect) {
+        if ([self.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+            if ([self.fieldValue targets].count > 0) return [self.fieldValue targets];
+        } else {
+            HYPFieldValue *fieldValue = [self fieldValueWithID:self.fieldValue];
+            if (fieldValue.targets.count > 0) return fieldValue.targets;
+        }
+    } else {
+        if (self.targets.count > 0) return self.targets;
+    }
+
+    return nil;
 }
 
 @end

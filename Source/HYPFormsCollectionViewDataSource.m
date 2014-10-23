@@ -316,23 +316,58 @@
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
+    [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
+
     NSMutableArray *updatedIndexPaths = [NSMutableArray array];
+    NSMutableArray *targets = [NSMutableArray array];
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
         HYPFormField *field = [HYPFormField fieldWithID:key inForms:self.forms withIndexPath:YES];
-        if (!field) return;
-
-        if (field.type == HYPFormFieldTypeSelect) {
-            abort();
-        } else {
+        if (field) {
             field.fieldValue = value;
             [updatedIndexPaths addObject:field.indexPath];
+            [targets addObjectsFromArray:[field safeTargets]];
+        } else {
+            field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
+            if (field) field.fieldValue = value;
         }
     }];
 
     if (updatedIndexPaths.count > 0) {
         [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
     }
+
+    [self processTargets:targets];
+}
+
+- (HYPFormField *)fieldInDeletedFields:(NSString *)fieldID
+{
+    __block HYPFormField *foundField = nil;
+
+    [self.deletedFields enumerateKeysAndObjectsUsingBlock:^(NSString *key, HYPFormField *field, BOOL *stop) {
+        if ([field.id isEqualToString:fieldID]) {
+            foundField = field;
+            *stop = YES;
+        }
+    }];
+
+    return foundField;
+}
+
+- (HYPFormField *)fieldInDeletedSections:(NSString *)fieldID
+{
+    __block HYPFormField *foundField = nil;
+
+    [self.deletedSections enumerateKeysAndObjectsUsingBlock:^(NSString *key, HYPFormSection *section, BOOL *stop) {
+        [section.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger idx, BOOL *stop) {
+            if ([field.id isEqualToString:fieldID]) {
+                foundField = field;
+                *stop = YES;
+            }
+        }];
+    }];
+
+    return foundField;
 }
 
 #pragma mark Validations
@@ -415,13 +450,9 @@
     [HYPFormTarget filteredTargets:targets
                           filtered:^(NSArray *shownTargets,
                                      NSArray *hiddenTargets,
-                                     NSArray *enabledTargets,
-                                     NSArray *disabledTargets,
                                      NSArray *updatedTargets) {
                               [self showTargets:shownTargets];
                               [self hideTargets:hiddenTargets];
-                              [self enableTargets:enabledTargets];
-                              [self disableTargets:disabledTargets];
                               [self updateTargets:updatedTargets];
 
                               [self.collectionView.collectionViewLayout invalidateLayout];
@@ -506,20 +537,6 @@
     if (deletedIndexPaths.count > 0) {
         [self.collectionView deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
     }
-}
-
-- (void)enableTargets:(NSArray *)targets
-{
-    // look for the fields
-    // get their index paths
-    // enable them
-}
-
-- (void)disableTargets:(NSArray *)targets
-{
-    // look for the fields
-    // get their index paths
-    // disable them
 }
 
 - (void)updateTargets:(NSArray *)targets
@@ -613,7 +630,7 @@
                      completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
 {
     HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:self.forms];
-    
+
     __block NSInteger index = 0;
     __block BOOL found = NO;
     [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
