@@ -43,23 +43,30 @@
                                   NSArray *hiddenTargets,
                                   NSArray *updatedTargets))filtered
 {
-    NSMutableDictionary *shown = [NSMutableDictionary dictionary];
-    NSMutableDictionary *hidden = [NSMutableDictionary dictionary];
-    NSMutableDictionary *updated = [NSMutableDictionary dictionary];
+    NSMutableArray *shown = [NSMutableArray array];
+    NSMutableArray *hidden = [NSMutableArray array];
+    NSMutableArray *updated = [NSMutableArray array];
 
     // TODO: balance show + hide
     // TODO: balance update + hide
 
     for (HYPFormTarget *target in targets) {
+
         switch (target.actionType) {
             case HYPFormTargetActionShow:
-                [shown setValue:target forKey:target.id];
+                if (![target existsInArray:shown]) {
+                    [shown addObject:target];
+                }
                 break;
             case HYPFormTargetActionHide:
-                [hidden setValue:target forKey:target.id];
+                if (![target existsInArray:hidden]) {
+                    [hidden addObject:target];
+                }
                 break;
             case HYPFormTargetActionUpdate:
-                [updated setValue:target forKey:target.id];
+                if (![target existsInArray:updated]) {
+                    [updated addObject:target];
+                }
                 break;
             case HYPFormTargetActionNone:
                 break;
@@ -67,8 +74,21 @@
     }
 
     if (filtered) {
-        filtered([shown allValues], [hidden allValues], [updated allValues]);
+        filtered(shown, hidden, updated);
     }
+}
+
+- (BOOL)existsInArray:(NSArray *)array
+{
+    for (HYPFormTarget *currentTarget in array) {
+        if ([currentTarget.id isEqualToString:self.id] &&
+            currentTarget.actionType == self.actionType &&
+            currentTarget.type == self.type) {
+            return YES;
+        }
+    }
+
+    return NO;
 }
 
 @end
