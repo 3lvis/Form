@@ -10,6 +10,8 @@
 
 #import "HYPFormsCollectionViewDataSource.h"
 
+#import "HYPPostalCodeManager.h"
+
 #import "HYPFieldValue.h"
 
 #import "HYPImagePicker.h"
@@ -50,8 +52,45 @@
                                                                      andDictionary:self.setUpDictionary
                                                                           readOnly:NO];
 
+
+    __weak typeof(self)weakSelf = self;
+
     _dataSource.configureFieldUpdatedBlock = ^(id cell, HYPFormField *field) {
         NSLog(@"field updated: %@ --- %@", field.id, field.fieldValue);
+
+        if ([field.id isEqualToString:@"postal_code"]) {
+            NSString *postalCode = field.fieldValue;
+            HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
+            NSString *city = [postalCodeManager cityForPostalCode:postalCode];
+
+            HYPFormField *cityField = [HYPFormField fieldWithID:@"city"
+                                                        inForms:weakSelf.dataSource.forms
+                                                  withIndexPath:YES];
+            cityField.fieldValue = ([city capitalizedString]) ?: @"";
+
+            if (city) {
+                NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
+                mutableDictionary.dictionary = weakSelf.setUpDictionary;
+                mutableDictionary[@"postal_code"] = field.fieldValue;
+                mutableDictionary[@"city"] = city;
+                [weakSelf.dataSource reloadWithDictionary:mutableDictionary];
+
+                [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
+            }
+        }
+    };
+
+    _dataSource.configureCellBlock = ^(HYPBaseFormFieldCell *cell, NSIndexPath *indexPath, HYPFormField *field) {
+        cell.backgroundColor = (field.sectionSeparator) ? [UIColor colorFromHex:@"C6C6C6"] : [UIColor clearColor];
+
+        if ([field.id isEqualToString:@"city"]) {
+            NSString *postalCode = weakSelf.setUpDictionary[@"postal_code"];
+            HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
+            NSString *city = [postalCodeManager cityForPostalCode:postalCode];
+            field.fieldValue = ([city capitalizedString]) ?: @"";
+        }
+
+        cell.field = field;
     };
 
     return _dataSource;
