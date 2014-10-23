@@ -564,9 +564,21 @@
 
                 if (targetField.type == HYPFormFieldTypeSelect) {
 
-                    HYPFieldValue *fieldValue = targetField.fieldValue;
-                    if (fieldValue.value) {
-                        [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                    if ([targetField.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+                        HYPFieldValue *fieldValue = targetField.fieldValue;
+                        if (fieldValue.value) {
+                            [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                        }
+                    } else {
+                        HYPFieldValue *foundFieldValue = nil;
+                        for (HYPFieldValue *fieldValue in field.values) {
+                            if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
+                                foundFieldValue = fieldValue;
+                            }
+                        }
+                        if (foundFieldValue && foundFieldValue.value) {
+                            [values addEntriesFromDictionary:@{fieldID : foundFieldValue.value}];
+                        }
                     }
 
                 } else {
