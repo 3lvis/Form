@@ -8,6 +8,10 @@
 
 #import "HYPPostalCodeManager.h"
 
+@interface HYPPostalCodeManager ()
+@property (nonatomic, retain) NSDictionary *postalCodes;
+@end
+
 @implementation HYPPostalCodeManager
 
 + (id)JSONObjectWithContentsOfFile:(NSString*)fileName
@@ -32,7 +36,7 @@
     self = [super init];
     if (!self) return nil;
 
-    NSArray *JSON = [REMAPostalCodeManager JSONObjectWithContentsOfFile:@"postal_codes.json"];
+    NSArray *JSON = [HYPPostalCodeManager JSONObjectWithContentsOfFile:@"postal_codes.json"];
 
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
     for (NSDictionary *entry in JSON) {

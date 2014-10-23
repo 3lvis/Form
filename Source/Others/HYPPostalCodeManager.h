@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Hyper. All rights reserved.
 //
 
-@import Foundation
+@import Foundation;
 
 @interface HYPPostalCodeManager : NSObject
 
