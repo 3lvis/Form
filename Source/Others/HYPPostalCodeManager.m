@@ -66,5 +66,9 @@
     return (self.postalCodes[postalCode]) ? YES : NO;
 }
 
+- (NSString *)cityForPostalCode:(NSString *)postalCode
+{
+    return (self.postalCodes[postalCode]) ?: nil;
+}
 
 @end
