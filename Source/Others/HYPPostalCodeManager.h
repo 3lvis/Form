@@ -14,5 +14,6 @@
 + (id)JSONObjectWithContentsOfFile:(NSString*)fileName;
 
 - (BOOL)validatePostalCode:(NSString *)postalCode;
+- (NSString *)cityForPostalCode:(NSString *)postalCode;
 
 @end
