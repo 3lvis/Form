@@ -54,17 +54,17 @@
 
         switch (target.actionType) {
             case HYPFormTargetActionShow:
-                if (![target existsInArray:shown]) {
+                if (![shown containsObject:target]) {
                     [shown addObject:target];
                 }
                 break;
             case HYPFormTargetActionHide:
-                if (![target existsInArray:hidden]) {
+                if (![hidden containsObject:target]) {
                     [hidden addObject:target];
                 }
                 break;
             case HYPFormTargetActionUpdate:
-                if (![target existsInArray:updated]) {
+                if (![updated containsObject:target]) {
                     [updated addObject:target];
                 }
                 break;
@@ -78,17 +78,17 @@
     }
 }
 
-- (BOOL)existsInArray:(NSArray *)array
+- (BOOL)isEqual:(HYPFormTarget *)object
 {
-    for (HYPFormTarget *currentTarget in array) {
-        if ([currentTarget.id isEqualToString:self.id] &&
-            currentTarget.actionType == self.actionType &&
-            currentTarget.type == self.type) {
-            return YES;
-        }
+    BOOL equal = ([object.id isEqualToString:self.id] &&
+            object.actionType == self.actionType &&
+            object.type == self.type);
+
+    if (equal && self.value && object.value) {
+        equal = ([self.value identifierIsEqualTo:object.value.id]);
     }
 
-    return NO;
+    return equal;
 }
 
 @end
