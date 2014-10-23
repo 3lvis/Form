@@ -54,19 +54,13 @@
 
         switch (target.actionType) {
             case HYPFormTargetActionShow:
-                if (![shown containsObject:target]) {
-                    [shown addObject:target];
-                }
+                if (![shown containsObject:target]) [shown addObject:target];
                 break;
             case HYPFormTargetActionHide:
-                if (![hidden containsObject:target]) {
-                    [hidden addObject:target];
-                }
+                if (![hidden containsObject:target]) [hidden addObject:target];
                 break;
             case HYPFormTargetActionUpdate:
-                if (![updated containsObject:target]) {
-                    [updated addObject:target];
-                }
+                if (![updated containsObject:target]) [updated addObject:target];
                 break;
             case HYPFormTargetActionNone:
                 break;
