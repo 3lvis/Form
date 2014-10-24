@@ -36,7 +36,15 @@
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
-    _setUpDictionary = dictionary;
+    NSMutableDictionary *valuesDict = [dictionary mutableCopy];
+    if ([dictionary valueForKey:@"postal_code"] && ![dictionary valueForKey:@"city"]) {
+        NSString *postalCode = [valuesDict valueForKey:@"postal_code"];
+        HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
+        NSString *city = [postalCodeManager cityForPostalCode:postalCode];
+        if (city) [valuesDict setValue:city forKey:@"city"];
+    }
+
+    _setUpDictionary = valuesDict;
     layout.dataSource = self.dataSource;
 
     return self;
