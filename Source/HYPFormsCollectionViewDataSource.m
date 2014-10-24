@@ -622,7 +622,7 @@
         }
     }
 
-    [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
+    [self reloadItemsAtIndexPaths:updatedIndexPaths];
 }
 
 #pragma mark - Target helpers
