@@ -271,6 +271,21 @@
     }
 }
 
+- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths
+{
+    NSMutableArray *reloadedIndexPaths = [NSMutableArray array];
+
+    for (NSIndexPath *indexPath in indexPaths) {
+        if (![self.collapsedForms containsObject:@(indexPath.section)]) {
+            [reloadedIndexPaths addObject:indexPath];
+        }
+    }
+
+    if (reloadedIndexPaths.count > 0) {
+        [self.collectionView reloadItemsAtIndexPaths:reloadedIndexPaths];
+    }
+}
+
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HYPForm *form = self.forms[indexPath.section];
