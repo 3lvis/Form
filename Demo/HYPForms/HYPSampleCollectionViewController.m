@@ -63,34 +63,11 @@
             HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
             NSString *city = [postalCodeManager cityForPostalCode:postalCode];
 
-            HYPFormField *cityField = [HYPFormField fieldWithID:@"city"
-                                                        inForms:weakSelf.dataSource.forms
-                                                  withIndexPath:YES];
-            cityField.fieldValue = ([city capitalizedString]) ?: @"";
+            HYPFormField *cityField = [HYPFormField fieldWithID:@"city" inForms:weakSelf.dataSource.forms withIndexPath:YES];
 
-            if (city) {
-                NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
-                mutableDictionary.dictionary = weakSelf.setUpDictionary;
-                mutableDictionary[@"postal_code"] = field.fieldValue;
-                mutableDictionary[@"city"] = city;
-                [weakSelf.dataSource reloadWithDictionary:mutableDictionary];
-
-                [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
-            }
+            cityField.fieldValue = city;
+            [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
         }
-    };
-
-    _dataSource.configureCellBlock = ^(HYPBaseFormFieldCell *cell, NSIndexPath *indexPath, HYPFormField *field) {
-        cell.backgroundColor = (field.sectionSeparator) ? [UIColor colorFromHex:@"C6C6C6"] : [UIColor clearColor];
-
-        if ([field.id isEqualToString:@"city"]) {
-            NSString *postalCode = weakSelf.setUpDictionary[@"postal_code"];
-            HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
-            NSString *city = [postalCodeManager cityForPostalCode:postalCode];
-            field.fieldValue = ([city capitalizedString]) ?: @"";
-        }
-
-        cell.field = field;
     };
 
     return _dataSource;
@@ -116,7 +93,7 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-
+    NSLog(@"%s", __FUNCTION__);
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];

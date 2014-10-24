@@ -83,6 +83,7 @@
             "size":15,
             "validations":{
               "required":true,
+              "min_length":4,
               "max_length":4,
               "format":"\\d{4}"
             }
