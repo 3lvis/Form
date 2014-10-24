@@ -42,7 +42,6 @@
                                   @"salary_type" : @2,
                                   @"fixed_pay_level" : @4,
                                   @"position" : @3,
-                                  @"city" : @"HALDEN",
                                   @"country_code" : @"NO"
                                   };
 
