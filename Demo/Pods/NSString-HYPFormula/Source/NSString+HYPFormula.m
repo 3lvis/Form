@@ -8,16 +8,29 @@
 
 #import "NSString+HYPFormula.h"
 
+#import "NSString+HYPWordExtractor.h"
+
 @implementation NSString (HYPFormula)
 
 - (NSString *)hyp_processValues:(NSDictionary *)values
 {
+    NSArray *variables = [self hyp_variables];
+
+    BOOL thereAreMoreVariablesThanValues = ([values allKeys].count < variables.count);
+    if (thereAreMoreVariablesThanValues) return nil;
+
     NSMutableString *mutableString = [self mutableCopy];
     NSArray *sortedKeysArray = [[values allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
         return a.length < b.length;
     }];
 
+    NSInteger foundCount = 0;
+
     for (NSString *key in sortedKeysArray) {
+
+        BOOL keyWasFoundInFormula = ([self rangeOfString:key].location != NSNotFound);
+        if (keyWasFoundInFormula) foundCount++;
+
         id value = values[key];
 
         if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
@@ -27,18 +40,21 @@
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
     }
 
+    BOOL numberOfFoundIsDifferentThanNumberOfValues = (foundCount < variables.count);
+    if (numberOfFoundIsDifferentThanNumberOfValues) return nil;
+
     return [mutableString copy];
 }
 
 - (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *formula = [[self hyp_processValues:dictionary] sanitize];
+    NSString *processedFormula = [self hyp_processValues:dictionary];
+
+    if ([self isStringFormula:[dictionary allValues]]) return processedFormula;
+
+    NSString *formula = [processedFormula sanitize];
 
     if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
-
-    if ([self isStringFormula:[dictionary allValues]]) return formula;
-
-    if (![formula isValidExpression]) return nil;
 
     NSExpression *expression = [NSExpression expressionWithFormat:formula];
     id value = [expression expressionValueWithObject:nil context:nil];
@@ -54,6 +70,8 @@
 
 - (NSString *)sanitize
 {
+    if (![self isValidExpression]) return nil;
+
     NSString *formula = [self stringByReplacingOccurrencesOfString:@"," withString:@"."];
     NSScanner *scanner = [NSScanner scannerWithString:formula];
     NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890."];
