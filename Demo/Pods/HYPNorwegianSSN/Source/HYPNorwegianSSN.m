@@ -49,10 +49,14 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
     return self;
 }
 
-- (NSUInteger)age
+- (NSNumber *)age
 {
     if ([self.SSN length] != 11) {
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
+    }
+
+    if (!self.dateOfBirthStringWithCentury) {
+        return nil;
     }
 
     NSDateFormatter *formatter = [NSDateFormatter new];
@@ -65,7 +69,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
                                    options:0];
     NSUInteger age = ageComponents.year;
 
-    return age;
+    return @(age);
 }
 
 - (BOOL)isDNumber
@@ -85,6 +89,8 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (BOOL)isValid
 {
+    if (!self.SSN || self.SSN.length != 11) return NO;
+
     NSInteger firstControlDigit, secondControlDigit;
     NSString *ssn = [self.SSN substringToIndex:9];
 

@@ -10,6 +10,8 @@
 
 #import "HYPFormsCollectionViewDataSource.h"
 
+#import "HYPPostalCodeManager.h"
+
 #import "HYPFieldValue.h"
 
 #import "HYPImagePicker.h"
@@ -34,7 +36,15 @@
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
-    _setUpDictionary = dictionary;
+    NSMutableDictionary *valuesDict = [dictionary mutableCopy];
+    if ([dictionary valueForKey:@"postal_code"] && ![dictionary valueForKey:@"city"]) {
+        NSString *postalCode = [valuesDict valueForKey:@"postal_code"];
+        HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
+        NSString *city = [postalCodeManager cityForPostalCode:postalCode];
+        if (city) [valuesDict setValue:city forKey:@"city"];
+    }
+
+    _setUpDictionary = valuesDict;
     layout.dataSource = self.dataSource;
 
     return self;
@@ -50,8 +60,23 @@
                                                                      andDictionary:self.setUpDictionary
                                                                           readOnly:NO];
 
+
+    __weak typeof(self)weakSelf = self;
+
     _dataSource.configureFieldUpdatedBlock = ^(id cell, HYPFormField *field) {
         NSLog(@"field updated: %@ --- %@", field.id, field.fieldValue);
+
+        if ([field.id isEqualToString:@"postal_code"]) {
+            NSString *postalCode = field.fieldValue;
+            HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
+            NSString *city = [postalCodeManager cityForPostalCode:postalCode];
+
+            HYPFormField *cityField = [HYPFormField fieldWithID:@"city" inForms:weakSelf.dataSource.forms withIndexPath:YES];
+            if (cityField) {
+                cityField.fieldValue = city;
+                [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
+            }
+        }
     };
 
     return _dataSource;
