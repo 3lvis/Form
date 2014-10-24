@@ -72,9 +72,10 @@
             NSString *city = [postalCodeManager cityForPostalCode:postalCode];
 
             HYPFormField *cityField = [HYPFormField fieldWithID:@"city" inForms:weakSelf.dataSource.forms withIndexPath:YES];
-
-            cityField.fieldValue = city;
-            [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
+            if (cityField) {
+                cityField.fieldValue = city;
+                [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
+            }
         }
     };
 
