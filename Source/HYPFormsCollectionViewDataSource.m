@@ -480,7 +480,7 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self.deletedFields objectForKey:target.id];
+            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:self.forms withIndexPath:YES];
             if (field) {
                 [insertedIndexPaths addObject:field.indexPath];
                 HYPForm *form = self.forms[[field.section.form.position integerValue]];
