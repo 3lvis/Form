@@ -215,7 +215,7 @@
         } else {
             width += [field.size floatValue];
 
-            if (width >= 100.0f) {
+            if (width >= 90.0f) {
                 if (field.type == HYPFormFieldTypeImage) {
                     height += HYPImageFormFieldCellItemHeight;
                 } else {
