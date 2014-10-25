@@ -513,7 +513,7 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self fieldForTarget:target];
+            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:self.forms withIndexPath:YES];
             if (field && ![self.deletedFields objectForKey:field.id]) {
                 [deletedFields addObject:field];
                 [self.deletedFields addEntriesFromDictionary:@{field.id : field}];
@@ -559,11 +559,11 @@
     NSMutableArray *updatedIndexPaths = [NSMutableArray array];
 
     for (HYPFormTarget *target in targets) {
-        if (target.type == HYPFormTargetTypeSection) return;
-        if ([self.deletedFields objectForKey:target.id]) return;
+        if (target.type == HYPFormTargetTypeSection) continue;
+        if ([self.deletedFields objectForKey:target.id]) continue;
 
-        HYPFormField *field = [self fieldForTarget:target];
-        if (!field) return;
+        HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:self.forms withIndexPath:YES];
+        if (!field) continue;
 
         [updatedIndexPaths addObject:field.indexPath];
 
@@ -571,7 +571,6 @@
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
 
         for (NSString *fieldID in fieldIDs) {
-            HYPFormField *field = [self fieldForTarget:target];
 
             id value = [self.valuesDictionary objectForKey:fieldID];
             if (value) {
@@ -624,34 +623,9 @@
 
     [self reloadItemsAtIndexPaths:updatedIndexPaths];
 }
-
 #pragma mark - Target helpers
 
 #pragma mark Fields
-
-- (HYPFormField *)fieldForTarget:(HYPFormTarget *)target
-{
-    __block BOOL found = NO;
-    __block HYPFormField *foundField = nil;
-
-    [self.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
-        if (found) {
-            *formStop = YES;
-        }
-
-        [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
-            if ([field.id isEqualToString:target.id]) {
-                field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
-                foundField = field;
-
-                found = YES;
-                *fieldStop = YES;
-            }
-        }];
-    }];
-
-    return foundField;
-}
 
 - (void)sectionAndIndexForField:(HYPFormField *)field
                      completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
