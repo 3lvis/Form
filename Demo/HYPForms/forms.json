@@ -586,7 +586,9 @@
             "title":"Fra dato",
             "type":"date",
             "size":17.5,
-            "required":true
+            "validations":{
+              "required":true
+            }
           }
         ]
       },
@@ -800,7 +802,9 @@
             "title":"Fra dato",
             "type":"date",
             "size":17.5,
-            "required" : true
+            "validations":{
+              "required":true
+            }
           }
         ]
       },
