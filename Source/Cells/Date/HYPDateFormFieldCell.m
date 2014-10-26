@@ -12,7 +12,8 @@
 
 static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
-@interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate, UIPopoverControllerDelegate>
+@interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate,
+UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) HYPTextFormField *textField;
 
