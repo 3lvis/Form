@@ -10,8 +10,6 @@
 
 #import "HYPFormTimeViewController.h"
 
-static NSString * const HYPDateFieldFormat = @"yyyy-MM-dd";
-
 static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
 @interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate, UIPopoverControllerDelegate>
