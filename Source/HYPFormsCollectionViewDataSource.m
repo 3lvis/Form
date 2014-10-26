@@ -29,6 +29,7 @@
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic) UIEdgeInsets originalInset;
 @property (nonatomic) BOOL readOnly;
+
 @end
 
 @implementation HYPFormsCollectionViewDataSource
