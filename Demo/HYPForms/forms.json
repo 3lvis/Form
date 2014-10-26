@@ -299,7 +299,7 @@
           {
             "id":"employment_percent",
             "title":"Stillingsprosent",
-            "type":"float",
+            "type":"number",
             "size":25,
             "formula":"(hours_per_week / 37.5) * 100.0",
             "disabled":true
@@ -576,7 +576,7 @@
           {
             "id":"fixed_pay_total",
             "title":"Total",
-            "type":"float",
+            "type":"number",
             "size":20,
             "disabled":true,
             "formula":"fixed_pay_level * (employment_percent.0/100.0) * 1.0 + (fixed_pay_premium_percent.0) + fixed_pay_premium_currency"
@@ -792,7 +792,7 @@
           {
             "id":"hourly_pay_total",
             "title":"Total",
-            "type":"float",
+            "type":"number",
             "size":20,
             "disabled":true,
             "formula":"hourly_pay_level * (employment_percent.0 / 100.0) * 1.0 + (hourly_pay_premium_percent.0) + hourly_pay_premium_currency"

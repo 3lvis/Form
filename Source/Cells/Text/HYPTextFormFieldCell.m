@@ -52,37 +52,15 @@
     self.textField.hidden          = (field.sectionSeparator);
     self.textField.inputValidator  = [self.field inputValidator];
     self.textField.formatter       = [self.field formatter];
+    self.textField.rawText         = field.fieldValue;
     self.textField.typeString      = field.typeString;
     self.textField.enabled         = !field.disabled;
     self.textField.valid           = field.valid;
-    self.textField.rawText         = [self rawTextForField:field];
 }
 
 - (void)validate
 {
     [self.textField setValid:[self.field validate]];
-}
-
-- (NSString *)rawTextForField:(HYPFormField *)field
-{
-    if (field.fieldValue && field.type == HYPFormFieldTypeFloat) {
-
-        NSNumber *value = field.fieldValue;
-
-        if ([field.fieldValue isKindOfClass:[NSString class]]) {
-            NSMutableString *fieldValue = [field.fieldValue mutableCopy];
-            [fieldValue replaceOccurrencesOfString:@","
-                                        withString:@"."
-                                           options:NSCaseInsensitiveSearch
-                                             range:NSMakeRange(0, [fieldValue length])];
-            NSNumberFormatter *formatter = [NSNumberFormatter new];
-            value = [formatter numberFromString:fieldValue];
-        }
-
-        return [NSString stringWithFormat:@"%.2f", [value floatValue]];
-    }
-
-    return field.fieldValue;
 }
 
 #pragma mark - Private methods
