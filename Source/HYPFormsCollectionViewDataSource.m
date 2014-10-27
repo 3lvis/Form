@@ -572,42 +572,46 @@
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
 
         for (NSString *fieldID in fieldIDs) {
-
             id value = [self.valuesDictionary objectForKey:fieldID];
-            if (value) {
-                HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:self.forms withIndexPath:NO];
+            HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:self.forms withIndexPath:NO];
 
-                if (targetField.type == HYPFormFieldTypeSelect) {
+            if (targetField.type == HYPFormFieldTypeSelect) {
 
-                    if ([targetField.fieldValue isKindOfClass:[HYPFieldValue class]]) {
-                        HYPFieldValue *fieldValue = targetField.fieldValue;
-                        if (fieldValue.value) {
-                            [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
-                        }
-                    } else {
-                        HYPFieldValue *foundFieldValue = nil;
-                        for (HYPFieldValue *fieldValue in field.values) {
-                            if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
-                                foundFieldValue = fieldValue;
-                            }
-                        }
-                        if (foundFieldValue && foundFieldValue.value) {
-                            [values addEntriesFromDictionary:@{fieldID : foundFieldValue.value}];
-                        }
+                if ([targetField.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+                    HYPFieldValue *fieldValue = targetField.fieldValue;
+                    if (fieldValue.value) {
+                        [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
                     }
-
                 } else {
-                    if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
-                        [values addEntriesFromDictionary:@{fieldID : value}];
-                    } else {
-                        if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                            [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
-                            [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
-                        } else {
-                            [self.valuesDictionary setObject:@"" forKey:field.id];
-                            [values addEntriesFromDictionary:@{fieldID : @""}];
+                    HYPFieldValue *foundFieldValue = nil;
+                    for (HYPFieldValue *fieldValue in field.values) {
+                        if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
+                            foundFieldValue = fieldValue;
                         }
                     }
+                    if (foundFieldValue && foundFieldValue.value) {
+                        [values addEntriesFromDictionary:@{fieldID : foundFieldValue.value}];
+                    }
+                }
+
+            } else if (value) {
+
+                if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
+                    [values addEntriesFromDictionary:@{fieldID : value}];
+                } else {
+                    if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+                        [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
+                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                    } else {
+                        [self.valuesDictionary setObject:@"" forKey:field.id];
+                        [values addEntriesFromDictionary:@{fieldID : @""}];
+                    }
+                }
+            } else {
+                if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
+                    [values addEntriesFromDictionary:@{fieldID : @"0"}];
+                } else {
+                    [values addEntriesFromDictionary:@{fieldID : @""}];
                 }
             }
         }

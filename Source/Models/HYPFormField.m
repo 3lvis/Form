@@ -255,6 +255,12 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
                     }
                 }
             }
+        } else {
+            if (self.type == HYPFormFieldTypeNumber || self.type == HYPFormFieldTypeFloat) {
+                [values addEntriesFromDictionary:@{fieldID : @"0"}];
+            } else {
+                [values addEntriesFromDictionary:@{fieldID : @""}];
+            }
         }
     }
 
