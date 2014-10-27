@@ -841,7 +841,6 @@
 					"-Wno-missing-noreturn",
 					"-Wno-overriding-method-mismatch",
 					"-Wno-pedantic",
-					"-Wno-#warnings",
 					"-Wno-method-signatures",
 					"-Wno-super-class-method-mismatch",
 				);
@@ -872,7 +871,6 @@
 					"-Wno-missing-noreturn",
 					"-Wno-overriding-method-mismatch",
 					"-Wno-pedantic",
-					"-Wno-#warnings",
 					"-Wno-method-signatures",
 					"-Wno-super-class-method-mismatch",
 				);

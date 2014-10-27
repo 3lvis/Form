@@ -7,6 +7,7 @@
 //
 
 #import "HYPSocialSecurityNumberValidator.h"
+
 #import "HYPNorwegianSSN.h"
 
 @implementation HYPSocialSecurityNumberValidator
@@ -15,10 +16,8 @@
 {
     if (![super validateFieldValue:fieldValue]) return NO;
 
-#warning Disable validation during testing (HYPSocialSecurityNumberValidator)
-    return YES;
-//    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:(NSString *)fieldValue];
-//    return ssn.isValid;
+    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:(NSString *)fieldValue];
+    return ssn.isValid;
 }
 
 @end

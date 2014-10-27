@@ -7,6 +7,7 @@
 //
 
 #import "HYPBankAccountNumberValidator.h"
+
 #import "HYPNorwegianAccountNumber.h"
 
 @implementation HYPBankAccountNumberValidator
@@ -15,10 +16,8 @@
 {
     if (![super validateFieldValue:fieldValue]) return NO;
 
-#warning Disable validation during testing (HYPBankAccountNumberValidator)
-    return YES;
-//    HYPNorwegianAccountNumber *accountNumber = [[HYPNorwegianAccountNumber alloc] initWithString:(NSString *)fieldValue];
-//    return accountNumber.isValid;
+    HYPNorwegianAccountNumber *accountNumber = [[HYPNorwegianAccountNumber alloc] initWithString:(NSString *)fieldValue];
+    return accountNumber.isValid;
 }
 
 @end
