@@ -26,8 +26,6 @@ static CGFloat const HYPViewVerticalSpacing = 10.0f;
 
 @interface HYPFormTimeViewController ()
 
-@property (nonatomic, strong) NSDate *date;
-
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, copy) HYPFormTimeViewActionBlock actionBlock;
 
@@ -93,7 +91,7 @@ static CGFloat const HYPViewVerticalSpacing = 10.0f;
 {
     if (_messageTextView) return _messageTextView;
 
-    
+
     UIFont *font = [UIFont REMATextFieldFont];
     CGFloat xOffset = HYPActionMessageTextViewX;
     CGFloat yOffset = HYPActionMessageTextViewY;
@@ -157,11 +155,11 @@ static CGFloat const HYPViewVerticalSpacing = 10.0f;
 
 #pragma mark - Setters
 
-- (void)setCurrentDate:(NSDate *)currentDate
+- (void)setDate:(NSDate *)date
 {
-    _currentDate = currentDate;
+    _date = date;
 
-    self.datePicker.date = currentDate;
+    self.datePicker.date = date;
 }
 
 - (void)setActionButtonColor:(UIColor *)actionButtonColor

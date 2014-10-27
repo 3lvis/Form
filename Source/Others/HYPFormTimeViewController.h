@@ -15,7 +15,8 @@ typedef void (^HYPFormTimeViewActionBlock)(NSDate *date);
 
 @interface HYPFormTimeViewController : UIViewController
 
-@property (nonatomic, strong) NSDate *currentDate;
+@property (nonatomic, strong) NSDate *date;
+
 @property (nonatomic, weak) id <HYPFormTimeViewControllerDelegate> delegate;
 @property (nonatomic) BOOL birthdayPicker;
 @property (nonatomic, copy) UIColor *actionButtonColor;

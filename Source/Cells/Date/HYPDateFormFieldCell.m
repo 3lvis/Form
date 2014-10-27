@@ -10,11 +10,10 @@
 
 #import "HYPFormTimeViewController.h"
 
-static NSString * const HYPDateFieldFormat = @"yyyy-MM-dd";
-
 static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 
-@interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate, UIPopoverControllerDelegate>
+@interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate,
+UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) HYPTextFormField *textField;
 
@@ -56,9 +55,9 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
     [super updateWithField:field];
 
     if (field.fieldValue) {
-        NSDateFormatter *formatter = [NSDateFormatter new];
-        formatter.dateFormat = HYPDateFieldFormat;
-        self.textField.rawText = [formatter stringFromDate:field.fieldValue];
+        self.textField.rawText = [NSDateFormatter localizedStringFromDate:field.fieldValue
+                                                                    dateStyle:NSDateFormatterMediumStyle
+                                                                    timeStyle:NSDateFormatterNoStyle];
     }
 }
 
@@ -70,7 +69,7 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     if (self.field.fieldValue) {
-        self.timeViewController.currentDate = self.field.fieldValue;
+        self.timeViewController.date = self.field.fieldValue;
     }
 }
 
