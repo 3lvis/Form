@@ -24,10 +24,6 @@
         [mutableString insertString:@" " atIndex:6];
     }
 
-    if ([mutableString length] > 10 && ![[mutableString substringWithRange:NSMakeRange(10,1)] isEqualToString:@" "]) {
-        [mutableString insertString:@" " atIndex:10];
-    }
-
     return [mutableString copy];
 }
 
