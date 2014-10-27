@@ -24,8 +24,8 @@
         [mutableString insertString:@"." atIndex:4];
     }
 
-    if ([mutableString length] > 9 && ![[mutableString substringWithRange:NSMakeRange(9,1)] isEqualToString:@"."]) {
-        [mutableString insertString:@"." atIndex:9];
+    if ([mutableString length] > 7 && ![[mutableString substringWithRange:NSMakeRange(7,1)] isEqualToString:@"."]) {
+        [mutableString insertString:@"." atIndex:7];
     }
 
     return [mutableString copy];
