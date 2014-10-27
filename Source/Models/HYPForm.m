@@ -14,10 +14,57 @@
 
 #import "NSDictionary+HYPSafeValue.h"
 #import "NSString+HYPFormula.h"
+#import "HYPClassFactory.h"
+#import "HYPValidator.h"
+
+@interface HYPForm ()
+
+@property (nonatomic, strong) NSMutableDictionary *requiredFieldIDs;
+
+@end
 
 @implementation HYPForm
 
-+ (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
++ (instancetype)sharedInstance
+{
+    static HYPForm *_sharedClient;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        _sharedClient = [HYPForm new];
+    });
+
+    return _sharedClient;
+}
+
+- (NSMutableDictionary *)requiredFieldIDs
+{
+    if (_requiredFieldIDs) return _requiredFieldIDs;
+
+    NSMutableDictionary *fields = [NSMutableDictionary dictionary];
+
+    NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
+
+    for (NSDictionary *formDict in JSON) {
+        NSArray *dataSourceSections = [formDict hyp_safeValueForKey:@"sections"];
+        [dataSourceSections enumerateObjectsUsingBlock:^(NSDictionary *sectionDict, NSUInteger sectionIndex, BOOL *stop) {
+            NSArray *dataSourceFields = [sectionDict hyp_safeValueForKey:@"fields"];
+            [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
+                NSDictionary *validations = [fieldDict hyp_safeValueForKey:@"validations"];
+                BOOL required = [[validations hyp_safeValueForKey:@"required"] boolValue];
+                if (required) {
+                    [fields setObject:fieldDict forKey:[fieldDict hyp_safeValueForKey:@"id"]];
+                }
+            }];
+        }];
+    }
+
+    _requiredFieldIDs = fields;
+
+    return _requiredFieldIDs;
+}
+
+- (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
                                                  readOnly:(BOOL)readOnly
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues
@@ -165,7 +212,7 @@
     return forms;
 }
 
-+ (NSArray *)targetsUsingArray:(NSArray *)array
+- (NSArray *)targetsUsingArray:(NSArray *)array
 {
     NSMutableArray *targets = [NSMutableArray array];
 
@@ -180,7 +227,7 @@
     return targets;
 }
 
-+ (id)JSONObjectWithContentsOfFile:(NSString*)fileName
+- (id)JSONObjectWithContentsOfFile:(NSString*)fileName
 {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:[fileName stringByDeletingPathExtension]
                                                          ofType:[fileName pathExtension]];
@@ -206,6 +253,50 @@
     }
 
     return array;
+}
+
+- (BOOL)dictionaryIsValid:(NSDictionary *)dictionary
+{
+    NSMutableDictionary *fields = [[self requiredFieldIDs] mutableCopy];
+
+    NSArray *hourly = @[@"hourly_pay_entry_date",
+                        @"hourly_pay_level",
+                        @"hourly_pay_premium_currency",
+                        @"hourly_pay_premium_percent"];
+
+    NSArray *fixed = @[@"fixed_pay_entry_date",
+                       @"fixed_pay_level",
+                       @"fixed_pay_premium_currency",
+                       @"fixed_pay_premium_percent"];
+
+    NSNumber *salaryType = [dictionary hyp_safeValueForKey:@"salary_type"];
+    if (salaryType) {
+        switch ([salaryType integerValue]) {
+            case 1: [fields removeObjectsForKeys:fixed]; break;
+            case 2: [fields removeObjectsForKeys:hourly]; break;
+            case 4: {
+                [fields removeObjectsForKeys:hourly];
+                [fields removeObjectsForKeys:fixed];
+            } break;
+            default: break;
+        }
+    }
+
+    for (NSString *key in fields) {
+        if (![dictionary valueForKey:key]) return NO;
+
+        NSDictionary *fieldDict = [fields hyp_safeValueForKey:key];
+        NSDictionary *validations = [fieldDict hyp_safeValueForKey:@"validations"];
+        NSString *type = [fieldDict hyp_safeValueForKey:@"type"];
+        Class validatorClass = [HYPValidator classForKey:key andType:type];
+        id validator = [[validatorClass alloc] initWithValidations:validations];
+
+        if (![validator validateFieldValue:dictionary[key]]) {
+            return NO;
+        }
+    }
+
+    return YES;
 }
 
 - (NSInteger)numberOfFields
@@ -244,7 +335,7 @@
 
 #pragma mark - Private Methods
 
-+ (void)processFieldWithFormula:(NSArray *)fieldsWithFormula inForms:(NSArray *)forms
+- (void)processFieldWithFormula:(NSArray *)fieldsWithFormula inForms:(NSArray *)forms
 {
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
@@ -253,7 +344,7 @@
     }
 }
 
-+ (void)processHiddenFieldsInTargets:(NSArray *)targets
+- (void)processHiddenFieldsInTargets:(NSArray *)targets
                              inForms:(NSArray *)forms
                           completion:(void (^)(NSMutableDictionary *fields,
                                                NSMutableDictionary *sections))completion
@@ -280,7 +371,7 @@
     }
 }
 
-+ (void)removeHiddenFieldsInTargets:(NSArray *)targets inForms:(NSArray *)forms
+- (void)removeHiddenFieldsInTargets:(NSArray *)targets inForms:(NSArray *)forms
 {
     for (HYPFormTarget *target in targets) {
 

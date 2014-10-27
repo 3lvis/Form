@@ -7,6 +7,7 @@
 
 #import "HYPValidator.h"
 #import "HYPFieldValue.h"
+#import "HYPClassFactory.h"
 
 @interface HYPValidator ()
 
@@ -53,16 +54,14 @@
             valid = NO;
         } else if ([fieldValue isKindOfClass:[NSString class]]) {
             valid = ([fieldValue length] >= minimumLength);
-        } else if ([fieldValue isKindOfClass:[NSNumber class]]) {
-            valid = ([[fieldValue stringValue] length] >= minimumLength);
         }
     }
 
-    if (valid && self.validations[@"max_length"]) {
+    if (valid && [fieldValue isKindOfClass:[NSString class]] && self.validations[@"max_length"]) {
         valid = ([fieldValue length] <= [self.validations[@"max_length"] unsignedIntegerValue]);
     }
 
-    if (valid && self.validations[@"format"]) {
+    if (valid && [fieldValue isKindOfClass:[NSString class]] && self.validations[@"format"]) {
         valid = [self validateString:fieldValue
                           withFormat:self.validations[@"format"]];
     }
@@ -78,6 +77,19 @@
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:self.validations[@"format"] options:NSRegularExpressionCaseInsensitive error:&error];
     NSUInteger numberOfMatches = [regex numberOfMatchesInString:fieldValue options:NSMatchingReportProgress range:NSMakeRange(0, fieldValue.length)];
     return (numberOfMatches > 0);
+}
+
++ (Class)classForKey:(NSString *)key andType:(NSString *)type
+{
+    Class validatorClass = ([HYPClassFactory classFromString:key withSuffix:@"Validator"]);
+    if (!validatorClass) {
+        validatorClass = ([HYPClassFactory classFromString:type withSuffix:@"Validator"]);
+    }
+    if (!validatorClass) {
+        validatorClass = [HYPValidator class];
+    }
+
+    return validatorClass;
 }
 
 @end
