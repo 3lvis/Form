@@ -610,6 +610,8 @@
             } else {
                 if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
                     [values addEntriesFromDictionary:@{fieldID : @"0"}];
+                } else {
+                    [values addEntriesFromDictionary:@{fieldID : @""}];
                 }
             }
         }
