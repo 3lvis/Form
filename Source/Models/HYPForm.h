@@ -18,12 +18,16 @@
 
 @property (nonatomic) BOOL shouldValidate;
 
-+ (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
++ (instancetype)sharedInstance;
+
+- (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
                                                  readOnly:(BOOL)readOnly
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues;
 
 - (NSArray *)fields;
+
+- (BOOL)dictionaryIsValid:(NSDictionary *)dictionary;
 
 - (NSInteger)numberOfFields;
 - (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections;
