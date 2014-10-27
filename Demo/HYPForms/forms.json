@@ -14,7 +14,14 @@
             "validations":{
               "required":true,
               "min_length":2
-            }
+            },
+            "targets":[
+              {
+                "id":"display_name",
+                "type":"field",
+                "action":"update"
+              }
+            ]
           },
           {
             "id":"last_name",
@@ -24,13 +31,21 @@
             "validations":{
               "required":true,
               "min_length":2
-            }
+            },
+            "targets":[
+              {
+                "id":"display_name",
+                "type":"field",
+                "action":"update"
+              }
+            ]
           },
           {
             "id":"display_name",
             "title":"Visningsnavn",
             "type":"text",
-            "size":25
+            "size":25,
+            "formula":"first_name last_name"
           },
           {
             "id":"social_security_number",
@@ -579,7 +594,7 @@
             "type":"float",
             "size":20,
             "disabled":true,
-            "formula":"fixed_pay_level * (employment_percent.0/100.0) * 1.0 + (fixed_pay_premium_percent.0) + fixed_pay_premium_currency"
+            "formula":"fixed_pay_level * (employment_percent.0 / 100.0) * (1 + (fixed_pay_premium_percent.0 / 100.0)) + fixed_pay_premium_currency"
           },
           {
             "id":"fixed_pay_entry_date",
@@ -795,7 +810,7 @@
             "type":"float",
             "size":20,
             "disabled":true,
-            "formula":"hourly_pay_level * (employment_percent.0 / 100.0) * 1.0 + (hourly_pay_premium_percent.0) + hourly_pay_premium_currency"
+            "formula":"hourly_pay_level * (1 + (hourly_pay_premium_percent.0 / 100.0)) + hourly_pay_premium_currency"
           },
           {
             "id":"hourly_pay_entry_date",
