@@ -16,8 +16,10 @@
 {
     if (![super validateFieldValue:fieldValue]) return NO;
 
-    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:(NSString *)fieldValue];
-    return ssn.isValid;
+#warning Disable validation during testing (HYPSocialSecurityNumberValidator)
+    return YES;
+    //    HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:(NSString *)fieldValue];
+    //    return ssn.isValid;
 }
 
 @end
