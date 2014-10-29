@@ -76,6 +76,7 @@
                                            options:NSCaseInsensitiveSearch
                                              range:NSMakeRange(0, [fieldValue length])];
             NSNumberFormatter *formatter = [NSNumberFormatter new];
+            formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
             value = [formatter numberFromString:fieldValue];
         }
 
