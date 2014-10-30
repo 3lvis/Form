@@ -20,7 +20,7 @@
 
 + (instancetype)sharedInstance;
 
-- (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
+- (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
                                                  readOnly:(BOOL)readOnly
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues;
