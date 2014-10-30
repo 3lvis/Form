@@ -64,7 +64,7 @@
     return _requiredFieldIDs;
 }
 
-- (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSDictionary *)dictionary
+- (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
                                                  readOnly:(BOOL)readOnly
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues
@@ -197,7 +197,7 @@
         [forms addObject:form];
     }];
 
-    [self processFieldWithFormula:fieldsWithFormula inForms:forms];
+    [self processFieldsWithFormula:fieldsWithFormula inForms:forms usingValues:dictionary];
 
     [self processHiddenFieldsInTargets:targetsToRun
                                inForms:forms
@@ -335,12 +335,14 @@
 
 #pragma mark - Private Methods
 
-- (void)processFieldWithFormula:(NSArray *)fieldsWithFormula inForms:(NSArray *)forms
+- (void)processFieldsWithFormula:(NSArray *)fieldsWithFormula inForms:(NSArray *)forms
+                     usingValues:(NSMutableDictionary *)currentValues
 {
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
         id result = [field.formula hyp_runFormulaWithDictionary:values];
         field.fieldValue = result;
+        [currentValues setObject:result forKey:field.id];
     }
 }
 

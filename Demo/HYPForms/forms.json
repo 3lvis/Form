@@ -80,10 +80,7 @@
                 "id":"RU",
                 "title":"Russland"
               }
-            ],
-            "validations":{
-              "required":true
-            }
+            ]
           },
           {
             "id":"address",
@@ -398,10 +395,10 @@
             "id":"fixed_pay_level",
             "title":"Månedslønn",
             "type":"select",
-            "size":27.5,
+            "size":35,
             "values":[
               {
-                "title": "Ungdom under 16 år - 17900,-",
+                "title": "Ungdom under 16 år - 17900",
                 "id": 1,
                 "value": 17900.0,
                 "targets":[
@@ -413,7 +410,7 @@
                 ]
               },
               {
-                "title": "Ungdom 16-18 år - 18387,-",
+                "title": "Ungdom 16-18 år - 18387",
                 "id": 2,
                 "value": 18387.0,
                 "targets":[
@@ -425,7 +422,7 @@
                 ]
               },
               {
-                "title": "Trinn 0 Sett påslag - 0,-",
+                "title": "Trinn 0 Sett påslag - 0",
                 "id": 3,
                 "value": 0,
                 "targets":[
@@ -437,7 +434,7 @@
                 ]
               },
               {
-                "title": "Trinn 1 - 24176,-",
+                "title": "Trinn 1 - 24176",
                 "id": 4,
                 "value": 24176.0,
                 "targets":[
@@ -461,7 +458,7 @@
                 ]
               },
               {
-                "title": "Trinn 3 (25 år) - 24652,-",
+                "title": "Trinn 3 (25 år) - 24652",
                 "id": 6,
                 "value": 24652.0,
                 "targets":[
@@ -473,7 +470,7 @@
                 ]
               },
               {
-                "title": "Trinn 4 - 25235,-",
+                "title": "Trinn 4 - 25235",
                 "id": 7,
                 "value": 25235.0,
                 "targets":[
@@ -485,7 +482,7 @@
                 ]
               },
               {
-                "title": "Trinn 5 - 26169,-",
+                "title": "Trinn 5 - 26169",
                 "id": 8,
                 "value": 26169.0,
                 "targets":[
@@ -497,7 +494,7 @@
                 ]
               },
               {
-                "title": "Trinn 6 - 29193,-",
+                "title": "Trinn 6 - 29193",
                 "id": 9,
                 "value": 29193.0,
                 "targets":[
@@ -509,7 +506,7 @@
                 ]
               },
               {
-                "title": "Lærlinger 1. år - 11677,-",
+                "title": "Lærlinger 1. år - 11677",
                 "id": 10,
                 "value": 11677.0,
                 "targets":[
@@ -521,7 +518,7 @@
                 ]
               },
               {
-                "title": "Lærlinger 2. år - 11516,-",
+                "title": "Lærlinger 2. år - 11516",
                 "id": 11,
                 "value": 11516.0,
                 "targets":[
@@ -533,7 +530,7 @@
                 ]
               },
               {
-                "title": "Faglærte 1. år - 29193,-",
+                "title": "Faglærte 1. år - 29193",
                 "id": 12,
                 "value": 29193.0,
                 "targets":[
@@ -545,7 +542,7 @@
                 ]
               },
               {
-                "title": "Faglærte 2. år - 30737,-",
+                "title": "Faglærte 2. år - 30737",
                 "id": 13,
                 "value": 30737.0,
                 "targets":[
@@ -563,7 +560,7 @@
             "id":"fixed_pay_premium_percent",
             "title":"Påslag (%)",
             "type":"number",
-            "size":17.5,
+            "size":12.5,
             "targets":[
               {
                 "id":"fixed_pay_total",
@@ -575,8 +572,8 @@
           {
             "id":"fixed_pay_premium_currency",
             "title":"Påslag (kr)",
-            "type":"number",
-            "size":17.5,
+            "type":"float",
+            "size":14.5,
             "validations":{
               "required":true
             },
@@ -592,7 +589,7 @@
             "id":"fixed_pay_total",
             "title":"Total",
             "type":"float",
-            "size":20,
+            "size":18,
             "disabled":true,
             "formula":"fixed_pay_level * (employment_percent.0 / 100.0) * (1 + (fixed_pay_premium_percent.0 / 100.0)) + fixed_pay_premium_currency"
           },
@@ -600,7 +597,7 @@
             "id":"fixed_pay_entry_date",
             "title":"Fra dato",
             "type":"date",
-            "size":17.5,
+            "size":20,
             "validations":{
               "required":true
             }
@@ -614,10 +611,10 @@
             "id":"hourly_pay_level",
             "title":"Timelønn",
             "type":"select",
-            "size":27.5,
+            "size":35,
             "values":[
               {
-              "title": "Ungdom under 16 år - 110.15,-",
+              "title": "Ungdom under 16 år - 110,15",
               "value": 110.15,
               "id": 1,
               "targets": [
@@ -629,7 +626,7 @@
               ]
             },
             {
-              "title": "Ungdom 16-18 år - 113.15,-",
+              "title": "Ungdom 16-18 år - 113,15",
               "value": 113.15,
               "id": 2,
               "targets": [
@@ -641,7 +638,7 @@
               ]
             },
             {
-              "title": "Trinn 0 Sett påslag - 0,-",
+              "title": "Trinn 0 Sett påslag - 0",
               "value": 0,
               "id": 3,
               "targets": [
@@ -653,7 +650,7 @@
               ]
             },
             {
-              "title": "Trinn 1 - 148.77,-",
+              "title": "Trinn 1 - 148,77",
               "value": 148.77,
               "id": 4,
               "targets": [
@@ -665,7 +662,7 @@
               ]
             },
             {
-              "title": "Trinn 2 - 149.62,-",
+              "title": "Trinn 2 - 149,62",
               "value": 149.62,
               "id": 5,
               "targets": [
@@ -677,7 +674,7 @@
               ]
             },
             {
-              "title": "Trinn 3 (25 år) - 151.7,-",
+              "title": "Trinn 3 (25 år) - 151,7",
               "value": 151.7,
               "id": 6,
               "targets": [
@@ -689,7 +686,7 @@
               ]
             },
             {
-              "title": "Trinn 4 - 155.29,-",
+              "title": "Trinn 4 - 155,29",
               "value": 155.29,
               "id": 7,
               "targets": [
@@ -701,7 +698,7 @@
               ]
             },
             {
-              "title": "Trinn 5 - 161.04,-",
+              "title": "Trinn 5 - 161,04",
               "value": 161.04,
               "id": 8,
               "targets": [
@@ -713,7 +710,7 @@
               ]
             },
             {
-              "title": "Trinn 6 - 179.65,-",
+              "title": "Trinn 6 - 179,65",
               "value": 179.65,
               "id": 9,
               "targets": [
@@ -725,7 +722,7 @@
               ]
             },
             {
-              "title": "Lærlinger 1. år - 71.86,-",
+              "title": "Lærlinger 1. år - 71,86",
               "value": 71.86,
               "id": 10,
               "targets": [
@@ -737,7 +734,7 @@
               ]
             },
             {
-              "title": "Lærlinger 2. år - 107.79,-",
+              "title": "Lærlinger 2. år - 107,79",
               "value": 107.79,
               "id": 11,
               "targets": [
@@ -749,7 +746,7 @@
               ]
             },
             {
-              "title": "Faglærte 1. år - 179.65,-",
+              "title": "Faglærte 1. år - 179,65",
               "value": 179.65,
               "id": 12,
               "targets": [
@@ -761,7 +758,7 @@
               ]
             },
             {
-              "title": "Faglærte 2. år - 189.15,-",
+              "title": "Faglærte 2. år - 189,15",
               "value": 189.15,
               "id": 13,
               "targets": [
@@ -779,7 +776,7 @@
             "id":"hourly_pay_premium_percent",
             "title":"Påslag (%)",
             "type":"number",
-            "size":17.5,
+            "size":12.5,
             "targets":[
               {
                 "id":"hourly_pay_total",
@@ -791,8 +788,8 @@
           {
             "id":"hourly_pay_premium_currency",
             "title":"Påslag (kr)",
-            "type":"number",
-            "size":17.5,
+            "type":"float",
+            "size":14.5,
             "validations":{
               "required":true
             },
@@ -808,7 +805,7 @@
             "id":"hourly_pay_total",
             "title":"Total",
             "type":"float",
-            "size":20,
+            "size":18,
             "disabled":true,
             "formula":"hourly_pay_level * (1 + (hourly_pay_premium_percent.0 / 100.0)) + hourly_pay_premium_currency"
           },
@@ -816,7 +813,7 @@
             "id":"hourly_pay_entry_date",
             "title":"Fra dato",
             "type":"date",
-            "size":17.5,
+            "size":20,
             "validations":{
               "required":true
             }

@@ -467,9 +467,9 @@
                           filtered:^(NSArray *shownTargets,
                                      NSArray *hiddenTargets,
                                      NSArray *updatedTargets) {
-                              [self showTargets:shownTargets];
-                              [self hideTargets:hiddenTargets];
-                              [self updateTargets:updatedTargets];
+                              if (shownTargets.count > 0) [self showTargets:shownTargets];
+                              if (hiddenTargets.count > 0) [self hideTargets:hiddenTargets];
+                              if (updatedTargets.count > 0) [self updateTargets:updatedTargets];
 
                               [self.collectionView.collectionViewLayout invalidateLayout];
                           }];
@@ -572,13 +572,17 @@
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
 
         for (NSString *fieldID in fieldIDs) {
+
             id value = [self.valuesDictionary objectForKey:fieldID];
+
             HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:self.forms withIndexPath:NO];
 
             if (targetField.type == HYPFormFieldTypeSelect) {
 
                 if ([targetField.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+
                     HYPFieldValue *fieldValue = targetField.fieldValue;
+
                     if (fieldValue.value) {
                         [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
                     }
@@ -628,6 +632,7 @@
 
     [self reloadItemsAtIndexPaths:updatedIndexPaths];
 }
+
 #pragma mark - Target helpers
 
 #pragma mark Fields
