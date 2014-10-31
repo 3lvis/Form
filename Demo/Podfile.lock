@@ -1,9 +1,9 @@
 PODS:
   - HYPImagePicker (0.2)
   - HYPNorwegianAccountNumber (1.2)
-  - HYPNorwegianSSN (1.5)
+  - HYPNorwegianSSN (1.6)
   - NSDictionary-HYPSafeValue (0.1)
-  - NSString-HYPFormula (1.4)
+  - NSString-HYPFormula (1.4.1)
   - NSString-HYPWordExtractor (1.1)
   - NSString-ZENInflections (1.1)
   - UIColor-ANDYHex (1.0)
@@ -39,9 +39,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
   HYPNorwegianAccountNumber: 8ab481a23a13c1bd0135abe8c30e2af894f6c001
-  HYPNorwegianSSN: c423b6f7cc7b3540f7fa029a11c0c3383dcd27c6
+  HYPNorwegianSSN: e89eda882a498629b8e7a6d632f00c41ae79dd9c
   NSDictionary-HYPSafeValue: 9a25ceab076296c03fbabef1d05a334149bdb9f2
-  NSString-HYPFormula: 6592827621215099cfb3d62c9a2959d21f832e4f
+  NSString-HYPFormula: 944d6089795007866f7baddeec861cdf519c0abe
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
   NSString-ZENInflections: 68e691d2a37c8f33fc624b71326a3a654d07b6df
   UIColor-ANDYHex: 064f9460456713688a70ac86fd5b3287f1670759
