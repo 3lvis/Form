@@ -96,6 +96,9 @@
 - (BOOL)isValidExpression
 {
     NSString *string = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    if (!string || string.length <= 0) return NO;
+
     NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"(1234567890)"];
     NSCharacterSet *verboseSet = [NSCharacterSet characterSetWithCharactersInString:@"1234567890.,+-*/%() "];
     char firstCharacter = [string characterAtIndex:0];

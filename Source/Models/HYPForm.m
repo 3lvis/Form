@@ -342,7 +342,7 @@
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
         id result = [field.formula hyp_runFormulaWithDictionary:values];
         field.fieldValue = result;
-        [currentValues setObject:result forKey:field.id];
+        if (result) [currentValues setObject:result forKey:field.id];
     }
 }
 
