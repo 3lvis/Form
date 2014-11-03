@@ -46,9 +46,7 @@
     self.leftView = paddingView;
     self.leftViewMode = UITextFieldViewModeAlways;
 
-    [self addTarget:self
-             action:@selector(textFieldDidUpdate:)
-   forControlEvents:UIControlEventEditingChanged];
+    [self addTarget:self action:@selector(textFieldDidUpdate:) forControlEvents:UIControlEventEditingChanged];
 
     return self;
 }
