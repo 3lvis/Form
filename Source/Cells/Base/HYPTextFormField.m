@@ -60,7 +60,7 @@
         UITextPosition *beginning = self.beginningOfDocument;
         UITextPosition *start     = [self positionFromPosition:beginning offset:range.location];
         UITextPosition *end       = [self positionFromPosition:start offset:range.length];
-        UITextRange *newRange    = [self textRangeFromPosition:start toPosition:end];
+        UITextRange *newRange     = [self textRangeFromPosition:start toPosition:end];
         [self setSelectedTextRange:newRange];
         [super setText:text];
     } else {
