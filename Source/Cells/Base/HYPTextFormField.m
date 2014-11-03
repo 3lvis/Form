@@ -47,13 +47,30 @@
     self.leftViewMode = UITextFieldViewModeAlways;
 
     [self addTarget:self
-             action:@selector(updateLabelUsingContentsOfTextField:)
+             action:@selector(textFieldDidUpdate:)
    forControlEvents:UIControlEventEditingChanged];
 
     return self;
 }
 
 #pragma mark - Setters
+
+- (void)setText:(NSString *)text
+{
+    if (text.length > super.text.length) {
+        NSRange range = NSMakeRange(text.length, 0);
+        UITextPosition *beginning = self.beginningOfDocument;
+        UITextPosition *start     = [self positionFromPosition:beginning offset:range.location];
+        UITextPosition *end       = [self positionFromPosition:start offset:range.length];
+        UITextRange *newRange    = [self textRangeFromPosition:start toPosition:end];
+        [self setSelectedTextRange:newRange];
+        [super setText:text];
+    } else {
+        UITextRange *selectedRange  = [self selectedTextRange];
+        [super setText:text];
+        [self setSelectedTextRange:selectedRange];
+    }
+}
 
 - (void)setEnabled:(BOOL)enabled
 {
@@ -70,13 +87,13 @@
 
 - (void)setRawText:(NSString *)rawText
 {
-    _rawText = rawText;
-
-    if (self.formatter) {
+    if (self.formatter && rawText.length > _rawText.length) {
         self.text = [self.formatter formatString:rawText reverse:NO];
     } else {
         self.text = rawText;
     }
+
+    _rawText = rawText;
 }
 
 - (void)setValid:(BOOL)valid
@@ -176,45 +193,15 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    self.modified = YES;
+    if (!string) return YES;
 
-    NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    if (resultString.length == 0) {
-        resultString = nil;
+    BOOL validator = (self.inputValidator && [self.inputValidator respondsToSelector:@selector(validateReplacementString:withText:)]);
+
+    if (validator) {
+        return [self.inputValidator validateReplacementString:string withText:self.rawText];
     }
 
-    if (!string.length) {
-        self.rawText = resultString;
-
-        if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
-            [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
-        }
-
-        return NO;
-    }
-
-    if ([string characterAtIndex:0] == 10) {
-        [self resignFirstResponder];
-        return NO;
-    }
-
-    BOOL valid = YES;
-
-    if (self.inputValidator) {
-        valid = [self.inputValidator validateReplacementString:string withText:self.rawText];
-    }
-
-    if (valid) {
-        self.rawText = resultString;
-
-        if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
-            [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
-        }
-
-        return NO;
-    }
-
-    return valid;
+    return YES;
 }
 
 #pragma mark - UIResponder Overwritables
@@ -239,11 +226,14 @@
 
 #pragma mark - Notifications
 
-- (void)updateLabelUsingContentsOfTextField:(UITextField *)textField
+- (void)textFieldDidUpdate:(UITextField *)textField
 {
     if (!self.isValid) {
         self.valid = YES;
     }
+
+    self.modified = YES;
+    self.rawText = self.text;
 }
 
 @end
