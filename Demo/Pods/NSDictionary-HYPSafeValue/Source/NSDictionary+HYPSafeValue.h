@@ -11,4 +11,6 @@
 
 - (id)hyp_safeValueForKey:(id)key;
 
+- (void)hyp_setSafeValue:(id)value forKey:(id)key;
+
 @end

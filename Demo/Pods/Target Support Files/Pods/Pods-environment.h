@@ -27,7 +27,7 @@
 // NSDictionary-HYPSafeValue
 #define COCOAPODS_POD_AVAILABLE_NSDictionary_HYPSafeValue
 #define COCOAPODS_VERSION_MAJOR_NSDictionary_HYPSafeValue 0
-#define COCOAPODS_VERSION_MINOR_NSDictionary_HYPSafeValue 1
+#define COCOAPODS_VERSION_MINOR_NSDictionary_HYPSafeValue 2
 #define COCOAPODS_VERSION_PATCH_NSDictionary_HYPSafeValue 0
 
 // NSString-HYPFormula

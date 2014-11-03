@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
     :type => 'MIT',
     :file => 'LICENSE.md'
   }
-  s.author = { "Elvis Nunez" => "elvisnunez@me.com" }
+  s.author = { "Elvis Nuñez" => "elvisnunez@me.com" }
   s.social_media_url = "http://twitter.com/NSElvis"
   s.platform = :ios, '6.0'
   s.source = {

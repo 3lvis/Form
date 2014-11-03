@@ -29,4 +29,9 @@
     return value;
 }
 
+- (void)hyp_setSafeValue:(id)value forKey:(id)key
+{
+    if (value && key) [self setValue:value forKey:key];
+}
+
 @end
