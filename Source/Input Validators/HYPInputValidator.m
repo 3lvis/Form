@@ -12,8 +12,8 @@
 
 - (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text withRange:(NSRange)range
 {
-    if (string.length == 0) return YES;
-    if (!self.validations) return YES;
+    BOOL shouldSkipValidations = (text.length == 0 || string.length == 0 || !self.validations);
+    if (shouldSkipValidations) return YES;
 
     NSUInteger textLength = [text length];
 
