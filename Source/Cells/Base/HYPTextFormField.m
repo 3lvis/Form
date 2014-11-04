@@ -230,6 +230,10 @@
 
     self.modified = YES;
     self.rawText = self.text;
+
+    if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+        [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+    }
 }
 
 @end
