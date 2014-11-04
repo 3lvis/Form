@@ -10,7 +10,7 @@
 
 @implementation HYPInputValidator
 
-- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text
+- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text withRange:(NSRange)range
 {
     if (string.length == 0) return YES;
     if (!self.validations) return YES;
@@ -28,7 +28,8 @@
     }
 
     if (self.validations[@"max_value"]) {
-        NSString *newString = [NSString stringWithFormat:@"%@%@", text, string];
+        NSMutableString *newString = [[NSMutableString alloc] initWithString:text];
+        [newString insertString:string atIndex:range.location];
         NSNumberFormatter *formatter = [NSNumberFormatter new];
         NSNumber *newValue = [formatter numberFromString:newString];
         NSNumber *maxValue = self.validations[@"max_value"];
@@ -38,11 +39,6 @@
     }
 
     return valid;
-}
-
-- (BOOL)validateText:(NSString *)text
-{
-    return [self validateReplacementString:nil withText:text];
 }
 
 - (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format
