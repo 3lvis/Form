@@ -9,9 +9,9 @@
 
 @implementation HYPFloatInputValidator
 
-- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text
+- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text withRange:(NSRange)range
 {
-    BOOL valid = [super validateReplacementString:string withText:text];
+    BOOL valid = [super validateReplacementString:string withText:text withRange:range];
 
     if (!valid) return valid;
 

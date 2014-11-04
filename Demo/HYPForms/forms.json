@@ -124,8 +124,7 @@
             "type":"email",
             "size":40,
             "validations":{
-              "format":"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,8}",
-              "required":true
+              "format":"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,8}"
             }
           },
           {
@@ -288,7 +287,8 @@
             "validations":{
               "required":true,
               "min_length":1,
-              "max_length":5
+              "max_length":5,
+              "max_value":37.5
             },
             "targets":[
               {
@@ -396,6 +396,9 @@
             "title":"Månedslønn",
             "type":"select",
             "size":35,
+            "validations":{
+                "required":true
+            },
             "values":[
               {
                 "title": "Ungdom under 16 år - 17900",
@@ -446,7 +449,7 @@
                 ]
               },
               {
-                "title": "Trinn 2 - 24314,-",
+                "title": "Trinn 2 - 24314",
                 "id": 5,
                 "value": 24314.0,
                 "targets":[
@@ -553,7 +556,6 @@
                   }
                 ]
               }
-
             ]
           },
           {
@@ -561,6 +563,10 @@
             "title":"Påslag (%)",
             "type":"number",
             "size":12.5,
+            "validations":{
+              "max_length":3,
+              "max_value":100
+            },
             "targets":[
               {
                 "id":"fixed_pay_total",
@@ -574,9 +580,6 @@
             "title":"Påslag (kr)",
             "type":"float",
             "size":14.5,
-            "validations":{
-              "required":true
-            },
             "targets":[
               {
                 "id":"fixed_pay_total",
@@ -612,6 +615,9 @@
             "title":"Timelønn",
             "type":"select",
             "size":35,
+            "validations":{
+                "required":true
+            },
             "values":[
               {
               "title": "Ungdom under 16 år - 110,15",
@@ -777,6 +783,10 @@
             "title":"Påslag (%)",
             "type":"number",
             "size":12.5,
+            "validations":{
+              "max_length":3,
+              "max_value":100
+            },
             "targets":[
               {
                 "id":"hourly_pay_total",
@@ -790,9 +800,6 @@
             "title":"Påslag (kr)",
             "type":"float",
             "size":14.5,
-            "validations":{
-              "required":true
-            },
             "targets":[
               {
                 "id":"hourly_pay_total",

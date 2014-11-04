@@ -10,8 +10,9 @@
 
 @implementation HYPInputValidator
 
-- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text
+- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text withRange:(NSRange)range
 {
+    if (string.length == 0) return YES;
     if (!self.validations) return YES;
 
     NSUInteger textLength = [text length];
@@ -26,12 +27,18 @@
         valid = (textLength <= [self.validations[@"max_length"] unsignedIntegerValue]);
     }
 
-    return valid;
-}
+    if (self.validations[@"max_value"]) {
+        NSMutableString *newString = [[NSMutableString alloc] initWithString:text];
+        [newString insertString:string atIndex:range.location];
+        NSNumberFormatter *formatter = [NSNumberFormatter new];
+        NSNumber *newValue = [formatter numberFromString:newString];
+        NSNumber *maxValue = self.validations[@"max_value"];
 
-- (BOOL)validateText:(NSString *)text
-{
-    return [self validateReplacementString:nil withText:text];
+        BOOL eligibleForCompare = (newValue && maxValue);
+        if (eligibleForCompare) valid = ([newValue floatValue] <= [maxValue floatValue]);
+    }
+
+    return valid;
 }
 
 - (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format
