@@ -12,6 +12,7 @@
 
 - (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text
 {
+    if (string.length == 0) return YES;
     if (!self.validations) return YES;
 
     NSUInteger textLength = [text length];
@@ -24,6 +25,16 @@
 
     if (self.validations[@"max_length"]) {
         valid = (textLength <= [self.validations[@"max_length"] unsignedIntegerValue]);
+    }
+
+    if (self.validations[@"max_value"]) {
+        NSString *newString = [NSString stringWithFormat:@"%@%@", text, string];
+        NSNumberFormatter *formatter = [NSNumberFormatter new];
+        NSNumber *newValue = [formatter numberFromString:newString];
+        NSNumber *maxValue = self.validations[@"max_value"];
+
+        BOOL eligibleForCompare = (newValue && maxValue);
+        if (eligibleForCompare) valid = ([newValue floatValue] <= [maxValue floatValue]);
     }
 
     return valid;
