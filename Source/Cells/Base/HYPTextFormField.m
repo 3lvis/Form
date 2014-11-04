@@ -195,9 +195,7 @@
 
     BOOL validator = (self.inputValidator && [self.inputValidator respondsToSelector:@selector(validateReplacementString:withText:)]);
 
-    if (validator) {
-        return [self.inputValidator validateReplacementString:string withText:self.rawText];
-    }
+    if (validator) return [self.inputValidator validateReplacementString:string withText:self.rawText];
 
     return YES;
 }
