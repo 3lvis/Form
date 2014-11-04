@@ -14,21 +14,23 @@
     string = [super formatString:string reverse:reverse];
     if (!string) return nil;
 
-    if (reverse) {
-        return [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *rawString = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (reverse) return rawString;
+
+    NSMutableString *mutableString = [NSMutableString new];
+    NSUInteger idx = 0;
+    NSString *characterString;
+
+    while (idx < rawString.length) {
+        characterString = [NSString stringWithFormat:@"%c", [rawString characterAtIndex:idx]];
+        [mutableString appendString:characterString];
+
+        if (idx == 3 || idx == 5) [mutableString appendString:@" "];
+
+        ++idx;
     }
 
-    NSMutableString *mutableString = [[NSMutableString alloc] initWithString:string];
-
-    if ([mutableString length] > 3 && ![[mutableString substringWithRange:NSMakeRange(3,1)] isEqualToString:@" "]) {
-        [mutableString insertString:@" " atIndex:3];
-    }
-
-    if ([mutableString length] > 6 && ![[mutableString substringWithRange:NSMakeRange(6,1)] isEqualToString:@" "]) {
-        [mutableString insertString:@" " atIndex:6];
-    }
-
-    return [mutableString copy];
+    return mutableString;
 }
 
 @end

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "NSDictionary-HYPSafeValue"
-  s.version = "0.1"
+  s.version = "0.2"
   s.summary = "Silly NSDictionary crashes when you put NSNull on it"
   s.description = <<-DESC
                    * Silly NSDictionary crashes when you put NSNull on it

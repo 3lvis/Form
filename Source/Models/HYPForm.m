@@ -285,7 +285,7 @@
     for (NSString *key in fields) {
         if (![dictionary valueForKey:key]) return NO;
 
-        NSDictionary *fieldDict = [fields hyp_safeValueForKey:key];
+        NSDictionary *fieldDict   = [fields hyp_safeValueForKey:key];
         NSDictionary *validations = [fieldDict hyp_safeValueForKey:@"validations"];
         NSString *type = [fieldDict hyp_safeValueForKey:@"type"];
         Class validatorClass = [HYPValidator classForKey:key andType:type];
