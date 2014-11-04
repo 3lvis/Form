@@ -15,9 +15,7 @@
     if (!string) return nil;
 
     NSString *rawString = [string stringByReplacingOccurrencesOfString:@"." withString:@""];
-    if (reverse) {
-        return rawString;
-    }
+    if (reverse) return rawString;
 
     NSMutableString *mutableString = [NSMutableString new];
     NSUInteger idx = 0;
