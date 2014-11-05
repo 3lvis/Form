@@ -132,7 +132,7 @@
                 if (dataSourceValues) {
                     for (NSDictionary *valueDict in dataSourceValues) {
                         HYPFieldValue *fieldValue = [HYPFieldValue new];
-                        fieldValue.fieldValueID = [valueDict hyp_safeValueForKey:@"id"];
+                        fieldValue.valueID = [valueDict hyp_safeValueForKey:@"id"];
                         fieldValue.title = [valueDict hyp_safeValueForKey:@"title"];
                         fieldValue.value = [valueDict hyp_safeValueForKey:@"value"];
 
