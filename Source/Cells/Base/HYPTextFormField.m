@@ -72,6 +72,17 @@
     }
 }
 
+- (void)setActive:(BOOL)active
+{
+    if (active) {
+        self.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
+        self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+    } else {
+        self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
+        self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+    }
+}
+
 - (void)setEnabled:(BOOL)enabled
 {
     [super setEnabled:enabled];
@@ -184,11 +195,13 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    self.active = YES;
     self.modified = NO;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    self.active = NO;
     if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
         [self.formFieldDelegate textFormFieldDidEndEditing:self];
     }
