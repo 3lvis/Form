@@ -396,9 +396,6 @@
             "title":"Månedslønn",
             "type":"select",
             "size":35,
-            "validations":{
-                "required":true
-            },
             "values":[
               {
                 "title": "Ungdom under 16 år - 17900",
@@ -615,9 +612,6 @@
             "title":"Timelønn",
             "type":"select",
             "size":35,
-            "validations":{
-                "required":true
-            },
             "values":[
               {
               "title": "Ungdom under 16 år - 110,15",
