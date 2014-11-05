@@ -43,7 +43,6 @@ UIPopoverControllerDelegate>
 
     _timeViewController = [[HYPFormTimeViewController alloc] initWithDate:[NSDate date]];
     _timeViewController.delegate = self;
-    _timeViewController.birthdayPicker = YES;
 
     return _timeViewController;
 }

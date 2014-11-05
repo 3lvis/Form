@@ -122,6 +122,10 @@ static CGFloat const HYPViewVerticalSpacing = 10.0f;
 
     _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0f, y, HYPDatePopoverSize.width,
                                                                  HYPDatePopoverSize.height)];
+    _datePicker.datePickerMode = UIDatePickerModeDate;
+    _datePicker.backgroundColor = [UIColor clearColor];
+    _datePicker.minimumDate = [NSDate date];
+    [_datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 
     return _datePicker;
 }
@@ -185,17 +189,7 @@ static CGFloat const HYPViewVerticalSpacing = 10.0f;
     if (self.date) {
         [self.view addSubview:self.datePicker];
 
-        [self.datePicker setBackgroundColor:[UIColor clearColor]];
-
-        if (self.birthdayPicker) {
-            [self.datePicker setDatePickerMode:UIDatePickerModeDate];
-        } else {
-            [self.datePicker setMinimumDate:[NSDate date]];
-        }
-
         [self.datePicker setDate:self.date];
-
-        [self.datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
     }
 
     if (self.actionBlock) {
