@@ -83,8 +83,6 @@ UIPopoverControllerDelegate>
 
     [self validate];
 
-    [self.popoverController dismissPopoverAnimated:YES];
-
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];
     }
