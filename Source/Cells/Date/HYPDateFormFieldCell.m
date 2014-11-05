@@ -10,13 +10,14 @@
 
 #import "HYPFormTimeViewController.h"
 
+static const CGFloat HYPDateFormIconWidth = 38.0f;
 static const CGSize HYPDatePopoverSize = { 320.0f, 276.0f };
 
 @interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate,
 UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) HYPTextFormField *textField;
-
+@property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) HYPFormTimeViewController *timeViewController;
 
@@ -31,6 +32,8 @@ UIPopoverControllerDelegate>
     self = [super initWithFrame:frame contentViewController:self.timeViewController
                  andContentSize:HYPDatePopoverSize];
     if (!self) return nil;
+
+    [self.contentView addSubview:self.iconImageView];
 
     return self;
 }
@@ -47,7 +50,28 @@ UIPopoverControllerDelegate>
     return _timeViewController;
 }
 
-#pragma mark - Private headers
+- (UIImageView *)iconImageView
+{
+    if (_iconImageView) return _iconImageView;
+
+    _iconImageView = [[UIImageView alloc] initWithFrame:[self frameForIconImageView]];
+    _iconImageView.image = [UIImage imageNamed:@"ic_calendar"];
+    _iconImageView.contentMode = UIViewContentModeRight;
+    _iconImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+    return _iconImageView;
+}
+
+#pragma mark - Private methods
+
+- (CGRect)frameForIconImageView
+{
+    CGRect frame = self.textField.frame;
+    frame.origin.x = frame.size.width - HYPDateFormIconWidth;
+    frame.size.width = HYPDateFormIconWidth;
+
+    return frame;
+}
 
 - (void)updateWithField:(HYPFormField *)field
 {
