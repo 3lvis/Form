@@ -25,7 +25,7 @@
         characterString = [NSString stringWithFormat:@"%c", [rawString characterAtIndex:idx]];
         [mutableString appendString:characterString];
 
-        if (idx == 3 || idx == 5) [mutableString appendString:@" "];
+        if (idx == 2 || idx == 4) [mutableString appendString:@" "];
 
         ++idx;
     }
