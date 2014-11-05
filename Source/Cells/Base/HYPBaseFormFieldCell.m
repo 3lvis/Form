@@ -83,7 +83,7 @@ static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
 
 - (CGRect)frameForHeadingLabel
 {
-    CGFloat marginX = HYPTextFormFieldCellMarginX;
+    CGFloat marginX = HYPTextFormFieldCellMarginX + HYPTextFormFieldCellLabelMarginX;
     CGFloat marginTop = HYPTextFormFieldCellLabelMarginTop;
 
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
