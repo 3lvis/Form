@@ -74,7 +74,7 @@ static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier"
     if ([self.field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         HYPFieldValue *currentFieldValue = self.field.fieldValue;
 
-        if ([currentFieldValue identifierIsEqualTo:fieldValue.id]) {
+        if ([currentFieldValue identifierIsEqualTo:fieldValue.fieldValueID]) {
             [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
     } else {

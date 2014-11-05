@@ -446,7 +446,7 @@
         [self.valuesDictionary removeObjectForKey:field.id];
     } else if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         HYPFieldValue *fieldValue = field.fieldValue;
-        self.valuesDictionary[field.id] = fieldValue.id;
+        self.valuesDictionary[field.id] = fieldValue.fieldValueID;
     } else {
         self.valuesDictionary[field.id] = field.fieldValue;
     }

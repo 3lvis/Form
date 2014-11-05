@@ -79,7 +79,7 @@
             object.type == self.type);
 
     if (equal && self.value && object.value) {
-        equal = ([self.value identifierIsEqualTo:object.value.id]);
+        equal = ([self.value identifierIsEqualTo:object.value.fieldValueID]);
     }
 
     return equal;

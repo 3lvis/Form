@@ -11,7 +11,7 @@
 
 @interface HYPFieldValue : NSObject
 
-@property (nonatomic, strong) id id;
+@property (nonatomic, strong) id fieldValueID;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) NSArray *targets;
 @property (nonatomic, strong) HYPFormField *field;
