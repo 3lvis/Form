@@ -9,24 +9,16 @@
 @import Foundation;
 @import UIKit;
 
-typedef void (^HYPFormTimeViewActionBlock)(NSDate *date);
-
 @protocol HYPFormTimeViewControllerDelegate;
 
 @interface HYPFormTimeViewController : UIViewController
 
 @property (nonatomic, strong) NSDate *date;
-
-@property (nonatomic, weak) id <HYPFormTimeViewControllerDelegate> delegate;
-@property (nonatomic) BOOL birthdayPicker;
-@property (nonatomic, copy) UIColor *actionButtonColor;
 @property (nonatomic, strong) NSDate *minimumDate;
+@property (nonatomic, weak) id <HYPFormTimeViewControllerDelegate> delegate;
 
-- (id)initWithDate:(NSDate *)date;
-- (id)initWithDate:(NSDate *)date title:(NSString *)title message:(NSString *)message
-       actionTitle:(NSString *)actionTitle actionBlock:(HYPFormTimeViewActionBlock)actionBlock;
+- (instancetype)initWithDate:(NSDate *)date;
 
-- (CGFloat)calculatedHeight;
 @end
 
 @protocol HYPFormTimeViewControllerDelegate <NSObject>
