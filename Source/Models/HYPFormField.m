@@ -72,7 +72,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 - (id)rawFieldValue
 {
     if ([self.fieldValue isKindOfClass:[HYPFieldValue class]]) {
-        return [self.fieldValue id];
+        return [self.fieldValue valueID];
     }
 
     switch (self.type) {
@@ -100,7 +100,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 - (id)inputValidator
 {
     HYPInputValidator *inputValidator;
-    Class fieldValidator = [HYPClassFactory classFromString:self.id withSuffix:@"InputValidator"];
+    Class fieldValidator = [HYPClassFactory classFromString:self.fieldID withSuffix:@"InputValidator"];
     Class typeValidator = [HYPClassFactory classFromString:self.typeString withSuffix:@"InputValidator"];
     SEL selector = NSSelectorFromString(HYPInputValidatorSelector);
 
@@ -120,7 +120,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 - (id)formatter
 {
     HYPFormatter *formatter;
-    Class fieldFormatter = [HYPClassFactory classFromString:self.id withSuffix:@"Formatter"];
+    Class fieldFormatter = [HYPClassFactory classFromString:self.fieldID withSuffix:@"Formatter"];
     Class typeFormatter = [HYPClassFactory classFromString:self.typeString withSuffix:@"Formatter"];
     SEL selector = NSSelectorFromString(HYPFormatterSelector);
 
@@ -175,7 +175,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     id validator;
     Class validatorClass;
 
-    validatorClass = ([HYPClassFactory classFromString:self.id withSuffix:@"Validator"]) ?: [HYPValidator class];
+    validatorClass = ([HYPClassFactory classFromString:self.fieldID withSuffix:@"Validator"]) ?: [HYPValidator class];
     validator = [[validatorClass alloc] initWithValidations:self.validations];
 
     self.valid = [validator validateFieldValue:self.fieldValue];
@@ -185,7 +185,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 #pragma mark - Public Methods
 
-+ (HYPFormField *)fieldWithID:(NSString *)id inForms:(NSArray *)forms withIndexPath:(BOOL)withIndexPath
++ (HYPFormField *)fieldWithID:(NSString *)fieldID inForms:(NSArray *)forms withIndexPath:(BOOL)withIndexPath
 {
     __block BOOL found = NO;
     __block HYPFormField *foundField = nil;
@@ -196,7 +196,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         }
 
         [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
-            if ([field.id isEqualToString:id]) {
+            if ([field.fieldID isEqualToString:fieldID]) {
                 if (withIndexPath) {
                     field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
                 }

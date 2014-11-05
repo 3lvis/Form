@@ -64,9 +64,9 @@
     __weak typeof(self)weakSelf = self;
 
     _dataSource.configureFieldUpdatedBlock = ^(id cell, HYPFormField *field) {
-        NSLog(@"field updated: %@ --- %@", field.id, field.fieldValue);
+        NSLog(@"field updated: %@ --- %@", field.fieldID, field.fieldValue);
 
-        if ([field.id isEqualToString:@"postal_code"]) {
+        if ([field.fieldID isEqualToString:@"postal_code"]) {
             NSString *postalCode = field.fieldValue;
             HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
             NSString *city = [postalCodeManager cityForPostalCode:postalCode];
@@ -147,7 +147,7 @@
     [self.navigationController setToolbarHidden:NO animated:YES];
 
     HYPFormTarget *target = [HYPFormTarget new];
-    target.id = @"collective_agreement";
+    target.targetID = @"collective_agreement";
     target.typeString = @"field";
     target.actionTypeString = @"hide";
 
