@@ -80,7 +80,7 @@
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
         HYPForm *form = [HYPForm new];
-        form.id = [formDict hyp_safeValueForKey:@"id"];
+        form.formID = [formDict hyp_safeValueForKey:@"id"];
         form.title = [formDict hyp_safeValueForKey:@"title"];
         form.position = @(formIndex);
 
