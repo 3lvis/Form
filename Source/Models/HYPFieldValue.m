@@ -13,10 +13,10 @@
 {
     if (!identifier) return NO;
 
-    if ([self.id isKindOfClass:[NSString class]]) {
-        return [self.id isEqualToString:identifier];
-    } else if ([self.id isKindOfClass:[NSNumber class]]) {
-        return [self.id isEqualToNumber:identifier];
+    if ([self.valueID isKindOfClass:[NSString class]]) {
+        return [self.valueID isEqualToString:identifier];
+    } else if ([self.valueID isKindOfClass:[NSNumber class]]) {
+        return [self.valueID isEqualToNumber:identifier];
     } else {
         abort();
     }

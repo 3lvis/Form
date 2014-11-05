@@ -74,12 +74,12 @@
 
 - (BOOL)isEqual:(HYPFormTarget *)object
 {
-    BOOL equal = ([object.id isEqualToString:self.id] &&
+    BOOL equal = ([object.targetID isEqualToString:self.targetID] &&
             object.actionType == self.actionType &&
             object.type == self.type);
 
     if (equal && self.value && object.value) {
-        equal = ([self.value identifierIsEqualTo:object.value.id]);
+        equal = ([self.value identifierIsEqualTo:object.value.valueID]);
     }
 
     return equal;

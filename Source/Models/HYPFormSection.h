@@ -14,7 +14,7 @@
 @interface HYPFormSection : NSObject
 
 @property (nonatomic, strong) NSMutableArray *fields;
-@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *sectionID;
 @property (nonatomic, strong) NSNumber *position;
 @property (nonatomic, strong) HYPForm *form;
 
@@ -24,7 +24,7 @@
 
 @property (nonatomic, strong) NSArray *indexPaths;
 
-+ (HYPFormSection *)sectionWithID:(NSString *)id inForms:(NSArray *)forms;
++ (HYPFormSection *)sectionWithID:(NSString *)sectionID inForms:(NSArray *)forms;
 + (void)sectionAndIndexForField:(HYPFormField *)field
                         inForms:(NSArray *)forms
                      completion:(void (^)(BOOL found,

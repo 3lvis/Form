@@ -80,7 +80,7 @@
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
         HYPForm *form = [HYPForm new];
-        form.id = [formDict hyp_safeValueForKey:@"id"];
+        form.formID = [formDict hyp_safeValueForKey:@"id"];
         form.title = [formDict hyp_safeValueForKey:@"title"];
         form.position = @(formIndex);
 
@@ -91,7 +91,7 @@
         [dataSourceSections enumerateObjectsUsingBlock:^(NSDictionary *sectionDict, NSUInteger sectionIndex, BOOL *stop) {
 
             HYPFormSection *section = [HYPFormSection new];
-            section.id = [sectionDict hyp_safeValueForKey:@"id"];
+            section.sectionID = [sectionDict hyp_safeValueForKey:@"id"];
             section.position = @(sectionIndex);
 
             BOOL isLastSection = (lastObject == sectionDict);
@@ -107,7 +107,7 @@
                 NSString *remoteID = [fieldDict hyp_safeValueForKey:@"id"];
 
                 HYPFormField *field = [HYPFormField new];
-                field.id   = remoteID;
+                field.fieldID   = remoteID;
                 field.title = [fieldDict hyp_safeValueForKey:@"title"];
                 field.typeString  = [fieldDict hyp_safeValueForKey:@"type"];
                 field.type = [field typeFromTypeString:[fieldDict hyp_safeValueForKey:@"type"]];
@@ -132,7 +132,7 @@
                 if (dataSourceValues) {
                     for (NSDictionary *valueDict in dataSourceValues) {
                         HYPFieldValue *fieldValue = [HYPFieldValue new];
-                        fieldValue.id = [valueDict hyp_safeValueForKey:@"id"];
+                        fieldValue.valueID = [valueDict hyp_safeValueForKey:@"id"];
                         fieldValue.title = [valueDict hyp_safeValueForKey:@"title"];
                         fieldValue.value = [valueDict hyp_safeValueForKey:@"value"];
 
@@ -218,7 +218,7 @@
 
     for (NSDictionary *targetDict in array) {
         HYPFormTarget *target = [HYPFormTarget new];
-        target.id = [targetDict hyp_safeValueForKey:@"id"];
+        target.targetID = [targetDict hyp_safeValueForKey:@"id"];
         target.typeString = [targetDict hyp_safeValueForKey:@"type"];
         target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
         [targets addObject:target];
@@ -315,7 +315,7 @@
     NSInteger count = 0;
 
     for (HYPFormSection *section in self.sections) {
-        if (![deletedSections objectForKey:section.id]) {
+        if (![deletedSections objectForKey:section.sectionID]) {
             count += section.fields.count;
         }
     }
@@ -327,7 +327,7 @@
 {
     for (HYPFormSection *section in self.sections) {
         for (HYPFormField *field in section.fields) {
-            NSLog(@"field key: %@ --- value: %@ (%@ : %@)", field.id, field.fieldValue,
+            NSLog(@"field key: %@ --- value: %@ (%@ : %@)", field.fieldID, field.fieldValue,
                   field.section.position, field.position);
         }
     }
@@ -342,7 +342,7 @@
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
         id result = [field.formula hyp_runFormulaWithDictionary:values];
         field.fieldValue = result;
-        if (result) [currentValues setObject:result forKey:field.id];
+        if (result) [currentValues setObject:result forKey:field.fieldID];
     }
 }
 
@@ -358,13 +358,13 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:forms withIndexPath:YES];
-            [hiddenFields addEntriesFromDictionary:@{target.id : field}];
+            HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:forms withIndexPath:YES];
+            [hiddenFields addEntriesFromDictionary:@{target.targetID : field}];
 
         } else if (target.type == HYPFormTargetTypeSection) {
 
-            HYPFormSection *section = [HYPFormSection sectionWithID:target.id inForms:forms];
-            [hiddenSections addEntriesFromDictionary:@{target.id : section}];
+            HYPFormSection *section = [HYPFormSection sectionWithID:target.targetID inForms:forms];
+            [hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
         }
     }
 
@@ -379,13 +379,13 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:forms withIndexPath:NO];
-            HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:forms];
+            HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:forms withIndexPath:NO];
+            HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:forms];
             [section removeField:field inForms:forms];
 
         } else if (target.type == HYPFormTargetTypeSection) {
 
-            HYPFormSection *section = [HYPFormSection sectionWithID:target.id inForms:forms];
+            HYPFormSection *section = [HYPFormSection sectionWithID:target.targetID inForms:forms];
             HYPForm *form = forms[[section.form.position integerValue]];
             NSInteger index = [section indexInForms:forms];
             [form.sections removeObjectAtIndex:index];

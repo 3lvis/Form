@@ -361,7 +361,7 @@
     __block HYPFormField *foundField = nil;
 
     [self.deletedFields enumerateKeysAndObjectsUsingBlock:^(NSString *key, HYPFormField *field, BOOL *stop) {
-        if ([field.id isEqualToString:fieldID]) {
+        if ([field.fieldID isEqualToString:fieldID]) {
             foundField = field;
             *stop = YES;
         }
@@ -376,7 +376,7 @@
 
     [self.deletedSections enumerateKeysAndObjectsUsingBlock:^(NSString *key, HYPFormSection *section, BOOL *stop) {
         [section.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger idx, BOOL *stop) {
-            if ([field.id isEqualToString:fieldID]) {
+            if ([field.fieldID isEqualToString:fieldID]) {
                 foundField = field;
                 *stop = YES;
             }
@@ -397,15 +397,15 @@
         if ([cell respondsToSelector:@selector(validate)]) {
             [cell validate];
 
-            if (cell.field.id) {
-                [validatedFields addObject:cell.field.id];
+            if (cell.field.fieldID) {
+                [validatedFields addObject:cell.field.fieldID];
             }
         }
     }
 
     for (HYPForm *form in self.forms) {
         for (HYPFormField *field in form.fields) {
-            if (![validatedFields containsObject:field.id]) {
+            if (![validatedFields containsObject:field.fieldID]) {
                 [field validate];
             }
         }
@@ -443,12 +443,12 @@
     }
 
     if (!field.fieldValue) {
-        [self.valuesDictionary removeObjectForKey:field.id];
+        [self.valuesDictionary removeObjectForKey:field.fieldID];
     } else if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         HYPFieldValue *fieldValue = field.fieldValue;
-        self.valuesDictionary[field.id] = fieldValue.id;
+        self.valuesDictionary[field.fieldID] = fieldValue.valueID;
     } else {
-        self.valuesDictionary[field.id] = field.fieldValue;
+        self.valuesDictionary[field.fieldID] = field.fieldValue;
     }
 
     if (field.fieldValue && [field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
@@ -481,20 +481,20 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self.deletedFields objectForKey:target.id];
+            HYPFormField *field = [self.deletedFields objectForKey:target.targetID];
             if (field) {
                 HYPForm *form = self.forms[[field.section.form.position integerValue]];
                 HYPFormSection *section = form.sections[[field.section.position integerValue]];
                 NSInteger fieldIndex = [field indexInForms:self.forms];
                 [section.fields insertObject:field atIndex:fieldIndex];
 
-                HYPFormField *newField = [HYPFormField fieldWithID:target.id inForms:self.forms withIndexPath:YES];
+                HYPFormField *newField = [HYPFormField fieldWithID:target.targetID inForms:self.forms withIndexPath:YES];
                 [insertedIndexPaths addObject:newField.indexPath];
 
-                [self.deletedFields removeObjectForKey:target.id];
+                [self.deletedFields removeObjectForKey:target.targetID];
             }
         } else if (target.type == HYPFormTargetTypeSection) {
-            HYPFormSection *section = [self.deletedSections objectForKey:target.id];
+            HYPFormSection *section = [self.deletedSections objectForKey:target.targetID];
             if (section) {
                 NSInteger sectionIndex = [section indexInForms:self.forms];
                 HYPForm *form = self.forms[[section.form.position integerValue]];
@@ -503,7 +503,7 @@
                 HYPFormSection *foundSection = [self findSectionForTarget:target];
                 [insertedIndexPaths addObjectsFromArray:foundSection.indexPaths];
 
-                [self.deletedSections removeObjectForKey:section.id];
+                [self.deletedSections removeObjectForKey:section.sectionID];
             }
         }
     }
@@ -520,16 +520,16 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:self.forms withIndexPath:YES];
-            if (field && ![self.deletedFields objectForKey:field.id]) {
+            HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:self.forms withIndexPath:YES];
+            if (field && ![self.deletedFields objectForKey:field.fieldID]) {
                 [deletedFields addObject:field];
-                [self.deletedFields addEntriesFromDictionary:@{field.id : field}];
+                [self.deletedFields addEntriesFromDictionary:@{field.fieldID : field}];
             }
         } else if (target.type == HYPFormTargetTypeSection) {
             HYPFormSection *section = [self findSectionForTarget:target];
-            if (section && ![self.deletedSections objectForKey:section.id]) {
+            if (section && ![self.deletedSections objectForKey:section.sectionID]) {
                 [deletedSections addObject:section];
-                [self.deletedSections addEntriesFromDictionary:@{section.id : section}];
+                [self.deletedSections addEntriesFromDictionary:@{section.sectionID : section}];
             }
         }
     }
@@ -566,9 +566,9 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeSection) continue;
-        if ([self.deletedFields objectForKey:target.id]) continue;
+        if ([self.deletedFields objectForKey:target.targetID]) continue;
 
-        HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:self.forms withIndexPath:YES];
+        HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:self.forms withIndexPath:YES];
         if (!field) continue;
 
         [updatedIndexPaths addObject:field.indexPath];
@@ -609,10 +609,10 @@
                     [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                        [self.valuesDictionary setObject:[value stringValue] forKey:field.id];
+                        [self.valuesDictionary setObject:[value stringValue] forKey:field.fieldID];
                         [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
                     } else {
-                        [self.valuesDictionary setObject:@"" forKey:field.id];
+                        [self.valuesDictionary setObject:@"" forKey:field.fieldID];
                         if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
                             [values addEntriesFromDictionary:@{fieldID : @"0"}];
                         } else {
@@ -633,9 +633,9 @@
         field.fieldValue = result;
 
         if (result) {
-            [self.valuesDictionary setObject:result forKey:field.id];
+            [self.valuesDictionary setObject:result forKey:field.fieldID];
         } else {
-            [self.valuesDictionary removeObjectForKey:field.id];
+            [self.valuesDictionary removeObjectForKey:field.fieldID];
         }
     }
 
@@ -649,12 +649,12 @@
 - (void)sectionAndIndexForField:(HYPFormField *)field
                      completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
 {
-    HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:self.forms];
+    HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:self.forms];
 
     __block NSInteger index = 0;
     __block BOOL found = NO;
     [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
-        if ([aField.id isEqualToString:field.id]) {
+        if ([aField.fieldID isEqualToString:field.fieldID]) {
             index = idx;
             found = YES;
             *stop = YES;
@@ -685,7 +685,7 @@
         [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection,
                                                     NSUInteger sectionIndex,
                                                     BOOL *sectionStop) {
-            if ([aSection.id isEqualToString:target.id]) {
+            if ([aSection.sectionID isEqualToString:target.targetID]) {
                 NSInteger fieldsInSectionCount = fieldsIndex + aSection.fields.count;
                 for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
                     [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
@@ -712,7 +712,7 @@
     __block NSInteger index = 0;
     __block BOOL found = NO;
     [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger idx, BOOL *stop) {
-        if ([aSection.id isEqualToString:section.id]) {
+        if ([aSection.sectionID isEqualToString:section.sectionID]) {
             index = idx;
             found = YES;
             *stop = YES;

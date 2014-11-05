@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 @interface HYPFormField : NSObject
 
-@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *fieldID;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSNumber *size;
 @property (nonatomic, strong) NSNumber *position;
@@ -47,7 +47,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 + (HYPFormField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(HYPFormSection *)section;
 
-+ (HYPFormField *)fieldWithID:(NSString *)id inForms:(NSArray *)forms withIndexPath:(BOOL)withIndexPath;
++ (HYPFormField *)fieldWithID:(NSString *)fieldID inForms:(NSArray *)forms withIndexPath:(BOOL)withIndexPath;
 
 - (HYPFormFieldType)typeFromTypeString:(NSString *)typeString;
 

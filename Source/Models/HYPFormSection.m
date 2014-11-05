@@ -15,7 +15,7 @@
 
 #pragma mark Class
 
-+ (HYPFormSection *)sectionWithID:(NSString *)id inForms:(NSArray *)forms
++ (HYPFormSection *)sectionWithID:(NSString *)sectionID inForms:(NSArray *)forms
 {
     __block BOOL found = NO;
     __block HYPFormSection *foundSection = nil;
@@ -32,7 +32,7 @@
                                                     NSUInteger sectionIndex,
                                                     BOOL *sectionStop) {
             [aSection.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger fieldIndex, BOOL *fieldStop) {
-                if ([aSection.id isEqualToString:id]) {
+                if ([aSection.sectionID isEqualToString:sectionID]) {
                     foundSection = aSection;
                     [indexPaths addObject:[NSIndexPath indexPathForRow:fieldsIndex inSection:formIndex]];
                 }
@@ -58,7 +58,7 @@
     __block NSInteger index = 0;
     __block BOOL found = NO;
     [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
-        if ([aField.id isEqualToString:field.id]) {
+        if ([aField.fieldID isEqualToString:field.fieldID]) {
             index = idx;
             found = YES;
             *stop = YES;
@@ -92,7 +92,7 @@
 {
     __block NSInteger index = 0;
     [self.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
-        if ([aField.id isEqualToString:field.id]) {
+        if ([aField.fieldID isEqualToString:field.fieldID]) {
             index = idx;
             *stop = YES;
         }

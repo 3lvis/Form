@@ -11,7 +11,7 @@
 
 @interface HYPForm : NSObject
 
-@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *formID;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSMutableArray *sections;
 @property (nonatomic, strong) NSNumber *position;
