@@ -48,7 +48,7 @@
 
     [self addTarget:self action:@selector(textFieldDidUpdate:) forControlEvents:UIControlEventEditingChanged];
 
-    self.returnKeyType = UIReturnKeyGo;
+    self.returnKeyType = UIReturnKeyDone;
 
     return self;
 }
