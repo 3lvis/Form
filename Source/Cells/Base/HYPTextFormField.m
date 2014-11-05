@@ -85,7 +85,10 @@
 
 - (void)setRawText:(NSString *)rawText
 {
-    if (self.formatter && rawText.length > _rawText.length) {
+    BOOL shouldFormat = (self.formatter && (rawText.length > _rawText.length ||
+                                            ![rawText isEqualToString:_rawText]));
+
+    if (shouldFormat) {
         self.text = [self.formatter formatString:rawText reverse:NO];
     } else {
         self.text = rawText;
