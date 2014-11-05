@@ -15,7 +15,7 @@
 
 #pragma mark Class
 
-+ (HYPFormSection *)sectionWithID:(NSString *)id inForms:(NSArray *)forms
++ (HYPFormSection *)sectionWithID:(NSString *)sectionID inForms:(NSArray *)forms
 {
     __block BOOL found = NO;
     __block HYPFormSection *foundSection = nil;
@@ -32,7 +32,7 @@
                                                     NSUInteger sectionIndex,
                                                     BOOL *sectionStop) {
             [aSection.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger fieldIndex, BOOL *fieldStop) {
-                if ([aSection.id isEqualToString:id]) {
+                if ([aSection.sectionID isEqualToString:sectionID]) {
                     foundSection = aSection;
                     [indexPaths addObject:[NSIndexPath indexPathForRow:fieldsIndex inSection:formIndex]];
                 }

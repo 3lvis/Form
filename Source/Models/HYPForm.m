@@ -91,7 +91,7 @@
         [dataSourceSections enumerateObjectsUsingBlock:^(NSDictionary *sectionDict, NSUInteger sectionIndex, BOOL *stop) {
 
             HYPFormSection *section = [HYPFormSection new];
-            section.id = [sectionDict hyp_safeValueForKey:@"id"];
+            section.sectionID = [sectionDict hyp_safeValueForKey:@"id"];
             section.position = @(sectionIndex);
 
             BOOL isLastSection = (lastObject == sectionDict);
@@ -315,7 +315,7 @@
     NSInteger count = 0;
 
     for (HYPFormSection *section in self.sections) {
-        if (![deletedSections objectForKey:section.id]) {
+        if (![deletedSections objectForKey:section.sectionID]) {
             count += section.fields.count;
         }
     }
@@ -380,7 +380,7 @@
         if (target.type == HYPFormTargetTypeField) {
 
             HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:forms withIndexPath:NO];
-            HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:forms];
+            HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:forms];
             [section removeField:field inForms:forms];
 
         } else if (target.type == HYPFormTargetTypeSection) {

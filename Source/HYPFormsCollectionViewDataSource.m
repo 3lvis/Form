@@ -503,7 +503,7 @@
                 HYPFormSection *foundSection = [self findSectionForTarget:target];
                 [insertedIndexPaths addObjectsFromArray:foundSection.indexPaths];
 
-                [self.deletedSections removeObjectForKey:section.id];
+                [self.deletedSections removeObjectForKey:section.sectionID];
             }
         }
     }
@@ -527,9 +527,9 @@
             }
         } else if (target.type == HYPFormTargetTypeSection) {
             HYPFormSection *section = [self findSectionForTarget:target];
-            if (section && ![self.deletedSections objectForKey:section.id]) {
+            if (section && ![self.deletedSections objectForKey:section.sectionID]) {
                 [deletedSections addObject:section];
-                [self.deletedSections addEntriesFromDictionary:@{section.id : section}];
+                [self.deletedSections addEntriesFromDictionary:@{section.sectionID : section}];
             }
         }
     }
@@ -649,7 +649,7 @@
 - (void)sectionAndIndexForField:(HYPFormField *)field
                      completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
 {
-    HYPFormSection *section = [HYPFormSection sectionWithID:field.section.id inForms:self.forms];
+    HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:self.forms];
 
     __block NSInteger index = 0;
     __block BOOL found = NO;
@@ -685,7 +685,7 @@
         [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection,
                                                     NSUInteger sectionIndex,
                                                     BOOL *sectionStop) {
-            if ([aSection.id isEqualToString:target.id]) {
+            if ([aSection.sectionID isEqualToString:target.id]) {
                 NSInteger fieldsInSectionCount = fieldsIndex + aSection.fields.count;
                 for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
                     [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
@@ -712,7 +712,7 @@
     __block NSInteger index = 0;
     __block BOOL found = NO;
     [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger idx, BOOL *stop) {
-        if ([aSection.id isEqualToString:section.id]) {
+        if ([aSection.sectionID isEqualToString:section.sectionID]) {
             index = idx;
             found = YES;
             *stop = YES;
