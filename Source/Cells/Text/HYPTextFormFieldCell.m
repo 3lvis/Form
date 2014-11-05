@@ -101,9 +101,9 @@
     CGFloat marginTop = HYPTextFormFieldCellTextFieldMarginTop;
     CGFloat marginBotton = HYPTextFormFieldCellTextFieldMarginBottom;
 
-    CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
+    CGFloat width  = CGRectGetWidth(self.frame) - (marginX * 2);
     CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;
-    CGRect frame = CGRectMake(marginX, marginTop, width, height);
+    CGRect  frame  = CGRectMake(marginX, marginTop, width, height);
 
     return frame;
 }
