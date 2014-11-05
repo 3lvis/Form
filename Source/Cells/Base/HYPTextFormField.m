@@ -74,6 +74,8 @@
 
 - (void)setActive:(BOOL)active
 {
+    _active = active;
+
     if (active) {
         self.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
         self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
