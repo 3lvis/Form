@@ -218,7 +218,7 @@
 
     for (NSDictionary *targetDict in array) {
         HYPFormTarget *target = [HYPFormTarget new];
-        target.id = [targetDict hyp_safeValueForKey:@"id"];
+        target.targetID = [targetDict hyp_safeValueForKey:@"id"];
         target.typeString = [targetDict hyp_safeValueForKey:@"type"];
         target.actionTypeString = [targetDict hyp_safeValueForKey:@"action"];
         [targets addObject:target];
@@ -358,13 +358,13 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:forms withIndexPath:YES];
-            [hiddenFields addEntriesFromDictionary:@{target.id : field}];
+            HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:forms withIndexPath:YES];
+            [hiddenFields addEntriesFromDictionary:@{target.targetID : field}];
 
         } else if (target.type == HYPFormTargetTypeSection) {
 
-            HYPFormSection *section = [HYPFormSection sectionWithID:target.id inForms:forms];
-            [hiddenSections addEntriesFromDictionary:@{target.id : section}];
+            HYPFormSection *section = [HYPFormSection sectionWithID:target.targetID inForms:forms];
+            [hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
         }
     }
 
@@ -379,13 +379,13 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:forms withIndexPath:NO];
+            HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:forms withIndexPath:NO];
             HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:forms];
             [section removeField:field inForms:forms];
 
         } else if (target.type == HYPFormTargetTypeSection) {
 
-            HYPFormSection *section = [HYPFormSection sectionWithID:target.id inForms:forms];
+            HYPFormSection *section = [HYPFormSection sectionWithID:target.targetID inForms:forms];
             HYPForm *form = forms[[section.form.position integerValue]];
             NSInteger index = [section indexInForms:forms];
             [form.sections removeObjectAtIndex:index];

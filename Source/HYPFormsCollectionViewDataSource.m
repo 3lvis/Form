@@ -481,20 +481,20 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self.deletedFields objectForKey:target.id];
+            HYPFormField *field = [self.deletedFields objectForKey:target.targetID];
             if (field) {
                 HYPForm *form = self.forms[[field.section.form.position integerValue]];
                 HYPFormSection *section = form.sections[[field.section.position integerValue]];
                 NSInteger fieldIndex = [field indexInForms:self.forms];
                 [section.fields insertObject:field atIndex:fieldIndex];
 
-                HYPFormField *newField = [HYPFormField fieldWithID:target.id inForms:self.forms withIndexPath:YES];
+                HYPFormField *newField = [HYPFormField fieldWithID:target.targetID inForms:self.forms withIndexPath:YES];
                 [insertedIndexPaths addObject:newField.indexPath];
 
-                [self.deletedFields removeObjectForKey:target.id];
+                [self.deletedFields removeObjectForKey:target.targetID];
             }
         } else if (target.type == HYPFormTargetTypeSection) {
-            HYPFormSection *section = [self.deletedSections objectForKey:target.id];
+            HYPFormSection *section = [self.deletedSections objectForKey:target.targetID];
             if (section) {
                 NSInteger sectionIndex = [section indexInForms:self.forms];
                 HYPForm *form = self.forms[[section.form.position integerValue]];
@@ -520,7 +520,7 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:self.forms withIndexPath:YES];
+            HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:self.forms withIndexPath:YES];
             if (field && ![self.deletedFields objectForKey:field.fieldID]) {
                 [deletedFields addObject:field];
                 [self.deletedFields addEntriesFromDictionary:@{field.fieldID : field}];
@@ -566,9 +566,9 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeSection) continue;
-        if ([self.deletedFields objectForKey:target.id]) continue;
+        if ([self.deletedFields objectForKey:target.targetID]) continue;
 
-        HYPFormField *field = [HYPFormField fieldWithID:target.id inForms:self.forms withIndexPath:YES];
+        HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:self.forms withIndexPath:YES];
         if (!field) continue;
 
         [updatedIndexPaths addObject:field.indexPath];
@@ -685,7 +685,7 @@
         [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection,
                                                     NSUInteger sectionIndex,
                                                     BOOL *sectionStop) {
-            if ([aSection.sectionID isEqualToString:target.id]) {
+            if ([aSection.sectionID isEqualToString:target.targetID]) {
                 NSInteger fieldsInSectionCount = fieldsIndex + aSection.fields.count;
                 for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
                     [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
