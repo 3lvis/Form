@@ -493,11 +493,14 @@
         } else if (target.type == HYPFormTargetTypeSection) {
             HYPFormSection *section = [self.deletedSections objectForKey:target.id];
             if (section) {
-                [insertedIndexPaths addObjectsFromArray:section.indexPaths];
                 NSInteger sectionIndex = [section indexInForms:self.forms];
                 HYPForm *form = self.forms[[section.form.position integerValue]];
                 [form.sections insertObject:section atIndex:sectionIndex];
                 [self.deletedSections removeObjectForKey:section.id];
+
+                [self findSectionForTarget:target completion:^(HYPFormSection *foundSection) {
+                    [insertedIndexPaths addObjectsFromArray:foundSection.indexPaths];
+                }];
             }
         }
     }
