@@ -11,7 +11,6 @@
 #import "HYPFieldValue.h"
 #import "HYPFieldValuesTableViewController.h"
 
-static const CGFloat HYPDropdownFormIconWidth = 38.0f;
 static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f };
 
 @interface HYPDropdownFormFieldCell () <HYPTextFormFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
@@ -111,8 +110,8 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 - (CGRect)frameForIconImageView
 {
     CGRect frame = self.textField.frame;
-    frame.origin.x = frame.size.width - HYPDropdownFormIconWidth;
-    frame.size.width = HYPDropdownFormIconWidth;
+    frame.origin.x = frame.size.width - HYPPopFormIconWidth;
+    frame.size.width = HYPPopFormIconWidth;
 
     return frame;
 }

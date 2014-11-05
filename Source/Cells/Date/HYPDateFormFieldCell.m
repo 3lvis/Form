@@ -10,7 +10,6 @@
 
 #import "HYPFormTimeViewController.h"
 
-static const CGFloat HYPDateFormIconWidth = 38.0f;
 static const CGSize HYPDatePopoverSize = { 320.0f, 276.0f };
 
 @interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate,
@@ -67,8 +66,8 @@ UIPopoverControllerDelegate>
 - (CGRect)frameForIconImageView
 {
     CGRect frame = self.textField.frame;
-    frame.origin.x = frame.size.width - HYPDateFormIconWidth;
-    frame.size.width = HYPDateFormIconWidth;
+    frame.origin.x = frame.size.width - HYPPopFormIconWidth;
+    frame.size.width = HYPPopFormIconWidth;
 
     return frame;
 }

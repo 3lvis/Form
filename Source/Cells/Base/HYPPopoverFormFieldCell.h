@@ -8,6 +8,8 @@
 
 #import "HYPBaseFormFieldCell.h"
 
+static const CGFloat HYPPopFormIconWidth = 38.0f;
+
 @interface HYPPopoverFormFieldCell : HYPBaseFormFieldCell
 
 @property (nonatomic, strong) HYPTextFormField *textField;
