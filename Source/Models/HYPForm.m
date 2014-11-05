@@ -107,7 +107,7 @@
                 NSString *remoteID = [fieldDict hyp_safeValueForKey:@"id"];
 
                 HYPFormField *field = [HYPFormField new];
-                field.id   = remoteID;
+                field.fieldID   = remoteID;
                 field.title = [fieldDict hyp_safeValueForKey:@"title"];
                 field.typeString  = [fieldDict hyp_safeValueForKey:@"type"];
                 field.type = [field typeFromTypeString:[fieldDict hyp_safeValueForKey:@"type"]];
@@ -327,7 +327,7 @@
 {
     for (HYPFormSection *section in self.sections) {
         for (HYPFormField *field in section.fields) {
-            NSLog(@"field key: %@ --- value: %@ (%@ : %@)", field.id, field.fieldValue,
+            NSLog(@"field key: %@ --- value: %@ (%@ : %@)", field.fieldID, field.fieldValue,
                   field.section.position, field.position);
         }
     }
@@ -342,7 +342,7 @@
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
         id result = [field.formula hyp_runFormulaWithDictionary:values];
         field.fieldValue = result;
-        if (result) [currentValues setObject:result forKey:field.id];
+        if (result) [currentValues setObject:result forKey:field.fieldID];
     }
 }
 
