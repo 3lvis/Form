@@ -17,6 +17,9 @@
     NSString *rawString = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (reverse) return rawString;
 
+    BOOL hasCountryCode = (rawString.length > 2 &&
+                           [[rawString substringToIndex:2] isEqualToString:@"00"]);
+
     NSMutableString *mutableString = [NSMutableString new];
     NSUInteger idx = 0;
     NSString *characterString;
@@ -25,8 +28,9 @@
         characterString = [NSString stringWithFormat:@"%c", [rawString characterAtIndex:idx]];
         [mutableString appendString:characterString];
 
-        if (idx == 2 || idx == 4) [mutableString appendString:@" "];
-
+            if (idx == 3 && hasCountryCode) [mutableString appendString:@" "];
+            if ((idx == 2 || idx == 4)
+                && !hasCountryCode) [mutableString appendString:@" "];
         ++idx;
     }
 
