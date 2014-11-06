@@ -330,7 +330,7 @@
     [self resetForms];
 }
 
-- (void)reloadWithDictionary:(NSDictionary *)dictionary
+- (void)reloadWithDictionary:(NSDictionary *)dictionary withCompleition:(void (^)())completion
 {
     [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
 
@@ -354,6 +354,8 @@
     }
 
     [self processTargets:targets];
+
+    if (completion) completion();
 }
 
 - (HYPFormField *)fieldInDeletedFields:(NSString *)fieldID
