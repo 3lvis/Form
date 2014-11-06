@@ -8,6 +8,8 @@
 
 #import "HYPPopoverFormFieldCell.h"
 
+static const CGFloat HYPPopoverFormIconWidth = 38.0f;
+
 @interface HYPPopoverFormFieldCell () <HYPTextFormFieldDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIViewController *contentViewController;
@@ -29,6 +31,7 @@
     _contentSize = contentSize;
 
     [self.contentView addSubview:self.textField];
+    [self.contentView addSubview:self.iconImageView];
 
     return self;
 }
@@ -55,6 +58,17 @@
     _popoverController.backgroundColor = [UIColor whiteColor];
 
     return _popoverController;
+}
+
+- (UIImageView *)iconImageView
+{
+    if (_iconImageView) return _iconImageView;
+
+    _iconImageView = [[UIImageView alloc] initWithFrame:[self frameForIconImageView]];
+    _iconImageView.contentMode = UIViewContentModeRight;
+    _iconImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+    return _iconImageView;
 }
 
 #pragma mark - HYPTextFormFieldDelegate
@@ -85,6 +99,8 @@
 
 - (void)updateWithField:(HYPFormField *)field
 {
+    self.iconImageView.hidden = field.disabled;
+
     self.textField.hidden         = (field.sectionSeparator);
     self.textField.inputValidator = [self.field inputValidator];
     self.textField.formatter      = [self.field formatter];
@@ -98,6 +114,17 @@
     [super layoutSubviews];
 
     self.textField.frame = [self frameForTextField];
+
+    self.iconImageView.frame = [self frameForIconImageView];
+}
+
+- (CGRect)frameForIconImageView
+{
+    CGRect frame = self.textField.frame;
+    frame.origin.x = frame.size.width - HYPPopoverFormIconWidth;
+    frame.size.width = HYPPopoverFormIconWidth;
+
+    return frame;
 }
 
 - (CGRect)frameForTextField

@@ -16,7 +16,6 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 276.0f };
 UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) HYPTextFormField *textField;
-
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) HYPFormTimeViewController *timeViewController;
 
@@ -31,6 +30,8 @@ UIPopoverControllerDelegate>
     self = [super initWithFrame:frame contentViewController:self.timeViewController
                  andContentSize:HYPDatePopoverSize];
     if (!self) return nil;
+
+    self.iconImageView.image = [UIImage imageNamed:@"ic_calendar"];
 
     return self;
 }
@@ -47,7 +48,7 @@ UIPopoverControllerDelegate>
     return _timeViewController;
 }
 
-#pragma mark - Private headers
+#pragma mark - Private methods
 
 - (void)updateWithField:(HYPFormField *)field
 {

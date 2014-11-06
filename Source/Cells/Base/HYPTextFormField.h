@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
 @property (nonatomic) HYPTextFieldType type;
 
 @property (nonatomic, getter = isValid)    BOOL valid;
+@property (nonatomic, getter = isActive)   BOOL active;
 
 @property (nonatomic, weak) id <HYPTextFormFieldDelegate> formFieldDelegate;
 

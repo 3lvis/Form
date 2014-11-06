@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) HYPTextFormField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
+@property (nonatomic, strong) UIImageView *iconImageView;
 
 - (instancetype)initWithFrame:(CGRect)frame contentViewController:(UIViewController *)controller
                andContentSize:(CGSize)contentSize;

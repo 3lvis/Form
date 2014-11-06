@@ -40,8 +40,6 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
 
     self.contentView.backgroundColor = [UIColor colorFromHex:@"F5F5F8"];
 
-    self.contentView.layer.borderWidth = 1.0f;
-    self.contentView.layer.borderColor = [UIColor colorFromHex:@"D5D5D8"].CGColor;
     self.contentView.layer.cornerRadius = 5.0f;
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
