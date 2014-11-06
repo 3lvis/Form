@@ -208,7 +208,7 @@
                                             @"hourly_pay_level" : @1,
                                             @"hourly_pay_premium_percent" : @10,
                                             @"hourly_pay_premium_currency" : @10
-                                            }];
+                                            } completion:nil];
 }
 
 - (void)validateButtonAction

@@ -330,7 +330,7 @@
     [self resetForms];
 }
 
-- (void)reloadWithDictionary:(NSDictionary *)dictionary
+- (void)reloadWithDictionary:(NSDictionary *)dictionary completion:(void (^)())completion
 {
     [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
 
@@ -350,10 +350,14 @@
     }];
 
     if (updatedIndexPaths.count > 0) {
-        [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
+        [self.collectionView performBatchUpdates:^{
+            [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
+        } completion:^(BOOL finished) {
+            [self processTargets:targets];
+            if (completion) completion();
+        }];
     }
 
-    [self processTargets:targets];
 }
 
 - (HYPFormField *)fieldInDeletedFields:(NSString *)fieldID
