@@ -8,12 +8,11 @@
 
 #import "HYPBaseFormFieldCell.h"
 
-static const CGFloat HYPPopFormIconWidth = 38.0f;
-
 @interface HYPPopoverFormFieldCell : HYPBaseFormFieldCell
 
 @property (nonatomic, strong) HYPTextFormField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
+@property (nonatomic, strong) UIImageView *iconImageView;
 
 - (instancetype)initWithFrame:(CGRect)frame contentViewController:(UIViewController *)controller
                andContentSize:(CGSize)contentSize;

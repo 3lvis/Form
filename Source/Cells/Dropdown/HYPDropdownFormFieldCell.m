@@ -15,8 +15,6 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 
 @interface HYPDropdownFormFieldCell () <HYPTextFormFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
 
-@property (nonatomic, strong) UIImageView *iconImageView;
-
 @property (nonatomic, strong) HYPFieldValuesTableViewController *fieldValuesController;
 
 @end
@@ -31,24 +29,12 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
                  andContentSize:HYPDropdownPopoverSize];
     if (!self) return nil;
 
-    [self.contentView addSubview:self.iconImageView];
+    self.iconImageView.image = [UIImage imageNamed:@"ic_mini_arrow_down"];
 
     return self;
 }
 
 #pragma mark - Getters
-
-- (UIImageView *)iconImageView
-{
-    if (_iconImageView) return _iconImageView;
-
-    _iconImageView = [[UIImageView alloc] initWithFrame:[self frameForIconImageView]];
-    _iconImageView.image = [UIImage imageNamed:@"ic_mini_arrow_down"];
-    _iconImageView.contentMode = UIViewContentModeRight;
-    _iconImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
-    return _iconImageView;
-}
 
 - (HYPFieldValuesTableViewController *)fieldValuesController
 {
@@ -65,8 +51,6 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 - (void)updateWithField:(HYPFormField *)field
 {
     [super updateWithField:field];
-
-    self.iconImageView.hidden = field.disabled;
 
     if (!field.fieldValue) {
         self.textField.rawText = nil;
@@ -96,24 +80,6 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     self.fieldValuesController.field = self.field;
-}
-
-#pragma mark - Private methods
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-
-    self.iconImageView.frame = [self frameForIconImageView];
-}
-
-- (CGRect)frameForIconImageView
-{
-    CGRect frame = self.textField.frame;
-    frame.origin.x = frame.size.width - HYPPopFormIconWidth;
-    frame.size.width = HYPPopFormIconWidth;
-
-    return frame;
 }
 
 #pragma mark - HYPFieldValuesTableViewControllerDelegate
