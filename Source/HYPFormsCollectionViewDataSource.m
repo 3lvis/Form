@@ -350,12 +350,14 @@
     }];
 
     if (updatedIndexPaths.count > 0) {
-        [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
+        [self.collectionView performBatchUpdates:^{
+            [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
+        } completion:^(BOOL finished) {
+            [self processTargets:targets];
+            if (completion) completion();
+        }];
     }
 
-    [self processTargets:targets];
-
-    if (completion) completion();
 }
 
 - (HYPFormField *)fieldInDeletedFields:(NSString *)fieldID
