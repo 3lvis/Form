@@ -330,7 +330,7 @@
     [self resetForms];
 }
 
-- (void)reloadWithDictionary:(NSDictionary *)dictionary withCompleition:(void (^)())completion
+- (void)reloadWithDictionary:(NSDictionary *)dictionary completion:(void (^)())completion
 {
     [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
 
