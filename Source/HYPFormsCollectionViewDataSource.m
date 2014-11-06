@@ -330,7 +330,6 @@
     [self resetForms];
 }
 
-
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
     [self reloadWithDictionary:dictionary completion:nil];
