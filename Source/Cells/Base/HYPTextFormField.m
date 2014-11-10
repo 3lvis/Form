@@ -68,10 +68,10 @@
         UITextPosition *end       = [self positionFromPosition:start offset:range.length];
         UITextRange *newRange     = [self textRangeFromPosition:start toPosition:end];
         self.selectedTextRange = newRange;
-        super.text = text;
+        [super setText:text];
     } else {
         UITextRange *selectedRange = self.selectedTextRange;
-        super.text = text;
+        [super setText:text];
         self.selectedTextRange = selectedRange;
     }
 }
