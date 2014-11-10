@@ -57,18 +57,22 @@
 
 - (void)setText:(NSString *)text
 {
-    if (text.length > super.text.length) {
+    NSString *newRawText = [self.formatter formatString:text reverse:YES];
+    BOOL didAddText = (newRawText.length > self.rawText.length);
+    BOOL didFormat = (text.length > super.text.length);
+
+    if (didAddText && didFormat) {
         NSRange range = NSMakeRange(text.length, 0);
         UITextPosition *beginning = self.beginningOfDocument;
         UITextPosition *start     = [self positionFromPosition:beginning offset:range.location];
         UITextPosition *end       = [self positionFromPosition:start offset:range.length];
         UITextRange *newRange     = [self textRangeFromPosition:start toPosition:end];
-        [self setSelectedTextRange:newRange];
-        [super setText:text];
+        self.selectedTextRange = newRange;
+        super.text = text;
     } else {
-        UITextRange *selectedRange  = [self selectedTextRange];
-        [super setText:text];
-        [self setSelectedTextRange:selectedRange];
+        UITextRange *selectedRange = self.selectedTextRange;
+        super.text = text;
+        self.selectedTextRange = selectedRange;
     }
 }
 
