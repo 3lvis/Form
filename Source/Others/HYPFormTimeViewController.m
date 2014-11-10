@@ -50,7 +50,7 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
                                                                  HYPDatePopoverSize.height)];
     _datePicker.datePickerMode = UIDatePickerModeDate;
     _datePicker.backgroundColor = [UIColor clearColor];
-    _datePicker.minimumDate = [NSDate date];
+
     [_datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 
     return _datePicker;
