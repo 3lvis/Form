@@ -68,15 +68,13 @@
 
 - (void)setText:(NSString *)text
 {
+    UITextRange *textRange = self.selectedTextRange;
     NSString *newRawText = [self.formatter formatString:text reverse:YES];
     NSRange range = [self currentRange];
+
     BOOL didAddText  = (newRawText.length > self.rawText.length);
     BOOL didFormat   = (text.length > super.text.length);
     BOOL cursorAtEnd = (newRawText.length == range.location);
-
-    UITextPosition *start = [self positionFromPosition:self.beginningOfDocument offset:range.location];
-    UITextPosition *end = [self positionFromPosition:start offset:range.length];
-    UITextRange *textRange = [self textRangeFromPosition:start toPosition:end];
 
     if ((didAddText && didFormat) || (didAddText && cursorAtEnd)) {
         self.selectedTextRange = textRange;
