@@ -55,24 +55,33 @@
 
 #pragma mark - Setters
 
+- (NSRange)currentRange
+{
+    NSInteger startOffset = [self offsetFromPosition:self.beginningOfDocument
+                                          toPosition:self.selectedTextRange.start];
+    NSInteger endOffset = [self offsetFromPosition:self.beginningOfDocument
+                                        toPosition:self.selectedTextRange.end];
+    NSRange range = NSMakeRange(startOffset, endOffset-startOffset);
+
+    return range;
+}
+
 - (void)setText:(NSString *)text
 {
+    UITextRange *textRange = self.selectedTextRange;
     NSString *newRawText = [self.formatter formatString:text reverse:YES];
-    BOOL didAddText = (newRawText.length > self.rawText.length);
-    BOOL didFormat = (text.length > super.text.length);
+    NSRange range = [self currentRange];
 
-    if (didAddText && didFormat) {
-        NSRange range = NSMakeRange(text.length, 0);
-        UITextPosition *beginning = self.beginningOfDocument;
-        UITextPosition *start     = [self positionFromPosition:beginning offset:range.location];
-        UITextPosition *end       = [self positionFromPosition:start offset:range.length];
-        UITextRange *newRange     = [self textRangeFromPosition:start toPosition:end];
-        self.selectedTextRange = newRange;
+    BOOL didAddText  = (newRawText.length > self.rawText.length);
+    BOOL didFormat   = (text.length > super.text.length);
+    BOOL cursorAtEnd = (newRawText.length == range.location);
+
+    if ((didAddText && didFormat) || (didAddText && cursorAtEnd)) {
+        self.selectedTextRange = textRange;
         [super setText:text];
     } else {
-        UITextRange *selectedRange = self.selectedTextRange;
         [super setText:text];
-        self.selectedTextRange = selectedRange;
+        self.selectedTextRange = textRange;
     }
 }
 
