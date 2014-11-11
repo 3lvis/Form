@@ -30,7 +30,7 @@
                                   @"first_name" : @"Chris",
                                   @"hours_per_week" : @"37,5",
                                   @"last_name" : @"Winterkvist",
-                                  @"phone_number" : @"41399880",
+                                  @"phone_number" : @"0046 123",
                                   @"postal_code" : @"0164",
                                   @"social_security_number" : @"28118240000",
                                   @"start_date" : @"2014-10-31 23:00:00 +00:00",
