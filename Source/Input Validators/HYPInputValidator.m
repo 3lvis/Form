@@ -31,6 +31,7 @@
         NSMutableString *newString = [[NSMutableString alloc] initWithString:text];
         [newString insertString:string atIndex:range.location];
         NSNumberFormatter *formatter = [NSNumberFormatter new];
+        formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
         NSNumber *newValue = [formatter numberFromString:newString];
         NSNumber *maxValue = self.validations[@"max_value"];
 
