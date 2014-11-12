@@ -197,12 +197,11 @@
 
 - (BOOL)textFieldShouldBeginEditing:(HYPTextFormField *)textField
 {
-    BOOL selectable = (textField.type == HYPTextFieldTypeDropdown || textField.type == HYPTextFieldTypeDate);
+    BOOL selectable = (textField.type == HYPTextFieldTypeDropdown ||
+                       textField.type == HYPTextFieldTypeDate);
 
-    if (selectable) {
-        if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
-            [self.formFieldDelegate textFormFieldDidBeginEditing:self];
-        }
+    if (selectable && [self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
+        [self.formFieldDelegate textFormFieldDidBeginEditing:self];
     }
 
     return !selectable;
