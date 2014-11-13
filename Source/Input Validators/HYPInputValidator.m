@@ -27,7 +27,7 @@
         valid = (textLength <= [self.validations[@"max_length"] unsignedIntegerValue]);
     }
 
-    if (self.validations[@"max_value"]) {
+    if (self.validations[@"max_value"] && text) {
         NSMutableString *newString = [[NSMutableString alloc] initWithString:text];
         [newString insertString:string atIndex:range.location];
         NSNumberFormatter *formatter = [NSNumberFormatter new];
