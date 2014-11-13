@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
 
 @property (nonatomic, copy) NSString *rawText;
 
+@property (nonatomic, copy) NSDate *minimumDate;
+@property (nonatomic, copy) NSDate *maximumDate;
+
 @property (nonatomic, strong) HYPInputValidator *inputValidator;
 @property (nonatomic, strong) HYPFormatter *formatter;
 
