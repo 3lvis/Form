@@ -1,11 +1,3 @@
-//
-//  HYPImageFormFieldCell.m
-//  HYPForms
-//
-//  Created by Elvis Nunez on 10/15/14.
-//  Copyright (c) 2014 Hyper. All rights reserved.
-//
-
 #import "HYPImageFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
