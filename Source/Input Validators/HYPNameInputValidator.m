@@ -25,8 +25,8 @@
     NSCharacterSet *stringSet = [NSCharacterSet characterSetWithCharactersInString:string];
 
     BOOL allowString = ([letterCharacterSet isSupersetOfSet:stringSet] ||
-                                      [whitespaceCharacterSet isSupersetOfSet:stringSet] ||
-                                      [delimiterSet isSupersetOfSet:stringSet]);
+                        [whitespaceCharacterSet isSupersetOfSet:stringSet] ||
+                        [delimiterSet isSupersetOfSet:stringSet]);
     if (allowString) return YES;
 
     return NO;
