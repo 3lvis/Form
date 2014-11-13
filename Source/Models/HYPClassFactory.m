@@ -17,6 +17,8 @@
     }
 
     NSString *propertyName = [string zen_camelCase];
+    if (!propertyName) return nil;
+
     NSMutableString *mutableString = [[NSMutableString alloc] initWithString:propertyName];
     NSString *firstLetter = [[mutableString substringToIndex:1] uppercaseString];
     [mutableString replaceCharactersInRange:NSMakeRange(0,1)

@@ -34,6 +34,8 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 @property (nonatomic) HYPFormFieldType type;
 @property (nonatomic, strong) NSArray *values;
 @property (nonatomic) BOOL disabled;
+@property (nonatomic, copy) NSDate *minimumDate;
+@property (nonatomic, copy) NSDate *maximumDate;
 
 @property (nonatomic, strong) NSDictionary *validations;
 @property (nonatomic, strong) NSString *formula;

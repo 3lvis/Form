@@ -77,6 +77,23 @@
                 [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
             }
         }
+
+        BOOL shouldUpdateFixedEntryDate = ([field.fieldID isEqualToString:@"fixed_pay_level"] ||
+                                           [field.fieldID isEqualToString:@"fixed_pay_premium_percent"] ||
+                                           [field.fieldID isEqualToString:@"fixed_pay_premium_currency"] ||
+                                           [field.fieldID isEqualToString:@"hours_per_week"]);
+
+        if (shouldUpdateFixedEntryDate) {
+            HYPFormField *fixedPayEntryDateField = [HYPFormField fieldWithID:@"fixed_pay_entry_date"
+                                                                     inForms:weakSelf.dataSource.forms
+                                                               withIndexPath:YES];
+
+            if (fixedPayEntryDateField) {
+                fixedPayEntryDateField.fieldValue = [NSDate date];
+                fixedPayEntryDateField.minimumDate = [NSDate date];
+                [weakSelf.dataSource reloadItemsAtIndexPaths:@[fixedPayEntryDateField.indexPath]];
+            }
+        }
     };
 
     return _dataSource;

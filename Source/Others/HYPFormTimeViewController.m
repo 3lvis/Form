@@ -83,14 +83,21 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
 {
     _date = date;
 
-    self.datePicker.date = date;
+    self.datePicker.date = _date;
 }
 
 - (void)setMinimumDate:(NSDate *)minimumDate
 {
     _minimumDate = minimumDate;
 
-    self.datePicker.minimumDate = self.minimumDate;
+    self.datePicker.minimumDate = _minimumDate;
+}
+
+- (void)setMaximumDate:(NSDate *)maximumDate
+{
+    _maximumDate = maximumDate;
+
+    self.datePicker.maximumDate = _maximumDate;
 }
 
 #pragma mark - View Lifecycle

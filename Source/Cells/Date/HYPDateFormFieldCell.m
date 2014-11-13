@@ -56,8 +56,8 @@ UIPopoverControllerDelegate>
 
     if (field.fieldValue) {
         self.textField.rawText = [NSDateFormatter localizedStringFromDate:field.fieldValue
-                                                                    dateStyle:NSDateFormatterMediumStyle
-                                                                    timeStyle:NSDateFormatterNoStyle];
+                                                                dateStyle:NSDateFormatterMediumStyle
+                                                                timeStyle:NSDateFormatterNoStyle];
     }
 }
 
@@ -70,6 +70,14 @@ UIPopoverControllerDelegate>
 {
     if (self.field.fieldValue) {
         self.timeViewController.date = self.field.fieldValue;
+
+        if (self.field.minimumDate) {
+            self.timeViewController.minimumDate = self.field.minimumDate;
+        }
+
+        if (self.field.maximumDate) {
+            self.timeViewController.maximumDate = self.field.maximumDate;
+        }
     }
 }
 
