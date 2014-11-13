@@ -13,8 +13,10 @@
 
 @interface HYPFormTimeViewController : UIViewController
 
-@property (nonatomic, strong) NSDate *date;
-@property (nonatomic, strong) NSDate *minimumDate;
+@property (nonatomic, copy) NSDate *date;
+@property (nonatomic, copy) NSDate *minimumDate;
+@property (nonatomic, copy) NSDate *maximumDate;
+
 @property (nonatomic, weak) id <HYPFormTimeViewControllerDelegate> delegate;
 
 - (instancetype)initWithDate:(NSDate *)date;
