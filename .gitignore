@@ -25,3 +25,5 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+postal_codes.json
+forms.json
