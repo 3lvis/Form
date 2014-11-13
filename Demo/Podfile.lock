@@ -1,6 +1,5 @@
 PODS:
   - HYPImagePicker (0.2)
-  - HYPNorwegianAccountNumber (1.2)
   - HYPNorwegianSSN (1.6)
   - NSDictionary-HYPSafeValue (0.2)
   - NSString-HYPFormula (1.4.1)
@@ -11,7 +10,6 @@ PODS:
 
 DEPENDENCIES:
   - HYPImagePicker (from `https://github.com/hyperoslo/HYPImagePicker.git`)
-  - HYPNorwegianAccountNumber (from `https://github.com/hyperoslo/HYPNorwegianAccountNumber.git`)
   - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
   - NSDictionary-HYPSafeValue (from `https://github.com/hyperoslo/NSDictionary-HYPSafeValue.git`)
   - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`)
@@ -23,8 +21,6 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   HYPImagePicker:
     :git: https://github.com/hyperoslo/HYPImagePicker.git
-  HYPNorwegianAccountNumber:
-    :git: https://github.com/hyperoslo/HYPNorwegianAccountNumber.git
   HYPNorwegianSSN:
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSDictionary-HYPSafeValue:
@@ -38,7 +34,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
-  HYPNorwegianAccountNumber: 8ab481a23a13c1bd0135abe8c30e2af894f6c001
   HYPNorwegianSSN: e89eda882a498629b8e7a6d632f00c41ae79dd9c
   NSDictionary-HYPSafeValue: cd036b29c332a36abdfc82406cca044689044ee9
   NSString-HYPFormula: 944d6089795007866f7baddeec861cdf519c0abe
