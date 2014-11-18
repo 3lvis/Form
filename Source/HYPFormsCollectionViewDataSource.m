@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSMutableDictionary *valuesDictionary;
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic) UIEdgeInsets originalInset;
-@property (nonatomic) BOOL readOnly;
+@property (nonatomic) BOOL disabled;
 
 @end
 
@@ -47,12 +47,12 @@
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
                          andDictionary:(NSDictionary *)dictionary
-                              readOnly:(BOOL)readOnly
+                              disabled:(BOOL)disabled
 {
     self = [super init];
     if (!self) return nil;
 
-    _readOnly = readOnly;
+    _disabled = disabled;
 
     [self.valuesDictionary addEntriesFromDictionary:dictionary];
 
@@ -110,7 +110,7 @@
     if (_forms) return _forms;
 
     _forms = [[HYPForm new] formsUsingInitialValuesFromDictionary:self.valuesDictionary
-                                                         readOnly:self.readOnly
+                                                         readOnly:self.disabled
                                                 disabledFieldsIDs:self.disabledFieldsIDs
                                                  additionalValues:^(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections) {
@@ -326,7 +326,7 @@
 
 - (void)disable:(BOOL)disabled
 {
-    self.readOnly = disabled;
+    self.disabled = disabled;
 
     for (HYPForm *form in self.forms) {
         for (HYPFormField *field in form.fields) {
