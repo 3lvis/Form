@@ -328,7 +328,15 @@
 {
     self.readOnly = disabled;
 
-    [self resetForms];
+    for (HYPForm *form in self.forms) {
+        for (HYPFormField *field in form.fields) {
+            if (![self.disabledFields containsObject:field]) {
+                field.disabled = disabled;
+            }
+        }
+    }
+
+    [self.collectionView reloadData];
 }
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary completion:(void (^)())completion
