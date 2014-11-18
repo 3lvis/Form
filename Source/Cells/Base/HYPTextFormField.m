@@ -113,7 +113,7 @@
 
 - (void)setRawText:(NSString *)rawText
 {
-    BOOL shouldFormat = (self.formatter && (rawText.length > _rawText.length ||
+    BOOL shouldFormat = (self.formatter && (rawText.length >= _rawText.length ||
                                             ![rawText isEqualToString:_rawText]));
 
     if (shouldFormat) {
