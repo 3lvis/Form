@@ -328,11 +328,32 @@
 {
     self.disabled = disabled;
 
+    NSMutableDictionary *fields = [NSMutableDictionary dictionary];
+
     for (HYPForm *form in self.forms) {
         for (HYPFormField *field in form.fields) {
-            if (![self.disabledFieldsIDs containsObject:field.fieldID]) {
-                field.disabled = disabled;
+            if (field.fieldID) {
+                [fields addEntriesFromDictionary:@{field.fieldID : field}];
             }
+        }
+    }
+
+    [fields addEntriesFromDictionary:self.deletedFields];
+
+    for (HYPFormSection *section in [self.deletedSections allValues]) {
+        for (HYPFormField *field in section.fields) {
+            if (field.fieldID) {
+                [fields addEntriesFromDictionary:@{field.fieldID : field}];
+            }
+        }
+    }
+
+    for (NSString *fieldID in fields) {
+        BOOL shouldDisable = (![fieldID isEqualToString:@"blank"] && ![self.disabledFieldsIDs containsObject:fieldID]);
+
+        if (shouldDisable) {
+            HYPFormField *field = [fields valueForKey:fieldID];
+            field.disabled = disabled;
         }
     }
 
