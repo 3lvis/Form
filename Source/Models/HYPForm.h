@@ -22,7 +22,7 @@
 
 - (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
                                                  readOnly:(BOOL)readOnly
-                                           disabledFields:(NSArray *)disabledFields
+                                        disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues;
 

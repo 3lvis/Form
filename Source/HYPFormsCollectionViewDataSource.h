@@ -33,7 +33,7 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
 @property (nonatomic, strong) NSMutableDictionary *deletedFields;
 @property (nonatomic, strong) NSMutableDictionary *deletedSections;
-@property (nonatomic, strong) NSArray *disabledFields;
+@property (nonatomic, strong) NSArray *disabledFieldsIDs;
 
 @property (nonatomic, copy) HYPFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;

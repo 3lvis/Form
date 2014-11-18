@@ -66,7 +66,7 @@
 
 - (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
                                                  readOnly:(BOOL)readOnly
-                                           disabledFields:(NSArray *)disabledFields
+                                        disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues
 {
@@ -119,7 +119,7 @@
                 field.formula = [fieldDict hyp_safeValueForKey:@"formula"];
                 field.targets = [self targetsUsingArray:[fieldDict hyp_safeValueForKey:@"targets"]];
 
-                if (readOnly || [disabledFields containsObject:field]) {
+                if (readOnly || [disabledFieldsIDs containsObject:field.fieldID]) {
                     field.disabled = YES;
                 }
 
@@ -203,12 +203,12 @@
     [self processHiddenFieldsInTargets:targetsToRun
                                inForms:forms
                             completion:^(NSMutableDictionary *fields, NSMutableDictionary *sections) {
-        [self removeHiddenFieldsInTargets:targetsToRun inForms:forms];
+                                [self removeHiddenFieldsInTargets:targetsToRun inForms:forms];
 
-        if (additionalValues) {
-            additionalValues(fields, sections);
-        }
-    }];
+                                if (additionalValues) {
+                                    additionalValues(fields, sections);
+                                }
+                            }];
 
     return forms;
 }

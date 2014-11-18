@@ -111,7 +111,7 @@
 
     _forms = [[HYPForm new] formsUsingInitialValuesFromDictionary:self.valuesDictionary
                                                          readOnly:self.readOnly
-                                                   disabledFields:self.disabledFields
+                                                disabledFieldsIDs:self.disabledFieldsIDs
                                                  additionalValues:^(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections) {
                                                      [self.deletedFields addEntriesFromDictionary:deletedFields];
@@ -330,7 +330,7 @@
 
     for (HYPForm *form in self.forms) {
         for (HYPFormField *field in form.fields) {
-            if (![self.disabledFields containsObject:field]) {
+            if (![self.disabledFieldsIDs containsObject:field.fieldID]) {
                 field.disabled = disabled;
             }
         }
