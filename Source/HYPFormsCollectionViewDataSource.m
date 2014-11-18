@@ -341,20 +341,33 @@
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
+    NSMutableSet *removedKeysFromValuesDictionary = [NSMutableSet setWithArray:[self.valuesDictionary allKeys]];
+    NSSet *newKeys = [NSSet setWithArray:[dictionary allKeys]];
+    [removedKeysFromValuesDictionary minusSet:newKeys];
+
     [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
 
     NSMutableArray *updatedIndexPaths = [NSMutableArray array];
     NSMutableArray *targets = [NSMutableArray array];
 
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
+    NSMutableDictionary *dictionaryWithRemovedKeys = [dictionary mutableCopy];
+
+    for (NSString *key in removedKeysFromValuesDictionary) {
+        [dictionaryWithRemovedKeys addEntriesFromDictionary:@{key : [NSNull null]}];
+    }
+
+    [dictionaryWithRemovedKeys enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
+        BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
+
         HYPFormField *field = [HYPFormField fieldWithID:key inForms:self.forms withIndexPath:YES];
+
         if (field) {
-            field.fieldValue = value;
+            field.fieldValue = (shouldBeNil) ? nil : value;
             [updatedIndexPaths addObject:field.indexPath];
             [targets addObjectsFromArray:[field safeTargets]];
         } else {
             field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
-            if (field) field.fieldValue = value;
+            if (field) field.fieldValue = (shouldBeNil) ? nil : value;
         }
     }];
 
