@@ -339,7 +339,7 @@
     [self.collectionView reloadData];
 }
 
-- (void)reloadWithDictionary:(NSDictionary *)dictionary completion:(void (^)())completion
+- (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
     [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
 
@@ -360,13 +360,11 @@
 
     if (updatedIndexPaths.count > 0) {
         [self.collectionView performBatchUpdates:^{
-            [self.collectionView reloadItemsAtIndexPaths:updatedIndexPaths];
+            [self reloadItemsAtIndexPaths:updatedIndexPaths];
         } completion:^(BOOL finished) {
             [self processTargets:targets];
-            if (completion) completion();
         }];
     }
-
 }
 
 - (HYPFormField *)fieldInDeletedFields:(NSString *)fieldID
