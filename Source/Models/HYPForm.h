@@ -28,8 +28,6 @@
 
 - (NSArray *)fields;
 
-- (BOOL)dictionaryIsValid:(NSDictionary *)dictionary;
-
 - (NSInteger)numberOfFields;
 - (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections;
 

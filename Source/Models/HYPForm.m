@@ -256,50 +256,6 @@
     return array;
 }
 
-- (BOOL)dictionaryIsValid:(NSDictionary *)dictionary
-{
-    NSMutableDictionary *fields = [[self requiredFieldIDs] mutableCopy];
-
-    NSArray *hourly = @[@"hourly_pay_entry_date",
-                        @"hourly_pay_level",
-                        @"hourly_pay_premium_currency",
-                        @"hourly_pay_premium_percent"];
-
-    NSArray *fixed = @[@"fixed_pay_entry_date",
-                       @"fixed_pay_level",
-                       @"fixed_pay_premium_currency",
-                       @"fixed_pay_premium_percent"];
-
-    NSNumber *salaryType = [dictionary hyp_safeValueForKey:@"salary_type"];
-    if (salaryType) {
-        switch ([salaryType integerValue]) {
-            case 1: [fields removeObjectsForKeys:fixed]; break;
-            case 2: [fields removeObjectsForKeys:hourly]; break;
-            case 4: {
-                [fields removeObjectsForKeys:hourly];
-                [fields removeObjectsForKeys:fixed];
-            } break;
-            default: break;
-        }
-    }
-
-    for (NSString *key in fields) {
-        if (![dictionary valueForKey:key]) return NO;
-
-        NSDictionary *fieldDict   = [fields hyp_safeValueForKey:key];
-        NSDictionary *validations = [fieldDict hyp_safeValueForKey:@"validations"];
-        NSString *type = [fieldDict hyp_safeValueForKey:@"type"];
-        Class validatorClass = [HYPValidator classForKey:key andType:type];
-        id validator = [[validatorClass alloc] initWithValidations:validations];
-
-        if (![validator validateFieldValue:dictionary[key]]) {
-            return NO;
-        }
-    }
-
-    return YES;
-}
-
 - (NSInteger)numberOfFields
 {
     NSInteger count = 0;
