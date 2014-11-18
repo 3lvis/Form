@@ -283,4 +283,9 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return nil;
 }
 
+- (BOOL)isEqual:(HYPFormField *)object
+{
+    return [self.fieldID isEqualToString:object.fieldID];
+}
+
 @end

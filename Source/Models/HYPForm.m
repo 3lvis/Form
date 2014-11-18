@@ -66,6 +66,7 @@
 
 - (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
                                                  readOnly:(BOOL)readOnly
+                                           disabledFields:(NSArray *)disabledFields
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues
 {
@@ -118,7 +119,7 @@
                 field.formula = [fieldDict hyp_safeValueForKey:@"formula"];
                 field.targets = [self targetsUsingArray:[fieldDict hyp_safeValueForKey:@"targets"]];
 
-                if (readOnly) {
+                if (readOnly || [disabledFields containsObject:field]) {
                     field.disabled = YES;
                 }
 
