@@ -47,7 +47,7 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 - (void)validateForms;
 - (void)disable:(BOOL)disabled;
 - (void)processTargets:(NSArray *)targets;
-- (void)reloadWithDictionary:(NSDictionary *)dictionary completion:(void (^)())completion;
+- (void)reloadWithDictionary:(NSDictionary *)dictionary;
 - (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 
