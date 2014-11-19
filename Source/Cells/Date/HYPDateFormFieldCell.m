@@ -54,6 +54,11 @@ UIPopoverControllerDelegate>
 {
     [super updateWithField:field];
 
+    if (!field.fieldValue) {
+        self.textField.rawText = nil;
+        return;
+    }
+
     if (field.fieldValue) {
         self.textField.rawText = [NSDateFormatter localizedStringFromDate:field.fieldValue
                                                                 dateStyle:NSDateFormatterMediumStyle
