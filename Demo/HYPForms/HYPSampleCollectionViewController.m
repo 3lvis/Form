@@ -51,6 +51,7 @@
 
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
                                                                      andDictionary:self.setUpDictionary
+                                                                 disabledFieldsIDs:@[]
                                                                           disabled:NO];
 
 
