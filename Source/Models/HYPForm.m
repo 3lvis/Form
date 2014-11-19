@@ -205,9 +205,7 @@
                             completion:^(NSMutableDictionary *fields, NSMutableDictionary *sections) {
                                 [self removeHiddenFieldsInTargets:targetsToRun inForms:forms];
 
-                                if (additionalValues) {
-                                    additionalValues(fields, sections);
-                                }
+                                if (additionalValues) additionalValues(fields, sections);
                             }];
 
     return forms;
