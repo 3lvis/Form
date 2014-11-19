@@ -110,7 +110,7 @@
     if (_forms) return _forms;
 
     _forms = [[HYPForm new] formsUsingInitialValuesFromDictionary:self.valuesDictionary
-                                                         readOnly:self.disabled
+                                                         disabled:self.disabled
                                                 disabledFieldsIDs:self.disabledFieldsIDs
                                                  additionalValues:^(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections) {

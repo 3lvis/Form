@@ -21,7 +21,7 @@
 + (instancetype)sharedInstance;
 
 - (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
-                                                 readOnly:(BOOL)readOnly
+                                                 disabled:(BOOL)disabled
                                         disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues;
