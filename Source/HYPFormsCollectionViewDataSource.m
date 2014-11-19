@@ -47,10 +47,13 @@
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
                          andDictionary:(NSDictionary *)dictionary
+                     disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                               disabled:(BOOL)disabled
 {
     self = [super init];
     if (!self) return nil;
+
+    _disabledFieldsIDs = disabledFieldsIDs;
 
     _disabled = disabled;
 
