@@ -38,6 +38,7 @@
 
     _setUpDictionary = valuesDict;
     layout.dataSource = self.dataSource;
+    self.dataSource.disabledFieldsIDs = @[@"first_name", @"last_name"];
 
     return self;
 }
@@ -50,7 +51,7 @@
 
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
                                                                      andDictionary:self.setUpDictionary
-                                                                          readOnly:NO];
+                                                                          disabled:NO];
 
 
     __weak typeof(self)weakSelf = self;

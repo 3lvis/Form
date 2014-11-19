@@ -65,8 +65,8 @@
 }
 
 - (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
-                                                 readOnly:(BOOL)readOnly
-                                           disabledFields:(NSArray *)disabledFields
+                                                 disabled:(BOOL)disabled
+                                        disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues
 {
@@ -96,9 +96,8 @@
             section.position = @(sectionIndex);
 
             BOOL isLastSection = (lastObject == sectionDict);
-            if (isLastSection) {
-                section.isLast = YES;
-            }
+
+            if (isLastSection) section.isLast = YES;
 
             NSArray *dataSourceFields = [sectionDict hyp_safeValueForKey:@"fields"];
             NSMutableArray *fields = [NSMutableArray array];
@@ -119,13 +118,13 @@
                 field.formula = [fieldDict hyp_safeValueForKey:@"formula"];
                 field.targets = [self targetsUsingArray:[fieldDict hyp_safeValueForKey:@"targets"]];
 
-                if (readOnly || [disabledFields containsObject:field]) {
-                    field.disabled = YES;
-                }
+                BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:field.fieldID]);
 
-                if (readOnly && field.type == HYPFormFieldTypeImage) {
-                    return;
-                }
+                if (shouldDisable) field.disabled = YES;
+
+                BOOL isImageField = (disabled && field.type == HYPFormFieldTypeImage);
+
+                if (isImageField) return;
 
                 NSMutableArray *values = [NSMutableArray array];
                 NSArray *dataSourceValues = [fieldDict hyp_safeValueForKey:@"values"];
@@ -149,9 +148,7 @@
                         for (HYPFormTarget *target in targets) {
                             target.value = fieldValue;
 
-                            if (needsToRun && target.actionType == HYPFormTargetActionHide) {
-                                [targetsToRun addObject:target];
-                            }
+                            if (needsToRun && target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
                         }
 
                         fieldValue.targets = targets;
@@ -163,9 +160,10 @@
                 if ([dictionary hyp_safeValueForKey:remoteID]) {
                     if (field.type == HYPFormFieldTypeSelect) {
                         for (HYPFieldValue *value in values) {
-                            if ([value identifierIsEqualTo:[dictionary hyp_safeValueForKey:remoteID]]) {
-                                field.fieldValue = value;
-                            }
+
+                            BOOL isInitialValue = ([value identifierIsEqualTo:[dictionary hyp_safeValueForKey:remoteID]]);
+
+                            if (isInitialValue) field.fieldValue = value;
                         }
                     } else {
                         field.fieldValue = [dictionary hyp_safeValueForKey:remoteID];
@@ -176,9 +174,7 @@
                 field.section = section;
                 [fields addObject:field];
 
-                if (field.formula) {
-                    [fieldsWithFormula addObject:field];
-                }
+                if (field.formula) [fieldsWithFormula addObject:field];
             }];
 
             if (!isLastSection) {
@@ -203,12 +199,10 @@
     [self processHiddenFieldsInTargets:targetsToRun
                                inForms:forms
                             completion:^(NSMutableDictionary *fields, NSMutableDictionary *sections) {
-        [self removeHiddenFieldsInTargets:targetsToRun inForms:forms];
+                                [self removeHiddenFieldsInTargets:targetsToRun inForms:forms];
 
-        if (additionalValues) {
-            additionalValues(fields, sections);
-        }
-    }];
+                                if (additionalValues) additionalValues(fields, sections);
+                            }];
 
     return forms;
 }

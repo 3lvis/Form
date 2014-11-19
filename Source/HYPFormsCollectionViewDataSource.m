@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSMutableDictionary *valuesDictionary;
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic) UIEdgeInsets originalInset;
-@property (nonatomic) BOOL readOnly;
+@property (nonatomic) BOOL disabled;
 
 @end
 
@@ -47,12 +47,12 @@
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
                          andDictionary:(NSDictionary *)dictionary
-                              readOnly:(BOOL)readOnly
+                              disabled:(BOOL)disabled
 {
     self = [super init];
     if (!self) return nil;
 
-    _readOnly = readOnly;
+    _disabled = disabled;
 
     [self.valuesDictionary addEntriesFromDictionary:dictionary];
 
@@ -110,8 +110,8 @@
     if (_forms) return _forms;
 
     _forms = [[HYPForm new] formsUsingInitialValuesFromDictionary:self.valuesDictionary
-                                                         readOnly:self.readOnly
-                                                   disabledFields:self.disabledFields
+                                                         disabled:self.disabled
+                                                disabledFieldsIDs:self.disabledFieldsIDs
                                                  additionalValues:^(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections) {
                                                      [self.deletedFields addEntriesFromDictionary:deletedFields];
@@ -326,13 +326,34 @@
 
 - (void)disable:(BOOL)disabled
 {
-    self.readOnly = disabled;
+    self.disabled = disabled;
+
+    NSMutableDictionary *fields = [NSMutableDictionary dictionary];
 
     for (HYPForm *form in self.forms) {
         for (HYPFormField *field in form.fields) {
-            if (![self.disabledFields containsObject:field]) {
-                field.disabled = disabled;
+            if (field.fieldID) {
+                [fields addEntriesFromDictionary:@{field.fieldID : field}];
             }
+        }
+    }
+
+    [fields addEntriesFromDictionary:self.deletedFields];
+
+    for (HYPFormSection *section in [self.deletedSections allValues]) {
+        for (HYPFormField *field in section.fields) {
+            if (field.fieldID) {
+                [fields addEntriesFromDictionary:@{field.fieldID : field}];
+            }
+        }
+    }
+
+    for (NSString *fieldID in fields) {
+        BOOL shouldDisable = (![fieldID isEqualToString:@"blank"] && ![self.disabledFieldsIDs containsObject:fieldID]);
+
+        if (shouldDisable) {
+            HYPFormField *field = [fields valueForKey:fieldID];
+            field.disabled = disabled;
         }
     }
 

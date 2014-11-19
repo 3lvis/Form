@@ -27,13 +27,13 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 @interface HYPFormsCollectionViewDataSource : NSObject <HYPFormsLayoutDataSource, UICollectionViewDataSource>
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
-                         andDictionary:(NSDictionary *)dictionary readOnly:(BOOL)readOnly;
+                         andDictionary:(NSDictionary *)dictionary disabled:(BOOL)disabled;
 
 @property (nonatomic, strong) NSMutableArray *forms;
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
 @property (nonatomic, strong) NSMutableDictionary *deletedFields;
 @property (nonatomic, strong) NSMutableDictionary *deletedSections;
-@property (nonatomic, strong) NSArray *disabledFields;
+@property (nonatomic, strong) NSArray *disabledFieldsIDs;
 
 @property (nonatomic, copy) HYPFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;
