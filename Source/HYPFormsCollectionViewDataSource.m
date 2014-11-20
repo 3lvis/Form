@@ -367,26 +367,15 @@
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
-    NSMutableSet *removedKeysFromValuesDictionary = [NSMutableSet setWithArray:[self.valuesDictionary allKeys]];
-    NSSet *newKeys = [NSSet setWithArray:[dictionary allKeys]];
-    [removedKeysFromValuesDictionary minusSet:newKeys];
-
     [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
 
     NSMutableArray *updatedIndexPaths = [NSMutableArray array];
     NSMutableArray *targets = [NSMutableArray array];
 
-    NSMutableDictionary *dictionaryWithRemovedKeys = [dictionary mutableCopy];
-
-    for (NSString *key in removedKeysFromValuesDictionary) {
-        [dictionaryWithRemovedKeys addEntriesFromDictionary:@{key : [NSNull null]}];
-    }
-
-    [dictionaryWithRemovedKeys enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
         BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
         HYPFormField *field = [HYPFormField fieldWithID:key inForms:self.forms withIndexPath:YES];
-
         if (field) {
             field.fieldValue = (shouldBeNil) ? nil : value;
             [updatedIndexPaths addObject:field.indexPath];
@@ -520,8 +509,6 @@
                               if (shownTargets.count > 0) [self showTargets:shownTargets];
                               if (hiddenTargets.count > 0) [self hideTargets:hiddenTargets];
                               if (updatedTargets.count > 0) [self updateTargets:updatedTargets];
-
-                              [self.collectionView.collectionViewLayout invalidateLayout];
                           }];
 }
 
