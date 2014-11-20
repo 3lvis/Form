@@ -52,7 +52,7 @@
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
                                                                      andDictionary:self.setUpDictionary
                                                                  disabledFieldsIDs:@[]
-                                                                          disabled:NO];
+                                                                          disabled:YES];
 
 
     __weak typeof(self)weakSelf = self;
@@ -148,6 +148,7 @@
     UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(90.0f, 5.0f, 40.0f, 40.0f)];
     readOnlySwitch.tintColor = [UIColor colorFromHex:@"5182AF"];
     readOnlySwitch.onTintColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlySwitch.on = YES;
     [readOnlySwitch addTarget:self action:@selector(readOnly:) forControlEvents:UIControlEventValueChanged];
     [readOnlyView addSubview:readOnlySwitch];
 
@@ -162,9 +163,7 @@
     target.typeString = @"field";
     target.actionTypeString = @"hide";
 
-    [self.dataSource processTargets:@[target]];
-
-    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
 }
 
 #pragma mark - UICollectionViewDelegate
