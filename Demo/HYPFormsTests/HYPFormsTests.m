@@ -34,70 +34,35 @@
 
 - (void)testFieldIndexInFormsLastField
 {
-    HYPFormField *field = [HYPFormField fieldWithID:@"first_name" inForms:self.dataSource.forms withIndexPath:NO];
+    [self.dataSource processTargets:@[[HYPFormTarget hideFieldTargetWithID:@"image"]]];
+
+    [self.dataSource processTargets:@[[HYPFormTarget showFieldTargetWithID:@"image"]]];
+
+    HYPFormField *field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
     NSUInteger index = [field indexInForms:self.dataSource.forms];
-    XCTAssertEqual(index, 0);
-
-    field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
-    index = [field indexInForms:self.dataSource.forms];
-    XCTAssertEqual(index, 11);
-
-    HYPFormTarget *target = [HYPFormTarget new];
-    target.targetID = @"image";
-    target.typeString = @"field";
-    target.actionTypeString = @"hide";
-
-    [self.dataSource processTargets:@[target]];
-
-    field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
-    XCTAssertNil(field);
-
-    target = [HYPFormTarget new];
-    target.targetID = @"image";
-    target.typeString = @"field";
-    target.actionTypeString = @"show";
-    [self.dataSource processTargets:@[target]];
-
-    field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
-    index = [field indexInForms:self.dataSource.forms];
     XCTAssertEqual(index, 11);
 }
 
 - (void)testFieldIndexInFormsLastFieldWithTwoInTheMiddleRemoved
 {
+    [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"image", @"first_name", @"address"]]];
+
+    [self.dataSource processTargets:@[[HYPFormTarget showFieldTargetWithID:@"image"]]];
+
     HYPFormField *field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
     NSUInteger index = [field indexInForms:self.dataSource.forms];
-    XCTAssertEqual(index, 11);
-
-    HYPFormTarget *target = [HYPFormTarget new];
-    target.targetID = @"image";
-    target.typeString = @"field";
-    target.actionTypeString = @"hide";
-
-    HYPFormTarget *target1 = [HYPFormTarget new];
-    target1.targetID = @"first_name";
-    target1.typeString = @"field";
-    target1.actionTypeString = @"hide";
-
-    HYPFormTarget *target2 = [HYPFormTarget new];
-    target2.targetID = @"address";
-    target2.typeString = @"field";
-    target2.actionTypeString = @"hide";
-
-    [self.dataSource processTargets:@[target, target1, target2]];
-
-    field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
-    XCTAssertNil(field);
-
-    target = [HYPFormTarget new];
-    target.targetID = @"image";
-    target.typeString = @"field";
-    target.actionTypeString = @"show";
-    [self.dataSource processTargets:@[target]];
-
-    field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
-    index = [field indexInForms:self.dataSource.forms];
     XCTAssertEqual(index, 9);
+}
+
+- (void)testFieldIndexInForms
+{
+    [self.dataSource processTargets:@[[HYPFormTarget hideFieldTargetWithID:@"last_name"], [HYPFormTarget hideFieldTargetWithID:@"address"]]];
+
+    [self.dataSource processTargets:@[[HYPFormTarget showFieldTargetWithID:@"address"]]];
+
+    HYPFormField *field = [HYPFormField fieldWithID:@"address" inForms:self.dataSource.forms withIndexPath:NO];
+    NSUInteger index = [field indexInForms:self.dataSource.forms];
+    XCTAssertEqual(index, 4);
 }
 
 @end

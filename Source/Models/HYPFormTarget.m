@@ -2,6 +2,58 @@
 
 @implementation HYPFormTarget
 
++ (HYPFormTarget *)showFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionShow];
+}
+
++ (HYPFormTarget *)hideFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionHide];
+}
+
++ (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray array];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self showFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray array];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self hideFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (HYPFormTarget *)fieldTargetWithID:(NSString *)targetID
+                          actionType:(HYPFormTargetActionType)actionType
+{
+    return [self targetWithID:targetID
+                         type:HYPFormTargetTypeField
+                   actionType:actionType];
+}
+
++ (HYPFormTarget *)targetWithID:(NSString *)targetID
+                           type:(HYPFormTargetType)type
+                     actionType:(HYPFormTargetActionType)actionType
+{
+    HYPFormTarget *target = [HYPFormTarget new];
+    target.targetID = targetID;
+    target.type = type;
+    target.actionType = actionType;
+
+    return target;
+}
+
 - (void)setTypeString:(NSString *)typeString
 {
     _typeString = typeString;
