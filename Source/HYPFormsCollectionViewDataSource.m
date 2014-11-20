@@ -361,6 +361,9 @@
     }
 
     [self.collectionView reloadData];
+    [UIView performWithoutAnimation:^{
+        [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
+    }];
 }
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
