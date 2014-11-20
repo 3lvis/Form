@@ -44,14 +44,17 @@
             "id":"display_name",
             "title":"Visningsnavn",
             "type":"text",
-            "size":25,
-            "formula":"first_name last_name"
+            "size":30,
+            "formula":"first_name last_name",
+            "validations":{
+              "required":true
+            }
           },
           {
             "id":"social_security_number",
-            "title":"Fødselsnummer (11 siffer)",
+            "title":"Fødselsnummer",
             "type":"text",
-            "size":25,
+            "size":20,
             "validations":{
               "required":true,
               "min_length":11,
@@ -86,13 +89,13 @@
             "id":"address",
             "title":"Gateadresse",
             "type":"text",
-            "size":40
+            "size":38
           },
           {
             "id":"postal_code",
             "title":"Postnummer",
             "type":"text",
-            "size":15,
+            "size":17,
             "validations":{
               "required":true,
               "min_length":4,
@@ -124,7 +127,7 @@
             "type":"email",
             "size":40,
             "validations":{
-              "format":"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,8}"
+              "format":"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}"
             }
           },
           {
@@ -251,7 +254,10 @@
                 "id":3,
                 "title":"Tilkallingsvikar Ekstrahjelp"
               }
-            ]
+            ],
+            "validations":{
+              "required":true
+            }
           },
           {
             "id":"temporary_employee_reason",
@@ -567,10 +573,9 @@
           {
             "id":"fixed_pay_premium_percent",
             "title":"Påslag (%)",
-            "type":"number",
-            "size":12.5,
+            "type":"float",
+            "size":13.5,
             "validations":{
-              "max_length":3,
               "max_value":100
             },
             "targets":[
@@ -596,9 +601,9 @@
           },
           {
             "id":"fixed_pay_total",
-            "title":"Total",
+            "title":"Månedslønn",
             "type":"float",
-            "size":18,
+            "size":17,
             "disabled":true,
             "formula":"fixed_pay_level * (employment_percent.0 / 100.0) * (1 + (fixed_pay_premium_percent.0 / 100.0)) + fixed_pay_premium_currency"
           },
@@ -786,10 +791,9 @@
           {
             "id":"hourly_pay_premium_percent",
             "title":"Påslag (%)",
-            "type":"number",
-            "size":12.5,
+            "type":"float",
+            "size":13.5,
             "validations":{
-              "max_length":3,
               "max_value":100
             },
             "targets":[
@@ -815,9 +819,9 @@
           },
           {
             "id":"hourly_pay_total",
-            "title":"Total",
+            "title":"Timelønn",
             "type":"float",
-            "size":18,
+            "size":17,
             "disabled":true,
             "formula":"hourly_pay_level * (1 + (hourly_pay_premium_percent.0 / 100.0)) + hourly_pay_premium_currency"
           },
@@ -843,7 +847,7 @@
           },
           {
             "id":"student",
-            "title":"Skolelev",
+            "title":"Skoleelev",
             "type":"select",
             "size":15,
             "values":[
@@ -871,7 +875,10 @@
                 "id":0,
                 "title":"Nei"
               }
-            ]
+            ],
+            "validations":{
+              "required":true
+            }
           }
         ]
       }
