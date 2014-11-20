@@ -288,4 +288,24 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return nil;
 }
 
+- (void)sectionAndIndexInForms:(NSArray *)forms
+                    completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
+{
+    HYPFormSection *section = [HYPFormSection sectionWithID:self.section.sectionID inForms:forms];
+
+    __block NSInteger index = 0;
+    __block BOOL found = NO;
+    [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
+        if ([aField.fieldID isEqualToString:self.fieldID]) {
+            index = idx;
+            found = YES;
+            *stop = YES;
+        }
+    }];
+
+    if (completion) {
+        completion(found, section, index);
+    }
+}
+
 @end
