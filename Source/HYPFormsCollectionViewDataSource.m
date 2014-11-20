@@ -276,15 +276,40 @@
     }
 }
 
-- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths
+- (NSArray *)safeIndexPaths:(NSArray *)indexPaths
 {
-    NSMutableArray *reloadedIndexPaths = [NSMutableArray array];
+    NSMutableArray *safeIndexPaths = [NSMutableArray array];
 
     for (NSIndexPath *indexPath in indexPaths) {
         if (![self.collapsedForms containsObject:@(indexPath.section)]) {
-            [reloadedIndexPaths addObject:indexPath];
+            [safeIndexPaths addObject:indexPath];
         }
     }
+
+    return safeIndexPaths;
+}
+
+- (void)insertItemsAtIndexPaths:(NSArray *)indexPaths
+{
+    NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
+
+    if (reloadedIndexPaths.count > 0) {
+        [self.collectionView insertItemsAtIndexPaths:reloadedIndexPaths];
+    }
+}
+
+- (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths
+{
+    NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
+
+    if (reloadedIndexPaths.count > 0) {
+        [self.collectionView deleteItemsAtIndexPaths:reloadedIndexPaths];
+    }
+}
+
+- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths
+{
+    NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
 
     if (reloadedIndexPaths.count > 0) {
         [self.collectionView reloadItemsAtIndexPaths:reloadedIndexPaths];
@@ -555,9 +580,7 @@
         }
     }
 
-    if (insertedIndexPaths.count > 0) {
-        [self.collectionView insertItemsAtIndexPaths:insertedIndexPaths];
-    }
+    [self insertItemsAtIndexPaths:insertedIndexPaths];
 }
 
 - (void)hideTargets:(NSArray *)targets
@@ -602,9 +625,7 @@
         }];
     }
 
-    if (deletedIndexPaths.count > 0) {
-        [self.collectionView deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
-    }
+    [self deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
 }
 
 - (void)updateTargets:(NSArray *)targets
