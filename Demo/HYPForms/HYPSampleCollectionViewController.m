@@ -218,7 +218,8 @@
                                             @"salary_type" : @1,
                                             @"hourly_pay_level" : @1,
                                             @"hourly_pay_premium_percent" : @10,
-                                            @"hourly_pay_premium_currency" : @10
+                                            @"hourly_pay_premium_currency" : @10,
+                                            @"start_date" : [NSNull null]
                                             }];
 }
 
@@ -238,6 +239,18 @@
 - (void)readOnly:(UISwitch *)sender
 {
     [self.dataSource disable:sender.isOn];
+
+    HYPFormTarget *target = [HYPFormTarget new];
+    target.targetID = @"image";
+    target.typeString = @"field";
+
+    if (sender.isOn) {
+        target.actionTypeString = @"hide";
+    } else {
+        target.actionTypeString = @"show";
+    }
+
+    [self.dataSource processTargets:@[target]];
 }
 
 @end
