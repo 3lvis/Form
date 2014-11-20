@@ -211,20 +211,25 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return foundField;
 }
 
-- (NSInteger)indexInForms:(NSArray *)forms
+- (NSUInteger)indexInForms:(NSArray *)forms
 {
     HYPForm *form = forms[[self.section.form.position integerValue]];
+    HYPFormSection *section = form.sections[[self.section.position integerValue]];
 
-    __block NSInteger index = 0;
+    __block NSUInteger index = 0;
+    __block BOOL found = NO;
 
-    [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger sectionIndex, BOOL *sectionStop) {
-        [aSection.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger fieldIndex, BOOL *fieldStop) {
-            if ([aField.position integerValue] >= [self.position integerValue]) {
-                index = fieldIndex;
-                *fieldStop = YES;
-            }
-        }];
+    [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger fieldIndex, BOOL *fieldStop) {
+        if ([aField.position integerValue] >= [self.position integerValue]) {
+            index = fieldIndex;
+            found = YES;
+            *fieldStop = YES;
+        }
     }];
+
+    if (!found) {
+        index = [section.fields count];
+    }
 
     return index;
 }
