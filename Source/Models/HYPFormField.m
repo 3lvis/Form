@@ -227,9 +227,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         }
     }];
 
-    if (!found) {
-        index = [section.fields count];
-    }
+    if (!found) index = [section.fields count];
 
     return index;
 }
@@ -303,9 +301,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         }
     }];
 
-    if (completion) {
-        completion(found, section, index);
-    }
+    if (completion) completion(found, section, index);
 }
 
 @end
