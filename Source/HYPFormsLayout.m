@@ -201,26 +201,33 @@
 {
     CGFloat height = HYPFormMarginTop + HYPFormMarginBottom;
     CGFloat width = 0.0f;
+    HYPFormField *lastField = [fields lastObject];
 
     for (HYPFormField *field in fields) {
         if (field.sectionSeparator) {
             height += HYPFieldCellItemSmallHeight;
+
+            BOOL previousSectionIsNotFullWidth = (width > 0.0f && width < 100.0f);
+
+            if (previousSectionIsNotFullWidth) height += HYPFieldCellItemHeight;
+
+            width = 0.0f;
         } else {
             width += [field.size floatValue];
 
-            if (width >= 90.0f) {
+            if (width >= 100.0f) {
                 if (field.type == HYPFormFieldTypeImage) {
                     height += HYPImageFormFieldCellItemHeight;
                 } else {
                     height += HYPFieldCellItemHeight;
                 }
-                width = 0;
+                width = 0.0f;
             }
         }
-    }
 
-    if (width > 0) {
-        height += HYPFieldCellItemHeight;
+        BOOL isLastFieldAndNotFullWidth = (width > 0.0f && width < 100.0f && [field isEqual:lastField]);
+
+        if (isLastFieldAndNotFullWidth) height += HYPFieldCellItemHeight;
     }
 
     return height;
