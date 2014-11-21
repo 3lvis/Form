@@ -225,7 +225,9 @@
             }
         }
 
-        BOOL isLastFieldAndNotFullWidth = (width > 0.0f && width < 100.0f && [field isEqual:lastField]);
+        BOOL isLastFieldAndNotFullWidth = (width > 0.0f &&
+                                           width < 100.0f &&
+                                           [field isEqual:lastField]);
 
         if (isLastFieldAndNotFullWidth) height += HYPFieldCellItemHeight;
     }
