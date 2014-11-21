@@ -37,13 +37,13 @@
 + (HYPFormTarget *)showSectionTargetWithID:(NSString *)targetID
 {
     return [self sectionTargetWithID:targetID
-                        actionType:HYPFormTargetActionShow];
+                          actionType:HYPFormTargetActionShow];
 }
 
 + (HYPFormTarget *)hideSectionTargetWithID:(NSString *)targetID
 {
     return [self sectionTargetWithID:targetID
-                        actionType:HYPFormTargetActionHide];
+                          actionType:HYPFormTargetActionHide];
 }
 
 + (NSArray *)showSectionTargetsWithIDs:(NSArray *)targetIDs
