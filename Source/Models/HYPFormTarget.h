@@ -30,4 +30,16 @@ typedef NS_ENUM(NSInteger, HYPFormTargetActionType) {
                                   NSArray *hiddenTargets,
                                   NSArray *updatedTargets))filtered;
 
++ (HYPFormTarget *)showFieldTargetWithID:(NSString *)targetID;
++ (HYPFormTarget *)hideFieldTargetWithID:(NSString *)targetID;
+
++ (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs;
++ (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs;
+
++ (HYPFormTarget *)showSectionTargetWithID:(NSString *)targetID;
++ (HYPFormTarget *)hideSectionTargetWithID:(NSString *)targetID;
+
++ (NSArray *)showSectionTargetsWithIDs:(NSArray *)targetIDs;
++ (NSArray *)hideSectionTargetsWithIDs:(NSArray *)targetIDs;
+
 @end

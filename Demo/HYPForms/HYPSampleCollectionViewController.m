@@ -52,7 +52,7 @@
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
                                                                      andDictionary:self.setUpDictionary
                                                                  disabledFieldsIDs:@[]
-                                                                          disabled:NO];
+                                                                          disabled:YES];
 
 
     __weak typeof(self)weakSelf = self;
@@ -129,9 +129,9 @@
                                                                           action:@selector(validateButtonAction)];
 
     UIBarButtonItem *updateButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Update"
-                                                                           style:UIBarButtonItemStyleDone
-                                                                          target:self
-                                                                          action:@selector(updateButtonAction)];
+                                                                         style:UIBarButtonItemStyleDone
+                                                                        target:self
+                                                                        action:@selector(updateButtonAction)];
 
     UIBarButtonItem *flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                            target:nil
@@ -148,6 +148,7 @@
     UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(90.0f, 5.0f, 40.0f, 40.0f)];
     readOnlySwitch.tintColor = [UIColor colorFromHex:@"5182AF"];
     readOnlySwitch.onTintColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlySwitch.on = YES;
     [readOnlySwitch addTarget:self action:@selector(readOnly:) forControlEvents:UIControlEventValueChanged];
     [readOnlyView addSubview:readOnlySwitch];
 
@@ -162,9 +163,7 @@
     target.typeString = @"field";
     target.actionTypeString = @"hide";
 
-    [self.dataSource processTargets:@[target]];
-
-    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -218,7 +217,8 @@
                                             @"salary_type" : @1,
                                             @"hourly_pay_level" : @1,
                                             @"hourly_pay_premium_percent" : @10,
-                                            @"hourly_pay_premium_currency" : @10
+                                            @"hourly_pay_premium_currency" : @10,
+                                            @"start_date" : [NSNull null]
                                             }];
 }
 
@@ -238,6 +238,18 @@
 - (void)readOnly:(UISwitch *)sender
 {
     [self.dataSource disable:sender.isOn];
+
+    HYPFormTarget *target = [HYPFormTarget new];
+    target.targetID = @"image";
+    target.typeString = @"field";
+
+    if (sender.isOn) {
+        target.actionTypeString = @"hide";
+    } else {
+        target.actionTypeString = @"show";
+    }
+
+    [self.dataSource processTargets:@[target]];
 }
 
 @end

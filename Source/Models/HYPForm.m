@@ -122,10 +122,6 @@
 
                 if (shouldDisable) field.disabled = YES;
 
-                BOOL isImageField = (disabled && field.type == HYPFormFieldTypeImage);
-
-                if (isImageField) return;
-
                 NSMutableArray *values = [NSMutableArray array];
                 NSArray *dataSourceValues = [fieldDict hyp_safeValueForKey:@"values"];
 

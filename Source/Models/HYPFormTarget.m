@@ -2,6 +2,100 @@
 
 @implementation HYPFormTarget
 
++ (HYPFormTarget *)showFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionShow];
+}
+
++ (HYPFormTarget *)hideFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionHide];
+}
+
++ (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray array];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self showFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray array];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self hideFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (HYPFormTarget *)showSectionTargetWithID:(NSString *)targetID
+{
+    return [self sectionTargetWithID:targetID
+                          actionType:HYPFormTargetActionShow];
+}
+
++ (HYPFormTarget *)hideSectionTargetWithID:(NSString *)targetID
+{
+    return [self sectionTargetWithID:targetID
+                          actionType:HYPFormTargetActionHide];
+}
+
++ (NSArray *)showSectionTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray array];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self showSectionTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)hideSectionTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray array];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self hideFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (HYPFormTarget *)fieldTargetWithID:(NSString *)targetID
+                          actionType:(HYPFormTargetActionType)actionType
+{
+    return [self targetWithID:targetID
+                         type:HYPFormTargetTypeField
+                   actionType:actionType];
+}
+
++ (HYPFormTarget *)sectionTargetWithID:(NSString *)targetID
+                            actionType:(HYPFormTargetActionType)actionType
+{
+    return [self targetWithID:targetID
+                         type:HYPFormTargetTypeSection
+                   actionType:actionType];
+}
+
++ (HYPFormTarget *)targetWithID:(NSString *)targetID
+                           type:(HYPFormTargetType)type
+                     actionType:(HYPFormTargetActionType)actionType
+{
+    HYPFormTarget *target = [HYPFormTarget new];
+    target.targetID = targetID;
+    target.type = type;
+    target.actionType = actionType;
+
+    return target;
+}
+
+#pragma mark - Setters
+
 - (void)setTypeString:(NSString *)typeString
 {
     _typeString = typeString;
@@ -67,8 +161,8 @@
 - (BOOL)isEqual:(HYPFormTarget *)object
 {
     BOOL equal = ([object.targetID isEqualToString:self.targetID] &&
-            object.actionType == self.actionType &&
-            object.type == self.type);
+                  object.actionType == self.actionType &&
+                  object.type == self.type);
 
     if (equal && self.value && object.value) {
         equal = ([self.value identifierIsEqualTo:object.value.valueID]);

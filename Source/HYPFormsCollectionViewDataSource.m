@@ -276,15 +276,40 @@
     }
 }
 
-- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths
+- (NSArray *)safeIndexPaths:(NSArray *)indexPaths
 {
-    NSMutableArray *reloadedIndexPaths = [NSMutableArray array];
+    NSMutableArray *safeIndexPaths = [NSMutableArray new];
 
     for (NSIndexPath *indexPath in indexPaths) {
         if (![self.collapsedForms containsObject:@(indexPath.section)]) {
-            [reloadedIndexPaths addObject:indexPath];
+            [safeIndexPaths addObject:indexPath];
         }
     }
+
+    return safeIndexPaths;
+}
+
+- (void)insertItemsAtIndexPaths:(NSArray *)indexPaths
+{
+    NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
+
+    if (reloadedIndexPaths.count > 0) {
+        [self.collectionView insertItemsAtIndexPaths:reloadedIndexPaths];
+    }
+}
+
+- (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths
+{
+    NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
+
+    if (reloadedIndexPaths.count > 0) {
+        [self.collectionView deleteItemsAtIndexPaths:reloadedIndexPaths];
+    }
+}
+
+- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths
+{
+    NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
 
     if (reloadedIndexPaths.count > 0) {
         [self.collectionView reloadItemsAtIndexPaths:reloadedIndexPaths];
@@ -360,31 +385,22 @@
         }
     }
 
-    [self.collectionView reloadData];
+    [UIView performWithoutAnimation:^{
+        [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
+    }];
 }
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
-    NSMutableSet *removedKeysFromValuesDictionary = [NSMutableSet setWithArray:[self.valuesDictionary allKeys]];
-    NSSet *newKeys = [NSSet setWithArray:[dictionary allKeys]];
-    [removedKeysFromValuesDictionary minusSet:newKeys];
-
     [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
 
     NSMutableArray *updatedIndexPaths = [NSMutableArray array];
     NSMutableArray *targets = [NSMutableArray array];
 
-    NSMutableDictionary *dictionaryWithRemovedKeys = [dictionary mutableCopy];
-
-    for (NSString *key in removedKeysFromValuesDictionary) {
-        [dictionaryWithRemovedKeys addEntriesFromDictionary:@{key : [NSNull null]}];
-    }
-
-    [dictionaryWithRemovedKeys enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
         BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
         HYPFormField *field = [HYPFormField fieldWithID:key inForms:self.forms withIndexPath:YES];
-
         if (field) {
             field.fieldValue = (shouldBeNil) ? nil : value;
             [updatedIndexPaths addObject:field.indexPath];
@@ -509,6 +525,16 @@
 
 #pragma mark - Targets Procesing
 
+- (void)processTarget:(HYPFormTarget *)target
+{
+    switch (target.actionType) {
+        case HYPFormTargetActionShow: [self showTargets:@[target]]; break;
+        case HYPFormTargetActionHide: [self hideTargets:@[target]]; break;
+        case HYPFormTargetActionUpdate: [self updateTargets:@[target]]; break;
+        case HYPFormTargetActionNone: break;
+    }
+}
+
 - (void)processTargets:(NSArray *)targets
 {
     [HYPFormTarget filteredTargets:targets
@@ -518,8 +544,6 @@
                               if (shownTargets.count > 0) [self showTargets:shownTargets];
                               if (hiddenTargets.count > 0) [self hideTargets:hiddenTargets];
                               if (updatedTargets.count > 0) [self updateTargets:updatedTargets];
-
-                              [self.collectionView.collectionViewLayout invalidateLayout];
                           }];
 }
 
@@ -556,9 +580,7 @@
         }
     }
 
-    if (insertedIndexPaths.count > 0) {
-        [self.collectionView insertItemsAtIndexPaths:insertedIndexPaths];
-    }
+    [self insertItemsAtIndexPaths:insertedIndexPaths];
 }
 
 - (void)hideTargets:(NSArray *)targets
@@ -586,7 +608,7 @@
 
     for (HYPFormField *field in deletedFields) {
         [deletedIndexPaths addObject:field.indexPath];
-        [self sectionAndIndexForField:field completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
+        [field sectionAndIndexInForms:self.forms completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
             if (found) {
                 [section.fields removeObjectAtIndex:index];
             }
@@ -603,9 +625,7 @@
         }];
     }
 
-    if (deletedIndexPaths.count > 0) {
-        [self.collectionView deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
-    }
+    [self deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
 }
 
 - (void)updateTargets:(NSArray *)targets
@@ -691,28 +711,6 @@
 }
 
 #pragma mark - Target helpers
-
-#pragma mark Fields
-
-- (void)sectionAndIndexForField:(HYPFormField *)field
-                     completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion
-{
-    HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:self.forms];
-
-    __block NSInteger index = 0;
-    __block BOOL found = NO;
-    [section.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger idx, BOOL *stop) {
-        if ([aField.fieldID isEqualToString:field.fieldID]) {
-            index = idx;
-            found = YES;
-            *stop = YES;
-        }
-    }];
-
-    if (completion) {
-        completion(found, section, index);
-    }
-}
 
 #pragma mark Sections
 
