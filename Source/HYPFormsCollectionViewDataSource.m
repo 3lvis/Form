@@ -278,7 +278,7 @@
 
 - (NSArray *)safeIndexPaths:(NSArray *)indexPaths
 {
-    NSMutableArray *safeIndexPaths = [NSMutableArray array];
+    NSMutableArray *safeIndexPaths = [NSMutableArray new];
 
     for (NSIndexPath *indexPath in indexPaths) {
         if (![self.collapsedForms containsObject:@(indexPath.section)]) {
