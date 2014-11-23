@@ -268,4 +268,13 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([self.formFieldDelegate respondsToSelector:@selector(textFieldShouldReturn:)]) {
+        return [self.formFieldDelegate textFieldShouldReturn:self];
+    }
+
+    return YES;
+}
+
 @end
