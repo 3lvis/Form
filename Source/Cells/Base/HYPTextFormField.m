@@ -47,7 +47,7 @@
     self.leftViewMode = UITextFieldViewModeAlways;
 
     [self addTarget:self action:@selector(textFieldDidUpdate:) forControlEvents:UIControlEventEditingChanged];
-    [self addTarget:self action:@selector(textFieldDidReturn:) forControlEvents:UIControlEventEditingDidEnd];
+    [self addTarget:self action:@selector(textFieldDidReturn:) forControlEvents:UIControlEventEditingDidEndOnExit];
 
     self.returnKeyType = UIReturnKeyDone;
 
@@ -269,10 +269,10 @@
     }
 }
 
-- (void)textFieldDidReturn:(UITextField *)textField
+- (void)textFieldDidReturn:(HYPTextFormField *)textField
 {
-    if ([self.formFieldDelegate respondsToSelector:@selector(textFieldDidReturn:)]) {
-        [self.formFieldDelegate textFieldDidReturn:self];
+    if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidReturn:)]) {
+        [self.formFieldDelegate textFormFieldDidReturn:self];
     }
 }
 
