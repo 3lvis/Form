@@ -47,8 +47,8 @@
     self.leftViewMode = UITextFieldViewModeAlways;
 
     [self addTarget:self action:@selector(textFieldDidUpdate:) forControlEvents:UIControlEventEditingChanged];
-
     [self addTarget:self action:@selector(textFieldDidReturn:) forControlEvents:UIControlEventEditingDidEndOnExit];
+
     self.returnKeyType = UIReturnKeyDone;
 
     return self;
