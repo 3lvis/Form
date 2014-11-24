@@ -104,17 +104,9 @@
     char firstCharacter = [string characterAtIndex:0];
     char lastCharacter  = [string characterAtIndex:string.length-1];
 
-    if (![[string stringByTrimmingCharactersInSet:verboseSet] isEqualToString:@""]) {
-        return NO;
-    }
-
-    if (![set characterIsMember:lastCharacter]) {
-        return NO;
-    }
-
-    if (![set characterIsMember:firstCharacter]) {
-        return NO;
-    }
+    if (![[string stringByTrimmingCharactersInSet:verboseSet] isEqualToString:@""]) return NO;
+    if (![set characterIsMember:lastCharacter]) return NO;
+    if (![set characterIsMember:firstCharacter]) return NO;
 
     return YES;
 }

@@ -119,7 +119,10 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSString *)dateOfBirthString
 {
-    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:[self extractDateOfBirth]];
+    NSString *extractedDateString = [self extractDateOfBirth];
+    if (!extractedDateString) return nil;
+
+    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:extractedDateString];
 
     if (self.isDNumber) {
         NSString *replacementString = [NSString stringWithFormat:@"%lu", (unsigned long)(self.DNumberValue - 4)];
@@ -183,22 +186,22 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSUInteger)DNumberValue
 {
-    return [[self.SSN substringToIndex:1] integerValue];
+    return (self.SSN.length >= 1) ? [[self.SSN substringToIndex:1] integerValue] : 0;
 }
 
 - (NSString *)extractDateOfBirth
 {
-    return [self.SSN substringToIndex:6];
+    return (self.SSN.length >= 6) ? [self.SSN substringToIndex:6] : nil;
 }
 
 - (NSString *)personalNumberString
 {
-    return [self.SSN substringWithRange:NSMakeRange(6,3)];
+    return (self.SSN.length >= 9) ? [self.SSN substringWithRange:NSMakeRange(6,3)] : nil;
 }
 
 - (NSString *)controlNumberString
 {
-    return [self.SSN substringFromIndex:9];
+    return (self.SSN.length == 11) ? [self.SSN substringFromIndex:9] : nil;
 }
 
 - (NSUInteger)firstControlNumber
