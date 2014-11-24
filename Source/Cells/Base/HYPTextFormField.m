@@ -47,6 +47,7 @@
     self.leftViewMode = UITextFieldViewModeAlways;
 
     [self addTarget:self action:@selector(textFieldDidUpdate:) forControlEvents:UIControlEventEditingChanged];
+    [self addTarget:self action:@selector(textFieldDidReturn:) forControlEvents:UIControlEventEditingDidEndOnExit];
 
     self.returnKeyType = UIReturnKeyDone;
 
@@ -223,7 +224,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (!string) return YES;
+    if (!string || [string isEqualToString:@"\n"]) return YES;
 
     BOOL validator = (self.inputValidator && [self.inputValidator respondsToSelector:@selector(validateReplacementString:withText:withRange:)]);
 
@@ -265,6 +266,13 @@
 
     if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
         [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+    }
+}
+
+- (void)textFieldDidReturn:(UITextField *)textField
+{
+    if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidReturn:)]) {
+        [self.formFieldDelegate textFormFieldDidReturn:self];
     }
 }
 
