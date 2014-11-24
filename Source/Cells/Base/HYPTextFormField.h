@@ -55,6 +55,6 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
 
 - (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text;
 
-- (BOOL)textFieldShouldReturn:(HYPTextFormField *)textField;
+- (void)textFieldDidReturn:(HYPTextFormField *)textField;
 
 @end
