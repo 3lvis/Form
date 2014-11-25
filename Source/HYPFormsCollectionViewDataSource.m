@@ -15,7 +15,6 @@
 #import "HYPDropdownFormFieldCell.h"
 #import "HYPDateFormFieldCell.h"
 #import "HYPBlankFormFieldCell.h"
-#import "HYPImageFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
@@ -76,9 +75,6 @@
 
     [collectionView registerClass:[HYPDateFormFieldCell class]
        forCellWithReuseIdentifier:HYPDateFormFieldCellIdentifier];
-
-    [collectionView registerClass:[HYPImageFormFieldCell class]
-       forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
 
     [collectionView registerClass:[HYPFormHeaderView class]
        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -175,6 +171,11 @@
     NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
 
+    if ([self.dataSource respondsToSelector:@selector(formsCollectionDataSource:cellForField:atIndexPath:)]) {
+        UICollectionViewCell *cell = [self.dataSource formsCollectionDataSource:self cellForField:field atIndexPath:indexPath];
+        if (cell) return cell;
+    }
+
     NSString *identifier;
 
     switch (field.type) {
@@ -185,27 +186,17 @@
             identifier = HYPDropdownFormFieldCellIdentifier;
             break;
 
-        case HYPFormFieldTypeDefault:
+        case HYPFormFieldTypeText:
         case HYPFormFieldTypeFloat:
         case HYPFormFieldTypeNumber:
-        case HYPFormFieldTypePicture:
             identifier = HYPTextFormFieldCellIdentifier;
             break;
 
-        case HYPFormFieldTypeNone:
-        case HYPFormFieldTypeBlank:
-            identifier = HYPBlankFormFieldCellIdentifier;
-            break;
-
-        case HYPFormFieldTypeImage:
-            identifier = HYPImageFormFieldCellIdentifier;
-            break;
+        case HYPFormFieldTypeCustom: abort();
     }
 
     HYPBaseFormFieldCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
                                                                            forIndexPath:indexPath];
-    if (field.type == HYPFormFieldTypeImage) return cell;
-
     cell.delegate = self;
 
     if (self.configureCellBlock) {
@@ -332,10 +323,10 @@
         width = deviceWidth;
         height = HYPFieldCellItemSmallHeight;
     } else {
-        width = floor(deviceWidth * ([field.size floatValue] / 100.0f));
+        width = floor(deviceWidth * (field.size.width / 100.0f));
 
-        if (field.type == HYPFormFieldTypeImage) {
-            height = HYPImageFormFieldCellItemHeight;
+        if (field.type == HYPFormFieldTypeCustom) {
+            height = field.size.height * HYPFieldCellItemHeight;
         } else {
             height = HYPFieldCellItemHeight;
         }
