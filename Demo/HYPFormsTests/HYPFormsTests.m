@@ -76,4 +76,12 @@
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"last_name"]];
 }
 
+- (void)testFindHiddenField
+{
+    [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"student"]];
+    HYPFormField *formField = [self.dataSource fieldWithID:@"student" withIndexPath:YES];
+
+    XCTAssertNotNil(formField);
+}
+
 @end
