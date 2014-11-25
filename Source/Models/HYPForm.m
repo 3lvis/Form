@@ -111,7 +111,11 @@
                 field.title = [fieldDict hyp_safeValueForKey:@"title"];
                 field.typeString  = [fieldDict hyp_safeValueForKey:@"type"];
                 field.type = [field typeFromTypeString:[fieldDict hyp_safeValueForKey:@"type"]];
-                field.size  = [fieldDict hyp_safeValueForKey:@"size"];
+                NSNumber *width = [fieldDict hyp_safeValueForKey:@"size.width"];
+                NSNumber *height = [fieldDict hyp_safeValueForKey:@"size.height"];
+                if (!height || !width) abort();
+
+                field.size = CGSizeMake([width floatValue], [height floatValue]);
                 field.position = @(fieldIndex);
                 field.validations = [fieldDict hyp_safeValueForKey:@"validations"];
                 field.disabled = [[fieldDict hyp_safeValueForKey:@"disabled"] boolValue];
