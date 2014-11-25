@@ -343,6 +343,37 @@
     return field;
 }
 
+- (HYPFormField *)fieldWithID:(NSString *)fieldID withIndexPath:(BOOL)withIndexPath
+{
+    NSParameterAssert(fieldID);
+
+    __block HYPFormField *foundField = nil;
+
+    [self.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
+        [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
+            if ([field.fieldID isEqualToString:fieldID]) {
+                if (withIndexPath) {
+                    field.indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:formIndex];
+                }
+
+                foundField = field;
+                *formStop = YES;
+            }
+        }];
+    }];
+
+    if (!foundField) {
+        [self.deletedFields enumerateKeysAndObjectsUsingBlock:^(NSString *hiddenFieldID, HYPFormField *formField, BOOL *stop) {
+            if ([hiddenFieldID isEqualToString:fieldID]) {
+                foundField = formField;
+                *stop = YES;
+            }
+        }];
+    }
+
+    return foundField;
+}
+
 - (void)disable:(BOOL)disabled
 {
     self.disabled = disabled;

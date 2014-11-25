@@ -48,6 +48,7 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 - (BOOL)formFieldsAreValid;
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 - (HYPFormField *)formFieldAtIndexPath:(NSIndexPath *)indexPath;
+- (HYPFormField *)fieldWithID:(NSString *)fieldID withIndexPath:(BOOL)withIndexPath;
 
 - (void)resetForms;
 - (void)validateForms;
