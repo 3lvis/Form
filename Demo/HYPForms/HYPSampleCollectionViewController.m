@@ -262,13 +262,15 @@
 - (UICollectionViewCell *)formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
                                        cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath
 {
-    if (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]) {
-        HYPImageFormFieldCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
-                                                                                     forIndexPath:indexPath];
-        return cell;
+    HYPImageFormFieldCell *cell;
+
+    BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
+    if (isImageCell) {
+        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
+                                                              forIndexPath:indexPath];
     }
 
-    return nil;
+    return cell;
 }
 
 @end
