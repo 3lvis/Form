@@ -24,6 +24,8 @@ typedef void (^HYPFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, HYPF
 typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPForm *form);
 typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field);
 
+@protocol HYPFormsCollectionViewDataSourceDataSource;
+
 @interface HYPFormsCollectionViewDataSource : NSObject <HYPFormsLayoutDataSource, UICollectionViewDataSource>
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
@@ -41,6 +43,8 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;
 @property (nonatomic, copy) HYPFieldConfigureFieldUpdatedBlock configureFieldUpdatedBlock;
 
+@property (nonatomic, weak) id <HYPFormsCollectionViewDataSourceDataSource> dataSource;
+
 - (BOOL)formFieldsAreValid;
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 - (HYPFormField *)formFieldAtIndexPath:(NSIndexPath *)indexPath;
@@ -56,5 +60,12 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
+
+@end
+
+@protocol HYPFormsCollectionViewDataSourceDataSource <NSObject>
+
+- (UICollectionViewCell *)formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
+                                       cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath;
 
 @end

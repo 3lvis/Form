@@ -10,7 +10,9 @@
 
 #import "UIColor+ANDYHex.h"
 
-@interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
+#import "HYPImageFormFieldCell.h"
+
+@interface HYPSampleCollectionViewController () <HYPImagePickerDelegate, HYPFormsCollectionViewDataSourceDataSource>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *setUpDictionary;
@@ -54,6 +56,7 @@
                                                                  disabledFieldsIDs:@[]
                                                                           disabled:YES];
 
+    _dataSource.dataSource = self;
 
     __weak typeof(self)weakSelf = self;
 
@@ -117,6 +120,9 @@
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
+
+    [self.collectionView registerClass:[HYPImageFormFieldCell class]
+            forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -171,15 +177,14 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
-
-    return (field.type == HYPFormFieldTypeImage);
+    return (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
 
-    if (field.type == HYPFormFieldTypeImage) {
+    if (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]) {
         [self.imagePicker invokeCamera];
     }
 }
@@ -250,6 +255,22 @@
     }
 
     [self.dataSource processTargets:@[target]];
+}
+
+#pragma mark - HYPFormsCollectionViewDataSourceDataSource
+
+- (UICollectionViewCell *)formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
+                                       cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath
+{
+    HYPImageFormFieldCell *cell;
+
+    BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
+    if (isImageCell) {
+        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
+                                                              forIndexPath:indexPath];
+    }
+
+    return cell;
 }
 
 @end

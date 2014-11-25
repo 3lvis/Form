@@ -10,7 +10,10 @@
             "id":"first_name",
             "title":"Fornavn",
             "type":"name",
-            "size":25,
+            "size":{
+              "width": 25,
+              "height": 1
+            },
             "validations":{
               "required":true,
               "min_length":2
@@ -27,7 +30,10 @@
             "id":"last_name",
             "title":"Etternavn",
             "type":"name",
-            "size":25,
+            "size":{
+              "width": 25,
+              "height": 1
+            },
             "validations":{
               "required":true,
               "min_length":2
@@ -44,7 +50,10 @@
             "id":"display_name",
             "title":"Visningsnavn",
             "type":"text",
-            "size":30,
+            "size":{
+              "width": 30,
+              "height": 1
+            },
             "formula":"first_name last_name",
             "validations":{
               "required":true
@@ -54,7 +63,10 @@
             "id":"social_security_number",
             "title":"Fødselsnummer",
             "type":"text",
-            "size":20,
+            "size":{
+              "width": 20,
+              "height": 1
+            },
             "validations":{
               "required":true,
               "min_length":11,
@@ -65,7 +77,10 @@
             "id":"country_code",
             "title":"Land",
             "type":"select",
-            "size":20,
+            "size":{
+              "width": 20,
+              "height": 1
+            },
             "values":[
               {
                 "id":"NO",
@@ -89,13 +104,19 @@
             "id":"address",
             "title":"Gateadresse",
             "type":"text",
-            "size":38
+            "size":{
+              "width": 38,
+              "height": 1
+            }
           },
           {
             "id":"postal_code",
             "title":"Postnummer",
             "type":"text",
-            "size":17,
+            "size":{
+              "width": 17,
+              "height": 1
+            },
             "validations":{
               "required":true,
               "min_length":4,
@@ -107,14 +128,20 @@
             "id":"city",
             "title":"Sted",
             "type":"text",
-            "size":25,
+            "size":{
+              "width": 25,
+              "height": 1
+            },
             "disabled":true
           },
           {
             "id":"phone_number",
             "title":"Telefonnummer",
             "type":"text",
-            "size":25,
+            "size":{
+              "width": 25,
+              "height": 1
+            },
             "validations":{
               "format":"[0-9]{8,14}",
               "min_length":8,
@@ -125,7 +152,10 @@
             "id":"email_address",
             "title":"E-post",
             "type":"email",
-            "size":40,
+            "size":{
+              "width": 40,
+              "height": 1
+            },
             "validations":{
               "format":"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}"
             }
@@ -134,7 +164,10 @@
             "id":"bank_account_number",
             "title":"Lønnskonto (11 siffer)",
             "type":"text",
-            "size":35,
+            "size":{
+              "width": 35,
+              "height": 1
+            },
             "validations":{
               "required":true,
               "min_length":11,
@@ -144,7 +177,10 @@
           {
             "id":"image",
             "type":"image",
-            "size":100
+            "size":{
+              "width": 100,
+              "height": 1.7
+            }
           }
         ]
       }
@@ -161,7 +197,10 @@
             "id":"position",
             "title":"Stillingstype",
             "type":"select",
-            "size":50,
+            "size":{
+              "width": 50,
+              "height": 1
+            },
             "values":[
               {
                 "id":2,
@@ -192,7 +231,10 @@
             "id":"employment_type",
             "title":"Arbeidsforholdet",
             "type":"select",
-            "size":50,
+            "size":{
+              "width": 50,
+              "height": 1
+            },
             "values":[
               {
                 "id":1,
@@ -240,7 +282,10 @@
             "id":"temporary_employee_type",
             "title":"Vikartype",
             "type":"select",
-            "size":50,
+            "size":{
+              "width": 50,
+              "height": 1
+            },
             "values":[
               {
                 "id":1,
@@ -262,7 +307,10 @@
           {
             "id":"temporary_employee_reason",
             "title":"Vikar for/ekstra info",
-            "size":50,
+            "size":{
+              "width": 50,
+              "height": 1
+            },
             "type":"text",
             "validations":{
               "required":true
@@ -277,7 +325,10 @@
             "id":"start_date",
             "title":"Ansettelsesdato",
             "type":"date",
-            "size":25,
+            "size":{
+              "width": 25,
+              "height": 1
+            },
             "validations":{
               "required":true
             }
@@ -286,7 +337,10 @@
             "id":"end_date",
             "title":"Sluttdato",
             "type":"date",
-            "size":25,
+            "size":{
+              "width": 25,
+              "height": 1
+            },
             "validations":{
               "required":true
             }
@@ -295,7 +349,10 @@
             "id":"hours_per_week",
             "title":"Antall timer per uke",
             "type":"float",
-            "size":25,
+            "size":{
+              "width": 25,
+              "height": 1
+            },
             "validations":{
               "required":true,
               "min_length":1,
@@ -324,7 +381,10 @@
             "id":"employment_percent",
             "title":"Stillingsprosent",
             "type":"float",
-            "size":25,
+            "size":{
+              "width": 25,
+              "height": 1
+            },
             "formula":"(hours_per_week / 37.5) * 100.0",
             "disabled":true
           }
@@ -337,7 +397,10 @@
             "id":"salary_type",
             "title":"Lønn",
             "type":"select",
-            "size":33,
+            "size":{
+              "width": 33,
+              "height": 1
+            },
             "values":[
               {
                 "id":4,
@@ -391,12 +454,6 @@
             "validations":{
               "required":true
             }
-          },
-          {
-            "id":"blank",
-            "title":"",
-            "type":"blank",
-            "size":67
           }
         ]
       },
@@ -407,7 +464,10 @@
             "id":"fixed_pay_level",
             "title":"Månedslønn",
             "type":"select",
-            "size":35,
+            "size":{
+              "width": 35,
+              "height": 1
+            },
             "validations":{
               "required":true
             },
@@ -574,7 +634,10 @@
             "id":"fixed_pay_premium_percent",
             "title":"Påslag (%)",
             "type":"float",
-            "size":13.5,
+            "size":{
+              "width": 13.5,
+              "height": 1
+            },
             "validations":{
               "max_value":100
             },
@@ -590,7 +653,10 @@
             "id":"fixed_pay_premium_currency",
             "title":"Påslag (kr)",
             "type":"float",
-            "size":14.5,
+            "size":{
+              "width": 14.5,
+              "height": 1
+            },
             "targets":[
               {
                 "id":"fixed_pay_total",
@@ -603,7 +669,10 @@
             "id":"fixed_pay_total",
             "title":"Månedslønn",
             "type":"float",
-            "size":17,
+            "size":{
+              "width": 17,
+              "height": 1
+            },
             "disabled":true,
             "formula":"fixed_pay_level * (employment_percent.0 / 100.0) * (1 + (fixed_pay_premium_percent.0 / 100.0)) + fixed_pay_premium_currency"
           },
@@ -611,7 +680,10 @@
             "id":"fixed_pay_entry_date",
             "title":"Fra dato",
             "type":"date",
-            "size":20,
+            "size":{
+              "width": 20,
+              "height": 1
+            },
             "validations":{
               "required":true
             }
@@ -625,7 +697,10 @@
             "id":"hourly_pay_level",
             "title":"Timelønn",
             "type":"select",
-            "size":35,
+            "size":{
+              "width": 35,
+              "height": 1
+            },
             "validations":{
               "required":true
             },
@@ -792,7 +867,10 @@
             "id":"hourly_pay_premium_percent",
             "title":"Påslag (%)",
             "type":"float",
-            "size":13.5,
+            "size":{
+              "width": 13.5,
+              "height": 1
+            },
             "validations":{
               "max_value":100
             },
@@ -808,7 +886,10 @@
             "id":"hourly_pay_premium_currency",
             "title":"Påslag (kr)",
             "type":"float",
-            "size":14.5,
+            "size":{
+              "width": 14.5,
+              "height": 1
+            },
             "targets":[
               {
                 "id":"hourly_pay_total",
@@ -821,7 +902,10 @@
             "id":"hourly_pay_total",
             "title":"Timelønn",
             "type":"float",
-            "size":17,
+            "size":{
+              "width": 17,
+              "height": 1
+            },
             "disabled":true,
             "formula":"hourly_pay_level * (1 + (hourly_pay_premium_percent.0 / 100.0)) + hourly_pay_premium_currency"
           },
@@ -829,7 +913,10 @@
             "id":"hourly_pay_entry_date",
             "title":"Fra dato",
             "type":"date",
-            "size":20,
+            "size":{
+              "width": 20,
+              "height": 1
+            },
             "validations":{
               "required":true
             }
@@ -843,13 +930,19 @@
             "id":"other_terms",
             "title":"Øvrige betingelser",
             "type":"text",
-            "size":65
+            "size":{
+              "width": 65,
+              "height": 1
+            }
           },
           {
             "id":"student",
             "title":"Skoleelev",
             "type":"select",
-            "size":15,
+            "size":{
+              "width": 15,
+              "height": 1
+            },
             "values":[
               {
                 "id":true,
@@ -865,7 +958,10 @@
             "id":"collective_agreement",
             "title":"Tariffavtale",
             "type":"select",
-            "size":20,
+            "size":{
+              "width": 20,
+              "height": 1
+            },
             "values":[
               {
                 "id":1,

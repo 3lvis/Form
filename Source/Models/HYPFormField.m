@@ -55,12 +55,9 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             }
         } break;
 
-        case HYPFormFieldTypeDefault:
-        case HYPFormFieldTypeNone:
-        case HYPFormFieldTypeBlank:
+        case HYPFormFieldTypeText:
         case HYPFormFieldTypeSelect:
-        case HYPFormFieldTypePicture:
-        case HYPFormFieldTypeImage:
+        case HYPFormFieldTypeCustom:
             break;
     }
 
@@ -84,15 +81,12 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         case HYPFormFieldTypeNumber:
             return @([self.fieldValue integerValue]);
 
-        case HYPFormFieldTypeDefault:
+        case HYPFormFieldTypeText:
         case HYPFormFieldTypeSelect:
         case HYPFormFieldTypeDate:
-        case HYPFormFieldTypePicture:
             return self.fieldValue;
 
-        case HYPFormFieldTypeNone:
-        case HYPFormFieldTypeBlank:
-        case HYPFormFieldTypeImage:
+        case HYPFormFieldTypeCustom:
             return nil;
     }
 }
@@ -142,8 +136,10 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 - (HYPFormFieldType)typeFromTypeString:(NSString *)typeString
 {
-    if ([typeString isEqualToString:@"picture"]) {
-        return HYPFormFieldTypePicture;
+    if ([typeString isEqualToString:@"text"] ||
+        [typeString isEqualToString:@"name"] ||
+        [typeString isEqualToString:@"email"]) {
+        return HYPFormFieldTypeText;
     } else if ([typeString isEqualToString:@"select"]) {
         return HYPFormFieldTypeSelect;
     } else if ([typeString isEqualToString:@"date"]) {
@@ -152,13 +148,9 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         return HYPFormFieldTypeFloat;
     } else if ([typeString isEqualToString:@"number"]) {
         return HYPFormFieldTypeNumber;
-    } else if ([typeString isEqualToString:@"blank"]) {
-        return HYPFormFieldTypeBlank;
-    } else if ([typeString isEqualToString:@"image"]) {
-        return HYPFormFieldTypeImage;
+    } else {
+        return HYPFormFieldTypeCustom;
     }
-
-    return HYPFormFieldTypeDefault;
 }
 
 - (HYPFieldValue *)fieldValueWithID:(id)fieldValueID
