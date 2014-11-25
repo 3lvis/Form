@@ -354,8 +354,9 @@
 
 - (HYPFormField *)fieldWithID:(NSString *)fieldID withIndexPath:(BOOL)withIndexPath
 {
+    NSParameterAssert(fieldID);
+
     __block HYPFormField *foundField = nil;
-    __block __weak typeof(self)weakSelf = self;
 
     [self.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
         [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
