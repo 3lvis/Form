@@ -12,22 +12,19 @@
 @class HYPFieldValue;
 
 typedef NS_ENUM(NSInteger, HYPFormFieldType) {
-    HYPFormFieldTypeDefault = 0,
-    HYPFormFieldTypeNone,
-    HYPFormFieldTypeBlank,
+    HYPFormFieldTypeText = 0,
     HYPFormFieldTypeSelect,
     HYPFormFieldTypeDate,
-    HYPFormFieldTypePicture,
     HYPFormFieldTypeFloat,
     HYPFormFieldTypeNumber,
-    HYPFormFieldTypeImage
+    HYPFormFieldTypeCustom
 };
 
 @interface HYPFormField : NSObject
 
 @property (nonatomic, strong) NSString *fieldID;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSNumber *size;
+@property (nonatomic) CGSize size;
 @property (nonatomic, strong) NSNumber *position;
 @property (nonatomic, strong) id fieldValue;
 @property (nonatomic, strong) NSString *typeString;
