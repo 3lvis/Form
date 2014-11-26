@@ -371,6 +371,22 @@
         }];
     }
 
+    if (!foundField) {
+        NSArray *deletedSections = [self.deletedSections allValues];
+        [deletedSections enumerateObjectsUsingBlock:^(HYPFormSection *section, NSUInteger sectionIndex, BOOL *sectionStop) {
+            [section.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
+                if ([field.fieldID isEqualToString:fieldID]) {
+                    if (withIndexPath) {
+                        field.indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:sectionIndex];
+                    }
+
+                    foundField = field;
+                    *sectionStop = YES;
+                }
+            }];
+        }];
+    }
+
     return foundField;
 }
 
