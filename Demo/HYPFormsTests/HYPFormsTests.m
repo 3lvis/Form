@@ -47,41 +47,4 @@
     XCTAssertNil(field);
 }
 
-- (void)testIndexInForms
-{
-    [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"postal_code"]];
-    [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"postal_code"]];
-    HYPFormField *field = [HYPFormField fieldWithID:@"postal_code" inForms:self.dataSource.forms withIndexPath:NO];
-    NSUInteger index = [field indexInForms:self.dataSource.forms];
-    XCTAssertEqual(index, 6);
-
-    [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"image"]];
-    [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"image"]];
-    field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
-    index = [field indexInForms:self.dataSource.forms];
-    XCTAssertEqual(index, 11);
-
-    [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"first_name", @"address", @"image"]]];
-    [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"image"]];
-    field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
-    index = [field indexInForms:self.dataSource.forms];
-    XCTAssertEqual(index, 9);
-    [self.dataSource processTargets:[HYPFormTarget showFieldTargetsWithIDs:@[@"first_name", @"address"]]];
-
-    [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"last_name", @"address"]]];
-    [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"address"]];
-    field = [HYPFormField fieldWithID:@"address" inForms:self.dataSource.forms withIndexPath:NO];
-    index = [field indexInForms:self.dataSource.forms];
-    XCTAssertEqual(index, 4);
-    [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"last_name"]];
-}
-
-- (void)testFindHiddenField
-{
-    [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"student"]];
-    HYPFormField *formField = [self.dataSource fieldWithID:@"student" withIndexPath:YES];
-
-    XCTAssertNotNil(formField);
-}
-
 @end
