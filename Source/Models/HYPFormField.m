@@ -41,11 +41,11 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
     switch (self.type) {
         case HYPFormFieldTypeNumber:
-        case HYPFormFieldTypeFloat:
+        case HYPFormFieldTypeFloat: {
             if (![fieldValue isKindOfClass:[NSString class]]) {
                 resultValue = [fieldValue stringValue];
             }
-            break;
+        } break;
 
         case HYPFormFieldTypeDate: {
             if ([fieldValue isKindOfClass:[NSString class]]) {
