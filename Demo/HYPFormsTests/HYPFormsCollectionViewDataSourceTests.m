@@ -74,7 +74,7 @@
     [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"ansettelsesforhold-1"]];
     HYPFormField *temporaryEmployeeTypeField = [self.dataSource fieldWithID:@"temporary_employee_type" withIndexPath:YES];
     XCTAssertNotNil(temporaryEmployeeTypeField);
-    [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"ansettelsesforhold-1"]];
+    [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"ansettelsesforhold-1"]];
 }
 
 @end
