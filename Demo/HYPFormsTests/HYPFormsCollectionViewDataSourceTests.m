@@ -69,9 +69,12 @@
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"student"]];
     HYPFormField *studentField = [self.dataSource fieldWithID:@"student" withIndexPath:YES];
     XCTAssertNotNil(studentField);
+    [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"student"]];
 
+    [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"ansettelsesforhold-1"]];
     HYPFormField *temporaryEmployeeTypeField = [self.dataSource fieldWithID:@"temporary_employee_type" withIndexPath:YES];
     XCTAssertNotNil(temporaryEmployeeTypeField);
+    [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"ansettelsesforhold-1"]];
 }
 
 @end
