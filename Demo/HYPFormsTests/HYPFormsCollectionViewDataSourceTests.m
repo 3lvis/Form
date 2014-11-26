@@ -65,15 +65,18 @@
 {
     HYPFormField *firstNameField = [self.dataSource fieldWithID:@"first_name" withIndexPath:YES];
     XCTAssertNotNil(firstNameField);
+    XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
 
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"student"]];
     HYPFormField *studentField = [self.dataSource fieldWithID:@"student" withIndexPath:YES];
     XCTAssertNotNil(studentField);
+    XCTAssertEqualObjects(studentField.fieldID, @"student");
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"student"]];
 
     [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"ansettelsesforhold-1"]];
     HYPFormField *temporaryEmployeeTypeField = [self.dataSource fieldWithID:@"temporary_employee_type" withIndexPath:YES];
     XCTAssertNotNil(temporaryEmployeeTypeField);
+    XCTAssertEqualObjects(temporaryEmployeeTypeField.fieldID, @"temporary_employee_type");
     [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"ansettelsesforhold-1"]];
 }
 
