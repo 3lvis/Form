@@ -13,7 +13,7 @@
 		14AF53831A248E1E00F7B7CB /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF53821A248E1E00F7B7CB /* HYPImageFormFieldCell.m */; };
 		14B4C17919EC37FF00B1FE1A /* HYPFormTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */; };
 		14BF16C819EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */; };
-		14CCCAAF19F26600005EC649 /* HYPFormsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CCCAAE19F26600005EC649 /* HYPFormsTests.m */; };
+		14CCCAAF19F26600005EC649 /* HYPFormTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CCCAAE19F26600005EC649 /* HYPFormTests.m */; };
 		14EE7ED71A269D5100AC17B0 /* HYPFormsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EE7ED61A269D5100AC17B0 /* HYPFormsManager.m */; };
 		14EE7ED91A269E7F00AC17B0 /* HYPFormsManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EE7ED81A269E7F00AC17B0 /* HYPFormsManagerTests.m */; };
 		14F1554C19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F1554B19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m */; };
@@ -93,7 +93,7 @@
 		14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSampleCollectionViewController.m; sourceTree = "<group>"; };
 		14CCCAAA19F26600005EC649 /* HYPFormsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYPFormsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CCCAAD19F26600005EC649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14CCCAAE19F26600005EC649 /* HYPFormsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPFormsTests.m; sourceTree = "<group>"; };
+		14CCCAAE19F26600005EC649 /* HYPFormTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPFormTests.m; sourceTree = "<group>"; };
 		14EE7ED51A269D5100AC17B0 /* HYPFormsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormsManager.h; sourceTree = "<group>"; };
 		14EE7ED61A269D5100AC17B0 /* HYPFormsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormsManager.m; sourceTree = "<group>"; };
 		14EE7ED81A269E7F00AC17B0 /* HYPFormsManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormsManagerTests.m; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				14EE7ED81A269E7F00AC17B0 /* HYPFormsManagerTests.m */,
-				14CCCAAE19F26600005EC649 /* HYPFormsTests.m */,
+				14CCCAAE19F26600005EC649 /* HYPFormTests.m */,
 				BD171A301A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m */,
 				14CCCAAC19F26600005EC649 /* Supporting Files */,
 			);
@@ -640,7 +640,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14EE7ED91A269E7F00AC17B0 /* HYPFormsManagerTests.m in Sources */,
-				14CCCAAF19F26600005EC649 /* HYPFormsTests.m in Sources */,
+				14CCCAAF19F26600005EC649 /* HYPFormTests.m in Sources */,
 				BD171A311A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

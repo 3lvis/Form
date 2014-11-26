@@ -1,4 +1,3 @@
-@import UIKit;
 @import XCTest;
 
 #import "HYPForm.h"
@@ -6,13 +5,13 @@
 #import "HYPFormTarget.h"
 #import "HYPFormsCollectionViewDataSource.h"
 
-@interface HYPFormsTests : XCTestCase
+@interface HYPFormTests : XCTestCase
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 
 @end
 
-@implementation HYPFormsTests
+@implementation HYPFormTests
 
 - (void)setUp
 {
