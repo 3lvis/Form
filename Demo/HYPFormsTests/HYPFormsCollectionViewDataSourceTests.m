@@ -63,7 +63,7 @@
 
 - (void)testFieldWithIDWithIndexPath
 {
-	HYPFormField *firstNameField = [self.dataSource fieldWithID:@"first_name" withIndexPath:YES];
+    HYPFormField *firstNameField = [self.dataSource fieldWithID:@"first_name" withIndexPath:YES];
     XCTAssertNotNil(firstNameField);
 
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"student"]];
