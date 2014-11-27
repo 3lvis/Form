@@ -651,7 +651,7 @@
 
             } else if (value) {
 
-                if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
+                if (value && [value isKindOfClass:[NSString class]]) {
                     [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
