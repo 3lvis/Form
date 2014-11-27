@@ -11,7 +11,7 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
 @interface HYPFormTimeViewController ()
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
-
+@property (nonatomic, strong) UIButton *clearButton;
 @property (nonatomic, strong) UIButton *doneButton;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITextView *messageTextView;
@@ -48,21 +48,43 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
     return _datePicker;
 }
 
+- (UIButton *)clearButton
+{
+    if (_clearButton) return _clearButton;
+
+    CGFloat offset = HYPDoneButtonX + 5;
+    CGFloat x = HYPDoneButtonX;
+    CGFloat y = (self.date) ? CGRectGetMaxY(self.datePicker.frame) : 0.0f;
+    CGFloat width = (HYPDatePopoverSize.width/4) - offset;
+    CGFloat height = HYPDoneButtonHeight;
+
+    _clearButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, height)];
+    [_clearButton setTitle:NSLocalizedString(@"Clear", nil) forState:UIControlStateNormal];
+    [_clearButton setTitleColor:[UIColor REMACoreBlue] forState:UIControlStateNormal];
+    _clearButton.backgroundColor = [UIColor whiteColor];
+    [_clearButton addTarget:self action:@selector(clearButtonPressed)
+           forControlEvents:UIControlEventTouchUpInside];
+    _clearButton.layer.cornerRadius = 5.0f;
+    _clearButton.titleLabel.font = [UIFont REMALargeSizeRegular];
+
+    return _clearButton;
+}
+
 - (UIButton *)doneButton
 {
     if (_doneButton) return _doneButton;
 
-    CGFloat height = HYPDoneButtonHeight;
     CGFloat offset = HYPDoneButtonX;
-    CGFloat y = 0.0f;
+    CGFloat x = (HYPDoneButtonX * 2) + CGRectGetWidth(self.clearButton.frame);
+    CGFloat y = (self.date) ? CGRectGetMaxY(self.datePicker.frame) : 0.0f;
+    CGFloat width  = HYPDatePopoverSize.width - CGRectGetWidth(self.clearButton.frame) - (offset * 3);
+    CGFloat height = HYPDoneButtonHeight;
 
-    if (self.date) y = CGRectGetMaxY(self.datePicker.frame);
-
-    _doneButton = [[UIButton alloc] initWithFrame:CGRectMake(offset, y,
-                                                             HYPDatePopoverSize.width - (offset * 2.0f), height)];
+    _doneButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, height)];
     [_doneButton setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
     _doneButton.backgroundColor = [UIColor REMACallToAction];
-    [_doneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_doneButton addTarget:self action:@selector(doneButtonPressed)
+          forControlEvents:UIControlEventTouchUpInside];
     _doneButton.layer.cornerRadius = 5.0f;
     _doneButton.titleLabel.font = [UIFont REMALargeSizeBold];
 
@@ -104,6 +126,7 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
     }
 
     [self.view addSubview:self.doneButton];
+    [self.view addSubview:self.clearButton];
 }
 
 #pragma mark - Actions
@@ -117,6 +140,13 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
 {
     if ([self.delegate respondsToSelector:@selector(timeController:didChangedDate:)]) {
         [self.delegate timeController:self didChangedDate:self.datePicker.date];
+    }
+}
+
+- (void)clearButtonPressed
+{
+    if ([self.delegate respondsToSelector:@selector(timeController:didChangedDate:)]) {
+        [self.delegate timeController:self didChangedDate:nil];
     }
 }
 
