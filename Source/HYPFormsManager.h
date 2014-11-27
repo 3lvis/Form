@@ -3,12 +3,13 @@
 @interface HYPFormsManager : NSObject
 
 @property (nonatomic, strong) NSMutableArray *forms;
-@property (nonatomic, strong) NSMutableDictionary *deletedFields;
-@property (nonatomic, strong) NSMutableDictionary *deletedSections;
+@property (nonatomic, strong) NSMutableDictionary *hiddenFields;
+@property (nonatomic, strong) NSMutableDictionary *hiddenSections;
 
-- (instancetype)initWithJSON:(id)JSON
-               initialValues:(NSDictionary *)initialValues
-            disabledFieldIDs:(NSArray *)disabledFieldIDs
-                    disabled:(BOOL)disabled;
+- (void)generateFormsWithJSON:(NSArray *)JSON
+                initialValues:(NSDictionary *)initialValues
+            disabledFieldsIDs:(NSArray *)disabledFieldsIDs
+                     disabled:(BOOL)disabled
+                   completion:(void (^)(NSMutableArray *forms, NSMutableDictionary *hiddenFields, NSMutableDictionary *hiddenSections))completion;
 
 @end

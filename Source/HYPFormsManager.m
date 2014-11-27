@@ -31,7 +31,12 @@
     [self generateFormsWithJSON:JSON
                   initialValues:initialValues
               disabledFieldsIDs:disabledFieldIDs
-                       disabled:disabled];
+                       disabled:disabled
+                     completion:^(NSMutableArray *forms, NSMutableDictionary *hiddenFields, NSMutableDictionary *hiddenSections) {
+                         self.forms = forms;
+                         self.hiddenFields = hiddenFields;
+                         self.hiddenSections = hiddenSections;
+                     }];
 
     return self;
 }
@@ -49,153 +54,42 @@
                 initialValues:(NSDictionary *)initialValues
             disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                      disabled:(BOOL)disabled
+                   completion:(void (^)(NSMutableArray *forms, NSMutableDictionary *hiddenFields, NSMutableDictionary *hiddenSections))completion
 {
     NSMutableArray *forms = [NSMutableArray array];
-
+    NSMutableArray *fieldsWithFormula = [NSMutableArray new];
     NSMutableArray *targetsToRun = [NSMutableArray array];
 
-    NSMutableArray *fieldsWithFormula = [NSMutableArray array];
+    [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
+        HYPForm *form = [[HYPForm alloc] initWithDictionary:formDict
+                                                   position:formIndex
+                                                   disabled:disabled
+                                          disabledFieldsIDs:disabledFieldsIDs
+                                              initialValues:initialValues];
+
+        for (HYPFormField *field in form.fields) {
+            if (field.formula) [fieldsWithFormula addObject:field];
+            for (HYPFieldValue *fieldValue in field.values) {
+
+                id initialValue = [initialValues andy_valueForKey:field.fieldID];
+
+                BOOL fieldHasInitialValue = (initialValue != nil);
+                if (fieldHasInitialValue) {
+
+                    BOOL fieldValueMatchesInitialValue = ([fieldValue identifierIsEqualTo:initialValue]);
+                    if (fieldValueMatchesInitialValue) {
+
+                        for (HYPFormTarget *target in fieldValue.targets) {
+                            if (target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
+                        }
+                    }
+                }
+            }
+        }
+    }];
 
     NSMutableDictionary *fieldValues = [NSMutableDictionary new];
     [fieldValues addEntriesFromDictionary:initialValues];
-
-    [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
-
-        HYPForm *form = [HYPForm new];
-        form.formID = [formDict andy_valueForKey:@"id"];
-        form.title = [formDict andy_valueForKey:@"title"];
-        form.position = @(formIndex);
-
-        NSMutableArray *sections = [NSMutableArray array];
-        NSArray *dataSourceSections = [formDict andy_valueForKey:@"sections"];
-        NSDictionary *lastObject = [dataSourceSections lastObject];
-
-        [dataSourceSections enumerateObjectsUsingBlock:^(NSDictionary *sectionDict, NSUInteger sectionIndex, BOOL *stop) {
-
-            HYPFormSection *section = [HYPFormSection new];
-            section.sectionID = [sectionDict andy_valueForKey:@"id"];
-            section.position = @(sectionIndex);
-
-            BOOL isLastSection = (lastObject == sectionDict);
-
-            if (isLastSection) section.isLast = YES;
-
-            NSArray *dataSourceFields = [sectionDict andy_valueForKey:@"fields"];
-            NSMutableArray *fields = [NSMutableArray array];
-
-            [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
-
-                NSString *remoteID = [fieldDict andy_valueForKey:@"id"];
-
-                HYPFormField *field = [HYPFormField new];
-                field.fieldID   = remoteID;
-                field.title = [fieldDict andy_valueForKey:@"title"];
-                field.typeString  = [fieldDict andy_valueForKey:@"type"];
-                field.type = [field typeFromTypeString:[fieldDict andy_valueForKey:@"type"]];
-                NSNumber *width = [fieldDict andy_valueForKey:@"size.width"];
-                NSNumber *height = [fieldDict andy_valueForKey:@"size.height"];
-                if (!height || !width) abort();
-
-                field.size = CGSizeMake([width floatValue], [height floatValue]);
-                field.position = @(fieldIndex);
-                field.validations = [fieldDict andy_valueForKey:@"validations"];
-                field.disabled = [[fieldDict andy_valueForKey:@"disabled"] boolValue];
-                field.formula = [fieldDict andy_valueForKey:@"formula"];
-
-                NSMutableArray *targets = [NSMutableArray array];
-
-                for (NSDictionary *targetDict in [fieldDict andy_valueForKey:@"targets"]) {
-                    HYPFormTarget *target = [HYPFormTarget new];
-                    target.targetID = [targetDict andy_valueForKey:@"id"];
-                    target.typeString = [targetDict andy_valueForKey:@"type"];
-                    target.actionTypeString = [targetDict andy_valueForKey:@"action"];
-                    [targets addObject:target];
-                }
-
-                field.targets = targets;
-
-                BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:field.fieldID]);
-
-                if (shouldDisable) field.disabled = YES;
-
-                NSMutableArray *values = [NSMutableArray array];
-                NSArray *dataSourceValues = [fieldDict andy_valueForKey:@"values"];
-
-                if (dataSourceValues) {
-                    for (NSDictionary *valueDict in dataSourceValues) {
-                        HYPFieldValue *fieldValue = [HYPFieldValue new];
-                        fieldValue.valueID = [valueDict andy_valueForKey:@"id"];
-                        fieldValue.title = [valueDict andy_valueForKey:@"title"];
-                        fieldValue.value = [valueDict andy_valueForKey:@"value"];
-
-                        BOOL needsToRun = NO;
-
-                        if ([fieldValues andy_valueForKey:remoteID]) {
-                            if ([fieldValue identifierIsEqualTo:[fieldValues andy_valueForKey:remoteID]]) {
-                                needsToRun = YES;
-                            }
-                        }
-
-                        NSMutableArray *targets = [NSMutableArray array];
-
-                        for (NSDictionary *targetDict in [valueDict andy_valueForKey:@"targets"]) {
-                            HYPFormTarget *target = [HYPFormTarget new];
-                            target.targetID = [targetDict andy_valueForKey:@"id"];
-                            target.typeString = [targetDict andy_valueForKey:@"type"];
-                            target.actionTypeString = [targetDict andy_valueForKey:@"action"];
-                            [targets addObject:target];
-                        }
-
-                        for (HYPFormTarget *target in targets) {
-                            target.value = fieldValue;
-
-                            if (needsToRun && target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
-                        }
-
-                        fieldValue.targets = targets;
-                        fieldValue.field = field;
-                        [values addObject:fieldValue];
-                    }
-                }
-
-                if ([fieldValues andy_valueForKey:remoteID]) {
-                    if (field.type == HYPFormFieldTypeSelect) {
-                        for (HYPFieldValue *value in values) {
-
-                            BOOL isInitialValue = ([value identifierIsEqualTo:[fieldValues andy_valueForKey:remoteID]]);
-
-                            if (isInitialValue) field.fieldValue = value;
-                        }
-                    } else {
-                        field.fieldValue = [fieldValues andy_valueForKey:remoteID];
-                    }
-                }
-
-                field.values = values;
-                field.section = section;
-                [fields addObject:field];
-
-                if (field.formula) [fieldsWithFormula addObject:field];
-            }];
-
-            if (!isLastSection) {
-                HYPFormField *field = [HYPFormField new];
-                field.sectionSeparator = YES;
-                field.position = @(fields.count);
-                field.section = section;
-                [fields addObject:field];
-            }
-
-            section.fields = fields;
-            section.form = form;
-            [sections addObject:section];
-        }];
-
-        form.sections = sections;
-        [forms addObject:form];
-    }];
-
-    //[self processFieldsWithFormula:fieldsWithFormula inForms:forms usingValues:fieldValues];
 
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
@@ -203,10 +97,6 @@
         field.fieldValue = result;
         if (result) [fieldValues setObject:result forKey:field.fieldID];
     }
-
-    /*[self processHiddenFieldsInTargets:targetsToRun
-                               inForms:forms
-                            completion:^(NSMutableDictionary *fields, NSMutableDictionary *sections) {*/
 
     NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
     NSMutableDictionary *hiddenSections = [NSMutableDictionary dictionary];
@@ -225,8 +115,6 @@
         }
     }
 
-    // removeHiddenFieldsInTargets
-
     for (HYPFormTarget *target in targetsToRun) {
 
         if (target.type == HYPFormTargetTypeField) {
@@ -244,10 +132,7 @@
         }
     }
 
-    self.deletedFields = hiddenFields;
-    self.deletedSections = hiddenSections;
-
-    self.forms = forms;
+    if (completion) completion(forms, hiddenFields, hiddenSections);
 }
 
 @end

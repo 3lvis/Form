@@ -11,6 +11,12 @@
 
 @property (nonatomic) BOOL shouldValidate;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+                          position:(NSInteger)position
+                          disabled:(BOOL)disabled
+                 disabledFieldsIDs:(NSArray *)disabledFieldsIDs
+                     initialValues:(NSDictionary *)initialValues;
+
 + (instancetype)sharedInstance;
 
 - (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
