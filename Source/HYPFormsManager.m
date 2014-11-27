@@ -175,54 +175,23 @@
         [forms addObject:form];
     }];
 
-    [self processFieldsWithFormula:fieldsWithFormula inForms:forms usingValues:fieldValues];
+    //[self processFieldsWithFormula:fieldsWithFormula inForms:forms usingValues:fieldValues];
 
-    [self processHiddenFieldsInTargets:targetsToRun
-                               inForms:forms
-                            completion:^(NSMutableDictionary *fields, NSMutableDictionary *sections) {
-                                [self removeHiddenFieldsInTargets:targetsToRun inForms:forms];
-                                self.deletedFields = fields;
-                                self.deletedSections = sections;
-                            }];
-}
-
-- (NSArray *)targetsUsingArray:(NSArray *)array
-{
-    NSMutableArray *targets = [NSMutableArray array];
-
-    for (NSDictionary *targetDict in array) {
-        HYPFormTarget *target = [HYPFormTarget new];
-        target.targetID = [targetDict andy_valueForKey:@"id"];
-        target.typeString = [targetDict andy_valueForKey:@"type"];
-        target.actionTypeString = [targetDict andy_valueForKey:@"action"];
-        [targets addObject:target];
-    }
-
-    return targets;
-}
-
-#pragma mark - Private Methods
-
-- (void)processFieldsWithFormula:(NSArray *)fieldsWithFormula inForms:(NSArray *)forms
-                     usingValues:(NSMutableDictionary *)currentValues
-{
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
         id result = [field.formula hyp_runFormulaWithDictionary:values];
         field.fieldValue = result;
-        if (result) [currentValues setObject:result forKey:field.fieldID];
+        if (result) [fieldValues setObject:result forKey:field.fieldID];
     }
-}
 
-- (void)processHiddenFieldsInTargets:(NSArray *)targets
-                             inForms:(NSArray *)forms
-                          completion:(void (^)(NSMutableDictionary *fields,
-                                               NSMutableDictionary *sections))completion
-{
+    /*[self processHiddenFieldsInTargets:targetsToRun
+                               inForms:forms
+                            completion:^(NSMutableDictionary *fields, NSMutableDictionary *sections) {*/
+
     NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
     NSMutableDictionary *hiddenSections = [NSMutableDictionary dictionary];
 
-    for (HYPFormTarget *target in targets) {
+    for (HYPFormTarget *target in targetsToRun) {
 
         if (target.type == HYPFormTargetTypeField) {
 
@@ -236,14 +205,9 @@
         }
     }
 
-    if (completion) {
-        completion(hiddenFields, hiddenSections);
-    }
-}
+    // removeHiddenFieldsInTargets
 
-- (void)removeHiddenFieldsInTargets:(NSArray *)targets inForms:(NSArray *)forms
-{
-    for (HYPFormTarget *target in targets) {
+    for (HYPFormTarget *target in targetsToRun) {
 
         if (target.type == HYPFormTargetTypeField) {
 
@@ -259,6 +223,26 @@
             [form.sections removeObjectAtIndex:index];
         }
     }
+
+    self.deletedFields = hiddenFields;
+    self.deletedSections = hiddenSections;
+
+    self.forms = forms;
+}
+
+- (NSArray *)targetsUsingArray:(NSArray *)array
+{
+    NSMutableArray *targets = [NSMutableArray array];
+
+    for (NSDictionary *targetDict in array) {
+        HYPFormTarget *target = [HYPFormTarget new];
+        target.targetID = [targetDict andy_valueForKey:@"id"];
+        target.typeString = [targetDict andy_valueForKey:@"type"];
+        target.actionTypeString = [targetDict andy_valueForKey:@"action"];
+        [targets addObject:target];
+    }
+
+    return targets;
 }
 
 @end
