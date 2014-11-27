@@ -1,11 +1,3 @@
-//
-//  HYPPopoverFormFieldCell.m
-
-//
-//  Created by Elvis Nunez on 08/10/14.
-//  Copyright (c) 2014 Hyper. All rights reserved.
-//
-
 #import "HYPPopoverFormFieldCell.h"
 
 static const CGFloat HYPPopoverFormIconWidth = 38.0f;

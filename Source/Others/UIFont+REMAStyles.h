@@ -1,11 +1,3 @@
-//
-//  UIFont+REMAStyles.h
-
-//
-//  Created by Christoffer Winterkvist on 5/12/14.
-//  Copyright (c) 2014 REMAer. All rights reserved.
-//
-
 @import UIKit;
 
 @interface UIFont (REMAStyles)
