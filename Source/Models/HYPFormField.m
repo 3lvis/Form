@@ -120,13 +120,6 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return formatter;
 }
 
-+ (HYPFormField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(HYPFormSection *)section
-{
-    HYPFormField *field = section.fields[indexPath.row];
-
-    return field;
-}
-
 - (HYPFormFieldType)typeFromTypeString:(NSString *)typeString
 {
     if ([typeString isEqualToString:@"text"] ||
@@ -169,6 +162,13 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 }
 
 #pragma mark - Public Methods
+
++ (HYPFormField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(HYPFormSection *)section
+{
+    HYPFormField *field = section.fields[indexPath.row];
+
+    return field;
+}
 
 + (HYPFormField *)fieldWithID:(NSString *)fieldID inForms:(NSArray *)forms withIndexPath:(BOOL)withIndexPath
 {
