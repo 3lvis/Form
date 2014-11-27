@@ -10,20 +10,9 @@
 
 @implementation HYPFormsManagerTests
 
-- (void)setUp
-{
-    [super setUp];
-}
-
-- (void)tearDown
-{
-    [super tearDown];
-}
-
 - (void)testInitialization
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
-                                                             inBundle:[NSBundle bundleForClass:[HYPFormsManagerTests class]]];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON initialValues:nil disabledFieldIDs:nil];
     XCTAssertNotNil(manager);
@@ -31,8 +20,7 @@
 
 - (void)testFormsGeneration
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
-                                                             inBundle:[NSBundle bundleForClass:[HYPFormsManagerTests class]]];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON initialValues:nil disabledFieldIDs:nil];
 
