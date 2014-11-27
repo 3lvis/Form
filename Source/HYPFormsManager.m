@@ -29,10 +29,14 @@
                   initialValues:initialValues
               disabledFieldsIDs:disabledFieldIDs
                        disabled:disabled
-                     completion:^(NSMutableArray *forms, NSMutableDictionary *hiddenFields, NSMutableDictionary *hiddenSections) {
+                     completion:^(NSMutableArray *forms,
+                                  NSDictionary *fieldValues,
+                                  NSMutableDictionary *hiddenFields,
+                                  NSMutableDictionary *hiddenSections) {
                          self.forms = forms;
                          self.hiddenFields = hiddenFields;
                          self.hiddenSections = hiddenSections;
+                         self.values = [fieldValues mutableCopy];
                      }];
 
     return self;
@@ -51,11 +55,16 @@
                 initialValues:(NSDictionary *)initialValues
             disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                      disabled:(BOOL)disabled
-                   completion:(void (^)(NSMutableArray *forms, NSMutableDictionary *hiddenFields, NSMutableDictionary *hiddenSections))completion
+                   completion:(void (^)(NSMutableArray *forms,
+                                        NSDictionary *fieldValues,
+                                        NSMutableDictionary *hiddenFields,
+                                        NSMutableDictionary *hiddenSections))completion
 {
     NSMutableArray *forms = [NSMutableArray array];
     NSMutableArray *fieldsWithFormula = [NSMutableArray new];
     NSMutableArray *targetsToRun = [NSMutableArray array];
+    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
+    [fieldValues addEntriesFromDictionary:initialValues];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
@@ -88,9 +97,6 @@
             }
         }
     }];
-
-    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
-    [fieldValues addEntriesFromDictionary:initialValues];
 
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
@@ -133,7 +139,7 @@
         }
     }
 
-    if (completion) completion(forms, hiddenFields, hiddenSections);
+    if (completion) completion(forms, fieldValues, hiddenFields, hiddenSections);
 }
 
 @end

@@ -14,7 +14,7 @@
 HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
-@property (nonatomic, copy) NSDictionary *setUpDictionary;
+@property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
 @property (nonatomic, strong) HYPFormsManager *formsManager;
 
@@ -29,15 +29,15 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
-    NSMutableDictionary *valuesDict = [dictionary mutableCopy];
+    NSMutableDictionary *initialValues = [dictionary mutableCopy];
     if ([dictionary valueForKey:@"postal_code"] && ![dictionary valueForKey:@"city"]) {
-        NSString *postalCode = [valuesDict valueForKey:@"postal_code"];
+        NSString *postalCode = [initialValues valueForKey:@"postal_code"];
         HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
         NSString *city = [postalCodeManager cityForPostalCode:postalCode];
-        if (city) [valuesDict setValue:city forKey:@"city"];
+        if (city) [initialValues setValue:city forKey:@"city"];
     }
 
-    _setUpDictionary = valuesDict;
+    _initialValues = initialValues;
 
     layout.dataSource = self;
 
@@ -53,7 +53,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
     _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                            initialValues:self.setUpDictionary
+                                            initialValues:self.initialValues
                                          disabledFieldIDs:@[@"first_name", @"last_name"]
                                                  disabled:YES];
 

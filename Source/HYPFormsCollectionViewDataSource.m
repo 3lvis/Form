@@ -16,11 +16,10 @@
 @interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate, HYPFormHeaderViewDelegate
 , UICollectionViewDataSource>
 
-@property (nonatomic, strong) NSMutableDictionary *valuesDictionary;
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic) UIEdgeInsets originalInset;
 @property (nonatomic) BOOL disabled;
-@property (nonatomic, strong) HYPFormsManager *formsManager;
+@property (nonatomic, weak) HYPFormsManager *formsManager;
 
 @end
 
@@ -78,15 +77,6 @@
 }
 
 #pragma mark - Getters
-
-- (NSMutableDictionary *)valuesDictionary
-{
-    if (_valuesDictionary) return _valuesDictionary;
-
-    _valuesDictionary = [NSMutableDictionary dictionary];
-
-    return _valuesDictionary;
-}
 
 - (NSMutableArray *)collapsedForms
 {
@@ -380,7 +370,7 @@
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
-    [self.valuesDictionary setValuesForKeysWithDictionary:dictionary];
+    [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
 
     NSMutableArray *updatedIndexPaths = [NSMutableArray array];
     NSMutableArray *targets = [NSMutableArray array];
@@ -495,12 +485,12 @@
     }
 
     if (!field.fieldValue) {
-        [self.valuesDictionary removeObjectForKey:field.fieldID];
+        [self.formsManager.values removeObjectForKey:field.fieldID];
     } else if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         HYPFieldValue *fieldValue = field.fieldValue;
-        self.valuesDictionary[field.fieldID] = fieldValue.valueID;
+        self.formsManager.values[field.fieldID] = fieldValue.valueID;
     } else {
-        self.valuesDictionary[field.fieldID] = field.fieldValue;
+        self.formsManager.values[field.fieldID] = field.fieldValue;
     }
 
     if (field.fieldValue && [field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
@@ -634,7 +624,7 @@
 
         for (NSString *fieldID in fieldIDs) {
 
-            id value = [self.valuesDictionary objectForKey:fieldID];
+            id value = [self.formsManager.values objectForKey:fieldID];
 
             HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:self.formsManager.forms withIndexPath:NO];
 
@@ -665,10 +655,10 @@
                     [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                        [self.valuesDictionary setObject:[value stringValue] forKey:field.fieldID];
+                        [self.formsManager.values setObject:[value stringValue] forKey:field.fieldID];
                         [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
                     } else {
-                        [self.valuesDictionary setObject:@"" forKey:field.fieldID];
+                        [self.formsManager.values setObject:@"" forKey:field.fieldID];
                         if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
                             [values addEntriesFromDictionary:@{fieldID : @"0"}];
                         } else {
@@ -689,9 +679,9 @@
         field.fieldValue = result;
 
         if (result) {
-            [self.valuesDictionary setObject:result forKey:field.fieldID];
+            [self.formsManager.values setObject:result forKey:field.fieldID];
         } else {
-            [self.valuesDictionary removeObjectForKey:field.fieldID];
+            [self.formsManager.values removeObjectForKey:field.fieldID];
         }
     }
 
