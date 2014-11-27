@@ -101,7 +101,18 @@
                 field.validations = [fieldDict andy_valueForKey:@"validations"];
                 field.disabled = [[fieldDict andy_valueForKey:@"disabled"] boolValue];
                 field.formula = [fieldDict andy_valueForKey:@"formula"];
-                field.targets = [self targetsUsingArray:[fieldDict andy_valueForKey:@"targets"]];
+
+                NSMutableArray *targets = [NSMutableArray array];
+
+                for (NSDictionary *targetDict in [fieldDict andy_valueForKey:@"targets"]) {
+                    HYPFormTarget *target = [HYPFormTarget new];
+                    target.targetID = [targetDict andy_valueForKey:@"id"];
+                    target.typeString = [targetDict andy_valueForKey:@"type"];
+                    target.actionTypeString = [targetDict andy_valueForKey:@"action"];
+                    [targets addObject:target];
+                }
+
+                field.targets = targets;
 
                 BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:field.fieldID]);
 
@@ -125,7 +136,16 @@
                             }
                         }
 
-                        NSArray *targets = [self targetsUsingArray:[valueDict andy_valueForKey:@"targets"]];
+                        NSMutableArray *targets = [NSMutableArray array];
+
+                        for (NSDictionary *targetDict in [valueDict andy_valueForKey:@"targets"]) {
+                            HYPFormTarget *target = [HYPFormTarget new];
+                            target.targetID = [targetDict andy_valueForKey:@"id"];
+                            target.typeString = [targetDict andy_valueForKey:@"type"];
+                            target.actionTypeString = [targetDict andy_valueForKey:@"action"];
+                            [targets addObject:target];
+                        }
+
                         for (HYPFormTarget *target in targets) {
                             target.value = fieldValue;
 
@@ -228,21 +248,6 @@
     self.deletedSections = hiddenSections;
 
     self.forms = forms;
-}
-
-- (NSArray *)targetsUsingArray:(NSArray *)array
-{
-    NSMutableArray *targets = [NSMutableArray array];
-
-    for (NSDictionary *targetDict in array) {
-        HYPFormTarget *target = [HYPFormTarget new];
-        target.targetID = [targetDict andy_valueForKey:@"id"];
-        target.typeString = [targetDict andy_valueForKey:@"type"];
-        target.actionTypeString = [targetDict andy_valueForKey:@"action"];
-        [targets addObject:target];
-    }
-
-    return targets;
 }
 
 @end
