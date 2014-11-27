@@ -1,6 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '7.0'
+link_with 'HYPForms', 'HYPFormsTests'
 
 pod 'UIScreen-HYPLiveBounds'
 pod 'NSString-ZENInflections'
