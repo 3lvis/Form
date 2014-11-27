@@ -66,6 +66,7 @@
 		BD30E7AC19F4FAB6001AFA58 /* HYPFloatFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD30E7AB19F4FAB6001AFA58 /* HYPFloatFormatter.m */; };
 		BD64BEFF1A0AC67B00A1D808 /* ic_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */; };
 		BDEEFE4319FA2A9D00D0C284 /* HYPPostalCodeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEEFE4219FA2A9D00D0C284 /* HYPPostalCodeValidator.m */; };
+		BDF644181A27A01600C752CA /* ic_mini_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDF644171A27A01600C752CA /* ic_mini_clear@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,7 @@
 		BD7C6C2D19F686130084EF2E /* HYPForms.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = HYPForms.podspec; path = ../HYPForms.podspec; sourceTree = "<group>"; };
 		BDEEFE4119FA2A9D00D0C284 /* HYPPostalCodeValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeValidator.h; sourceTree = "<group>"; };
 		BDEEFE4219FA2A9D00D0C284 /* HYPPostalCodeValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeValidator.m; sourceTree = "<group>"; };
+		BDF644171A27A01600C752CA /* ic_mini_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_clear@2x.png"; sourceTree = "<group>"; };
 		E05BE626FD241721C25276D4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -450,6 +452,7 @@
 		445DAF9219E52D76006F8052 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BDF644171A27A01600C752CA /* ic_mini_clear@2x.png */,
 				BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */,
 				145721C219EF260600195051 /* camera-icon@2x.png */,
 				445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */,
@@ -581,6 +584,7 @@
 				BD64BEFF1A0AC67B00A1D808 /* ic_calendar@2x.png in Resources */,
 				4441A9EA19E2BBC50068498D /* DIN-LIGH.OTF in Resources */,
 				145721C319EF260600195051 /* camera-icon@2x.png in Resources */,
+				BDF644181A27A01600C752CA /* ic_mini_clear@2x.png in Resources */,
 				143DD7B319F11BC3007EA631 /* postal_codes.json in Resources */,
 				4441A9EC19E2BBC50068498D /* DIN-REGU.OTF in Resources */,
 				4441A9EB19E2BBC50068498D /* DIN-MEDI.OTF in Resources */,
