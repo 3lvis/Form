@@ -18,11 +18,11 @@
 #define COCOAPODS_VERSION_MINOR_HYPNorwegianSSN 6
 #define COCOAPODS_VERSION_PATCH_HYPNorwegianSSN 0
 
-// NSDictionary-HYPSafeValue
-#define COCOAPODS_POD_AVAILABLE_NSDictionary_HYPSafeValue
-#define COCOAPODS_VERSION_MAJOR_NSDictionary_HYPSafeValue 0
-#define COCOAPODS_VERSION_MINOR_NSDictionary_HYPSafeValue 2
-#define COCOAPODS_VERSION_PATCH_NSDictionary_HYPSafeValue 0
+// NSDictionary-ANDYSafeValue
+#define COCOAPODS_POD_AVAILABLE_NSDictionary_ANDYSafeValue
+#define COCOAPODS_VERSION_MAJOR_NSDictionary_ANDYSafeValue 0
+#define COCOAPODS_VERSION_MINOR_NSDictionary_ANDYSafeValue 1
+#define COCOAPODS_VERSION_PATCH_NSDictionary_ANDYSafeValue 0
 
 // NSJSONSerialization-ANDYJSONFile
 #define COCOAPODS_POD_AVAILABLE_NSJSONSerialization_ANDYJSONFile

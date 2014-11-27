@@ -1,7 +1,7 @@
 PODS:
   - HYPImagePicker (0.2)
   - HYPNorwegianSSN (1.6)
-  - NSDictionary-HYPSafeValue (0.2)
+  - NSDictionary-ANDYSafeValue (0.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSString-HYPFormula (1.4.1)
   - NSString-HYPWordExtractor (1.1)
@@ -12,7 +12,7 @@ PODS:
 DEPENDENCIES:
   - HYPImagePicker (from `https://github.com/hyperoslo/HYPImagePicker.git`)
   - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
-  - NSDictionary-HYPSafeValue (from `https://github.com/hyperoslo/NSDictionary-HYPSafeValue.git`)
+  - NSDictionary-ANDYSafeValue
   - NSJSONSerialization-ANDYJSONFile
   - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`)
   - NSString-HYPWordExtractor (from `https://github.com/hyperoslo/NSString-HYPWordExtractor.git`)
@@ -25,8 +25,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/hyperoslo/HYPImagePicker.git
   HYPNorwegianSSN:
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
-  NSDictionary-HYPSafeValue:
-    :git: https://github.com/hyperoslo/NSDictionary-HYPSafeValue.git
   NSString-HYPFormula:
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
   NSString-HYPWordExtractor:
@@ -41,9 +39,6 @@ CHECKOUT OPTIONS:
   HYPNorwegianSSN:
     :commit: 4fb5f19332f1d53ba89057da6a265135fedf16d0
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
-  NSDictionary-HYPSafeValue:
-    :commit: a65689809f53bd860ebb98091da07155a572d0de
-    :git: https://github.com/hyperoslo/NSDictionary-HYPSafeValue.git
   NSString-HYPFormula:
     :commit: 442d7e165d51729f8a9bfc5205c5cd18ce73cad0
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
@@ -57,7 +52,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
   HYPNorwegianSSN: e89eda882a498629b8e7a6d632f00c41ae79dd9c
-  NSDictionary-HYPSafeValue: cd036b29c332a36abdfc82406cca044689044ee9
+  NSDictionary-ANDYSafeValue: 5b7d0c0b1b7285191fb0f94e6dda13b86dec2dee
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
   NSString-HYPFormula: 944d6089795007866f7baddeec861cdf519c0abe
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
