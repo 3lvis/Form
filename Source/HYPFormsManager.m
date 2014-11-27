@@ -61,14 +61,18 @@
     NSMutableArray *targetsToRun = [NSMutableArray array];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
+
         HYPForm *form = [[HYPForm alloc] initWithDictionary:formDict
                                                    position:formIndex
                                                    disabled:disabled
                                           disabledFieldsIDs:disabledFieldsIDs
                                               initialValues:initialValues];
+        [forms addObject:form];
 
         for (HYPFormField *field in form.fields) {
+
             if (field.formula) [fieldsWithFormula addObject:field];
+
             for (HYPFieldValue *fieldValue in field.values) {
 
                 id initialValue = [initialValues andy_valueForKey:field.fieldID];

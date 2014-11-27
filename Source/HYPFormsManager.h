@@ -6,10 +6,9 @@
 @property (nonatomic, strong) NSMutableDictionary *hiddenFields;
 @property (nonatomic, strong) NSMutableDictionary *hiddenSections;
 
-- (void)generateFormsWithJSON:(NSArray *)JSON
-                initialValues:(NSDictionary *)initialValues
-            disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                     disabled:(BOOL)disabled
-                   completion:(void (^)(NSMutableArray *forms, NSMutableDictionary *hiddenFields, NSMutableDictionary *hiddenSections))completion;
+- (instancetype)initWithJSON:(id)JSON
+               initialValues:(NSDictionary *)initialValues
+            disabledFieldIDs:(NSArray *)disabledFieldIDs
+                    disabled:(BOOL)disabled;
 
 @end
