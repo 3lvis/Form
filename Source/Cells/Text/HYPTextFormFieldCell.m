@@ -24,6 +24,7 @@
     if (!self) return nil;
 
     [self.contentView addSubview:self.textField];
+    [self.contentView addSubview:self.iconButton];
 
     return self;
 }
@@ -86,6 +87,21 @@
     return field.fieldValue;
 }
 
+#pragma mark - Actions
+
+- (void)focusAction
+{
+    [self.textField becomeFirstResponder];
+}
+
+- (void)clearAction
+{
+    self.field.fieldValue = nil;
+    [self updateWithField:self.field];
+    [self.iconButton setImage:nil forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
+}
+
 #pragma mark - Private methods
 
 - (void)layoutSubviews
@@ -110,16 +126,28 @@
 
 #pragma mark - HYPTextFormFieldDelegate
 
+- (void)textFormFieldDidBeginEditing:(HYPTextFormField *)textField
+{
+    [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
+}
+
 - (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField
 {
     if (self.textField.rawText) {
         [self.textField setValid:[self.field validate]];
     }
+
+    [self.iconButton setImage:nil forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
 {
     self.field.fieldValue = text;
+
+    [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
 
     if (!self.textField.valid) {
         [self.textField setValid:[self.field validate]];

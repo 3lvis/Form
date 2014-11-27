@@ -29,6 +29,7 @@ static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
 @interface HYPBaseFormFieldCell : UICollectionViewCell
 
 @property (nonatomic, strong) HYPFormFieldHeadingLabel *headingLabel;
+@property (nonatomic, strong) UIButton *iconButton;
 
 @property (nonatomic, strong) HYPFormField *field;
 @property (nonatomic, getter = isDisabled) BOOL disabled;

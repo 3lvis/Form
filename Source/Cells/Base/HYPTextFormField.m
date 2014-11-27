@@ -237,10 +237,8 @@
 
 - (BOOL)becomeFirstResponder
 {
-    if (self.type == HYPTextFieldTypeDropdown || self.type == HYPTextFieldTypeDate) {
-        if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
-            [self.formFieldDelegate textFormFieldDidBeginEditing:self];
-        }
+    if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
+        [self.formFieldDelegate textFormFieldDidBeginEditing:self];
     }
 
     return [super becomeFirstResponder];
@@ -248,9 +246,10 @@
 
 - (BOOL)canBecomeFirstResponder
 {
-    if (self.type == HYPTextFieldTypeDropdown || self.type == HYPTextFieldTypeDate) return NO;
+    BOOL isModularDialog = (self.type == HYPTextFieldTypeDropdown ||
+                            self.type == HYPTextFieldTypeDate);
 
-    return [super canBecomeFirstResponder];
+    return (!isModularDialog) ? [super canBecomeFirstResponder] : NO;
 }
 
 #pragma mark - Notifications

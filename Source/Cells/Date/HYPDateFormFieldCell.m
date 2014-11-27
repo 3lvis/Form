@@ -10,7 +10,7 @@
 
 #import "HYPFormTimeViewController.h"
 
-static const CGSize HYPDatePopoverSize = { 320.0f, 328.0f };
+static const CGSize HYPDatePopoverSize = { 320.0f, 272.0f };
 
 @interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate,
 UIPopoverControllerDelegate>
@@ -31,7 +31,7 @@ UIPopoverControllerDelegate>
                  andContentSize:HYPDatePopoverSize];
     if (!self) return nil;
 
-    self.iconImageView.image = [UIImage imageNamed:@"ic_calendar"];
+    [self.contentView addSubview:self.iconButton];
 
     return self;
 }
@@ -54,15 +54,18 @@ UIPopoverControllerDelegate>
 {
     [super updateWithField:field];
 
-    if (!field.fieldValue) {
-        self.textField.rawText = nil;
-        return;
-    }
+    [self.iconButton removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
 
     if (field.fieldValue) {
         self.textField.rawText = [NSDateFormatter localizedStringFromDate:field.fieldValue
                                                                 dateStyle:NSDateFormatterMediumStyle
                                                                 timeStyle:NSDateFormatterNoStyle];
+        [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
+        [self.iconButton addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        [self.iconButton setImage:[UIImage imageNamed:@"ic_calendar"] forState:UIControlStateNormal];
+        [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
+        self.textField.rawText = nil;
     }
 }
 
@@ -84,6 +87,19 @@ UIPopoverControllerDelegate>
             self.timeViewController.maximumDate = self.field.maximumDate;
         }
     }
+}
+
+#pragma mark - Actions
+
+- (void)focusAction
+{
+    [self.textField becomeFirstResponder];
+}
+
+- (void)clearAction
+{
+    self.field.fieldValue = nil;
+    [self updateWithField:self.field];
 }
 
 #pragma mark - HYPTimeViewControllerDelegate

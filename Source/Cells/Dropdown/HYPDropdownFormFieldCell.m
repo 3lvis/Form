@@ -29,7 +29,9 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f
                  andContentSize:HYPDropdownPopoverSize];
     if (!self) return nil;
 
-    self.iconImageView.image = [UIImage imageNamed:@"ic_mini_arrow_down"];
+    [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_arrow_down"] forState:UIControlStateNormal];
+    [self.contentView addSubview:self.iconButton];
 
     return self;
 }
@@ -46,29 +48,35 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f
     return _fieldValuesController;
 }
 
+#pragma mark - Actions
+
+- (void)focusAction
+{
+    [self.textField becomeFirstResponder];
+}
+
 #pragma mark - Private headers
 
 - (void)updateWithField:(HYPFormField *)field
 {
     [super updateWithField:field];
 
-    if (!field.fieldValue) {
-        self.textField.rawText = nil;
-        return;
-    }
+    if (field.fieldValue) {
+        if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+            HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
+            self.textField.rawText = fieldValue.title;
+        } else {
 
-    if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
-        HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
-        self.textField.rawText = fieldValue.title;
-    } else {
-
-        for (HYPFieldValue *fieldValue in field.values) {
-            if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
-                field.fieldValue = fieldValue;
-                self.textField.rawText = fieldValue.title;
-                break;
+            for (HYPFieldValue *fieldValue in field.values) {
+                if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
+                    field.fieldValue = fieldValue;
+                    self.textField.rawText = fieldValue.title;
+                    break;
+                }
             }
         }
+    } else {
+        self.textField.rawText = nil;
     }
 }
 
