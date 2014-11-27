@@ -17,14 +17,6 @@
                  disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                      initialValues:(NSDictionary *)initialValues;
 
-+ (instancetype)sharedInstance;
-
-- (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
-                                                 disabled:(BOOL)disabled
-                                        disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                                         additionalValues:(void (^)(NSMutableDictionary *deletedFields,
-                                                                    NSMutableDictionary *deletedSections))additionalValues;
-
 - (NSArray *)fields;
 
 - (NSInteger)numberOfFields;

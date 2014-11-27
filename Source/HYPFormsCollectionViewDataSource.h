@@ -11,6 +11,7 @@
 #import "HYPFormSection.h"
 #import "HYPFieldValue.h"
 #import "HYPFormTarget.h"
+#import "HYPFormsManager.h"
 
 typedef void (^HYPFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, HYPFormField *field);
 typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPForm *form);
@@ -18,18 +19,11 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 
 @protocol HYPFormsCollectionViewDataSourceDataSource;
 
-@interface HYPFormsCollectionViewDataSource : NSObject <HYPFormsLayoutDataSource, UICollectionViewDataSource>
+@interface HYPFormsCollectionViewDataSource : NSObject
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
-                         andDictionary:(NSDictionary *)dictionary
-                     disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                              disabled:(BOOL)disabled;
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView andFormsManager:(HYPFormsManager *)formsManager;
 
-@property (nonatomic, strong) NSMutableArray *forms;
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
-@property (nonatomic, strong) NSMutableDictionary *deletedFields;
-@property (nonatomic, strong) NSMutableDictionary *deletedSections;
-@property (nonatomic, strong) NSArray *disabledFieldsIDs;
 
 @property (nonatomic, copy) HYPFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;

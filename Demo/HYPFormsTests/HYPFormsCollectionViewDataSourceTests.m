@@ -5,10 +5,14 @@
 #import "HYPFormField.h"
 #import "HYPFormTarget.h"
 #import "HYPFormsCollectionViewDataSource.h"
+#import "HYPFormsManager.h"
+
+#import "NSJSONSerialization+ANDYJSONFile.h"
 
 @interface HYPFormsCollectionViewDataSourceTests : XCTestCase
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) HYPFormsManager *formsManager;
 
 @end
 
@@ -18,11 +22,18 @@
 {
     [super setUp];
 
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
 
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds] collectionViewLayout:layout];
 
-    self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView andDictionary:nil disabledFieldsIDs:nil disabled:NO];
+    self.formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                initialValues:nil
+                                             disabledFieldIDs:nil
+                                                     disabled:NO];
+
+    self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView andFormsManager:self.formsManager];
 }
 
 - (void)tearDown
@@ -36,27 +47,27 @@
 {
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"postal_code"]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"postal_code"]];
-    HYPFormField *field = [HYPFormField fieldWithID:@"postal_code" inForms:self.dataSource.forms withIndexPath:NO];
-    NSUInteger index = [field indexInForms:self.dataSource.forms];
+    HYPFormField *field = [HYPFormField fieldWithID:@"postal_code" inForms:self.formsManager.forms withIndexPath:NO];
+    NSUInteger index = [field indexInForms:self.formsManager.forms];
     XCTAssertEqual(index, 6);
 
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"image"]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"image"]];
-    field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
-    index = [field indexInForms:self.dataSource.forms];
+    field = [HYPFormField fieldWithID:@"image" inForms:self.formsManager.forms withIndexPath:NO];
+    index = [field indexInForms:self.formsManager.forms];
     XCTAssertEqual(index, 11);
 
     [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"first_name", @"address", @"image"]]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"image"]];
-    field = [HYPFormField fieldWithID:@"image" inForms:self.dataSource.forms withIndexPath:NO];
-    index = [field indexInForms:self.dataSource.forms];
+    field = [HYPFormField fieldWithID:@"image" inForms:self.formsManager.forms withIndexPath:NO];
+    index = [field indexInForms:self.formsManager.forms];
     XCTAssertEqual(index, 9);
     [self.dataSource processTargets:[HYPFormTarget showFieldTargetsWithIDs:@[@"first_name", @"address"]]];
 
     [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"last_name", @"address"]]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"address"]];
-    field = [HYPFormField fieldWithID:@"address" inForms:self.dataSource.forms withIndexPath:NO];
-    index = [field indexInForms:self.dataSource.forms];
+    field = [HYPFormField fieldWithID:@"address" inForms:self.formsManager.forms withIndexPath:NO];
+    index = [field indexInForms:self.formsManager.forms];
     XCTAssertEqual(index, 4);
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"last_name"]];
 }

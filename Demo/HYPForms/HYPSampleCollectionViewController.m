@@ -1,22 +1,22 @@
 #import "HYPSampleCollectionViewController.h"
 
 #import "HYPFormsCollectionViewDataSource.h"
-
 #import "HYPPostalCodeManager.h"
-
 #import "HYPFieldValue.h"
-
 #import "HYPImagePicker.h"
+#import "HYPImageFormFieldCell.h"
+#import "HYPFormsManager.h"
 
 #import "UIColor+ANDYHex.h"
+#import "NSJSONSerialization+ANDYJSONFile.h"
 
-#import "HYPImageFormFieldCell.h"
-
-@interface HYPSampleCollectionViewController () <HYPImagePickerDelegate, HYPFormsCollectionViewDataSourceDataSource>
+@interface HYPSampleCollectionViewController () <HYPImagePickerDelegate,
+HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *setUpDictionary;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
+@property (nonatomic, strong) HYPFormsManager *formsManager;
 
 @end
 
@@ -24,9 +24,8 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary andLayout:(HYPFormsLayout *)layout
 {
-    HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
@@ -39,22 +38,33 @@
     }
 
     _setUpDictionary = valuesDict;
-    layout.dataSource = self.dataSource;
-    self.dataSource.disabledFieldsIDs = @[@"first_name", @"last_name"];
+
+    layout.dataSource = self;
 
     return self;
 }
 
 #pragma mark - Getters
 
+- (HYPFormsManager *)formsManager
+{
+    if (_formsManager) return _formsManager;
+
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
+    _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                            initialValues:self.setUpDictionary
+                                         disabledFieldIDs:@[@"first_name", @"last_name"]
+                                                 disabled:YES];
+
+    return _formsManager;
+}
+
 - (HYPFormsCollectionViewDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
-                                                                     andDictionary:self.setUpDictionary
-                                                                 disabledFieldsIDs:@[]
-                                                                          disabled:YES];
+    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView andFormsManager:self.formsManager];
 
     _dataSource.dataSource = self;
 
@@ -68,7 +78,7 @@
             HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
             NSString *city = [postalCodeManager cityForPostalCode:postalCode];
 
-            HYPFormField *cityField = [HYPFormField fieldWithID:@"city" inForms:weakSelf.dataSource.forms withIndexPath:YES];
+            HYPFormField *cityField = [HYPFormField fieldWithID:@"city" inForms:weakSelf.formsManager.forms withIndexPath:YES];
             if (cityField) {
                 cityField.fieldValue = city;
                 [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
@@ -82,7 +92,7 @@
 
         if (shouldUpdateFixedEntryDate) {
             HYPFormField *fixedPayEntryDateField = [HYPFormField fieldWithID:@"fixed_pay_entry_date"
-                                                                     inForms:weakSelf.dataSource.forms
+                                                                     inForms:weakSelf.formsManager.forms
                                                                withIndexPath:YES];
 
             if (fixedPayEntryDateField) {
@@ -271,6 +281,18 @@
     }
 
     return cell;
+}
+
+#pragma mark - HYPFormsLayoutDataSource
+
+- (NSArray *)forms
+{
+    return self.formsManager.forms;
+}
+
+- (NSArray *)collapsedForms
+{
+    return self.dataSource.collapsedForms;
 }
 
 @end

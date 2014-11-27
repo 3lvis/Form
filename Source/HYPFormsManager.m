@@ -11,9 +11,6 @@
 
 @interface HYPFormsManager ()
 
-@property (nonatomic, strong) NSMutableDictionary *values;
-@property (nonatomic, strong) NSArray *disabledFieldsIDs;
-
 @end
 
 @implementation HYPFormsManager
