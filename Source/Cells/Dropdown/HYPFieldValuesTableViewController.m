@@ -15,14 +15,28 @@
 #import "UIColor+REMAColors.h"
 
 static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier";
+static const CGFloat HYPDropdownHeaderWidth = 320.0f;
+static const CGFloat HYPDropdownHeaderHeight = 55.0f;
+static const CGFloat HYPDropdownCellHeight = 44.0f;
 
 @interface HYPFieldValuesTableViewController ()
 
 @property (nonatomic, strong) NSArray *values;
+@property (nonatomic, strong) NSString *title;
 
 @end
 
 @implementation HYPFieldValuesTableViewController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (!self) return nil;
+
+    self.tableView.rowHeight = HYPDropdownCellHeight;
+
+    return self;
+}
 
 #pragma mark - Setters
 
@@ -30,6 +44,7 @@ static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier"
 {
     _field = field;
 
+    self.title = field.title;
     self.values = [NSArray arrayWithArray:field.values];
 
     [self.tableView reloadData];
@@ -44,6 +59,46 @@ static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier"
     self.clearsSelectionOnViewWillAppear = NO;
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:HYPDropdownCellIdentifier];
+}
+
+#pragma mark - Setup
+
+- (UIView *)sectionHeader
+{
+    CGRect rect = CGRectMake(0, 0, HYPDropdownHeaderWidth, HYPDropdownHeaderHeight);
+    UIView *view = [[UIView alloc] initWithFrame:rect];
+    UILabel *label = [[UILabel alloc] initWithFrame:rect];
+
+    view.backgroundColor = [UIColor clearColor];
+    label.backgroundColor = [UIColor REMALightGray];
+    label.text = self.title;
+    label.font = [UIFont REMAMediumSizeBold];
+    label.textColor = [UIColor REMADarkBlue];
+    label.textAlignment = NSTextAlignmentCenter;
+    [view addSubview:label];
+
+    CGRect statusRect = CGRectMake(0,20,HYPDropdownHeaderWidth,HYPDropdownHeaderHeight);
+    UILabel *statusLabel = [[UILabel alloc] initWithFrame:statusRect];
+    //statusLabel.text = self.title;
+    statusLabel.backgroundColor = [UIColor clearColor];
+    statusLabel.font = [UIFont REMAMediumSizeLight];
+    statusLabel.textColor = [UIColor REMACoreBlue];
+    statusLabel.textAlignment = NSTextAlignmentCenter;
+    [view addSubview:statusLabel];
+
+    return view;
+}
+
+#pragma mark - TableViewDelegate
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return (section == 0) ? [self sectionHeader] : nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return HYPDropdownHeaderHeight;
 }
 
 #pragma mark - Table View Data Source
