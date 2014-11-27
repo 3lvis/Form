@@ -8,6 +8,7 @@
 
 - (instancetype)initWithJSON:(id)JSON
                initialValues:(NSDictionary *)initialValues
-            disabledFieldIDs:(NSArray *)disabledFieldIDs;
+            disabledFieldIDs:(NSArray *)disabledFieldIDs
+                    disabled:(BOOL)disabled;
 
 @end
