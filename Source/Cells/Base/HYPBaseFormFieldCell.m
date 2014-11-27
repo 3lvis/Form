@@ -10,7 +10,8 @@
 
 static const CGFloat HYPTextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
-static const CGFloat HYPTextFormFieldIconSize = 38.0f;
+static const CGFloat HYPTextFormFieldIconWidth = 32.0f;
+static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
 
 @implementation HYPBaseFormFieldCell
 
@@ -109,10 +110,10 @@ static const CGFloat HYPTextFormFieldIconSize = 38.0f;
 
 - (CGRect)frameForIconButton
 {
-    CGFloat x = CGRectGetWidth(self.frame) - HYPTextFormFieldIconSize - HYPTextFormFieldCellMarginX;
-    CGFloat y = HYPTextFormFieldIconSize - 4;
-    CGFloat width = HYPTextFormFieldIconSize;
-    CGFloat height = HYPTextFormFieldIconSize;
+    CGFloat x = CGRectGetWidth(self.frame) - HYPTextFormFieldIconWidth - HYPTextFormFieldCellMarginX;
+    CGFloat y = HYPTextFormFieldIconHeight - 4;
+    CGFloat width = HYPTextFormFieldIconWidth;
+    CGFloat height = HYPTextFormFieldIconHeight;
     CGRect  frame = CGRectMake(x, y, width, height);
 
     return frame;

@@ -25,6 +25,8 @@
 
     [self.contentView addSubview:self.textField];
     [self.contentView addSubview:self.iconButton];
+    [self.iconButton setImage:nil forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
 
     return self;
 }
@@ -138,6 +140,7 @@
         [self.textField setValid:[self.field validate]];
     }
 
+    [self.iconButton removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
     [self.iconButton setImage:nil forState:UIControlStateNormal];
     [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
 }
