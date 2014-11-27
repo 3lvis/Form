@@ -10,7 +10,7 @@
 
 #import "HYPFormTimeViewController.h"
 
-static const CGSize HYPDatePopoverSize = { 320.0f, 276.0f };
+static const CGSize HYPDatePopoverSize = { 320.0f, 328.0f };
 
 @interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate,
 UIPopoverControllerDelegate>

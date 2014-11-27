@@ -52,10 +52,11 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
 {
     if (_clearButton) return _clearButton;
 
-    CGFloat offset = HYPDoneButtonX + 5;
+    CGFloat offset = HYPDoneButtonX;
     CGFloat x = HYPDoneButtonX;
     CGFloat y = (self.date) ? CGRectGetMaxY(self.datePicker.frame) : 0.0f;
-    CGFloat width = (HYPDatePopoverSize.width/4) - offset;
+    y +=  CGRectGetHeight(self.doneButton.frame) + x;
+    CGFloat width  = HYPDatePopoverSize.width - (offset * 2);
     CGFloat height = HYPDoneButtonHeight;
 
     _clearButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, height)];
@@ -75,9 +76,9 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
     if (_doneButton) return _doneButton;
 
     CGFloat offset = HYPDoneButtonX;
-    CGFloat x = (HYPDoneButtonX * 2) + CGRectGetWidth(self.clearButton.frame);
+    CGFloat x = HYPDoneButtonX;
     CGFloat y = (self.date) ? CGRectGetMaxY(self.datePicker.frame) : 0.0f;
-    CGFloat width  = HYPDatePopoverSize.width - CGRectGetWidth(self.clearButton.frame) - (offset * 3);
+    CGFloat width  = HYPDatePopoverSize.width - (offset * 2);
     CGFloat height = HYPDoneButtonHeight;
 
     _doneButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, height)];
