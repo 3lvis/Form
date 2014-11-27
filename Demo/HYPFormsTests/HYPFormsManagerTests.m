@@ -2,6 +2,8 @@
 
 #import "HYPFormsManager.h"
 
+#import "NSJSONSerialization+ANDYJSONFile.h"
+
 @interface HYPFormsManagerTests : XCTestCase
 
 @end
@@ -20,7 +22,8 @@
 
 - (void)testInitialization
 {
-    NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[HYPFormsManagerTests class]]];
 
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON initialValues:nil disabledFieldIDs:nil];
     XCTAssertNotNil(manager);
@@ -28,7 +31,8 @@
 
 - (void)testFormsGeneration
 {
-    NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[HYPFormsManagerTests class]]];
 
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON initialValues:nil disabledFieldIDs:nil];
 

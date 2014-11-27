@@ -5,10 +5,12 @@
 #import "HYPFieldValue.h"
 #import "HYPFormTarget.h"
 
-#import "NSDictionary+HYPSafeValue.h"
-#import "NSString+HYPFormula.h"
 #import "HYPClassFactory.h"
 #import "HYPValidator.h"
+
+#import "NSString+HYPFormula.h"
+#import "NSDictionary+HYPSafeValue.h"
+#import "NSJSONSerialization+ANDYJSONFile.h"
 
 @interface HYPForm ()
 
@@ -36,7 +38,8 @@
 
     NSMutableDictionary *fields = [NSMutableDictionary dictionary];
 
-    NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[HYPForm class]]];
 
     for (NSDictionary *formDict in JSON) {
         NSArray *dataSourceSections = [formDict hyp_safeValueForKey:@"sections"];
@@ -63,7 +66,8 @@
                                          additionalValues:(void (^)(NSMutableDictionary *deletedFields,
                                                                     NSMutableDictionary *deletedSections))additionalValues
 {
-    NSArray *JSON = [self JSONObjectWithContentsOfFile:@"forms.json"];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[HYPForm class]]];
 
     NSMutableArray *forms = [NSMutableArray array];
 
@@ -213,23 +217,6 @@
     }
 
     return targets;
-}
-
-- (id)JSONObjectWithContentsOfFile:(NSString*)fileName
-{
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:[fileName stringByDeletingPathExtension]
-                                                         ofType:[fileName pathExtension]];
-
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-
-    NSError *error = nil;
-
-    id result = [NSJSONSerialization JSONObjectWithData:data
-                                                options:NSJSONReadingMutableContainers
-                                                  error:&error];
-    if (error != nil) return nil;
-
-    return result;
 }
 
 - (NSArray *)fields

@@ -6,7 +6,6 @@
 #import "HYPTextFormFieldCell.h"
 #import "HYPDropdownFormFieldCell.h"
 #import "HYPDateFormFieldCell.h"
-#import "HYPBlankFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
@@ -55,9 +54,6 @@
     collectionView.dataSource = self;
 
     _originalInset = collectionView.contentInset;
-
-    [collectionView registerClass:[HYPBlankFormFieldCell class]
-       forCellWithReuseIdentifier:HYPBlankFormFieldCellIdentifier];
 
     [collectionView registerClass:[HYPTextFormFieldCell class]
        forCellWithReuseIdentifier:HYPTextFormFieldCellIdentifier];
