@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 @property (nonatomic, strong) NSString *fieldID;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *label;
 @property (nonatomic) CGSize size;
 @property (nonatomic, strong) NSNumber *position;
 @property (nonatomic, strong) id fieldValue;

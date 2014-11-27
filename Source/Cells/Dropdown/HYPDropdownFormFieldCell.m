@@ -11,7 +11,7 @@
 #import "HYPFieldValue.h"
 #import "HYPFieldValuesTableViewController.h"
 
-static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f };
+static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f };
 
 @interface HYPDropdownFormFieldCell () <HYPTextFormFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
 

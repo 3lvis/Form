@@ -16,13 +16,14 @@
 
 static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier";
 static const CGFloat HYPDropdownHeaderWidth = 320.0f;
-static const CGFloat HYPDropdownHeaderHeight = 55.0f;
+static const CGFloat HYPDropdownHeaderHeight = 66.0f;
 static const CGFloat HYPDropdownCellHeight = 44.0f;
 
 @interface HYPFieldValuesTableViewController ()
 
 @property (nonatomic, strong) NSArray *values;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *label;
 
 @end
 
@@ -45,6 +46,7 @@ static const CGFloat HYPDropdownCellHeight = 44.0f;
     _field = field;
 
     self.title = field.title;
+    self.label = field.label;
     self.values = [NSArray arrayWithArray:field.values];
 
     [self.tableView reloadData];
@@ -65,26 +67,32 @@ static const CGFloat HYPDropdownCellHeight = 44.0f;
 
 - (UIView *)sectionHeader
 {
-    CGRect rect = CGRectMake(0, 0, HYPDropdownHeaderWidth, HYPDropdownHeaderHeight);
+    CGFloat headerHeight = (self.label) ? HYPDropdownHeaderHeight : HYPDropdownCellHeight;
+
+    CGRect rect = CGRectMake(0, 0, HYPDropdownHeaderWidth, headerHeight);
     UIView *view = [[UIView alloc] initWithFrame:rect];
+
+    if (self.label) rect.origin.y -= 10;
+
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
 
-    view.backgroundColor = [UIColor clearColor];
-    label.backgroundColor = [UIColor REMALightGray];
+    view.backgroundColor = [UIColor REMALightGray];
     label.text = self.title;
     label.font = [UIFont REMAMediumSizeBold];
     label.textColor = [UIColor REMADarkBlue];
     label.textAlignment = NSTextAlignmentCenter;
     [view addSubview:label];
 
-    CGRect statusRect = CGRectMake(0,20,HYPDropdownHeaderWidth,HYPDropdownHeaderHeight);
-    UILabel *statusLabel = [[UILabel alloc] initWithFrame:statusRect];
-    //statusLabel.text = self.title;
-    statusLabel.backgroundColor = [UIColor clearColor];
-    statusLabel.font = [UIFont REMAMediumSizeLight];
-    statusLabel.textColor = [UIColor REMACoreBlue];
-    statusLabel.textAlignment = NSTextAlignmentCenter;
-    [view addSubview:statusLabel];
+    if (self.label) {
+        CGRect statusRect = CGRectMake(0,15,HYPDropdownHeaderWidth,headerHeight);
+        UILabel *statusLabel = [[UILabel alloc] initWithFrame:statusRect];
+        statusLabel.text = self.label;
+        statusLabel.backgroundColor = [UIColor clearColor];
+        statusLabel.font = [UIFont REMAMediumSizeLight];
+        statusLabel.textColor = [UIColor REMACoreBlue];
+        statusLabel.textAlignment = NSTextAlignmentCenter;
+        [view addSubview:statusLabel];
+    }
 
     return view;
 }
@@ -98,7 +106,7 @@ static const CGFloat HYPDropdownCellHeight = 44.0f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return HYPDropdownHeaderHeight;
+    return (self.label) ? HYPDropdownHeaderHeight : HYPDropdownCellHeight;
 }
 
 #pragma mark - Table View Data Source
