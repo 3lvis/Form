@@ -26,11 +26,12 @@
     self = [super init];
     if (!self) return nil;
 
-    [self.values addEntriesFromDictionary:initialValues];
-
     _disabledFieldsIDs = disabledFieldIDs;
 
-    _forms = [self updateFormsWithJSON:JSON disabled:disabled];
+    [self generateFormsWithJSON:JSON
+                  initialValues:initialValues
+              disabledFieldsIDs:disabledFieldIDs
+                       disabled:disabled];
 
     return self;
 }
@@ -44,13 +45,19 @@
     return _values;
 }
 
-- (NSMutableArray *)updateFormsWithJSON:(NSArray *)JSON disabled:(BOOL)disabled
+- (void)generateFormsWithJSON:(NSArray *)JSON
+                initialValues:(NSDictionary *)initialValues
+            disabledFieldsIDs:(NSArray *)disabledFieldsIDs
+                     disabled:(BOOL)disabled
 {
     NSMutableArray *forms = [NSMutableArray array];
 
     NSMutableArray *targetsToRun = [NSMutableArray array];
 
     NSMutableArray *fieldsWithFormula = [NSMutableArray array];
+
+    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
+    [fieldValues addEntriesFromDictionary:initialValues];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
@@ -96,7 +103,7 @@
                 field.formula = [fieldDict andy_valueForKey:@"formula"];
                 field.targets = [self targetsUsingArray:[fieldDict andy_valueForKey:@"targets"]];
 
-                BOOL shouldDisable = (disabled || [self.disabledFieldsIDs containsObject:field.fieldID]);
+                BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:field.fieldID]);
 
                 if (shouldDisable) field.disabled = YES;
 
@@ -112,8 +119,8 @@
 
                         BOOL needsToRun = NO;
 
-                        if ([self.values andy_valueForKey:remoteID]) {
-                            if ([fieldValue identifierIsEqualTo:[self.values andy_valueForKey:remoteID]]) {
+                        if ([fieldValues andy_valueForKey:remoteID]) {
+                            if ([fieldValue identifierIsEqualTo:[fieldValues andy_valueForKey:remoteID]]) {
                                 needsToRun = YES;
                             }
                         }
@@ -131,16 +138,16 @@
                     }
                 }
 
-                if ([self.values andy_valueForKey:remoteID]) {
+                if ([fieldValues andy_valueForKey:remoteID]) {
                     if (field.type == HYPFormFieldTypeSelect) {
                         for (HYPFieldValue *value in values) {
 
-                            BOOL isInitialValue = ([value identifierIsEqualTo:[self.values andy_valueForKey:remoteID]]);
+                            BOOL isInitialValue = ([value identifierIsEqualTo:[fieldValues andy_valueForKey:remoteID]]);
 
                             if (isInitialValue) field.fieldValue = value;
                         }
                     } else {
-                        field.fieldValue = [self.values andy_valueForKey:remoteID];
+                        field.fieldValue = [fieldValues andy_valueForKey:remoteID];
                     }
                 }
 
@@ -168,7 +175,7 @@
         [forms addObject:form];
     }];
 
-    [self processFieldsWithFormula:fieldsWithFormula inForms:forms usingValues:self.values];
+    [self processFieldsWithFormula:fieldsWithFormula inForms:forms usingValues:fieldValues];
 
     [self processHiddenFieldsInTargets:targetsToRun
                                inForms:forms
@@ -177,8 +184,6 @@
                                 self.deletedFields = fields;
                                 self.deletedSections = sections;
                             }];
-
-    return forms;
 }
 
 - (NSArray *)targetsUsingArray:(NSArray *)array
