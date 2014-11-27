@@ -30,7 +30,7 @@
 
     _disabledFieldsIDs = disabledFieldIDs;
 
-    _forms = [self updateFormsWithJSON:JSON initialValues:initialValues disabled:disabled];
+    _forms = [self updateFormsWithJSON:JSON disabled:disabled];
 
     return self;
 }
@@ -44,7 +44,7 @@
     return _values;
 }
 
-- (NSMutableArray *)updateFormsWithJSON:(NSArray *)JSON initialValues:(NSDictionary *)initialValues disabled:(BOOL)disabled
+- (NSMutableArray *)updateFormsWithJSON:(NSArray *)JSON disabled:(BOOL)disabled
 {
     NSMutableArray *forms = [NSMutableArray array];
 
@@ -112,8 +112,8 @@
 
                         BOOL needsToRun = NO;
 
-                        if ([initialValues andy_valueForKey:remoteID]) {
-                            if ([fieldValue identifierIsEqualTo:[initialValues andy_valueForKey:remoteID]]) {
+                        if ([self.values andy_valueForKey:remoteID]) {
+                            if ([fieldValue identifierIsEqualTo:[self.values andy_valueForKey:remoteID]]) {
                                 needsToRun = YES;
                             }
                         }
@@ -131,16 +131,16 @@
                     }
                 }
 
-                if ([initialValues andy_valueForKey:remoteID]) {
+                if ([self.values andy_valueForKey:remoteID]) {
                     if (field.type == HYPFormFieldTypeSelect) {
                         for (HYPFieldValue *value in values) {
 
-                            BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:remoteID]]);
+                            BOOL isInitialValue = ([value identifierIsEqualTo:[self.values andy_valueForKey:remoteID]]);
 
                             if (isInitialValue) field.fieldValue = value;
                         }
                     } else {
-                        field.fieldValue = [initialValues andy_valueForKey:remoteID];
+                        field.fieldValue = [self.values andy_valueForKey:remoteID];
                     }
                 }
 
@@ -168,14 +168,14 @@
         [forms addObject:form];
     }];
 
-    [self processFieldsWithFormula:fieldsWithFormula inForms:forms usingValues:initialValues];
+    [self processFieldsWithFormula:fieldsWithFormula inForms:forms usingValues:self.values];
 
     [self processHiddenFieldsInTargets:targetsToRun
                                inForms:forms
                             completion:^(NSMutableDictionary *fields, NSMutableDictionary *sections) {
                                 [self removeHiddenFieldsInTargets:targetsToRun inForms:forms];
-
-#warning if (additionalValues) additionalValues(fields, sections);
+                                self.deletedFields = fields;
+                                self.deletedSections = sections;
                             }];
 
     return forms;
