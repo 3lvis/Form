@@ -5,6 +5,12 @@
 #import "UIFont+REMAStyles.h"
 #import "HYPTextFieldTypeManager.h"
 
+static const CGFloat HYPTextFieldBorderWidth = 1.0f;
+static const CGFloat HYPTextFieldCornerRadius = 5.0f;
+static const CGFloat HYPTextFieldLeftMargin = 10.0f;
+static const CGFloat HYPTextFieldClearButtonWidth = 30.0f;
+static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
+
 @interface HYPTextField () <UITextFieldDelegate>
 
 @property (nonatomic, getter = isModified) BOOL modified;
@@ -22,9 +28,9 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.layer.borderWidth = 1.0f;
+    self.layer.borderWidth = HYPTextFieldBorderWidth;
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
-    self.layer.cornerRadius = 5.0f;
+    self.layer.cornerRadius = HYPTextFieldCornerRadius;
 
     self.delegate = self;
 
@@ -34,7 +40,7 @@
     self.font = [UIFont REMATextFieldFont];
     self.textColor = [UIColor colorFromHex:@"455C73"];
 
-    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 20.0f)];
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, HYPTextFieldLeftMargin, 0.0f)];
     self.leftView = paddingView;
     self.leftViewMode = UITextFieldViewModeAlways;
 
@@ -46,7 +52,7 @@
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [clearButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
     [clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    clearButton.frame = CGRectMake(0.0f, 0.0f, 30.0f, 20.0f);
+    clearButton.frame = CGRectMake(0.0f, 0.0f, HYPTextFieldClearButtonWidth, HYPTextFieldClearButtonHeight);
     self.rightView = clearButton;
     self.rightViewMode = UITextFieldViewModeWhileEditing;
 
@@ -245,10 +251,10 @@
 
 - (BOOL)canBecomeFirstResponder
 {
-    BOOL isPopover = (self.type == HYPTextFieldTypeDropdown ||
-                      self.type == HYPTextFieldTypeDate);
+    BOOL isTextField = (self.type != HYPTextFieldTypeDropdown &&
+                        self.type != HYPTextFieldTypeDate);
 
-    return (!isPopover) ? [super canBecomeFirstResponder] : NO;
+    return (isTextField) ?: [super canBecomeFirstResponder];
 }
 
 #pragma mark - Notifications
