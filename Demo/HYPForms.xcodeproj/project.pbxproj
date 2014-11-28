@@ -231,12 +231,12 @@
 				1416FB371A28758E00991E33 /* HYPDateFormFieldCell.m */,
 				1416FB381A28758E00991E33 /* HYPDropdownFormFieldCell.h */,
 				1416FB391A28758E00991E33 /* HYPDropdownFormFieldCell.m */,
+				14D7C82E1A28ACA5004425B3 /* HYPFieldValueCell.h */,
+				14D7C82F1A28ACA5004425B3 /* HYPFieldValueCell.m */,
 				1416FB3A1A28758E00991E33 /* HYPFieldValuesTableViewController.h */,
 				1416FB3B1A28758E00991E33 /* HYPFieldValuesTableViewController.m */,
 				1416FB3C1A28758E00991E33 /* HYPPopoverFormFieldCell.h */,
 				1416FB3D1A28758E00991E33 /* HYPPopoverFormFieldCell.m */,
-				14D7C82E1A28ACA5004425B3 /* HYPFieldValueCell.h */,
-				14D7C82F1A28ACA5004425B3 /* HYPFieldValueCell.m */,
 			);
 			path = Popover;
 			sourceTree = "<group>";
