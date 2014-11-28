@@ -22,7 +22,6 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f
     if (!self) return nil;
 
     [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_arrow_down"] forState:UIControlStateNormal];
-    [self.contentView addSubview:self.iconButton];
 
     return self;
 }

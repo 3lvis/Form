@@ -23,7 +23,7 @@ UIPopoverControllerDelegate>
                  andContentSize:HYPDatePopoverSize];
     if (!self) return nil;
 
-    [self.contentView addSubview:self.iconButton];
+    [self.iconButton setImage:[UIImage imageNamed:@"ic_calendar"] forState:UIControlStateNormal];
 
     return self;
 }
@@ -46,17 +46,11 @@ UIPopoverControllerDelegate>
 {
     [super updateWithField:field];
 
-    [self.iconButton removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
-
     if (field.fieldValue) {
         self.textField.rawText = [NSDateFormatter localizedStringFromDate:field.fieldValue
                                                                 dateStyle:NSDateFormatterMediumStyle
                                                                 timeStyle:NSDateFormatterNoStyle];
-        [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
-        [self.iconButton addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
     } else {
-        [self.iconButton setImage:[UIImage imageNamed:@"ic_calendar"] forState:UIControlStateNormal];
-        [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
         self.textField.rawText = nil;
     }
 }
