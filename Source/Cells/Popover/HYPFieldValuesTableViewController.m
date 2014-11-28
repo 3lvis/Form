@@ -2,11 +2,13 @@
 
 #import "HYPFieldValue.h"
 #import "HYPFormField.h"
+#import "HYPFieldValuesTableViewHeader.h"
+#import "HYPFieldValueCell.h"
 
 #import "UIFont+REMAStyles.h"
 #import "UIColor+REMAColors.h"
 
-static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier";
+static const CGFloat HYPFieldValuesCellHeight = 44.0f;
 
 @interface HYPFieldValuesTableViewController ()
 
@@ -35,7 +37,25 @@ static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier"
 
     self.clearsSelectionOnViewWillAppear = NO;
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:HYPDropdownCellIdentifier];
+    self.tableView.rowHeight = HYPFieldValuesCellHeight;
+
+    [self.tableView registerClass:[HYPFieldValueCell class] forCellReuseIdentifier:HYPFieldValueCellIdentifer];
+    [self.tableView registerClass:[HYPFieldValuesTableViewHeader class] forHeaderFooterViewReuseIdentifier:HYPFieldValuesTableViewHeaderIdentifier];
+}
+
+#pragma mark - TableViewDelegate
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    HYPFieldValuesTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HYPFieldValuesTableViewHeaderIdentifier];
+    headerView.field = self.field;
+
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return (self.field.subtitle) ? HYPFieldValuesHeaderHeight : HYPFieldValuesCellHeight;
 }
 
 #pragma mark - Table View Data Source
@@ -47,21 +67,10 @@ static NSString * const HYPDropdownCellIdentifier = @"HYPDropdownCellIdentifier"
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HYPDropdownCellIdentifier];
-    cell.textLabel.font = [UIFont REMAMediumSize];
-    cell.textLabel.textColor = [UIColor REMADarkBlue];
-    cell.textLabel.highlightedTextColor = [UIColor whiteColor];
-    cell.textLabel.textAlignment = NSTextAlignmentLeft;
-
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    cell.backgroundColor = [UIColor whiteColor];
-
-    UIView *selectedBackgroundView = [[UIView alloc] init];
-    selectedBackgroundView.backgroundColor = [UIColor REMACallToActionPressed];
-    cell.selectedBackgroundView = selectedBackgroundView;
+    HYPFieldValueCell *cell = [tableView dequeueReusableCellWithIdentifier:HYPFieldValueCellIdentifer];
 
     HYPFieldValue *fieldValue = self.values[indexPath.row];
-    cell.textLabel.text = fieldValue.title;
+    cell.fieldValue = fieldValue;
 
     if ([self.field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
         HYPFieldValue *currentFieldValue = self.field.fieldValue;

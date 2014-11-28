@@ -3,7 +3,7 @@
 #import "UIColor+REMAColors.h"
 #import "UIFont+REMAStyles.m"
 
-static const CGSize HYPDatePopoverSize = { 320.0f, 216.0f };
+static const CGSize HYPDatePopoverSize = { 320.0f, 240.0f };
 
 static CGFloat const HYPDoneButtonX = 10.0f;
 static CGFloat const HYPDoneButtonHeight = 45.0f;
@@ -11,7 +11,6 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
 @interface HYPFormTimeViewController ()
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
-
 @property (nonatomic, strong) UIButton *doneButton;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITextView *messageTextView;
@@ -52,17 +51,17 @@ static CGFloat const HYPDoneButtonHeight = 45.0f;
 {
     if (_doneButton) return _doneButton;
 
-    CGFloat height = HYPDoneButtonHeight;
     CGFloat offset = HYPDoneButtonX;
-    CGFloat y = 0.0f;
+    CGFloat x = HYPDoneButtonX;
+    CGFloat y = (self.date) ? CGRectGetMaxY(self.datePicker.frame) : 0.0f;
+    CGFloat width  = HYPDatePopoverSize.width - (offset * 2);
+    CGFloat height = HYPDoneButtonHeight;
 
-    if (self.date) y = CGRectGetMaxY(self.datePicker.frame);
-
-    _doneButton = [[UIButton alloc] initWithFrame:CGRectMake(offset, y,
-                                                             HYPDatePopoverSize.width - (offset * 2.0f), height)];
+    _doneButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, height)];
     [_doneButton setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
     _doneButton.backgroundColor = [UIColor REMACallToAction];
-    [_doneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_doneButton addTarget:self action:@selector(doneButtonPressed)
+          forControlEvents:UIControlEventTouchUpInside];
     _doneButton.layer.cornerRadius = 5.0f;
     _doneButton.titleLabel.font = [UIFont REMALargeSizeBold];
 

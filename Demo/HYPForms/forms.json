@@ -196,6 +196,7 @@
           {
             "id":"position",
             "title":"Stillingstype",
+            "subtitle":"Lager ny kontrakt",
             "type":"select",
             "size":{
               "width": 50,

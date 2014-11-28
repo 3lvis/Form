@@ -2,12 +2,11 @@
 
 #import "HYPFormTimeViewController.h"
 
-static const CGSize HYPDatePopoverSize = { 320.0f, 276.0f };
+static const CGSize HYPDatePopoverSize = { 320.0f, 272.0f };
 
-@interface HYPDateFormFieldCell () <HYPTextFormFieldDelegate, HYPFormTimeViewControllerDelegate,
+@interface HYPDateFormFieldCell () <HYPTextFieldDelegate, HYPFormTimeViewControllerDelegate,
 UIPopoverControllerDelegate>
 
-@property (nonatomic, strong) HYPTextFormField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) HYPFormTimeViewController *timeViewController;
 
@@ -23,7 +22,7 @@ UIPopoverControllerDelegate>
                  andContentSize:HYPDatePopoverSize];
     if (!self) return nil;
 
-    self.iconImageView.image = [UIImage imageNamed:@"ic_calendar"];
+    [self.iconButton setImage:[UIImage imageNamed:@"ic_calendar"] forState:UIControlStateNormal];
 
     return self;
 }
@@ -46,21 +45,13 @@ UIPopoverControllerDelegate>
 {
     [super updateWithField:field];
 
-    if (!field.fieldValue) {
-        self.textField.rawText = nil;
-        return;
-    }
-
     if (field.fieldValue) {
-        self.textField.rawText = [NSDateFormatter localizedStringFromDate:field.fieldValue
+        self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.fieldValue
                                                                 dateStyle:NSDateFormatterMediumStyle
                                                                 timeStyle:NSDateFormatterNoStyle];
+    } else {
+        self.fieldValueLabel.text = nil;
     }
-}
-
-- (void)validate
-{
-    [self.textField setValid:[self.field validate]];
 }
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field

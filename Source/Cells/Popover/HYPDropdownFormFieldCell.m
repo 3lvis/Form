@@ -3,9 +3,9 @@
 #import "HYPFieldValue.h"
 #import "HYPFieldValuesTableViewController.h"
 
-static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f };
+static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f };
 
-@interface HYPDropdownFormFieldCell () <HYPTextFormFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
+@interface HYPDropdownFormFieldCell () <HYPTextFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
 
 @property (nonatomic, strong) HYPFieldValuesTableViewController *fieldValuesController;
 
@@ -21,7 +21,7 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
                  andContentSize:HYPDropdownPopoverSize];
     if (!self) return nil;
 
-    self.iconImageView.image = [UIImage imageNamed:@"ic_mini_arrow_down"];
+    [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_arrow_down"] forState:UIControlStateNormal];
 
     return self;
 }
@@ -44,29 +44,23 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 240.0f
 {
     [super updateWithField:field];
 
-    if (!field.fieldValue) {
-        self.textField.rawText = nil;
-        return;
-    }
+    if (field.fieldValue) {
+        if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+            HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
+            self.fieldValueLabel.text = fieldValue.title;
+        } else {
 
-    if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
-        HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
-        self.textField.rawText = fieldValue.title;
-    } else {
-
-        for (HYPFieldValue *fieldValue in field.values) {
-            if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
-                field.fieldValue = fieldValue;
-                self.textField.rawText = fieldValue.title;
-                break;
+            for (HYPFieldValue *fieldValue in field.values) {
+                if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
+                    field.fieldValue = fieldValue;
+                    self.fieldValueLabel.text = fieldValue.title;
+                    break;
+                }
             }
         }
+    } else {
+        self.fieldValueLabel.text = nil;
     }
-}
-
-- (void)validate
-{
-    [self.textField setValid:[self.field validate]];
 }
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field

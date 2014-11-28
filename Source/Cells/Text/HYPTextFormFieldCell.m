@@ -1,8 +1,8 @@
 #import "HYPTextFormFieldCell.h"
 
-@interface HYPTextFormFieldCell () <HYPTextFormFieldDelegate>
+@interface HYPTextFormFieldCell () <HYPTextFieldDelegate>
 
-@property (nonatomic, strong) HYPTextFormField *textField;
+@property (nonatomic, strong) HYPTextField *textField;
 
 @end
 
@@ -22,12 +22,12 @@
 
 #pragma mark - Getters
 
-- (HYPTextFormField *)textField
+- (HYPTextField *)textField
 {
     if (_textField) return _textField;
 
-    _textField = [[HYPTextFormField alloc] initWithFrame:[self frameForTextField]];
-    _textField.formFieldDelegate = self;
+    _textField = [[HYPTextField alloc] initWithFrame:[self frameForTextField]];
+    _textField.textFieldDelegate = self;
 
     return _textField;
 }
@@ -78,6 +78,19 @@
     return field.fieldValue;
 }
 
+#pragma mark - Actions
+
+- (void)focusAction
+{
+    [self.textField becomeFirstResponder];
+}
+
+- (void)clearAction
+{
+    self.field.fieldValue = nil;
+    [self updateWithField:self.field];
+}
+
 #pragma mark - Private methods
 
 - (void)layoutSubviews
@@ -90,8 +103,8 @@
 - (CGRect)frameForTextField
 {
     CGFloat marginX = HYPTextFormFieldCellMarginX;
-    CGFloat marginTop = HYPTextFormFieldCellTextFieldMarginTop;
-    CGFloat marginBotton = HYPTextFormFieldCellTextFieldMarginBottom;
+    CGFloat marginTop = HYPFormFieldCellMarginTop;
+    CGFloat marginBotton = HYPFormFieldCellMarginBottom;
 
     CGFloat width  = CGRectGetWidth(self.frame) - (marginX * 2);
     CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;
@@ -100,16 +113,16 @@
     return frame;
 }
 
-#pragma mark - HYPTextFormFieldDelegate
+#pragma mark - HYPTextFieldDelegate
 
-- (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField
+- (void)textFormFieldDidEndEditing:(HYPTextField *)textField
 {
     if (self.textField.rawText) {
         [self.textField setValid:[self.field validate]];
     }
 }
 
-- (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
+- (void)textFormField:(HYPTextField *)textField didUpdateWithText:(NSString *)text
 {
     self.field.fieldValue = text;
 

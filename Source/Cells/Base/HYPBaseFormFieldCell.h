@@ -2,19 +2,23 @@
 
 #import "HYPFormFieldHeadingLabel.h"
 
-#import "HYPTextFormField.h"
+#import "HYPTextField.h"
 #import "HYPFormFieldHeadingLabel.h"
 
 #import "HYPFormField.h"
+
+static const CGFloat HYPFormFieldCellMarginTop = 30.0f;
+static const CGFloat HYPFormFieldCellMarginBottom = 10.0f;
 
 static const NSInteger HYPFieldCellMargin = 10.0f;
 static const NSInteger HYPFieldCellItemSmallHeight = 1.0f;
 static const NSInteger HYPFieldCellItemHeight = 85.0f;
 
 static const CGFloat HYPTextFormFieldCellMarginX = 10.0f;
-static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
-static const CGFloat HYPTextFormFieldCellTextFieldMarginTop = 30.0f;
-static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
+
+static const CGFloat HYPFormFieldCellBorderWidth = 1.0f;
+static const CGFloat HYPFormFieldCellCornerRadius = 5.0f;
+static const CGFloat HYPFormFieldCellLeftMargin = 10.0f;
 
 @protocol HYPBaseFormFieldCellDelegate;
 

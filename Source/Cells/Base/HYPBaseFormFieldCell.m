@@ -2,6 +2,7 @@
 
 static const CGFloat HYPTextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
+static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 
 @implementation HYPBaseFormFieldCell
 
@@ -15,6 +16,17 @@ static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
     [self.contentView addSubview:self.headingLabel];
 
     return self;
+}
+
+#pragma mark - Getters
+
+- (HYPFormFieldHeadingLabel *)headingLabel
+{
+    if (_headingLabel) return _headingLabel;
+
+    _headingLabel = [[HYPFormFieldHeadingLabel alloc] initWithFrame:[self frameForHeadingLabel]];
+
+    return _headingLabel;
 }
 
 #pragma mark - Setters
@@ -34,17 +46,6 @@ static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
     self.headingLabel.text = field.title;
 
     [self updateWithField:field];
-}
-
-#pragma mark - Getters
-
-- (HYPFormFieldHeadingLabel *)headingLabel
-{
-    if (_headingLabel) return _headingLabel;
-
-    _headingLabel = [[HYPFormFieldHeadingLabel alloc] initWithFrame:[self frameForHeadingLabel]];
-
-    return _headingLabel;
 }
 
 #pragma mark - Overwritables

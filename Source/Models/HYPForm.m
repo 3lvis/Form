@@ -57,6 +57,7 @@
             HYPFormField *field = [HYPFormField new];
             field.fieldID   = remoteID;
             field.title = [fieldDict andy_valueForKey:@"title"];
+            field.subtitle = [fieldDict andy_valueForKey:@"subtitle"];
             field.typeString  = [fieldDict andy_valueForKey:@"type"];
             field.type = [field typeFromTypeString:[fieldDict andy_valueForKey:@"type"]];
             NSNumber *width = [fieldDict andy_valueForKey:@"size.width"];

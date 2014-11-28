@@ -1,17 +1,22 @@
-#import "HYPTextFormField.h"
+#import "HYPTextField.h"
+
+#import "HYPBaseFormFieldCell.h"
 
 #import "UIColor+REMAColors.h"
 #import "UIColor+ANDYHex.h"
 #import "UIFont+REMAStyles.h"
 #import "HYPTextFieldTypeManager.h"
 
-@interface HYPTextFormField () <UITextFieldDelegate>
+static const CGFloat HYPTextFieldClearButtonWidth = 30.0f;
+static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
+
+@interface HYPTextField () <UITextFieldDelegate>
 
 @property (nonatomic, getter = isModified) BOOL modified;
 
 @end
 
-@implementation HYPTextFormField
+@implementation HYPTextField
 
 @synthesize rawText = _rawText;
 
@@ -22,9 +27,9 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.layer.borderWidth = 1.0f;
+    self.layer.borderWidth = HYPFormFieldCellBorderWidth;
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
-    self.layer.cornerRadius = 5.0f;
+    self.layer.cornerRadius = HYPFormFieldCellCornerRadius;
 
     self.delegate = self;
 
@@ -34,7 +39,7 @@
     self.font = [UIFont REMATextFieldFont];
     self.textColor = [UIColor colorFromHex:@"455C73"];
 
-    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 20.0f)];
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, HYPFormFieldCellLeftMargin, 0.0f)];
     self.leftView = paddingView;
     self.leftViewMode = UITextFieldViewModeAlways;
 
@@ -42,6 +47,13 @@
     [self addTarget:self action:@selector(textFieldDidReturn:) forControlEvents:UIControlEventEditingDidEndOnExit];
 
     self.returnKeyType = UIReturnKeyDone;
+
+    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [clearButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
+    [clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    clearButton.frame = CGRectMake(0.0f, 0.0f, HYPTextFieldClearButtonWidth, HYPTextFieldClearButtonHeight);
+    self.rightView = clearButton;
+    self.rightViewMode = UITextFieldViewModeWhileEditing;
 
     return self;
 }
@@ -188,13 +200,13 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(HYPTextFormField *)textField
+- (BOOL)textFieldShouldBeginEditing:(HYPTextField *)textField
 {
     BOOL selectable = (textField.type == HYPTextFieldTypeDropdown ||
                        textField.type == HYPTextFieldTypeDate);
 
-    if (selectable && [self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
-        [self.formFieldDelegate textFormFieldDidBeginEditing:self];
+    if (selectable && [self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
+        [self.textFieldDelegate textFormFieldDidBeginEditing:self];
     }
 
     return !selectable;
@@ -209,8 +221,8 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     self.active = NO;
-    if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
-        [self.formFieldDelegate textFormFieldDidEndEditing:self];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
+        [self.textFieldDelegate textFormFieldDidEndEditing:self];
     }
 }
 
@@ -229,10 +241,8 @@
 
 - (BOOL)becomeFirstResponder
 {
-    if (self.type == HYPTextFieldTypeDropdown || self.type == HYPTextFieldTypeDate) {
-        if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
-            [self.formFieldDelegate textFormFieldDidBeginEditing:self];
-        }
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
+        [self.textFieldDelegate textFormFieldDidBeginEditing:self];
     }
 
     return [super becomeFirstResponder];
@@ -240,9 +250,10 @@
 
 - (BOOL)canBecomeFirstResponder
 {
-    if (self.type == HYPTextFieldTypeDropdown || self.type == HYPTextFieldTypeDate) return NO;
+    BOOL isTextField = (self.type != HYPTextFieldTypeDropdown &&
+                        self.type != HYPTextFieldTypeDate);
 
-    return [super canBecomeFirstResponder];
+    return (isTextField) ?: [super canBecomeFirstResponder];
 }
 
 #pragma mark - Notifications
@@ -256,16 +267,28 @@
     self.modified = YES;
     self.rawText = self.text;
 
-    if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
-        [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+        [self.textFieldDelegate textFormField:self didUpdateWithText:self.rawText];
     }
 }
 
 - (void)textFieldDidReturn:(UITextField *)textField
 {
-    if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidReturn:)]) {
-        [self.formFieldDelegate textFormFieldDidReturn:self];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidReturn:)]) {
+        [self.textFieldDelegate textFormFieldDidReturn:self];
     }
 }
+
+#pragma mark - Actions
+
+- (void)clearButtonAction
+{
+    self.rawText = nil;
+
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+        [self.textFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+    }
+}
+
 
 @end
