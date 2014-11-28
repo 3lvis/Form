@@ -246,10 +246,10 @@
 
 - (BOOL)canBecomeFirstResponder
 {
-    BOOL isModularDialog = (self.type == HYPTextFieldTypeDropdown ||
+    BOOL isPopover = (self.type == HYPTextFieldTypeDropdown ||
                             self.type == HYPTextFieldTypeDate);
 
-    return (!isModularDialog) ? [super canBecomeFirstResponder] : NO;
+    return (!isPopover) ? [super canBecomeFirstResponder] : NO;
 }
 
 #pragma mark - Notifications
