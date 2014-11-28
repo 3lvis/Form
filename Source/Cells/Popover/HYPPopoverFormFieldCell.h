@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) HYPTitleLabel *titleLabel;
 @property (nonatomic, strong) UIPopoverController *popoverController;
+@property (nonatomic, strong) UIButton *iconButton;
 
 - (instancetype)initWithFrame:(CGRect)frame contentViewController:(UIViewController *)controller
                andContentSize:(CGSize)contentSize;

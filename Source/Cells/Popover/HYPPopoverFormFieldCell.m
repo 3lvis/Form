@@ -8,6 +8,9 @@
 
 #import "HYPPopoverFormFieldCell.h"
 
+static const CGFloat HYPTextFormFieldIconWidth = 32.0f;
+static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
+
 @interface HYPPopoverFormFieldCell () <HYPTitleLabelDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIViewController *contentViewController;
@@ -29,6 +32,7 @@
     _contentSize = contentSize;
 
     [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.iconButton];
 
     return self;
 }
@@ -57,6 +61,17 @@
     return _popoverController;
 }
 
+- (UIButton *)iconButton
+{
+    if (_iconButton) return _iconButton;
+
+    _iconButton = [[UIButton alloc] initWithFrame:[self frameForIconButton]];
+    _iconButton.contentMode = UIViewContentModeRight;
+    _iconButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+    return _iconButton;
+}
+
 #pragma mark - Private methods
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
@@ -78,6 +93,13 @@
     self.titleLabel.valid          = field.valid;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    self.iconButton.frame = [self frameForIconButton];
+}
+
 - (CGRect)frameForTitleLabel
 {
     CGFloat marginX = HYPTextFormFieldCellMarginX;
@@ -87,6 +109,17 @@
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
     CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;
     CGRect frame = CGRectMake(marginX, marginTop, width, height);
+
+    return frame;
+}
+
+- (CGRect)frameForIconButton
+{
+    CGFloat x = CGRectGetWidth(self.frame) - HYPTextFormFieldIconWidth - HYPTextFormFieldCellMarginX;
+    CGFloat y = HYPTextFormFieldIconHeight - 4;
+    CGFloat width = HYPTextFormFieldIconWidth;
+    CGFloat height = HYPTextFormFieldIconHeight;
+    CGRect frame = CGRectMake(x, y, width, height);
 
     return frame;
 }
