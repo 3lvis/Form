@@ -13,7 +13,10 @@
 		14AF53831A248E1E00F7B7CB /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF53821A248E1E00F7B7CB /* HYPImageFormFieldCell.m */; };
 		14B4C17919EC37FF00B1FE1A /* HYPFormTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */; };
 		14BF16C819EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */; };
-		14CCCAAF19F26600005EC649 /* HYPFormsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CCCAAE19F26600005EC649 /* HYPFormsTests.m */; };
+		14C1287B1A27947F00729825 /* HYPFormFieldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C1287A1A27947F00729825 /* HYPFormFieldTests.m */; };
+		14CCCAAF19F26600005EC649 /* HYPFormTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CCCAAE19F26600005EC649 /* HYPFormTests.m */; };
+		14EE7ED71A269D5100AC17B0 /* HYPFormsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EE7ED61A269D5100AC17B0 /* HYPFormsManager.m */; };
+		14EE7ED91A269E7F00AC17B0 /* HYPFormsManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EE7ED81A269E7F00AC17B0 /* HYPFormsManagerTests.m */; };
 		14F1554C19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F1554B19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m */; };
 		4408F18A19E81EA6005AE53F /* HYPBaseFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F15F19E81EA6005AE53F /* HYPBaseFormFieldCell.m */; };
 		4408F18B19E81EA6005AE53F /* HYPFormFieldHeadingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4408F16119E81EA6005AE53F /* HYPFormFieldHeadingLabel.m */; };
@@ -58,9 +61,9 @@
 		445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */; };
 		44BDD18D19EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDD18919EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m */; };
 		44BDD18E19EBD644008E9CA9 /* HYPValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDD18B19EBD644008E9CA9 /* HYPValidator.m */; };
-		44D5600819EBB9580087067E /* HYPBlankFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D5600719EBB9580087067E /* HYPBlankFormFieldCell.m */; };
 		44D5600B19EBBDA30087067E /* HYPClassFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D5600A19EBBDA30087067E /* HYPClassFactory.m */; };
 		890DF4637B5C51A0210949DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9243ED4871CF70DD889729A /* libPods.a */; };
+		8C8DE8B54F88B31D22D47547 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9243ED4871CF70DD889729A /* libPods.a */; };
 		BD03AE7919F98D0700DF726E /* HYPPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD03AE7819F98D0700DF726E /* HYPPostalCodeManager.m */; };
 		BD171A311A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD171A301A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m */; };
 		BD30E7AC19F4FAB6001AFA58 /* HYPFloatFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD30E7AB19F4FAB6001AFA58 /* HYPFloatFormatter.m */; };
@@ -89,9 +92,13 @@
 		14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormTarget.m; sourceTree = "<group>"; };
 		14BF16C619EE4A0900C1F1C2 /* HYPSampleCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSampleCollectionViewController.h; sourceTree = "<group>"; };
 		14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSampleCollectionViewController.m; sourceTree = "<group>"; };
+		14C1287A1A27947F00729825 /* HYPFormFieldTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormFieldTests.m; sourceTree = "<group>"; };
 		14CCCAAA19F26600005EC649 /* HYPFormsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYPFormsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CCCAAD19F26600005EC649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14CCCAAE19F26600005EC649 /* HYPFormsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPFormsTests.m; sourceTree = "<group>"; };
+		14CCCAAE19F26600005EC649 /* HYPFormTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPFormTests.m; sourceTree = "<group>"; };
+		14EE7ED51A269D5100AC17B0 /* HYPFormsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormsManager.h; sourceTree = "<group>"; };
+		14EE7ED61A269D5100AC17B0 /* HYPFormsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormsManager.m; sourceTree = "<group>"; };
+		14EE7ED81A269E7F00AC17B0 /* HYPFormsManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormsManagerTests.m; sourceTree = "<group>"; };
 		14F1554A19F3EBBC00086002 /* UIDevice+HYPRealOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+HYPRealOrientation.h"; sourceTree = "<group>"; };
 		14F1554B19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+HYPRealOrientation.m"; sourceTree = "<group>"; };
 		4408F15E19E81EA6005AE53F /* HYPBaseFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBaseFormFieldCell.h; sourceTree = "<group>"; };
@@ -174,8 +181,6 @@
 		44BDD18919EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberValidator.m; sourceTree = "<group>"; };
 		44BDD18A19EBD644008E9CA9 /* HYPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPValidator.h; sourceTree = "<group>"; };
 		44BDD18B19EBD644008E9CA9 /* HYPValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPValidator.m; sourceTree = "<group>"; };
-		44D5600619EBB9580087067E /* HYPBlankFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBlankFormFieldCell.h; sourceTree = "<group>"; };
-		44D5600719EBB9580087067E /* HYPBlankFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBlankFormFieldCell.m; sourceTree = "<group>"; };
 		44D5600919EBBDA30087067E /* HYPClassFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPClassFactory.h; sourceTree = "<group>"; };
 		44D5600A19EBBDA30087067E /* HYPClassFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPClassFactory.m; sourceTree = "<group>"; };
 		B9243ED4871CF70DD889729A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8DE8B54F88B31D22D47547 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,8 +219,10 @@
 		14CCCAAB19F26600005EC649 /* HYPFormsTests */ = {
 			isa = PBXGroup;
 			children = (
-				14CCCAAE19F26600005EC649 /* HYPFormsTests.m */,
+				14EE7ED81A269E7F00AC17B0 /* HYPFormsManagerTests.m */,
+				14CCCAAE19F26600005EC649 /* HYPFormTests.m */,
 				BD171A301A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m */,
+				14C1287A1A27947F00729825 /* HYPFormFieldTests.m */,
 				14CCCAAC19F26600005EC649 /* Supporting Files */,
 			);
 			path = HYPFormsTests;
@@ -244,6 +252,8 @@
 				4408F17A19E81EA6005AE53F /* HYPFormsCollectionViewDataSource.m */,
 				4408F17B19E81EA6005AE53F /* HYPFormsLayout.h */,
 				4408F17C19E81EA6005AE53F /* HYPFormsLayout.m */,
+				14EE7ED51A269D5100AC17B0 /* HYPFormsManager.h */,
+				14EE7ED61A269D5100AC17B0 /* HYPFormsManager.m */,
 				4445D50F19EBC6B80034A5D7 /* Others */,
 			);
 			name = Source;
@@ -270,8 +280,6 @@
 				4408F16119E81EA6005AE53F /* HYPFormFieldHeadingLabel.m */,
 				4408F16219E81EA6005AE53F /* HYPPopoverFormFieldCell.h */,
 				4408F16319E81EA6005AE53F /* HYPPopoverFormFieldCell.m */,
-				44D5600619EBB9580087067E /* HYPBlankFormFieldCell.h */,
-				44D5600719EBB9580087067E /* HYPBlankFormFieldCell.m */,
 				4408F16419E81EA6005AE53F /* HYPTextFieldTypeManager.h */,
 				4408F16519E81EA6005AE53F /* HYPTextFieldTypeManager.m */,
 				4408F16619E81EA6005AE53F /* HYPTextFormField.h */,
@@ -494,9 +502,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14CCCAB419F26600005EC649 /* Build configuration list for PBXNativeTarget "HYPFormsTests" */;
 			buildPhases = (
+				6E74C7511EBD1352C837FADD /* Check Pods Manifest.lock */,
 				14CCCAA619F26600005EC649 /* Sources */,
 				14CCCAA719F26600005EC649 /* Frameworks */,
 				14CCCAA819F26600005EC649 /* Resources */,
+				1D11D6F84CE7FE7D261FD62C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -609,6 +619,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1D11D6F84CE7FE7D261FD62C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E74C7511EBD1352C837FADD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		D7749FE0D66398DC8D2F431F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -631,7 +671,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14CCCAAF19F26600005EC649 /* HYPFormsTests.m in Sources */,
+				14EE7ED91A269E7F00AC17B0 /* HYPFormsManagerTests.m in Sources */,
+				14CCCAAF19F26600005EC649 /* HYPFormTests.m in Sources */,
+				14C1287B1A27947F00729825 /* HYPFormFieldTests.m in Sources */,
 				BD171A311A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,6 +705,7 @@
 				4445D51219EBC6B80034A5D7 /* HYPFormTimeViewController.m in Sources */,
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
 				44BDD18D19EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m in Sources */,
+				14EE7ED71A269D5100AC17B0 /* HYPFormsManager.m in Sources */,
 				14F1554C19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m in Sources */,
 				4408F1BA19E81F67005AE53F /* HYPPhoneNumberFormatter.m in Sources */,
 				4408F1BD19E81F67005AE53F /* HYPFloatInputValidator.m in Sources */,
@@ -683,7 +726,6 @@
 				4408F1C019E81F67005AE53F /* HYPNumberInputValidator.m in Sources */,
 				4408F1BC19E81F67005AE53F /* HYPBankAccountNumberInputValidator.m in Sources */,
 				4408F18C19E81EA6005AE53F /* HYPPopoverFormFieldCell.m in Sources */,
-				44D5600819EBB9580087067E /* HYPBlankFormFieldCell.m in Sources */,
 				4408F19119E81EA6005AE53F /* HYPFieldValuesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -701,6 +743,7 @@
 /* Begin XCBuildConfiguration section */
 		14CCCAB219F26600005EC649 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E05BE626FD241721C25276D4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -712,15 +755,17 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = HYPFormsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYPForms.app/HYPForms";
 			};
 			name = Debug;
 		};
 		14CCCAB319F26600005EC649 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07105CF419C6385F89E04B13 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -728,9 +773,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = HYPFormsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYPForms.app/HYPForms";
 			};
 			name = Release;

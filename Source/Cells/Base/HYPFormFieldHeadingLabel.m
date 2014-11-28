@@ -1,11 +1,3 @@
-//
-//  HYPFormFieldHeadingLabel.m
-
-//
-//  Created by Elvis Nunez on 07/10/14.
-//  Copyright (c) 2014 Hyper. All rights reserved.
-//
-
 #import "HYPFormFieldHeadingLabel.h"
 
 #import "UIColor+ANDYHex.h"
