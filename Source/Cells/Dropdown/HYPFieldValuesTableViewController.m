@@ -23,7 +23,7 @@ static const CGFloat HYPDropdownCellHeight = 44.0f;
 
 @property (nonatomic, strong) NSArray *values;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *label;
+@property (nonatomic, strong) NSString *subtitle;
 
 @end
 
@@ -46,7 +46,7 @@ static const CGFloat HYPDropdownCellHeight = 44.0f;
     _field = field;
 
     self.title = field.title;
-    self.label = field.label;
+    self.subtitle = field.subtitle;
     self.values = [NSArray arrayWithArray:field.values];
 
     [self.tableView reloadData];
@@ -67,12 +67,12 @@ static const CGFloat HYPDropdownCellHeight = 44.0f;
 
 - (UIView *)sectionHeader
 {
-    CGFloat headerHeight = (self.label) ? HYPDropdownHeaderHeight : HYPDropdownCellHeight;
+    CGFloat headerHeight = (self.subtitle) ? HYPDropdownHeaderHeight : HYPDropdownCellHeight;
 
     CGRect rect = CGRectMake(0, 0, HYPDropdownHeaderWidth, headerHeight);
     UIView *view = [[UIView alloc] initWithFrame:rect];
 
-    if (self.label) rect.origin.y -= 10;
+    if (self.subtitle) rect.origin.y -= 10;
 
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
 
@@ -83,10 +83,10 @@ static const CGFloat HYPDropdownCellHeight = 44.0f;
     label.textAlignment = NSTextAlignmentCenter;
     [view addSubview:label];
 
-    if (self.label) {
+    if (self.subtitle) {
         CGRect statusRect = CGRectMake(0,15,HYPDropdownHeaderWidth,headerHeight);
         UILabel *statusLabel = [[UILabel alloc] initWithFrame:statusRect];
-        statusLabel.text = self.label;
+        statusLabel.text = self.subtitle;
         statusLabel.backgroundColor = [UIColor clearColor];
         statusLabel.font = [UIFont REMAMediumSizeLight];
         statusLabel.textColor = [UIColor REMACoreBlue];
@@ -106,7 +106,7 @@ static const CGFloat HYPDropdownCellHeight = 44.0f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return (self.label) ? HYPDropdownHeaderHeight : HYPDropdownCellHeight;
+    return (self.subtitle) ? HYPDropdownHeaderHeight : HYPDropdownCellHeight;
 }
 
 #pragma mark - Table View Data Source
