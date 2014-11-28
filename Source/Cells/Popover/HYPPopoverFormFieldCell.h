@@ -7,10 +7,11 @@
 //
 
 #import "HYPBaseFormFieldCell.h"
+#import "HYPTitleLabel.h"
 
 @interface HYPPopoverFormFieldCell : HYPBaseFormFieldCell
 
-@property (nonatomic, strong) HYPTextFormField *textField;
+@property (nonatomic, strong) HYPTitleLabel *titleLabel;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 
 - (instancetype)initWithFrame:(CGRect)frame contentViewController:(UIViewController *)controller

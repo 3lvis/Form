@@ -114,7 +114,7 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
     CGFloat y = HYPTextFormFieldIconHeight - 4;
     CGFloat width = HYPTextFormFieldIconWidth;
     CGFloat height = HYPTextFormFieldIconHeight;
-    CGRect  frame = CGRectMake(x, y, width, height);
+    CGRect frame = CGRectMake(x, y, width, height);
 
     return frame;
 }

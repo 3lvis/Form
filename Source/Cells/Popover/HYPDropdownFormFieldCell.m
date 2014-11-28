@@ -29,7 +29,6 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f
                  andContentSize:HYPDropdownPopoverSize];
     if (!self) return nil;
 
-    [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
     [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_arrow_down"] forState:UIControlStateNormal];
     [self.contentView addSubview:self.iconButton];
 
@@ -48,13 +47,6 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f
     return _fieldValuesController;
 }
 
-#pragma mark - Actions
-
-- (void)focusAction
-{
-    [self.textField becomeFirstResponder];
-}
-
 #pragma mark - Private headers
 
 - (void)updateWithField:(HYPFormField *)field
@@ -64,25 +56,25 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f
     if (field.fieldValue) {
         if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
             HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
-            self.textField.rawText = fieldValue.title;
+            self.titleLabel.text = fieldValue.title;
         } else {
 
             for (HYPFieldValue *fieldValue in field.values) {
                 if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
                     field.fieldValue = fieldValue;
-                    self.textField.rawText = fieldValue.title;
+                    self.titleLabel.text = fieldValue.title;
                     break;
                 }
             }
         }
     } else {
-        self.textField.rawText = nil;
+        self.titleLabel.text = nil;
     }
 }
 
 - (void)validate
 {
-    [self.textField setValid:[self.field validate]];
+    [self.titleLabel setValid:[self.field validate]];
 }
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field

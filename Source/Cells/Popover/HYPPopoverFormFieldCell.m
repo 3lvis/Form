@@ -8,7 +8,7 @@
 
 #import "HYPPopoverFormFieldCell.h"
 
-@interface HYPPopoverFormFieldCell () <HYPTextFormFieldDelegate, UIPopoverControllerDelegate>
+@interface HYPPopoverFormFieldCell () <HYPTitleLabelDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIViewController *contentViewController;
 @property (nonatomic) CGSize contentSize;
@@ -28,21 +28,21 @@
     _contentViewController = contentViewController;
     _contentSize = contentSize;
 
-    [self.contentView addSubview:self.textField];
+    [self.contentView addSubview:self.titleLabel];
 
     return self;
 }
 
 #pragma mark - Getters
 
-- (HYPTextFormField *)textField
+- (HYPTitleLabel *)titleLabel
 {
-    if (_textField) return _textField;
+    if (_titleLabel) return _titleLabel;
 
-    _textField = [[HYPTextFormField alloc] initWithFrame:[self frameForTextField]];
-    _textField.formFieldDelegate = self;
+    _titleLabel = [[HYPTitleLabel alloc] initWithFrame:[self frameForTitleLabel]];
+    _titleLabel.delegate = self;
 
-    return _textField;
+    return _titleLabel;
 }
 
 - (UIPopoverController *)popoverController
@@ -57,20 +57,6 @@
     return _popoverController;
 }
 
-#pragma mark - HYPTextFormFieldDelegate
-
-- (void)textFormFieldDidBeginEditing:(HYPTextFormField *)textField
-{
-    [self updateContentViewController:self.contentViewController withField:self.field];
-
-    if (!self.popoverController.isPopoverVisible) {
-        [self.popoverController presentPopoverFromRect:self.bounds
-                                                inView:self
-                              permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
-                                              animated:YES];
-    }
-}
-
 #pragma mark - Private methods
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
@@ -80,22 +66,19 @@
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
-    self.textField.enabled = !disabled;
+    self.titleLabel.enabled = !disabled;
 }
 
 - (void)updateWithField:(HYPFormField *)field
 {
     self.iconButton.hidden = field.disabled;
 
-    self.textField.hidden         = (field.sectionSeparator);
-    self.textField.inputValidator = [self.field inputValidator];
-    self.textField.formatter      = [self.field formatter];
-    self.textField.typeString     = field.typeString;
-    self.textField.enabled        = !field.disabled;
-    self.textField.valid          = field.valid;
+    self.titleLabel.hidden         = (field.sectionSeparator);
+    self.titleLabel.enabled        = !field.disabled;
+    self.titleLabel.valid          = field.valid;
 }
 
-- (CGRect)frameForTextField
+- (CGRect)frameForTitleLabel
 {
     CGFloat marginX = HYPTextFormFieldCellMarginX;
     CGFloat marginTop = HYPTextFormFieldCellTextFieldMarginTop;
@@ -106,6 +89,20 @@
     CGRect frame = CGRectMake(marginX, marginTop, width, height);
 
     return frame;
+}
+
+#pragma mark - HYPTitleLabelDelegate
+
+- (void)titleLabelPressed:(HYPTitleLabel *)titleLabel
+{
+    [self updateContentViewController:self.contentViewController withField:self.field];
+
+    if (!self.popoverController.isPopoverVisible) {
+        [self.popoverController presentPopoverFromRect:self.bounds
+                                                inView:self
+                              permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
+                                              animated:YES];
+    }
 }
 
 @end
