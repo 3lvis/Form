@@ -29,13 +29,6 @@
     _textField = [[HYPTextFormField alloc] initWithFrame:[self frameForTextField]];
     _textField.formFieldDelegate = self;
 
-    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clearButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
-    [clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    clearButton.frame = CGRectMake(0.0f, 0.0f, 30.0f, 20.0f);
-    _textField.rightView = clearButton;
-    _textField.rightViewMode = UITextFieldViewModeWhileEditing;
-
     return _textField;
 }
 
@@ -140,13 +133,6 @@
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];
     }
-}
-
-#pragma mark - Actions
-
-- (void)clearButtonAction
-{
-    self.textField.text = nil;
 }
 
 @end

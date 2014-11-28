@@ -43,6 +43,13 @@
 
     self.returnKeyType = UIReturnKeyDone;
 
+    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [clearButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
+    [clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    clearButton.frame = CGRectMake(0.0f, 0.0f, 30.0f, 20.0f);
+    self.rightView = clearButton;
+    self.rightViewMode = UITextFieldViewModeWhileEditing;
+
     return self;
 }
 
@@ -266,5 +273,17 @@
         [self.formFieldDelegate textFormFieldDidReturn:self];
     }
 }
+
+#pragma mark - Actions
+
+- (void)clearButtonAction
+{
+    self.rawText = nil;
+
+    if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+        [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+    }
+}
+
 
 @end
