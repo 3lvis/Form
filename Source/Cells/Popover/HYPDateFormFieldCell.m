@@ -54,11 +54,6 @@ UIPopoverControllerDelegate>
     }
 }
 
-- (void)validate
-{
-    [self.fieldValueLabel setValid:[self.field validate]];
-}
-
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     if (self.field.fieldValue) {

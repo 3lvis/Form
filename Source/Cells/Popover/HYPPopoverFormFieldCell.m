@@ -66,6 +66,11 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 
 #pragma mark - Private methods
 
+- (void)validate
+{
+    [self.fieldValueLabel setValid:[self.field validate]];
+}
+
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     abort();

@@ -63,11 +63,6 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f
     }
 }
 
-- (void)validate
-{
-    [self.fieldValueLabel setValid:[self.field validate]];
-}
-
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     self.fieldValuesController.field = self.field;
