@@ -5,7 +5,7 @@
 
 static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f };
 
-@interface HYPDropdownFormFieldCell () <HYPTextFormFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
+@interface HYPDropdownFormFieldCell () <HYPTextFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
 
 @property (nonatomic, strong) HYPFieldValuesTableViewController *fieldValuesController;
 
@@ -48,25 +48,25 @@ static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f
     if (field.fieldValue) {
         if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
             HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
-            self.titleLabel.text = fieldValue.title;
+            self.fieldValueLabel.text = fieldValue.title;
         } else {
 
             for (HYPFieldValue *fieldValue in field.values) {
                 if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
                     field.fieldValue = fieldValue;
-                    self.titleLabel.text = fieldValue.title;
+                    self.fieldValueLabel.text = fieldValue.title;
                     break;
                 }
             }
         }
     } else {
-        self.titleLabel.text = nil;
+        self.fieldValueLabel.text = nil;
     }
 }
 
 - (void)validate
 {
-    [self.titleLabel setValid:[self.field validate]];
+    [self.fieldValueLabel setValid:[self.field validate]];
 }
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field

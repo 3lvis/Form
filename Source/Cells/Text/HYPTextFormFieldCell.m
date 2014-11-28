@@ -1,8 +1,11 @@
 #import "HYPTextFormFieldCell.h"
 
-@interface HYPTextFormFieldCell () <HYPTextFormFieldDelegate>
+static const CGFloat HYPTextFormFieldCellTextFieldMarginTop = 30.0f;
+static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
 
-@property (nonatomic, strong) HYPTextFormField *textField;
+@interface HYPTextFormFieldCell () <HYPTextFieldDelegate>
+
+@property (nonatomic, strong) HYPTextField *textField;
 
 @end
 
@@ -22,12 +25,12 @@
 
 #pragma mark - Getters
 
-- (HYPTextFormField *)textField
+- (HYPTextField *)textField
 {
     if (_textField) return _textField;
 
-    _textField = [[HYPTextFormField alloc] initWithFrame:[self frameForTextField]];
-    _textField.formFieldDelegate = self;
+    _textField = [[HYPTextField alloc] initWithFrame:[self frameForTextField]];
+    _textField.textFieldDelegate = self;
 
     return _textField;
 }
@@ -113,16 +116,16 @@
     return frame;
 }
 
-#pragma mark - HYPTextFormFieldDelegate
+#pragma mark - HYPTextFieldDelegate
 
-- (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField
+- (void)textFormFieldDidEndEditing:(HYPTextField *)textField
 {
     if (self.textField.rawText) {
         [self.textField setValid:[self.field validate]];
     }
 }
 
-- (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
+- (void)textFormField:(HYPTextField *)textField didUpdateWithText:(NSString *)text
 {
     self.field.fieldValue = text;
 

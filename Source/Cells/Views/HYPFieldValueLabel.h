@@ -2,7 +2,7 @@
 
 @protocol HYPTitleLabelDelegate;
 
-@interface HYPTitleLabel : UILabel
+@interface HYPFieldValueLabel : UILabel
 
 @property (nonatomic, getter = isValid)    BOOL valid;
 @property (nonatomic, getter = isActive)   BOOL active;
@@ -12,6 +12,6 @@
 
 @protocol HYPTitleLabelDelegate <NSObject>
 
-- (void)titleLabelPressed:(HYPTitleLabel *)titleLabel;
+- (void)titleLabelPressed:(HYPFieldValueLabel *)titleLabel;
 
 @end

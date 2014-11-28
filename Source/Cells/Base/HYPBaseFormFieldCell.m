@@ -2,6 +2,7 @@
 
 static const CGFloat HYPTextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
+static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 
 @implementation HYPBaseFormFieldCell
 

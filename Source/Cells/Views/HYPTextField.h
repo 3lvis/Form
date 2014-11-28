@@ -18,9 +18,9 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
     HYPTextFieldTypeUnknown
 };
 
-@protocol HYPTextFormFieldDelegate;
+@protocol HYPTextFieldDelegate;
 
-@interface HYPTextFormField : UITextField
+@interface HYPTextField : UITextField
 
 @property (nonatomic, copy) NSString *rawText;
 
@@ -33,20 +33,20 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
 @property (nonatomic, getter = isValid)    BOOL valid;
 @property (nonatomic, getter = isActive)   BOOL active;
 
-@property (nonatomic, weak) id <HYPTextFormFieldDelegate> formFieldDelegate;
+@property (nonatomic, weak) id <HYPTextFieldDelegate> textFieldDelegate;
 
 @end
 
-@protocol HYPTextFormFieldDelegate <NSObject>
+@protocol HYPTextFieldDelegate <NSObject>
 
 @optional
 
-- (void)textFormFieldDidBeginEditing:(HYPTextFormField *)textField;
+- (void)textFormFieldDidBeginEditing:(HYPTextField *)textField;
 
-- (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField;
+- (void)textFormFieldDidEndEditing:(HYPTextField *)textField;
 
-- (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text;
+- (void)textFormField:(HYPTextField *)textField didUpdateWithText:(NSString *)text;
 
-- (void)textFormFieldDidReturn:(HYPTextFormField *)textField;
+- (void)textFormFieldDidReturn:(HYPTextField *)textField;
 
 @end

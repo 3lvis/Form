@@ -1,17 +1,17 @@
-#import "HYPTextFormField.h"
+#import "HYPTextField.h"
 
 #import "UIColor+REMAColors.h"
 #import "UIColor+ANDYHex.h"
 #import "UIFont+REMAStyles.h"
 #import "HYPTextFieldTypeManager.h"
 
-@interface HYPTextFormField () <UITextFieldDelegate>
+@interface HYPTextField () <UITextFieldDelegate>
 
 @property (nonatomic, getter = isModified) BOOL modified;
 
 @end
 
-@implementation HYPTextFormField
+@implementation HYPTextField
 
 @synthesize rawText = _rawText;
 
@@ -195,13 +195,13 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(HYPTextFormField *)textField
+- (BOOL)textFieldShouldBeginEditing:(HYPTextField *)textField
 {
     BOOL selectable = (textField.type == HYPTextFieldTypeDropdown ||
                        textField.type == HYPTextFieldTypeDate);
 
-    if (selectable && [self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
-        [self.formFieldDelegate textFormFieldDidBeginEditing:self];
+    if (selectable && [self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
+        [self.textFieldDelegate textFormFieldDidBeginEditing:self];
     }
 
     return !selectable;
@@ -216,8 +216,8 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     self.active = NO;
-    if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
-        [self.formFieldDelegate textFormFieldDidEndEditing:self];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
+        [self.textFieldDelegate textFormFieldDidEndEditing:self];
     }
 }
 
@@ -236,8 +236,8 @@
 
 - (BOOL)becomeFirstResponder
 {
-    if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
-        [self.formFieldDelegate textFormFieldDidBeginEditing:self];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
+        [self.textFieldDelegate textFormFieldDidBeginEditing:self];
     }
 
     return [super becomeFirstResponder];
@@ -246,7 +246,7 @@
 - (BOOL)canBecomeFirstResponder
 {
     BOOL isPopover = (self.type == HYPTextFieldTypeDropdown ||
-                            self.type == HYPTextFieldTypeDate);
+                      self.type == HYPTextFieldTypeDate);
 
     return (!isPopover) ? [super canBecomeFirstResponder] : NO;
 }
@@ -262,15 +262,15 @@
     self.modified = YES;
     self.rawText = self.text;
 
-    if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
-        [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+        [self.textFieldDelegate textFormField:self didUpdateWithText:self.rawText];
     }
 }
 
 - (void)textFieldDidReturn:(UITextField *)textField
 {
-    if ([self.formFieldDelegate respondsToSelector:@selector(textFormFieldDidReturn:)]) {
-        [self.formFieldDelegate textFormFieldDidReturn:self];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidReturn:)]) {
+        [self.textFieldDelegate textFormFieldDidReturn:self];
     }
 }
 
@@ -280,8 +280,8 @@
 {
     self.rawText = nil;
 
-    if ([self.formFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
-        [self.formFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+        [self.textFieldDelegate textFormField:self didUpdateWithText:self.rawText];
     }
 }
 

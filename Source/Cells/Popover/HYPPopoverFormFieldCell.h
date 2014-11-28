@@ -1,9 +1,9 @@
 #import "HYPBaseFormFieldCell.h"
-#import "HYPTitleLabel.h"
+#import "HYPFieldValueLabel.h"
 
 @interface HYPPopoverFormFieldCell : HYPBaseFormFieldCell
 
-@property (nonatomic, strong) HYPTitleLabel *titleLabel;
+@property (nonatomic, strong) HYPFieldValueLabel *fieldValueLabel;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) UIButton *iconButton;
 

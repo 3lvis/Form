@@ -1,4 +1,4 @@
-#import "HYPTitleLabel.h"
+#import "HYPFieldValueLabel.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIFont+REMAStyles.h"
@@ -6,7 +6,7 @@
 
 static const CGFloat HYPTitleLabelLeftMargin = 10.0f;
 
-@implementation HYPTitleLabel
+@implementation HYPFieldValueLabel
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

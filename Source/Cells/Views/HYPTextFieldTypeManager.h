@@ -1,7 +1,7 @@
 @import Foundation;
 @import UIKit;
 
-#import "HYPTextFormField.h"
+#import "HYPTextField.h"
 
 @interface HYPTextFieldTypeManager : NSObject
 

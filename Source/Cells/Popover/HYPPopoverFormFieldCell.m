@@ -3,6 +3,9 @@
 static const CGFloat HYPTextFormFieldIconWidth = 32.0f;
 static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
 
+static const CGFloat HYPTextFormFieldCellTextFieldMarginTop = 30.0f;
+static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
+
 @interface HYPPopoverFormFieldCell () <HYPTitleLabelDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIViewController *contentViewController;
@@ -23,7 +26,7 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
     _contentViewController = contentViewController;
     _contentSize = contentSize;
 
-    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.fieldValueLabel];
     [self.contentView addSubview:self.iconButton];
 
     return self;
@@ -31,14 +34,14 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
 
 #pragma mark - Getters
 
-- (HYPTitleLabel *)titleLabel
+- (HYPFieldValueLabel *)fieldValueLabel
 {
-    if (_titleLabel) return _titleLabel;
+    if (_fieldValueLabel) return _fieldValueLabel;
 
-    _titleLabel = [[HYPTitleLabel alloc] initWithFrame:[self frameForTitleLabel]];
-    _titleLabel.delegate = self;
+    _fieldValueLabel = [[HYPFieldValueLabel alloc] initWithFrame:[self frameForFieldValueLabel]];
+    _fieldValueLabel.delegate = self;
 
-    return _titleLabel;
+    return _fieldValueLabel;
 }
 
 - (UIPopoverController *)popoverController
@@ -73,26 +76,27 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
-    self.titleLabel.enabled = !disabled;
+    self.fieldValueLabel.enabled = !disabled;
 }
 
 - (void)updateWithField:(HYPFormField *)field
 {
     self.iconButton.hidden = field.disabled;
 
-    self.titleLabel.hidden         = (field.sectionSeparator);
-    self.titleLabel.enabled        = !field.disabled;
-    self.titleLabel.valid          = field.valid;
+    self.fieldValueLabel.hidden         = (field.sectionSeparator);
+    self.fieldValueLabel.enabled        = !field.disabled;
+    self.fieldValueLabel.valid          = field.valid;
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
 
+    self.fieldValueLabel.frame = [self frameForFieldValueLabel];
     self.iconButton.frame = [self frameForIconButton];
 }
 
-- (CGRect)frameForTitleLabel
+- (CGRect)frameForFieldValueLabel
 {
     CGFloat marginX = HYPTextFormFieldCellMarginX;
     CGFloat marginTop = HYPTextFormFieldCellTextFieldMarginTop;
@@ -118,7 +122,7 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
 
 #pragma mark - HYPTitleLabelDelegate
 
-- (void)titleLabelPressed:(HYPTitleLabel *)titleLabel
+- (void)titleLabelPressed:(HYPFieldValueLabel *)titleLabel
 {
     [self updateContentViewController:self.contentViewController withField:self.field];
 
