@@ -7,7 +7,6 @@ static const CGSize HYPDatePopoverSize = { 320.0f, 272.0f };
 @interface HYPDateFormFieldCell () <HYPTextFieldDelegate, HYPFormTimeViewControllerDelegate,
 UIPopoverControllerDelegate>
 
-@property (nonatomic, strong) HYPTextField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) HYPFormTimeViewController *timeViewController;
 
@@ -47,17 +46,17 @@ UIPopoverControllerDelegate>
     [super updateWithField:field];
 
     if (field.fieldValue) {
-        self.textField.rawText = [NSDateFormatter localizedStringFromDate:field.fieldValue
+        self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.fieldValue
                                                                 dateStyle:NSDateFormatterMediumStyle
                                                                 timeStyle:NSDateFormatterNoStyle];
     } else {
-        self.textField.rawText = nil;
+        self.fieldValueLabel.text = nil;
     }
 }
 
 - (void)validate
 {
-    [self.textField setValid:[self.field validate]];
+    [self.fieldValueLabel setValid:[self.field validate]];
 }
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
@@ -73,19 +72,6 @@ UIPopoverControllerDelegate>
             self.timeViewController.maximumDate = self.field.maximumDate;
         }
     }
-}
-
-#pragma mark - Actions
-
-- (void)focusAction
-{
-    [self.textField becomeFirstResponder];
-}
-
-- (void)clearAction
-{
-    self.field.fieldValue = nil;
-    [self updateWithField:self.field];
 }
 
 #pragma mark - HYPTimeViewControllerDelegate
