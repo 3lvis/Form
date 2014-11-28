@@ -16,6 +16,10 @@ static const NSInteger HYPFieldCellItemHeight = 85.0f;
 
 static const CGFloat HYPTextFormFieldCellMarginX = 10.0f;
 
+static const CGFloat HYPFormFieldCellBorderWidth = 1.0f;
+static const CGFloat HYPFormFieldCellCornerRadius = 5.0f;
+static const CGFloat HYPFormFieldCellLeftMargin = 10.0f;
+
 @protocol HYPBaseFormFieldCellDelegate;
 
 @interface HYPBaseFormFieldCell : UICollectionViewCell

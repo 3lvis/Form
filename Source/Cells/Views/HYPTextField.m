@@ -1,13 +1,12 @@
 #import "HYPTextField.h"
 
+#import "HYPBaseFormFieldCell.h"
+
 #import "UIColor+REMAColors.h"
 #import "UIColor+ANDYHex.h"
 #import "UIFont+REMAStyles.h"
 #import "HYPTextFieldTypeManager.h"
 
-static const CGFloat HYPTextFieldBorderWidth = 1.0f;
-static const CGFloat HYPTextFieldCornerRadius = 5.0f;
-static const CGFloat HYPTextFieldLeftMargin = 10.0f;
 static const CGFloat HYPTextFieldClearButtonWidth = 30.0f;
 static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
 
@@ -28,9 +27,9 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.layer.borderWidth = HYPTextFieldBorderWidth;
+    self.layer.borderWidth = HYPFormFieldCellBorderWidth;
     self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
-    self.layer.cornerRadius = HYPTextFieldCornerRadius;
+    self.layer.cornerRadius = HYPFormFieldCellCornerRadius;
 
     self.delegate = self;
 
@@ -40,7 +39,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     self.font = [UIFont REMATextFieldFont];
     self.textColor = [UIColor colorFromHex:@"455C73"];
 
-    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, HYPTextFieldLeftMargin, 0.0f)];
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, HYPFormFieldCellLeftMargin, 0.0f)];
     self.leftView = paddingView;
     self.leftViewMode = UITextFieldViewModeAlways;
 
