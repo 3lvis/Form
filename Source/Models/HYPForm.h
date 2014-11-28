@@ -1,10 +1,3 @@
-//
-//  HYPForm.h
-//
-//  Created by Elvis Nunez on 08/07/14.
-//  Copyright (c) 2014 Hyper. All rights reserved.
-//
-
 @import Foundation;
 
 @class HYPFormField;
@@ -18,13 +11,11 @@
 
 @property (nonatomic) BOOL shouldValidate;
 
-+ (instancetype)sharedInstance;
-
-- (NSMutableArray *)formsUsingInitialValuesFromDictionary:(NSMutableDictionary *)dictionary
-                                                 disabled:(BOOL)disabled
-                                        disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                                         additionalValues:(void (^)(NSMutableDictionary *deletedFields,
-                                                                    NSMutableDictionary *deletedSections))additionalValues;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+                          position:(NSInteger)position
+                          disabled:(BOOL)disabled
+                 disabledFieldsIDs:(NSArray *)disabledFieldsIDs
+                     initialValues:(NSDictionary *)initialValues;
 
 - (NSArray *)fields;
 

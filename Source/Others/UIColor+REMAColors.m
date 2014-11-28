@@ -1,11 +1,3 @@
-//
-//  UIColor+Colors.m
-
-//
-//  Created by Christoffer Winterkvist on 05/05/14.
-//  Copyright (c) 2014 REMAer. All rights reserved.
-//
-
 #import "UIColor+REMAColors.h"
 
 #import "UIColor+ANDYHex.h"

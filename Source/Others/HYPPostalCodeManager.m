@@ -1,5 +1,7 @@
 #import "HYPPostalCodeManager.h"
 
+#import "NSJSONSerialization+ANDYJSONFile.h"
+
 @interface HYPPostalCodeManager ()
 
 @property (nonatomic, retain) NSDictionary *postalCodes;
@@ -19,29 +21,13 @@
     return _sharedManager;
 }
 
-+ (id)JSONObjectWithContentsOfFile:(NSString*)fileName
-{
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:[fileName stringByDeletingPathExtension]
-                                                         ofType:[fileName pathExtension]];
-
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-
-    NSError *error = nil;
-
-    id result = [NSJSONSerialization JSONObjectWithData:data
-                                                options:NSJSONReadingMutableContainers
-                                                  error:&error];
-    if (error != nil) return nil;
-
-    return result;
-}
-
 - (instancetype)init
 {
     self = [super init];
     if (!self) return nil;
 
-    NSArray *JSON = [HYPPostalCodeManager JSONObjectWithContentsOfFile:@"postal_codes.json"];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"postal_codes.json"
+                                                             inBundle:[NSBundle bundleForClass:[HYPPostalCodeManager class]]];
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
 
     for (NSDictionary *entry in JSON) {
