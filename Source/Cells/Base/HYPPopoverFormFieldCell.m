@@ -28,22 +28,10 @@
     _contentViewController = contentViewController;
     _contentSize = contentSize;
 
-    [self.contentView addSubview:self.textField];
-
     return self;
 }
 
 #pragma mark - Getters
-
-- (HYPTextFormField *)textField
-{
-    if (_textField) return _textField;
-
-    _textField = [[HYPTextFormField alloc] initWithFrame:[self frameForTextField]];
-    _textField.formFieldDelegate = self;
-
-    return _textField;
-}
 
 - (UIPopoverController *)popoverController
 {

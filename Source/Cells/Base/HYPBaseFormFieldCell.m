@@ -13,6 +13,10 @@ static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
 static const CGFloat HYPTextFormFieldIconWidth = 32.0f;
 static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
 
+@interface HYPBaseFormFieldCell () <HYPTextFormFieldDelegate>
+
+@end
+
 @implementation HYPBaseFormFieldCell
 
 #pragma mark - Initializers
@@ -24,6 +28,9 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
 
     [self.contentView addSubview:self.headingLabel];
     [self.contentView addSubview:self.iconButton];
+    [self.contentView addSubview:self.textField];
+    [self.iconButton setImage:nil forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
 
     return self;
 }
@@ -50,6 +57,16 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
     return _headingLabel;
 }
 
+- (HYPTextFormField *)textField
+{
+    if (_textField) return _textField;
+
+    _textField = [[HYPTextFormField alloc] initWithFrame:[self frameForTextField]];
+    _textField.formFieldDelegate = self;
+
+    return _textField;
+}
+
 #pragma mark - Setters
 
 - (void)setDisabled:(BOOL)disabled
@@ -69,8 +86,6 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
     [self updateWithField:field];
 }
 
-#pragma mark - Overwritables
-
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
     abort();
@@ -81,12 +96,85 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
     abort();
 }
 
-- (void)validate
+- (NSString *)rawTextForField:(HYPFormField *)field
 {
-    NSLog(@"validation in progress");
+    if (field.fieldValue && field.type == HYPFormFieldTypeFloat) {
+
+        NSNumber *value = field.fieldValue;
+
+        if ([field.fieldValue isKindOfClass:[NSString class]]) {
+            NSMutableString *fieldValue = [field.fieldValue mutableCopy];
+            [fieldValue replaceOccurrencesOfString:@","
+                                        withString:@"."
+                                           options:NSCaseInsensitiveSearch
+                                             range:NSMakeRange(0, [fieldValue length])];
+            NSNumberFormatter *formatter = [NSNumberFormatter new];
+            formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+            value = [formatter numberFromString:fieldValue];
+        }
+
+        return [NSString stringWithFormat:@"%.2f", [value floatValue]];
+    }
+
+    return field.fieldValue;
+}
+
+#pragma mark - Actions
+
+- (void)focusAction
+{
+    [self.textField becomeFirstResponder];
+}
+
+- (void)clearAction
+{
+    self.field.fieldValue = nil;
+    [self updateWithField:self.field];
+    [self.iconButton setImage:nil forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - HYPTextFormFieldDelegate
+
+- (void)textFormFieldDidBeginEditing:(HYPTextFormField *)textField
+{
+    [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)textFormFieldDidEndEditing:(HYPTextFormField *)textField
+{
+    if (self.textField.rawText) {
+        [self.textField setValid:[self.field validate]];
+    }
+
+    [self.iconButton removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
+    [self.iconButton setImage:nil forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(focusAction) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)textFormField:(HYPTextFormField *)textField didUpdateWithText:(NSString *)text
+{
+    self.field.fieldValue = text;
+
+    [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
+    [self.iconButton addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
+
+    if (!self.textField.valid) {
+        [self.textField setValid:[self.field validate]];
+    }
+
+    if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
+        [self.delegate fieldCell:self updatedWithField:self.field];
+    }
 }
 
 #pragma mark - Private Methods
+
+- (void)validate
+{
+    [self.textField setValid:[self.field validate]];
+}
 
 - (void)layoutSubviews
 {
@@ -94,6 +182,20 @@ static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
 
     self.headingLabel.frame = [self frameForHeadingLabel];
     self.iconButton.frame = [self frameForIconButton];
+    self.textField.frame = [self frameForTextField];
+}
+
+- (CGRect)frameForTextField
+{
+    CGFloat marginX = HYPTextFormFieldCellMarginX;
+    CGFloat marginTop = HYPTextFormFieldCellTextFieldMarginTop;
+    CGFloat marginBotton = HYPTextFormFieldCellTextFieldMarginBottom;
+
+    CGFloat width  = CGRectGetWidth(self.frame) - (marginX * 2);
+    CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;
+    CGRect frame  = CGRectMake(marginX, marginTop, width, height);
+
+    return frame;
 }
 
 - (CGRect)frameForHeadingLabel
