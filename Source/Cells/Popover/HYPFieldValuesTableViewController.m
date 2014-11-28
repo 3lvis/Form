@@ -2,20 +2,17 @@
 
 #import "HYPFieldValue.h"
 #import "HYPFormField.h"
+#import "HYPFieldValuesTableViewHeader.h"
+#import "HYPFieldValueCell.h"
 
 #import "UIFont+REMAStyles.h"
 #import "UIColor+REMAColors.h"
-#import "HYPFieldValueCell.h"
 
-static const CGFloat HYPFieldValuesHeaderWidth = 320.0f;
-static const CGFloat HYPFieldValuesHeaderHeight = 66.0f;
 static const CGFloat HYPFieldValuesCellHeight = 44.0f;
 
 @interface HYPFieldValuesTableViewController ()
 
 @property (nonatomic, strong) NSArray *values;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *subtitle;
 
 @end
 
@@ -27,8 +24,6 @@ static const CGFloat HYPFieldValuesCellHeight = 44.0f;
 {
     _field = field;
 
-    self.title = field.title;
-    self.subtitle = field.subtitle;
     self.values = [NSArray arrayWithArray:field.values];
 
     [self.tableView reloadData];
@@ -43,55 +38,24 @@ static const CGFloat HYPFieldValuesCellHeight = 44.0f;
     self.clearsSelectionOnViewWillAppear = NO;
 
     self.tableView.rowHeight = HYPFieldValuesCellHeight;
-    self.tableView.backgroundColor = [UIColor REMALightGray];
 
     [self.tableView registerClass:[HYPFieldValueCell class] forCellReuseIdentifier:HYPFieldValueCellIdentifer];
-}
-
-#pragma mark - Setup
-
-- (UIView *)sectionHeader
-{
-    CGFloat headerHeight = (self.subtitle) ? HYPFieldValuesHeaderHeight : HYPFieldValuesCellHeight;
-
-    CGRect rect = CGRectMake(0, 0, HYPFieldValuesHeaderWidth, headerHeight);
-    UIView *view = [[UIView alloc] initWithFrame:rect];
-
-    if (self.subtitle) rect.origin.y -= 10;
-
-    UILabel *label = [[UILabel alloc] initWithFrame:rect];
-
-    view.backgroundColor = [UIColor REMALightGray];
-    label.text = self.title;
-    label.font = [UIFont REMAMediumSizeBold];
-    label.textColor = [UIColor REMADarkBlue];
-    label.textAlignment = NSTextAlignmentCenter;
-    [view addSubview:label];
-
-    if (self.subtitle) {
-        CGRect statusRect = CGRectMake(0.0f, 15.0f, HYPFieldValuesHeaderWidth, headerHeight);
-        UILabel *statusLabel = [[UILabel alloc] initWithFrame:statusRect];
-        statusLabel.text = self.subtitle;
-        statusLabel.backgroundColor = [UIColor clearColor];
-        statusLabel.font = [UIFont REMAMediumSizeLight];
-        statusLabel.textColor = [UIColor REMACoreBlue];
-        statusLabel.textAlignment = NSTextAlignmentCenter;
-        [view addSubview:statusLabel];
-    }
-
-    return view;
+    [self.tableView registerClass:[HYPFieldValuesTableViewHeader class] forHeaderFooterViewReuseIdentifier:HYPFieldValuesTableViewHeaderIdentifier];
 }
 
 #pragma mark - TableViewDelegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return (section == 0) ? [self sectionHeader] : nil;
+    HYPFieldValuesTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HYPFieldValuesTableViewHeaderIdentifier];
+    headerView.field = self.field;
+
+    return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return (self.subtitle) ? HYPFieldValuesHeaderHeight : HYPFieldValuesCellHeight;
+    return (self.field.subtitle) ? HYPFieldValuesHeaderHeight : HYPFieldValuesCellHeight;
 }
 
 #pragma mark - Table View Data Source
