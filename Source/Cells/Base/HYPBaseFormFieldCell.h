@@ -7,6 +7,9 @@
 
 #import "HYPFormField.h"
 
+static const CGFloat HYPFormFieldCellMarginTop = 30.0f;
+static const CGFloat HYPFormFieldCellMarginBottom = 10.0f;
+
 static const NSInteger HYPFieldCellMargin = 10.0f;
 static const NSInteger HYPFieldCellItemSmallHeight = 1.0f;
 static const NSInteger HYPFieldCellItemHeight = 85.0f;

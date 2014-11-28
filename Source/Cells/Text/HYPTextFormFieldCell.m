@@ -1,8 +1,5 @@
 #import "HYPTextFormFieldCell.h"
 
-static const CGFloat HYPTextFormFieldCellTextFieldMarginTop = 30.0f;
-static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
-
 @interface HYPTextFormFieldCell () <HYPTextFieldDelegate>
 
 @property (nonatomic, strong) HYPTextField *textField;
@@ -106,8 +103,8 @@ static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
 - (CGRect)frameForTextField
 {
     CGFloat marginX = HYPTextFormFieldCellMarginX;
-    CGFloat marginTop = HYPTextFormFieldCellTextFieldMarginTop;
-    CGFloat marginBotton = HYPTextFormFieldCellTextFieldMarginBottom;
+    CGFloat marginTop = HYPFormFieldCellMarginTop;
+    CGFloat marginBotton = HYPFormFieldCellMarginBottom;
 
     CGFloat width  = CGRectGetWidth(self.frame) - (marginX * 2);
     CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;

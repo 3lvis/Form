@@ -4,7 +4,7 @@
 #import "UIFont+REMAStyles.h"
 #import "UIColor+REMAColors.h"
 
-static const CGFloat HYPTitleLabelLeftMargin = 10.0f;
+static const CGFloat HYPFieldValueLabelLeftMargin = 10.0f;
 
 @implementation HYPFieldValueLabel
 
@@ -33,18 +33,18 @@ static const CGFloat HYPTitleLabelLeftMargin = 10.0f;
 
 - (void)drawTextInRect:(CGRect)rect
 {
-    UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, HYPTitleLabelLeftMargin, 0.0f, 0.0f);
+    UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, HYPFieldValueLabelLeftMargin, 0.0f, 0.0f);
 
     return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines
 {
-    UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, HYPTitleLabelLeftMargin, 0.0f, 0.0f);
+    UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, HYPFieldValueLabelLeftMargin, 0.0f, 0.0f);
 
     CGRect frame = UIEdgeInsetsInsetRect(bounds, insets);
 
-    return CGRectInset(frame, HYPTitleLabelLeftMargin, 0.0f);
+    return CGRectInset(frame, HYPFieldValueLabelLeftMargin, 0.0f);
 }
 
 - (void)setActive:(BOOL)active

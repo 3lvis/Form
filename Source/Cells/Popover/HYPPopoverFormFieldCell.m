@@ -1,10 +1,7 @@
 #import "HYPPopoverFormFieldCell.h"
 
-static const CGFloat HYPTextFormFieldIconWidth = 32.0f;
-static const CGFloat HYPTextFormFieldIconHeight = 38.0f;
-
-static const CGFloat HYPTextFormFieldCellTextFieldMarginTop = 30.0f;
-static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
+static const CGFloat HYPIconButtonWidth = 32.0f;
+static const CGFloat HYPIconButtonHeight = 38.0f;
 
 @interface HYPPopoverFormFieldCell () <HYPTitleLabelDelegate, UIPopoverControllerDelegate>
 
@@ -99,8 +96,8 @@ static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
 - (CGRect)frameForFieldValueLabel
 {
     CGFloat marginX = HYPTextFormFieldCellMarginX;
-    CGFloat marginTop = HYPTextFormFieldCellTextFieldMarginTop;
-    CGFloat marginBotton = HYPTextFormFieldCellTextFieldMarginBottom;
+    CGFloat marginTop = HYPFormFieldCellMarginTop;
+    CGFloat marginBotton = HYPFormFieldCellMarginBottom;
 
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
     CGFloat height = CGRectGetHeight(self.frame) - marginTop - marginBotton;
@@ -111,10 +108,10 @@ static const CGFloat HYPTextFormFieldCellTextFieldMarginBottom = 10.0f;
 
 - (CGRect)frameForIconButton
 {
-    CGFloat x = CGRectGetWidth(self.frame) - HYPTextFormFieldIconWidth - HYPTextFormFieldCellMarginX;
-    CGFloat y = HYPTextFormFieldIconHeight - 4;
-    CGFloat width = HYPTextFormFieldIconWidth;
-    CGFloat height = HYPTextFormFieldIconHeight;
+    CGFloat x = CGRectGetWidth(self.frame) - HYPIconButtonWidth - HYPTextFormFieldCellMarginX;
+    CGFloat y = HYPIconButtonHeight - 4;
+    CGFloat width = HYPIconButtonWidth;
+    CGFloat height = HYPIconButtonHeight;
     CGRect frame = CGRectMake(x, y, width, height);
 
     return frame;
