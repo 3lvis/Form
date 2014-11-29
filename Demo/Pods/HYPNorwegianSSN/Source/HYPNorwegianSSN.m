@@ -1,3 +1,11 @@
+//
+//  HYPNorwegianSSN.m
+//  HYPNorwegianSSN
+//
+//  Created by Christoffer Winterkvist on 10/5/14.
+//
+//
+
 #import "HYPNorwegianSSN.h"
 
 NSRange HYPTwentiethCenturyRange = {0, 500};

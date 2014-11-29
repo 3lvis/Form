@@ -12,12 +12,12 @@
 
 @implementation NSString (HYPFormula)
 
-- (NSString *)hyp_processValues:(NSDictionary *)values
+- (NSString *)hyp_processValues:(NSDictionary *)values isStringFormula:(BOOL)isStringFormula
 {
     NSArray *variables = [self hyp_variables];
 
-    BOOL thereAreMoreVariablesThanValues = ([values allKeys].count < variables.count);
-    if (thereAreMoreVariablesThanValues) return nil;
+    BOOL moreVariablesThanValues = ([values allKeys].count < variables.count);
+    if (moreVariablesThanValues) return nil;
 
     NSMutableString *mutableString = [self mutableCopy];
     NSArray *sortedKeysArray = [[values allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
@@ -35,6 +35,13 @@
 
         if (![value isKindOfClass:[NSString class]] && [value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
             value = [value stringValue];
+        } else if ([value isKindOfClass:[NSString class]]) {
+            NSString *stringValue = (NSString *)value;
+            if (!stringValue || stringValue.length == 0) {
+                value = (isStringFormula) ? @"" : @"0";
+            }
+        } else if ([value isKindOfClass:[NSNull class]]) {
+            value = (isStringFormula) ? @"" : @"0";
         }
 
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
@@ -48,19 +55,9 @@
 
 - (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *processedFormula = [self hyp_processValues:dictionary];
-
-    if ([self isStringFormula:[dictionary allValues]]) return processedFormula;
-
-    __block BOOL hasEmptyValues = NO;
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-        if ([value isKindOfClass:[NSString class]] && value.length <= 0) {
-            hasEmptyValues = YES;
-            *stop = YES;
-        }
-    }];
-
-    if (hasEmptyValues) return nil;
+    BOOL isStringFormula = [self isStringFormula:[dictionary allValues]];
+    NSString *processedFormula = [self hyp_processValues:dictionary isStringFormula:isStringFormula];
+    if (isStringFormula) return processedFormula;
 
     NSString *formula = [processedFormula sanitize];
 

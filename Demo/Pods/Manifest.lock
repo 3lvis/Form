@@ -3,7 +3,7 @@ PODS:
   - HYPNorwegianSSN (1.6)
   - NSDictionary-ANDYSafeValue (0.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
-  - NSString-HYPFormula (1.4.1)
+  - NSString-HYPFormula (1.5)
   - NSString-HYPWordExtractor (1.1)
   - NSString-ZENInflections (1.1)
   - UIColor-ANDYHex (1.0)
@@ -33,12 +33,29 @@ EXTERNAL SOURCES:
   UIColor-ANDYHex:
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
+CHECKOUT OPTIONS:
+  HYPImagePicker:
+    :commit: d7fb5dc36782bff5fff0256728eb922fa03dd12a
+    :git: https://github.com/hyperoslo/HYPImagePicker.git
+  HYPNorwegianSSN:
+    :commit: 4fb5f19332f1d53ba89057da6a265135fedf16d0
+    :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
+  NSString-HYPFormula:
+    :commit: 2dbb6191b3cf0ffbb919adc40139e3dab40f41d7
+    :git: https://github.com/hyperoslo/NSString-HYPFormula.git
+  NSString-HYPWordExtractor:
+    :commit: 307a94eca0d4535566787f8cf97e034c2d26417b
+    :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
+  UIColor-ANDYHex:
+    :commit: 8048b4d33bb37f7ac8a1711784d62531a725dea4
+    :git: https://github.com/NSElvis/UIColor-ANDYHex.git
+
 SPEC CHECKSUMS:
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
   HYPNorwegianSSN: e89eda882a498629b8e7a6d632f00c41ae79dd9c
   NSDictionary-ANDYSafeValue: 5b7d0c0b1b7285191fb0f94e6dda13b86dec2dee
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
-  NSString-HYPFormula: 944d6089795007866f7baddeec861cdf519c0abe
+  NSString-HYPFormula: 30a8c49f49fe827aba65f78f9109d37764d3c208
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
   NSString-ZENInflections: 68e691d2a37c8f33fc624b71326a3a654d07b6df
   UIColor-ANDYHex: 6262f384b07f12a9d37fdd0ba149cf751b54e8f9

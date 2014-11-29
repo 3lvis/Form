@@ -54,8 +54,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
     _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
                                             initialValues:self.initialValues
-                                         disabledFieldIDs:@[@"first_name", @"last_name"]
-                                                 disabled:YES];
+                                         disabledFieldIDs:nil
+                                                 disabled:nil];
 
     return _formsManager;
 }
