@@ -191,7 +191,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
 
 - (NSString *)rawText
 {
-    if (_rawText && self.formatter) {
+    if (self.formatter) {
         return [self.formatter formatString:_rawText reverse:YES];
     }
 
