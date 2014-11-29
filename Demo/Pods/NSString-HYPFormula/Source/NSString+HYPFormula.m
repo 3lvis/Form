@@ -1,3 +1,11 @@
+//
+//  NSString+HYPFormula.m
+//  HYPFormula
+//
+//  Created by Christoffer Winterkvist on 13/10/14.
+//
+//
+
 #import "NSString+HYPFormula.h"
 
 #import "NSString+HYPWordExtractor.h"
@@ -43,6 +51,16 @@
     NSString *processedFormula = [self hyp_processValues:dictionary];
 
     if ([self isStringFormula:[dictionary allValues]]) return processedFormula;
+
+    __block BOOL hasEmptyValues = NO;
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        if ([value isKindOfClass:[NSString class]] && value.length <= 0) {
+            hasEmptyValues = YES;
+            *stop = YES;
+        }
+    }];
+
+    if (hasEmptyValues) return nil;
 
     NSString *formula = [processedFormula sanitize];
 

@@ -14,7 +14,7 @@ DEPENDENCIES:
   - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
   - NSDictionary-ANDYSafeValue
   - NSJSONSerialization-ANDYJSONFile
-  - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`)
+  - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`, branch `fix/add-additional-safety`)
   - NSString-HYPWordExtractor (from `https://github.com/hyperoslo/NSString-HYPWordExtractor.git`)
   - NSString-ZENInflections
   - UIColor-ANDYHex (from `https://github.com/NSElvis/UIColor-ANDYHex.git`)
@@ -26,27 +26,11 @@ EXTERNAL SOURCES:
   HYPNorwegianSSN:
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSString-HYPFormula:
+    :branch: fix/add-additional-safety
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
   NSString-HYPWordExtractor:
     :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
   UIColor-ANDYHex:
-    :git: https://github.com/NSElvis/UIColor-ANDYHex.git
-
-CHECKOUT OPTIONS:
-  HYPImagePicker:
-    :commit: d7fb5dc36782bff5fff0256728eb922fa03dd12a
-    :git: https://github.com/hyperoslo/HYPImagePicker.git
-  HYPNorwegianSSN:
-    :commit: 4fb5f19332f1d53ba89057da6a265135fedf16d0
-    :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
-  NSString-HYPFormula:
-    :commit: 442d7e165d51729f8a9bfc5205c5cd18ce73cad0
-    :git: https://github.com/hyperoslo/NSString-HYPFormula.git
-  NSString-HYPWordExtractor:
-    :commit: 307a94eca0d4535566787f8cf97e034c2d26417b
-    :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
-  UIColor-ANDYHex:
-    :commit: 8048b4d33bb37f7ac8a1711784d62531a725dea4
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
 SPEC CHECKSUMS:
