@@ -1,9 +1,9 @@
 #import "HYPPopoverFormFieldCell.h"
 #import "HYPFieldValuesTableViewController.h"
 
-static NSString * const HYPDropdownFormFieldCellIdentifier = @"HYPDropdownFormFieldCellIdentifier";
+static NSString * const HYPSelectFormFieldCellIdentifier = @"HYPSelectFormFieldCellIdentifier";
 
-@interface HYPDropdownFormFieldCell : HYPPopoverFormFieldCell
+@interface HYPSelectFormFieldCell : HYPPopoverFormFieldCell
 
 @property (nonatomic, strong) HYPFieldValuesTableViewController *fieldValuesController;
 

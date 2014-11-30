@@ -4,7 +4,7 @@
 #import "HYPFormsLayout.h"
 
 #import "HYPTextFormFieldCell.h"
-#import "HYPDropdownFormFieldCell.h"
+#import "HYPSelectFormFieldCell.h"
 #import "HYPDateFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
@@ -53,8 +53,8 @@
     [collectionView registerClass:[HYPTextFormFieldCell class]
        forCellWithReuseIdentifier:HYPTextFormFieldCellIdentifier];
 
-    [collectionView registerClass:[HYPDropdownFormFieldCell class]
-       forCellWithReuseIdentifier:HYPDropdownFormFieldCellIdentifier];
+    [collectionView registerClass:[HYPSelectFormFieldCell class]
+       forCellWithReuseIdentifier:HYPSelectFormFieldCellIdentifier];
 
     [collectionView registerClass:[HYPDateFormFieldCell class]
        forCellWithReuseIdentifier:HYPDateFormFieldCellIdentifier];
@@ -123,7 +123,7 @@
             identifier = HYPDateFormFieldCellIdentifier;
             break;
         case HYPFormFieldTypeSelect:
-            identifier = HYPDropdownFormFieldCellIdentifier;
+            identifier = HYPSelectFormFieldCellIdentifier;
             break;
 
         case HYPFormFieldTypeText:

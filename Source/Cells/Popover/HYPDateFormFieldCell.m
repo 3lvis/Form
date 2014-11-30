@@ -1,7 +1,5 @@
 #import "HYPDateFormFieldCell.h"
 
-#import "HYPFormTimeViewController.h"
-
 static const CGSize HYPDatePopoverSize = { 320.0f, 328.0f };
 
 @interface HYPDateFormFieldCell () <HYPTextFieldDelegate, HYPFormTimeViewControllerDelegate,
@@ -25,6 +23,7 @@ UIPopoverControllerDelegate>
     [self.iconButton setImage:[UIImage imageNamed:@"ic_calendar"] forState:UIControlStateNormal];
 
     self.fieldValuesController.customHeight = 240.0f;
+    self.fieldValuesController.tableView.scrollEnabled = NO;
     [self.fieldValuesController.headerView addSubview:self.datePicker];
 
     return self;

@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, HYPTextFieldType) {
     HYPTextFieldTypeAddress,
     HYPTextFieldTypeEmail,
     HYPTextFieldTypePassword,
-    HYPTextFieldTypeDropdown,
+    HYPTextFieldTypeSelect,
     HYPTextFieldTypeDate,
     HYPTextFieldTypeUnknown
 };

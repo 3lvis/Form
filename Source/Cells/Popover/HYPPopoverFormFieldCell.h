@@ -1,5 +1,6 @@
 #import "HYPBaseFormFieldCell.h"
 #import "HYPFieldValueLabel.h"
+#import "HYPFieldValuesTableViewController.h"
 
 @interface HYPPopoverFormFieldCell : HYPBaseFormFieldCell
 
