@@ -1,5 +1,4 @@
 #import "HYPSelectFormFieldCell.h"
-#import "HYPFormTimeViewController.h"
 
 static NSString * const HYPDateFormFieldCellIdentifier = @"HYPDateFormFieldCellIdentifier";
 

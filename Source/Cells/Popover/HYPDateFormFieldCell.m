@@ -1,9 +1,10 @@
 #import "HYPDateFormFieldCell.h"
+#import "HYPFieldValue.h"
 
 static const CGSize HYPDatePopoverSize = { 320.0f, 328.0f };
 
-@interface HYPDateFormFieldCell () <HYPTextFieldDelegate, HYPFormTimeViewControllerDelegate,
-UIPopoverControllerDelegate>
+@interface HYPDateFormFieldCell () <HYPTextFieldDelegate,
+UIPopoverControllerDelegate, HYPFieldValuesTableViewControllerDelegate>
 
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) UIDatePicker *datePicker;
@@ -22,6 +23,7 @@ UIPopoverControllerDelegate>
 
     [self.iconButton setImage:[UIImage imageNamed:@"ic_calendar"] forState:UIControlStateNormal];
 
+    self.fieldValuesController.delegate = self;
     self.fieldValuesController.customHeight = 240.0f;
     self.fieldValuesController.tableView.scrollEnabled = NO;
     [self.fieldValuesController.headerView addSubview:self.datePicker];
@@ -51,7 +53,7 @@ UIPopoverControllerDelegate>
 {
     _date = date;
 
-    self.datePicker.date = _date;
+    if (_date) self.datePicker.date = _date;
 }
 
 - (void)setMinimumDate:(NSDate *)minimumDate
@@ -80,6 +82,18 @@ UIPopoverControllerDelegate>
 - (void)updateWithField:(HYPFormField *)field
 {
     [super updateWithField:field];
+
+    HYPFieldValue *confirmValue = [HYPFieldValue new];
+    confirmValue.title = @"Confirm";
+    confirmValue.valueID = [NSDate date];
+    confirmValue.value = @YES;
+
+    HYPFieldValue *clearValue = [HYPFieldValue new];
+    clearValue.title = @"Clear";
+    clearValue.valueID = [NSDate date];
+    clearValue.value = @NO;
+
+    field.values = @[confirmValue, clearValue];
 
     if (field.fieldValue) {
         self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.fieldValue
@@ -114,11 +128,16 @@ UIPopoverControllerDelegate>
     }
 }
 
-#pragma mark - HYPTimeViewControllerDelegate
+#pragma mark - HYPFieldValuesTableViewControllerDelegate
 
-- (void)timeController:(HYPFormTimeViewController *)timeController didChangedDate:(NSDate *)date
+- (void)fieldValuesTableViewController:(HYPFieldValuesTableViewController *)fieldValuesTableViewController
+                      didSelectedValue:(HYPFieldValue *)selectedValue
 {
-    self.field.fieldValue = date;
+    if ([selectedValue.value boolValue] == YES) {
+        self.field.fieldValue = self.datePicker.date;
+    } else {
+        self.field.fieldValue = nil;
+    }
 
     [self updateWithField:self.field];
 
