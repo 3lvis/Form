@@ -15,7 +15,7 @@
         case HYPTextFieldTypeEmail       : [self setupEmailTextField:textField]; break;
         case HYPTextFieldTypePassword    : [self setupPasswordTextField:textField]; break;
 
-        case HYPTextFieldTypeDropdown:
+        case HYPTextFieldTypeSelect:
         case HYPTextFieldTypeDate:
             [self setupDefaultTextField:textField];
             break;
