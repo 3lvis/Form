@@ -1,7 +1,11 @@
-#import "HYPPopoverFormFieldCell.h"
+#import "HYPDropdownFormFieldCell.h"
 
 static NSString * const HYPDateFormFieldCellIdentifier = @"HYPDateFormFieldCellIdentifier";
 
-@interface HYPDateFormFieldCell : HYPPopoverFormFieldCell
+@interface HYPDateFormFieldCell : HYPDropdownFormFieldCell
+
+@property (nonatomic, copy) NSDate *date;
+@property (nonatomic, copy) NSDate *minimumDate;
+@property (nonatomic, copy) NSDate *maximumDate;
 
 @end

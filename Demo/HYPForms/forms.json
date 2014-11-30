@@ -325,6 +325,7 @@
           {
             "id":"start_date",
             "title":"Ansettelsesdato",
+            "subtitle": "Startdato",
             "type":"date",
             "size":{
               "width": 25,
