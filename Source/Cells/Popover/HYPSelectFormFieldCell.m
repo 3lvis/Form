@@ -1,24 +1,24 @@
-#import "HYPDropdownFormFieldCell.h"
+#import "HYPSelectFormFieldCell.h"
 
 #import "HYPFieldValue.h"
 #import "HYPFieldValuesTableViewController.h"
 
-static const CGSize HYPDropdownPopoverSize = { .width = 320.0f, .height = 308.0f };
+static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f };
 
-@interface HYPDropdownFormFieldCell () <HYPTextFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
+@interface HYPSelectFormFieldCell () <HYPTextFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
 
 @property (nonatomic, strong) HYPFieldValuesTableViewController *fieldValuesController;
 
 @end
 
-@implementation HYPDropdownFormFieldCell
+@implementation HYPSelectFormFieldCell
 
 #pragma mark - Initializers
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame contentViewController:self.fieldValuesController
-                 andContentSize:HYPDropdownPopoverSize];
+                 andContentSize:HYPSelectPopoverSize];
     if (!self) return nil;
 
     [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_arrow_down"] forState:UIControlStateNormal];
