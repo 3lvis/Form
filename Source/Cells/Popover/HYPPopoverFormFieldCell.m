@@ -24,7 +24,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
     _contentSize = contentSize;
 
     [self.contentView addSubview:self.fieldValueLabel];
-    [self.contentView addSubview:self.iconButton];
+    [self.contentView addSubview:self.iconImageView];
 
     return self;
 }
@@ -53,15 +53,15 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
     return _popoverController;
 }
 
-- (UIButton *)iconButton
+- (UIImageView *)iconImageView
 {
-    if (_iconButton) return _iconButton;
+    if (_iconImageView) return _iconImageView;
 
-    _iconButton = [[UIButton alloc] initWithFrame:[self frameForIconButton]];
-    _iconButton.contentMode = UIViewContentModeRight;
-    _iconButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _iconImageView = [[UIImageView alloc] initWithFrame:[self frameForIconButton]];
+    _iconImageView.contentMode = UIViewContentModeRight;
+    _iconImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-    return _iconButton;
+    return _iconImageView;
 }
 
 #pragma mark - Private methods
@@ -83,7 +83,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 
 - (void)updateWithField:(HYPFormField *)field
 {
-    self.iconButton.hidden = field.disabled;
+    self.iconImageView.hidden = field.disabled;
 
     self.fieldValueLabel.hidden         = (field.sectionSeparator);
     self.fieldValueLabel.enabled        = !field.disabled;
@@ -95,7 +95,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
     [super layoutSubviews];
 
     self.fieldValueLabel.frame = [self frameForFieldValueLabel];
-    self.iconButton.frame = [self frameForIconButton];
+    self.iconImageView.frame = [self frameForIconButton];
 }
 
 - (CGRect)frameForFieldValueLabel
@@ -113,7 +113,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 
 - (CGRect)frameForIconButton
 {
-    CGFloat x = CGRectGetWidth(self.frame) - HYPIconButtonWidth - HYPTextFormFieldCellMarginX;
+    CGFloat x = CGRectGetWidth(self.frame) - HYPIconButtonWidth - (HYPTextFormFieldCellMarginX * 2);
     CGFloat y = HYPIconButtonHeight - 4;
     CGFloat width = HYPIconButtonWidth;
     CGFloat height = HYPIconButtonHeight;

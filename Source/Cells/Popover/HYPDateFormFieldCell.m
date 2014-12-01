@@ -22,7 +22,7 @@ UIPopoverControllerDelegate>
                  andContentSize:HYPDatePopoverSize];
     if (!self) return nil;
 
-    [self.iconButton setImage:[UIImage imageNamed:@"ic_calendar"] forState:UIControlStateNormal];
+    self.iconImageView.image = [UIImage imageNamed:@"ic_calendar"];
 
     return self;
 }
