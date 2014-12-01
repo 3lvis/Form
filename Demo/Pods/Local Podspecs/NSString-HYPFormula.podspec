@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "NSString-HYPFormula"
-  s.version = "1.4.1"
+  s.version = "1.6"
   s.summary = "Creating and running string-based formulas have never been this easy"
   s.description = <<-DESC
                    * Creating and running string-based formulas have never been this easy
@@ -20,4 +20,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/'
   s.frameworks = 'Foundation'
   s.requires_arc = true
+  s.dependency 'NSString-HYPWordExtractor'
 end

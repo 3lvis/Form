@@ -15,7 +15,7 @@
 // HYPNorwegianSSN
 #define COCOAPODS_POD_AVAILABLE_HYPNorwegianSSN
 #define COCOAPODS_VERSION_MAJOR_HYPNorwegianSSN 1
-#define COCOAPODS_VERSION_MINOR_HYPNorwegianSSN 6
+#define COCOAPODS_VERSION_MINOR_HYPNorwegianSSN 8
 #define COCOAPODS_VERSION_PATCH_HYPNorwegianSSN 0
 
 // NSDictionary-ANDYSafeValue
@@ -33,8 +33,8 @@
 // NSString-HYPFormula
 #define COCOAPODS_POD_AVAILABLE_NSString_HYPFormula
 #define COCOAPODS_VERSION_MAJOR_NSString_HYPFormula 1
-#define COCOAPODS_VERSION_MINOR_NSString_HYPFormula 4
-#define COCOAPODS_VERSION_PATCH_NSString_HYPFormula 1
+#define COCOAPODS_VERSION_MINOR_NSString_HYPFormula 6
+#define COCOAPODS_VERSION_PATCH_NSString_HYPFormula 0
 
 // NSString-HYPWordExtractor
 #define COCOAPODS_POD_AVAILABLE_NSString_HYPWordExtractor

@@ -5,6 +5,9 @@ NSRange HYPNineteenthCenturyRange = {500, 749-500+1};
 NSRange HYPTwentyFirstCenturyRange = {500, 999-500+1};
 NSRange HYPTwentiethCenturyAlternateRange = {900, 999-900+1};
 
+NSUInteger HYPValidSSNLength = 11;
+NSUInteger HYPValidSSNControlNumber = 11;
+
 typedef NS_ENUM(NSInteger, SSNCenturyType) {
     SSNDefaultCenturyType = 0,
     SSNNineteenthCenturyType,
@@ -27,6 +30,8 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 + (BOOL)validateWithString:(NSString *)string
 {
+    if (!string) return NO;
+
     HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:string];
     return ssn.isValid;
 }
@@ -43,13 +48,11 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSNumber *)age
 {
-    if ([self.SSN length] != 11) {
+    if ([self.SSN length] != HYPValidSSNLength) {
         NSLog(@"%s:%d -> %@",  __FUNCTION__, __LINE__, @"Unable to calculate age because SSN is not long enough");
     }
 
-    if (!self.dateOfBirthStringWithCentury) {
-        return nil;
-    }
+    if (!self.dateOfBirthStringWithCentury) return nil;
 
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"DDMMyyyy";
@@ -59,9 +62,8 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
                                        fromDate:birthday
                                        toDate:[NSDate date]
                                        options:0];
-    NSUInteger age = ageComponents.year;
 
-    return @(age);
+    return @(ageComponents.year);
 }
 
 - (BOOL)isDNumber
@@ -81,32 +83,21 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (BOOL)isValid
 {
-    if (!self.SSN || self.SSN.length != 11) return NO;
+    if (!self.SSN || self.SSN.length != HYPValidSSNLength) return NO;
 
     NSInteger firstControlDigit, secondControlDigit;
     NSString *ssn = [self.SSN substringToIndex:9];
 
     firstControlDigit = [self calculateSSN:ssn withWeightNumbers:[HYPNorwegianSSN firstControlWeightNumbers]];
-    firstControlDigit = 11 - (firstControlDigit % 11);
-
-    if (firstControlDigit == 11)
-        firstControlDigit = 0;
+    firstControlDigit = [self modulusEleven:firstControlDigit];
 
     NSArray *secondControlWeightNumbers = [HYPNorwegianSSN secondControlWeightNumbers];
     secondControlDigit  = [self calculateSSN:ssn withWeightNumbers:secondControlWeightNumbers];
     secondControlDigit += [[secondControlWeightNumbers lastObject] integerValue] * firstControlDigit;
-    secondControlDigit  = 11 - (secondControlDigit % 11);
+    secondControlDigit = [self modulusEleven:secondControlDigit];
 
-    if (secondControlDigit == 11)
-        secondControlDigit = 0;
-
-    BOOL valid = NO;
-
-    if (firstControlDigit == self.firstControlNumber && secondControlDigit == self.secondControlNumber) {
-        valid = YES;
-    }
-
-    return valid;
+    return (firstControlDigit == self.firstControlNumber &&
+            secondControlDigit == self.secondControlNumber);
 }
 
 - (NSString *)dateOfBirthString
@@ -126,8 +117,9 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSString *)dateOfBirthStringWithCentury
 {
-    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:self.dateOfBirthString];
+    if (!self.dateOfBirthString) return nil;
 
+    NSMutableString *birthdayString = [[NSMutableString alloc] initWithString:self.dateOfBirthString];
     SSNCenturyType century = [self bornInCentury:self.personalNumber];
 
     switch (century) {
@@ -193,7 +185,7 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 
 - (NSString *)controlNumberString
 {
-    return (self.SSN.length == 11) ? [self.SSN substringFromIndex:9] : nil;
+    return (self.SSN.length == HYPValidSSNLength) ? [self.SSN substringFromIndex:9] : nil;
 }
 
 - (NSUInteger)firstControlNumber
@@ -204,6 +196,11 @@ typedef NS_ENUM(NSInteger, SSNCenturyType) {
 - (NSUInteger)secondControlNumber
 {
     return [[self.controlNumberString substringFromIndex:1] integerValue];
+}
+
+- (NSUInteger)modulusEleven:(NSUInteger)controlDigit
+{
+    return 11 - (controlDigit % 11);
 }
 
 - (SSNCenturyType)bornInCentury:(NSUInteger)personalNumber

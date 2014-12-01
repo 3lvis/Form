@@ -1,14 +1,8 @@
-#import <Foundation/Foundation.h>
-
-@interface NSString (HYPFormulaTest)
-- (NSString *)sanitize;
-- (BOOL)isStringFormula:(NSArray *)values;
-- (BOOL)isValidExpression;
-@end
+@import Foundation;
 
 @interface NSString (HYPFormula)
 
-- (NSString *)hyp_processValues:(NSDictionary *)dictionary;
-- (id)hyp_runFormulaWithDictionary:(NSDictionary *)dictionary;
+- (NSString *)hyp_processValuesDictionary:(NSDictionary *)valuesDictionary;
+- (id)hyp_runFormulaWithValuesDictionary:(NSDictionary *)valuesDictionary;
 
 @end

@@ -675,7 +675,7 @@
             }
         }
 
-        id result = [field.formula hyp_runFormulaWithDictionary:values];
+        id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
         field.fieldValue = result;
 
         if (result) {

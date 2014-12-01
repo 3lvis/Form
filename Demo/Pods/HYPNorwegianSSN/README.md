@@ -4,12 +4,20 @@
 
 A convenient way of validating and extracting info from a Norwegian Social Security Number
 
+Reference http://www.kith.no/upload/5588/KITH1001-2010_Identifikatorer-for-personer_v1.pdf
+
 ``` objc
 HYPNorwegianSSN *ssn = [[HYPNorwegianSSN alloc] initWithString:@"xxxxxxxxxxx"];
 
 if (ssn.isValid) {
     NSLog(@"Yeap, this is valid alright, tell me more about this so called person.");
     [self gainInterest:YES];
+}
+
+// Or the shorthand version
+
+if ([HYPNorwegianSSN validateWithString:@"xxxxxxxxxxx"]) {
+    NSLog(@"Yeap, this is valid alright, tell me more about this so called person.");
 }
 
 if (ssn.isDNumber) {

@@ -1,9 +1,10 @@
 PODS:
   - HYPImagePicker (0.2)
-  - HYPNorwegianSSN (1.6)
+  - HYPNorwegianSSN (1.8)
   - NSDictionary-ANDYSafeValue (0.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
-  - NSString-HYPFormula (1.4.1)
+  - NSString-HYPFormula (1.6):
+    - NSString-HYPWordExtractor
   - NSString-HYPWordExtractor (1.1)
   - NSString-ZENInflections (1.1)
   - UIColor-ANDYHex (1.0)
@@ -37,13 +38,13 @@ CHECKOUT OPTIONS:
     :commit: d7fb5dc36782bff5fff0256728eb922fa03dd12a
     :git: https://github.com/hyperoslo/HYPImagePicker.git
   HYPNorwegianSSN:
-    :commit: 4fb5f19332f1d53ba89057da6a265135fedf16d0
+    :commit: fea0ac1ed0c416c429eee9cdbd43118954441369
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSString-HYPFormula:
-    :commit: 442d7e165d51729f8a9bfc5205c5cd18ce73cad0
+    :commit: 0ef3c3aaf3188b87c70edda7243973dcf184e433
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
   NSString-HYPWordExtractor:
-    :commit: 307a94eca0d4535566787f8cf97e034c2d26417b
+    :commit: 3cc0736542980882fa2f5ce73719235010ad0cc3
     :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
   UIColor-ANDYHex:
     :commit: 8048b4d33bb37f7ac8a1711784d62531a725dea4
@@ -51,10 +52,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
-  HYPNorwegianSSN: e89eda882a498629b8e7a6d632f00c41ae79dd9c
+  HYPNorwegianSSN: d7a82481bca14cdc20f0867102c11f47274c9753
   NSDictionary-ANDYSafeValue: 5b7d0c0b1b7285191fb0f94e6dda13b86dec2dee
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
-  NSString-HYPFormula: 944d6089795007866f7baddeec861cdf519c0abe
+  NSString-HYPFormula: 79ed36e868f84fae1b7dbab0d3bdf887b27115de
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
   NSString-ZENInflections: 68e691d2a37c8f33fc624b71326a3a654d07b6df
   UIColor-ANDYHex: 6262f384b07f12a9d37fdd0ba149cf751b54e8f9
