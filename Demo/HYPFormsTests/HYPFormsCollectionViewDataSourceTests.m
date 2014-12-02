@@ -93,7 +93,7 @@
 
 - (void)testFieldValidation
 {
-    NSArray *fields = [self.dataSource invalidFormFields];
+    NSArray *fields = [self.formsManager invalidFormFields];
 
     XCTAssertNotNil(fields);
 }
