@@ -430,22 +430,6 @@
 
 #pragma mark Validations
 
-- (NSArray *)invalidFormFields
-{
-    NSMutableArray *fields = [NSMutableArray new];
-
-    for (HYPForm *form in self.formsManager.forms) {
-        NSDictionary *requiredFieldIDs = form.requiredFieldIDs;
-        for (HYPFormField *field in form.fields) {
-            BOOL requiredFieldFailedValidation = (requiredFieldIDs[field.fieldID] &&
-                                                  ![field validate]);
-            if (requiredFieldFailedValidation) [fields addObject:field];
-        }
-    }
-
-    return fields;
-}
-
 - (void)validateForms
 {
     NSMutableSet *validatedFields = [NSMutableSet set];

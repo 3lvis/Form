@@ -37,7 +37,6 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 - (HYPFormField *)fieldWithID:(NSString *)fieldID withIndexPath:(BOOL)withIndexPath;
 
 - (void)resetForms;
-- (NSArray *)invalidFormFields;
 - (void)validateForms;
 - (void)disable:(BOOL)disabled;
 - (void)processTarget:(HYPFormTarget *)target;
