@@ -430,7 +430,7 @@
 
 #pragma mark Validations
 
-- (NSArray *)invalidFields
+- (NSArray *)invalidFormFields
 {
     NSMutableArray *fields = [NSMutableArray new];
 
