@@ -430,6 +430,21 @@
 
 #pragma mark Validations
 
+- (NSArray *)invalidFields
+{
+    NSMutableArray *fields = [NSMutableArray new];
+
+    for (HYPForm *form in self.formsManager.forms) {
+        for (HYPFormField *field in form.fields) {
+            if (![field validate]) {
+                [fields addObject:field];
+            }
+        }
+    }
+
+    return fields;
+}
+
 - (void)validateForms
 {
     NSMutableSet *validatedFields = [NSMutableSet set];

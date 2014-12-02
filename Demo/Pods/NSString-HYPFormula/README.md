@@ -4,6 +4,7 @@
 
 Creating and running string-based formulas have never been this easy
 
+## Number formulas
 ``` objc
 
 NSDictionary *values = @{
@@ -11,6 +12,18 @@ NSDictionary *values = @{
     @"work_per_week" : @32.5
 };
 NSNumber *result = [@"hourly_pay * work_per_week" hyp_runFormulaWithDictionary:values];
+// result: 4875
+```
+
+## String formulas
+``` objc
+
+NSDictionary *values = @{
+    @"first_name" : @"John",
+    @"last_name"  : @"Appleseed"
+};
+NSString *result = [@"first_name last_name" hyp_runFormulaWithDictionary:values];
+// result: "John Appleseed"
 ```
 
 ## Contributing

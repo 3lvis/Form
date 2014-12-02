@@ -91,4 +91,11 @@
     [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"ansettelsesforhold-1"]];
 }
 
+- (void)testFieldValidation
+{
+    NSArray *fields = [self.dataSource invalidFields];
+
+    XCTAssertNotNil(fields);
+}
+
 @end
