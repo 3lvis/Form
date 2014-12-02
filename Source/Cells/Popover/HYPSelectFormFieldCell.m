@@ -21,7 +21,7 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
                  andContentSize:HYPSelectPopoverSize];
     if (!self) return nil;
 
-    [self.iconButton setImage:[UIImage imageNamed:@"ic_mini_arrow_down"] forState:UIControlStateNormal];
+    self.iconImageView.image = [UIImage imageNamed:@"ic_mini_arrow_down"];
 
     return self;
 }
