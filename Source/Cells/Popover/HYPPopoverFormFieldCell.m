@@ -66,6 +66,13 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 
 #pragma mark - Private methods
 
+- (BOOL)becomeFirstResponder
+{
+    [self titleLabelPressed:self.fieldValueLabel];
+
+    return NO;
+}
+
 - (void)validate
 {
     [self.fieldValueLabel setValid:[self.field validate]];
