@@ -100,7 +100,7 @@
 
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
-        id result = [field.formula hyp_runFormulaWithDictionary:values];
+        id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
         field.fieldValue = result;
         if (result) [fieldValues setObject:result forKey:field.fieldID];
     }

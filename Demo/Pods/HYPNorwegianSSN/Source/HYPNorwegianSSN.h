@@ -1,12 +1,4 @@
-//
-//  HYPNorwegianSSN.h
-//  HYPNorwegianSSN
-//
-//  Created by Christoffer Winterkvist on 10/5/14.
-//
-//
-
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface HYPNorwegianSSN : NSObject
 

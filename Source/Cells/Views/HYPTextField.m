@@ -167,7 +167,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     } else if ([typeString isEqualToString:@"date"]) {
         type = HYPTextFieldTypeDate;
     } else if ([typeString isEqualToString:@"select"]) {
-        type = HYPTextFieldTypeDropdown;
+        type = HYPTextFieldTypeSelect;
     } else if ([typeString isEqualToString:@"text"]) {
         type = HYPTextFieldTypeDefault;
     } else if (!typeString.length) {
@@ -202,7 +202,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
 
 - (BOOL)textFieldShouldBeginEditing:(HYPTextField *)textField
 {
-    BOOL selectable = (textField.type == HYPTextFieldTypeDropdown ||
+    BOOL selectable = (textField.type == HYPTextFieldTypeSelect ||
                        textField.type == HYPTextFieldTypeDate);
 
     if (selectable && [self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
@@ -250,7 +250,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
 
 - (BOOL)canBecomeFirstResponder
 {
-    BOOL isTextField = (self.type != HYPTextFieldTypeDropdown &&
+    BOOL isTextField = (self.type != HYPTextFieldTypeSelect &&
                         self.type != HYPTextFieldTypeDate);
 
     return (isTextField) ?: [super canBecomeFirstResponder];
