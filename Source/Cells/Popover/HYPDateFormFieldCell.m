@@ -84,12 +84,12 @@ UIPopoverControllerDelegate, HYPFieldValuesTableViewControllerDelegate>
     [super updateWithField:field];
 
     HYPFieldValue *confirmValue = [HYPFieldValue new];
-    confirmValue.title = @"Confirm";
+    confirmValue.title = NSLocalizedString(@"Confirm", nil);
     confirmValue.valueID = [NSDate date];
     confirmValue.value = @YES;
 
     HYPFieldValue *clearValue = [HYPFieldValue new];
-    clearValue.title = @"Clear";
+    clearValue.title = NSLocalizedString(@"Clear", nil);
     clearValue.valueID = [NSDate date];
     clearValue.value = @NO;
 
