@@ -70,7 +70,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 {
     [self titleLabelPressed:self.fieldValueLabel];
 
-    return NO;
+    return [super becomeFirstResponder];
 }
 
 - (void)validate
