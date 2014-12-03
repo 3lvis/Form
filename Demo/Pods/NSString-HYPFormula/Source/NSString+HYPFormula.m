@@ -7,7 +7,7 @@
 - (NSString *)hyp_processValuesDictionary:(NSDictionary *)valuesDictionary;
 {
     NSArray *variables = [self hyp_variables];
-    BOOL isStringFormula = [self isStringFormulaWithValuesDictionary:valuesDictionary];
+    BOOL isNumberFormula = [self isNumberFormulaWithValuesDictionary:valuesDictionary];
     BOOL moreVariablesThanValues = ([valuesDictionary allKeys].count < variables.count);
     if (moreVariablesThanValues) return nil;
 
@@ -30,10 +30,10 @@
         } else if ([value isKindOfClass:[NSString class]]) {
             NSString *stringValue = (NSString *)value;
             if (!stringValue || stringValue.length == 0) {
-                value = (isStringFormula) ? @"" : @"0";
+                value = (isNumberFormula) ? @"0" : @"";
             }
         } else if ([value isKindOfClass:[NSNull class]]) {
-            value = (isStringFormula) ? @"" : @"0";
+            value = (isNumberFormula) ? @"0" : @"";
         }
 
         [mutableString replaceOccurrencesOfString:key withString:value options:NSLiteralSearch range:NSMakeRange(0,mutableString.length)];
@@ -47,16 +47,19 @@
 
 - (id)hyp_runFormulaWithValuesDictionary:(NSDictionary *)valuesDictionary
 {
-    BOOL isStringFormula = [self isStringFormulaWithValuesDictionary:valuesDictionary];
+    BOOL isNumberFormula = [self isNumberFormulaWithValuesDictionary:valuesDictionary];
     NSString *processedFormula = [self hyp_processValuesDictionary:valuesDictionary];
-    if (isStringFormula) return processedFormula;
+    id value = nil;
 
-    NSString *formula = [processedFormula sanitize];
+    if (isNumberFormula) {
+        NSString *formula = [processedFormula sanitize];
+        if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
 
-    if ([formula rangeOfString:@". "].location != NSNotFound) return nil;
-
-    NSExpression *expression = [NSExpression expressionWithFormat:formula];
-    id value = [expression expressionValueWithObject:nil context:nil];
+        NSExpression *expression = [NSExpression expressionWithFormat:formula];
+        value = [expression expressionValueWithObject:nil context:nil];
+    } else {
+        value = processedFormula;
+    }
 
     return value;
 }
@@ -106,21 +109,22 @@
     return YES;
 }
 
-- (BOOL)isStringFormulaWithValuesDictionary:(NSDictionary *)valuesDictionary
+- (BOOL)isNumberFormulaWithValuesDictionary:(NSDictionary *)valuesDictionary
 {
-    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890.,+-*/\%() "];
-    BOOL isStringFormula = NO;
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890.,+-*/\%()"];
+    BOOL isNumberFormula = NO;
     NSArray *values = [valuesDictionary allValues];
 
     for (id value in values) {
-        if ([value isKindOfClass:[NSString class]] &&
-            (![[value stringByTrimmingCharactersInSet:set] isEqualToString:@""])) {
-            isStringFormula = YES;
+        if ([value isKindOfClass:[NSNumber class]] ||
+            ([value isKindOfClass:[NSString class]] && [value length] > 0 &&
+             [[value stringByTrimmingCharactersInSet:set] length] == 0)) {
+            isNumberFormula = YES;
             break;
         }
     }
 
-    return isStringFormula;
+    return isNumberFormula;
 }
 
 @end
