@@ -10,6 +10,8 @@
         return [self.valueID isEqualToString:identifier];
     } else if ([self.valueID isKindOfClass:[NSNumber class]]) {
         return [self.valueID isEqualToNumber:identifier];
+    } else if ([self.valueID isKindOfClass:[NSDate class]]) {
+        return [self.valueID isEqualToDate:identifier];
     } else {
         abort();
     }

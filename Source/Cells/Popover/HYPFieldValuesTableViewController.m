@@ -18,6 +18,17 @@ static const CGFloat HYPFieldValuesCellHeight = 44.0f;
 
 @implementation HYPFieldValuesTableViewController
 
+#pragma mark - Getters
+
+- (HYPFieldValuesTableViewHeader *)headerView
+{
+	if (_headerView) return _headerView;
+
+    _headerView = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:HYPFieldValuesTableViewHeaderIdentifier];
+
+	return _headerView;
+}
+
 #pragma mark - Setters
 
 - (void)setField:(HYPFormField *)field
@@ -47,15 +58,18 @@ static const CGFloat HYPFieldValuesCellHeight = 44.0f;
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    HYPFieldValuesTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HYPFieldValuesTableViewHeaderIdentifier];
-    headerView.field = self.field;
+    self.headerView.field = self.field;
 
-    return headerView;
+    return self.headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return (self.field.subtitle) ? HYPFieldValuesHeaderHeight : HYPFieldValuesCellHeight;
+    if (self.customHeight) {
+        return self.customHeight;
+    } else {
+        return (self.field.subtitle) ? HYPFieldValuesHeaderHeight : HYPFieldValuesCellHeight;
+    }
 }
 
 #pragma mark - Table View Data Source

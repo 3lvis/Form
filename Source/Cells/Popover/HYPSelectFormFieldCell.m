@@ -1,13 +1,10 @@
 #import "HYPSelectFormFieldCell.h"
 
 #import "HYPFieldValue.h"
-#import "HYPFieldValuesTableViewController.h"
 
 static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f };
 
 @interface HYPSelectFormFieldCell () <HYPTextFieldDelegate, HYPFieldValuesTableViewControllerDelegate>
-
-@property (nonatomic, strong) HYPFieldValuesTableViewController *fieldValuesController;
 
 @end
 
