@@ -142,4 +142,20 @@
     if (completion) completion(forms, fieldValues, hiddenFields, hiddenSections);
 }
 
+- (NSArray *)invalidFormFields
+{
+    NSMutableArray *invalidFormFields = [NSMutableArray new];
+
+    for (HYPForm *form in self.forms) {
+        NSDictionary *requiredFieldIDs = form.requiredFieldIDs;
+        for (HYPFormField *field in form.fields) {
+            BOOL requiredFieldFailedValidation = (requiredFieldIDs[field.fieldID] &&
+                                                  ![field validate]);
+            if (requiredFieldFailedValidation) [invalidFormFields addObject:field];
+        }
+    }
+
+    return invalidFormFields;
+}
+
 @end

@@ -13,4 +13,6 @@
             disabledFieldIDs:(NSArray *)disabledFieldIDs
                     disabled:(BOOL)disabled;
 
+- (NSArray *)invalidFormFields;
+
 @end
