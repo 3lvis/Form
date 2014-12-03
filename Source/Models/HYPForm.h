@@ -22,6 +22,8 @@
 - (NSInteger)numberOfFields;
 - (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections;
 
+- (NSMutableDictionary *)requiredFieldIDs;
+
 - (void)printFieldValues;
 
 @end
