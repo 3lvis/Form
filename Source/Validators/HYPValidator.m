@@ -25,7 +25,9 @@
     if (!self.validations) return YES;
 
     BOOL valid = YES;
-    BOOL required = (self.validations[@"required"] != nil);
+    BOOL required = (self.validations[@"required"] &&
+                     [self.validations[@"required"] boolValue] == YES);
+    
     NSUInteger minimumLength = 0;
 
     if (!fieldValue && !required) return YES;

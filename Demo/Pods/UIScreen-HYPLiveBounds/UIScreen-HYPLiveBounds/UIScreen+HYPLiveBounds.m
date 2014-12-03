@@ -1,3 +1,11 @@
+//
+//  UIScreen+HYPLiveBounds.m
+//  Mine Ansatte
+//
+//  Created by Christoffer Winterkvist on 6/25/14.
+//  Copyright (c) 2014 Hyper. All rights reserved.
+//
+
 #import "UIScreen+HYPLiveBounds.h"
 
 @implementation UIScreen (HYPLiveBounds)
