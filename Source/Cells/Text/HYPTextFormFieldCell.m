@@ -34,6 +34,13 @@
 
 #pragma mark - Private headers
 
+- (BOOL)becomeFirstResponder
+{
+    [self.textField becomeFirstResponder];
+
+    return [super becomeFirstResponder];
+}
+
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
     self.textField.enabled = !disabled;
