@@ -3,7 +3,7 @@ PODS:
   - HYPNorwegianSSN (1.8)
   - NSDictionary-ANDYSafeValue (0.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
-  - NSString-HYPFormula (1.6):
+  - NSString-HYPFormula (1.6.1):
     - NSString-HYPWordExtractor
   - NSString-HYPWordExtractor (1.1)
   - NSString-ZENInflections (1.1)
@@ -15,7 +15,7 @@ DEPENDENCIES:
   - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
   - NSDictionary-ANDYSafeValue
   - NSJSONSerialization-ANDYJSONFile
-  - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`, branch `fix/add-additional-safety`)
+  - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`)
   - NSString-HYPWordExtractor (from `https://github.com/hyperoslo/NSString-HYPWordExtractor.git`)
   - NSString-ZENInflections
   - UIColor-ANDYHex (from `https://github.com/NSElvis/UIColor-ANDYHex.git`)
@@ -27,7 +27,6 @@ EXTERNAL SOURCES:
   HYPNorwegianSSN:
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSString-HYPFormula:
-    :branch: fix/add-additional-safety
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
   NSString-HYPWordExtractor:
     :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
@@ -42,7 +41,7 @@ CHECKOUT OPTIONS:
     :commit: fea0ac1ed0c416c429eee9cdbd43118954441369
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSString-HYPFormula:
-    :commit: 0ef3c3aaf3188b87c70edda7243973dcf184e433
+    :commit: 1149cc13cd633445c67554169433aa978c98fb5b
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
   NSString-HYPWordExtractor:
     :commit: 3cc0736542980882fa2f5ce73719235010ad0cc3
@@ -56,7 +55,7 @@ SPEC CHECKSUMS:
   HYPNorwegianSSN: d7a82481bca14cdc20f0867102c11f47274c9753
   NSDictionary-ANDYSafeValue: 5b7d0c0b1b7285191fb0f94e6dda13b86dec2dee
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
-  NSString-HYPFormula: 79ed36e868f84fae1b7dbab0d3bdf887b27115de
+  NSString-HYPFormula: ace20bb486552fb282cc8510f9e6a5481be1106d
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
   NSString-ZENInflections: 68e691d2a37c8f33fc624b71326a3a654d07b6df
   UIColor-ANDYHex: 6262f384b07f12a9d37fdd0ba149cf751b54e8f9
