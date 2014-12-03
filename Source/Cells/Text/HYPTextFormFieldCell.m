@@ -38,7 +38,7 @@
 {
     [self.textField becomeFirstResponder];
 
-    return NO;
+    return [super becomeFirstResponder];
 }
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
