@@ -1,7 +1,7 @@
 #import "HYPFormFieldHeadingLabel.h"
 
 #import "UIColor+ANDYHex.h"
-#import "UIFont+REMAStyles.h"
+#import "UIFont+HYPFormsStyles.h"
 
 @implementation HYPFormFieldHeadingLabel
 
@@ -10,7 +10,7 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.font = [UIFont REMASmallSize];
+    self.font = [UIFont HYPFormsSmallSize];
     self.textColor = [UIColor colorFromHex:@"28649C"];
 
     return self;

@@ -10,8 +10,8 @@
 
 #import "HYPFieldValue.h"
 
-#import "UIFont+REMAStyles.h"
-#import "UIColor+REMAColors.h"
+#import "UIFont+HYPFormsStyles.h"
+#import "UIColor+HYPFormsColors.h"
 
 @implementation HYPFieldValueCell
 
@@ -22,8 +22,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (!self) return nil;
 
-    self.textLabel.font = [UIFont REMAMediumSize];
-    self.textLabel.textColor = [UIColor REMADarkBlue];
+    self.textLabel.font = [UIFont HYPFormsMediumSize];
+    self.textLabel.textColor = [UIColor HYPFormsDarkBlue];
     self.textLabel.highlightedTextColor = [UIColor whiteColor];
     self.textLabel.textAlignment = NSTextAlignmentLeft;
     self.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -31,7 +31,7 @@
     self.separatorInset = UIEdgeInsetsZero;
 
     UIView *selectedBackgroundView = [[UIView alloc] init];
-    selectedBackgroundView.backgroundColor = [UIColor REMACallToActionPressed];
+    selectedBackgroundView.backgroundColor = [UIColor HYPFormsCallToActionPressed];
     self.selectedBackgroundView = selectedBackgroundView;
     self.separatorInset = UIEdgeInsetsZero;
 

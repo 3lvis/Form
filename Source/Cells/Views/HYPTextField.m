@@ -2,9 +2,9 @@
 
 #import "HYPBaseFormFieldCell.h"
 
-#import "UIColor+REMAColors.h"
+#import "UIColor+HYPFormsColors.h"
 #import "UIColor+ANDYHex.h"
-#import "UIFont+REMAStyles.h"
+#import "UIFont+HYPFormsStyles.h"
 #import "HYPTextFieldTypeManager.h"
 
 static const CGFloat HYPTextFieldClearButtonWidth = 30.0f;
@@ -36,7 +36,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-    self.font = [UIFont REMATextFieldFont];
+    self.font = [UIFont HYPFormsTextFieldFont];
     self.textColor = [UIColor colorFromHex:@"455C73"];
 
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, HYPFormFieldCellLeftMargin, 0.0f)];
@@ -140,7 +140,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
         self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
         self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
     } else {
-        self.backgroundColor = [UIColor REMAFieldBackgroundInvalid];
+        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
         self.layer.borderColor = [UIColor colorFromHex:@"EC3031"].CGColor;
     }
 }

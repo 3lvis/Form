@@ -1,8 +1,8 @@
 #import "HYPImageFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
-#import "UIFont+REMAStyles.h"
-#import "UIColor+REMAColors.h"
+#import "UIFont+HYPFormsStyles.h"
+#import "UIColor+HYPFormsColors.h"
 
 static const CGFloat HYPImageFormFieldTopMargin = 20.0f;
 static const CGFloat HYPImageFormFieldHorizontalMargin = 10.0f;
@@ -57,8 +57,8 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     CGRect labelFrame = CGRectMake(HYPImageFormFieldLabelsX, HYPImageFormFieldLabelY,
                                    HYPImageFormFieldLabelsWidth, HYPImageFormFieldLabelHeight);
     UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
-    label.font = [UIFont REMALargeSize];
-    label.textColor = [UIColor REMACoreBlue];
+    label.font = [UIFont HYPFormsLargeSize];
+    label.textColor = [UIColor HYPFormsCoreBlue];
     label.text = NSLocalizedString(@"Legg til bilde av den ansatte", @"Legg til bilde av den ansatte");
 
     return label;
@@ -69,10 +69,10 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     CGRect infoFrame = CGRectMake(HYPImageFormFieldLabelsX, HYPImageFormFieldInfoY,
                                   HYPImageFormFieldLabelsWidth, HYPImageFormFieldInfoHeight);
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
-    infoLabel.font = [UIFont REMASmallSize];
-    infoLabel.textColor = [UIColor REMACoreBlue];
-    infoLabel.text = NSLocalizedString(@"Bildet som lastes opp blir den ansattes profilbilde i ulike REMA-systemer.",
-                                       @"Bildet som lastes opp blir den ansattes profilbilde i ulike REMA-systemer.");
+    infoLabel.font = [UIFont HYPFormsSmallSize];
+    infoLabel.textColor = [UIColor HYPFormsCoreBlue];
+    infoLabel.text = NSLocalizedString(@"Bildet som lastes opp blir den ansattes profilbilde i ulike HYPForms-systemer.",
+                                       @"Bildet som lastes opp blir den ansattes profilbilde i ulike HYPForms-systemer.");
     infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
     infoLabel.numberOfLines = 0;
 

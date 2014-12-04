@@ -1,122 +1,122 @@
-#import "UIColor+REMAColors.h"
+#import "UIColor+HYPFormsColors.h"
 
 #import "UIColor+ANDYHex.h"
 
-@implementation UIColor (REMAColors)
+@implementation UIColor (HYPFormsColors)
 
 #pragma mark - Color scheme
 
-+ (UIColor *)REMACoreBlue
++ (UIColor *)HYPFormsCoreBlue
 {
     return [UIColor colorFromHex:@"28649C"];
 }
 
-+ (UIColor *)REMADarkBlue
++ (UIColor *)HYPFormsDarkBlue
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)REMACallToAction
++ (UIColor *)HYPFormsCallToAction
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)REMACallToActionPressed
++ (UIColor *)HYPFormsCallToActionPressed
 {
     return [UIColor colorFromHex:@"008ED9"];
 }
 
-+ (UIColor *)REMABackground
++ (UIColor *)HYPFormsBackground
 {
     return [UIColor colorFromHex:@"DAE2EA"];
 }
 
-+ (UIColor *)REMALightGray
++ (UIColor *)HYPFormsLightGray
 {
     return [UIColor colorFromHex:@"F5F5F8"];
 }
 
-+ (UIColor *)REMADarkGray
++ (UIColor *)HYPFormsDarkGray
 {
     return [UIColor colorFromHex:@"979797"];
 }
 
-+ (UIColor *)REMAFieldForeground
++ (UIColor *)HYPFormsFieldForeground
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)REMAFieldForegroundActive
++ (UIColor *)HYPFormsFieldForegroundActive
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)REMAFieldForegroundInvalid
++ (UIColor *)HYPFormsFieldForegroundInvalid
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)REMAFieldForegroundDisabled
++ (UIColor *)HYPFormsFieldForegroundDisabled
 {
     return [UIColor colorFromHex:@"C6C6C6"];
 }
 
-+ (UIColor *)REMAFieldBackground
++ (UIColor *)HYPFormsFieldBackground
 {
     return [UIColor colorFromHex:@"E1F5FF"];
 }
 
-+ (UIColor *)REMAFieldBackgroundActive
++ (UIColor *)HYPFormsFieldBackgroundActive
 {
     return [UIColor colorFromHex:@"C0EAFF"];
 }
 
-+ (UIColor *)REMAFieldBackgroundInvalid
++ (UIColor *)HYPFormsFieldBackgroundInvalid
 {
     return [UIColor colorFromHex:@"FFD7D7"];
 }
 
-+ (UIColor *)REMAFieldBackgroundDisabled
++ (UIColor *)HYPFormsFieldBackgroundDisabled
 {
     return [UIColor colorFromHex:@"FFFFFF"];
 }
 
-+ (UIColor *)REMAFieldBorder
++ (UIColor *)HYPFormsFieldBorder
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)REMAFieldBorderActive
++ (UIColor *)HYPFormsFieldBorderActive
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)REMAFieldBorderInvalid
++ (UIColor *)HYPFormsFieldBorderInvalid
 {
     return [UIColor colorFromHex:@"EC3031"];
 }
 
-+ (UIColor *)REMAFieldBorderDisabled
++ (UIColor *)HYPFormsFieldBorderDisabled
 {
     return [UIColor colorFromHex:@"C6C6C6"];
 }
 
-+ (UIColor *)REMABlue
++ (UIColor *)HYPFormsBlue
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)REMAGreen
++ (UIColor *)HYPFormsGreen
 {
     return [UIColor colorFromHex:@"69C204"];
 }
 
-+ (UIColor *)REMAYellow
++ (UIColor *)HYPFormsYellow
 {
     return [UIColor colorFromHex:@"FEC22E"];
 }
 
-+ (UIColor *)REMARed
++ (UIColor *)HYPFormsRed
 {
     return [UIColor colorFromHex:@"EC3031"];
 }
@@ -130,17 +130,17 @@
 
 + (UIColor *)tableCellBorder
 {
-    return [UIColor REMADarkBlue];
+    return [UIColor HYPFormsDarkBlue];
 }
 
 + (UIColor *)borderColor
 {
-    return [UIColor REMABlue];
+    return [UIColor HYPFormsBlue];
 }
 
 + (UIColor *)windowBackgroundColor
 {
-    return [UIColor REMABackground];
+    return [UIColor HYPFormsBackground];
 }
 
 + (UIColor *)navigationForgroundColor
@@ -150,7 +150,7 @@
 
 + (UIColor *)navigationBackgroundColor
 {
-    return [UIColor REMACoreBlue];
+    return [UIColor HYPFormsCoreBlue];
 }
 
 + (UIColor *)messageViewForeground
@@ -160,10 +160,10 @@
 
 + (UIColor *)messageViewBackground
 {
-    return [UIColor REMARed];
+    return [UIColor HYPFormsRed];
 }
 
-+ (UIColor *)REMAShadowColor
++ (UIColor *)HYPFormsShadowColor
 {
     return [UIColor colorWithRed: 0.271 green: 0.361 blue: 0.451 alpha: 0.46];
 }

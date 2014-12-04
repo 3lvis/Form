@@ -1,68 +1,68 @@
-#import "UIFont+REMAStyles.h"
+#import "UIFont+HYPFormsStyles.h"
 
-@implementation UIFont (REMAStyles)
+@implementation UIFont (HYPFormsStyles)
 
-+ (UIFont *)REMALargeSize
++ (UIFont *)HYPFormsLargeSize
 {
     return [UIFont fontWithName:@"DIN-Medium" size:20.0];
 }
 
-+ (UIFont *)REMALargeSizeBold
++ (UIFont *)HYPFormsLargeSizeBold
 {
     return [UIFont fontWithName:@"DIN-Bold" size:20.0];
 }
 
-+ (UIFont *)REMALargeSizeRegular
++ (UIFont *)HYPFormsLargeSizeRegular
 {
     return [UIFont fontWithName:@"DIN-Regular" size:20.0];
 }
 
-+ (UIFont *)REMAMediumSize
++ (UIFont *)HYPFormsMediumSize
 {
     return [UIFont fontWithName:@"DIN-Medium" size:17.0];
 }
 
-+ (UIFont *)REMAMediumSizeBolder
++ (UIFont *)HYPFormsMediumSizeBolder
 {
     return [UIFont fontWithName:@"DIN-Bold" size:17.0];
 }
 
-+ (UIFont *)REMAMediumSizeBold
++ (UIFont *)HYPFormsMediumSizeBold
 {
     return [UIFont fontWithName:@"DIN-Medium" size:17.0];
 }
 
-+ (UIFont *)REMAMediumSizeLight
++ (UIFont *)HYPFormsMediumSizeLight
 {
     return [UIFont fontWithName:@"DIN-Light" size:17.0];
 }
 
-+ (UIFont *)REMASmallSizeBold
++ (UIFont *)HYPFormsSmallSizeBold
 {
     return [UIFont fontWithName:@"DIN-Bold" size:14.0];
 }
 
-+ (UIFont *)REMASmallSize
++ (UIFont *)HYPFormsSmallSize
 {
     return [UIFont fontWithName:@"DIN-Regular" size:14.0];
 }
 
-+ (UIFont *)REMASmallSizeLight
++ (UIFont *)HYPFormsSmallSizeLight
 {
     return [UIFont fontWithName:@"DIN-Light" size:14.0];
 }
 
-+ (UIFont *)REMASmallSizeMedium
++ (UIFont *)HYPFormsSmallSizeMedium
 {
     return [UIFont fontWithName:@"DIN-Medium" size:14.0];
 }
 
-+ (UIFont *)REMALabelFont
++ (UIFont *)HYPFormsLabelFont
 {
     return [UIFont fontWithName:@"DIN-Light" size:13.0];
 }
 
-+ (UIFont *)REMATextFieldFont
++ (UIFont *)HYPFormsTextFieldFont
 {
     return [UIFont fontWithName:@"DIN-Regular" size:15.0];
 }

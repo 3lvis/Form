@@ -5,8 +5,8 @@
 #import "HYPFieldValuesTableViewHeader.h"
 #import "HYPFieldValueCell.h"
 
-#import "UIFont+REMAStyles.h"
-#import "UIColor+REMAColors.h"
+#import "UIFont+HYPFormsStyles.h"
+#import "UIColor+HYPFormsColors.h"
 
 static const CGFloat HYPFieldValuesCellHeight = 44.0f;
 

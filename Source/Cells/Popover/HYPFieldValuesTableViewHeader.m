@@ -2,8 +2,8 @@
 
 #import "HYPFieldValueCell.h"
 
-#import "UIFont+REMAStyles.h"
-#import "UIColor+REMAColors.h"
+#import "UIFont+HYPFormsStyles.h"
+#import "UIColor+HYPFormsColors.h"
 
 static const CGFloat HYPLabelHeight = 25.0f;
 
@@ -38,8 +38,8 @@ static const CGFloat HYPLabelHeight = 25.0f;
     CGRect rect = CGRectMake(0.0f, 8.0f, HYPFieldValuesHeaderWidth, HYPLabelHeight);
 
     _titleLabel = [[UILabel alloc] initWithFrame:rect];
-    _titleLabel.font = [UIFont REMAMediumSizeBold];
-    _titleLabel.textColor = [UIColor REMADarkBlue];
+    _titleLabel.font = [UIFont HYPFormsMediumSizeBold];
+    _titleLabel.textColor = [UIColor HYPFormsDarkBlue];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
 
     return _titleLabel;
@@ -53,8 +53,8 @@ static const CGFloat HYPLabelHeight = 25.0f;
     CGRect rect = CGRectMake(0.0f, y, HYPFieldValuesHeaderWidth, HYPLabelHeight);
 
     _subtitleLabel = [[UILabel alloc] initWithFrame:rect];
-    _subtitleLabel.font = [UIFont REMAMediumSizeLight];
-    _subtitleLabel.textColor = [UIColor REMACoreBlue];
+    _subtitleLabel.font = [UIFont HYPFormsMediumSizeLight];
+    _subtitleLabel.textColor = [UIColor HYPFormsCoreBlue];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
 
     return _subtitleLabel;

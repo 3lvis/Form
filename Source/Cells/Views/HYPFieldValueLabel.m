@@ -3,8 +3,8 @@
 #import "HYPBaseFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
-#import "UIFont+REMAStyles.h"
-#import "UIColor+REMAColors.h"
+#import "UIFont+HYPFormsStyles.h"
+#import "UIColor+HYPFormsColors.h"
 
 @implementation HYPFieldValueLabel
 
@@ -19,7 +19,7 @@
     self.layer.masksToBounds = YES;
 
     self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-    self.font = [UIFont REMATextFieldFont];
+    self.font = [UIFont HYPFormsTextFieldFont];
     self.textColor = [UIColor colorFromHex:@"455C73"];
 
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -83,7 +83,7 @@
         self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
         self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
     } else {
-        self.backgroundColor = [UIColor REMAFieldBackgroundInvalid];
+        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
         self.layer.borderColor = [UIColor colorFromHex:@"EC3031"].CGColor;
     }
 }
