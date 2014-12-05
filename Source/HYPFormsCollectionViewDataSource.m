@@ -626,6 +626,7 @@
 
             id value = [self.formsManager.values objectForKey:fieldID];
             BOOL isNumericField = (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber);
+            NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
 
             HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:self.formsManager.forms withIndexPath:NO];
 
@@ -660,12 +661,10 @@
                         [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
                     } else {
                         [self.formsManager.values setObject:@"" forKey:field.fieldID];
-                        NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
                         [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
                     }
                 }
             } else {
-                NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
                 [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
             }
         }
