@@ -654,12 +654,10 @@
                 if (value && [value isKindOfClass:[NSString class]]) {
                     if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
                         NSString *stringValue = value;
-                        if (stringValue.length == 0) {
-                            stringValue = @"0";
-                        }
+                        if (stringValue.length == 0) stringValue = @"0";
                         [values addEntriesFromDictionary:@{fieldID : stringValue}];
                     } else {
-                        [values addEntriesFromDictionary:@{fieldID : @""}];
+                        [values addEntriesFromDictionary:@{fieldID : value}];
                     }
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
