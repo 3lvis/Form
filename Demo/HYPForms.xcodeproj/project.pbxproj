@@ -194,6 +194,7 @@
 		BD03AE7719F98D0700DF726E /* HYPPostalCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeManager.h; sourceTree = "<group>"; };
 		BD03AE7819F98D0700DF726E /* HYPPostalCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeManager.m; sourceTree = "<group>"; };
 		BD171A301A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormsCollectionViewDataSourceTests.m; sourceTree = "<group>"; };
+		BD22D3E01A264FC400A3DB65 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		BD30E7AA19F4FAB6001AFA58 /* HYPFloatFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFloatFormatter.h; sourceTree = "<group>"; };
 		BD30E7AB19F4FAB6001AFA58 /* HYPFloatFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFloatFormatter.m; sourceTree = "<group>"; };
 		BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_calendar@2x.png"; sourceTree = "<group>"; };
@@ -393,6 +394,7 @@
 		441B779719DEC4F3006AF67C = {
 			isa = PBXGroup;
 			children = (
+				BD22D3E01A264FC400A3DB65 /* .travis.yml */,
 				BD7C6C2D19F686130084EF2E /* HYPForms.podspec */,
 				4408F15B19E81EA6005AE53F /* Source */,
 				441B77A219DEC4F3006AF67C /* HYPForms */,
