@@ -652,13 +652,8 @@
 
             } else if (value) {
                 if ([value isKindOfClass:[NSString class]]) {
-                    if (isNumericField) {
-                        NSString *stringValue = value;
-                        if (stringValue.length == 0) stringValue = @"0";
-                        [values addEntriesFromDictionary:@{fieldID : stringValue}];
-                    } else {
-                        [values addEntriesFromDictionary:@{fieldID : value}];
-                    }
+                    if (isNumericField) if ([value length] == 0) value = @"0";
+                    [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
                         [self.formsManager.values setObject:[value stringValue] forKey:field.fieldID];
