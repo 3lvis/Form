@@ -665,13 +665,13 @@
                         [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
                     } else {
                         [self.formsManager.values setObject:@"" forKey:field.fieldID];
-                        NSString *dictionaryValue = (isNumericField) ? @"0" : @"";
-                        [values addEntriesFromDictionary:@{fieldID : dictionaryValue}];
+                        NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
+                        [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
                     }
                 }
             } else {
-                NSString *dictionaryValue = (isNumericField) ? @"0" : @"";
-                [values addEntriesFromDictionary:@{fieldID : dictionaryValue}];
+                NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
+                [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
             }
         }
 
