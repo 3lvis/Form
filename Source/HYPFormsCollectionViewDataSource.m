@@ -651,7 +651,7 @@
                 }
 
             } else if (value) {
-                if (value && [value isKindOfClass:[NSString class]]) {
+                if ([value isKindOfClass:[NSString class]]) {
                     if (isNumericField) {
                         NSString *stringValue = value;
                         if (stringValue.length == 0) stringValue = @"0";
