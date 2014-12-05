@@ -625,6 +625,8 @@
         for (NSString *fieldID in fieldIDs) {
 
             id value = [self.formsManager.values objectForKey:fieldID];
+            BOOL isNumericField = (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber);
+            NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
 
             HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:self.formsManager.forms withIndexPath:NO];
 
@@ -650,8 +652,8 @@
                 }
 
             } else if (value) {
-
-                if (value && [value isKindOfClass:[NSString class]]) {
+                if ([value isKindOfClass:[NSString class]]) {
+                    if ([value length] == 0) value = defaultEmptyValue;
                     [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
@@ -659,19 +661,11 @@
                         [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
                     } else {
                         [self.formsManager.values setObject:@"" forKey:field.fieldID];
-                        if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
-                            [values addEntriesFromDictionary:@{fieldID : @"0"}];
-                        } else {
-                            [values addEntriesFromDictionary:@{fieldID : @""}];
-                        }
+                        [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
                     }
                 }
             } else {
-                if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
-                    [values addEntriesFromDictionary:@{fieldID : @"0"}];
-                } else {
-                    [values addEntriesFromDictionary:@{fieldID : @""}];
-                }
+                [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
             }
         }
 
