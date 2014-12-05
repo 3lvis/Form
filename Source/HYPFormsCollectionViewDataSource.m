@@ -625,6 +625,7 @@
         for (NSString *fieldID in fieldIDs) {
 
             id value = [self.formsManager.values objectForKey:fieldID];
+            BOOL isNumericField = (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber);
 
             HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:self.formsManager.forms withIndexPath:NO];
 
@@ -650,9 +651,8 @@
                 }
 
             } else if (value) {
-
                 if (value && [value isKindOfClass:[NSString class]]) {
-                    if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
+                    if (isNumericField) {
                         NSString *stringValue = value;
                         if (stringValue.length == 0) stringValue = @"0";
                         [values addEntriesFromDictionary:@{fieldID : stringValue}];
@@ -665,7 +665,7 @@
                         [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
                     } else {
                         [self.formsManager.values setObject:@"" forKey:field.fieldID];
-                        if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
+                        if (isNumericField) {
                             [values addEntriesFromDictionary:@{fieldID : @"0"}];
                         } else {
                             [values addEntriesFromDictionary:@{fieldID : @""}];
@@ -673,7 +673,7 @@
                     }
                 }
             } else {
-                if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
+                if (isNumericField) {
                     [values addEntriesFromDictionary:@{fieldID : @"0"}];
                 } else {
                     [values addEntriesFromDictionary:@{fieldID : @""}];
