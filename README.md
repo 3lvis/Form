@@ -1,5 +1,5 @@
 #HYPForms
-[![Build Status](https://img.shields.io/travis/hyperoslo/HYPNorwegianSSN.svg?style=flat)](https://travis-ci.org/hyperoslo/HYPNorwegianSSN)
+[![Build Status](https://img.shields.io/travis/hyperoslo/HYPForms.svg?style=flat)](https://travis-ci.org/hyperoslo/HYPForms)
 
 ##This is a work in progress, stay tuned!
  
