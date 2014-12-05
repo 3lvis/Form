@@ -653,7 +653,7 @@
 
             } else if (value) {
                 if ([value isKindOfClass:[NSString class]]) {
-                    if (isNumericField) if ([value length] == 0) value = @"0";
+                    if ([value length] == 0) value = defaultEmptyValue;
                     [values addEntriesFromDictionary:@{fieldID : value}];
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
