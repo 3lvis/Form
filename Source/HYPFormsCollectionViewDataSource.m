@@ -652,7 +652,15 @@
             } else if (value) {
 
                 if (value && [value isKindOfClass:[NSString class]]) {
-                    [values addEntriesFromDictionary:@{fieldID : value}];
+                    if (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber) {
+                        NSString *stringValue = value;
+                        if (stringValue.length == 0) {
+                            stringValue = @"0";
+                        }
+                        [values addEntriesFromDictionary:@{fieldID : stringValue}];
+                    } else {
+                        [values addEntriesFromDictionary:@{fieldID : @""}];
+                    }
                 } else {
                     if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
                         [self.formsManager.values setObject:[value stringValue] forKey:field.fieldID];
