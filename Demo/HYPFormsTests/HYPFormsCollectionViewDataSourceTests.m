@@ -20,7 +20,7 @@
 {
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds] collectionViewLayout:layout];
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms] initialValues:nil];
     HYPFormsCollectionViewDataSource *dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView andFormsManager:manager];
 
     [dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"postal_code"]];
@@ -54,7 +54,7 @@
 {
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds] collectionViewLayout:layout];
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms] initialValues:nil];
     HYPFormsCollectionViewDataSource *dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView andFormsManager:manager];
 
     HYPFormField *firstNameField = [dataSource fieldWithID:@"first_name" withIndexPath:YES];
@@ -76,7 +76,7 @@
 
 - (void)testFieldValidation
 {
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms] initialValues:nil];
 
     NSArray *fields = [manager invalidFormFields];
 

@@ -16,7 +16,8 @@
 {
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
+                                                        initialValues:values];
 
     HYPFormField *field = [HYPFormField fieldWithID:@"first_name" inForms:manager.forms withIndexPath:NO];
     XCTAssertEqualObjects(field.fieldID, @"first_name");
@@ -28,6 +29,7 @@
     }];
 
     field = [HYPFormField fieldWithID:@"first_name" inForms:manager.forms withIndexPath:NO];
+
     XCTAssertNil(field);
 }
 

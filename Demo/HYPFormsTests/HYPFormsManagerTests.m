@@ -18,7 +18,8 @@
 
 - (void)testFormsGenerationOnlyJSON
 {
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
+                                                        initialValues:nil];
 
     XCTAssertNotNil(manager.forms);
 
@@ -33,7 +34,8 @@
 {
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
+                                                        initialValues:values];
 
     HYPFormField *displayNameField = [HYPFormField fieldWithID:@"display_name" inForms:manager.forms withIndexPath:NO];
 
@@ -44,7 +46,8 @@
 {
     NSDictionary *values = @{@"employment_type" : @1};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
+                                                        initialValues:values];
 
     XCTAssertTrue(manager.hiddenFields.count > 0);
 

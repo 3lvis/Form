@@ -43,11 +43,24 @@
 }
 
 - (instancetype)initWithForms:(NSMutableArray *)forms
+                initialValues:(NSDictionary *)initialValues
 {
     self = [super init];
     if (!self) return nil;
 
-    _forms = forms;
+    [self generateFormsWithForms:forms
+                  initialValues:initialValues
+              disabledFieldsIDs:nil
+                       disabled:NO
+                     completion:^(NSMutableArray *forms,
+                                  NSDictionary *fieldValues,
+                                  NSMutableDictionary *hiddenFields,
+                                  NSMutableDictionary *hiddenSections) {
+                         self.forms = forms;
+                         self.hiddenFields = hiddenFields;
+                         self.hiddenSections = hiddenSections;
+                         self.values = [fieldValues mutableCopy];
+                     }];
 
     return self;
 }
@@ -107,10 +120,6 @@
                                         NSMutableDictionary *hiddenSections))completion
 {
     NSMutableArray *forms = [NSMutableArray array];
-    NSMutableArray *fieldsWithFormula = [NSMutableArray new];
-    NSMutableArray *targetsToRun = [NSMutableArray array];
-    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
-    [fieldValues addEntriesFromDictionary:initialValues];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
@@ -120,7 +129,30 @@
                                           disabledFieldsIDs:disabledFieldsIDs
                                               initialValues:initialValues];
         [forms addObject:form];
+    }];
 
+    [self generateFormsWithForms:forms
+                   initialValues:initialValues
+               disabledFieldsIDs:disabledFieldsIDs
+                        disabled:disabled
+                      completion:completion];
+}
+
+- (void)generateFormsWithForms:(NSMutableArray *)forms
+                initialValues:(NSDictionary *)initialValues
+            disabledFieldsIDs:(NSArray *)disabledFieldsIDs
+                     disabled:(BOOL)disabled
+                   completion:(void (^)(NSMutableArray *forms,
+                                        NSDictionary *fieldValues,
+                                        NSMutableDictionary *hiddenFields,
+                                        NSMutableDictionary *hiddenSections))completion
+{
+    NSMutableArray *fieldsWithFormula = [NSMutableArray new];
+    NSMutableArray *targetsToRun = [NSMutableArray array];
+    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
+    [fieldValues addEntriesFromDictionary:initialValues];
+
+    for (HYPForm *form in forms) {
         for (HYPFormField *field in form.fields) {
 
             if (field.formula) [fieldsWithFormula addObject:field];
@@ -142,7 +174,7 @@
                 }
             }
         }
-    }];
+    }
 
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
