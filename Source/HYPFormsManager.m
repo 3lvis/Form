@@ -42,6 +42,52 @@
     return self;
 }
 
+- (instancetype)initWithForms:(NSMutableArray *)forms
+{
+    self = [super init];
+    if (!self) return nil;
+
+    _forms = forms;
+
+    return self;
+}
+
+- (NSMutableArray *)forms
+{
+    if (_forms) return _forms;
+
+    _forms = [NSMutableArray new];
+
+    return _forms;
+}
+
+- (NSMutableDictionary *)hiddenFields
+{
+    if (_hiddenFields) return _hiddenFields;
+
+    _hiddenFields = [NSMutableDictionary new];
+
+    return _hiddenFields;
+}
+
+- (NSMutableDictionary *)hiddenSections
+{
+    if (_hiddenSections) return _hiddenSections;
+
+    _hiddenSections = [NSMutableDictionary new];
+
+    return _hiddenSections;
+}
+
+- (NSArray *)disabledFieldsIDs
+{
+    if (_disabledFieldsIDs) return _disabledFieldsIDs;
+
+    _disabledFieldsIDs = [NSArray new];
+
+    return _disabledFieldsIDs;
+}
+
 - (NSMutableDictionary *)values
 {
     if (_values) return _values;

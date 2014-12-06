@@ -1,0 +1,78 @@
+[
+  {
+    "id":"personal-details",
+    "title":"Personal Details",
+    "sections":[
+      {
+        "id":"personal-details-0",
+        "fields":[
+          {
+            "id":"first_name",
+            "title":"First name",
+            "type":"name",
+            "size":{
+              "width": 25,
+              "height": 1
+            },
+            "validations":{
+              "required":true,
+              "min_length":2
+            },
+            "targets":[
+              {
+                "id":"display_name",
+                "type":"field",
+                "action":"update"
+              }
+            ]
+          },
+          {
+            "id":"last_name",
+            "title":"Etternavn",
+            "type":"name",
+            "size":{
+              "width": 25,
+              "height": 1
+            },
+            "validations":{
+              "required":true,
+              "min_length":2
+            },
+            "targets":[
+              {
+                "id":"display_name",
+                "type":"field",
+                "action":"update"
+              }
+            ]
+          },
+          {
+            "id":"display_name",
+            "title":"Visningsnavn",
+            "type":"text",
+            "size":{
+              "width": 30,
+              "height": 1
+            },
+            "formula":"first_name last_name",
+            "validations":{
+              "required":true
+            }
+          },
+          {
+            "id":"email_address",
+            "title":"E-post",
+            "type":"email",
+            "size":{
+              "width": 40,
+              "height": 1
+            },
+            "validations":{
+              "format":"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

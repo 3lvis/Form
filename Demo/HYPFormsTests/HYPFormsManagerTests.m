@@ -3,9 +3,12 @@
 #import "HYPFormsManager.h"
 
 #import "HYPForm.h"
+#import "HYPFormSection.h"
 #import "HYPFormField.h"
+#import "HYPFormTarget.h"
+#import "HYPFieldValidation.h"
 
-#import "NSJSONSerialization+ANDYJSONFile.h"
+#import "HYPFormsManager+Tests.h"
 
 @interface HYPFormsManagerTests : XCTestCase
 
@@ -15,9 +18,7 @@
 
 - (void)testFormsGenerationOnlyJSON
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON initialValues:nil disabledFieldIDs:nil disabled:NO];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
 
     XCTAssertNotNil(manager.forms);
 
@@ -30,11 +31,9 @@
 
 - (void)testFormsGenerationFieldsWithFormulas
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON initialValues:values disabledFieldIDs:nil disabled:NO];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
 
     HYPFormField *displayNameField = [HYPFormField fieldWithID:@"display_name" inForms:manager.forms withIndexPath:NO];
 
@@ -43,11 +42,9 @@
 
 - (void)testFormsGenerationHideTargets
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-
     NSDictionary *values = @{@"employment_type" : @1};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON initialValues:values disabledFieldIDs:nil disabled:NO];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]];
 
     XCTAssertTrue(manager.hiddenFields.count > 0);
 
