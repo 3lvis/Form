@@ -1,3 +1,2 @@
 language: objective-c
-xcode_project: HYPForms.xcodeproj
-xcode_scheme: HYPFormsTests
+script: xctool -workspace Demo/HYPForms.xcworkspace -scheme HYPFormsTests -sdk iphonesimulator build test
