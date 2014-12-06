@@ -28,7 +28,7 @@
           },
           {
             "id":"last_name",
-            "title":"Etternavn",
+            "title":"Last name",
             "type":"name",
             "size":{
               "width": 25,
@@ -48,7 +48,7 @@
           },
           {
             "id":"display_name",
-            "title":"Visningsnavn",
+            "title":"Display name",
             "type":"text",
             "size":{
               "width": 30,
