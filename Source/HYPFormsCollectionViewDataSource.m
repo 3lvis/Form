@@ -535,7 +535,7 @@
             if (field) {
                 HYPForm *form = self.formsManager.forms[[field.section.form.position integerValue]];
                 HYPFormSection *section = form.sections[[field.section.position integerValue]];
-                NSInteger fieldIndex = [field indexInForms:self.formsManager.forms];
+                NSInteger fieldIndex = [field indexInSectionUsingForms:self.formsManager.forms];
                 [section.fields insertObject:field atIndex:fieldIndex];
 
                 HYPFormField *newField = [HYPFormField fieldWithID:target.targetID inForms:self.formsManager.forms withIndexPath:YES];
