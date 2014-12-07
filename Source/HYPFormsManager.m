@@ -126,8 +126,7 @@
         HYPForm *form = [[HYPForm alloc] initWithDictionary:formDict
                                                    position:formIndex
                                                    disabled:disabled
-                                          disabledFieldsIDs:disabledFieldsIDs
-                                              initialValues:initialValues];
+                                          disabledFieldsIDs:disabledFieldsIDs];
         [forms addObject:form];
     }];
 
@@ -154,6 +153,18 @@
 
     for (HYPForm *form in forms) {
         for (HYPFormField *field in form.fields) {
+
+            if ([initialValues andy_valueForKey:field.fieldID]) {
+                if (field.type == HYPFormFieldTypeSelect) {
+                    for (HYPFieldValue *value in field.values) {
+
+                        BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:field.fieldID]]);
+                        if (isInitialValue) field.fieldValue = value;
+                    }
+                } else {
+                    field.fieldValue = [initialValues andy_valueForKey:field.fieldID];
+                }
+            }
 
             if (field.formula) [fieldsWithFormula addObject:field];
 

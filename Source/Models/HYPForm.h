@@ -14,8 +14,7 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
                           position:(NSInteger)position
                           disabled:(BOOL)disabled
-                 disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                     initialValues:(NSDictionary *)initialValues;
+                 disabledFieldsIDs:(NSArray *)disabledFieldsIDs;
 
 - (NSArray *)fields;
 

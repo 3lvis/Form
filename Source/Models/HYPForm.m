@@ -24,7 +24,6 @@
                           position:(NSInteger)position
                           disabled:(BOOL)disabled
                  disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                     initialValues:(NSDictionary *)initialValues
 {
     self = [super init];
     if (!self) return nil;
@@ -113,18 +112,6 @@
                     fieldValue.targets = targets;
                     fieldValue.field = field;
                     [values addObject:fieldValue];
-                }
-            }
-
-            if ([initialValues andy_valueForKey:remoteID]) {
-                if (field.type == HYPFormFieldTypeSelect) {
-                    for (HYPFieldValue *value in values) {
-
-                        BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:remoteID]]);
-                        if (isInitialValue) field.fieldValue = value;
-                    }
-                } else {
-                    field.fieldValue = [initialValues andy_valueForKey:remoteID];
                 }
             }
 
