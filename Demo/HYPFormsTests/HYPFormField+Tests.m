@@ -73,10 +73,18 @@
 
 #pragma mark Section 1
 
++ (HYPFormField *)addressField
+{
+    HYPFormField *field = [HYPFormField textFormFieldWithID:@"address"];
+    field.position = @0;
+
+    return field;
+}
+
 + (HYPFormField *)emailField
 {
     HYPFormField *field = [HYPFormField textFormFieldWithID:@"email"];
-    field.position = @0;
+    field.position = @1;
     field.validation = [HYPFieldValidation emailValidation];
 
     return field;
@@ -85,7 +93,7 @@
 + (HYPFormField *)usernameField
 {
     HYPFormField *field = [HYPFormField textFormFieldWithID:@"username"];
-    field.position = @1;
+    field.position = @2;
 
     return field;
 }
@@ -115,6 +123,7 @@
     value1.targets = nil;
     value1.field = field;
     value1.value = @3;
+    value1.field = field;
 
     HYPFieldValue *value2 = [HYPFieldValue new];
     value2.valueID = @"full_time";
@@ -124,6 +133,7 @@
     value2.targets = nil;
     value2.field = field;
     value2.value = @7.5;
+    value2.field = field;
 
     field.values = @[value1, value2];
 
@@ -154,17 +164,17 @@
     field.position = @2;
 
     HYPFieldValue *value1 = [HYPFieldValue new];
-    value1.valueID = @"permanent";
+    value1.valueID = @0;
     value1.title = @"Permanent";
-    value1.targets = @[[HYPFormTarget hideFieldTargetWithID:@"end_date"]];
+    value1.targets = @[[HYPFormTarget showFieldTargetWithID:@"end_date"],
+                       [HYPFormTarget showSectionTargetWithID:@"employment-2"]];
     value1.field = field;
 
     HYPFieldValue *value2 = [HYPFieldValue new];
-    value2.valueID = @"Temporary";
+    value2.valueID = @1;
     value2.title = @"Temporary";
-
-#warning TODO: hide salary section too!
-    value2.targets = @[[HYPFormTarget showFieldTargetWithID:@"end_date"]];
+    value2.targets = @[[HYPFormTarget hideFieldTargetWithID:@"end_date"],
+                       [HYPFormTarget hideSectionTargetWithID:@"employment-2"]];
     value2.field = field;
 
     field.values = @[value1, value2];
@@ -184,18 +194,21 @@
     value1.title = @"Base salary 1";
     value1.field = field;
     value1.value = @100;
+    value1.field = field;
 
     HYPFieldValue *value2 = [HYPFieldValue new];
     value2.valueID = @"base_salary_2";
     value2.title = @"Base salary 2";
     value2.field = field;
     value2.value = @114;
+    value2.field = field;
 
     HYPFieldValue *value3 = [HYPFieldValue new];
     value3.valueID = @"base_salary_3";
     value3.title = @"Base salary 3";
     value3.field = field;
     value3.value = @454;
+    value3.field = field;
 
     field.values = @[value1, value2, value3];
 
@@ -211,10 +224,12 @@
     value1.valueID = @"bonus_enabled_yes";
     value1.title = @"YES";
     value1.field = field;
+    value1.field = field;
 
     HYPFieldValue *value2 = [HYPFieldValue new];
     value2.valueID = @"bonus_enabled_no";
     value2.title = @"NO";
+    value2.field = field;
     value2.field = field;
 
     field.values = @[value1, value2];

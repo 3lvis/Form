@@ -6,6 +6,7 @@
 + (HYPFormField *)lastNameField;
 + (HYPFormField *)displayNameField;
 
++ (HYPFormField *)addressField;
 + (HYPFormField *)emailField;
 + (HYPFormField *)usernameField;
 
