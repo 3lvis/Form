@@ -4,7 +4,7 @@
 #import "HYPFormField.h"
 #import "HYPFormSection.h"
 
-#import "NSJSONSerialization+ANDYJSONFile.h"
+#import "HYPFormsManager+Tests.h"
 
 @interface HYPFormFieldTests : XCTestCase
 
@@ -14,11 +14,10 @@
 
 - (void)testFieldWithID
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON initialValues:values disabledFieldIDs:nil disabled:NO];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
+                                                        initialValues:values];
 
     HYPFormField *field = [HYPFormField fieldWithID:@"first_name" inForms:manager.forms withIndexPath:NO];
     XCTAssertEqualObjects(field.fieldID, @"first_name");
@@ -30,6 +29,7 @@
     }];
 
     field = [HYPFormField fieldWithID:@"first_name" inForms:manager.forms withIndexPath:NO];
+
     XCTAssertNil(field);
 }
 

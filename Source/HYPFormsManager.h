@@ -13,6 +13,9 @@
             disabledFieldIDs:(NSArray *)disabledFieldIDs
                     disabled:(BOOL)disabled;
 
+- (instancetype)initWithForms:(NSMutableArray *)forms
+                initialValues:(NSDictionary *)initialValues;
+
 - (NSArray *)invalidFormFields;
 
 @end

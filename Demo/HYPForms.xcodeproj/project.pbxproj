@@ -13,6 +13,12 @@
 		1416FB4C1A2875D700991E33 /* HYPTextFieldTypeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1416FB461A2875D700991E33 /* HYPTextFieldTypeManager.m */; };
 		1416FB4D1A2875D700991E33 /* HYPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1416FB481A2875D700991E33 /* HYPTextField.m */; };
 		1416FB4E1A2875D700991E33 /* HYPFieldValueLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1416FB4A1A2875D700991E33 /* HYPFieldValueLabel.m */; };
+		142193621A325080008FF712 /* HYPFieldValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 142193611A325080008FF712 /* HYPFieldValidation.m */; };
+		142193651A326367008FF712 /* HYPFormsManager+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 142193641A326367008FF712 /* HYPFormsManager+Tests.m */; };
+		142193681A3267D5008FF712 /* HYPFieldValidation+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 142193671A3267D5008FF712 /* HYPFieldValidation+Tests.m */; };
+		1421936C1A326968008FF712 /* HYPFormField+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1421936B1A326968008FF712 /* HYPFormField+Tests.m */; };
+		1421936F1A326BAE008FF712 /* HYPFormSection+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1421936E1A326BAE008FF712 /* HYPFormSection+Tests.m */; };
+		142193721A326D38008FF712 /* HYPForm+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 142193711A326D38008FF712 /* HYPForm+Tests.m */; };
 		143DD7B319F11BC3007EA631 /* postal_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 143DD7B219F11BC3007EA631 /* postal_codes.json */; };
 		145721C319EF260600195051 /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145721C219EF260600195051 /* camera-icon@2x.png */; };
 		1478934C19DFCC9000BC2497 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 1478934B19DFCC9000BC2497 /* forms.json */; };
@@ -102,6 +108,18 @@
 		1416FB481A2875D700991E33 /* HYPTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPTextField.m; sourceTree = "<group>"; };
 		1416FB491A2875D700991E33 /* HYPFieldValueLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFieldValueLabel.h; sourceTree = "<group>"; };
 		1416FB4A1A2875D700991E33 /* HYPFieldValueLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFieldValueLabel.m; sourceTree = "<group>"; };
+		142193601A325080008FF712 /* HYPFieldValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFieldValidation.h; sourceTree = "<group>"; };
+		142193611A325080008FF712 /* HYPFieldValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFieldValidation.m; sourceTree = "<group>"; };
+		142193631A326367008FF712 /* HYPFormsManager+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYPFormsManager+Tests.h"; sourceTree = "<group>"; };
+		142193641A326367008FF712 /* HYPFormsManager+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYPFormsManager+Tests.m"; sourceTree = "<group>"; };
+		142193661A3267D5008FF712 /* HYPFieldValidation+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYPFieldValidation+Tests.h"; sourceTree = "<group>"; };
+		142193671A3267D5008FF712 /* HYPFieldValidation+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYPFieldValidation+Tests.m"; sourceTree = "<group>"; };
+		1421936A1A326968008FF712 /* HYPFormField+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYPFormField+Tests.h"; sourceTree = "<group>"; };
+		1421936B1A326968008FF712 /* HYPFormField+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYPFormField+Tests.m"; sourceTree = "<group>"; };
+		1421936D1A326BAE008FF712 /* HYPFormSection+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYPFormSection+Tests.h"; sourceTree = "<group>"; };
+		1421936E1A326BAE008FF712 /* HYPFormSection+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYPFormSection+Tests.m"; sourceTree = "<group>"; };
+		142193701A326D38008FF712 /* HYPForm+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYPForm+Tests.h"; sourceTree = "<group>"; };
+		142193711A326D38008FF712 /* HYPForm+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYPForm+Tests.m"; sourceTree = "<group>"; };
 		143DD7B219F11BC3007EA631 /* postal_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postal_codes.json; sourceTree = "<group>"; };
 		145721C219EF260600195051 /* camera-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon@2x.png"; sourceTree = "<group>"; };
 		1478934B19DFCC9000BC2497 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
@@ -259,9 +277,27 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		142193691A3267ED008FF712 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				142193631A326367008FF712 /* HYPFormsManager+Tests.h */,
+				142193641A326367008FF712 /* HYPFormsManager+Tests.m */,
+				142193661A3267D5008FF712 /* HYPFieldValidation+Tests.h */,
+				142193671A3267D5008FF712 /* HYPFieldValidation+Tests.m */,
+				1421936A1A326968008FF712 /* HYPFormField+Tests.h */,
+				1421936B1A326968008FF712 /* HYPFormField+Tests.m */,
+				1421936D1A326BAE008FF712 /* HYPFormSection+Tests.h */,
+				1421936E1A326BAE008FF712 /* HYPFormSection+Tests.m */,
+				142193701A326D38008FF712 /* HYPForm+Tests.h */,
+				142193711A326D38008FF712 /* HYPForm+Tests.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		14CCCAAB19F26600005EC649 /* HYPFormsTests */ = {
 			isa = PBXGroup;
 			children = (
+				142193691A3267ED008FF712 /* Categories */,
 				14EE7ED81A269E7F00AC17B0 /* HYPFormsManagerTests.m */,
 				14CCCAAE19F26600005EC649 /* HYPFormTests.m */,
 				BD171A301A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m */,
@@ -337,6 +373,8 @@
 			children = (
 				44D5600919EBBDA30087067E /* HYPClassFactory.h */,
 				44D5600A19EBBDA30087067E /* HYPClassFactory.m */,
+				142193601A325080008FF712 /* HYPFieldValidation.h */,
+				142193611A325080008FF712 /* HYPFieldValidation.m */,
 				4408F18019E81EA6005AE53F /* HYPFieldValue.h */,
 				4408F18119E81EA6005AE53F /* HYPFieldValue.m */,
 				4408F18219E81EA6005AE53F /* HYPForm.h */,
@@ -687,10 +725,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				142193651A326367008FF712 /* HYPFormsManager+Tests.m in Sources */,
+				1421936F1A326BAE008FF712 /* HYPFormSection+Tests.m in Sources */,
 				14EE7ED91A269E7F00AC17B0 /* HYPFormsManagerTests.m in Sources */,
 				14CCCAAF19F26600005EC649 /* HYPFormTests.m in Sources */,
 				14C1287B1A27947F00729825 /* HYPFormFieldTests.m in Sources */,
+				1421936C1A326968008FF712 /* HYPFormField+Tests.m in Sources */,
+				142193721A326D38008FF712 /* HYPForm+Tests.m in Sources */,
 				BD171A311A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m in Sources */,
+				142193681A3267D5008FF712 /* HYPFieldValidation+Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +756,7 @@
 				4445D51A19EBC78A0034A5D7 /* UIColor+HYPFormsColors.m in Sources */,
 				1416FB3F1A28758E00991E33 /* HYPSelectFormFieldCell.m in Sources */,
 				4408F1B919E81F67005AE53F /* HYPFormatter.m in Sources */,
+				142193621A325080008FF712 /* HYPFieldValidation.m in Sources */,
 				4408F19919E81EA6005AE53F /* HYPFieldValue.m in Sources */,
 				14BF16C819EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m in Sources */,
 				1416FB4C1A2875D700991E33 /* HYPTextFieldTypeManager.m in Sources */,

@@ -42,6 +42,65 @@
     return self;
 }
 
+- (instancetype)initWithForms:(NSMutableArray *)forms
+                initialValues:(NSDictionary *)initialValues
+{
+    self = [super init];
+    if (!self) return nil;
+
+    [self generateFormsWithForms:forms
+                  initialValues:initialValues
+              disabledFieldsIDs:nil
+                       disabled:NO
+                     completion:^(NSMutableArray *forms,
+                                  NSDictionary *fieldValues,
+                                  NSMutableDictionary *hiddenFields,
+                                  NSMutableDictionary *hiddenSections) {
+                         self.forms = forms;
+                         self.hiddenFields = hiddenFields;
+                         self.hiddenSections = hiddenSections;
+                         self.values = [fieldValues mutableCopy];
+                     }];
+
+    return self;
+}
+
+- (NSMutableArray *)forms
+{
+    if (_forms) return _forms;
+
+    _forms = [NSMutableArray new];
+
+    return _forms;
+}
+
+- (NSMutableDictionary *)hiddenFields
+{
+    if (_hiddenFields) return _hiddenFields;
+
+    _hiddenFields = [NSMutableDictionary new];
+
+    return _hiddenFields;
+}
+
+- (NSMutableDictionary *)hiddenSections
+{
+    if (_hiddenSections) return _hiddenSections;
+
+    _hiddenSections = [NSMutableDictionary new];
+
+    return _hiddenSections;
+}
+
+- (NSArray *)disabledFieldsIDs
+{
+    if (_disabledFieldsIDs) return _disabledFieldsIDs;
+
+    _disabledFieldsIDs = [NSArray new];
+
+    return _disabledFieldsIDs;
+}
+
 - (NSMutableDictionary *)values
 {
     if (_values) return _values;
@@ -61,21 +120,51 @@
                                         NSMutableDictionary *hiddenSections))completion
 {
     NSMutableArray *forms = [NSMutableArray array];
-    NSMutableArray *fieldsWithFormula = [NSMutableArray new];
-    NSMutableArray *targetsToRun = [NSMutableArray array];
-    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
-    [fieldValues addEntriesFromDictionary:initialValues];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
         HYPForm *form = [[HYPForm alloc] initWithDictionary:formDict
                                                    position:formIndex
                                                    disabled:disabled
-                                          disabledFieldsIDs:disabledFieldsIDs
-                                              initialValues:initialValues];
+                                          disabledFieldsIDs:disabledFieldsIDs];
         [forms addObject:form];
+    }];
 
+    [self generateFormsWithForms:forms
+                   initialValues:initialValues
+               disabledFieldsIDs:disabledFieldsIDs
+                        disabled:disabled
+                      completion:completion];
+}
+
+- (void)generateFormsWithForms:(NSMutableArray *)forms
+                initialValues:(NSDictionary *)initialValues
+            disabledFieldsIDs:(NSArray *)disabledFieldsIDs
+                     disabled:(BOOL)disabled
+                   completion:(void (^)(NSMutableArray *forms,
+                                        NSDictionary *fieldValues,
+                                        NSMutableDictionary *hiddenFields,
+                                        NSMutableDictionary *hiddenSections))completion
+{
+    NSMutableArray *fieldsWithFormula = [NSMutableArray new];
+    NSMutableArray *targetsToRun = [NSMutableArray array];
+    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
+    [fieldValues addEntriesFromDictionary:initialValues];
+
+    for (HYPForm *form in forms) {
         for (HYPFormField *field in form.fields) {
+
+            if ([initialValues andy_valueForKey:field.fieldID]) {
+                if (field.type == HYPFormFieldTypeSelect) {
+                    for (HYPFieldValue *value in field.values) {
+
+                        BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:field.fieldID]]);
+                        if (isInitialValue) field.fieldValue = value;
+                    }
+                } else {
+                    field.fieldValue = [initialValues andy_valueForKey:field.fieldID];
+                }
+            }
 
             if (field.formula) [fieldsWithFormula addObject:field];
 
@@ -96,7 +185,7 @@
                 }
             }
         }
-    }];
+    }
 
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
