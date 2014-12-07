@@ -44,7 +44,7 @@
 
 - (void)testFormsGenerationHideTargets
 {
-    NSDictionary *values = @{@"employment_type" : @1};
+    NSDictionary *values = @{@"contract_type" : @1};
 
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
                                                         initialValues:values];
