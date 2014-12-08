@@ -63,7 +63,7 @@
     _popoverController.delegate = self;
     _popoverController.popoverBackgroundViewClass = [HYPPopoverBackgroundView class];
     _popoverController.popoverContentSize = CGSizeMake(200, 44);
-    _popoverController.passthroughViews = @[self.textField];
+    _popoverController.passthroughViews = @[self.superview];
 
     return _popoverController;
 }
