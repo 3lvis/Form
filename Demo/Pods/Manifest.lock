@@ -1,5 +1,6 @@
 PODS:
   - HYPImagePicker (0.2)
+  - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.8)
   - NSDictionary-ANDYSafeValue (0.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
@@ -12,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - HYPImagePicker (from `https://github.com/hyperoslo/HYPImagePicker.git`)
+  - HYPNorwegianAccountNumber (from `https://github.com/hyperoslo/HYPNorwegianAccountNumber.git`)
   - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
   - NSDictionary-ANDYSafeValue
   - NSJSONSerialization-ANDYJSONFile
@@ -24,6 +26,8 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   HYPImagePicker:
     :git: https://github.com/hyperoslo/HYPImagePicker.git
+  HYPNorwegianAccountNumber:
+    :git: https://github.com/hyperoslo/HYPNorwegianAccountNumber.git
   HYPNorwegianSSN:
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSString-HYPFormula:
@@ -37,6 +41,9 @@ CHECKOUT OPTIONS:
   HYPImagePicker:
     :commit: d7fb5dc36782bff5fff0256728eb922fa03dd12a
     :git: https://github.com/hyperoslo/HYPImagePicker.git
+  HYPNorwegianAccountNumber:
+    :commit: 036b08fec76615b804662ba578dc3f2e3f128145
+    :git: https://github.com/hyperoslo/HYPNorwegianAccountNumber.git
   HYPNorwegianSSN:
     :commit: fea0ac1ed0c416c429eee9cdbd43118954441369
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
@@ -52,6 +59,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
+  HYPNorwegianAccountNumber: 7a83d486c6cc3ce98e5b1c9f10b7ec738962e6c4
   HYPNorwegianSSN: d7a82481bca14cdc20f0867102c11f47274c9753
   NSDictionary-ANDYSafeValue: 5b7d0c0b1b7285191fb0f94e6dda13b86dec2dee
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587

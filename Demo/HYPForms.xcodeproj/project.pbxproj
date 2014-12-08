@@ -75,6 +75,8 @@
 		BD03AE7919F98D0700DF726E /* HYPPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD03AE7819F98D0700DF726E /* HYPPostalCodeManager.m */; };
 		BD171A311A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD171A301A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m */; };
 		BD30E7AC19F4FAB6001AFA58 /* HYPFloatFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD30E7AB19F4FAB6001AFA58 /* HYPFloatFormatter.m */; };
+		BD5DC2A31A35C8D500A652AD /* HYPBankAccountNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5DC2A21A35C8D500A652AD /* HYPBankAccountNumberValidator.m */; };
+		BD5DC2A41A35C8D500A652AD /* HYPBankAccountNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5DC2A21A35C8D500A652AD /* HYPBankAccountNumberValidator.m */; };
 		BD64BEFF1A0AC67B00A1D808 /* ic_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */; };
 		BDEEFE4319FA2A9D00D0C284 /* HYPPostalCodeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEEFE4219FA2A9D00D0C284 /* HYPPostalCodeValidator.m */; };
 		BDF644181A27A01600C752CA /* ic_mini_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDF644171A27A01600C752CA /* ic_mini_clear@2x.png */; };
@@ -215,6 +217,8 @@
 		BD22D3E01A264FC400A3DB65 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		BD30E7AA19F4FAB6001AFA58 /* HYPFloatFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFloatFormatter.h; sourceTree = "<group>"; };
 		BD30E7AB19F4FAB6001AFA58 /* HYPFloatFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFloatFormatter.m; sourceTree = "<group>"; };
+		BD5DC2A11A35C8D500A652AD /* HYPBankAccountNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberValidator.h; sourceTree = "<group>"; };
+		BD5DC2A21A35C8D500A652AD /* HYPBankAccountNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberValidator.m; sourceTree = "<group>"; };
 		BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_calendar@2x.png"; sourceTree = "<group>"; };
 		BD7C6C2D19F686130084EF2E /* HYPForms.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = HYPForms.podspec; path = ../HYPForms.podspec; sourceTree = "<group>"; };
 		BDEEFE4119FA2A9D00D0C284 /* HYPPostalCodeValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeValidator.h; sourceTree = "<group>"; };
@@ -521,6 +525,8 @@
 		44BDD18519EBD644008E9CA9 /* Validators */ = {
 			isa = PBXGroup;
 			children = (
+				BD5DC2A11A35C8D500A652AD /* HYPBankAccountNumberValidator.h */,
+				BD5DC2A21A35C8D500A652AD /* HYPBankAccountNumberValidator.m */,
 				BDEEFE4119FA2A9D00D0C284 /* HYPPostalCodeValidator.h */,
 				BDEEFE4219FA2A9D00D0C284 /* HYPPostalCodeValidator.m */,
 				44BDD18819EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.h */,
@@ -726,6 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				142193651A326367008FF712 /* HYPFormsManager+Tests.m in Sources */,
+				BD5DC2A41A35C8D500A652AD /* HYPBankAccountNumberValidator.m in Sources */,
 				1421936F1A326BAE008FF712 /* HYPFormSection+Tests.m in Sources */,
 				14EE7ED91A269E7F00AC17B0 /* HYPFormsManagerTests.m in Sources */,
 				14CCCAAF19F26600005EC649 /* HYPFormTests.m in Sources */,
@@ -750,6 +757,7 @@
 				BD03AE7919F98D0700DF726E /* HYPPostalCodeManager.m in Sources */,
 				4408F19B19E81EA6005AE53F /* HYPFormField.m in Sources */,
 				1416FB3E1A28758E00991E33 /* HYPDateFormFieldCell.m in Sources */,
+				BD5DC2A31A35C8D500A652AD /* HYPBankAccountNumberValidator.m in Sources */,
 				4408F1BF19E81F67005AE53F /* HYPNameInputValidator.m in Sources */,
 				4445D51B19EBC78A0034A5D7 /* UIFont+HYPFormsStyles.m in Sources */,
 				14D7C8331A28B00B004425B3 /* HYPFieldValuesTableViewHeader.m in Sources */,
