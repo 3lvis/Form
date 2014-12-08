@@ -1,8 +1,12 @@
 #import "HYPTextFormFieldCell.h"
 
+#import "UIColor+ANDYHex.h"
+#import "UIFont+HYPFormsStyles.h"
+
 @interface HYPTextFormFieldCell () <HYPTextFieldDelegate>
 
 @property (nonatomic, strong) HYPTextField *textField;
+@property (nonatomic, strong) UIPopoverController *popoverController;
 
 @end
 
@@ -30,6 +34,35 @@
     _textField.textFieldDelegate = self;
 
     return _textField;
+}
+
+- (CGRect)labelFrame
+{
+    return CGRectMake(0,0,200, 44);
+}
+
+- (UIPopoverController *)popoverController
+{
+    if (_popoverController) return _popoverController;
+
+    UIViewController *viewController = [[UIViewController alloc] init];
+    UILabel *label = [[UILabel alloc] initWithFrame:[self labelFrame]];
+
+    label.text = self.field.subtitle;
+    label.font = [UIFont HYPFormsMediumSize];
+    label.textColor = [UIColor colorFromHex:@"28649C"];
+    label.textAlignment = NSTextAlignmentCenter;
+
+    [viewController.view addSubview:label];
+    viewController.modalInPopover = YES;
+    viewController.modalPresentationStyle = UIModalPresentationPopover;
+
+    _popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
+//    _popoverController.popoverBackgroundViewClass = [UIPopoverBackgroundView class];
+    _popoverController.popoverContentSize = CGSizeMake(200, 44);
+    _popoverController.passthroughViews = @[self.textField];
+
+    return _popoverController;
 }
 
 #pragma mark - Private headers
@@ -120,7 +153,23 @@
     return frame;
 }
 
+- (CGRect)popoverFrame
+{
+    CGRect frame = self.textField.frame;
+    frame.origin.x = (frame.origin.x / 2.0f) - 12.5f;
+    frame.origin.y -= 40.0f;
+
+    return frame;
+}
+
 #pragma mark - HYPTextFieldDelegate
+
+- (void)textFormFieldDidBeginEditing:(HYPTextField *)textField
+{
+    if (self.field.subtitle) {
+        [self.popoverController presentPopoverFromRect:[self popoverFrame] inView:self.textField permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
+    }
+}
 
 - (void)textFormFieldDidEndEditing:(HYPTextField *)textField
 {
@@ -128,6 +177,10 @@
 
     if (!self.textField.valid) {
         [self.textField setValid:[self.field validate]];
+    }
+
+    if (self.popoverController.isPopoverVisible) {
+        [self.popoverController dismissPopoverAnimated:YES];
     }
 }
 
