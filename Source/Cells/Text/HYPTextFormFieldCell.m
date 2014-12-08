@@ -1,9 +1,11 @@
 #import "HYPTextFormFieldCell.h"
 
+#import "HYPPopoverBackgroundView.h"
+
 #import "UIColor+ANDYHex.h"
 #import "UIFont+HYPFormsStyles.h"
 
-@interface HYPTextFormFieldCell () <HYPTextFieldDelegate>
+@interface HYPTextFormFieldCell () <HYPTextFieldDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) HYPTextField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
@@ -49,16 +51,17 @@
     UILabel *label = [[UILabel alloc] initWithFrame:[self labelFrame]];
 
     label.text = self.field.subtitle;
-    label.font = [UIFont HYPFormsMediumSize];
-    label.textColor = [UIColor colorFromHex:@"28649C"];
+    label.font = [UIFont HYPFormsMediumSizeLight];
+    label.textColor = [UIColor colorFromHex:@"97591D"];
     label.textAlignment = NSTextAlignmentCenter;
 
     [viewController.view addSubview:label];
-    viewController.modalInPopover = YES;
-    viewController.modalPresentationStyle = UIModalPresentationPopover;
+
+    [HYPPopoverBackgroundView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
 
     _popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
-//    _popoverController.popoverBackgroundViewClass = [UIPopoverBackgroundView class];
+    _popoverController.delegate = self;
+    _popoverController.popoverBackgroundViewClass = [HYPPopoverBackgroundView class];
     _popoverController.popoverContentSize = CGSizeMake(200, 44);
     _popoverController.passthroughViews = @[self.textField];
 
@@ -160,6 +163,15 @@
     frame.origin.y -= 40.0f;
 
     return frame;
+}
+
+#pragma mark - UIPopoverDelegate
+
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController
+{
+    [self.textField resignFirstResponder];
+
+    return YES;
 }
 
 #pragma mark - HYPTextFieldDelegate
