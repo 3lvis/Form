@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_HYPImagePicker 2
 #define COCOAPODS_VERSION_PATCH_HYPImagePicker 0
 
+// HYPNorwegianAccountNumber
+#define COCOAPODS_POD_AVAILABLE_HYPNorwegianAccountNumber
+#define COCOAPODS_VERSION_MAJOR_HYPNorwegianAccountNumber 1
+#define COCOAPODS_VERSION_MINOR_HYPNorwegianAccountNumber 2
+#define COCOAPODS_VERSION_PATCH_HYPNorwegianAccountNumber 1
+
 // HYPNorwegianSSN
 #define COCOAPODS_POD_AVAILABLE_HYPNorwegianSSN
 #define COCOAPODS_VERSION_MAJOR_HYPNorwegianSSN 1

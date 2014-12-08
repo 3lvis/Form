@@ -1,5 +1,6 @@
 PODS:
   - HYPImagePicker (0.2)
+  - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.8)
   - NSDictionary-ANDYSafeValue (0.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
@@ -12,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - HYPImagePicker (from `https://github.com/hyperoslo/HYPImagePicker.git`)
+  - HYPNorwegianAccountNumber
   - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
   - NSDictionary-ANDYSafeValue
   - NSJSONSerialization-ANDYJSONFile
@@ -52,6 +54,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
+  HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
   HYPNorwegianSSN: d7a82481bca14cdc20f0867102c11f47274c9753
   NSDictionary-ANDYSafeValue: 5b7d0c0b1b7285191fb0f94e6dda13b86dec2dee
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
