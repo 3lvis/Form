@@ -30,6 +30,7 @@
             "id":"last_name",
             "title":"Last name",
             "type":"name",
+            "label":"Last name",
             "size":{
               "width": 25,
               "height": 1
@@ -51,7 +52,7 @@
             "title":"Display name",
             "type":"text",
             "size":{
-              "width": 30,
+              "width": 25,
               "height": 1
             },
             "formula":"first_name last_name",
@@ -62,9 +63,10 @@
           {
             "id":"email_address",
             "title":"E-post",
+            "label": "",
             "type":"email",
             "size":{
-              "width": 40,
+              "width": 25,
               "height": 1
             },
             "validations":{
