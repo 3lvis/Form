@@ -30,7 +30,7 @@
             "id":"last_name",
             "title":"Last name",
             "type":"name",
-            "label":"Last name",
+            "subtitle":"Last name",
             "size":{
               "width": 25,
               "height": 1
@@ -63,7 +63,7 @@
           {
             "id":"email_address",
             "title":"E-post",
-            "label": "",
+            "subtitle": "E-mail",
             "type":"email",
             "size":{
               "width": 25,
