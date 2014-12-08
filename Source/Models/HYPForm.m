@@ -93,6 +93,7 @@
                     HYPFieldValue *fieldValue = [HYPFieldValue new];
                     fieldValue.valueID = [valueDict andy_valueForKey:@"id"];
                     fieldValue.title = [valueDict andy_valueForKey:@"title"];
+                    fieldValue.label = [valueDict andy_valueForKey:@"label"];
                     fieldValue.value = [valueDict andy_valueForKey:@"value"];
 
                     NSMutableArray *targets = [NSMutableArray array];
