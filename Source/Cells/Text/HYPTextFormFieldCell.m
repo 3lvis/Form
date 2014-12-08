@@ -51,7 +51,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:[self labelFrame]];
 
     label.text = self.field.subtitle;
-    label.font = [UIFont HYPFormsMediumSizeLight];
+    label.font = [UIFont HYPFormsSmallSize];
     label.textColor = [UIColor colorFromHex:@"97591D"];
     label.textAlignment = NSTextAlignmentCenter;
 
