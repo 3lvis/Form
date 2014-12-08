@@ -284,7 +284,6 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
 - (void)clearButtonAction
 {
     self.rawText = nil;
-    self.valid = YES;
 
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
         [self.textFieldDelegate textFormField:self didUpdateWithText:self.rawText];

@@ -133,6 +133,8 @@
 {
     self.field.fieldValue = text;
 
+    [self validate];
+
     if (!self.textField.valid) {
         [self.textField setValid:[self.field validate]];
     }
