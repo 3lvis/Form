@@ -5,7 +5,7 @@
 #import "UIColor+ANDYHex.h"
 #import "UIFont+HYPFormsStyles.h"
 
-@interface HYPTextFormFieldCell () <HYPTextFieldDelegate, UIPopoverControllerDelegate>
+@interface HYPTextFormFieldCell () <HYPTextFieldDelegate>
 
 @property (nonatomic, strong) HYPTextField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
@@ -60,7 +60,6 @@
     [HYPPopoverBackgroundView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
 
     _popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
-    _popoverController.delegate = self;
     _popoverController.popoverBackgroundViewClass = [HYPPopoverBackgroundView class];
     _popoverController.popoverContentSize = CGSizeMake(200, 44);
     _popoverController.passthroughViews = @[self.superview];
@@ -163,15 +162,6 @@
     frame.origin.y -= 40.0f;
 
     return frame;
-}
-
-#pragma mark - UIPopoverDelegate
-
-- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController
-{
-    [self.textField resignFirstResponder];
-
-    return YES;
 }
 
 #pragma mark - HYPTextFieldDelegate
