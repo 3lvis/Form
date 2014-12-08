@@ -124,7 +124,9 @@
 
 - (void)textFormFieldDidEndEditing:(HYPTextField *)textField
 {
-    if (self.textField.rawText) {
+    [self validate];
+
+    if (!self.textField.valid) {
         [self.textField setValid:[self.field validate]];
     }
 }
@@ -132,7 +134,6 @@
 - (void)textFormField:(HYPTextField *)textField didUpdateWithText:(NSString *)text
 {
     self.field.fieldValue = text;
-
     [self validate];
 
     if (!self.textField.valid) {
