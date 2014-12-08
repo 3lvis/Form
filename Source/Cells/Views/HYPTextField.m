@@ -253,7 +253,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     BOOL isTextField = (self.type != HYPTextFieldTypeSelect &&
                         self.type != HYPTextFieldTypeDate);
 
-    return (isTextField) ?: [super canBecomeFirstResponder];
+    return (isTextField && self.enabled) ?: [super canBecomeFirstResponder];
 }
 
 #pragma mark - Notifications
