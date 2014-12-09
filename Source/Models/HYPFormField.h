@@ -47,8 +47,6 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 - (NSUInteger)indexInSectionUsingForms:(NSArray *)forms;
 
-- (NSMutableDictionary *)valuesForFormulaInForms:(NSArray *)forms;
-
 - (NSArray *)safeTargets;
 
 - (void)sectionAndIndexInForms:(NSArray *)forms
