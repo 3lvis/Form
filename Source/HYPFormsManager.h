@@ -22,7 +22,7 @@
 
 - (NSDictionary *)requiredFormFields;
 
-- (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field;
+- (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field usingForms:(NSArray *)forms;
 
 - (HYPFormField *)fieldWithID:(NSString *)fieldID
                 withIndexPath:(BOOL)withIndexPath;
