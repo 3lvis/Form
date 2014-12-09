@@ -27,8 +27,4 @@
 - (HYPFormField *)fieldWithID:(NSString *)fieldID
                 withIndexPath:(BOOL)withIndexPath;
 
-- (HYPFormField *)fieldWithID:(NSString *)fieldID
-                withIndexPath:(BOOL)withIndexPath
-                      inForms:(NSArray *)forms;
-
 @end
