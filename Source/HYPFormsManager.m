@@ -363,6 +363,7 @@
     }
 
     if (!foundField) {
+        
         NSArray *deletedSections = [self.hiddenSections allValues];
         [deletedSections enumerateObjectsUsingBlock:^(HYPFormSection *section, NSUInteger sectionIndex, BOOL *sectionStop) {
             [section.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
