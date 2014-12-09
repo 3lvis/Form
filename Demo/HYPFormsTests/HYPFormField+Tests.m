@@ -48,7 +48,7 @@
 {
     HYPFormField *formField = [HYPFormField textFormFieldWithID:@"first_name"];
     formField.position = @0;
-    formField.validation = [HYPFieldValidation requiredValidation];
+    formField.validations = @{@"required" : @YES};
 
     return formField;
 }
@@ -57,7 +57,7 @@
 {
     HYPFormField *formField = [HYPFormField textFormFieldWithID:@"last_name"];
     formField.position = @1;
-    formField.validation = [HYPFieldValidation requiredValidation];
+    formField.validations = @{@"required" : @YES};
 
     return formField;
 }
@@ -85,7 +85,7 @@
 {
     HYPFormField *field = [HYPFormField textFormFieldWithID:@"email"];
     field.position = @1;
-    field.validation = [HYPFieldValidation emailValidation];
+    field.validations = @{@"required" : @YES, @"format": @"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}"};
 
     return field;
 }

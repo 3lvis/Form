@@ -8,6 +8,7 @@
 
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
+#import "HYPFieldValidation.h"
 
 @interface HYPFormsManager ()
 
@@ -237,7 +238,8 @@
 {
     NSMutableArray *invalidFormFields = [NSMutableArray new];
 
-    for (HYPFormField *field in self.requiredFields) {
+    NSArray *fields = [self.requiredFields allValues];
+    for (HYPFormField *field in fields) {
         BOOL requiredFieldFailedValidation = (![field validate]);
         if (requiredFieldFailedValidation) [invalidFormFields addObject:field];
     }
@@ -265,6 +267,11 @@
     }
 
     return _requiredFields;
+}
+
+- (NSDictionary *)requiredFormFields
+{
+    return self.requiredFields;
 }
 
 @end
