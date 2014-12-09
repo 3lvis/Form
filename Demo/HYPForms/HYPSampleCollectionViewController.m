@@ -92,7 +92,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
                                            [field.fieldID isEqualToString:@"hours_per_week"]);
 
         if (shouldUpdateFixedEntryDate) {
-            HYPFormField *fixedPayEntryDateField = [weakSelf.formsManager fieldWithID:@"fixed_pay_entry_date" withIndexPath:YES];
+            HYPFormField *fixedPayEntryDateField = [weakSelf.formsManager fieldWithID:@"fixed_pay_entry_date"
+                                                                        withIndexPath:YES];
 
             if (fixedPayEntryDateField) {
                 fixedPayEntryDateField.fieldValue = [NSDate date];
