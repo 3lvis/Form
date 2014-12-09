@@ -1,7 +1,7 @@
 #import "HYPDateFormFieldCell.h"
 #import "HYPFieldValue.h"
 
-static const CGSize HYPDatePopoverSize = { 320.0f, 328.0f };
+static const CGSize HYPDatePopoverSize = { 320.0f, 284.0f };
 
 @interface HYPDateFormFieldCell () <HYPTextFieldDelegate,
 UIPopoverControllerDelegate, HYPFieldValuesTableViewControllerDelegate>
@@ -24,7 +24,7 @@ UIPopoverControllerDelegate, HYPFieldValuesTableViewControllerDelegate>
     self.iconImageView.image = [UIImage imageNamed:@"ic_calendar"];
 
     self.fieldValuesController.delegate = self;
-    self.fieldValuesController.customHeight = 240.0f;
+    self.fieldValuesController.customHeight = 197.0f;
     self.fieldValuesController.tableView.scrollEnabled = NO;
     [self.fieldValuesController.headerView addSubview:self.datePicker];
 
@@ -33,12 +33,16 @@ UIPopoverControllerDelegate, HYPFieldValuesTableViewControllerDelegate>
 
 #pragma mark - Getters
 
+- (CGRect)datePickerFrame
+{
+    return CGRectMake(0.0f, 25.0f, HYPDatePopoverSize.width, 196);
+}
+
 - (UIDatePicker *)datePicker
 {
     if (_datePicker) return _datePicker;
 
-    _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0f, 25.0f, HYPDatePopoverSize.width,
-                                                                 HYPDatePopoverSize.height)];
+    _datePicker = [[UIDatePicker alloc] initWithFrame:[self datePickerFrame]];
     _datePicker.datePickerMode = UIDatePickerModeDate;
     _datePicker.backgroundColor = [UIColor clearColor];
 
@@ -97,8 +101,8 @@ UIPopoverControllerDelegate, HYPFieldValuesTableViewControllerDelegate>
 
     if (field.fieldValue) {
         self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.fieldValue
-                                                                dateStyle:NSDateFormatterMediumStyle
-                                                                timeStyle:NSDateFormatterNoStyle];
+                                                                   dateStyle:NSDateFormatterMediumStyle
+                                                                   timeStyle:NSDateFormatterNoStyle];
     } else {
         self.fieldValueLabel.text = nil;
     }
