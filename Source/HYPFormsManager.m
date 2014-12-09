@@ -9,6 +9,7 @@
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "HYPFieldValidation.h"
+#import "NSString+HYPWordExtractor.h"
 
 @interface HYPFormsManager ()
 
@@ -191,7 +192,7 @@
     }
 
     for (HYPFormField *field in fieldsWithFormula) {
-        NSMutableDictionary *values = [field valuesForFormulaInForms:forms];
+        NSMutableDictionary *values = [self valuesForFormula:field usingForms:forms];
         id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
         field.fieldValue = result;
         if (result) [fieldValues setObject:result forKey:field.fieldID];
@@ -204,7 +205,7 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:forms withIndexPath:YES];
+            HYPFormField *field = [self fieldWithID:target.targetID withIndexPath:YES inForms:forms];
             [hiddenFields addEntriesFromDictionary:@{target.targetID : field}];
 
         } else if (target.type == HYPFormTargetTypeSection) {
@@ -218,7 +219,7 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:forms withIndexPath:NO];
+            HYPFormField *field = [self fieldWithID:target.targetID withIndexPath:YES];
             HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:forms];
             [section removeField:field inForms:forms];
 
@@ -274,19 +275,67 @@
     return self.requiredFields;
 }
 
+- (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field usingForms:(NSArray *)forms
+{
+    NSMutableDictionary *values = [NSMutableDictionary dictionary];
+
+    NSString *formula = field.formula;
+    NSArray *fieldIDs = [formula hyp_variables];
+
+    for (NSString *fieldID in fieldIDs) {
+        HYPFormField *targetField = [self fieldWithID:fieldID withIndexPath:YES inForms:forms];
+        id value = targetField.fieldValue;
+        if (value) {
+            if (targetField.type == HYPFormFieldTypeSelect) {
+                HYPFieldValue *fieldValue = targetField.fieldValue;
+                if (fieldValue.value) {
+                    [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                }
+            } else {
+                if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
+                    [values addEntriesFromDictionary:@{fieldID : value}];
+                } else {
+                    if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                    } else {
+                        [values addEntriesFromDictionary:@{fieldID : @""}];
+                    }
+                }
+            }
+        } else {
+            if (field.type == HYPFormFieldTypeNumber || field.type == HYPFormFieldTypeFloat) {
+                [values addEntriesFromDictionary:@{fieldID : @"0"}];
+            } else {
+                [values addEntriesFromDictionary:@{fieldID : @""}];
+            }
+        }
+    }
+
+    return values;
+}
+
 - (HYPFormField *)fieldWithID:(NSString *)fieldID
                 withIndexPath:(BOOL)withIndexPath
+{
+    return [self fieldWithID:fieldID withIndexPath:withIndexPath inForms:self.forms];
+}
+
+- (HYPFormField *)fieldWithID:(NSString *)fieldID
+                withIndexPath:(BOOL)withIndexPath
+                      inForms:(NSArray *)forms
 {
     NSParameterAssert(fieldID);
 
     __block HYPFormField *foundField = nil;
 
     NSInteger formIndex = 0;
-    for (HYPForm *form in self.forms) {
+    for (HYPForm *form in forms) {
 
         NSUInteger fieldIndex = 0;
         for (HYPFormField *field in form.fields) {
+
             if ([field.fieldID isEqualToString:fieldID]) {
+
                 if (withIndexPath) {
                     field.indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:formIndex];
                 }
@@ -297,6 +346,8 @@
 
             ++fieldIndex;
         }
+
+        if (foundField) break;
 
         ++formIndex;
     }

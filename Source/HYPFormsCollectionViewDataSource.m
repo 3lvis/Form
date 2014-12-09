@@ -331,7 +331,7 @@
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
         BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
-        HYPFormField *field = [HYPFormField fieldWithID:key inForms:self.formsManager.forms withIndexPath:YES];
+        HYPFormField *field = [self.formsManager fieldWithID:key withIndexPath:YES];
         if (field) {
             field.fieldValue = (shouldBeNil) ? nil : value;
             [updatedIndexPaths addObject:field.indexPath];
@@ -491,7 +491,7 @@
                 NSInteger fieldIndex = [field indexInSectionUsingForms:self.formsManager.forms];
                 [section.fields insertObject:field atIndex:fieldIndex];
 
-                HYPFormField *newField = [HYPFormField fieldWithID:target.targetID inForms:self.formsManager.forms withIndexPath:YES];
+                HYPFormField *newField = [self.formsManager fieldWithID:target.targetID withIndexPath:YES];
                 [insertedIndexPaths addObject:newField.indexPath];
 
                 [self.formsManager.hiddenFields removeObjectForKey:target.targetID];
@@ -521,7 +521,7 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:self.formsManager.forms withIndexPath:YES];
+            HYPFormField *field = [self.formsManager fieldWithID:target.targetID withIndexPath:YES];
             if (field && ![self.formsManager.hiddenFields objectForKey:field.fieldID]) {
                 [deletedFields addObject:field];
                 [self.formsManager.hiddenFields addEntriesFromDictionary:@{field.fieldID : field}];
@@ -567,7 +567,7 @@
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.formsManager.hiddenFields objectForKey:target.targetID]) continue;
 
-        HYPFormField *field = [HYPFormField fieldWithID:target.targetID inForms:self.formsManager.forms withIndexPath:YES];
+        HYPFormField *field = [self.formsManager fieldWithID:target.targetID withIndexPath:YES];
         if (!field) continue;
 
         [updatedIndexPaths addObject:field.indexPath];
@@ -581,7 +581,7 @@
             BOOL isNumericField = (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber);
             NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
 
-            HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:self.formsManager.forms withIndexPath:NO];
+            HYPFormField *targetField = [self.formsManager fieldWithID:fieldID withIndexPath:NO];
 
             if (targetField.type == HYPFormFieldTypeSelect) {
 
