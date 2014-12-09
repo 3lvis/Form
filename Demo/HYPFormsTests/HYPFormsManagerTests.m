@@ -87,8 +87,6 @@
     XCTAssertEqualObjects([[fields firstObject] fieldID], @"email");
 }
 
-
-
 - (void)testFieldWithIDWithIndexPath
 {
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
