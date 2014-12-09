@@ -26,14 +26,14 @@
 
 // HYPPopoverBackgroundView
 #define COCOAPODS_POD_AVAILABLE_HYPPopoverBackgroundView
-#define COCOAPODS_VERSION_MAJOR_HYPPopoverBackgroundView 1
-#define COCOAPODS_VERSION_MINOR_HYPPopoverBackgroundView 0
+#define COCOAPODS_VERSION_MAJOR_HYPPopoverBackgroundView 0
+#define COCOAPODS_VERSION_MINOR_HYPPopoverBackgroundView 1
 #define COCOAPODS_VERSION_PATCH_HYPPopoverBackgroundView 0
 
 // NSDictionary-ANDYSafeValue
 #define COCOAPODS_POD_AVAILABLE_NSDictionary_ANDYSafeValue
 #define COCOAPODS_VERSION_MAJOR_NSDictionary_ANDYSafeValue 0
-#define COCOAPODS_VERSION_MINOR_NSDictionary_ANDYSafeValue 1
+#define COCOAPODS_VERSION_MINOR_NSDictionary_ANDYSafeValue 3
 #define COCOAPODS_VERSION_PATCH_NSDictionary_ANDYSafeValue 0
 
 // NSJSONSerialization-ANDYJSONFile
