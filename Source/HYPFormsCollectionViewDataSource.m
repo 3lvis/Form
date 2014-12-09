@@ -283,53 +283,6 @@
     return field;
 }
 
-- (HYPFormField *)fieldWithID:(NSString *)fieldID withIndexPath:(BOOL)withIndexPath
-{
-    NSParameterAssert(fieldID);
-
-    __block HYPFormField *foundField = nil;
-
-    [self.formsManager.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
-        [form.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
-            if ([field.fieldID isEqualToString:fieldID]) {
-                if (withIndexPath) {
-                    field.indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:formIndex];
-                }
-
-                foundField = field;
-                *formStop = YES;
-            }
-        }];
-    }];
-
-    if (!foundField) {
-        [self.formsManager.hiddenFields enumerateKeysAndObjectsUsingBlock:^(NSString *hiddenFieldID, HYPFormField *formField, BOOL *stop) {
-            if ([hiddenFieldID isEqualToString:fieldID]) {
-                foundField = formField;
-                *stop = YES;
-            }
-        }];
-    }
-
-    if (!foundField) {
-        NSArray *deletedSections = [self.formsManager.hiddenSections allValues];
-        [deletedSections enumerateObjectsUsingBlock:^(HYPFormSection *section, NSUInteger sectionIndex, BOOL *sectionStop) {
-            [section.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
-                if ([field.fieldID isEqualToString:fieldID]) {
-                    if (withIndexPath) {
-                        field.indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:sectionIndex];
-                    }
-
-                    foundField = field;
-                    *sectionStop = YES;
-                }
-            }];
-        }];
-    }
-
-    return foundField;
-}
-
 - (void)disable:(BOOL)disabled
 {
     self.disabled = disabled;

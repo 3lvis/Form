@@ -1,5 +1,7 @@
 @import Foundation;
 
+#import "HYPFormField.h"
+
 @interface HYPFormsManager : NSObject
 
 @property (nonatomic, strong) NSMutableArray *forms;

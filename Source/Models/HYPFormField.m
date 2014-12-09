@@ -170,40 +170,6 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return field;
 }
 
-+ (HYPFormField *)fieldWithID:(NSString *)fieldID inForms:(NSArray *)forms withIndexPath:(BOOL)withIndexPath
-{
-    BOOL found = NO;
-    HYPFormField *foundField = nil;
-
-    NSInteger formIndex = 0;
-    for (HYPForm *form in forms) {
-        if (found) {
-            break;
-        }
-
-        NSInteger fieldIndex = 0;
-
-        for (HYPFormField *field in form.fields) {
-            if ([field.fieldID isEqualToString:fieldID]) {
-                if (withIndexPath) {
-                    field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
-                }
-                foundField = field;
-
-                found = YES;
-
-                break;
-            }
-
-            fieldIndex++;
-        }
-
-        formIndex++;
-    }
-
-    return foundField;
-}
-
 - (NSUInteger)indexInSectionUsingForms:(NSArray *)forms
 {
     HYPForm *form = forms[[self.section.form.position integerValue]];
