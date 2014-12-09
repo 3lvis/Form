@@ -8,8 +8,11 @@
 
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
+#import "HYPFieldValidation.h"
 
 @interface HYPFormsManager ()
+
+@property (nonatomic, strong) NSMutableDictionary *requiredFields;
 
 @end
 
@@ -235,16 +238,40 @@
 {
     NSMutableArray *invalidFormFields = [NSMutableArray new];
 
-    for (HYPForm *form in self.forms) {
-        NSDictionary *requiredFieldIDs = form.requiredFieldIDs;
-        for (HYPFormField *field in form.fields) {
-            BOOL requiredFieldFailedValidation = (requiredFieldIDs[field.fieldID] &&
-                                                  ![field validate]);
-            if (requiredFieldFailedValidation) [invalidFormFields addObject:field];
-        }
+    NSArray *fields = [self.requiredFields allValues];
+    for (HYPFormField *field in fields) {
+        BOOL requiredFieldFailedValidation = (![field validate]);
+        if (requiredFieldFailedValidation) [invalidFormFields addObject:field];
     }
 
     return invalidFormFields;
+}
+
+- (NSMutableDictionary *)requiredFields
+{
+    if (_requiredFields) return _requiredFields;
+
+    _requiredFields = [NSMutableDictionary dictionary];
+
+    for (HYPForm *form in self.forms) {
+        for (HYPFormSection *section in form.sections) {
+            for (HYPFormField *field in section.fields) {
+                if (field.validations) {
+                    BOOL required = [[field.validations andy_valueForKey:@"required"] boolValue];
+                    if (required) {
+                        [_requiredFields setObject:field forKey:field.fieldID];
+                    }
+                }
+            }
+        }
+    }
+
+    return _requiredFields;
+}
+
+- (NSDictionary *)requiredFormFields
+{
+    return self.requiredFields;
 }
 
 @end

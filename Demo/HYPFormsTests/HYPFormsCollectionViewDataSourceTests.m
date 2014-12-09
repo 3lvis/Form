@@ -86,15 +86,6 @@
     [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];
 }
 
-- (void)testFieldValidation
-{
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms] initialValues:nil];
-
-    NSArray *fields = [manager invalidFormFields];
-
-    XCTAssertNotNil(fields);
-}
-
 #pragma mark - HYPFormsLayoutDataSource
 
 - (NSArray *)forms

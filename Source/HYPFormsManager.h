@@ -18,4 +18,6 @@
 
 - (NSArray *)invalidFormFields;
 
+- (NSDictionary *)requiredFormFields;
+
 @end
