@@ -1,8 +1,14 @@
 #import "HYPTextFormFieldCell.h"
 
+#import "HYPPopoverBackgroundView.h"
+
+#import "UIColor+ANDYHex.h"
+#import "UIFont+HYPFormsStyles.h"
+
 @interface HYPTextFormFieldCell () <HYPTextFieldDelegate>
 
 @property (nonatomic, strong) HYPTextField *textField;
+@property (nonatomic, strong) UIPopoverController *popoverController;
 
 @end
 
@@ -30,6 +36,35 @@
     _textField.textFieldDelegate = self;
 
     return _textField;
+}
+
+- (CGRect)labelFrame
+{
+    return CGRectMake(0,0,200, 44);
+}
+
+- (UIPopoverController *)popoverController
+{
+    if (_popoverController) return _popoverController;
+
+    UIViewController *viewController = [[UIViewController alloc] init];
+    UILabel *label = [[UILabel alloc] initWithFrame:[self labelFrame]];
+
+    label.text = self.field.subtitle;
+    label.font = [UIFont HYPFormsSmallSizeMedium];
+    label.textColor = [UIColor colorFromHex:@"97591D"];
+    label.textAlignment = NSTextAlignmentCenter;
+
+    [viewController.view addSubview:label];
+
+    [HYPPopoverBackgroundView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
+
+    _popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
+    _popoverController.popoverBackgroundViewClass = [HYPPopoverBackgroundView class];
+    _popoverController.popoverContentSize = CGSizeMake(200, 44);
+    _popoverController.passthroughViews = @[self.superview];
+
+    return _popoverController;
 }
 
 #pragma mark - Private headers
@@ -120,7 +155,28 @@
     return frame;
 }
 
+- (CGRect)popoverFrame
+{
+    CGRect frame = self.textField.frame;
+    frame.origin.x = (frame.origin.x / 2.0f) - 12.5f;
+    frame.origin.y -= 40.0f;
+
+    return frame;
+}
+
 #pragma mark - HYPTextFieldDelegate
+
+- (void)textFormFieldDidBeginEditing:(HYPTextField *)textField
+{
+    if (self.field.subtitle) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.popoverController presentPopoverFromRect:[self popoverFrame]
+                                                    inView:self.textField
+                                  permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                  animated:YES];
+        });
+    }
+}
 
 - (void)textFormFieldDidEndEditing:(HYPTextField *)textField
 {
@@ -128,6 +184,10 @@
 
     if (!self.textField.valid) {
         [self.textField setValid:[self.field validate]];
+    }
+
+    if (self.popoverController.isPopoverVisible) {
+        [self.popoverController dismissPopoverAnimated:NO];
     }
 }
 
