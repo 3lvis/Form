@@ -78,7 +78,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
             HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
             NSString *city = [postalCodeManager cityForPostalCode:postalCode];
 
-            HYPFormField *cityField = [HYPFormField fieldWithID:@"city" inForms:weakSelf.formsManager.forms withIndexPath:YES];
+            HYPFormField *cityField = [weakSelf.formsManager fieldWithID:@"city" withIndexPath:YES];
+
             if (cityField) {
                 cityField.fieldValue = city;
                 [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
@@ -91,9 +92,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
                                            [field.fieldID isEqualToString:@"hours_per_week"]);
 
         if (shouldUpdateFixedEntryDate) {
-            HYPFormField *fixedPayEntryDateField = [HYPFormField fieldWithID:@"fixed_pay_entry_date"
-                                                                     inForms:weakSelf.formsManager.forms
-                                                               withIndexPath:YES];
+            HYPFormField *fixedPayEntryDateField = [weakSelf.formsManager fieldWithID:@"fixed_pay_entry_date"
+                                                                        withIndexPath:YES];
 
             if (fixedPayEntryDateField) {
                 fixedPayEntryDateField.fieldValue = [NSDate date];

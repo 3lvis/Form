@@ -1,11 +1,13 @@
 @import UIKit;
 @import XCTest;
 
+#import "HYPFieldValidation.h"
 #import "HYPForm.h"
 #import "HYPFormField.h"
-#import "HYPFormTarget.h"
 #import "HYPFormsCollectionViewDataSource.h"
+#import "HYPFormSection.h"
 #import "HYPFormsManager.h"
+#import "HYPFormTarget.h"
 
 #import "HYPFormsManager+Tests.h"
 
@@ -42,48 +44,29 @@
 {
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"display_name"]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"display_name"]];
-    HYPFormField *field = [HYPFormField fieldWithID:@"display_name" inForms:self.manager.forms withIndexPath:NO];
+    HYPFormField *field = [self.manager fieldWithID:@"display_name" withIndexPath:NO];
     NSUInteger index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 2);
 
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"username"]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"username"]];
-    field = [HYPFormField fieldWithID:@"username" inForms:self.manager.forms withIndexPath:NO];
+    field = [self.manager fieldWithID:@"username" withIndexPath:NO];
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 2);
 
     [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"first_name", @"address", @"username"]]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"username"]];
-    field = [HYPFormField fieldWithID:@"username" inForms:self.manager.forms withIndexPath:NO];
+    field = [self.manager fieldWithID:@"username" withIndexPath:NO];
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 1);
     [self.dataSource processTargets:[HYPFormTarget showFieldTargetsWithIDs:@[@"first_name", @"address"]]];
 
     [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"last_name", @"address"]]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"address"]];
-    field = [HYPFormField fieldWithID:@"address" inForms:self.manager.forms withIndexPath:NO];
+    field = [self.manager fieldWithID:@"address" withIndexPath:NO];
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 0);
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"last_name"]];
-}
-
-- (void)testFieldWithIDWithIndexPath
-{
-    HYPFormField *firstNameField = [self.dataSource fieldWithID:@"first_name" withIndexPath:YES];
-    XCTAssertNotNil(firstNameField);
-    XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
-
-    [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"start_date"]];
-    HYPFormField *startDateField = [self.dataSource fieldWithID:@"start_date" withIndexPath:YES];
-    XCTAssertNotNil(startDateField);
-    XCTAssertEqualObjects(startDateField.fieldID, @"start_date");
-    [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"start_date"]];
-
-    [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"employment-1"]];
-    HYPFormField *contractTypeField = [self.dataSource fieldWithID:@"contract_type" withIndexPath:YES];
-    XCTAssertNotNil(contractTypeField);
-    XCTAssertEqualObjects(contractTypeField.fieldID, @"contract_type");
-    [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];
 }
 
 #pragma mark - HYPFormsLayoutDataSource

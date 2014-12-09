@@ -1,5 +1,7 @@
 @import Foundation;
 
+#import "HYPFormField.h"
+
 @interface HYPFormsManager : NSObject
 
 @property (nonatomic, strong) NSMutableArray *forms;
@@ -19,5 +21,10 @@
 - (NSArray *)invalidFormFields;
 
 - (NSDictionary *)requiredFormFields;
+
+- (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field;
+
+- (HYPFormField *)fieldWithID:(NSString *)fieldID
+                withIndexPath:(BOOL)withIndexPath;
 
 @end

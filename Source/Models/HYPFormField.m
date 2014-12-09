@@ -7,8 +7,6 @@
 #import "HYPFieldValue.h"
 #import "HYPClassFactory.h"
 
-#import "NSString+HYPWordExtractor.h"
-
 static NSString * const HYPFormFieldSelectType = @"select";
 static NSString * const HYPInputValidatorSelector = @"validateString:text:";
 static NSString * const HYPFormatterClass = @"HYP%@Formatter";
@@ -170,40 +168,6 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return field;
 }
 
-+ (HYPFormField *)fieldWithID:(NSString *)fieldID inForms:(NSArray *)forms withIndexPath:(BOOL)withIndexPath
-{
-    BOOL found = NO;
-    HYPFormField *foundField = nil;
-
-    NSInteger formIndex = 0;
-    for (HYPForm *form in forms) {
-        if (found) {
-            break;
-        }
-
-        NSInteger fieldIndex = 0;
-
-        for (HYPFormField *field in form.fields) {
-            if ([field.fieldID isEqualToString:fieldID]) {
-                if (withIndexPath) {
-                    field.indexPath = [NSIndexPath indexPathForRow:fieldIndex inSection:formIndex];
-                }
-                foundField = field;
-
-                found = YES;
-
-                break;
-            }
-
-            fieldIndex++;
-        }
-
-        formIndex++;
-    }
-
-    return foundField;
-}
-
 - (NSUInteger)indexInSectionUsingForms:(NSArray *)forms
 {
     HYPForm *form = forms[[self.section.form.position integerValue]];
@@ -226,44 +190,6 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     if (!found) index = [section.fields count];
 
     return index;
-}
-
-- (NSMutableDictionary *)valuesForFormulaInForms:(NSArray *)forms
-{
-    NSMutableDictionary *values = [NSMutableDictionary dictionary];
-
-    NSArray *fieldIDs = [self.formula hyp_variables];
-
-    for (NSString *fieldID in fieldIDs) {
-        HYPFormField *targetField = [HYPFormField fieldWithID:fieldID inForms:forms withIndexPath:NO];
-        id value = targetField.fieldValue;
-        if (value) {
-            if (targetField.type == HYPFormFieldTypeSelect) {
-                HYPFieldValue *fieldValue = targetField.fieldValue;
-                if (fieldValue.value) {
-                    [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
-                }
-            } else {
-                if ([value isKindOfClass:[NSString class]] && [value length] > 0) {
-                    [values addEntriesFromDictionary:@{fieldID : value}];
-                } else {
-                    if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
-                    } else {
-                        [values addEntriesFromDictionary:@{fieldID : @""}];
-                    }
-                }
-            }
-        } else {
-            if (self.type == HYPFormFieldTypeNumber || self.type == HYPFormFieldTypeFloat) {
-                [values addEntriesFromDictionary:@{fieldID : @"0"}];
-            } else {
-                [values addEntriesFromDictionary:@{fieldID : @""}];
-            }
-        }
-    }
-
-    return values;
 }
 
 - (NSArray *)safeTargets
