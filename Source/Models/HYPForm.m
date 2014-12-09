@@ -14,8 +14,6 @@
 
 @interface HYPForm ()
 
-@property (nonatomic, strong) NSMutableDictionary *requiredFieldIDs;
-
 @end
 
 @implementation HYPForm
@@ -136,34 +134,6 @@
     self.sections = sections;
 
     return self;
-}
-
-- (NSMutableDictionary *)requiredFieldIDs
-{
-    if (_requiredFieldIDs) return _requiredFieldIDs;
-
-    NSMutableDictionary *fields = [NSMutableDictionary dictionary];
-
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
-                                                             inBundle:[NSBundle bundleForClass:[HYPForm class]]];
-
-    for (NSDictionary *formDict in JSON) {
-        NSArray *dataSourceSections = [formDict andy_valueForKey:@"sections"];
-        [dataSourceSections enumerateObjectsUsingBlock:^(NSDictionary *sectionDict, NSUInteger sectionIndex, BOOL *stop) {
-            NSArray *dataSourceFields = [sectionDict andy_valueForKey:@"fields"];
-            [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
-                NSDictionary *validations = [fieldDict andy_valueForKey:@"validations"];
-                BOOL required = [[validations andy_valueForKey:@"required"] boolValue];
-                if (required) {
-                    [fields setObject:fieldDict forKey:[fieldDict andy_valueForKey:@"id"]];
-                }
-            }];
-        }];
-    }
-
-    _requiredFieldIDs = fields;
-
-    return _requiredFieldIDs;
 }
 
 - (NSArray *)targetsUsingArray:(NSArray *)array
