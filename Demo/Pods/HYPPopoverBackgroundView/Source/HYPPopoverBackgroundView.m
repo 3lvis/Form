@@ -73,8 +73,7 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
 
 + (void)setTintColor:(UIColor *)tintColor
 {
-    [HYPPopoverBackgroundTintColor self];
-    HYPPopoverBackgroundTintColor = [tintColor self];
+    HYPPopoverBackgroundTintColor = tintColor;
 }
 
 + (void)setShadowEnabled:(BOOL)shadowEnabled
@@ -92,7 +91,11 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
     HYPPopoverBackgroundArrowHeight = arrowHeight;
 }
 
-+ (void)setBackgroundImage:(UIImage *)background top:(UIImage *)top right:(UIImage *)right bottom:(UIImage *)bottom left:(UIImage *)left
++ (void)setBackgroundImage:(UIImage *)background
+                       top:(UIImage *)top
+                     right:(UIImage *)right
+                    bottom:(UIImage *)bottom
+                      left:(UIImage *)left
 {
     HYPPopoverBackgroundBackgroundImage = background;
     HYPPopoverBackgroundTopArrowImage = top;
@@ -110,10 +113,13 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
 {
     UIBezierPath *arrowPath;
 
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(HYPPopoverBackgroundArrowBase, HYPPopoverBackgroundArrowHeight), NO, 0.0f);
+    CGSize arrowSize = CGSizeMake(HYPPopoverBackgroundArrowBase,
+                                  HYPPopoverBackgroundArrowHeight);
+
+    UIGraphicsBeginImageContextWithOptions(arrowSize, NO, 0.0f);
 
     arrowPath = [UIBezierPath bezierPath];
-    [arrowPath moveToPoint:	  CGPointMake(HYPPopoverBackgroundArrowBase/2.0f, 0.0f)];
+    [arrowPath moveToPoint:CGPointMake(HYPPopoverBackgroundArrowBase/2.0f, 0.0f)];
     [arrowPath addLineToPoint:CGPointMake(HYPPopoverBackgroundArrowBase, HYPPopoverBackgroundArrowHeight)];
     [arrowPath addLineToPoint:CGPointMake(0.0f, HYPPopoverBackgroundArrowHeight)];
     [arrowPath addLineToPoint:CGPointMake(HYPPopoverBackgroundArrowBase/2.0f, 0.0f)];
@@ -121,14 +127,14 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
     [tintColor setFill];
     [arrowPath fill];
 
-    HYPPopoverBackgroundTopArrowImage = [UIGraphicsGetImageFromCurrentImageContext() self];
+    HYPPopoverBackgroundTopArrowImage = UIGraphicsGetImageFromCurrentImageContext();
 
     UIGraphicsEndImageContext();
 
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(HYPPopoverBackgroundArrowBase, HYPPopoverBackgroundArrowHeight), NO, 0.0f);
+    UIGraphicsBeginImageContextWithOptions(arrowSize, NO, 0.0f);
 
     arrowPath = [UIBezierPath bezierPath];
-    [arrowPath moveToPoint:	  CGPointMake(0.0f, 0.0f)];
+    [arrowPath moveToPoint:CGPointMake(0.0f, 0.0f)];
     [arrowPath addLineToPoint:CGPointMake(HYPPopoverBackgroundArrowBase, 0.0f)];
     [arrowPath addLineToPoint:CGPointMake(HYPPopoverBackgroundArrowBase/2.0f, HYPPopoverBackgroundArrowHeight)];
     [arrowPath addLineToPoint:CGPointMake(0.0f, 0.0f)];
@@ -136,14 +142,14 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
     [tintColor setFill];
     [arrowPath fill];
 
-    HYPPopoverBackgroundBottomArrowImage = [UIGraphicsGetImageFromCurrentImageContext() self];
+    HYPPopoverBackgroundBottomArrowImage = UIGraphicsGetImageFromCurrentImageContext();
 
     UIGraphicsEndImageContext();
 
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(HYPPopoverBackgroundArrowHeight, HYPPopoverBackgroundArrowBase), NO, 0.0f);
+    UIGraphicsBeginImageContextWithOptions(arrowSize, NO, 0.0f);
 
     arrowPath = [UIBezierPath bezierPath];
-    [arrowPath moveToPoint:	  CGPointMake(HYPPopoverBackgroundArrowHeight, 0.0f)];
+    [arrowPath moveToPoint:CGPointMake(HYPPopoverBackgroundArrowHeight, 0.0f)];
     [arrowPath addLineToPoint:CGPointMake(HYPPopoverBackgroundArrowHeight, HYPPopoverBackgroundArrowBase)];
     [arrowPath addLineToPoint:CGPointMake(0.0f, HYPPopoverBackgroundArrowBase/2.0f)];
     [arrowPath addLineToPoint:CGPointMake(HYPPopoverBackgroundArrowHeight, 0.0f)];
@@ -151,14 +157,14 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
     [tintColor setFill];
     [arrowPath fill];
 
-    HYPPopoverBackgroundLeftArrowImage = [UIGraphicsGetImageFromCurrentImageContext() self];
+    HYPPopoverBackgroundLeftArrowImage = UIGraphicsGetImageFromCurrentImageContext();
 
     UIGraphicsEndImageContext();
 
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(HYPPopoverBackgroundArrowHeight, HYPPopoverBackgroundArrowBase), NO, 0.0f);
+    UIGraphicsBeginImageContextWithOptions(arrowSize, NO, 0.0f);
 
     arrowPath = [UIBezierPath bezierPath];
-    [arrowPath moveToPoint:	  CGPointMake(0.0f, 0.0f)];
+    [arrowPath moveToPoint:CGPointMake(0.0f, 0.0f)];
     [arrowPath addLineToPoint:CGPointMake(HYPPopoverBackgroundArrowHeight, HYPPopoverBackgroundArrowBase/2.0f)];
     [arrowPath addLineToPoint:CGPointMake(0.0f, HYPPopoverBackgroundArrowBase)];
     [arrowPath addLineToPoint:CGPointMake(0.0f, 0.0f)];
@@ -166,12 +172,13 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
     [tintColor setFill];
     [arrowPath fill];
 
-    [HYPPopoverBackgroundRightArrowImage self];
-    HYPPopoverBackgroundRightArrowImage = [UIGraphicsGetImageFromCurrentImageContext() self];
+    HYPPopoverBackgroundRightArrowImage = UIGraphicsGetImageFromCurrentImageContext();
 
     UIGraphicsEndImageContext();
 
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(HYPPopoverBackgroundImageSize, HYPPopoverBackgroundImageSize), NO, 0.0f);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(HYPPopoverBackgroundImageSize, HYPPopoverBackgroundImageSize),
+                                           NO,
+                                           0.0f);
 
     UIBezierPath *borderPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0f, 0.0f, HYPPopoverBackgroundImageSize, HYPPopoverBackgroundImageSize)
                                                           cornerRadius:HYPPopoverBackgroundCornerRadius];
@@ -185,12 +192,10 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
                                               capInset,
                                               capInset);
 
-    [HYPPopoverBackgroundBackgroundImage self];
-    HYPPopoverBackgroundBackgroundImage = [[UIGraphicsGetImageFromCurrentImageContext() resizableImageWithCapInsets:capInsets] self];
+    HYPPopoverBackgroundBackgroundImage = [UIGraphicsGetImageFromCurrentImageContext() resizableImageWithCapInsets:capInsets];
 
     UIGraphicsEndImageContext();
 }
-
 
 - (id)initWithFrame:(CGRect)frame
 {

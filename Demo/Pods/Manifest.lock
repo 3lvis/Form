@@ -2,6 +2,7 @@ PODS:
   - HYPImagePicker (0.2)
   - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.8)
+  - HYPPopoverBackgroundView (1.0)
   - NSDictionary-ANDYSafeValue (0.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSString-HYPFormula (1.6.1):
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - HYPImagePicker (from `https://github.com/hyperoslo/HYPImagePicker.git`)
   - HYPNorwegianAccountNumber
   - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
+  - HYPPopoverBackgroundView (from `https://github.com/hyperoslo/HYPPopoverBackgroundView.git`)
   - NSDictionary-ANDYSafeValue
   - NSJSONSerialization-ANDYJSONFile
   - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`)
@@ -28,6 +30,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/hyperoslo/HYPImagePicker.git
   HYPNorwegianSSN:
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
+  HYPPopoverBackgroundView:
+    :git: https://github.com/hyperoslo/HYPPopoverBackgroundView.git
   NSString-HYPFormula:
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
   NSString-HYPWordExtractor:
@@ -42,6 +46,9 @@ CHECKOUT OPTIONS:
   HYPNorwegianSSN:
     :commit: fea0ac1ed0c416c429eee9cdbd43118954441369
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
+  HYPPopoverBackgroundView:
+    :commit: 010ce4146be58c9ddba28191b3f2d22b0f406926
+    :git: https://github.com/hyperoslo/HYPPopoverBackgroundView.git
   NSString-HYPFormula:
     :commit: 1149cc13cd633445c67554169433aa978c98fb5b
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
@@ -56,6 +63,7 @@ SPEC CHECKSUMS:
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
   HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
   HYPNorwegianSSN: d7a82481bca14cdc20f0867102c11f47274c9753
+  HYPPopoverBackgroundView: 716ed3e96663e4aa064f2f2bf2727f19a50917e6
   NSDictionary-ANDYSafeValue: 5b7d0c0b1b7285191fb0f94e6dda13b86dec2dee
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
   NSString-HYPFormula: ace20bb486552fb282cc8510f9e6a5481be1106d
