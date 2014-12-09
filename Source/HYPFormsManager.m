@@ -219,7 +219,7 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [self fieldWithID:target.targetID withIndexPath:YES];
+            HYPFormField *field = [self fieldWithID:target.targetID withIndexPath:YES inForms:forms];
             HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:forms];
             [section removeField:field inForms:forms];
 
@@ -363,7 +363,7 @@
     }
 
     if (!foundField) {
-        
+
         NSArray *deletedSections = [self.hiddenSections allValues];
         [deletedSections enumerateObjectsUsingBlock:^(HYPFormSection *section, NSUInteger sectionIndex, BOOL *sectionStop) {
             [section.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
