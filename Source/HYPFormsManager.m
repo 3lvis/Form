@@ -274,4 +274,60 @@
     return self.requiredFields;
 }
 
+- (HYPFormField *)fieldWithID:(NSString *)fieldID
+                withIndexPath:(BOOL)withIndexPath
+{
+    NSParameterAssert(fieldID);
+
+    __block HYPFormField *foundField = nil;
+
+    NSInteger formIndex = 0;
+    for (HYPForm *form in self.forms) {
+
+        NSUInteger fieldIndex = 0;
+        for (HYPFormField *field in form.fields) {
+            if ([field.fieldID isEqualToString:fieldID]) {
+                if (withIndexPath) {
+                    field.indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:formIndex];
+                }
+
+                foundField = field;
+                break;
+            }
+
+            ++fieldIndex;
+        }
+
+        ++formIndex;
+    }
+
+    if (!foundField) {
+
+        [self.hiddenFields enumerateKeysAndObjectsUsingBlock:^(NSString *hiddenFieldID, HYPFormField *formField, BOOL *stop) {
+            if ([hiddenFieldID isEqualToString:fieldID]) {
+                foundField = formField;
+                *stop = YES;
+            }
+        }];
+    }
+
+    if (!foundField) {
+        NSArray *deletedSections = [self.hiddenSections allValues];
+        [deletedSections enumerateObjectsUsingBlock:^(HYPFormSection *section, NSUInteger sectionIndex, BOOL *sectionStop) {
+            [section.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
+                if ([field.fieldID isEqualToString:fieldID]) {
+                    if (withIndexPath) {
+                        field.indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:sectionIndex];
+                    }
+
+                    foundField = field;
+                    *sectionStop = YES;
+                }
+            }];
+        }];
+    }
+
+    return foundField;
+}
+
 @end

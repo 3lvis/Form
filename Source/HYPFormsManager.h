@@ -20,4 +20,7 @@
 
 - (NSDictionary *)requiredFormFields;
 
+- (HYPFormField *)fieldWithID:(NSString *)fieldID
+                withIndexPath:(BOOL)withIndexPath;
+
 @end
