@@ -336,8 +336,7 @@
         NSUInteger fieldIndex = 0;
         for (HYPFormField *field in form.fields) {
 
-            if ([field isKindOfClass:[HYPFormField class]] &&
-                [field.fieldID isEqualToString:fieldID]) {
+            if ([field.fieldID isEqualToString:fieldID]) {
                 foundField = field;
                 break;
             }
@@ -351,9 +350,8 @@
     if (includingHiddenFields) {
         if (!foundField) {
 
-            for (HYPFormField *formField in self.hiddenFields) {
-                if ([formField isKindOfClass:[HYPFormField class]] &&
-                    [formField.fieldID isEqualToString:fieldID]) {
+            for (HYPFormField *formField in [self.hiddenFields allValues]) {
+                if ([formField.fieldID isEqualToString:fieldID]) {
                     foundField = formField;
                 }
             }
@@ -365,8 +363,7 @@
 
             for (HYPFormSection *section in deletedSections) {
                 for (HYPFormField *field in section.fields) {
-                    if ([field isKindOfClass:[HYPFormField class]] &&
-                        [field.fieldID isEqualToString:fieldID]) {
+                    if ([field.fieldID isEqualToString:fieldID]) {
                         foundField = field;
                     }
                 }
