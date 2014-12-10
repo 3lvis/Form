@@ -59,7 +59,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
     label.font = [UIFont HYPFormsLargeSize];
     label.textColor = [UIColor HYPFormsCoreBlue];
-    label.text = NSLocalizedString(@"Legg til bilde av den ansatte", @"Legg til bilde av den ansatte");
+    label.text = @"Main title";
 
     return label;
 }
@@ -71,8 +71,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
     infoLabel.font = [UIFont HYPFormsSmallSize];
     infoLabel.textColor = [UIColor HYPFormsCoreBlue];
-    infoLabel.text = NSLocalizedString(@"Bildet som lastes opp blir den ansattes profilbilde i ulike HYPForms-systemer.",
-                                       @"Bildet som lastes opp blir den ansattes profilbilde i ulike HYPForms-systemer.");
+    infoLabel.text = @"Some info on the button";
     infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
     infoLabel.numberOfLines = 0;
 

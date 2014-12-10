@@ -29,16 +29,6 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
-    NSMutableDictionary *initialValues = [dictionary mutableCopy];
-    if ([dictionary valueForKey:@"postal_code"] && ![dictionary valueForKey:@"city"]) {
-        NSString *postalCode = [initialValues valueForKey:@"postal_code"];
-        HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
-        NSString *city = [postalCodeManager cityForPostalCode:postalCode];
-        if (city) [initialValues setValue:city forKey:@"city"];
-    }
-
-    _initialValues = initialValues;
-
     layout.dataSource = self;
 
     return self;
@@ -54,8 +44,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
     _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
                                             initialValues:self.initialValues
-                                         disabledFieldIDs:nil
-                                                 disabled:NO];
+                                         disabledFieldIDs:@[@"display_name"]
+                                                 disabled:YES];
 
     return _formsManager;
 }
@@ -64,7 +54,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView andFormsManager:self.formsManager];
+    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
+                                                                   andFormsManager:self.formsManager];
 
     _dataSource.dataSource = self;
 
@@ -73,26 +64,10 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     _dataSource.configureFieldUpdatedBlock = ^(id cell, HYPFormField *field) {
         NSLog(@"field updated: %@ --- %@", field.fieldID, field.fieldValue);
 
-        if ([field.fieldID isEqualToString:@"postal_code"]) {
-            NSString *postalCode = field.fieldValue;
-            HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
-            NSString *city = [postalCodeManager cityForPostalCode:postalCode];
+        BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
 
-            [weakSelf.formsManager fieldWithID:@"city" completion:^(HYPFormField *field, NSIndexPath *indexPath) {
-                if (field) {
-                    field.fieldValue = city;
-                    [weakSelf.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-                }
-            }];
-        }
-
-        BOOL shouldUpdateFixedEntryDate = ([field.fieldID isEqualToString:@"fixed_pay_level"] ||
-                                           [field.fieldID isEqualToString:@"fixed_pay_premium_percent"] ||
-                                           [field.fieldID isEqualToString:@"fixed_pay_premium_currency"] ||
-                                           [field.fieldID isEqualToString:@"hours_per_week"]);
-
-        if (shouldUpdateFixedEntryDate) {
-            [weakSelf.formsManager fieldWithID:@"fixed_pay_entry_date" completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+        if (shouldUpdateStartDate) {
+            [weakSelf.formsManager fieldWithID:@"start_date" completion:^(HYPFormField *field, NSIndexPath *indexPath) {
                 if (field) {
                     field.fieldValue = [NSDate date];
                     field.minimumDate = [NSDate date];
@@ -109,8 +84,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 {
     if (_imagePicker) return _imagePicker;
 
-    NSString *caption = NSLocalizedString(@"Legg til bilde av den ansatte", @"Legg til bilde av den ansatte");
-    _imagePicker = [[HYPImagePicker alloc] initForViewController:self usingCaption:caption];
+    _imagePicker = [[HYPImagePicker alloc] initForViewController:self usingCaption:@"caption"];
     _imagePicker.delegate = self;
 
     return _imagePicker;
@@ -174,8 +148,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     [self.navigationController setToolbarHidden:NO animated:YES];
 
     HYPFormTarget *target = [HYPFormTarget new];
-    target.targetID = @"collective_agreement";
-    target.typeString = @"field";
+    target.targetID = @"employment-1";
+    target.typeString = @"section";
     target.actionTypeString = @"hide";
 
     [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
