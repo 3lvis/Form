@@ -375,7 +375,7 @@
         ++formIndex;
     }
 
-    if (includingHiddenFields) {
+    if (!foundField && includingHiddenFields) {
         foundField = [self hiddenFieldWithFieldID:fieldID];
     }
 
@@ -396,7 +396,7 @@
     if (!foundField) {
 
         NSArray *deletedSections = [self.hiddenSections allValues];
-        
+
         for (HYPFormSection *section in deletedSections) {
             for (HYPFormField *field in section.fields) {
                 if ([field.fieldID isEqualToString:fieldID]) {
