@@ -53,11 +53,13 @@
     HYPFormField *field = [manager fieldWithID:@"first_name"];
     XCTAssertEqualObjects(field.fieldID, @"first_name");
 
-    [field sectionAndIndexInForms:manager.forms completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
-        if (found) {
-            [section.fields removeObjectAtIndex:index];
-        }
-    }];
+    [manager indexForFieldWithID:field.fieldID
+                 inSectionWithID:field.section.sectionID
+                      completion:^(HYPFormSection *section, NSInteger index) {
+                          if (section) {
+                              [section.fields removeObjectAtIndex:index];
+                          }
+                      }];
 
     field = [manager fieldWithID:@"first_name"];
 

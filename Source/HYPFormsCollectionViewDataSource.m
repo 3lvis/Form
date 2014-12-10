@@ -484,6 +484,7 @@
     NSMutableArray *insertedIndexPaths = [NSMutableArray array];
 
     for (HYPFormTarget *target in targets) {
+
         if (target.type == HYPFormTargetTypeField) {
             HYPFormField *field = [self.formsManager.hiddenFields objectForKey:target.targetID];
             if (field) {
@@ -491,12 +492,6 @@
                 HYPFormSection *section = form.sections[[field.section.position integerValue]];
                 NSInteger fieldIndex = [field indexInSectionUsingForms:self.formsManager.forms];
                 [section.fields insertObject:field atIndex:fieldIndex];
-
-                [self.formsManager fieldWithID:target.targetID completion:^(HYPFormField *field, NSIndexPath *indexPath) {
-                    [insertedIndexPaths addObject:indexPath];
-                }];
-
-                [self.formsManager.hiddenFields removeObjectForKey:target.targetID];
             }
         } else if (target.type == HYPFormTargetTypeSection) {
             HYPFormSection *section = [self.formsManager.hiddenSections objectForKey:target.targetID];
@@ -504,11 +499,30 @@
                 NSInteger sectionIndex = [section indexInForms:self.formsManager.forms];
                 HYPForm *form = self.formsManager.forms[[section.form.position integerValue]];
                 [form.sections insertObject:section atIndex:sectionIndex];
+            }
+        }
 
-                HYPFormSection *foundSection = [self findSectionForTarget:target];
-                [insertedIndexPaths addObjectsFromArray:foundSection.indexPaths];
+        if (target.type == HYPFormTargetTypeField) {
+            HYPFormField *field = [self.formsManager.hiddenFields objectForKey:target.targetID];
+            if (field) {
+                [self.formsManager fieldWithID:target.targetID completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+                    if (field) {
+                        [insertedIndexPaths addObject:indexPath];
+                    }
 
-                [self.formsManager.hiddenSections removeObjectForKey:section.sectionID];
+                    [self.formsManager.hiddenFields removeObjectForKey:target.targetID];
+                }];
+            }
+        } else if (target.type == HYPFormTargetTypeSection) {
+            HYPFormSection *section = [self.formsManager.hiddenSections objectForKey:target.targetID];
+            if (section) {
+                [self.formsManager sectionWithID:target.targetID completion:^(HYPFormSection *section, NSArray *indexPaths) {
+                    if (section) {
+                        [insertedIndexPaths addObjectsFromArray:indexPaths];
+
+                        [self.formsManager.hiddenSections removeObjectForKey:section.sectionID];
+                    }
+                }];
             }
         }
     }
@@ -529,7 +543,7 @@
                 [self.formsManager.hiddenFields addEntriesFromDictionary:@{field.fieldID : field}];
             }
         } else if (target.type == HYPFormTargetTypeSection) {
-            HYPFormSection *section = [self findSectionForTarget:target];
+            HYPFormSection *section = [self.formsManager sectionWithID:target.targetID];
             if (section && ![self.formsManager.hiddenSections objectForKey:section.sectionID]) {
                 [deletedSections addObject:section];
                 [self.formsManager.hiddenSections addEntriesFromDictionary:@{section.sectionID : section}];
@@ -541,20 +555,33 @@
 
     for (HYPFormField *field in deletedFields) {
         [self.formsManager fieldWithID:field.fieldID completion:^(HYPFormField *field, NSIndexPath *indexPath) {
-            [deletedIndexPaths addObject:indexPath];
-
-            [field sectionAndIndexInForms:self.formsManager.forms completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
-                if (found) {
-                    [section.fields removeObjectAtIndex:index];
-                }
-            }];
+            if (field) {
+                [deletedIndexPaths addObject:indexPath];
+            }
         }];
     }
 
     for (HYPFormSection *section in deletedSections) {
-        [deletedIndexPaths addObjectsFromArray:section.indexPaths];
+        [self.formsManager sectionWithID:section.sectionID completion:^(HYPFormSection *foundSection, NSArray *indexPaths) {
+            if (foundSection) {
+                [deletedIndexPaths addObjectsFromArray:indexPaths];
+            }
+        }];
+    }
+
+    for (HYPFormField *field in deletedFields) {
+        [self.formsManager indexForFieldWithID:field.fieldID
+                               inSectionWithID:field.section.sectionID
+                                    completion:^(HYPFormSection *section, NSInteger index) {
+                                        if (section) {
+                                            [section.fields removeObjectAtIndex:index];
+                                        }
+                                    }];
+    }
+
+    for (HYPFormSection *section in deletedSections) {
         HYPForm *form = self.formsManager.forms[[section.form.position integerValue]];
-        [self indexForSection:section completion:^(BOOL found, NSInteger index) {
+        [self indexForSection:section form:form completion:^(BOOL found, NSInteger index) {
             if (found) {
                 [form.sections removeObjectAtIndex:index];
             }
@@ -575,8 +602,10 @@
         __block HYPFormField *field = nil;
 
         [self.formsManager fieldWithID:target.targetID completion:^(HYPFormField *foundField, NSIndexPath *indexPath) {
-            field = foundField;
-            [updatedIndexPaths addObject:indexPath];
+            if (foundField) {
+                field = foundField;
+                [updatedIndexPaths addObject:indexPath];
+            }
         }];
 
         if (!field) continue;
@@ -648,47 +677,8 @@
 
 #pragma mark Sections
 
-- (HYPFormSection *)findSectionForTarget:(HYPFormTarget *)target
+- (void)indexForSection:(HYPFormSection *)section form:(HYPForm *)form completion:(void (^)(BOOL found, NSInteger index))completion
 {
-    __block BOOL found = NO;
-
-    __block NSMutableArray *indexPaths = [NSMutableArray array];
-
-    __block HYPFormSection *foundSection;
-
-    [self.formsManager.forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
-        if (found) {
-            *formStop = YES;
-        }
-
-        __block NSInteger fieldsIndex = 0;
-        [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection,
-                                                    NSUInteger sectionIndex,
-                                                    BOOL *sectionStop) {
-            if ([aSection.sectionID isEqualToString:target.targetID]) {
-                NSInteger fieldsInSectionCount = fieldsIndex + aSection.fields.count;
-                for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
-                    [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
-                }
-                aSection.indexPaths = indexPaths;
-
-                foundSection = aSection;
-
-                found = YES;
-                *sectionStop = YES;
-            }
-
-            fieldsIndex += aSection.fields.count;
-        }];
-    }];
-
-    return foundSection;
-}
-
-- (void)indexForSection:(HYPFormSection *)section completion:(void (^)(BOOL found, NSInteger index))completion
-{
-    HYPForm *form = self.formsManager.forms[[section.form.position integerValue]];
-
     __block NSInteger index = 0;
     __block BOOL found = NO;
     [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger idx, BOOL *stop) {

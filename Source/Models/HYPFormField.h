@@ -48,9 +48,6 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 - (NSArray *)safeTargets;
 
-- (void)sectionAndIndexInForms:(NSArray *)forms
-                    completion:(void (^)(BOOL found, HYPFormSection *section, NSInteger index))completion;
-
 - (BOOL)validate;
 - (id)rawFieldValue;
 - (id)inputValidator;
