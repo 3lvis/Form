@@ -48,7 +48,7 @@
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
-    HYPFormField *displayNameField = [manager fieldWithID:@"display_name"];
+    HYPFormField *displayNameField = [manager fieldWithID:@"display_name" includingHiddenFields:YES];
 
     XCTAssertEqualObjects(displayNameField.fieldValue, @"Elvis Nunez");
 }
@@ -112,18 +112,18 @@
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
-    HYPFormField *firstNameField = [manager fieldWithID:@"first_name"];
+    HYPFormField *firstNameField = [manager fieldWithID:@"first_name" includingHiddenFields:NO];
     XCTAssertNotNil(firstNameField);
     XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
 
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"start_date"]];
-    HYPFormField *startDateField = [manager fieldWithID:@"start_date"];
+    HYPFormField *startDateField = [manager fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
     XCTAssertEqualObjects(startDateField.fieldID, @"start_date");
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"start_date"]];
 
     [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"employment-1"]];
-    HYPFormField *contractTypeField = [manager fieldWithID:@"contract_type"];
+    HYPFormField *contractTypeField = [manager fieldWithID:@"contract_type" includingHiddenFields:NO];
     XCTAssertNotNil(contractTypeField);
     XCTAssertEqualObjects(contractTypeField.fieldID, @"contract_type");
     [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];

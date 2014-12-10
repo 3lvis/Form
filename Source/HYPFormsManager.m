@@ -161,7 +161,7 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [self fieldWithID:target.targetID];
+            HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:YES];
             [hiddenFields addEntriesFromDictionary:@{target.targetID : field}];
 
         } else if (target.type == HYPFormTargetTypeSection) {
@@ -175,7 +175,7 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [self fieldWithID:target.targetID];
+            HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:YES];
             HYPFormSection *section = [self sectionWithID:field.section.sectionID];
             [section removeField:field inForms:self.forms];
 
@@ -319,11 +319,6 @@
 
 #pragma mark - Field
 
-- (HYPFormField *)fieldWithID:(NSString *)fieldID
-{
-    return [self fieldWithID:fieldID includingHiddenFields:YES];
-}
-
 - (HYPFormField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
 {
     NSParameterAssert(fieldID);
@@ -347,36 +342,14 @@
         ++formIndex;
     }
 
-    if (includingHiddenFields) {
-        if (!foundField) {
-
-            NSArray *hiddenFields = [self.hiddenFieldsAndFieldIDsDictionary allValues];
-
-            for (HYPFormField *formField in hiddenFields) {
-                if ([formField.fieldID isEqualToString:fieldID]) {
-                    foundField = formField;
-                }
-            }
-        }
-
-        if (!foundField) {
-
-            NSArray *deletedSections = [self.hiddenSections allValues];
-
-            for (HYPFormSection *section in deletedSections) {
-                for (HYPFormField *field in section.fields) {
-                    if ([field.fieldID isEqualToString:fieldID]) {
-                        foundField = field;
-                    }
-                }
-            }
-        }
+    if (!foundField && includingHiddenFields) {
+        foundField = [self hiddenFieldWithFieldID:fieldID];
     }
 
     return foundField;
 }
 
-- (void)fieldWithID:(NSString *)fieldID
+- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(HYPFormField *field, NSIndexPath *indexPath))completion
 {
     NSParameterAssert(fieldID);
@@ -402,7 +375,38 @@
         ++formIndex;
     }
 
+    if (includingHiddenFields) {
+        foundField = [self hiddenFieldWithFieldID:fieldID];
+    }
+
     if (completion) completion(foundField, indexPath);
+}
+
+- (HYPFormField *)hiddenFieldWithFieldID:(NSString *)fieldID
+{
+    NSArray *hiddenFields = [self.hiddenFieldsAndFieldIDsDictionary allValues];
+    HYPFormField *foundField;
+
+    for (HYPFormField *formField in hiddenFields) {
+        if ([formField.fieldID isEqualToString:fieldID]) {
+            foundField = formField;
+        }
+    }
+
+    if (!foundField) {
+
+        NSArray *deletedSections = [self.hiddenSections allValues];
+        
+        for (HYPFormSection *section in deletedSections) {
+            for (HYPFormField *field in section.fields) {
+                if ([field.fieldID isEqualToString:fieldID]) {
+                    foundField = field;
+                }
+            }
+        }
+    }
+
+    return foundField;
 }
 
 - (void)indexForFieldWithID:(NSString *)fieldID
