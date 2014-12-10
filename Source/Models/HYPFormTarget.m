@@ -60,7 +60,7 @@
 {
     NSMutableArray *targets = [NSMutableArray array];
     for (NSString *targetID in targetIDs) {
-        [targets addObject:[self hideFieldTargetWithID:targetID]];
+        [targets addObject:[self hideSectionTargetWithID:targetID]];
     }
 
     return targets;
