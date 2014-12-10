@@ -133,13 +133,15 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 
 - (void)titleLabelPressed:(HYPFieldValueLabel *)titleLabel
 {
-    [self updateContentViewController:self.contentViewController withField:self.field];
+    if (titleLabel.isEnabled) {
+        [self updateContentViewController:self.contentViewController withField:self.field];
 
-    if (!self.popoverController.isPopoverVisible) {
-        [self.popoverController presentPopoverFromRect:self.bounds
-                                                inView:self
-                              permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
-                                              animated:YES];
+        if (!self.popoverController.isPopoverVisible) {
+            [self.popoverController presentPopoverFromRect:self.bounds
+                                                    inView:self
+                                  permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
+                                                  animated:YES];
+        }
     }
 }
 
