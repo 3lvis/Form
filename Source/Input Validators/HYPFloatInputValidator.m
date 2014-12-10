@@ -8,10 +8,10 @@
 
     if (!valid) return valid;
 
-    BOOL hasComa = ([text rangeOfString:@","].location != NSNotFound);
+    BOOL hasDelimiter = ([text containsString:@","] || [text containsString:@"."]);
     BOOL stringIsNilOrComma = (!string || [string isEqualToString:@","]);
 
-    if (hasComa && stringIsNilOrComma) return NO;
+    if (hasDelimiter && stringIsNilOrComma) return NO;
 
     NSCharacterSet *floatSet = [NSCharacterSet characterSetWithCharactersInString:@"1234567890,"];
     NSCharacterSet *stringSet = [NSCharacterSet characterSetWithCharactersInString:string];
