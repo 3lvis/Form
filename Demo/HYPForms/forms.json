@@ -267,5 +267,24 @@
         ]
       }
     ]
+  },
+  {
+    "id": "custom-actions",
+    "title": "Custom Actions",
+    "sections": [
+      {
+        "id": "custom-actions-0",
+        "fields": [
+          {
+            "id": "image",
+            "type": "image",
+            "size": {
+              "width": 100,
+              "height": 1.7
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
