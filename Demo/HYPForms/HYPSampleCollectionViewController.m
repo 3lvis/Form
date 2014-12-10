@@ -67,7 +67,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
         BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
 
         if (shouldUpdateStartDate) {
-            [weakSelf.formsManager fieldWithID:@"start_date" completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+            [weakSelf.formsManager fieldWithID:@"start_date" includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
                 if (field) {
                     field.fieldValue = [NSDate date];
                     field.minimumDate = [NSDate date];
