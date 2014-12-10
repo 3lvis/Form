@@ -36,7 +36,7 @@
                      completion:^(NSDictionary *fieldValues,
                                   NSMutableDictionary *hiddenFields,
                                   NSMutableDictionary *hiddenSections) {
-                         self.hiddenFields = hiddenFields;
+                         self.hiddenFieldsAndFieldIDsDictionary = hiddenFields;
                          self.hiddenSections = hiddenSections;
                          self.values = [fieldValues mutableCopy];
                      }];
@@ -53,13 +53,13 @@
     return _forms;
 }
 
-- (NSMutableDictionary *)hiddenFields
+- (NSMutableDictionary *)hiddenFieldsAndFieldIDsDictionary
 {
-    if (_hiddenFields) return _hiddenFields;
+    if (_hiddenFieldsAndFieldIDsDictionary) return _hiddenFieldsAndFieldIDsDictionary;
 
-    _hiddenFields = [NSMutableDictionary new];
+    _hiddenFieldsAndFieldIDsDictionary = [NSMutableDictionary new];
 
-    return _hiddenFields;
+    return _hiddenFieldsAndFieldIDsDictionary;
 }
 
 - (NSMutableDictionary *)hiddenSections
@@ -350,7 +350,9 @@
     if (includingHiddenFields) {
         if (!foundField) {
 
-            for (HYPFormField *formField in [self.hiddenFields allValues]) {
+            NSArray *hiddenFields = [self.hiddenFieldsAndFieldIDsDictionary allValues];
+
+            for (HYPFormField *formField in hiddenFields) {
                 if ([formField.fieldID isEqualToString:fieldID]) {
                     foundField = formField;
                 }

@@ -5,7 +5,7 @@
 @interface HYPFormsManager : NSObject
 
 @property (nonatomic, strong) NSMutableArray *forms;
-@property (nonatomic, strong) NSMutableDictionary *hiddenFields;
+@property (nonatomic, strong) NSMutableDictionary *hiddenFieldsAndFieldIDsDictionary;
 @property (nonatomic, strong) NSMutableDictionary *hiddenSections;
 @property (nonatomic, strong) NSArray *disabledFieldsIDs;
 @property (nonatomic, strong) NSMutableDictionary *values;

@@ -33,7 +33,7 @@
 
     XCTAssertTrue(manager.forms.count > 0);
 
-    XCTAssertTrue(manager.hiddenFields.count == 0);
+    XCTAssertTrue(manager.hiddenFieldsAndFieldIDsDictionary.count == 0);
 
     XCTAssertTrue(manager.hiddenSections.count == 0);
 }
@@ -63,7 +63,7 @@
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
-    XCTAssertTrue(manager.hiddenFields.count > 0);
+    XCTAssertTrue(manager.hiddenFieldsAndFieldIDsDictionary.count > 0);
 
     XCTAssertTrue(manager.hiddenSections.count > 0);
 }
