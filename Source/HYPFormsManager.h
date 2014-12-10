@@ -32,7 +32,7 @@
 
 - (HYPFormField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields;
 
-- (void)fieldWithID:(NSString *)fieldID
+- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(HYPFormField *field, NSIndexPath *indexPath))completion;
 
 @end
