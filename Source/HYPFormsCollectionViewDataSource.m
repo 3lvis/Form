@@ -334,7 +334,7 @@
 
             if (field) {
                 field.fieldValue = (shouldBeNil) ? nil : value;
-                [updatedIndexPaths addObject:indexPath];
+                if (indexPath) [updatedIndexPaths addObject:indexPath];
                 [targets addObjectsFromArray:[field safeTargets]];
             } else {
                 field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
@@ -604,7 +604,7 @@
         [self.formsManager fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *foundField, NSIndexPath *indexPath) {
             if (foundField) {
                 field = foundField;
-                [updatedIndexPaths addObject:indexPath];
+                if (indexPath) [updatedIndexPaths addObject:indexPath];
             }
         }];
 
