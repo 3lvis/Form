@@ -92,9 +92,10 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 {
     self.iconImageView.hidden = field.disabled;
 
-    self.fieldValueLabel.hidden         = (field.sectionSeparator);
-    self.fieldValueLabel.enabled        = !field.disabled;
-    self.fieldValueLabel.valid          = field.valid;
+    self.fieldValueLabel.hidden = (field.sectionSeparator);
+    self.fieldValueLabel.enabled = !field.disabled;
+    self.fieldValueLabel.userInteractionEnabled = !field.disabled;
+    self.fieldValueLabel.valid = field.valid;
 }
 
 - (void)layoutSubviews
