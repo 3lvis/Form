@@ -9,8 +9,8 @@
 #import "HYPFieldValidation.h"
 #import "HYPFormsCollectionViewDataSource.h"
 
-#import "HYPFormsManager+Tests.h"
 #import "NSDictionary+ANDYSafeValue.h"
+#import "NSJSONSerialization+ANDYJSONFile.h"
 
 @interface HYPFormsManagerTests : XCTestCase
 
@@ -23,8 +23,11 @@
 
 - (void)testFormsGenerationOnlyJSON
 {
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
-                                                        initialValues:nil];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                       initialValues:nil
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
 
     XCTAssertNotNil(manager.forms);
 
@@ -39,10 +42,13 @@
 {
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
-                                                        initialValues:values];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                       initialValues:values
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
 
-    HYPFormField *displayNameField = [manager fieldWithID:@"display_name" withIndexPath:YES];
+    HYPFormField *displayNameField = [manager fieldWithID:@"display_name"];
 
     XCTAssertEqualObjects(displayNameField.fieldValue, @"Elvis Nunez");
 }
@@ -51,8 +57,11 @@
 {
     NSDictionary *values = @{@"contract_type" : @1};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
-                                                        initialValues:values];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                       initialValues:values
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
 
     XCTAssertTrue(manager.hiddenFields.count > 0);
 
@@ -61,8 +70,11 @@
 
 - (void)testRequiredFields
 {
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
-                                                        initialValues:nil];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                       initialValues:nil
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
 
     NSDictionary *requiredFormFields = [manager requiredFormFields];
 
@@ -77,8 +89,11 @@
 {
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
-                                                        initialValues:values];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                       initialValues:values
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
 
     NSArray *fields = [manager invalidFormFields];
 
@@ -91,21 +106,24 @@
 {
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
-                                                        initialValues:values];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                       initialValues:values
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
 
-    HYPFormField *firstNameField = [manager fieldWithID:@"first_name" withIndexPath:YES];
+    HYPFormField *firstNameField = [manager fieldWithID:@"first_name"];
     XCTAssertNotNil(firstNameField);
     XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
 
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"start_date"]];
-    HYPFormField *startDateField = [manager fieldWithID:@"start_date" withIndexPath:YES];
+    HYPFormField *startDateField = [manager fieldWithID:@"start_date"];
     XCTAssertNotNil(startDateField);
     XCTAssertEqualObjects(startDateField.fieldID, @"start_date");
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"start_date"]];
 
     [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"employment-1"]];
-    HYPFormField *contractTypeField = [manager fieldWithID:@"contract_type" withIndexPath:YES];
+    HYPFormField *contractTypeField = [manager fieldWithID:@"contract_type"];
     XCTAssertNotNil(contractTypeField);
     XCTAssertEqualObjects(contractTypeField.fieldID, @"contract_type");
     [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];

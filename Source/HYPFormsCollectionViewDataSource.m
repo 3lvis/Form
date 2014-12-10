@@ -329,17 +329,18 @@
     NSMutableArray *targets = [NSMutableArray array];
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
-        BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
+        [self.formsManager fieldWithID:key completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+            BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
-        HYPFormField *field = [self.formsManager fieldWithID:key withIndexPath:YES];
-        if (field) {
-            field.fieldValue = (shouldBeNil) ? nil : value;
-            [updatedIndexPaths addObject:field.indexPath];
-            [targets addObjectsFromArray:[field safeTargets]];
-        } else {
-            field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
-            if (field) field.fieldValue = (shouldBeNil) ? nil : value;
-        }
+            if (field) {
+                field.fieldValue = (shouldBeNil) ? nil : value;
+                [updatedIndexPaths addObject:indexPath];
+                [targets addObjectsFromArray:[field safeTargets]];
+            } else {
+                field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
+                if (field) field.fieldValue = (shouldBeNil) ? nil : value;
+            }
+        }];
     }];
 
     if (updatedIndexPaths.count > 0) {
@@ -491,8 +492,9 @@
                 NSInteger fieldIndex = [field indexInSectionUsingForms:self.formsManager.forms];
                 [section.fields insertObject:field atIndex:fieldIndex];
 
-                HYPFormField *newField = [self.formsManager fieldWithID:target.targetID withIndexPath:YES];
-                [insertedIndexPaths addObject:newField.indexPath];
+                [self.formsManager fieldWithID:target.targetID completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+                    [insertedIndexPaths addObject:indexPath];
+                }];
 
                 [self.formsManager.hiddenFields removeObjectForKey:target.targetID];
             }
@@ -521,7 +523,7 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self.formsManager fieldWithID:target.targetID withIndexPath:YES];
+            HYPFormField *field = [self.formsManager fieldWithID:target.targetID];
             if (field && ![self.formsManager.hiddenFields objectForKey:field.fieldID]) {
                 [deletedFields addObject:field];
                 [self.formsManager.hiddenFields addEntriesFromDictionary:@{field.fieldID : field}];
@@ -538,11 +540,14 @@
     NSMutableSet *deletedIndexPaths = [NSMutableSet set];
 
     for (HYPFormField *field in deletedFields) {
-        [deletedIndexPaths addObject:field.indexPath];
-        [field sectionAndIndexInForms:self.formsManager.forms completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
-            if (found) {
-                [section.fields removeObjectAtIndex:index];
-            }
+        [self.formsManager fieldWithID:field.fieldID completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+            [deletedIndexPaths addObject:indexPath];
+
+            [field sectionAndIndexInForms:self.formsManager.forms completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
+                if (found) {
+                    [section.fields removeObjectAtIndex:index];
+                }
+            }];
         }];
     }
 
@@ -567,10 +572,14 @@
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.formsManager.hiddenFields objectForKey:target.targetID]) continue;
 
-        HYPFormField *field = [self.formsManager fieldWithID:target.targetID withIndexPath:YES];
-        if (!field) continue;
+        __block HYPFormField *field = nil;
 
-        [updatedIndexPaths addObject:field.indexPath];
+        [self.formsManager fieldWithID:target.targetID completion:^(HYPFormField *foundField, NSIndexPath *indexPath) {
+            field = foundField;
+            [updatedIndexPaths addObject:indexPath];
+        }];
+
+        if (!field) continue;
 
         NSArray *fieldIDs = [field.formula hyp_variables];
         NSMutableDictionary *values = [NSMutableDictionary dictionary];
@@ -581,7 +590,7 @@
             BOOL isNumericField = (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber);
             NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
 
-            HYPFormField *targetField = [self.formsManager fieldWithID:fieldID withIndexPath:NO];
+            HYPFormField *targetField = [self.formsManager fieldWithID:fieldID];
 
             if (targetField.type == HYPFormFieldTypeSelect) {
 

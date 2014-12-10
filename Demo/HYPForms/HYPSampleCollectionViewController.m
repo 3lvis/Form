@@ -78,12 +78,12 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
             HYPPostalCodeManager *postalCodeManager = [HYPPostalCodeManager sharedManager];
             NSString *city = [postalCodeManager cityForPostalCode:postalCode];
 
-            HYPFormField *cityField = [weakSelf.formsManager fieldWithID:@"city" withIndexPath:YES];
-
-            if (cityField) {
-                cityField.fieldValue = city;
-                [weakSelf.collectionView reloadItemsAtIndexPaths:@[cityField.indexPath]];
-            }
+            [weakSelf.formsManager fieldWithID:@"city" completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+                if (field) {
+                    field.fieldValue = city;
+                    [weakSelf.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                }
+            }];
         }
 
         BOOL shouldUpdateFixedEntryDate = ([field.fieldID isEqualToString:@"fixed_pay_level"] ||
@@ -92,14 +92,13 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
                                            [field.fieldID isEqualToString:@"hours_per_week"]);
 
         if (shouldUpdateFixedEntryDate) {
-            HYPFormField *fixedPayEntryDateField = [weakSelf.formsManager fieldWithID:@"fixed_pay_entry_date"
-                                                                        withIndexPath:YES];
-
-            if (fixedPayEntryDateField) {
-                fixedPayEntryDateField.fieldValue = [NSDate date];
-                fixedPayEntryDateField.minimumDate = [NSDate date];
-                [weakSelf.dataSource reloadItemsAtIndexPaths:@[fixedPayEntryDateField.indexPath]];
-            }
+            [weakSelf.formsManager fieldWithID:@"fixed_pay_entry_date" completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+                if (field) {
+                    field.fieldValue = [NSDate date];
+                    field.minimumDate = [NSDate date];
+                    [weakSelf.dataSource reloadItemsAtIndexPaths:@[indexPath]];
+                }
+            }];
         }
     };
 

@@ -33,34 +33,9 @@
                   initialValues:initialValues
               disabledFieldsIDs:disabledFieldIDs
                        disabled:disabled
-                     completion:^(NSMutableArray *forms,
-                                  NSDictionary *fieldValues,
+                     completion:^(NSDictionary *fieldValues,
                                   NSMutableDictionary *hiddenFields,
                                   NSMutableDictionary *hiddenSections) {
-                         self.forms = forms;
-                         self.hiddenFields = hiddenFields;
-                         self.hiddenSections = hiddenSections;
-                         self.values = [fieldValues mutableCopy];
-                     }];
-
-    return self;
-}
-
-- (instancetype)initWithForms:(NSMutableArray *)forms
-                initialValues:(NSDictionary *)initialValues
-{
-    self = [super init];
-    if (!self) return nil;
-
-    [self generateFormsWithForms:forms
-                  initialValues:initialValues
-              disabledFieldsIDs:nil
-                       disabled:NO
-                     completion:^(NSMutableArray *forms,
-                                  NSDictionary *fieldValues,
-                                  NSMutableDictionary *hiddenFields,
-                                  NSMutableDictionary *hiddenSections) {
-                         self.forms = forms;
                          self.hiddenFields = hiddenFields;
                          self.hiddenSections = hiddenSections;
                          self.values = [fieldValues mutableCopy];
@@ -118,12 +93,12 @@
                 initialValues:(NSDictionary *)initialValues
             disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                      disabled:(BOOL)disabled
-                   completion:(void (^)(NSMutableArray *forms,
-                                        NSDictionary *fieldValues,
+                   completion:(void (^)(NSDictionary *fieldValues,
                                         NSMutableDictionary *hiddenFields,
                                         NSMutableDictionary *hiddenSections))completion
 {
-    NSMutableArray *forms = [NSMutableArray array];
+    NSMutableArray *fieldsWithFormula = [NSMutableArray new];
+    NSMutableArray *targetsToRun = [NSMutableArray array];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
@@ -131,31 +106,7 @@
                                                    position:formIndex
                                                    disabled:disabled
                                           disabledFieldsIDs:disabledFieldsIDs];
-        [forms addObject:form];
-    }];
 
-    [self generateFormsWithForms:forms
-                   initialValues:initialValues
-               disabledFieldsIDs:disabledFieldsIDs
-                        disabled:disabled
-                      completion:completion];
-}
-
-- (void)generateFormsWithForms:(NSMutableArray *)forms
-                initialValues:(NSDictionary *)initialValues
-            disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                     disabled:(BOOL)disabled
-                   completion:(void (^)(NSMutableArray *forms,
-                                        NSDictionary *fieldValues,
-                                        NSMutableDictionary *hiddenFields,
-                                        NSMutableDictionary *hiddenSections))completion
-{
-    NSMutableArray *fieldsWithFormula = [NSMutableArray new];
-    NSMutableArray *targetsToRun = [NSMutableArray array];
-    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
-    [fieldValues addEntriesFromDictionary:initialValues];
-
-    for (HYPForm *form in forms) {
         for (HYPFormField *field in form.fields) {
 
             if ([initialValues andy_valueForKey:field.fieldID]) {
@@ -189,10 +140,15 @@
                 }
             }
         }
-    }
+
+        [self.forms addObject:form];
+    }];
+
+    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
+    [fieldValues addEntriesFromDictionary:initialValues];
 
     for (HYPFormField *field in fieldsWithFormula) {
-        NSMutableDictionary *values = [self valuesForFormula:field usingForms:forms];
+        NSMutableDictionary *values = [self valuesForFormula:field];
         id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
         field.fieldValue = result;
         if (result) [fieldValues setObject:result forKey:field.fieldID];
@@ -205,12 +161,12 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [self fieldWithID:target.targetID withIndexPath:YES inForms:forms];
+            HYPFormField *field = [self fieldWithID:target.targetID];
             [hiddenFields addEntriesFromDictionary:@{target.targetID : field}];
 
         } else if (target.type == HYPFormTargetTypeSection) {
 
-            HYPFormSection *section = [HYPFormSection sectionWithID:target.targetID inForms:forms];
+            HYPFormSection *section = [HYPFormSection sectionWithID:target.targetID inForms:self.forms];
             [hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
         }
     }
@@ -219,20 +175,20 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [self fieldWithID:target.targetID withIndexPath:YES inForms:forms];
-            HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:forms];
-            [section removeField:field inForms:forms];
+            HYPFormField *field = [self fieldWithID:target.targetID];
+            HYPFormSection *section = [HYPFormSection sectionWithID:field.section.sectionID inForms:self.forms];
+            [section removeField:field inForms:self.forms];
 
         } else if (target.type == HYPFormTargetTypeSection) {
 
-            HYPFormSection *section = [HYPFormSection sectionWithID:target.targetID inForms:forms];
-            HYPForm *form = forms[[section.form.position integerValue]];
-            NSInteger index = [section indexInForms:forms];
+            HYPFormSection *section = [HYPFormSection sectionWithID:target.targetID inForms:self.forms];
+            HYPForm *form = self.forms[[section.form.position integerValue]];
+            NSInteger index = [section indexInForms:self.forms];
             [form.sections removeObjectAtIndex:index];
         }
     }
 
-    if (completion) completion(forms, fieldValues, hiddenFields, hiddenSections);
+    if (completion) completion(fieldValues, hiddenFields, hiddenSections);
 }
 
 - (NSArray *)invalidFormFields
@@ -275,7 +231,7 @@
     return self.requiredFields;
 }
 
-- (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field usingForms:(NSArray *)forms
+- (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field
 {
     NSMutableDictionary *values = [NSMutableDictionary dictionary];
 
@@ -283,7 +239,7 @@
     NSArray *fieldIDs = [formula hyp_variables];
 
     for (NSString *fieldID in fieldIDs) {
-        HYPFormField *targetField = [self fieldWithID:fieldID withIndexPath:YES inForms:forms];
+        HYPFormField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
         id value = targetField.fieldValue;
         if (value) {
             if (targetField.type == HYPFormFieldTypeSelect) {
@@ -315,31 +271,23 @@
 }
 
 - (HYPFormField *)fieldWithID:(NSString *)fieldID
-                withIndexPath:(BOOL)withIndexPath
 {
-    return [self fieldWithID:fieldID withIndexPath:withIndexPath inForms:self.forms];
+    return [self fieldWithID:fieldID includingHiddenFields:YES];
 }
 
-- (HYPFormField *)fieldWithID:(NSString *)fieldID
-                withIndexPath:(BOOL)withIndexPath
-                      inForms:(NSArray *)forms
+- (HYPFormField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
 {
     NSParameterAssert(fieldID);
 
-    __block HYPFormField *foundField = nil;
+    HYPFormField *foundField = nil;
 
     NSInteger formIndex = 0;
-    for (HYPForm *form in forms) {
+    for (HYPForm *form in self.forms) {
 
         NSUInteger fieldIndex = 0;
         for (HYPFormField *field in form.fields) {
 
             if ([field.fieldID isEqualToString:fieldID]) {
-
-                if (withIndexPath) {
-                    field.indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:formIndex];
-                }
-
                 foundField = field;
                 break;
             }
@@ -347,39 +295,63 @@
             ++fieldIndex;
         }
 
-        if (foundField) break;
+        ++formIndex;
+    }
+
+    if (includingHiddenFields) {
+        if (!foundField) {
+
+            for (HYPFormField *formField in self.hiddenFields) {
+                if ([formField.fieldID isEqualToString:fieldID]) {
+                    foundField = formField;
+                }
+            }
+        }
+
+        if (!foundField) {
+
+            NSArray *deletedSections = [self.hiddenSections allValues];
+
+            for (HYPFormSection *section in deletedSections) {
+                for (HYPFormField *field in section.fields) {
+                    if ([field.fieldID isEqualToString:fieldID]) {
+                        foundField = field;
+                    }
+                }
+            }
+        }
+    }
+
+    return foundField;
+}
+
+- (void)fieldWithID:(NSString *)fieldID
+         completion:(void (^)(HYPFormField *field, NSIndexPath *indexPath))completion
+{
+    NSParameterAssert(fieldID);
+
+    __block HYPFormField *foundField = nil;
+    __block NSIndexPath *indexPath = nil;
+
+    NSInteger formIndex = 0;
+    for (HYPForm *form in self.forms) {
+
+        NSUInteger fieldIndex = 0;
+        for (HYPFormField *field in form.fields) {
+
+            if ([field.fieldID isEqualToString:fieldID]) {
+                indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:formIndex];
+                foundField = field;
+                break;
+            }
+
+            ++fieldIndex;
+        }
 
         ++formIndex;
     }
 
-    if (!foundField) {
-
-        [self.hiddenFields enumerateKeysAndObjectsUsingBlock:^(NSString *hiddenFieldID, HYPFormField *formField, BOOL *stop) {
-            if ([hiddenFieldID isEqualToString:fieldID]) {
-                foundField = formField;
-                *stop = YES;
-            }
-        }];
-    }
-
-    if (!foundField) {
-
-        NSArray *deletedSections = [self.hiddenSections allValues];
-        [deletedSections enumerateObjectsUsingBlock:^(HYPFormSection *section, NSUInteger sectionIndex, BOOL *sectionStop) {
-            [section.fields enumerateObjectsUsingBlock:^(HYPFormField *field, NSUInteger fieldIndex, BOOL *fieldStop) {
-                if ([field.fieldID isEqualToString:fieldID]) {
-                    if (withIndexPath) {
-                        field.indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:sectionIndex];
-                    }
-
-                    foundField = field;
-                    *sectionStop = YES;
-                }
-            }];
-        }];
-    }
-
-    return foundField;
+    if (completion) completion(foundField, indexPath);
 }
 
 @end
