@@ -8,37 +8,6 @@
 
 #pragma mark Class
 
-+ (HYPFormSection *)sectionWithID:(NSString *)sectionID inForms:(NSArray *)forms
-{
-    __block BOOL found = NO;
-    __block HYPFormSection *foundSection = nil;
-    __block NSMutableArray *indexPaths = [NSMutableArray array];
-
-    [forms enumerateObjectsUsingBlock:^(HYPForm *form, NSUInteger formIndex, BOOL *formStop) {
-        if (found) {
-            *formStop = YES;
-        }
-
-        __block NSInteger fieldsIndex = 0;
-
-        [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection,
-                                                    NSUInteger sectionIndex,
-                                                    BOOL *sectionStop) {
-            [aSection.fields enumerateObjectsUsingBlock:^(HYPFormField *aField, NSUInteger fieldIndex, BOOL *fieldStop) {
-                if ([aSection.sectionID isEqualToString:sectionID]) {
-                    foundSection = aSection;
-                    [indexPaths addObject:[NSIndexPath indexPathForRow:fieldsIndex inSection:formIndex]];
-                }
-
-                fieldsIndex++;
-            }];
-        }];
-    }];
-
-    foundSection.indexPaths = indexPaths;
-    return foundSection;
-}
-
 + (void)sectionAndIndexForField:(HYPFormField *)field
                         inForms:(NSArray *)forms
                      completion:(void (^)(BOOL found,
@@ -69,14 +38,21 @@
 {
     HYPForm *form = forms[[self.form.position integerValue]];
 
-    __block NSInteger index = 0;
+    BOOL found = NO;
+    NSInteger index = 0;
+    NSUInteger idx = 0;
 
-    [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger idx, BOOL *stop) {
+    for (HYPFormSection *aSection in form.sections) {
         if ([aSection.position integerValue] >= [self.position integerValue]) {
             index = idx;
-            *stop = YES;
+            found = YES;
+            break;
         }
-    }];
+
+        idx++;
+    }
+
+    if (!found) index = [form.sections count];
 
     return index;
 }

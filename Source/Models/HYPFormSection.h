@@ -15,9 +15,6 @@
 @property (nonatomic) BOOL containsSpecialField;
 @property (nonatomic) BOOL isLast;
 
-@property (nonatomic, strong) NSArray *indexPaths;
-
-+ (HYPFormSection *)sectionWithID:(NSString *)sectionID inForms:(NSArray *)forms;
 + (void)sectionAndIndexForField:(HYPFormField *)field
                         inForms:(NSArray *)forms
                      completion:(void (^)(BOOL found,

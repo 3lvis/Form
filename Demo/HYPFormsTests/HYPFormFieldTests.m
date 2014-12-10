@@ -5,8 +5,7 @@
 #import "HYPFormSection.h"
 #import "HYPFormsLayout.h"
 #import "HYPFormsCollectionViewDataSource.h"
-
-#import "HYPFormsManager+Tests.h"
+#import "NSJSONSerialization+ANDYJSONFile.h"
 
 @interface HYPFormFieldTests : XCTestCase <HYPFormsLayoutDataSource>
 
@@ -25,7 +24,11 @@
     layout.dataSource = self;
 
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds] collectionViewLayout:layout];
-    self.manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms] initialValues:nil];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    self.manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                           initialValues:nil
+                                        disabledFieldIDs:nil
+                                                disabled:NO];
     self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView andFormsManager:self.manager];
 }
 
@@ -41,19 +44,24 @@
 {
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithForms:[HYPFormsManager testForms]
-                                                        initialValues:values];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                           initialValues:values
+                                        disabledFieldIDs:nil
+                                                disabled:NO];
 
-    HYPFormField *field = [manager fieldWithID:@"first_name" withIndexPath:NO];
+    HYPFormField *field = [manager fieldWithID:@"first_name"];
     XCTAssertEqualObjects(field.fieldID, @"first_name");
 
-    [field sectionAndIndexInForms:manager.forms completion:^(BOOL found, HYPFormSection *section, NSInteger index) {
-        if (found) {
-            [section.fields removeObjectAtIndex:index];
-        }
-    }];
+    [manager indexForFieldWithID:field.fieldID
+                 inSectionWithID:field.section.sectionID
+                      completion:^(HYPFormSection *section, NSInteger index) {
+                          if (section) {
+                              [section.fields removeObjectAtIndex:index];
+                          }
+                      }];
 
-    field = [manager fieldWithID:@"first_name" withIndexPath:NO];
+    field = [manager fieldWithID:@"first_name"];
 
     XCTAssertNil(field);
 }

@@ -15,16 +15,26 @@
             disabledFieldIDs:(NSArray *)disabledFieldIDs
                     disabled:(BOOL)disabled;
 
-- (instancetype)initWithForms:(NSMutableArray *)forms
-                initialValues:(NSDictionary *)initialValues;
-
 - (NSArray *)invalidFormFields;
 
 - (NSDictionary *)requiredFormFields;
 
-- (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field usingForms:(NSArray *)forms;
+- (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field;
 
-- (HYPFormField *)fieldWithID:(NSString *)fieldID
-                withIndexPath:(BOOL)withIndexPath;
+- (HYPFormSection *)sectionWithID:(NSString *)sectionID;
+
+- (void)sectionWithID:(NSString *)sectionID
+           completion:(void (^)(HYPFormSection *section, NSArray *indexPaths))completion;
+
+- (void)indexForFieldWithID:(NSString *)fieldID
+            inSectionWithID:(NSString *)sectionID
+                 completion:(void (^)(HYPFormSection *section, NSInteger index))completion;
+
+- (HYPFormField *)fieldWithID:(NSString *)fieldID;
+
+- (HYPFormField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields;
+
+- (void)fieldWithID:(NSString *)fieldID
+         completion:(void (^)(HYPFormField *field, NSIndexPath *indexPath))completion;
 
 @end
