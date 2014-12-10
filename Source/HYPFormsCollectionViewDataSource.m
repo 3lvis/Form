@@ -537,7 +537,7 @@
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self.formsManager fieldWithID:target.targetID];
+            HYPFormField *field = [self.formsManager fieldWithID:target.targetID includingHiddenFields:NO];
             if (field && ![self.formsManager.hiddenFieldsAndFieldIDsDictionary objectForKey:field.fieldID]) {
                 [deletedFields addObject:field];
                 [self.formsManager.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{field.fieldID : field}];
@@ -619,7 +619,7 @@
             BOOL isNumericField = (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber);
             NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
 
-            HYPFormField *targetField = [self.formsManager fieldWithID:fieldID];
+            HYPFormField *targetField = [self.formsManager fieldWithID:fieldID includingHiddenFields:YES];
 
             if (targetField.type == HYPFormFieldTypeSelect) {
 

@@ -50,7 +50,7 @@
                                         disabledFieldIDs:nil
                                                 disabled:NO];
 
-    HYPFormField *field = [manager fieldWithID:@"first_name"];
+    HYPFormField *field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.fieldID, @"first_name");
 
     [manager indexForFieldWithID:field.fieldID
@@ -61,7 +61,7 @@
                           }
                       }];
 
-    field = [manager fieldWithID:@"first_name"];
+    field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
 
     XCTAssertNil(field);
 }

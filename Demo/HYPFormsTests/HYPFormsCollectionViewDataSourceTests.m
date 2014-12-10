@@ -49,26 +49,26 @@
 {
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"display_name"]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"display_name"]];
-    HYPFormField *field = [self.manager fieldWithID:@"display_name"];
+    HYPFormField *field = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
     NSUInteger index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 2);
 
     [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"username"]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"username"]];
-    field = [self.manager fieldWithID:@"username"];
+    field = [self.manager fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 2);
 
     [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"first_name", @"address", @"username"]]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"username"]];
-    field = [self.manager fieldWithID:@"username"];
+    field = [self.manager fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 1);
     [self.dataSource processTargets:[HYPFormTarget showFieldTargetsWithIDs:@[@"first_name", @"address"]]];
 
     [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"last_name", @"address"]]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"address"]];
-    field = [self.manager fieldWithID:@"address"];
+    field = [self.manager fieldWithID:@"address" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 0);
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"last_name"]];

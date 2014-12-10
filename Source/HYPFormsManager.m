@@ -161,7 +161,7 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [self fieldWithID:target.targetID];
+            HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:YES];
             [hiddenFields addEntriesFromDictionary:@{target.targetID : field}];
 
         } else if (target.type == HYPFormTargetTypeSection) {
@@ -175,7 +175,7 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [self fieldWithID:target.targetID];
+            HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:YES];
             HYPFormSection *section = [self sectionWithID:field.section.sectionID];
             [section removeField:field inForms:self.forms];
 
@@ -318,11 +318,6 @@
 }
 
 #pragma mark - Field
-
-- (HYPFormField *)fieldWithID:(NSString *)fieldID
-{
-    return [self fieldWithID:fieldID includingHiddenFields:YES];
-}
 
 - (HYPFormField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
 {

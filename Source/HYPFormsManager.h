@@ -30,8 +30,6 @@
             inSectionWithID:(NSString *)sectionID
                  completion:(void (^)(HYPFormSection *section, NSInteger index))completion;
 
-- (HYPFormField *)fieldWithID:(NSString *)fieldID;
-
 - (HYPFormField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields;
 
 - (void)fieldWithID:(NSString *)fieldID
