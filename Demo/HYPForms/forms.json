@@ -74,7 +74,7 @@
           {
             "id":"email",
             "title":"E-post",
-            "subtitle": "E-mail",
+            "subtitle": "bork\nbork\nbork",
             "type":"email",
             "size":{
               "width": 25,
@@ -88,11 +88,21 @@
           {
             "id":"username",
             "title":"Username",
-            "type":"text",
+            "type":"select",
             "size":{
               "width": 25,
               "height": 1
-            }
+            },
+            "values":[
+              {
+                "id":1,
+                "title":"Mr.Melk"
+              },
+              {
+                "id":2,
+                "title":"John Hyperseed"
+              }
+            ]
           }
         ]
       }
