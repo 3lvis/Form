@@ -131,25 +131,26 @@
 
 - (void)testHidingSectionMultipleTimes
 {
-    NSDictionary *values = @{@"first_name" : @"Swedish", @"last_name" : @"Chef"};
 
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:values
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-hide-section-targets.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
 
-    NSString *sectionID = @"employment-1";
-    [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:sectionID]];
-    HYPFormSection *section = [manager sectionWithID:sectionID];
-    NSUInteger index = [section indexInForms:manager.forms];
+    HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                             initialValues:nil
+                                                          disabledFieldIDs:nil
+                                                                  disabled:NO];
 
-    XCTAssertEqual(index, 1);
+    NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
+    XCTAssertTrue(numberOfSections == 2);
 
-    [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:sectionID]];
-    index = [section indexInForms:manager.forms];
+    NSDictionary *values = @{@"contract_type" : @1};
+    HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                                initialValues:values
+                                                             disabledFieldIDs:nil
+                                                                     disabled:NO];
 
-    XCTAssertEqual(index, 1);
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedManager.forms firstObject] sections] count];
+    XCTAssertTrue(numberOfSectionsWithHiddenTargets == 1);
 }
 
 @end
