@@ -19,6 +19,7 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
     if (!self) return nil;
 
     self.iconImageView.image = [UIImage imageNamed:@"ic_mini_arrow_down"];
+    self.fieldValuesController.customHeight = 66.0f;
 
     return self;
 }
@@ -45,6 +46,12 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
         if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
             HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
             self.fieldValueLabel.text = fieldValue.title;
+
+            if (fieldValue.subtitle) {
+                self.field.subtitle = fieldValue.subtitle;
+                [self.fieldValuesController.tableView reloadData];
+            }
+
         } else {
 
             for (HYPFieldValue *fieldValue in field.values) {
@@ -76,7 +83,11 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
 
     [self validate];
 
-    [self.popoverController dismissPopoverAnimated:YES];
+
+    if (selectedValue.subtitle) {
+        self.field.subtitle = selectedValue.subtitle;
+        [self.fieldValuesController.tableView reloadData];
+    }
 
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];

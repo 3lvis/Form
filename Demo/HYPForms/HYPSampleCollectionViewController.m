@@ -215,7 +215,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
                                             @"hourly_pay_level" : @1,
                                             @"hourly_pay_premium_percent" : @10,
                                             @"hourly_pay_premium_currency" : @10,
-                                            @"start_date" : [NSNull null]
+                                            @"start_date" : [NSNull null],
+                                            @"username": @1
                                             }];
 }
 

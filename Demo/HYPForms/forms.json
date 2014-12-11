@@ -96,11 +96,13 @@
             "values":[
               {
                 "id":1,
-                "title":"Mr.Melk"
+                "title":"Mr.Melk",
+                "subtitle":"Bork!"
               },
               {
                 "id":2,
-                "title":"John Hyperseed"
+                "title":"John Hyperseed",
+                "subtitle":"Other subtitle"
               }
             ]
           }
