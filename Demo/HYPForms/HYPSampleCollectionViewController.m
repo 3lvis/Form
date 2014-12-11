@@ -6,6 +6,7 @@
 #import "HYPImagePicker.h"
 #import "HYPImageFormFieldCell.h"
 #import "HYPFormsManager.h"
+#import "HYPTextFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"

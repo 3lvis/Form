@@ -1,4 +1,5 @@
 #import "HYPPopoverFormFieldCell.h"
+#import "HYPTextFormFieldCell.h"
 
 static const CGFloat HYPIconButtonWidth = 32.0f;
 static const CGFloat HYPIconButtonHeight = 38.0f;

@@ -7,9 +7,6 @@
 
 #import "HYPFormField.h"
 
-static NSString *const HYPFormResignFirstResponderNotification = @"HYPFormResignFirstResponderNotification";
-static NSString *const HYPFormDismissPopoverNotification = @"HYPFormDismissPopoverNotification";
-
 static const CGFloat HYPFormFieldCellMarginTop = 30.0f;
 static const CGFloat HYPFormFieldCellMarginBottom = 10.0f;
 
