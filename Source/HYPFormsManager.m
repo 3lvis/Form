@@ -528,8 +528,6 @@
     }
 
     return [deletedIndexPaths allObjects];
-
-    //[self deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
 }
 
 - (NSArray *)updateTargets:(NSArray *)targets
@@ -612,7 +610,6 @@
     }
 
     return updatedIndexPaths;
-//    [self reloadItemsAtIndexPaths:updatedIndexPaths];
 }
 
 - (void)indexForSection:(HYPFormSection *)section form:(HYPForm *)form completion:(void (^)(BOOL found, NSInteger index))completion
