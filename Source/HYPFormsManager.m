@@ -170,7 +170,7 @@
             HYPFormSection *section = [self sectionWithID:target.targetID];
             if (section) {
                 HYPForm *form = section.form;
-                NSInteger index = [section index];
+                NSInteger index = [section indexInForms:self.forms];
                 [form.sections removeObjectAtIndex:index];
             }
         }
