@@ -33,6 +33,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     self.collectionView.delegate = self;
 
     layout.dataSource = self;
+    self.initialValues = dictionary;
 
     return self;
 }

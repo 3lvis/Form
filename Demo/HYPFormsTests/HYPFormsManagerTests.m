@@ -129,4 +129,52 @@
     [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];
 }
 
+- (void)testHidingSectionMultipleTimes
+{
+
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-hide-section-targets.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                             initialValues:nil
+                                                          disabledFieldIDs:nil
+                                                                  disabled:NO];
+
+    NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
+    XCTAssertTrue(numberOfSections == 2);
+
+    NSDictionary *values = @{@"contract_type" : @1};
+    HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                                initialValues:values
+                                                             disabledFieldIDs:nil
+                                                                     disabled:NO];
+
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedManager.forms firstObject] sections] count];
+    XCTAssertTrue(numberOfSectionsWithHiddenTargets == 1);
+}
+
+- (void)testHidingFieldMultipleTimes
+{
+
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-hide-field-targets.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                             initialValues:nil
+                                                          disabledFieldIDs:nil
+                                                                  disabled:NO];
+
+    NSUInteger numberOfFields = [[[normalManager.forms firstObject] fields] count];
+    XCTAssertTrue(numberOfFields == 2);
+
+    NSDictionary *values = @{@"contract_type" : @1};
+    HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                                initialValues:values
+                                                             disabledFieldIDs:nil
+                                                                     disabled:NO];
+
+    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedManager.forms firstObject] fields] count];
+    XCTAssertTrue(numberOfFieldsWithHiddenTargets == 1);
+}
+
 @end
