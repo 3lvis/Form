@@ -32,14 +32,7 @@
     [self generateFormsWithJSON:JSON
                   initialValues:initialValues
               disabledFieldsIDs:disabledFieldIDs
-                       disabled:disabled
-                     completion:^(NSDictionary *fieldValues,
-                                  NSMutableDictionary *hiddenFields,
-                                  NSMutableDictionary *hiddenSections) {
-                         self.hiddenFieldsAndFieldIDsDictionary = hiddenFields;
-                         self.hiddenSections = hiddenSections;
-                         self.values = [fieldValues mutableCopy];
-                     }];
+                       disabled:disabled];
 
     return self;
 }
@@ -93,9 +86,6 @@
                 initialValues:(NSDictionary *)initialValues
             disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                      disabled:(BOOL)disabled
-                   completion:(void (^)(NSDictionary *fieldValues,
-                                        NSMutableDictionary *hiddenFields,
-                                        NSMutableDictionary *hiddenSections))completion
 {
     NSMutableArray *fieldsWithFormula = [NSMutableArray new];
     NSMutableArray *targetsToRun = [NSMutableArray array];
@@ -144,30 +134,26 @@
         [self.forms addObject:form];
     }];
 
-    NSMutableDictionary *fieldValues = [NSMutableDictionary new];
-    [fieldValues addEntriesFromDictionary:initialValues];
+    [self.values addEntriesFromDictionary:initialValues];
 
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [self valuesForFormula:field];
         id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
         field.fieldValue = result;
-        if (result) [fieldValues setObject:result forKey:field.fieldID];
+        if (result) [self.values setObject:result forKey:field.fieldID];
     }
-
-    NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
-    NSMutableDictionary *hiddenSections = [NSMutableDictionary dictionary];
 
     for (HYPFormTarget *target in targetsToRun) {
 
         if (target.type == HYPFormTargetTypeField) {
 
             HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:YES];
-            [hiddenFields addEntriesFromDictionary:@{target.targetID : field}];
+            [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
 
         } else if (target.type == HYPFormTargetTypeSection) {
 
             HYPFormSection *section = [self sectionWithID:target.targetID];
-            [hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
+            [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
         }
     }
 
@@ -182,13 +168,13 @@
         } else if (target.type == HYPFormTargetTypeSection) {
 
             HYPFormSection *section = [self sectionWithID:target.targetID];
-            HYPForm *form = self.forms[[section.form.position integerValue]];
-            NSInteger index = [section indexInForms:self.forms];
-            [form.sections removeObjectAtIndex:index];
+            if (section) {
+                HYPForm *form = section.form;
+                NSInteger index = [section index];
+                [form.sections removeObjectAtIndex:index];
+            }
         }
     }
-
-    if (completion) completion(fieldValues, hiddenFields, hiddenSections);
 }
 
 - (NSArray *)invalidFormFields
