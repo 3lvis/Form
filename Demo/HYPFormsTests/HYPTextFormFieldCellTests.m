@@ -1,12 +1,5 @@
-//
-//  HYPTextFormFieldCellTests.m
-//  HYPForms
-//
-//  Created by Christoffer Winterkvist on 12/11/14.
-//  Copyright (c) 2014 Hyper. All rights reserved.
-//
+@import UIKit;
 
-#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "HYPTextFormFieldCell.h"
 #import "HYPTextFormFieldCell+Tests.h"
