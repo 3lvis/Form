@@ -1,4 +1,5 @@
 #import "HYPFloatInputValidator.h"
+#import "NSString+HYPContainsString.h"
 
 @implementation HYPFloatInputValidator
 
@@ -8,7 +9,7 @@
 
     if (!valid) return valid;
 
-    BOOL hasDelimiter = ([text containsString:@","] || [text containsString:@"."]);
+    BOOL hasDelimiter = ([text hyp_containsString:@","] || [text hyp_containsString:@"."]);
     BOOL stringIsNilOrComma = (!string || [string isEqualToString:@","]);
 
     if (hasDelimiter && stringIsNilOrComma) return NO;
