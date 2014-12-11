@@ -39,7 +39,7 @@
     return _textField;
 }
 
-- (CGRect)labelFrameUsingString:(NSString *)string;
+- (CGRect)labelFrameUsingString:(NSString *)string
 {
     NSArray *components = [string componentsSeparatedByString:@"\n"];
 
@@ -56,10 +56,12 @@
                 longestLine = line;
             }
         }
-        width = 7.0f * longestLine.length;
+        width = 8.0f * longestLine.length;
     } else {
-        width = 7.0f * string.length;
+        width = 8.0f * string.length;
     }
+
+    if (width < 90.0f) width = 90.0f;
 
     CGFloat height = 44.0f;
     height += 11.0f * components.count;
@@ -213,7 +215,6 @@
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.subtitle.length)];
 
         self.subtitleLabel.attributedText = attributedString;
-        self.popoverController.popoverContentSize = newFrame.size;
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.popoverController presentPopoverFromRect:[self popoverFrame]
