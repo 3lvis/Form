@@ -15,7 +15,18 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 
     [self.contentView addSubview:self.headingLabel];
 
+    if ([self respondsToSelector:@selector(resignFirstResponder)]) {
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self selector:@selector(resignFirstResponder) name:HYPFormDismissPopoverNotification object:nil];
+    }
+
     return self;
+}
+
+- (void)dealloc
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:HYPFormDismissPopoverNotification object:nil];
 }
 
 #pragma mark - Getters

@@ -103,6 +103,13 @@
 
 #pragma mark - Private headers
 
+- (BOOL)resignFirstResponder
+{
+    [self.textField resignFirstResponder];
+
+    return [super resignFirstResponder];
+}
+
 - (BOOL)becomeFirstResponder
 {
     [self.textField becomeFirstResponder];
