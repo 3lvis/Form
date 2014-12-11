@@ -29,6 +29,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
+    self.collectionView.delegate = self;
+
     layout.dataSource = self;
 
     return self;
@@ -153,6 +155,13 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     target.actionTypeString = @"hide";
 
     [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormDismissPopoverNotification object:nil];
 }
 
 #pragma mark - UICollectionViewDelegate

@@ -103,9 +103,18 @@
 
 #pragma mark - Private headers
 
+- (void)dismissPopover
+{
+    if (self.popoverController.isPopoverVisible) {
+        [self.popoverController dismissPopoverAnimated:NO];
+    }
+}
+
 - (BOOL)resignFirstResponder
 {
     [self.textField resignFirstResponder];
+
+    [self dismissPopover];
 
     return [super resignFirstResponder];
 }

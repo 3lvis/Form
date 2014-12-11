@@ -134,7 +134,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 
 - (void)titleLabelPressed:(HYPFieldValueLabel *)titleLabel
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormDismissPopoverNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormResignFirstResponderNotification object:nil];
 
     [self updateContentViewController:self.contentViewController withField:self.field];
 

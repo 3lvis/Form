@@ -109,6 +109,115 @@
     ]
   },
   {
+    "id":"personal-details",
+    "title":"Personal Details",
+    "sections":[
+      {
+        "id":"personal-details-0",
+        "fields":[
+          {
+            "id":"first_name",
+            "title":"First name",
+            "type":"name",
+            "size":{
+              "width": 30,
+              "height": 1
+            },
+            "validations":{
+              "required":true,
+              "min_length":2
+            },
+            "targets":[
+              {
+                "id":"display_name",
+                "type":"field",
+                "action":"update"
+              }
+            ]
+          },
+          {
+            "id":"last_name",
+            "title":"Last name",
+            "type":"name",
+            "subtitle":"Obs! Husk å kjøpe melk",
+            "size":{
+              "width": 30,
+              "height": 1
+            },
+            "validations":{
+              "required":true,
+              "min_length":2
+            },
+            "targets":[
+              {
+                "id":"display_name",
+                "type":"field",
+                "action":"update"
+              }
+            ]
+          },
+          {
+            "id":"display_name",
+            "title":"Display name",
+            "type":"text",
+            "size":{
+              "width": 40,
+              "height": 1
+            },
+            "formula":"first_name last_name",
+          }
+        ]
+      },
+      {
+        "id":"personal-details-1",
+        "fields":[
+          {
+            "id":"address",
+            "title":"Address",
+            "type":"text",
+            "size":{
+              "width": 50,
+              "height": 1
+            }
+          },
+          {
+            "id":"email",
+            "title":"E-post",
+            "subtitle": "bork\nbork\nbork",
+            "type":"email",
+            "size":{
+              "width": 25,
+              "height": 1
+            },
+            "validations":{
+              "format":"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}",
+              "required":true
+            }
+          },
+          {
+            "id":"username",
+            "title":"Username",
+            "type":"select",
+            "size":{
+              "width": 25,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":1,
+                "title":"Mr.Melk"
+              },
+              {
+                "id":2,
+                "title":"John Hyperseed"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id":"employment",
     "title": "Employment",
     "sections":[
