@@ -30,6 +30,7 @@
 
     rect = [cell labelFrameUsingString:@"bork\nborkborkborkbork\nboork"];
     XCTAssertEqual(rect.size.width, 128.0f);
+    XCTAssertEqual(rect.size.height, 77.0f);
 }
 
 @end
