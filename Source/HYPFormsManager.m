@@ -161,9 +161,11 @@
 
         if (target.type == HYPFormTargetTypeField) {
 
-            HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:YES];
-            HYPFormSection *section = [self sectionWithID:field.section.sectionID];
-            [section removeField:field inForms:self.forms];
+            HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:NO];
+            if (field) {
+                HYPFormSection *section = [self sectionWithID:field.section.sectionID];
+                [section removeField:field inForms:self.forms];
+            }
 
         } else if (target.type == HYPFormTargetTypeSection) {
 

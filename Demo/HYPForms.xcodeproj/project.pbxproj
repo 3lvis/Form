@@ -19,6 +19,7 @@
 		149D207C1A38476500B7BD76 /* HYPPopoverFormFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149D207B1A38476500B7BD76 /* HYPPopoverFormFieldCellTests.m */; };
 		149D20801A3847ED00B7BD76 /* HYPFormField+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149D207F1A3847ED00B7BD76 /* HYPFormField+Tests.m */; };
 		149FC6CF1A3A516D00763456 /* multiple-hide-section-targets.json in Resources */ = {isa = PBXBuildFile; fileRef = 149FC6CE1A3A516D00763456 /* multiple-hide-section-targets.json */; };
+		149FC6D11A3A553A00763456 /* multiple-hide-field-targets.json in Resources */ = {isa = PBXBuildFile; fileRef = 149FC6D01A3A553A00763456 /* multiple-hide-field-targets.json */; };
 		14AF53831A248E1E00F7B7CB /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF53821A248E1E00F7B7CB /* HYPImageFormFieldCell.m */; };
 		14B4C17919EC37FF00B1FE1A /* HYPFormTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B4C17819EC37FF00B1FE1A /* HYPFormTarget.m */; };
 		14BF16C819EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BF16C719EE4A0900C1F1C2 /* HYPSampleCollectionViewController.m */; };
@@ -113,6 +114,7 @@
 		149D207E1A3847ED00B7BD76 /* HYPFormField+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYPFormField+Tests.h"; sourceTree = "<group>"; };
 		149D207F1A3847ED00B7BD76 /* HYPFormField+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYPFormField+Tests.m"; sourceTree = "<group>"; };
 		149FC6CE1A3A516D00763456 /* multiple-hide-section-targets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "multiple-hide-section-targets.json"; sourceTree = "<group>"; };
+		149FC6D01A3A553A00763456 /* multiple-hide-field-targets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "multiple-hide-field-targets.json"; sourceTree = "<group>"; };
 		14AF53811A248E1E00F7B7CB /* HYPImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPImageFormFieldCell.h; sourceTree = "<group>"; };
 		14AF53821A248E1E00F7B7CB /* HYPImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPImageFormFieldCell.m; sourceTree = "<group>"; };
 		14B4C17719EC37FF00B1FE1A /* HYPFormTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFormTarget.h; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		149FC6CD1A3A516D00763456 /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
+				149FC6D01A3A553A00763456 /* multiple-hide-field-targets.json */,
 				149FC6CE1A3A516D00763456 /* multiple-hide-section-targets.json */,
 			);
 			path = JSONs;
@@ -626,6 +629,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				149FC6D11A3A553A00763456 /* multiple-hide-field-targets.json in Resources */,
 				149FC6CF1A3A516D00763456 /* multiple-hide-section-targets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
