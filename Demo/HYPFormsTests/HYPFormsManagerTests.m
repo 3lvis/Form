@@ -129,4 +129,27 @@
     [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];
 }
 
+- (void)testHidingSectionMultipleTimes
+{
+    NSDictionary *values = @{@"first_name" : @"Swedish", @"last_name" : @"Chef"};
+
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                       initialValues:values
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
+
+    NSString *sectionID = @"employment-1";
+    [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:sectionID]];
+    HYPFormSection *section = [manager sectionWithID:sectionID];
+    NSUInteger index = [section indexInForms:manager.forms];
+
+    XCTAssertEqual(index, 1);
+
+    [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:sectionID]];
+    index = [section indexInForms:manager.forms];
+
+    XCTAssertEqual(index, 1);
+}
+
 @end
