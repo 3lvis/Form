@@ -210,7 +210,6 @@
 		BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_calendar@2x.png"; sourceTree = "<group>"; };
 		BD7C6C2D19F686130084EF2E /* HYPForms.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = HYPForms.podspec; path = ../HYPForms.podspec; sourceTree = "<group>"; };
 		BD9A14431A3A18D6005DB106 /* HYPTextFormFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPTextFormFieldCellTests.m; sourceTree = "<group>"; };
-		BD9A14451A3A197D005DB106 /* HYPTextFormFieldCell+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYPTextFormFieldCell+Tests.h"; sourceTree = "<group>"; };
 		BDEEFE4119FA2A9D00D0C284 /* HYPPostalCodeValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeValidator.h; sourceTree = "<group>"; };
 		BDEEFE4219FA2A9D00D0C284 /* HYPPostalCodeValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeValidator.m; sourceTree = "<group>"; };
 		BDF644171A27A01600C752CA /* ic_mini_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_clear@2x.png"; sourceTree = "<group>"; };
@@ -276,7 +275,6 @@
 			children = (
 				149D207E1A3847ED00B7BD76 /* HYPFormField+Tests.h */,
 				149D207F1A3847ED00B7BD76 /* HYPFormField+Tests.m */,
-				BD9A14451A3A197D005DB106 /* HYPTextFormFieldCell+Tests.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

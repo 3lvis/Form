@@ -2,7 +2,12 @@
 @import XCTest;
 
 #import "HYPTextFormFieldCell.h"
-#import "HYPTextFormFieldCell+Tests.h"
+
+@interface HYPTextFormFieldCell (Tests)
+
+- (CGRect)labelFrameUsingString:(NSString *)string;
+
+@end
 
 @interface HYPTextFormFieldCellTests : XCTestCase
 
