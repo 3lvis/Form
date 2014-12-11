@@ -15,22 +15,12 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 
     [self.contentView addSubview:self.headingLabel];
 
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    if ([self respondsToSelector:@selector(resignFirstResponder)]) {
-        [center addObserver:self selector:@selector(resignFirstResponder) name:HYPFormResignFirstResponderNotification object:nil];
-    }
-
-    if ([self respondsToSelector:@selector(dismissPopover)]) {
-        [center addObserver:self selector:@selector(dismissPopover) name:HYPFormDismissPopoverNotification object:nil];
-    }
-
     return self;
 }
 
 - (void)dealloc
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self name:HYPFormResignFirstResponderNotification object:nil];
     [center removeObserver:self name:HYPFormDismissPopoverNotification object:nil];
 }
 
@@ -79,11 +69,6 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 - (void)validate
 {
     NSLog(@"validation in progress");
-}
-
-- (void)dismissPopover
-{
-
 }
 
 #pragma mark - Private Methods

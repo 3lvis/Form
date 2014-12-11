@@ -24,7 +24,16 @@
 
     [self.contentView addSubview:self.textField];
 
+    if ([self respondsToSelector:@selector(resignFirstResponder)]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignFirstResponder) name:HYPFormResignFirstResponderNotification object:nil];
+    }
+
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HYPFormResignFirstResponderNotification object:nil];
 }
 
 #pragma mark - Getters
@@ -103,18 +112,13 @@
 
 #pragma mark - Private headers
 
-- (void)dismissPopover
-{
-    if (self.popoverController.isPopoverVisible) {
-        [self.popoverController dismissPopoverAnimated:NO];
-    }
-}
-
 - (BOOL)resignFirstResponder
 {
     [self.textField resignFirstResponder];
 
-    [self dismissPopover];
+    if (self.popoverController.isPopoverVisible) {
+        [self.popoverController dismissPopoverAnimated:NO];
+    }
 
     return [super resignFirstResponder];
 }
