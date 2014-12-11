@@ -42,6 +42,12 @@
 #define COCOAPODS_VERSION_MINOR_NSJSONSerialization_ANDYJSONFile 1
 #define COCOAPODS_VERSION_PATCH_NSJSONSerialization_ANDYJSONFile 0
 
+// NSString-HYPContainsString
+#define COCOAPODS_POD_AVAILABLE_NSString_HYPContainsString
+#define COCOAPODS_VERSION_MAJOR_NSString_HYPContainsString 0
+#define COCOAPODS_VERSION_MINOR_NSString_HYPContainsString 1
+#define COCOAPODS_VERSION_PATCH_NSString_HYPContainsString 0
+
 // NSString-HYPFormula
 #define COCOAPODS_POD_AVAILABLE_NSString_HYPFormula
 #define COCOAPODS_VERSION_MAJOR_NSString_HYPFormula 1
@@ -57,7 +63,7 @@
 // NSString-ZENInflections
 #define COCOAPODS_POD_AVAILABLE_NSString_ZENInflections
 #define COCOAPODS_VERSION_MAJOR_NSString_ZENInflections 1
-#define COCOAPODS_VERSION_MINOR_NSString_ZENInflections 1
+#define COCOAPODS_VERSION_MINOR_NSString_ZENInflections 2
 #define COCOAPODS_VERSION_PATCH_NSString_ZENInflections 0
 
 // UIColor-ANDYHex

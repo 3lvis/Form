@@ -1,14 +1,7 @@
-//
-//  NSString+ZENInflections.m
-//  Mine Ansatte
-//
-//  Created by Christoffer Winterkvist on 7/2/14.
-//  Copyright (c) 2014 Hyper. All rights reserved.
-//
-
 #import "NSString+ZENInflections.h"
 
 @implementation NSString (ZENInflections)
+
 #pragma mark - Class methods
 
 + (NSString *)zen_stringWithCamelCase:(NSString *)string
@@ -155,25 +148,29 @@
     NSMutableString *output = [NSMutableString string];
 
     while (!scanner.isAtEnd) {
-        if ([scanner scanCharactersFromSet:identifierSet intoString:&buffer]) {
-            continue;
-        }
+        BOOL isExcludedCharacter = [scanner scanCharactersFromSet:identifierSet intoString:&buffer];
+        if (isExcludedCharacter) continue;
 
-        if ([replacementString length]) {
-            if ([scanner scanCharactersFromSet:uppercaseSet intoString:&buffer]) {
+        if ([replacementString length] > 0) {
+            BOOL isUppercaseCharacter = [scanner scanCharactersFromSet:uppercaseSet intoString:&buffer];
+            if (isUppercaseCharacter) {
                 [output appendString:replacementString];
                 [output appendString:[buffer lowercaseString]];
             }
-            if ([scanner scanCharactersFromSet:lowercaseSet intoString:&buffer]) {
+
+            BOOL isLowercaseCharacter = [scanner scanCharactersFromSet:lowercaseSet intoString:&buffer];
+            if (isLowercaseCharacter) {
                 [output appendString:[buffer lowercaseString]];
             }
+
+        } else if ([scanner scanCharactersFromSet:alphanumericSet intoString:&buffer]) {
+            [output appendString:[buffer capitalizedString]];
         } else {
-            if ([scanner scanCharactersFromSet:alphanumericSet intoString:&buffer]) {
-                [output appendString:[buffer capitalizedString]];
-            }
+            output = nil;
+            break;
         }
     }
 
-    return [output copy];
+    return output;
 }
 @end
