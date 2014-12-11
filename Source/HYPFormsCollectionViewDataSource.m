@@ -155,7 +155,8 @@
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath
 {
     if (kind == UICollectionElementKindSectionHeader) {
         HYPFormHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -175,11 +176,7 @@
         return headerView;
     }
 
-    HYPFormBackgroundView *backgroundView = [collectionView dequeueReusableSupplementaryViewOfKind:HYPFormBackgroundKind
-                                                                               withReuseIdentifier:HYPFormBackgroundReuseIdentifier
-                                                                                      forIndexPath:indexPath];
-
-    return backgroundView;
+    return nil;
 }
 
 #pragma mark - Public methods
