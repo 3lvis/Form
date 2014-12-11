@@ -30,6 +30,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     if (!self) return nil;
 
     layout.dataSource = self;
+    self.initialValues = dictionary;
 
     return self;
 }

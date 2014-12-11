@@ -37,12 +37,15 @@
                                   @"postal_code" : @"0164",
                                   @"social_security_number" : @"28118210000",
                                   @"start_date" : @"2014-10-31 23:00:00 +00:00",
-                                  @"employment_type" : @1,
+                                  @"employment_type" : @2,
+                                  @"position": @3,
+                                  @"temporary_employee_type" : @3,
                                   @"employment_percent" : @"100",
+                                  @"salary_type": @1,
+                                  @"hourly_pay_level": @2,
                                   @"fixed_pay_premium_percent" : @"10",
                                   @"fixed_pay_premium_currency" : @"10",
-                                  @"salary_type" : @2,
-                                  @"fixed_pay_level" : @4,
+                                  @"fixed_pay_level" : @3,
                                   @"position" : @3,
                                   @"country_code" : @"NO"
                                   };
