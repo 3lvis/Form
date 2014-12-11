@@ -281,6 +281,176 @@
     ]
   },
   {
+    "id":"employment",
+    "title": "Employment",
+    "sections":[
+      {
+        "id":"employment-0",
+        "fields":[
+          {
+            "id":"start_date",
+            "title":"Start date",
+            "type":"date",
+            "size":{
+              "width": 25,
+              "height": 1
+            }
+          },
+          {
+            "id":"end_date",
+            "title":"End date",
+            "type":"date",
+            "size":{
+              "width": 25,
+              "height": 1
+            }
+          },
+          {
+            "id":"contract_type",
+            "title":"Contract type",
+            "type":"select",
+            "size":{
+              "width": 50,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Permanent",
+                "targets":[
+                  {
+                    "id": "end_date",
+                    "type":"field",
+                    "action":"show"
+                  },
+                  {
+                    "id": "employment-1",
+                    "type":"section",
+                    "action":"show"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Temporary",
+                "targets":[
+                  {
+                    "id": "end_date",
+                    "type":"field",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "employment-1",
+                    "type":"section",
+                    "action":"hide"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id":"employment-1",
+        "fields":[
+          {
+            "id":"base_salary",
+            "title":"Base salary",
+            "type":"select",
+            "size":{
+              "width": 25,
+              "height": 1
+            },
+            "values":[
+              {
+                "title":"Salary 1",
+                "id":0,
+                "value":100.0,
+                "targets":[
+                  {
+                    "id":"total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title":"Salary 2",
+                "id":1,
+                "value":200.0,
+                "targets":[
+                  {
+                    "id":"total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title":"Salary 3",
+                "id":2,
+                "value":10.0,
+                "targets":[
+                  {
+                    "id":"total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id":"bonus_enabled",
+            "title":"Bonus enabled",
+            "type":"select",
+            "size":{
+              "width": 25,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":true,
+                "title":"Ja"
+              },
+              {
+                "id":false,
+                "title":"Nei"
+              }
+            ]
+          },
+          {
+            "id":"bonus",
+            "title":"Bonus",
+            "type":"float",
+            "size":{
+              "width": 25,
+              "height": 1
+            },
+            "targets":[
+              {
+                "id":"total",
+                "type":"field",
+                "action":"update"
+              }
+            ]
+          },
+          {
+            "id":"total",
+            "title":"Total",
+            "type":"float",
+            "size":{
+              "width": 25,
+              "height": 1
+            },
+            "disabled":true,
+            "formula":"base_salary + bonus"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "custom-actions",
     "title": "Custom Actions",
     "sections": [

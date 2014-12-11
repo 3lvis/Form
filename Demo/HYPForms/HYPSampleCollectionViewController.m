@@ -161,7 +161,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormDismissPopoverNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormResignFirstResponderNotification object:nil];
 }
 
 #pragma mark - UICollectionViewDelegate
