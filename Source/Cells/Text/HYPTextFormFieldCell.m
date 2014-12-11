@@ -90,13 +90,6 @@
 
     _subtitleLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
 
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
-    NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
-    paragrahStyle.alignment = NSTextAlignmentRight;
-    paragrahStyle.lineSpacing = 8;
-    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.subtitle.length)];
-
-    _subtitleLabel.attributedText = attributedString;
     _subtitleLabel.font = [UIFont HYPFormsSmallSizeMedium];
     _subtitleLabel.textColor = [UIColor colorFromHex:@"97591D"];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
@@ -211,7 +204,16 @@
 
         CGRect newFrame = [self labelFrameUsingString:self.field.subtitle];
         self.popoverController.popoverContentSize = newFrame.size;
-        self.subtitleLabel.frame = newFrame;
+        self.subtitleLabel.frame = [self labelFrameUsingString:self.field.subtitle];
+
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
+        NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
+        paragrahStyle.alignment = NSTextAlignmentCenter;
+        paragrahStyle.lineSpacing = 8;
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.subtitle.length)];
+
+        self.subtitleLabel.attributedText = attributedString;
+        self.popoverController.popoverContentSize = newFrame.size;
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.popoverController presentPopoverFromRect:[self popoverFrame]
