@@ -1,6 +1,6 @@
 @import UIKit;
+@import XCTest;
 
-#import <XCTest/XCTest.h>
 #import "HYPTextFormFieldCell.h"
 #import "HYPTextFormFieldCell+Tests.h"
 
