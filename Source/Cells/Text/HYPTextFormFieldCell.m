@@ -9,6 +9,7 @@
 
 @property (nonatomic, strong) HYPTextField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
+@property (nonatomic, strong) UILabel *subtitleLabel;
 
 @end
 
@@ -23,7 +24,16 @@
 
     [self.contentView addSubview:self.textField];
 
+    if ([self respondsToSelector:@selector(resignFirstResponder)]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignFirstResponder) name:HYPFormResignFirstResponderNotification object:nil];
+    }
+
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HYPFormResignFirstResponderNotification object:nil];
 }
 
 #pragma mark - Getters
@@ -38,9 +48,34 @@
     return _textField;
 }
 
-- (CGRect)labelFrame
+- (CGRect)labelFrameUsingString:(NSString *)string
 {
-    return CGRectMake(0,0,200, 44);
+    NSArray *components = [string componentsSeparatedByString:@"\n"];
+
+    CGFloat width;
+
+    if (components.count > 1) {
+        NSString *longestLine;
+        for (NSString *line in components) {
+            if (longestLine) {
+                if (line.length > longestLine.length) {
+                    longestLine = line;
+                }
+            } else {
+                longestLine = line;
+            }
+        }
+        width = 8.0f * longestLine.length;
+    } else {
+        width = 8.0f * string.length;
+    }
+
+    if (width < 90.0f) width = 90.0f;
+
+    CGFloat height = 44.0f;
+    height += 11.0f * components.count;
+
+    return CGRectMake(0, 0, width, height);
 }
 
 - (UIPopoverController *)popoverController
@@ -48,14 +83,7 @@
     if (_popoverController) return _popoverController;
 
     UIViewController *viewController = [[UIViewController alloc] init];
-    UILabel *label = [[UILabel alloc] initWithFrame:[self labelFrame]];
-
-    label.text = self.field.subtitle;
-    label.font = [UIFont HYPFormsSmallSizeMedium];
-    label.textColor = [UIColor colorFromHex:@"97591D"];
-    label.textAlignment = NSTextAlignmentCenter;
-
-    [viewController.view addSubview:label];
+    [viewController.view addSubview:self.subtitleLabel];
 
     [HYPPopoverBackgroundView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
 
@@ -67,7 +95,33 @@
     return _popoverController;
 }
 
+- (UILabel *)subtitleLabel
+{
+    if (_subtitleLabel) return _subtitleLabel;
+
+    _subtitleLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
+
+    _subtitleLabel.font = [UIFont HYPFormsSmallSizeMedium];
+    _subtitleLabel.textColor = [UIColor colorFromHex:@"97591D"];
+    _subtitleLabel.textAlignment = NSTextAlignmentCenter;
+    _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _subtitleLabel.numberOfLines = 4;
+
+    return _subtitleLabel;
+}
+
 #pragma mark - Private headers
+
+- (BOOL)resignFirstResponder
+{
+    [self.textField resignFirstResponder];
+
+    if (self.popoverController.isPopoverVisible) {
+        [self.popoverController dismissPopoverAnimated:NO];
+    }
+
+    return [super resignFirstResponder];
+}
 
 - (BOOL)becomeFirstResponder
 {
@@ -169,6 +223,19 @@
 - (void)textFormFieldDidBeginEditing:(HYPTextField *)textField
 {
     if (self.field.subtitle) {
+
+        CGRect newFrame = [self labelFrameUsingString:self.field.subtitle];
+        self.popoverController.popoverContentSize = newFrame.size;
+        self.subtitleLabel.frame = [self labelFrameUsingString:self.field.subtitle];
+
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
+        NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
+        paragrahStyle.alignment = NSTextAlignmentCenter;
+        paragrahStyle.lineSpacing = 8;
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.subtitle.length)];
+
+        self.subtitleLabel.attributedText = attributedString;
+
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.popoverController presentPopoverFromRect:[self popoverFrame]
                                                     inView:self.textField

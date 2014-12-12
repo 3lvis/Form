@@ -6,6 +6,7 @@
 #import "HYPImagePicker.h"
 #import "HYPImageFormFieldCell.h"
 #import "HYPFormsManager.h"
+#import "HYPTextFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
@@ -29,7 +30,10 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
+    self.collectionView.delegate = self;
+
     layout.dataSource = self;
+    self.initialValues = dictionary;
 
     return self;
 }
@@ -155,6 +159,13 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormResignFirstResponderNotification object:nil];
+}
+
 #pragma mark - UICollectionViewDelegate
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -206,7 +217,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
                                             @"hourly_pay_level" : @1,
                                             @"hourly_pay_premium_percent" : @10,
                                             @"hourly_pay_premium_currency" : @10,
-                                            @"start_date" : [NSNull null]
+                                            @"start_date" : [NSNull null],
+                                            @"username": @1
                                             }];
 }
 

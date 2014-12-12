@@ -457,9 +457,18 @@
 - (void)processTarget:(HYPFormTarget *)target
 {
     switch (target.actionType) {
-        case HYPFormTargetActionShow: [self showTargets:@[target]]; break;
-        case HYPFormTargetActionHide: [self hideTargets:@[target]]; break;
-        case HYPFormTargetActionUpdate: [self updateTargets:@[target]]; break;
+        case HYPFormTargetActionShow: {
+            NSArray *insertedIndexPaths = [self.formsManager showTargets:@[target]];
+            [self insertItemsAtIndexPaths:insertedIndexPaths];
+        } break;
+        case HYPFormTargetActionHide: {
+            NSArray *deletedIndexPaths = [self.formsManager hideTargets:@[target]];
+            [self deleteItemsAtIndexPaths:deletedIndexPaths];
+        } break;
+        case HYPFormTargetActionUpdate: {
+            NSArray *updatedIndexPaths = [self.formsManager updateTargets:@[target]];
+            [self reloadItemsAtIndexPaths:updatedIndexPaths];
+        } break;
         case HYPFormTargetActionNone: break;
     }
 }
@@ -470,226 +479,24 @@
                           filtered:^(NSArray *shownTargets,
                                      NSArray *hiddenTargets,
                                      NSArray *updatedTargets) {
-                              if (shownTargets.count > 0) [self showTargets:shownTargets];
-                              if (hiddenTargets.count > 0) [self hideTargets:hiddenTargets];
-                              if (updatedTargets.count > 0) [self updateTargets:updatedTargets];
+                              if (shownTargets.count > 0) {
+                                  NSArray *insertedIndexPaths = [self.formsManager showTargets:shownTargets];
+                                  [self insertItemsAtIndexPaths:insertedIndexPaths];
+                              }
+                              if (hiddenTargets.count > 0) {
+                                  NSArray *deletedIndexPaths = [self.formsManager hideTargets:hiddenTargets];
+                                  [self deleteItemsAtIndexPaths:deletedIndexPaths];
+                              }
+                              if (updatedTargets.count > 0) {
+                                  NSArray *updatedIndexPaths = [self.formsManager updateTargets:updatedTargets];
+                                  [self reloadItemsAtIndexPaths:updatedIndexPaths];
+                              }
                           }];
-}
-
-- (void)showTargets:(NSArray *)targets
-{
-    NSMutableArray *insertedIndexPaths = [NSMutableArray array];
-
-    for (HYPFormTarget *target in targets) {
-
-        if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self.formsManager.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
-            if (field) {
-                HYPForm *form = self.formsManager.forms[[field.section.form.position integerValue]];
-                HYPFormSection *section = form.sections[[field.section.position integerValue]];
-                NSInteger fieldIndex = [field indexInSectionUsingForms:self.formsManager.forms];
-                [section.fields insertObject:field atIndex:fieldIndex];
-            }
-        } else if (target.type == HYPFormTargetTypeSection) {
-            HYPFormSection *section = [self.formsManager.hiddenSections objectForKey:target.targetID];
-            if (section) {
-                NSInteger sectionIndex = [section indexInForms:self.formsManager.forms];
-                HYPForm *form = self.formsManager.forms[[section.form.position integerValue]];
-                [form.sections insertObject:section atIndex:sectionIndex];
-            }
-        }
-
-        if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self.formsManager.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
-            if (field) {
-                [self.formsManager fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
-                    if (field) {
-                        [insertedIndexPaths addObject:indexPath];
-                    }
-
-                    [self.formsManager.hiddenFieldsAndFieldIDsDictionary removeObjectForKey:target.targetID];
-                }];
-            }
-        } else if (target.type == HYPFormTargetTypeSection) {
-            HYPFormSection *section = [self.formsManager.hiddenSections objectForKey:target.targetID];
-            if (section) {
-                [self.formsManager sectionWithID:target.targetID completion:^(HYPFormSection *section, NSArray *indexPaths) {
-                    if (section) {
-                        [insertedIndexPaths addObjectsFromArray:indexPaths];
-
-                        [self.formsManager.hiddenSections removeObjectForKey:section.sectionID];
-                    }
-                }];
-            }
-        }
-    }
-
-    [self insertItemsAtIndexPaths:insertedIndexPaths];
-}
-
-- (void)hideTargets:(NSArray *)targets
-{
-    NSMutableArray *deletedFields = [NSMutableArray array];
-    NSMutableArray *deletedSections = [NSMutableArray array];
-
-    for (HYPFormTarget *target in targets) {
-        if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self.formsManager fieldWithID:target.targetID includingHiddenFields:NO];
-            if (field && ![self.formsManager.hiddenFieldsAndFieldIDsDictionary objectForKey:field.fieldID]) {
-                [deletedFields addObject:field];
-                [self.formsManager.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{field.fieldID : field}];
-            }
-        } else if (target.type == HYPFormTargetTypeSection) {
-            HYPFormSection *section = [self.formsManager sectionWithID:target.targetID];
-            if (section && ![self.formsManager.hiddenSections objectForKey:section.sectionID]) {
-                [deletedSections addObject:section];
-                [self.formsManager.hiddenSections addEntriesFromDictionary:@{section.sectionID : section}];
-            }
-        }
-    }
-
-    NSMutableSet *deletedIndexPaths = [NSMutableSet set];
-
-    for (HYPFormField *field in deletedFields) {
-        [self.formsManager fieldWithID:field.fieldID includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
-            if (field) {
-                [deletedIndexPaths addObject:indexPath];
-            }
-        }];
-    }
-
-    for (HYPFormSection *section in deletedSections) {
-        [self.formsManager sectionWithID:section.sectionID completion:^(HYPFormSection *foundSection, NSArray *indexPaths) {
-            if (foundSection) {
-                [deletedIndexPaths addObjectsFromArray:indexPaths];
-            }
-        }];
-    }
-
-    for (HYPFormField *field in deletedFields) {
-        [self.formsManager indexForFieldWithID:field.fieldID
-                               inSectionWithID:field.section.sectionID
-                                    completion:^(HYPFormSection *section, NSInteger index) {
-                                        if (section) {
-                                            [section.fields removeObjectAtIndex:index];
-                                        }
-                                    }];
-    }
-
-    for (HYPFormSection *section in deletedSections) {
-        HYPForm *form = self.formsManager.forms[[section.form.position integerValue]];
-        [self indexForSection:section form:form completion:^(BOOL found, NSInteger index) {
-            if (found) {
-                [form.sections removeObjectAtIndex:index];
-            }
-        }];
-    }
-
-    [self deleteItemsAtIndexPaths:[deletedIndexPaths allObjects]];
-}
-
-- (void)updateTargets:(NSArray *)targets
-{
-    NSMutableArray *updatedIndexPaths = [NSMutableArray array];
-
-    for (HYPFormTarget *target in targets) {
-        if (target.type == HYPFormTargetTypeSection) continue;
-        if ([self.formsManager.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
-
-        __block HYPFormField *field = nil;
-
-        [self.formsManager fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *foundField, NSIndexPath *indexPath) {
-            if (foundField) {
-                field = foundField;
-                if (indexPath) [updatedIndexPaths addObject:indexPath];
-            }
-        }];
-
-        if (!field) continue;
-
-        NSArray *fieldIDs = [field.formula hyp_variables];
-        NSMutableDictionary *values = [NSMutableDictionary dictionary];
-
-        for (NSString *fieldID in fieldIDs) {
-
-            id value = [self.formsManager.values objectForKey:fieldID];
-            BOOL isNumericField = (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber);
-            NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
-
-            HYPFormField *targetField = [self.formsManager fieldWithID:fieldID includingHiddenFields:YES];
-
-            if (targetField.type == HYPFormFieldTypeSelect) {
-
-                if ([targetField.fieldValue isKindOfClass:[HYPFieldValue class]]) {
-
-                    HYPFieldValue *fieldValue = targetField.fieldValue;
-
-                    if (fieldValue.value) {
-                        [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
-                    }
-                } else {
-                    HYPFieldValue *foundFieldValue = nil;
-                    for (HYPFieldValue *fieldValue in field.values) {
-                        if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
-                            foundFieldValue = fieldValue;
-                        }
-                    }
-                    if (foundFieldValue && foundFieldValue.value) {
-                        [values addEntriesFromDictionary:@{fieldID : foundFieldValue.value}];
-                    }
-                }
-
-            } else if (value) {
-                if ([value isKindOfClass:[NSString class]]) {
-                    if ([value length] == 0) value = defaultEmptyValue;
-                    [values addEntriesFromDictionary:@{fieldID : value}];
-                } else {
-                    if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                        [self.formsManager.values setObject:[value stringValue] forKey:field.fieldID];
-                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
-                    } else {
-                        [self.formsManager.values setObject:@"" forKey:field.fieldID];
-                        [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
-                    }
-                }
-            } else {
-                [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
-            }
-        }
-
-        id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
-        field.fieldValue = result;
-
-        if (result) {
-            [self.formsManager.values setObject:result forKey:field.fieldID];
-        } else {
-            [self.formsManager.values removeObjectForKey:field.fieldID];
-        }
-    }
-
-    [self reloadItemsAtIndexPaths:updatedIndexPaths];
 }
 
 #pragma mark - Target helpers
 
 #pragma mark Sections
-
-- (void)indexForSection:(HYPFormSection *)section form:(HYPForm *)form completion:(void (^)(BOOL found, NSInteger index))completion
-{
-    __block NSInteger index = 0;
-    __block BOOL found = NO;
-    [form.sections enumerateObjectsUsingBlock:^(HYPFormSection *aSection, NSUInteger idx, BOOL *stop) {
-        if ([aSection.sectionID isEqualToString:section.sectionID]) {
-            index = idx;
-            found = YES;
-            *stop = YES;
-        }
-    }];
-
-    if (completion) {
-        completion(found, index);
-    }
-}
 
 - (void)insertedIndexPathsAndSectionIndexForSection:(HYPFormSection *)section
                                          completion:(void (^)(NSArray *indexPaths, NSInteger index))completion

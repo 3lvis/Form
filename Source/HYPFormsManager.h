@@ -35,4 +35,8 @@
 - (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(HYPFormField *field, NSIndexPath *indexPath))completion;
 
+- (NSArray *)showTargets:(NSArray *)targets;
+- (NSArray *)hideTargets:(NSArray *)targets;
+- (NSArray *)updateTargets:(NSArray *)targets;
+
 @end
