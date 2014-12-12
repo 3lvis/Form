@@ -83,6 +83,7 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
 
     [self validate];
 
+    [self.popoverController dismissPopoverAnimated:YES];
 
     if (selectedValue.subtitle) {
         self.field.subtitle = selectedValue.subtitle;
