@@ -287,4 +287,65 @@
         ]
       }
     ]
-  }]
+  },
+  {
+    "id": "companies",
+    "title": "Companies",
+    "sections": [
+      {
+        "id": "companies[0]",
+        "fields": [
+          {
+            "id": "companies[0].name",
+            "title": "Name 1",
+            "type": "name",
+            "validations": {
+              "required": true,
+              "min_length": 2
+            },
+            "size": {
+              "width": 70,
+              "height": 1
+            }
+          },
+          {
+            "id": "companies[0].phone_number",
+            "title": "Phone number 1",
+            "type": "number",
+            "size": {
+              "width": 30,
+              "height": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "companies[1]",
+        "fields": [
+          {
+            "id": "companies[1].name",
+            "title": "Name 2",
+            "type": "name",
+            "validations": {
+              "required": true,
+              "min_length": 2
+            },
+            "size": {
+              "width": 70,
+              "height": 1
+            }
+          },
+          {
+            "id": "companies[1].phone_number",
+            "title": "Phone number 1",
+            "type": "number",
+            "size": {
+              "width": 30,
+              "height": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
