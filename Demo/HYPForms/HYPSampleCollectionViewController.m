@@ -25,12 +25,12 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
 #pragma mark - Initialization
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary andLayout:(HYPFormsLayout *)layout
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
+    HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
+
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
-
-    self.collectionView.delegate = self;
 
     layout.dataSource = self;
     self.initialValues = dictionary;
@@ -100,9 +100,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 {
     [super viewDidLoad];
 
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
@@ -110,6 +108,9 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
     [self.collectionView registerClass:[HYPImageFormFieldCell class]
             forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
+
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self.dataSource;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -156,7 +157,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     target.typeString = @"section";
     target.actionTypeString = @"hide";
 
-    [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
+//    [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
 }
 
 #pragma mark - UIScrollViewDelegate

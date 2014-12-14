@@ -46,8 +46,6 @@
 
     _collectionView = collectionView;
 
-    collectionView.dataSource = self;
-
     _originalInset = collectionView.contentInset;
 
     [collectionView registerClass:[HYPTextFormFieldCell class]
