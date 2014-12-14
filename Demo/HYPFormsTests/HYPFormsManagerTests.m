@@ -87,11 +87,10 @@
 
 - (void)testFieldValidation
 {
-    NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
-
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"field-validations.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:values
+                                                       initialValues:nil
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
@@ -99,7 +98,7 @@
 
     XCTAssertTrue(fields.count == 1);
 
-    XCTAssertEqualObjects([[fields firstObject] fieldID], @"email");
+    XCTAssertEqualObjects([[fields firstObject] fieldID], @"first_name");
 }
 
 - (void)testFieldWithIDWithIndexPath
