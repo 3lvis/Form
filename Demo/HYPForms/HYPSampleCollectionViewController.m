@@ -157,7 +157,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     target.typeString = @"section";
     target.actionTypeString = @"hide";
 
-//    [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
+    [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
 }
 
 #pragma mark - UIScrollViewDelegate

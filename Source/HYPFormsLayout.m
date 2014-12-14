@@ -63,21 +63,21 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewLayoutAttributes *currentItemAttributes = [super layoutAttributesForItemAtIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
 
     BOOL isFirstItemInSection = (indexPath.item == 0);
     CGFloat layoutWidth = CGRectGetWidth(self.collectionView.frame) - self.sectionInset.left - self.sectionInset.right;
 
     if (isFirstItemInSection) {
-        [currentItemAttributes leftAlignFrameWithSectionInset:self.sectionInset];
+        [attributes leftAlignFrameWithSectionInset:self.sectionInset];
 
-        return currentItemAttributes;
+        return attributes;
     }
 
     NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
     CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
     CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width;
-    CGRect currentFrame = currentItemAttributes.frame;
+    CGRect currentFrame = attributes.frame;
 
     CGRect strecthedCurrentFrame = CGRectMake(self.sectionInset.left,
                                               currentFrame.origin.y,
@@ -87,15 +87,34 @@
     BOOL isFirstItemInRow = !CGRectIntersectsRect(previousFrame, strecthedCurrentFrame);
 
     if (isFirstItemInRow) {
-        [currentItemAttributes leftAlignFrameWithSectionInset:self.sectionInset];
-        return currentItemAttributes;
+        [attributes leftAlignFrameWithSectionInset:self.sectionInset];
+        return attributes;
     }
 
-    CGRect frame = currentItemAttributes.frame;
+    CGRect frame = attributes.frame;
     frame.origin.x = previousFrameRightPoint + self.minimumInteritemSpacing;
-    currentItemAttributes.frame = frame;
+    attributes.frame = frame;
 
-    return currentItemAttributes;
+    return attributes;
+}
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind
+                                                                     atIndexPath:(NSIndexPath *)indexPath
+{
+    if (![elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
+        return [super layoutAttributesForDecorationViewOfKind:elementKind atIndexPath:indexPath];
+    }
+
+    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForSupplementaryViewOfKind:elementKind
+                                                                                         atIndexPath:indexPath];
+
+    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+    CGRect frame = attributes.frame;
+    frame.origin.x = HYPFormHeaderContentMargin;
+    frame.size.width = CGRectGetWidth(bounds) - (2 * HYPFormHeaderContentMargin);
+    attributes.frame = frame;
+
+    return attributes;
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind
@@ -119,6 +138,7 @@
     CGFloat width = self.collectionViewContentSize.width - (HYPFormBackgroundViewMargin * 2);
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
                                                                                                                withIndexPath:indexPath];
+
     attributes.frame = CGRectMake(HYPFormBackgroundViewMargin, y, width, height - bottomMargin);
     attributes.zIndex = -1;
 
@@ -130,18 +150,16 @@
     self.previousHeight = 0.0f;
     self.previousY = 0.0f;
 
-    NSMutableArray *attributes = [[super layoutAttributesForElementsInRect:rect] mutableCopy];
+    NSArray *originalAttributes = [super layoutAttributesForElementsInRect:rect];
+    NSMutableArray *attributes = [NSMutableArray new];
 
-    for (UICollectionViewLayoutAttributes *element in attributes) {
-        if ([element.representedElementKind isEqualToString:UICollectionElementKindSectionHeader]) {
-            CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-            CGRect frame = element.frame;
-            frame.origin.x = HYPFormHeaderContentMargin;
-            frame.size.width = CGRectGetWidth(bounds) - (2 * HYPFormHeaderContentMargin);
-            element.frame = frame;
-        } else if (!element.representedElementKind) {
+    for (UICollectionViewLayoutAttributes *element in originalAttributes) {
+        if (element.representedElementKind) {
             NSIndexPath *indexPath = element.indexPath;
-            element.frame = [self layoutAttributesForItemAtIndexPath:indexPath].frame;
+            [attributes addObject:[self layoutAttributesForSupplementaryViewOfKind:element.representedElementKind atIndexPath:indexPath]];
+        } else {
+            NSIndexPath *indexPath = element.indexPath;
+            [attributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
         }
     }
 
