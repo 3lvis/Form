@@ -191,7 +191,7 @@
     if ([self.dataSource respondsToSelector:@selector(collapsedForms)]) {
         collapsedForms = [self.dataSource collapsedForms];
     } else {
-        collapsedForms = [NSArray array];
+        abort();
     }
 
     HYPForm *form = forms[section];
