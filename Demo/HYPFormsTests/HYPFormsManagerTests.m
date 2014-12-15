@@ -40,11 +40,10 @@
 
 - (void)testFormsGenerationFieldsWithFormulas
 {
-    NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:values
+                                                       initialValues:@{@"first_name" : @"Elvis",
+                                                                       @"last_name" : @"Nunez"}
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
@@ -55,11 +54,9 @@
 
 - (void)testFormsGenerationHideTargets
 {
-    NSDictionary *values = @{@"contract_type" : @1};
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:values
+                                                       initialValues:@{@"contract_type" : @1}
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
@@ -103,11 +100,10 @@
 
 - (void)testFieldWithIDWithIndexPath
 {
-    NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:values
+                                                       initialValues:@{@"first_name" : @"Elvis",
+                                                                       @"last_name" : @"Nunez"}
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
@@ -142,9 +138,8 @@
     NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
     XCTAssertTrue(numberOfSections == 2);
 
-    NSDictionary *values = @{@"contract_type" : @1};
     HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                                initialValues:values
+                                                                initialValues:@{@"contract_type" : @1}
                                                              disabledFieldIDs:nil
                                                                      disabled:NO];
 

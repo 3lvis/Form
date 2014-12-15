@@ -10,10 +10,8 @@
 
 - (void)testInitWithDictionary
 {
-    NSDictionary *dictionary = @{@"id": @"some_form",
-                                 @"title": @"Some form"};
-
-    HYPForm *form = [[HYPForm alloc] initWithDictionary:dictionary
+    HYPForm *form = [[HYPForm alloc] initWithDictionary:@{@"id": @"some_form",
+                                                          @"title": @"Some form"}
                                                position:0
                                                disabled:NO
                                       disabledFieldsIDs:nil];
@@ -23,18 +21,16 @@
     XCTAssertEqualObjects(form.title, @"Some form");
     XCTAssertEqualObjects(form.position, @0);
 
-    NSDictionary *otherDictionary = @{@"id": @"other_form",
-                                      @"title": @"Other form"};
+    form = [[HYPForm alloc] initWithDictionary:@{@"id": @"other_form",
+                                                 @"title": @"Other form"}
+                                      position:1
+                                      disabled:NO
+                             disabledFieldsIDs:nil];
 
-    HYPForm *otherForm = [[HYPForm alloc] initWithDictionary:otherDictionary
-                                                    position:1
-                                                    disabled:NO
-                                           disabledFieldsIDs:nil];
-
-    XCTAssertNotNil(otherForm);
-    XCTAssertEqualObjects(otherForm.formID, @"other_form");
-    XCTAssertEqualObjects(otherForm.title, @"Other form");
-    XCTAssertEqualObjects(otherForm.position, @1);
+    XCTAssertNotNil(form);
+    XCTAssertEqualObjects(form.formID, @"other_form");
+    XCTAssertEqualObjects(form.title, @"Other form");
+    XCTAssertEqualObjects(form.position, @1);
 }
 
 @end

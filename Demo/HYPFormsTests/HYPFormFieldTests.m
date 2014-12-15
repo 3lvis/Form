@@ -42,59 +42,56 @@
 
 - (void)testInitWithDictionary
 {
-    NSDictionary *firstNameDictionary = @{@"id": @"first_name",
-                                 @"title": @"First name",
-                                 @"type": @"name",
-                                 @"size": @{@"width": @30, @"height": @1},
-                                 @"validations": @{@"required": @YES, @"min_length": @2}
-                                 };
-
-    HYPFormField *firstNameField = [[HYPFormField alloc] initWithDictionary:firstNameDictionary
+    HYPFormField *field = [[HYPFormField alloc] initWithDictionary:@{@"id": @"first_name",
+                                                                     @"title": @"First name",
+                                                                     @"type": @"name",
+                                                                     @"size": @{@"width": @30,
+                                                                                @"height": @1},
+                                                                     @"validations": @{@"required": @YES,
+                                                                                       @"min_length": @2}
+                                                                     }
                                                           position:0
                                                           disabled:NO
                                                  disabledFieldsIDs:nil];
 
-    XCTAssertNotNil(firstNameField);
-    XCTAssertEqualObjects(firstNameField.position, @0);
-    XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
-    XCTAssertEqualObjects(firstNameField.title, @"First name");
-    XCTAssertEqualObjects(firstNameField.typeString, @"name");
-    XCTAssertTrue(firstNameField.type == HYPFormFieldTypeText);
-    XCTAssertTrue(CGSizeEqualToSize(firstNameField.size, CGSizeMake(30, 1)));
-    XCTAssertFalse(firstNameField.disabled);
-    XCTAssertNotNil(firstNameField.validations);
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.position, @0);
+    XCTAssertEqualObjects(field.fieldID, @"first_name");
+    XCTAssertEqualObjects(field.title, @"First name");
+    XCTAssertEqualObjects(field.typeString, @"name");
+    XCTAssertTrue(field.type == HYPFormFieldTypeText);
+    XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
+    XCTAssertFalse(field.disabled);
+    XCTAssertNotNil(field.validations);
 
-    NSDictionary *startDateDictionary = @{@"id": @"start_date",
-                                          @"title": @"Start date",
-                                          @"type": @"date",
-                                          @"size": @{@"width": @10, @"height": @4}
-                                          };
+    field = [[HYPFormField alloc] initWithDictionary:@{@"id": @"start_date",
+                                                       @"title": @"Start date",
+                                                       @"type": @"date",
+                                                       @"size": @{@"width": @10, @"height": @4}
+                                                       }
+                                            position:1
+                                            disabled:NO
+                                   disabledFieldsIDs:@[@"start_date"]];
 
-    HYPFormField *startDateField = [[HYPFormField alloc] initWithDictionary:startDateDictionary
-                                                                   position:1
-                                                                   disabled:NO
-                                                          disabledFieldsIDs:@[@"start_date"]];
-
-    XCTAssertNotNil(startDateField);
-    XCTAssertEqualObjects(startDateField.position, @1);
-    XCTAssertEqualObjects(startDateField.fieldID, @"start_date");
-    XCTAssertEqualObjects(startDateField.title, @"Start date");
-    XCTAssertEqualObjects(startDateField.typeString, @"date");
-    XCTAssertTrue(startDateField.type == HYPFormFieldTypeDate);
-    XCTAssertTrue(CGSizeEqualToSize(startDateField.size, CGSizeMake(10, 4)));
-    XCTAssertTrue(startDateField.disabled);
-    XCTAssertNil(startDateField.validations);
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.position, @1);
+    XCTAssertEqualObjects(field.fieldID, @"start_date");
+    XCTAssertEqualObjects(field.title, @"Start date");
+    XCTAssertEqualObjects(field.typeString, @"date");
+    XCTAssertTrue(field.type == HYPFormFieldTypeDate);
+    XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
+    XCTAssertTrue(field.disabled);
+    XCTAssertNil(field.validations);
 }
 
 - (void)testFieldWithID
 {
-    NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                           initialValues:values
-                                        disabledFieldIDs:nil
-                                                disabled:NO];
+                                                       initialValues:@{@"first_name" : @"Elvis",
+                                                                       @"last_name" : @"Nunez"}
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
 
     HYPFormField *field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.fieldID, @"first_name");

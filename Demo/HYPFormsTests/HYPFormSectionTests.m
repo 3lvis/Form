@@ -10,9 +10,7 @@
 
 - (void)testInitWithDictionary
 {
-    NSDictionary *dictionary = @{@"id": @"section"};
-
-    HYPFormSection *section = [[HYPFormSection alloc] initWithDictionary:dictionary
+    HYPFormSection *section = [[HYPFormSection alloc] initWithDictionary:@{@"id": @"section"}
                                                                 position:0
                                                                 disabled:YES
                                                        disabledFieldsIDs:nil
@@ -23,18 +21,16 @@
     XCTAssertEqualObjects(section.position, @0);
     XCTAssertTrue(section.fields.count == 1);
 
-    NSDictionary *lastSectionDictionary = @{@"id": @"something"};
+    section = [[HYPFormSection alloc] initWithDictionary:@{@"id": @"something"}
+                                                position:1
+                                                disabled:YES
+                                       disabledFieldsIDs:nil
+                                           isLastSection:YES];
 
-    HYPFormSection *lastSection = [[HYPFormSection alloc] initWithDictionary:lastSectionDictionary
-                                                                    position:1
-                                                                    disabled:YES
-                                                           disabledFieldsIDs:nil
-                                                               isLastSection:YES];
-
-    XCTAssertNotNil(lastSection);
-    XCTAssertEqualObjects(lastSection.sectionID, @"something");
-    XCTAssertEqualObjects(lastSection.position, @1);
-    XCTAssertTrue(lastSection.fields.count == 0);
+    XCTAssertNotNil(section);
+    XCTAssertEqualObjects(section.sectionID, @"something");
+    XCTAssertEqualObjects(section.position, @1);
+    XCTAssertTrue(section.fields.count == 0);
 }
 
 @end
