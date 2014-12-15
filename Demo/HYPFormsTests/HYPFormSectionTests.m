@@ -26,14 +26,14 @@
     NSDictionary *lastSectionDictionary = @{@"id": @"something"};
 
     HYPFormSection *lastSection = [[HYPFormSection alloc] initWithDictionary:lastSectionDictionary
-                                                                    position:0
+                                                                    position:1
                                                                     disabled:YES
                                                            disabledFieldsIDs:nil
                                                                isLastSection:YES];
 
     XCTAssertNotNil(lastSection);
     XCTAssertEqualObjects(lastSection.sectionID, @"something");
-    XCTAssertEqualObjects(lastSection.position, @0);
+    XCTAssertEqualObjects(lastSection.position, @1);
     XCTAssertTrue(lastSection.fields.count == 0);
 }
 

@@ -16,6 +16,7 @@
 		142193621A325080008FF712 /* HYPFieldValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 142193611A325080008FF712 /* HYPFieldValidation.m */; };
 		1428F8011A3E6A0F00D2B882 /* HYPFormSectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1428F8001A3E6A0F00D2B882 /* HYPFormSectionTests.m */; };
 		145721C319EF260600195051 /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145721C219EF260600195051 /* camera-icon@2x.png */; };
+		1467089B1A3E84AC006EDCF9 /* HYPFormTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1467089A1A3E84AC006EDCF9 /* HYPFormTests.m */; };
 		1478934C19DFCC9000BC2497 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 1478934B19DFCC9000BC2497 /* forms.json */; };
 		14891FAC1A3E575A00EE45E0 /* field-validations.json in Resources */ = {isa = PBXBuildFile; fileRef = 14891FAB1A3E575A00EE45E0 /* field-validations.json */; };
 		149D207C1A38476500B7BD76 /* HYPPopoverFormFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149D207B1A38476500B7BD76 /* HYPPopoverFormFieldCellTests.m */; };
@@ -113,6 +114,7 @@
 		142193611A325080008FF712 /* HYPFieldValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFieldValidation.m; sourceTree = "<group>"; };
 		1428F8001A3E6A0F00D2B882 /* HYPFormSectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormSectionTests.m; sourceTree = "<group>"; };
 		145721C219EF260600195051 /* camera-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon@2x.png"; sourceTree = "<group>"; };
+		1467089A1A3E84AC006EDCF9 /* HYPFormTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormTests.m; sourceTree = "<group>"; };
 		1478934B19DFCC9000BC2497 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; tabWidth = 2; };
 		14891FAB1A3E575A00EE45E0 /* field-validations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "field-validations.json"; sourceTree = "<group>"; };
 		149D207B1A38476500B7BD76 /* HYPPopoverFormFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPopoverFormFieldCellTests.m; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				BD9A14431A3A18D6005DB106 /* HYPTextFormFieldCellTests.m */,
 				14CCCAAC19F26600005EC649 /* Supporting Files */,
 				1428F8001A3E6A0F00D2B882 /* HYPFormSectionTests.m */,
+				1467089A1A3E84AC006EDCF9 /* HYPFormTests.m */,
 			);
 			path = HYPFormsTests;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14EE7ED91A269E7F00AC17B0 /* HYPFormsManagerTests.m in Sources */,
+				1467089B1A3E84AC006EDCF9 /* HYPFormTests.m in Sources */,
 				149D207C1A38476500B7BD76 /* HYPPopoverFormFieldCellTests.m in Sources */,
 				149D20801A3847ED00B7BD76 /* HYPFormField+Tests.m in Sources */,
 				14C1287B1A27947F00729825 /* HYPFormFieldTests.m in Sources */,
