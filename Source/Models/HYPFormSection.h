@@ -19,7 +19,7 @@
                           position:(NSInteger)position
                           disabled:(BOOL)disabled
                  disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                     isLastSection:(BOOL)isLastSection;
+                     isLastSection:(BOOL)isLastSection NS_DESIGNATED_INITIALIZER;
 
 + (void)sectionAndIndexForField:(HYPFormField *)field
                         inForms:(NSArray *)forms
