@@ -23,13 +23,18 @@
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
     layout.dataSource = self;
 
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds] collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds]
+                                                          collectionViewLayout:layout];
+
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
     self.manager = [[HYPFormsManager alloc] initWithJSON:JSON
                                            initialValues:nil
                                         disabledFieldIDs:nil
                                                 disabled:NO];
-    self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView andFormsManager:self.manager];
+
+    self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView
+                                                                       andFormsManager:self.manager];
 }
 
 - (void)tearDown
@@ -67,7 +72,8 @@
     field = [[HYPFormField alloc] initWithDictionary:@{@"id": @"start_date",
                                                        @"title": @"Start date",
                                                        @"type": @"date",
-                                                       @"size": @{@"width": @10, @"height": @4}
+                                                       @"size": @{@"width": @10,
+                                                                  @"height": @4}
                                                        }
                                             position:1
                                             disabled:NO
@@ -87,6 +93,7 @@
 - (void)testFieldWithID
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
                                                        initialValues:@{@"first_name" : @"Elvis",
                                                                        @"last_name" : @"Nunez"}
