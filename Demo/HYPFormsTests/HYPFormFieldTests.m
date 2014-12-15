@@ -40,6 +40,29 @@
     [super tearDown];
 }
 
+- (void)testInitWithDictionary
+{
+    NSDictionary *dictionary = @{@"id": @"first_name",
+                                 @"title": @"First name",
+                                 @"type": @"name",
+                                 @"size": @{@"width": @30, @"height": @1},
+                                 @"validations": @{@"required": @YES, @"min_length": @2}
+                                 };
+
+    HYPFormField *field = [[HYPFormField alloc] initWithDictionary:dictionary
+                                                          position:0
+                                                          disabled:NO
+                                                 disabledFieldsIDs:nil];
+
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.fieldID, @"first_name");
+    XCTAssertEqualObjects(field.title, @"First name");
+    XCTAssertEqualObjects(field.typeString, @"name");
+    XCTAssertTrue(field.type == HYPFormFieldTypeText);
+    XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
+    XCTAssertNotNil(field.validations);
+}
+
 - (void)testFieldWithID
 {
     NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
