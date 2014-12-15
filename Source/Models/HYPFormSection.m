@@ -1,8 +1,49 @@
 #import "HYPFormSection.h"
 #import "HYPFormField.h"
 #import "HYPForm.h"
+#import "NSDictionary+ANDYSafeValue.h"
+#import "HYPFormTarget.h"
 
 @implementation HYPFormSection
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+                          position:(NSInteger)position
+                          disabled:(BOOL)disabled
+                 disabledFieldsIDs:(NSArray *)disabledFieldsIDs
+                     isLastSection:(BOOL)isLastSection
+{
+    self = [super init];
+    if (!self) return nil;
+
+    self.sectionID = [dictionary andy_valueForKey:@"id"];
+    self.position = @(position);
+    self.isLast = isLastSection;
+
+    NSArray *dataSourceFields = [dictionary andy_valueForKey:@"fields"];
+    NSMutableArray *fields = [NSMutableArray array];
+
+    [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
+
+        HYPFormField *field = [[HYPFormField  alloc] initWithDictionary:fieldDict
+                                                               position:fieldIndex
+                                                               disabled:disabled
+                                                      disabledFieldsIDs:disabledFieldsIDs];
+        field.section = self;
+        [fields addObject:field];
+    }];
+
+    if (!isLastSection) {
+        HYPFormField *field = [HYPFormField new];
+        field.sectionSeparator = YES;
+        field.position = @(fields.count);
+        field.section = self;
+        [fields addObject:field];
+    }
+
+    self.fields = fields;
+
+    return self;
+}
 
 #pragma mark - Public Methods
 

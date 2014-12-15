@@ -1,0 +1,26 @@
+[
+  {
+    "id":"personal-details",
+    "title":"Personal Details",
+    "sections":[
+      {
+        "id":"personal-details-0",
+        "fields":[
+          {
+            "id":"first_name",
+            "title":"First name",
+            "type":"name",
+            "size":{
+              "width": 30,
+              "height": 1
+            },
+            "validations":{
+              "required":true,
+              "min_length":2
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

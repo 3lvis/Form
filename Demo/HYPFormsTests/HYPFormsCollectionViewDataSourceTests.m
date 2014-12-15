@@ -27,14 +27,18 @@
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
     layout.dataSource = self;
 
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds] collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds]
+                                                          collectionViewLayout:layout];
 
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
     self.manager = [[HYPFormsManager alloc] initWithJSON:JSON
                                            initialValues:nil
                                         disabledFieldIDs:nil
                                                 disabled:NO];
-    self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView andFormsManager:self.manager];
+    
+    self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView
+                                                                       andFormsManager:self.manager];
 }
 
 - (void)tearDown
@@ -59,14 +63,18 @@
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 2);
 
-    [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"first_name", @"address", @"username"]]];
+    [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"first_name",
+                                                                             @"address",
+                                                                             @"username"]]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"username"]];
     field = [self.manager fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 1);
-    [self.dataSource processTargets:[HYPFormTarget showFieldTargetsWithIDs:@[@"first_name", @"address"]]];
+    [self.dataSource processTargets:[HYPFormTarget showFieldTargetsWithIDs:@[@"first_name",
+                                                                             @"address"]]];
 
-    [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"last_name", @"address"]]];
+    [self.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"last_name",
+                                                                             @"address"]]];
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"address"]];
     field = [self.manager fieldWithID:@"address" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:self.manager.forms];

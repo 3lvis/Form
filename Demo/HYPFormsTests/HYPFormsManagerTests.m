@@ -24,6 +24,7 @@
 - (void)testFormsGenerationOnlyJSON
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
                                                        initialValues:nil
                                                     disabledFieldIDs:nil
@@ -40,11 +41,11 @@
 
 - (void)testFormsGenerationFieldsWithFormulas
 {
-    NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:values
+                                                       initialValues:@{@"first_name" : @"Elvis",
+                                                                       @"last_name" : @"Nunez"}
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
@@ -55,11 +56,10 @@
 
 - (void)testFormsGenerationHideTargets
 {
-    NSDictionary *values = @{@"contract_type" : @1};
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:values
+                                                       initialValues:@{@"contract_type" : @1}
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
@@ -71,6 +71,7 @@
 - (void)testRequiredFields
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
                                                        initialValues:nil
                                                     disabledFieldIDs:nil
@@ -87,11 +88,11 @@
 
 - (void)testFieldValidation
 {
-    NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"field-validations.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
 
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:values
+                                                       initialValues:nil
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
@@ -99,16 +100,16 @@
 
     XCTAssertTrue(fields.count == 1);
 
-    XCTAssertEqualObjects([[fields firstObject] fieldID], @"email");
+    XCTAssertEqualObjects([[fields firstObject] fieldID], @"first_name");
 }
 
 - (void)testFieldWithIDWithIndexPath
 {
-    NSDictionary *values = @{@"first_name" : @"Elvis", @"last_name" : @"Nunez"};
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:values
+                                                       initialValues:@{@"first_name" : @"Elvis",
+                                                                       @"last_name" : @"Nunez"}
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
@@ -131,7 +132,6 @@
 
 - (void)testHidingSectionMultipleTimes
 {
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-hide-section-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -143,9 +143,8 @@
     NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
     XCTAssertTrue(numberOfSections == 2);
 
-    NSDictionary *values = @{@"contract_type" : @1};
     HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                                initialValues:values
+                                                                initialValues:@{@"contract_type" : @1}
                                                              disabledFieldIDs:nil
                                                                      disabled:NO];
 
@@ -155,7 +154,6 @@
 
 - (void)testHidingFieldMultipleTimes
 {
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-hide-field-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 

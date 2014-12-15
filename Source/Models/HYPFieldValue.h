@@ -11,6 +11,8 @@
 @property (nonatomic, strong) HYPFormField *field;
 @property (nonatomic, strong) NSNumber *value;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
+
 - (BOOL)identifierIsEqualTo:(id)identifier;
 
 @end
