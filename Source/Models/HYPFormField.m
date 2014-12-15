@@ -6,6 +6,9 @@
 #import "HYPInputValidator.h"
 #import "HYPFieldValue.h"
 #import "HYPClassFactory.h"
+#import "HYPFormTarget.h"
+
+#import "NSDictionary+ANDYSafeValue.h"
 
 static NSString * const HYPFormFieldSelectType = @"select";
 static NSString * const HYPInputValidatorSelector = @"validateString:text:";
@@ -14,12 +17,80 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 @implementation HYPFormField
 
-- (instancetype)init
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+                          position:(NSInteger)position
+                          disabled:(BOOL)disabled
+                 disabledFieldsIDs:(NSArray *)disabledFieldsIDs
 {
     self = [super init];
     if (!self) return nil;
 
+    NSString *remoteID = [dictionary andy_valueForKey:@"id"];
+
     _valid = YES;
+    _fieldID = remoteID;
+    _title = [dictionary andy_valueForKey:@"title"];
+    _subtitle = [dictionary andy_valueForKey:@"subtitle"];
+    _typeString  = [dictionary andy_valueForKey:@"type"];
+    _type = [self typeFromTypeString:self.typeString];
+    NSNumber *width = [dictionary andy_valueForKey:@"size.width"];
+    NSNumber *height = [dictionary andy_valueForKey:@"size.height"];
+    if (!height || !width) abort();
+
+    _size = CGSizeMake([width floatValue], [height floatValue]);
+    _position = @(position);
+    _validations = [dictionary andy_valueForKey:@"validations"];
+    _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
+    _formula = [dictionary andy_valueForKey:@"formula"];
+
+    NSMutableArray *targets = [NSMutableArray array];
+
+    for (NSDictionary *targetDict in [dictionary andy_valueForKey:@"targets"]) {
+        HYPFormTarget *target = [HYPFormTarget new];
+        target.targetID = [targetDict andy_valueForKey:@"id"];
+        target.typeString = [targetDict andy_valueForKey:@"type"];
+        target.actionTypeString = [targetDict andy_valueForKey:@"action"];
+        [targets addObject:target];
+    }
+
+    _targets = targets;
+
+    BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:_fieldID]);
+
+    if (shouldDisable) _disabled = YES;
+
+    NSMutableArray *values = [NSMutableArray array];
+    NSArray *dataSourceValues = [dictionary andy_valueForKey:@"values"];
+
+    if (dataSourceValues) {
+        for (NSDictionary *valueDict in dataSourceValues) {
+            HYPFieldValue *fieldValue = [HYPFieldValue new];
+            fieldValue.valueID = [valueDict andy_valueForKey:@"id"];
+            fieldValue.title = [valueDict andy_valueForKey:@"title"];
+            fieldValue.subtitle = [valueDict andy_valueForKey:@"subtitle"];
+            fieldValue.value = [valueDict andy_valueForKey:@"value"];
+
+            NSMutableArray *targets = [NSMutableArray array];
+
+            for (NSDictionary *targetDict in [valueDict andy_valueForKey:@"targets"]) {
+                HYPFormTarget *target = [HYPFormTarget new];
+                target.targetID = [targetDict andy_valueForKey:@"id"];
+                target.typeString = [targetDict andy_valueForKey:@"type"];
+                target.actionTypeString = [targetDict andy_valueForKey:@"action"];
+                [targets addObject:target];
+            }
+
+            for (HYPFormTarget *target in targets) {
+                target.value = fieldValue;
+            }
+
+            fieldValue.targets = targets;
+            fieldValue.field = self;
+            [values addObject:fieldValue];
+        }
+    }
+
+    _values = values;
 
     return self;
 }
