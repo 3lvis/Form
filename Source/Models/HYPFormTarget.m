@@ -9,8 +9,8 @@
     if (!self) return nil;
 
     _targetID = [dictionary andy_valueForKey:@"id"];
-    _typeString = [dictionary andy_valueForKey:@"type"];
-    _actionTypeString = [dictionary andy_valueForKey:@"action"];
+    self.typeString = [dictionary andy_valueForKey:@"type"];
+    self.actionTypeString = [dictionary andy_valueForKey:@"action"];
 
     return self;
 }

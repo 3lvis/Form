@@ -61,24 +61,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
     if (dataSourceValues) {
         for (NSDictionary *valueDict in dataSourceValues) {
-            HYPFieldValue *fieldValue = [HYPFieldValue new];
-            fieldValue.valueID = [valueDict andy_valueForKey:@"id"];
-            fieldValue.title = [valueDict andy_valueForKey:@"title"];
-            fieldValue.subtitle = [valueDict andy_valueForKey:@"subtitle"];
-            fieldValue.value = [valueDict andy_valueForKey:@"value"];
-
-            NSMutableArray *targets = [NSMutableArray array];
-
-            for (NSDictionary *targetDict in [valueDict andy_valueForKey:@"targets"]) {
-                HYPFormTarget *target = [[HYPFormTarget alloc] initWithDictionary:targetDict];
-                [targets addObject:target];
-            }
-
-            for (HYPFormTarget *target in targets) {
-                target.value = fieldValue;
-            }
-
-            fieldValue.targets = targets;
+            HYPFieldValue *fieldValue = [[HYPFieldValue alloc] initWithDictionary:valueDict];
             fieldValue.field = self;
             [values addObject:fieldValue];
         }
