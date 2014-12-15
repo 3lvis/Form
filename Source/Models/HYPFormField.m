@@ -46,10 +46,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     NSMutableArray *targets = [NSMutableArray array];
 
     for (NSDictionary *targetDict in [dictionary andy_valueForKey:@"targets"]) {
-        HYPFormTarget *target = [HYPFormTarget new];
-        target.targetID = [targetDict andy_valueForKey:@"id"];
-        target.typeString = [targetDict andy_valueForKey:@"type"];
-        target.actionTypeString = [targetDict andy_valueForKey:@"action"];
+        HYPFormTarget *target = [[HYPFormTarget alloc] initWithDictionary:targetDict];
         [targets addObject:target];
     }
 
@@ -73,10 +70,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             NSMutableArray *targets = [NSMutableArray array];
 
             for (NSDictionary *targetDict in [valueDict andy_valueForKey:@"targets"]) {
-                HYPFormTarget *target = [HYPFormTarget new];
-                target.targetID = [targetDict andy_valueForKey:@"id"];
-                target.typeString = [targetDict andy_valueForKey:@"type"];
-                target.actionTypeString = [targetDict andy_valueForKey:@"action"];
+                HYPFormTarget *target = [[HYPFormTarget alloc] initWithDictionary:targetDict];
                 [targets addObject:target];
             }
 

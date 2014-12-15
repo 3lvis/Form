@@ -1,6 +1,19 @@
 #import "HYPFormTarget.h"
+#import "NSDictionary+ANDYSafeValue.h"
 
 @implementation HYPFormTarget
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super init];
+    if (!self) return nil;
+
+    _targetID = [dictionary andy_valueForKey:@"id"];
+    _typeString = [dictionary andy_valueForKey:@"type"];
+    _actionTypeString = [dictionary andy_valueForKey:@"action"];
+
+    return self;
+}
 
 + (HYPFormTarget *)showFieldTargetWithID:(NSString *)targetID
 {

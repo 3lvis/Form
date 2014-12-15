@@ -25,6 +25,8 @@ typedef NS_ENUM(NSInteger, HYPFormTargetActionType) {
 @property (nonatomic) HYPFormTargetType type;
 @property (nonatomic) HYPFormTargetActionType actionType;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
+
 + (void)filteredTargets:(NSArray*)targets
                filtered:(void (^)(NSArray *shownTargets,
                                   NSArray *hiddenTargets,
