@@ -13,7 +13,7 @@
 - (instancetype)initWithJSON:(id)JSON
                initialValues:(NSDictionary *)initialValues
             disabledFieldIDs:(NSArray *)disabledFieldIDs
-                    disabled:(BOOL)disabled;
+                    disabled:(BOOL)disabled NS_DESIGNATED_INITIALIZER;
 
 - (NSArray *)invalidFormFields;
 
