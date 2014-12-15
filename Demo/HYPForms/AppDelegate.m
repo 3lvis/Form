@@ -50,8 +50,7 @@
                                   @"country_code" : @"NO"
                                   };
 
-    HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
-    HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary andLayout:layout];
+    HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];
 
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
     controller.view.tintColor = [UIColor colorFromHex:@"5182AF"];

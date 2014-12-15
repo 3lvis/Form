@@ -5,6 +5,6 @@
 
 @interface HYPSampleCollectionViewController : UICollectionViewController
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary andLayout:(HYPFormsLayout *)layout;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
