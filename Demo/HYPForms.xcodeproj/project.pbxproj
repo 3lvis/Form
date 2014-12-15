@@ -307,12 +307,12 @@
 				BD171A301A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m */,
 				1428F8001A3E6A0F00D2B882 /* HYPFormSectionTests.m */,
 				14EE7ED81A269E7F00AC17B0 /* HYPFormsManagerTests.m */,
+				1445E12B1A3EDF0500219DB0 /* HYPFormTargetTests.m */,
 				1467089A1A3E84AC006EDCF9 /* HYPFormTests.m */,
 				149D207B1A38476500B7BD76 /* HYPPopoverFormFieldCellTests.m */,
 				BD9A14431A3A18D6005DB106 /* HYPTextFormFieldCellTests.m */,
 				149FC6CD1A3A516D00763456 /* JSONs */,
 				14CCCAAC19F26600005EC649 /* Supporting Files */,
-				1445E12B1A3EDF0500219DB0 /* HYPFormTargetTests.m */,
 			);
 			path = HYPFormsTests;
 			sourceTree = "<group>";
