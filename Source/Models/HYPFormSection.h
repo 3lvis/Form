@@ -15,6 +15,12 @@
 @property (nonatomic) BOOL containsSpecialField;
 @property (nonatomic) BOOL isLast;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+                          position:(NSInteger)position
+                          disabled:(BOOL)disabled
+                 disabledFieldsIDs:(NSArray *)disabledFieldsIDs
+                     isLastSection:(BOOL)isLastSection;
+
 + (void)sectionAndIndexForField:(HYPFormField *)field
                         inForms:(NSArray *)forms
                      completion:(void (^)(BOOL found,
