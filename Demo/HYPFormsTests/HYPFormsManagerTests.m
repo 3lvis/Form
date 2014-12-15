@@ -154,7 +154,6 @@
 
 - (void)testHidingFieldMultipleTimes
 {
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-hide-field-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
