@@ -339,10 +339,11 @@
     }];
 
     if (updatedIndexPaths.count > 0) {
-        [self reloadItemsAtIndexPaths:updatedIndexPaths];
         [self.collectionView performBatchUpdates:^{
+            [self reloadItemsAtIndexPaths:updatedIndexPaths];
+        } completion:^(BOOL finished) {
             [self processTargets:targets];
-        } completion:nil];
+        }];
     }
 }
 
