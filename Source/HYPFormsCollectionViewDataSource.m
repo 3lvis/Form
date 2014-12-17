@@ -487,17 +487,36 @@
                               shownTargets  = [self sortTargets:shownTargets];
                               hiddenTargets = [self sortTargets:hiddenTargets];
 
+                              NSArray *insertedIndexPaths;
+                              NSArray *deletedIndexPaths;
+                              NSArray *updatedIndexPaths;
+
                               if (shownTargets.count > 0) {
-                                  NSArray *insertedIndexPaths = [self.formsManager showTargets:shownTargets];
+                                  insertedIndexPaths = [self.formsManager showTargets:shownTargets];
                                   [self insertItemsAtIndexPaths:insertedIndexPaths];
                               }
+
                               if (hiddenTargets.count > 0) {
-                                  NSArray *deletedIndexPaths = [self.formsManager hideTargets:hiddenTargets];
+                                  deletedIndexPaths = [self.formsManager hideTargets:hiddenTargets];
                                   [self deleteItemsAtIndexPaths:deletedIndexPaths];
                               }
+
                               if (updatedTargets.count > 0) {
-                                  NSArray *updatedIndexPaths = [self.formsManager updateTargets:updatedTargets];
-                                  [self reloadItemsAtIndexPaths:updatedIndexPaths];
+                                  updatedIndexPaths = [self.formsManager updateTargets:updatedTargets];
+
+                                  if (deletedIndexPaths) {
+                                      NSMutableArray *filteredIndexPaths = [updatedIndexPaths mutableCopy];
+                                      for (NSIndexPath *indexPath in updatedIndexPaths) {
+                                          if ([deletedIndexPaths containsObject:indexPath]) {
+                                              [filteredIndexPaths removeObject:indexPath];
+                                          }
+                                      }
+
+                                      [self reloadItemsAtIndexPaths:filteredIndexPaths];
+                                  } else {
+                                      [self reloadItemsAtIndexPaths:deletedIndexPaths];
+                                  }
+
                               }
                           }];
 }
