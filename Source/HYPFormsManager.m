@@ -427,8 +427,7 @@
         if (target.type == HYPFormTargetTypeField) {
             HYPFormField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
             if (field) {
-                HYPForm *form = self.forms[[field.section.form.position integerValue]];
-                HYPFormSection *section = form.sections[[field.section.position integerValue]];
+                HYPFormSection *section = field.section;
                 NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
                 [section.fields insertObject:field atIndex:fieldIndex];
             }
