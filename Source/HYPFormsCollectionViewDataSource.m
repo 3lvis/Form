@@ -118,17 +118,17 @@
 
     switch (field.type) {
         case HYPFormFieldTypeDate:
-            identifier = HYPDateFormFieldCellIdentifier;
-            break;
+        identifier = HYPDateFormFieldCellIdentifier;
+        break;
         case HYPFormFieldTypeSelect:
-            identifier = HYPSelectFormFieldCellIdentifier;
-            break;
+        identifier = HYPSelectFormFieldCellIdentifier;
+        break;
 
         case HYPFormFieldTypeText:
         case HYPFormFieldTypeFloat:
         case HYPFormFieldTypeNumber:
-            identifier = HYPTextFormFieldCellIdentifier;
-            break;
+        identifier = HYPTextFormFieldCellIdentifier;
+        break;
 
         case HYPFormFieldTypeCustom: abort();
     }
@@ -339,11 +339,10 @@
     }];
 
     if (updatedIndexPaths.count > 0) {
+        [self reloadItemsAtIndexPaths:updatedIndexPaths];
         [self.collectionView performBatchUpdates:^{
-            [self reloadItemsAtIndexPaths:updatedIndexPaths];
-        } completion:^(BOOL finished) {
             [self processTargets:targets];
-        }];
+        } completion:nil];
     }
 }
 
