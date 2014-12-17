@@ -514,7 +514,7 @@
 
                                       [self reloadItemsAtIndexPaths:filteredIndexPaths];
                                   } else {
-                                      [self reloadItemsAtIndexPaths:deletedIndexPaths];
+                                      [self reloadItemsAtIndexPaths:updatedIndexPaths];
                                   }
 
                               }
