@@ -43,7 +43,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
     _formula = [dictionary andy_valueForKey:@"formula"];
 
-    NSMutableArray *targets = [NSMutableArray array];
+    NSMutableArray *targets = [NSMutableArray new];
 
     for (NSDictionary *targetDict in [dictionary andy_valueForKey:@"targets"]) {
         HYPFormTarget *target = [[HYPFormTarget alloc] initWithDictionary:targetDict];
@@ -56,7 +56,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
     if (shouldDisable) _disabled = YES;
 
-    NSMutableArray *values = [NSMutableArray array];
+    NSMutableArray *values = [NSMutableArray new];
     NSArray *dataSourceValues = [dictionary andy_valueForKey:@"values"];
 
     if (dataSourceValues) {

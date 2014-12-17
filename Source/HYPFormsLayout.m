@@ -198,7 +198,7 @@
     NSMutableArray *fields = nil;
 
     if ([collapsedForms containsObject:@(section)]) {
-        fields = [NSMutableArray array];
+        fields = [NSMutableArray new];
     } else {
         fields = [NSMutableArray arrayWithArray:form.fields];
     }

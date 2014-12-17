@@ -30,7 +30,7 @@
     self.title = [dictionary andy_valueForKey:@"title"];
     self.position = @(position);
 
-    NSMutableArray *sections = [NSMutableArray array];
+    NSMutableArray *sections = [NSMutableArray new];
     NSArray *dataSourceSections = [dictionary andy_valueForKey:@"sections"];
     NSDictionary *lastObject = [dataSourceSections lastObject];
 
@@ -55,7 +55,7 @@
 
 - (NSArray *)targetsUsingArray:(NSArray *)array
 {
-    NSMutableArray *targets = [NSMutableArray array];
+    NSMutableArray *targets = [NSMutableArray new];
 
     for (NSDictionary *targetDict in array) {
         HYPFormTarget *target = [HYPFormTarget new];
@@ -70,7 +70,7 @@
 
 - (NSArray *)fields
 {
-    NSMutableArray *array = [NSMutableArray array];
+    NSMutableArray *array = [NSMutableArray new];
 
     for (HYPFormSection *section in self.sections) {
         [array addObjectsFromArray:section.fields];

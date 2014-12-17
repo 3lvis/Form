@@ -20,7 +20,7 @@
     self.isLast = isLastSection;
 
     NSArray *dataSourceFields = [dictionary andy_valueForKey:@"fields"];
-    NSMutableArray *fields = [NSMutableArray array];
+    NSMutableArray *fields = [NSMutableArray new];
 
     [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
 

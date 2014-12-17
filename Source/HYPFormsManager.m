@@ -88,7 +88,7 @@
                      disabled:(BOOL)disabled
 {
     NSMutableArray *fieldsWithFormula = [NSMutableArray new];
-    NSMutableArray *targetsToRun = [NSMutableArray array];
+    NSMutableArray *targetsToRun = [NSMutableArray new];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
@@ -196,7 +196,7 @@
 {
     if (_requiredFields) return _requiredFields;
 
-    _requiredFields = [NSMutableDictionary dictionary];
+    _requiredFields = [NSMutableDictionary new];
 
     for (HYPForm *form in self.forms) {
         for (HYPFormSection *section in form.sections) {
@@ -221,7 +221,7 @@
 
 - (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field
 {
-    NSMutableDictionary *values = [NSMutableDictionary dictionary];
+    NSMutableDictionary *values = [NSMutableDictionary new];
 
     NSString *formula = field.formula;
     NSArray *fieldIDs = [formula hyp_variables];
@@ -280,7 +280,7 @@
            completion:(void (^)(HYPFormSection *section, NSArray *indexPaths))completion
 {
     HYPFormSection *foundSection = nil;
-    NSMutableArray *indexPaths = [NSMutableArray array];
+    NSMutableArray *indexPaths = [NSMutableArray new];
     NSUInteger formIndex = 0;
 
     for (HYPForm *form in self.forms) {
@@ -420,17 +420,24 @@
 
 - (NSArray *)showTargets:(NSArray *)targets
 {
-    NSMutableArray *insertedIndexPaths = [NSMutableArray array];
+    NSMutableArray *insertedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
+
+        BOOL foundSection = NO;
 
         if (target.type == HYPFormTargetTypeField) {
             HYPFormField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
             if (field) {
                 HYPForm *form = self.forms[[field.section.form.position integerValue]];
-                HYPFormSection *section = form.sections[[field.section.position integerValue]];
-                NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
-                [section.fields insertObject:field atIndex:fieldIndex];
+
+                for (HYPFormSection *section in form.sections) {
+                    if ([section.sectionID isEqualToString:field.section.sectionID]) {
+                        foundSection = YES;
+                        NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
+                        [section.fields insertObject:field atIndex:fieldIndex];
+                    }
+                }
             }
         } else if (target.type == HYPFormTargetTypeSection) {
             HYPFormSection *section = [self.hiddenSections objectForKey:target.targetID];
@@ -441,7 +448,7 @@
             }
         }
 
-        if (target.type == HYPFormTargetTypeField) {
+        if (target.type == HYPFormTargetTypeField && foundSection) {
             HYPFormField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
             if (field) {
                 [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
@@ -471,8 +478,8 @@
 
 - (NSArray *)hideTargets:(NSArray *)targets
 {
-    NSMutableArray *deletedFields = [NSMutableArray array];
-    NSMutableArray *deletedSections = [NSMutableArray array];
+    NSMutableArray *deletedFields = [NSMutableArray new];
+    NSMutableArray *deletedSections = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
@@ -532,7 +539,7 @@
 
 - (NSArray *)updateTargets:(NSArray *)targets
 {
-    NSMutableArray *updatedIndexPaths = [NSMutableArray array];
+    NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeSection) continue;
@@ -550,7 +557,7 @@
         if (!field) continue;
 
         NSArray *fieldIDs = [field.formula hyp_variables];
-        NSMutableDictionary *values = [NSMutableDictionary dictionary];
+        NSMutableDictionary *values = [NSMutableDictionary new];
 
         for (NSString *fieldID in fieldIDs) {
 

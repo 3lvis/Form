@@ -80,7 +80,7 @@
 {
     if (_collapsedForms) return _collapsedForms;
 
-    _collapsedForms = [NSMutableArray array];
+    _collapsedForms = [NSMutableArray new];
 
     return _collapsedForms;
 }
@@ -183,7 +183,7 @@
 {
     BOOL headerIsCollapsed = ([self.collapsedForms containsObject:@(section)]);
 
-    NSMutableArray *indexPaths = [NSMutableArray array];
+    NSMutableArray *indexPaths = [NSMutableArray new];
     HYPForm *form = self.formsManager.forms[section];
 
     for (NSInteger i = 0; i < form.fields.count; i++) {
@@ -282,7 +282,7 @@
 {
     self.disabled = disabled;
 
-    NSMutableDictionary *fields = [NSMutableDictionary dictionary];
+    NSMutableDictionary *fields = [NSMutableDictionary new];
 
     for (HYPForm *form in self.formsManager.forms) {
         for (HYPFormField *field in form.fields) {
@@ -320,8 +320,8 @@
 {
     [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
 
-    NSMutableArray *updatedIndexPaths = [NSMutableArray array];
-    NSMutableArray *targets = [NSMutableArray array];
+    NSMutableArray *updatedIndexPaths = [NSMutableArray new];
+    NSMutableArray *targets = [NSMutableArray new];
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
         [self.formsManager fieldWithID:key includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
@@ -471,12 +471,23 @@
     }
 }
 
+- (NSArray *)sortTargets:(NSArray *)targets
+{
+    NSSortDescriptor *sortByTypeString = [NSSortDescriptor sortDescriptorWithKey:@"typeString" ascending:YES];
+    NSArray *sortedTargets = [targets sortedArrayUsingDescriptors:@[sortByTypeString]];
+
+    return sortedTargets;
+}
+
 - (void)processTargets:(NSArray *)targets
 {
     [HYPFormTarget filteredTargets:targets
                           filtered:^(NSArray *shownTargets,
                                      NSArray *hiddenTargets,
                                      NSArray *updatedTargets) {
+                              shownTargets  = [self sortTargets:shownTargets];
+                              hiddenTargets = [self sortTargets:hiddenTargets];
+
                               if (shownTargets.count > 0) {
                                   NSArray *insertedIndexPaths = [self.formsManager showTargets:shownTargets];
                                   [self insertItemsAtIndexPaths:insertedIndexPaths];
@@ -499,7 +510,7 @@
 - (void)insertedIndexPathsAndSectionIndexForSection:(HYPFormSection *)section
                                          completion:(void (^)(NSArray *indexPaths, NSInteger index))completion
 {
-    NSMutableArray *indexPaths = [NSMutableArray array];
+    NSMutableArray *indexPaths = [NSMutableArray new];
 
     NSInteger formIndex = [section.form.position integerValue];
     HYPForm *form = self.formsManager.forms[formIndex];

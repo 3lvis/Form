@@ -16,7 +16,7 @@
     _subtitle = [dictionary andy_valueForKey:@"subtitle"];
     _value = [dictionary andy_valueForKey:@"value"];
 
-    NSMutableArray *targets = [NSMutableArray array];
+    NSMutableArray *targets = [NSMutableArray new];
 
     for (NSDictionary *targetDict in [dictionary andy_valueForKey:@"targets"]) {
         HYPFormTarget *target = [[HYPFormTarget alloc] initWithDictionary:targetDict];
