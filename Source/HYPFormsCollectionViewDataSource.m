@@ -471,12 +471,23 @@
     }
 }
 
+- (NSArray *)sortTargets:(NSArray *)targets
+{
+    NSSortDescriptor *sortByTypeString = [NSSortDescriptor sortDescriptorWithKey:@"typeString" ascending:YES];
+    NSArray *sortedTargets = [targets sortedArrayUsingDescriptors:@[sortByTypeString]];
+
+    return sortedTargets;
+}
+
 - (void)processTargets:(NSArray *)targets
 {
     [HYPFormTarget filteredTargets:targets
                           filtered:^(NSArray *shownTargets,
                                      NSArray *hiddenTargets,
                                      NSArray *updatedTargets) {
+                              shownTargets  = [self sortTargets:shownTargets];
+                              hiddenTargets = [self sortTargets:hiddenTargets];
+
                               if (shownTargets.count > 0) {
                                   NSArray *insertedIndexPaths = [self.formsManager showTargets:shownTargets];
                                   [self insertItemsAtIndexPaths:insertedIndexPaths];
