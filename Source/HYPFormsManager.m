@@ -196,7 +196,7 @@
 {
     if (_requiredFields) return _requiredFields;
 
-    _requiredFields = [NSMutableDictionary dictionary];
+    _requiredFields = [NSMutableDictionary new];
 
     for (HYPForm *form in self.forms) {
         for (HYPFormSection *section in form.sections) {
@@ -221,7 +221,7 @@
 
 - (NSMutableDictionary *)valuesForFormula:(HYPFormField *)field
 {
-    NSMutableDictionary *values = [NSMutableDictionary dictionary];
+    NSMutableDictionary *values = [NSMutableDictionary new];
 
     NSString *formula = field.formula;
     NSArray *fieldIDs = [formula hyp_variables];
@@ -550,7 +550,7 @@
         if (!field) continue;
 
         NSArray *fieldIDs = [field.formula hyp_variables];
-        NSMutableDictionary *values = [NSMutableDictionary dictionary];
+        NSMutableDictionary *values = [NSMutableDictionary new];
 
         for (NSString *fieldID in fieldIDs) {
 

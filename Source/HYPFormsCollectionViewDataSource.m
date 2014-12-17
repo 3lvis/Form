@@ -282,7 +282,7 @@
 {
     self.disabled = disabled;
 
-    NSMutableDictionary *fields = [NSMutableDictionary dictionary];
+    NSMutableDictionary *fields = [NSMutableDictionary new];
 
     for (HYPForm *form in self.formsManager.forms) {
         for (HYPFormField *field in form.fields) {
