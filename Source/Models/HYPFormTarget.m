@@ -29,7 +29,7 @@
 
 + (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs
 {
-    NSMutableArray *targets = [NSMutableArray array];
+    NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self showFieldTargetWithID:targetID]];
     }
@@ -39,7 +39,7 @@
 
 + (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs
 {
-    NSMutableArray *targets = [NSMutableArray array];
+    NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self hideFieldTargetWithID:targetID]];
     }
@@ -61,7 +61,7 @@
 
 + (NSArray *)showSectionTargetsWithIDs:(NSArray *)targetIDs
 {
-    NSMutableArray *targets = [NSMutableArray array];
+    NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self showSectionTargetWithID:targetID]];
     }
@@ -71,7 +71,7 @@
 
 + (NSArray *)hideSectionTargetsWithIDs:(NSArray *)targetIDs
 {
-    NSMutableArray *targets = [NSMutableArray array];
+    NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self hideSectionTargetWithID:targetID]];
     }
@@ -142,9 +142,9 @@
                                   NSArray *hiddenTargets,
                                   NSArray *updatedTargets))filtered
 {
-    NSMutableArray *shown = [NSMutableArray array];
-    NSMutableArray *hidden = [NSMutableArray array];
-    NSMutableArray *updated = [NSMutableArray array];
+    NSMutableArray *shown = [NSMutableArray new];
+    NSMutableArray *hidden = [NSMutableArray new];
+    NSMutableArray *updated = [NSMutableArray new];
 
     // TODO: balance show + hide
     // TODO: balance update + hide

@@ -88,7 +88,7 @@
                      disabled:(BOOL)disabled
 {
     NSMutableArray *fieldsWithFormula = [NSMutableArray new];
-    NSMutableArray *targetsToRun = [NSMutableArray array];
+    NSMutableArray *targetsToRun = [NSMutableArray new];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
@@ -280,7 +280,7 @@
            completion:(void (^)(HYPFormSection *section, NSArray *indexPaths))completion
 {
     HYPFormSection *foundSection = nil;
-    NSMutableArray *indexPaths = [NSMutableArray array];
+    NSMutableArray *indexPaths = [NSMutableArray new];
     NSUInteger formIndex = 0;
 
     for (HYPForm *form in self.forms) {
@@ -420,7 +420,7 @@
 
 - (NSArray *)showTargets:(NSArray *)targets
 {
-    NSMutableArray *insertedIndexPaths = [NSMutableArray array];
+    NSMutableArray *insertedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
 
@@ -471,8 +471,8 @@
 
 - (NSArray *)hideTargets:(NSArray *)targets
 {
-    NSMutableArray *deletedFields = [NSMutableArray array];
-    NSMutableArray *deletedSections = [NSMutableArray array];
+    NSMutableArray *deletedFields = [NSMutableArray new];
+    NSMutableArray *deletedSections = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeField) {
@@ -532,7 +532,7 @@
 
 - (NSArray *)updateTargets:(NSArray *)targets
 {
-    NSMutableArray *updatedIndexPaths = [NSMutableArray array];
+    NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
         if (target.type == HYPFormTargetTypeSection) continue;

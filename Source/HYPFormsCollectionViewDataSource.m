@@ -80,7 +80,7 @@
 {
     if (_collapsedForms) return _collapsedForms;
 
-    _collapsedForms = [NSMutableArray array];
+    _collapsedForms = [NSMutableArray new];
 
     return _collapsedForms;
 }
@@ -183,7 +183,7 @@
 {
     BOOL headerIsCollapsed = ([self.collapsedForms containsObject:@(section)]);
 
-    NSMutableArray *indexPaths = [NSMutableArray array];
+    NSMutableArray *indexPaths = [NSMutableArray new];
     HYPForm *form = self.formsManager.forms[section];
 
     for (NSInteger i = 0; i < form.fields.count; i++) {
@@ -320,8 +320,8 @@
 {
     [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
 
-    NSMutableArray *updatedIndexPaths = [NSMutableArray array];
-    NSMutableArray *targets = [NSMutableArray array];
+    NSMutableArray *updatedIndexPaths = [NSMutableArray new];
+    NSMutableArray *targets = [NSMutableArray new];
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
         [self.formsManager fieldWithID:key includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
@@ -510,7 +510,7 @@
 - (void)insertedIndexPathsAndSectionIndexForSection:(HYPFormSection *)section
                                          completion:(void (^)(NSArray *indexPaths, NSInteger index))completion
 {
-    NSMutableArray *indexPaths = [NSMutableArray array];
+    NSMutableArray *indexPaths = [NSMutableArray new];
 
     NSInteger formIndex = [section.form.position integerValue];
     HYPForm *form = self.formsManager.forms[formIndex];
