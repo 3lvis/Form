@@ -517,12 +517,12 @@
 
     for (HYPFormField *field in deletedFields) {
         [self indexForFieldWithID:field.fieldID
-                               inSectionWithID:field.section.sectionID
-                                    completion:^(HYPFormSection *section, NSInteger index) {
-                                        if (section) {
-                                            [section.fields removeObjectAtIndex:index];
-                                        }
-                                    }];
+                  inSectionWithID:field.section.sectionID
+                       completion:^(HYPFormSection *section, NSInteger index) {
+                           if (section) {
+                               [section.fields removeObjectAtIndex:index];
+                           }
+                       }];
     }
 
     for (HYPFormSection *section in deletedSections) {
