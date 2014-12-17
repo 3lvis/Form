@@ -424,12 +424,20 @@
 
     for (HYPFormTarget *target in targets) {
 
+        BOOL foundSection = NO;
+
         if (target.type == HYPFormTargetTypeField) {
             HYPFormField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
             if (field) {
-                HYPFormSection *section = field.section;
-                NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
-                [section.fields insertObject:field atIndex:fieldIndex];
+                HYPForm *form = self.forms[[field.section.form.position integerValue]];
+
+                for (HYPFormSection *section in form.sections) {
+                    if ([section.sectionID isEqualToString:field.section.sectionID]) {
+                        foundSection = YES;
+                        NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
+                        [section.fields insertObject:field atIndex:fieldIndex];
+                    }
+                }
             }
         } else if (target.type == HYPFormTargetTypeSection) {
             HYPFormSection *section = [self.hiddenSections objectForKey:target.targetID];
@@ -440,7 +448,7 @@
             }
         }
 
-        if (target.type == HYPFormTargetTypeField) {
+        if (target.type == HYPFormTargetTypeField && foundSection) {
             HYPFormField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
             if (field) {
                 [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
