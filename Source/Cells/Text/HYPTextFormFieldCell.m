@@ -1,6 +1,6 @@
 #import "HYPTextFormFieldCell.h"
 
-#import "HYPPopoverBackgroundView.h"
+#import "HYPSubtitleView.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIFont+HYPFormsStyles.h"
@@ -10,6 +10,7 @@
 @property (nonatomic, strong) HYPTextField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) UILabel *subtitleLabel;
+@property (nonatomic, strong) HYPSubtitleView *subtitleView;
 
 @end
 
@@ -78,21 +79,20 @@
     return CGRectMake(0, 0, width, height);
 }
 
-- (UIPopoverController *)popoverController
+- (CGRect)subtitleViewFrame
 {
-    if (_popoverController) return _popoverController;
+    return CGRectMake(0, 0, 200, 44);
+}
 
-    UIViewController *viewController = [[UIViewController alloc] init];
-    [viewController.view addSubview:self.subtitleLabel];
+- (HYPSubtitleView *)subtitleView
+{
+    if (_subtitleView) return _subtitleView;
 
-    [HYPPopoverBackgroundView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
+    [HYPSubtitleView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
+    _subtitleView = [[HYPSubtitleView alloc] initWithFrame:[self subtitleViewFrame]];
+    [_subtitleView addSubview:self.subtitleLabel];
 
-    _popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
-    _popoverController.popoverBackgroundViewClass = [HYPPopoverBackgroundView class];
-    _popoverController.popoverContentSize = CGSizeMake(200, 44);
-    _popoverController.passthroughViews = @[self.superview];
-
-    return _popoverController;
+    return _subtitleView;
 }
 
 - (UILabel *)subtitleLabel
@@ -116,9 +116,7 @@
 {
     [self.textField resignFirstResponder];
 
-    if (self.popoverController.isPopoverVisible) {
-        [self.popoverController dismissPopoverAnimated:NO];
-    }
+    [self.subtitleView removeFromSuperview];
 
     return [super resignFirstResponder];
 }
@@ -223,10 +221,20 @@
 - (void)textFormFieldDidBeginEditing:(HYPTextField *)textField
 {
     if (self.field.subtitle) {
-
-        CGRect newFrame = [self labelFrameUsingString:self.field.subtitle];
-        self.popoverController.popoverContentSize = newFrame.size;
+        [self.contentView addSubview:self.subtitleView];
+        self.subtitleView.frame = [self labelFrameUsingString:self.field.subtitle];
         self.subtitleLabel.frame = [self labelFrameUsingString:self.field.subtitle];
+
+        CGRect newFrame = self.subtitleView.frame;
+
+        newFrame.origin.x = self.textField.frame.origin.x;
+        newFrame.origin.x += self.textField.frame.size.width / 2;
+        newFrame.origin.x -= newFrame.size.width / 2;
+
+        newFrame.origin.y = self.textField.frame.origin.y;
+        newFrame.origin.y -= self.textField.frame.size.height / 2;
+        newFrame.origin.y -= newFrame.size.height;
+        self.subtitleView.frame = newFrame;
 
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
@@ -235,13 +243,6 @@
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.subtitle.length)];
 
         self.subtitleLabel.attributedText = attributedString;
-
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.popoverController presentPopoverFromRect:[self popoverFrame]
-                                                    inView:self.textField
-                                  permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                  animated:YES];
-        });
     }
 }
 
@@ -253,9 +254,7 @@
         [self.textField setValid:[self.field validate]];
     }
 
-    if (self.popoverController.isPopoverVisible) {
-        [self.popoverController dismissPopoverAnimated:NO];
-    }
+    [self.subtitleView removeFromSuperview];
 }
 
 - (void)textFormField:(HYPTextField *)textField didUpdateWithText:(NSString *)text

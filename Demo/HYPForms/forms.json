@@ -9,6 +9,7 @@
           {
             "id":"first_name",
             "title":"First name",
+            "subtitle": "Fornavn",
             "type":"name",
             "size":{
               "width": 30,
