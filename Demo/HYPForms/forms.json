@@ -299,6 +299,7 @@
           {
             "id": "companies[0].name",
             "title": "Name 1",
+            "subtitle" : "Hyper",
             "type": "name",
             "validations": {
               "required": true,
