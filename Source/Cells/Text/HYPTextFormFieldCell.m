@@ -81,7 +81,28 @@
 
 - (CGRect)subtitleViewFrame
 {
-    return CGRectMake(0, 0, 200, 44);
+    CGRect frame = [self labelFrameUsingString:self.field.subtitle];
+
+    frame.size.height += [HYPSubtitleView arrowHeight];
+
+    frame.origin.x = self.textField.frame.origin.x;
+    frame.origin.x += self.textField.frame.size.width / 2;
+    frame.origin.x -= frame.size.width / 2;
+
+    if ([self.field.sectionPosition isEqualToNumber:@0]) {
+        self.subtitleView.arrowDirection = UIPopoverArrowDirectionUp;
+        frame.origin.y = self.textField.frame.origin.y;
+        frame.origin.y += self.textField.frame.size.height / 2;
+        frame.origin.y += [HYPSubtitleView arrowHeight];
+    } else {
+        self.subtitleView.arrowDirection = UIPopoverArrowDirectionDown;
+        frame.origin.y = self.textField.frame.origin.y;
+        frame.origin.y -= self.textField.frame.size.height / 2;
+        frame.origin.y -= frame.size.height;
+        frame.origin.y += [HYPSubtitleView arrowHeight];
+    }
+
+    return frame;
 }
 
 - (HYPSubtitleView *)subtitleView
@@ -89,10 +110,22 @@
     if (_subtitleView) return _subtitleView;
 
     [HYPSubtitleView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
-    _subtitleView = [[HYPSubtitleView alloc] initWithFrame:[self subtitleViewFrame]];
+    _subtitleView = [HYPSubtitleView new];
     [_subtitleView addSubview:self.subtitleLabel];
 
     return _subtitleView;
+}
+
+- (CGRect)subtitleLabelFrame
+{
+    CGRect frame = [self labelFrameUsingString:self.field.subtitle];
+
+    if (self.subtitleView.arrowDirection &&
+        self.subtitleView.arrowDirection == UIPopoverArrowDirectionUp) {
+        frame.origin.y += [HYPSubtitleView arrowHeight];
+    }
+
+    return frame;
 }
 
 - (UILabel *)subtitleLabel
@@ -222,19 +255,9 @@
 {
     if (self.field.subtitle) {
         [self.contentView addSubview:self.subtitleView];
-        self.subtitleView.frame = [self labelFrameUsingString:self.field.subtitle];
-        self.subtitleLabel.frame = [self labelFrameUsingString:self.field.subtitle];
-
-        CGRect newFrame = self.subtitleView.frame;
-
-        newFrame.origin.x = self.textField.frame.origin.x;
-        newFrame.origin.x += self.textField.frame.size.width / 2;
-        newFrame.origin.x -= newFrame.size.width / 2;
-
-        newFrame.origin.y = self.textField.frame.origin.y;
-        newFrame.origin.y -= self.textField.frame.size.height / 2;
-        newFrame.origin.y -= newFrame.size.height;
-        self.subtitleView.frame = newFrame;
+        self.subtitleView.frame = [self subtitleViewFrame];
+        self.subtitleLabel.frame = [self subtitleLabelFrame];
+        [self.superview bringSubviewToFront:self];
 
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];

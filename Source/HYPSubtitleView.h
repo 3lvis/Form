@@ -13,6 +13,8 @@
 
 + (void)setArrowBase:(CGFloat)arrowBase;
 
++ (CGFloat)arrowHeight;
+
 + (void)setArrowHeight:(CGFloat)arrowHeight;
 
 + (void)setBackgroundImageCornerRadius:(CGFloat)cornerRadius;
