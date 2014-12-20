@@ -241,15 +241,6 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
     return frame;
 }
 
-- (CGRect)popoverFrame
-{
-    CGRect frame = self.textField.frame;
-    frame.origin.x = (frame.origin.x / 2.0f) - 12.5f;
-    frame.origin.y -= 40.0f;
-
-    return frame;
-}
-
 #pragma mark - HYPTextFieldDelegate
 
 - (void)textFormFieldDidBeginEditing:(HYPTextField *)textField
