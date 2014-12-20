@@ -5,6 +5,10 @@
 #import "UIColor+ANDYHex.h"
 #import "UIFont+HYPFormsStyles.h"
 
+static const CGFloat HYPSubtitleViewMinimumWidth = 90.0f;
+static const CGFloat HYPSubtitleViewHeight = 44.0f;
+static const NSInteger HYPSubtitleNumberOfLines = 4;
+
 @interface HYPTextFormFieldCell () <HYPTextFieldDelegate>
 
 @property (nonatomic, strong) HYPTextField *textField;
@@ -71,9 +75,9 @@
         width = 8.0f * string.length;
     }
 
-    if (width < 90.0f) width = 90.0f;
+    if (width < HYPSubtitleViewMinimumWidth) width = HYPSubtitleViewMinimumWidth;
 
-    CGFloat height = 44.0f;
+    CGFloat height = HYPSubtitleViewHeight;
     height += 11.0f * components.count;
 
     return CGRectMake(0, 0, width, height);
@@ -135,7 +139,7 @@
     _subtitleLabel.textColor = [UIColor colorFromHex:@"97591D"];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    _subtitleLabel.numberOfLines = 4;
+    _subtitleLabel.numberOfLines = HYPSubtitleNumberOfLines;
 
     return _subtitleLabel;
 }
