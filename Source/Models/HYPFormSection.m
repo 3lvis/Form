@@ -6,8 +6,6 @@
 
 @implementation HYPFormSection
 
-@synthesize position = _position;
-
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
                           position:(NSInteger)position
                           disabled:(BOOL)disabled
