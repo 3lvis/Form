@@ -9,3 +9,4 @@ JSON driven forms.
 - [ ] Explain rules
 - [ ] Explain formulas
 - [ ] Explain structure
+- [ ] Explain targets
