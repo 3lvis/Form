@@ -120,8 +120,7 @@
 {
     CGRect frame = [self labelFrameUsingString:self.field.subtitle];
 
-    if (self.subtitleView.arrowDirection &&
-        self.subtitleView.arrowDirection == UIPopoverArrowDirectionUp) {
+    if (self.subtitleView.arrowDirection == UIPopoverArrowDirectionUp) {
         frame.origin.y += [HYPSubtitleView arrowHeight];
     }
 
