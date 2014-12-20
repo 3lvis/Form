@@ -84,23 +84,21 @@
     CGRect frame = [self labelFrameUsingString:self.field.subtitle];
 
     frame.size.height += [HYPSubtitleView arrowHeight];
-
     frame.origin.x = self.textField.frame.origin.x;
-    frame.origin.x += self.textField.frame.size.width / 2;
-    frame.origin.x -= frame.size.width / 2;
+    frame.origin.y = self.textField.frame.origin.y;
+
+    frame.origin.x += self.textField.frame.size.width / 2 - frame.size.width / 2;
 
     if ([self.field.sectionPosition isEqualToNumber:@0]) {
         self.subtitleView.arrowDirection = UIPopoverArrowDirectionUp;
-        frame.origin.y = self.textField.frame.origin.y;
         frame.origin.y += self.textField.frame.size.height / 2;
-        frame.origin.y += [HYPSubtitleView arrowHeight];
     } else {
         self.subtitleView.arrowDirection = UIPopoverArrowDirectionDown;
-        frame.origin.y = self.textField.frame.origin.y;
         frame.origin.y -= self.textField.frame.size.height / 2;
         frame.origin.y -= frame.size.height;
-        frame.origin.y += [HYPSubtitleView arrowHeight];
     }
+
+    frame.origin.y += [HYPSubtitleView arrowHeight];
 
     return frame;
 }
