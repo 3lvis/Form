@@ -221,7 +221,7 @@
 		BD5DC2A11A35C8D500A652AD /* HYPBankAccountNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberValidator.h; sourceTree = "<group>"; };
 		BD5DC2A21A35C8D500A652AD /* HYPBankAccountNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberValidator.m; sourceTree = "<group>"; };
 		BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_calendar@2x.png"; sourceTree = "<group>"; };
-		BD7C6C2D19F686130084EF2E /* HYPForms.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = HYPForms.podspec; path = ../HYPForms.podspec; sourceTree = "<group>"; };
+		BD7C6C2D19F686130084EF2E /* HYPForms.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = HYPForms.podspec; path = ../HYPForms.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BD9A14431A3A18D6005DB106 /* HYPTextFormFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPTextFormFieldCellTests.m; sourceTree = "<group>"; };
 		BDD6495C1A436CE500C99B76 /* HYPSubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSubtitleView.h; sourceTree = "<group>"; };
 		BDD6495D1A436CE500C99B76 /* HYPSubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSubtitleView.m; sourceTree = "<group>"; };
