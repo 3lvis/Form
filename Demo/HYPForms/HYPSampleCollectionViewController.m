@@ -49,7 +49,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
                                             initialValues:self.initialValues
                                          disabledFieldIDs:@[@"display_name"]
-                                                 disabled:NO];
+                                                 disabled:YES];
 
     return _formsManager;
 }
@@ -158,13 +158,6 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     target.actionTypeString = @"hide";
 
     [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
-}
-
-#pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormResignFirstResponderNotification object:nil];
 }
 
 #pragma mark - UICollectionViewDelegate
