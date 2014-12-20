@@ -24,12 +24,6 @@
 #define COCOAPODS_VERSION_MINOR_HYPNorwegianSSN 8
 #define COCOAPODS_VERSION_PATCH_HYPNorwegianSSN 0
 
-// HYPPopoverBackgroundView
-#define COCOAPODS_POD_AVAILABLE_HYPPopoverBackgroundView
-#define COCOAPODS_VERSION_MAJOR_HYPPopoverBackgroundView 0
-#define COCOAPODS_VERSION_MINOR_HYPPopoverBackgroundView 1
-#define COCOAPODS_VERSION_PATCH_HYPPopoverBackgroundView 0
-
 // NSDictionary-ANDYSafeValue
 #define COCOAPODS_POD_AVAILABLE_NSDictionary_ANDYSafeValue
 #define COCOAPODS_VERSION_MAJOR_NSDictionary_ANDYSafeValue 0
