@@ -256,4 +256,13 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return nil;
 }
 
+- (NSNumber *)sectionPosition
+{
+    if (self.section) {
+        return self.section.position;
+    } else {
+        return nil;
+    }
+}
+
 @end

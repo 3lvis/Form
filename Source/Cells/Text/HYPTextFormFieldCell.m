@@ -1,15 +1,20 @@
 #import "HYPTextFormFieldCell.h"
 
-#import "HYPPopoverBackgroundView.h"
+#import "HYPSubtitleView.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIFont+HYPFormsStyles.h"
+
+static const CGFloat HYPSubtitleViewMinimumWidth = 90.0f;
+static const CGFloat HYPSubtitleViewHeight = 44.0f;
+static const NSInteger HYPSubtitleNumberOfLines = 4;
 
 @interface HYPTextFormFieldCell () <HYPTextFieldDelegate>
 
 @property (nonatomic, strong) HYPTextField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) UILabel *subtitleLabel;
+@property (nonatomic, strong) HYPSubtitleView *subtitleView;
 
 @end
 
@@ -70,29 +75,58 @@
         width = 8.0f * string.length;
     }
 
-    if (width < 90.0f) width = 90.0f;
+    if (width < HYPSubtitleViewMinimumWidth) width = HYPSubtitleViewMinimumWidth;
 
-    CGFloat height = 44.0f;
+    CGFloat height = HYPSubtitleViewHeight;
     height += 11.0f * components.count;
 
     return CGRectMake(0, 0, width, height);
 }
 
-- (UIPopoverController *)popoverController
+- (CGRect)subtitleViewFrame
 {
-    if (_popoverController) return _popoverController;
+    CGRect frame = [self labelFrameUsingString:self.field.subtitle];
 
-    UIViewController *viewController = [[UIViewController alloc] init];
-    [viewController.view addSubview:self.subtitleLabel];
+    frame.size.height += [HYPSubtitleView arrowHeight];
+    frame.origin.x = self.textField.frame.origin.x;
+    frame.origin.y = self.textField.frame.origin.y;
 
-    [HYPPopoverBackgroundView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
+    frame.origin.x += self.textField.frame.size.width / 2 - frame.size.width / 2;
 
-    _popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
-    _popoverController.popoverBackgroundViewClass = [HYPPopoverBackgroundView class];
-    _popoverController.popoverContentSize = CGSizeMake(200, 44);
-    _popoverController.passthroughViews = @[self.superview];
+    if ([self.field.sectionPosition isEqualToNumber:@0]) {
+        self.subtitleView.arrowDirection = UIPopoverArrowDirectionUp;
+        frame.origin.y += self.textField.frame.size.height / 2;
+    } else {
+        self.subtitleView.arrowDirection = UIPopoverArrowDirectionDown;
+        frame.origin.y -= self.textField.frame.size.height / 2;
+        frame.origin.y -= frame.size.height;
+    }
 
-    return _popoverController;
+    frame.origin.y += [HYPSubtitleView arrowHeight];
+
+    return frame;
+}
+
+- (HYPSubtitleView *)subtitleView
+{
+    if (_subtitleView) return _subtitleView;
+
+    [HYPSubtitleView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
+    _subtitleView = [HYPSubtitleView new];
+    [_subtitleView addSubview:self.subtitleLabel];
+
+    return _subtitleView;
+}
+
+- (CGRect)subtitleLabelFrame
+{
+    CGRect frame = [self labelFrameUsingString:self.field.subtitle];
+
+    if (self.subtitleView.arrowDirection == UIPopoverArrowDirectionUp) {
+        frame.origin.y += [HYPSubtitleView arrowHeight];
+    }
+
+    return frame;
 }
 
 - (UILabel *)subtitleLabel
@@ -105,7 +139,7 @@
     _subtitleLabel.textColor = [UIColor colorFromHex:@"97591D"];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    _subtitleLabel.numberOfLines = 4;
+    _subtitleLabel.numberOfLines = HYPSubtitleNumberOfLines;
 
     return _subtitleLabel;
 }
@@ -116,9 +150,7 @@
 {
     [self.textField resignFirstResponder];
 
-    if (self.popoverController.isPopoverVisible) {
-        [self.popoverController dismissPopoverAnimated:NO];
-    }
+    [self.subtitleView removeFromSuperview];
 
     return [super resignFirstResponder];
 }
@@ -209,24 +241,15 @@
     return frame;
 }
 
-- (CGRect)popoverFrame
-{
-    CGRect frame = self.textField.frame;
-    frame.origin.x = (frame.origin.x / 2.0f) - 12.5f;
-    frame.origin.y -= 40.0f;
-
-    return frame;
-}
-
 #pragma mark - HYPTextFieldDelegate
 
 - (void)textFormFieldDidBeginEditing:(HYPTextField *)textField
 {
     if (self.field.subtitle) {
-
-        CGRect newFrame = [self labelFrameUsingString:self.field.subtitle];
-        self.popoverController.popoverContentSize = newFrame.size;
-        self.subtitleLabel.frame = [self labelFrameUsingString:self.field.subtitle];
+        [self.contentView addSubview:self.subtitleView];
+        self.subtitleView.frame = [self subtitleViewFrame];
+        self.subtitleLabel.frame = [self subtitleLabelFrame];
+        [self.superview bringSubviewToFront:self];
 
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
@@ -235,13 +258,6 @@
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.subtitle.length)];
 
         self.subtitleLabel.attributedText = attributedString;
-
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.popoverController presentPopoverFromRect:[self popoverFrame]
-                                                    inView:self.textField
-                                  permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                  animated:YES];
-        });
     }
 }
 
@@ -253,9 +269,7 @@
         [self.textField setValid:[self.field validate]];
     }
 
-    if (self.popoverController.isPopoverVisible) {
-        [self.popoverController dismissPopoverAnimated:NO];
-    }
+    [self.subtitleView removeFromSuperview];
 }
 
 - (void)textFormField:(HYPTextField *)textField didUpdateWithText:(NSString *)text

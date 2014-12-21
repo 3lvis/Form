@@ -1,6 +1,6 @@
 @import UIKit;
 
-@interface HYPPopoverBackgroundView : UIPopoverBackgroundView
+@interface HYPSubtitleView : UIView
 
 @property (nonatomic) CGFloat arrowOffset;
 @property (nonatomic) UIPopoverArrowDirection arrowDirection;
@@ -12,6 +12,8 @@
 + (void)setShadowEnabled:(BOOL)shadowEnabled;
 
 + (void)setArrowBase:(CGFloat)arrowBase;
+
++ (CGFloat)arrowHeight;
 
 + (void)setArrowHeight:(CGFloat)arrowHeight;
 

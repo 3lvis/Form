@@ -2,7 +2,6 @@ PODS:
   - HYPImagePicker (0.2)
   - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.8)
-  - HYPPopoverBackgroundView (0.1)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSString-HYPContainsString (0.1)
@@ -17,7 +16,6 @@ DEPENDENCIES:
   - HYPImagePicker (from `https://github.com/hyperoslo/HYPImagePicker.git`)
   - HYPNorwegianAccountNumber
   - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
-  - HYPPopoverBackgroundView
   - NSDictionary-ANDYSafeValue
   - NSJSONSerialization-ANDYJSONFile
   - NSString-HYPContainsString (from `https://github.com/hyperoslo/NSString-HYPContainsString.git`)
@@ -65,7 +63,6 @@ SPEC CHECKSUMS:
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
   HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
   HYPNorwegianSSN: d7a82481bca14cdc20f0867102c11f47274c9753
-  HYPPopoverBackgroundView: 4f5b955f9470a3cbe6afb0fe66ae41bed4144c43
   NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
   NSString-HYPContainsString: 35c3ef0753507203d53c1fc4e83d71f9c1e8bd9e

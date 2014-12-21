@@ -80,6 +80,7 @@
 		BD5DC2A31A35C8D500A652AD /* HYPBankAccountNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5DC2A21A35C8D500A652AD /* HYPBankAccountNumberValidator.m */; };
 		BD64BEFF1A0AC67B00A1D808 /* ic_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */; };
 		BD9A14441A3A18D6005DB106 /* HYPTextFormFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9A14431A3A18D6005DB106 /* HYPTextFormFieldCellTests.m */; };
+		BDD6495E1A436CE500C99B76 /* HYPSubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD6495D1A436CE500C99B76 /* HYPSubtitleView.m */; };
 		BDEEFE4319FA2A9D00D0C284 /* HYPPostalCodeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEEFE4219FA2A9D00D0C284 /* HYPPostalCodeValidator.m */; };
 		BDF644181A27A01600C752CA /* ic_mini_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDF644171A27A01600C752CA /* ic_mini_clear@2x.png */; };
 /* End PBXBuildFile section */
@@ -220,8 +221,10 @@
 		BD5DC2A11A35C8D500A652AD /* HYPBankAccountNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPBankAccountNumberValidator.h; sourceTree = "<group>"; };
 		BD5DC2A21A35C8D500A652AD /* HYPBankAccountNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPBankAccountNumberValidator.m; sourceTree = "<group>"; };
 		BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_calendar@2x.png"; sourceTree = "<group>"; };
-		BD7C6C2D19F686130084EF2E /* HYPForms.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = HYPForms.podspec; path = ../HYPForms.podspec; sourceTree = "<group>"; };
+		BD7C6C2D19F686130084EF2E /* HYPForms.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = HYPForms.podspec; path = ../HYPForms.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BD9A14431A3A18D6005DB106 /* HYPTextFormFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPTextFormFieldCellTests.m; sourceTree = "<group>"; };
+		BDD6495C1A436CE500C99B76 /* HYPSubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSubtitleView.h; sourceTree = "<group>"; };
+		BDD6495D1A436CE500C99B76 /* HYPSubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSubtitleView.m; sourceTree = "<group>"; };
 		BDEEFE4119FA2A9D00D0C284 /* HYPPostalCodeValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeValidator.h; sourceTree = "<group>"; };
 		BDEEFE4219FA2A9D00D0C284 /* HYPPostalCodeValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeValidator.m; sourceTree = "<group>"; };
 		BDF644171A27A01600C752CA /* ic_mini_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_clear@2x.png"; sourceTree = "<group>"; };
@@ -347,6 +350,8 @@
 				14EE7ED51A269D5100AC17B0 /* HYPFormsManager.h */,
 				14EE7ED61A269D5100AC17B0 /* HYPFormsManager.m */,
 				4445D50F19EBC6B80034A5D7 /* Others */,
+				BDD6495C1A436CE500C99B76 /* HYPSubtitleView.h */,
+				BDD6495D1A436CE500C99B76 /* HYPSubtitleView.m */,
 			);
 			name = Source;
 			path = ../Source;
@@ -768,6 +773,7 @@
 				4408F19B19E81EA6005AE53F /* HYPFormField.m in Sources */,
 				1416FB3E1A28758E00991E33 /* HYPDateFormFieldCell.m in Sources */,
 				BD5DC2A31A35C8D500A652AD /* HYPBankAccountNumberValidator.m in Sources */,
+				BDD6495E1A436CE500C99B76 /* HYPSubtitleView.m in Sources */,
 				4408F1BF19E81F67005AE53F /* HYPNameInputValidator.m in Sources */,
 				4445D51B19EBC78A0034A5D7 /* UIFont+HYPFormsStyles.m in Sources */,
 				14D7C8331A28B00B004425B3 /* HYPFieldValuesTableViewHeader.m in Sources */,

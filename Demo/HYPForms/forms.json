@@ -9,6 +9,7 @@
           {
             "id":"first_name",
             "title":"First name",
+            "subtitle": "Fornavn",
             "type":"name",
             "size":{
               "width": 30,
@@ -298,6 +299,7 @@
           {
             "id": "companies[0].name",
             "title": "Name 1",
+            "subtitle" : "Hyper",
             "type": "name",
             "validations": {
               "required": true,

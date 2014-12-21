@@ -1,11 +1,9 @@
-#import "HYPPopoverBackgroundView.h"
-
-@import QuartzCore;
+#import "HYPSubtitleView.h"
 
 static BOOL HYPPopoverBackgroundShadowEnabled = YES;
 static CGFloat HYPPopoverBackgroundArrowBase = 35.0f;
 static CGFloat HYPPopoverBackgroundArrowHeight = 19.0f;
-static CGFloat HYPPopoverBackgroundContentInset = 9.0f;
+static CGFloat HYPPopoverBackgroundContentInset = 4.5f;
 static CGFloat HYPPopoverBackgroundCornerRadius = 8.0f;
 static const CGFloat HYPPopoverBackgroundImageSize = 40.0f;
 static const CGFloat HYPPopoverBackgroundBottomContentInset = 0.0f;
@@ -19,14 +17,14 @@ static UIImage *HYPPopoverBackgroundLeftArrowImage = nil;
 static UIImage *HYPPopoverBackgroundRightArrowImage = nil;
 static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
 
-@interface HYPPopoverBackgroundView ()
+@interface HYPSubtitleView ()
 
 @property (nonatomic, retain) UIImageView *arrowImageView;
 @property (nonatomic, retain) UIImageView *popoverBackgroundImageView;
 
 @end
 
-@implementation HYPPopoverBackgroundView
+@implementation HYPSubtitleView
 
 @synthesize arrowOffset, arrowDirection;
 
@@ -106,7 +104,7 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
 
 + (void)rebuildArrowImages
 {
-    [HYPPopoverBackgroundView buildArrows:HYPPopoverBackgroundTintColor];
+    [HYPSubtitleView buildArrows:HYPPopoverBackgroundTintColor];
 }
 
 + (void)buildArrows:(UIColor *)tintColor
@@ -202,7 +200,7 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    [HYPPopoverBackgroundView buildArrows:HYPPopoverBackgroundTintColor];
+    [HYPSubtitleView buildArrows:HYPPopoverBackgroundTintColor];
 
     _popoverBackgroundImageView = [[UIImageView alloc] initWithImage:HYPPopoverBackgroundBackgroundImage];
     [self addSubview:_popoverBackgroundImageView];
@@ -325,3 +323,4 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
 }
 
 @end
+
