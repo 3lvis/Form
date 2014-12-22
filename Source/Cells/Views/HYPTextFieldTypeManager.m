@@ -5,6 +5,7 @@
 - (void)setUpType:(HYPTextFieldType)type forTextField:(UITextField *)textField
 {
     switch (type) {
+        case HYPTextFieldTypeInfo        : [self setupDefaultTextField:textField]; break;
         case HYPTextFieldTypeDefault     : [self setupDefaultTextField:textField]; break;
         case HYPTextFieldTypeName        : [self setupNameTextField:textField]; break;
         case HYPTextFieldTypeUsername    : [self setupUsernameTextField:textField]; break;

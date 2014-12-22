@@ -118,17 +118,18 @@
 
     switch (field.type) {
         case HYPFormFieldTypeDate:
-        identifier = HYPDateFormFieldCellIdentifier;
-        break;
+            identifier = HYPDateFormFieldCellIdentifier;
+            break;
         case HYPFormFieldTypeSelect:
-        identifier = HYPSelectFormFieldCellIdentifier;
-        break;
+            identifier = HYPSelectFormFieldCellIdentifier;
+            break;
 
+        case HYPFormFieldTypeInfo:
         case HYPFormFieldTypeText:
         case HYPFormFieldTypeFloat:
         case HYPFormFieldTypeNumber:
-        identifier = HYPTextFormFieldCellIdentifier;
-        break;
+            identifier = HYPTextFormFieldCellIdentifier;
+            break;
 
         case HYPFormFieldTypeCustom: abort();
     }
