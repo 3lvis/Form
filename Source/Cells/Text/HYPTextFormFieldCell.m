@@ -203,7 +203,7 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
             value = [formatter numberFromString:fieldValue];
         }
 
-        return [NSString stringWithFormat:@"%.2f", [value floatValue]];
+        return [NSString stringWithFormat:@"%.2f", [value doubleValue]];
     }
 
     return field.fieldValue;
