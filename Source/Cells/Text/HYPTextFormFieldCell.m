@@ -264,15 +264,26 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
         self.subtitleLabel.frame = [self subtitleLabelFrame];
         [self.superview bringSubviewToFront:self];
 
+        CGRect subtitleViewFrame = self.subtitleView.frame;
+
         if (self.subtitleView.frame.origin.x < 0) {
-            CGFloat offset = self.subtitleView.frame.origin.x;
-            CGRect subtitleViewFrame = self.subtitleView.frame;
-
+            self.subtitleView.arrowOffset = subtitleViewFrame.origin.x;
             subtitleViewFrame.origin.x = 0;
-
-            self.subtitleView.arrowOffset = offset;
-            self.subtitleView.frame = subtitleViewFrame;
         }
+
+        CGFloat windowWidth = self.window.frame.size.width;
+        BOOL isOutOfBounds = ((subtitleViewFrame.size.width + self.frame.origin.x) > windowWidth);
+        if (isOutOfBounds) {
+            subtitleViewFrame.origin.x = windowWidth;
+            subtitleViewFrame.origin.x -= subtitleViewFrame.size.width;
+            subtitleViewFrame.origin.x -= self.frame.origin.x;
+
+            self.subtitleView.arrowOffset = subtitleViewFrame.size.width / 2;
+            self.subtitleView.arrowOffset -= self.textField.frame.size.width / 2;
+            self.subtitleView.arrowOffset -= 39.0f;
+        }
+
+        self.subtitleView.frame = subtitleViewFrame;
 
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
