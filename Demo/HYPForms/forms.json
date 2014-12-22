@@ -51,7 +51,8 @@
           {
             "id":"display_name",
             "title":"Display name",
-            "type":"text",
+            "subtitle":"This is the name that is going to be used across the application.",
+            "type":"info",
             "size":{
               "width": 40,
               "height": 1

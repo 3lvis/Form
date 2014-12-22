@@ -33,6 +33,9 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignFirstResponder) name:HYPFormResignFirstResponderNotification object:nil];
     }
 
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapAction)];
+    [self addGestureRecognizer:tapGestureRecognizer];
+
     return self;
 }
 
@@ -208,6 +211,16 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
 
 #pragma mark - Actions
 
+- (void)cellTapAction
+{
+    BOOL shouldDisplaySubtitle = (self.field.type == HYPFormFieldTypeInfo && self.field.subtitle);
+    if (shouldDisplaySubtitle) {
+        [self showSubtitle];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormResignFirstResponderNotification object:nil];
+    }
+}
+
 - (void)focusAction
 {
     [self.textField becomeFirstResponder];
@@ -241,11 +254,11 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
     return frame;
 }
 
-#pragma mark - HYPTextFieldDelegate
-
-- (void)textFormFieldDidBeginEditing:(HYPTextField *)textField
+- (void)showSubtitle
 {
     if (self.field.subtitle) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:HYPFormResignFirstResponderNotification object:nil];
+
         [self.contentView addSubview:self.subtitleView];
         self.subtitleView.frame = [self subtitleViewFrame];
         self.subtitleLabel.frame = [self subtitleLabelFrame];
@@ -259,6 +272,13 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
 
         self.subtitleLabel.attributedText = attributedString;
     }
+}
+
+#pragma mark - HYPTextFieldDelegate
+
+- (void)textFormFieldDidBeginEditing:(HYPTextField *)textField
+{
+    [self showSubtitle];
 }
 
 - (void)textFormFieldDidEndEditing:(HYPTextField *)textField

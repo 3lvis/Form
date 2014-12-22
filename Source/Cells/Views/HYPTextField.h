@@ -5,6 +5,7 @@
 
 typedef NS_ENUM(NSInteger, HYPTextFieldType) {
     HYPTextFieldTypeDefault = 0,
+    HYPTextFieldTypeInfo,
     HYPTextFieldTypeName,
     HYPTextFieldTypeUsername,
     HYPTextFieldTypePhoneNumber,
