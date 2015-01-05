@@ -97,12 +97,24 @@
             },
             "values":[
               {
+                "id":0,
+                "title":"User defined",
+                "subtitle":"",
+                "targets":[
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"enable"
+                  }
+                ]
+              },
+              {
                 "id":1,
                 "title":"Mr.Melk",
                 "subtitle":"Bork!",
                 "targets":[
                   {
-                    "id":"first_name",
+                    "id":"display_name",
                     "type":"field",
                     "action":"disable"
                   }
@@ -114,9 +126,9 @@
                 "subtitle":"Other subtitle",
                 "targets":[
                   {
-                    "id":"first_name",
+                    "id":"display_name",
                     "type":"field",
-                    "action":"enable"
+                    "action":"disable"
                   }
                 ]
               }
