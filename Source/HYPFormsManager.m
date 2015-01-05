@@ -560,7 +560,6 @@
         if (target.targetValue) {
             field.fieldValue = target.targetValue;
             [self.values setObject:field.fieldValue forKey:field.fieldID];
-            
         } else {
             NSArray *fieldIDs = [field.formula hyp_variables];
             NSMutableDictionary *values = [NSMutableDictionary new];
