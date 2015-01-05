@@ -637,10 +637,8 @@
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
-        __block HYPFormField *field;
-
-        [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *foundField, NSIndexPath *indexPath) {
-            if (foundField) {
+        [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+            if (field) {
                 field.disabled = !enabled;
                 if (indexPath) [indexPaths addObject:indexPath];
             }
