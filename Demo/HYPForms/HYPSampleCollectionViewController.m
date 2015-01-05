@@ -79,7 +79,6 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
                 }
             }];
         }
-
     };
 
     return _dataSource;
