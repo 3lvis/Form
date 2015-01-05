@@ -117,7 +117,12 @@
                   {
                     "id":"display_name",
                     "type":"field",
-                    "action":"disable",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"update",
                     "value":"Mr.Melk"
                   }
                 ]
@@ -130,7 +135,12 @@
                   {
                     "id":"display_name",
                     "type":"field",
-                    "action":"disable",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"update",
                     "value":"John Hyperseed"
                   }
                 ]
