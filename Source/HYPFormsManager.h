@@ -9,6 +9,7 @@
 @property (nonatomic, strong) NSMutableDictionary *hiddenSections;
 @property (nonatomic, strong) NSArray *disabledFieldsIDs;
 @property (nonatomic, strong) NSMutableDictionary *values;
+@property (nonatomic) BOOL disabled;
 
 - (instancetype)initWithJSON:(id)JSON
                initialValues:(NSDictionary *)initialValues

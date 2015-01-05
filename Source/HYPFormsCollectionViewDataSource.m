@@ -282,6 +282,7 @@
 - (void)disable:(BOOL)disabled
 {
     self.disabled = disabled;
+    self.formsManager.disabled = disabled;
 
     NSMutableDictionary *fields = [NSMutableDictionary new];
 
@@ -469,8 +470,10 @@
             [self reloadItemsAtIndexPaths:updatedIndexPaths];
         } break;
         case HYPFormTargetActionEnable: {
-            NSArray *enabledIndexPaths = [self.formsManager enableTargets:@[target]];
-            [self reloadItemsAtIndexPaths:enabledIndexPaths];
+            if (!self.formsManager.disabled) {
+                NSArray *enabledIndexPaths = [self.formsManager enableTargets:@[target]];
+                [self reloadItemsAtIndexPaths:enabledIndexPaths];
+            }
         } break;
         case HYPFormTargetActionDisable: {
             NSArray *disabledIndexPaths = [self.formsManager enableTargets:@[target]];
@@ -533,7 +536,8 @@
 
                               }
 
-                              if (enabledTargets.count > 0) {
+                              BOOL shouldRunEnableTargets = (enabledTargets.count > 0 && !self.formsManager.disabled);
+                              if (shouldRunEnableTargets) {
                                   enabledIndexPaths = [self.formsManager enableTargets:enabledTargets];
 
                                   [self reloadItemsAtIndexPaths:enabledIndexPaths];

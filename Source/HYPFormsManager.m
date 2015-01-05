@@ -28,6 +28,7 @@
     if (!self) return nil;
 
     _disabledFieldsIDs = disabledFieldIDs;
+    _disabled = disabled;
 
     [self generateFormsWithJSON:JSON
                   initialValues:initialValues

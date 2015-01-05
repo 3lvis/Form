@@ -184,6 +184,7 @@
               {
                 "id":0,
                 "title":"Permanent",
+                "default":true,
                 "targets":[
                   {
                     "id": "end_date",
