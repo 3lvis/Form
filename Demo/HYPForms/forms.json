@@ -100,7 +100,6 @@
                 "id":0,
                 "title":"User defined",
                 "subtitle":"",
-                "default":true,
                 "targets":[
                   {
                     "id":"display_name",
@@ -113,11 +112,13 @@
                 "id":1,
                 "title":"Mr.Melk",
                 "subtitle":"Bork!",
+                "default":true,
                 "targets":[
                   {
                     "id":"display_name",
                     "type":"field",
-                    "action":"disable"
+                    "action":"disable",
+                    "value":"Mr.Melk"
                   }
                 ]
               },
@@ -129,7 +130,8 @@
                   {
                     "id":"display_name",
                     "type":"field",
-                    "action":"disable"
+                    "action":"disable",
+                    "value":"John Hyperseed"
                   }
                 ]
               }
