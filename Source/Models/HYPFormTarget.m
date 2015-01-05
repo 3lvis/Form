@@ -27,6 +27,18 @@
                         actionType:HYPFormTargetActionHide];
 }
 
++ (HYPFormTarget *)enableFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionEnable];
+}
+
++ (HYPFormTarget *)disableFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionDisable];
+}
+
 + (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs
 {
     NSMutableArray *targets = [NSMutableArray new];
@@ -74,6 +86,26 @@
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self hideSectionTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)enableFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self enableFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)disableFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self disableFieldTargetWithID:targetID]];
     }
 
     return targets;
@@ -132,6 +164,10 @@
         self.actionType = HYPFormTargetActionHide;
     } else if ([actionTypeString isEqualToString:@"update"]){
         self.actionType = HYPFormTargetActionUpdate;
+    } else if ([actionTypeString isEqualToString:@"enable"]) {
+        self.actionType = HYPFormTargetActionEnable;
+    } else if ([actionTypeString isEqualToString:@"disable"]) {
+        self.actionType = HYPFormTargetActionDisable;
     } else {
         self.actionType = HYPFormTargetActionNone;
     }
@@ -140,11 +176,15 @@
 + (void)filteredTargets:(NSArray*)targets
                filtered:(void (^)(NSArray *shownTargets,
                                   NSArray *hiddenTargets,
-                                  NSArray *updatedTargets))filtered
+                                  NSArray *updatedTargets,
+                                  NSArray *enabledTargets,
+                                  NSArray *disabledTargets))filtered
 {
     NSMutableArray *shown = [NSMutableArray new];
     NSMutableArray *hidden = [NSMutableArray new];
     NSMutableArray *updated = [NSMutableArray new];
+    NSMutableArray *enabled = [NSMutableArray new];
+    NSMutableArray *disabled = [NSMutableArray new];
 
     // TODO: balance show + hide
     // TODO: balance update + hide
@@ -161,13 +201,19 @@
             case HYPFormTargetActionUpdate:
                 if (![updated containsObject:target]) [updated addObject:target];
                 break;
+            case HYPFormTargetActionEnable:
+                if (![updated containsObject:target]) [enabled addObject:target];
+                break;
+            case HYPFormTargetActionDisable:
+                if (![updated containsObject:target]) [disabled addObject:target];
+                break;
             case HYPFormTargetActionNone:
                 break;
         }
     }
 
     if (filtered) {
-        filtered(shown, hidden, updated);
+        filtered(shown, hidden, updated, enabled, disabled);
     }
 }
 

@@ -99,12 +99,26 @@
               {
                 "id":1,
                 "title":"Mr.Melk",
-                "subtitle":"Bork!"
+                "subtitle":"Bork!",
+                "targets":[
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"disable"
+                  }
+                ]
               },
               {
                 "id":2,
                 "title":"John Hyperseed",
-                "subtitle":"Other subtitle"
+                "subtitle":"Other subtitle",
+                "targets":[
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"enable"
+                  }
+                ]
               }
             ]
           },

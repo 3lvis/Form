@@ -619,6 +619,37 @@
     return updatedIndexPaths;
 }
 
+- (NSArray *)enableTargets:(NSArray *)targets
+{
+    return [self updateTargets:targets withEnabled:YES];
+}
+
+- (NSArray *)disableTargets:(NSArray *)targets
+{
+    return [self updateTargets:targets withEnabled:NO];
+}
+
+- (NSArray *)updateTargets:(NSArray *)targets withEnabled:(BOOL)enabled
+{
+    NSMutableArray *indexPaths = [NSMutableArray new];
+
+    for (HYPFormTarget *target in targets) {
+        if (target.type == HYPFormTargetTypeSection) continue;
+        if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
+
+        __block HYPFormField *field;
+
+        [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *foundField, NSIndexPath *indexPath) {
+            if (foundField) {
+                field.disabled = !enabled;
+                if (indexPath) [indexPaths addObject:indexPath];
+            }
+        }];
+    }
+
+    return indexPaths;
+}
+
 - (void)indexForSection:(HYPFormSection *)section form:(HYPForm *)form completion:(void (^)(BOOL found, NSInteger index))completion
 {
     __block NSInteger index = 0;

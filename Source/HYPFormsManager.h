@@ -38,5 +38,7 @@
 - (NSArray *)showTargets:(NSArray *)targets;
 - (NSArray *)hideTargets:(NSArray *)targets;
 - (NSArray *)updateTargets:(NSArray *)targets;
+- (NSArray *)enableTargets:(NSArray *)targets;
+- (NSArray *)disableTargets:(NSArray *)targets;
 
 @end

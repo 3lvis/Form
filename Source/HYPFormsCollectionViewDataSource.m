@@ -468,6 +468,14 @@
             NSArray *updatedIndexPaths = [self.formsManager updateTargets:@[target]];
             [self reloadItemsAtIndexPaths:updatedIndexPaths];
         } break;
+        case HYPFormTargetActionEnable: {
+            NSArray *enabledIndexPaths = [self.formsManager enableTargets:@[target]];
+            [self reloadItemsAtIndexPaths:enabledIndexPaths];
+        } break;
+        case HYPFormTargetActionDisable: {
+            NSArray *disabledIndexPaths = [self.formsManager enableTargets:@[target]];
+            [self reloadItemsAtIndexPaths:disabledIndexPaths];
+        } break;
         case HYPFormTargetActionNone: break;
     }
 }
@@ -485,13 +493,17 @@
     [HYPFormTarget filteredTargets:targets
                           filtered:^(NSArray *shownTargets,
                                      NSArray *hiddenTargets,
-                                     NSArray *updatedTargets) {
+                                     NSArray *updatedTargets,
+                                     NSArray *enabledTargets,
+                                     NSArray *disabledTargets) {
                               shownTargets  = [self sortTargets:shownTargets];
                               hiddenTargets = [self sortTargets:hiddenTargets];
 
                               NSArray *insertedIndexPaths;
                               NSArray *deletedIndexPaths;
                               NSArray *updatedIndexPaths;
+                              NSArray *enabledIndexPaths;
+                              NSArray *disabledIndexPaths;
 
                               if (shownTargets.count > 0) {
                                   insertedIndexPaths = [self.formsManager showTargets:shownTargets];
@@ -519,6 +531,18 @@
                                       [self reloadItemsAtIndexPaths:updatedIndexPaths];
                                   }
 
+                              }
+
+                              if (enabledTargets.count > 0) {
+                                  enabledIndexPaths = [self.formsManager enableTargets:enabledTargets];
+
+                                  [self reloadItemsAtIndexPaths:enabledIndexPaths];
+                              }
+
+                              if (disabledTargets.count > 0) {
+                                  disabledIndexPaths = [self.formsManager disableTargets:disabledTargets];
+
+                                  [self reloadItemsAtIndexPaths:disabledIndexPaths];
                               }
                           }];
 }
