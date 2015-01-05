@@ -124,6 +124,12 @@
                     "type":"field",
                     "action":"update",
                     "value":"Mr.Melk"
+                  },
+                  {
+                    "id":"contract_type",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":0
                   }
                 ]
               },
@@ -141,7 +147,13 @@
                     "id":"display_name",
                     "type":"field",
                     "action":"update",
-                    "value":"John Hyperseed"
+                    "target_value":"John Hyperseed"
+                  },
+                  {
+                    "id":"contract_type",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":1
                   }
                 ]
               }

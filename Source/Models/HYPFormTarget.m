@@ -11,6 +11,7 @@
     _targetID = [dictionary andy_valueForKey:@"id"];
     self.typeString = [dictionary andy_valueForKey:@"type"];
     self.actionTypeString = [dictionary andy_valueForKey:@"action"];
+    self.targetValue = [dictionary andy_valueForKey:@"target_value"];
 
     return self;
 }
