@@ -66,7 +66,12 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
             }
         }
 
-        self.fieldValueLabel.text = (defaultFieldValue) ? defaultFieldValue.title : nil;
+        if (defaultFieldValue) {
+            self.field.fieldValue = defaultFieldValue;
+            [self updateWithField:self.field];
+        } else {
+            self.fieldValueLabel.text = nil;
+        }
     }
 }
 
