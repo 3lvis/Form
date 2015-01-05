@@ -533,7 +533,6 @@
                                   } else {
                                       [self reloadItemsAtIndexPaths:updatedIndexPaths];
                                   }
-
                               }
 
                               BOOL shouldRunEnableTargets = (enabledTargets.count > 0 && !self.formsManager.disabled);
