@@ -102,6 +102,16 @@
                 "subtitle":"",
                 "targets":[
                   {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"enable"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"enable"
+                  },
+                  {
                     "id":"display_name",
                     "type":"field",
                     "action":"enable"
@@ -114,6 +124,16 @@
                 "subtitle":"Bork!",
                 "default":true,
                 "targets":[
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
                   {
                     "id":"display_name",
                     "type":"field",
@@ -138,6 +158,16 @@
                 "title":"John Hyperseed",
                 "subtitle":"Other subtitle",
                 "targets":[
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
                   {
                     "id":"display_name",
                     "type":"field",
