@@ -57,25 +57,7 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
             }
         }
     } else {
-        HYPFieldValue *defaultFieldValue;
-
-        for (HYPFieldValue *fieldValue in field.values) {
-            if (fieldValue.defaultValue) {
-                defaultFieldValue = fieldValue;
-                self.field.fieldValue = defaultFieldValue;
-                [self updateWithField:self.field];
-
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
-                        [self.delegate fieldCell:self updatedWithField:self.field];
-                    }
-                });
-
-                break;
-            }
-        }
-
-        if (!defaultFieldValue) self.fieldValueLabel.text = nil;
+        self.fieldValueLabel.text = nil;
     }
 }
 

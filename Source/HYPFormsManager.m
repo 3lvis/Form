@@ -128,6 +128,11 @@
                             if (target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
                         }
                     }
+                } else {
+                    BOOL shouldUseDefaultValue = (fieldValue.defaultValue && !field.fieldValue);
+                    if (shouldUseDefaultValue) {
+                        field.fieldValue = fieldValue;
+                    }
                 }
             }
         }
