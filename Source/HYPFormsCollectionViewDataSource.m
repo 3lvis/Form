@@ -321,7 +321,9 @@
                 if (hasFieldValue) {
                     HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
                     if (fieldValue.targets.count > 0) {
-                        [self processTargets:fieldValue.targets];
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [self processTargets:fieldValue.targets];
+                        });
                     }
                 }
             }
