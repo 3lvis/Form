@@ -98,9 +98,37 @@
             "values":[
               {
                 "id":0,
-                "title":"User defined",
+                "title":"Generated",
+                "subtitle":"Generate using firstname & lastname",
                 "default":true,
-                "subtitle":"",
+                "targets":[
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"enable"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"enable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Override",
+                "subtitle":"Enable manual editing for the display name",
+                "default":true,
                 "targets":[
                   {
                     "id":"first_name",
@@ -125,7 +153,7 @@
                 ]
               },
               {
-                "id":1,
+                "id":2,
                 "title":"Mr.Melk",
                 "subtitle":"Bork!",
                 "targets":[
@@ -170,7 +198,7 @@
                 ]
               },
               {
-                "id":2,
+                "id":3,
                 "title":"John Hyperseed",
                 "subtitle":"Other subtitle",
                 "targets":[
