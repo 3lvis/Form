@@ -115,6 +115,11 @@
                     "id":"display_name",
                     "type":"field",
                     "action":"enable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"update"
                   }
                 ]
               },
