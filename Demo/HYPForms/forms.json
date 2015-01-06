@@ -145,10 +145,21 @@
                     "action":"disable"
                   },
                   {
-                    "id":"display_name",
+                    "id":"first_name",
                     "type":"field",
                     "action":"update",
-                    "target_value":"Mr.Melk"
+                    "target_value":"Mr."
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":"Melk"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"update"
                   },
                   {
                     "id":"contract_type",
@@ -174,15 +185,21 @@
                     "action":"disable"
                   },
                   {
-                    "id":"display_name",
+                    "id":"first_name",
                     "type":"field",
-                    "action":"disable"
+                    "action":"update",
+                    "target_value":"John"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":"Hyperseed"
                   },
                   {
                     "id":"display_name",
                     "type":"field",
-                    "action":"update",
-                    "target_value":"John Hyperseed"
+                    "action":"update"
                   },
                   {
                     "id":"contract_type",
