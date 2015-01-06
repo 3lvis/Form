@@ -119,6 +119,13 @@
     XCTAssertEqualObjects(targetField.fieldValue, @"John Hyperseed");
 }
 
+- (void)testDefaultValue
+{
+    HYPFormField *usernameField = [self.manager fieldWithID:@"username" includingHiddenFields:YES];
+
+    XCTAssertTrue(usernameField.fieldValue);
+}
+
 #pragma mark - HYPFormsLayoutDataSource
 
 - (NSArray *)forms
