@@ -36,7 +36,7 @@
                                            initialValues:nil
                                         disabledFieldIDs:nil
                                                 disabled:NO];
-    
+
     self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView
                                                                        andFormsManager:self.manager];
 }
@@ -80,6 +80,27 @@
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 0);
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"last_name"]];
+}
+
+- (void)testEnableAndDisableTargets
+{
+    HYPFormField *targetField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
+
+    XCTAssertFalse(targetField.disabled);
+
+    HYPFormTarget *disableTarget = [HYPFormTarget disableFieldTargetWithID:@"display_name"];
+
+    [self.dataSource processTarget:disableTarget];
+
+    [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
+
+    XCTAssertTrue(targetField.disabled);
+
+    HYPFormTarget *enableTarget = [HYPFormTarget enableFieldTargetWithID:@"display_name"];
+
+    [self.dataSource processTargets:@[enableTarget]];
+
+    XCTAssertFalse(targetField.disabled);
 }
 
 #pragma mark - HYPFormsLayoutDataSource
