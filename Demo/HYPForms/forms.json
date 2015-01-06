@@ -194,7 +194,7 @@
                     "id":"last_name",
                     "type":"field",
                     "action":"update",
-                    "target_value":"Hyperseed"
+                    "target_value":"Hyperseed"
                   },
                   {
                     "id":"display_name",
