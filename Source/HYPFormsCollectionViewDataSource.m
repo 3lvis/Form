@@ -6,6 +6,7 @@
 #import "HYPTextFormFieldCell.h"
 #import "HYPSelectFormFieldCell.h"
 #import "HYPDateFormFieldCell.h"
+#import "HYPFieldValue.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
@@ -305,11 +306,25 @@
     }
 
     for (NSString *fieldID in fields) {
-        BOOL shouldDisable = (![self.formsManager.disabledFieldsIDs containsObject:fieldID]);
+        HYPFormField *field = [fields valueForKey:fieldID];
+        BOOL shouldChangeState = (![self.formsManager.disabledFieldsIDs containsObject:fieldID]);
 
-        if (shouldDisable) {
-            HYPFormField *field = [fields valueForKey:fieldID];
+        if (disabled) {
+            field.disabled = YES;
+        } else if (shouldChangeState) {
             field.disabled = disabled;
+
+            if (field.targets.count > 0) {
+                [self processTargets:field.targets];
+            } else if (field.type == HYPFormFieldTypeSelect) {
+                BOOL hasFieldValue = (field.fieldValue && [field.fieldValue isKindOfClass:[HYPFieldValue class]]);
+                if (hasFieldValue) {
+                    HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
+                    if (fieldValue.targets.count > 0) {
+                        [self processTargets:fieldValue.targets];
+                    }
+                }
+            }
         }
     }
 
