@@ -132,6 +132,7 @@
                     BOOL shouldUseDefaultValue = (fieldValue.defaultValue && !field.fieldValue);
                     if (shouldUseDefaultValue) {
                         field.fieldValue = fieldValue;
+                        self.values[field.fieldID] = fieldValue.valueID;
                     }
                 }
             }
