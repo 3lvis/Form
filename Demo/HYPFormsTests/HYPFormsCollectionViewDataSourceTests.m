@@ -103,6 +103,22 @@
     XCTAssertFalse(targetField.disabled);
 }
 
+- (void)testUpdatingTargetValue
+{
+    HYPFormField *targetField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
+    XCTAssertEqualObjects(targetField.fieldValue, @" ");
+
+    HYPFormTarget *updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
+                                                                              @"id" : @"display_name",
+                                                                              @"type" : @"field",
+                                                                              @"action" : @"update",
+                                                                              @"target_value": @"John Hyperseed"}];
+
+    [self.dataSource processTarget:updateTarget];
+
+    XCTAssertEqualObjects(targetField.fieldValue, @"John Hyperseed");
+}
+
 #pragma mark - HYPFormsLayoutDataSource
 
 - (NSArray *)forms
