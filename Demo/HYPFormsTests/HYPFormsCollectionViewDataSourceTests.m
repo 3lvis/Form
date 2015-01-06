@@ -123,7 +123,7 @@
 {
     HYPFormField *usernameField = [self.manager fieldWithID:@"username" includingHiddenFields:YES];
 
-    XCTAssertTrue(usernameField.fieldValue);
+    XCTAssertNotNil(usernameField.fieldValue);
 }
 
 #pragma mark - HYPFormsLayoutDataSource
