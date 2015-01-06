@@ -493,7 +493,7 @@
             }
         } break;
         case HYPFormTargetActionDisable: {
-            NSArray *disabledIndexPaths = [self.formsManager enableTargets:@[target]];
+            NSArray *disabledIndexPaths = [self.formsManager disableTargets:@[target]];
             [self reloadItemsAtIndexPaths:disabledIndexPaths];
         } break;
         case HYPFormTargetActionNone: break;
