@@ -99,6 +99,7 @@
               {
                 "id":0,
                 "title":"User defined",
+                "default":true,
                 "subtitle":"",
                 "targets":[
                   {
@@ -127,7 +128,6 @@
                 "id":1,
                 "title":"Mr.Melk",
                 "subtitle":"Bork!",
-                "default":true,
                 "targets":[
                   {
                     "id":"first_name",
