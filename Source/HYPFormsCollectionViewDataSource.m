@@ -305,7 +305,7 @@
     }
 
     for (NSString *fieldID in fields) {
-        BOOL shouldDisable = (![fieldID isEqualToString:@"blank"] && ![self.formsManager.disabledFieldsIDs containsObject:fieldID]);
+        BOOL shouldDisable = (![self.formsManager.disabledFieldsIDs containsObject:fieldID]);
 
         if (shouldDisable) {
             HYPFormField *field = [fields valueForKey:fieldID];
