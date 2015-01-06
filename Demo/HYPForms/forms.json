@@ -123,7 +123,7 @@
                     "id":"display_name",
                     "type":"field",
                     "action":"update",
-                    "value":"Mr.Melk"
+                    "target_value":"Mr.Melk"
                   },
                   {
                     "id":"contract_type",
