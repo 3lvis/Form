@@ -14,6 +14,8 @@
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
 
+static const CGFloat HYPFormsDispatchTime = 0.1f;
+
 @interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate, HYPFormHeaderViewDelegate
 , UICollectionViewDataSource>
 
@@ -466,7 +468,7 @@
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(HYPFormsDispatchTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self processTargets:targets];
     });
 }
