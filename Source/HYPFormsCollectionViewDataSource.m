@@ -277,6 +277,7 @@
     HYPForm *form = self.formsManager.forms[indexPath.section];
     NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
+
     return field;
 }
 
