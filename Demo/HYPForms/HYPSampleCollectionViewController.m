@@ -230,7 +230,13 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 {
     [self.dataSource disable:sender.isOn];
 
-    HYPFormTarget *target = [HYPFormTarget hideFieldTargetWithID:@"image"];
+    HYPFormTarget *target;
+
+    if (sender.isOn) {
+        target = [HYPFormTarget hideFieldTargetWithID:@"image"];
+    } else {
+        target = [HYPFormTarget showFieldTargetWithID:@"image"];
+    }
 
     [self.dataSource processTargets:@[target]];
 }
