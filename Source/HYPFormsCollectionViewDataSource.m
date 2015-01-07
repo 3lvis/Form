@@ -81,7 +81,11 @@ static const CGFloat HYPFormsDispatchTime = 0.1f;
 
 - (NSMutableArray *)collapsedForms
 {
-    return _collapsedForms = (_collapsedForms) ?: [NSMutableArray new];
+    if (_collapsedForms) return _collapsedForms;
+
+    _collapsedForms = [NSMutableArray new];
+
+    return _collapsedForms;
 }
 
 #pragma mark - UICollectionViewDataSource
