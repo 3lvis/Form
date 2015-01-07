@@ -79,11 +79,7 @@
 
 - (NSMutableArray *)collapsedForms
 {
-    if (_collapsedForms) return _collapsedForms;
-
-    _collapsedForms = [NSMutableArray new];
-
-    return _collapsedForms;
+    return _collapsedForms = (_collapsedForms) ?: [NSMutableArray new];
 }
 
 #pragma mark - UICollectionViewDataSource
