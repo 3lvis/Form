@@ -466,6 +466,13 @@
     }
 }
 
+- (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self processTargets:targets];
+    });
+}
+
 #pragma mark - Targets Procesing
 
 - (void)processTarget:(HYPFormTarget *)target

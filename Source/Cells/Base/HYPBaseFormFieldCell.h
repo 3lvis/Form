@@ -40,5 +40,6 @@ static const CGFloat HYPFormFieldCellLeftMargin = 10.0f;
 @protocol HYPBaseFormFieldCellDelegate <NSObject>
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(HYPFormField *)field;
+- (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets;
 
 @end
