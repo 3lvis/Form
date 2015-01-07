@@ -92,8 +92,6 @@
 
     [self.dataSource processTarget:disableTarget];
 
-    [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
-
     XCTAssertTrue(targetField.disabled);
 
     HYPFormTarget *enableTarget = [HYPFormTarget enableFieldTargetWithID:@"display_name"];
