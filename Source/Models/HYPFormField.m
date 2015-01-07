@@ -154,8 +154,14 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 - (id)formatter
 {
+    NSString *fieldClassName = self.fieldID;
+    NSRange dotRange = [self.fieldID rangeOfString:@"."];
+    if (dotRange.location != NSNotFound) {
+        fieldClassName = [self.fieldID substringFromIndex:dotRange.location+1];
+    }
+
     HYPFormatter *formatter;
-    Class fieldFormatter = [HYPClassFactory classFromString:self.fieldID withSuffix:@"Formatter"];
+    Class fieldFormatter = [HYPClassFactory classFromString:fieldClassName withSuffix:@"Formatter"];
     Class typeFormatter = [HYPClassFactory classFromString:self.typeString withSuffix:@"Formatter"];
     SEL selector = NSSelectorFromString(HYPFormatterSelector);
 
