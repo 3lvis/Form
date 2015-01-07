@@ -564,8 +564,27 @@
         if (!field) continue;
 
         if (target.targetValue) {
-            field.fieldValue = target.targetValue;
-            [self.values setObject:field.fieldValue forKey:field.fieldID];
+
+            if (field.type == HYPFormFieldTypeSelect) {
+                HYPFieldValue *foundFieldValue;
+                
+                for (HYPFieldValue *fieldValue in field.values) {
+                    if ([fieldValue.valueID isEqualToNumber:target.targetValue]) {
+                        foundFieldValue = fieldValue;
+                        break;
+                    }
+                }
+
+                if (foundFieldValue) {
+                    field.fieldValue = foundFieldValue;
+                    [self.values setObject:foundFieldValue.valueID forKey:field.fieldID];
+                }
+
+            } else {
+                field.fieldValue = target.targetValue;
+                [self.values setObject:field.fieldValue forKey:field.fieldID];
+            }
+
         } else {
             NSArray *fieldIDs = [field.formula hyp_variables];
             NSMutableDictionary *values = [NSMutableDictionary new];
