@@ -566,18 +566,10 @@
         if (target.targetValue) {
 
             if (field.type == HYPFormFieldTypeSelect) {
-                HYPFieldValue *foundFieldValue;
-                
-                for (HYPFieldValue *fieldValue in field.values) {
-                    if ([fieldValue.valueID isEqualToNumber:target.targetValue]) {
-                        foundFieldValue = fieldValue;
-                        break;
-                    }
-                }
+                HYPFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.targetValue];
 
-                if (foundFieldValue) {
-                    field.fieldValue = foundFieldValue;
-                    [self.values setObject:foundFieldValue.valueID forKey:field.fieldID];
+                if (selectedFieldValue) {
+                    [self.values setObject:selectedFieldValue.valueID forKey:field.fieldID];
                 }
 
             } else {

@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 - (HYPFormFieldType)typeFromTypeString:(NSString *)typeString;
 
-- (HYPFieldValue *)fieldValueWithID:(id)fieldValueID;
+- (HYPFieldValue *)selectFieldValueWithValueID:(id)fieldValueID;
 
 - (NSUInteger)indexInSectionUsingForms:(NSArray *)forms;
 
