@@ -9,6 +9,7 @@
 @property (nonatomic, strong) NSMutableDictionary *hiddenSections;
 @property (nonatomic, strong) NSArray *disabledFieldsIDs;
 @property (nonatomic, strong) NSMutableDictionary *values;
+@property (nonatomic) BOOL disabled;
 
 - (instancetype)initWithJSON:(id)JSON
                initialValues:(NSDictionary *)initialValues
@@ -38,5 +39,7 @@
 - (NSArray *)showTargets:(NSArray *)targets;
 - (NSArray *)hideTargets:(NSArray *)targets;
 - (NSArray *)updateTargets:(NSArray *)targets;
+- (NSArray *)enableTargets:(NSArray *)targets;
+- (NSArray *)disableTargets:(NSArray *)targets;
 
 @end

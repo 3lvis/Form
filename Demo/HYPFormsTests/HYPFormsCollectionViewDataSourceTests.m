@@ -36,7 +36,7 @@
                                            initialValues:nil
                                         disabledFieldIDs:nil
                                                 disabled:NO];
-    
+
     self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView
                                                                        andFormsManager:self.manager];
 }
@@ -80,6 +80,39 @@
     index = [field indexInSectionUsingForms:self.manager.forms];
     XCTAssertEqual(index, 0);
     [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"last_name"]];
+}
+
+- (void)testEnableAndDisableTargets
+{
+    HYPFormField *targetField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
+    XCTAssertFalse(targetField.disabled);
+
+    HYPFormTarget *disableTarget = [HYPFormTarget disableFieldTargetWithID:@"display_name"];
+    [self.dataSource processTarget:disableTarget];
+    XCTAssertTrue(targetField.disabled);
+
+    HYPFormTarget *enableTarget = [HYPFormTarget enableFieldTargetWithID:@"display_name"];
+    [self.dataSource processTargets:@[enableTarget]];
+    XCTAssertFalse(targetField.disabled);
+}
+
+- (void)testUpdatingTargetValue
+{
+    HYPFormField *targetField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
+    XCTAssertEqualObjects(targetField.fieldValue, @"");
+    HYPFormTarget *updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
+                                                                              @"id" : @"display_name",
+                                                                              @"type" : @"field",
+                                                                              @"action" : @"update",
+                                                                              @"target_value": @"John Hyperseed"}];
+    [self.dataSource processTarget:updateTarget];
+    XCTAssertEqualObjects(targetField.fieldValue, @"John Hyperseed");
+}
+
+- (void)testDefaultValue
+{
+    HYPFormField *usernameField = [self.manager fieldWithID:@"username" includingHiddenFields:YES];
+    XCTAssertNotNil(usernameField.fieldValue);
 }
 
 #pragma mark - HYPFormsLayoutDataSource

@@ -15,6 +15,7 @@
     _title = [dictionary andy_valueForKey:@"title"];
     _subtitle = [dictionary andy_valueForKey:@"subtitle"];
     _value = [dictionary andy_valueForKey:@"value"];
+    _defaultValue = [[dictionary andy_valueForKey:@"default"] boolValue];
 
     NSMutableArray *targets = [NSMutableArray new];
 

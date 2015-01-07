@@ -6,12 +6,15 @@
 #import "HYPTextFormFieldCell.h"
 #import "HYPSelectFormFieldCell.h"
 #import "HYPDateFormFieldCell.h"
+#import "HYPFieldValue.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
+
+static const CGFloat HYPFormsDispatchTime = 0.1f;
 
 @interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate, HYPFormHeaderViewDelegate
 , UICollectionViewDataSource>
@@ -276,12 +279,14 @@
     HYPForm *form = self.formsManager.forms[indexPath.section];
     NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
+
     return field;
 }
 
 - (void)disable:(BOOL)disabled
 {
     self.disabled = disabled;
+    self.formsManager.disabled = disabled;
 
     NSMutableDictionary *fields = [NSMutableDictionary new];
 
@@ -304,11 +309,25 @@
     }
 
     for (NSString *fieldID in fields) {
-        BOOL shouldDisable = (![fieldID isEqualToString:@"blank"] && ![self.formsManager.disabledFieldsIDs containsObject:fieldID]);
+        HYPFormField *field = [fields valueForKey:fieldID];
+        BOOL shouldChangeState = (![self.formsManager.disabledFieldsIDs containsObject:fieldID]);
 
-        if (shouldDisable) {
-            HYPFormField *field = [fields valueForKey:fieldID];
+        if (disabled) {
+            field.disabled = YES;
+        } else if (shouldChangeState) {
             field.disabled = disabled;
+
+            if (field.targets.count > 0) {
+                [self processTargets:field.targets];
+            } else if (field.type == HYPFormFieldTypeSelect) {
+                BOOL hasFieldValue = (field.fieldValue && [field.fieldValue isKindOfClass:[HYPFieldValue class]]);
+                if (hasFieldValue) {
+                    HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
+                    if (fieldValue.targets.count > 0) {
+                        [self processTargets:fieldValue.targets];
+                    }
+                }
+            }
         }
     }
 
@@ -451,6 +470,13 @@
     }
 }
 
+- (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(HYPFormsDispatchTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self processTargets:targets];
+    });
+}
+
 #pragma mark - Targets Procesing
 
 - (void)processTarget:(HYPFormTarget *)target
@@ -467,6 +493,16 @@
         case HYPFormTargetActionUpdate: {
             NSArray *updatedIndexPaths = [self.formsManager updateTargets:@[target]];
             [self reloadItemsAtIndexPaths:updatedIndexPaths];
+        } break;
+        case HYPFormTargetActionEnable: {
+            if (!self.formsManager.disabled) {
+                NSArray *enabledIndexPaths = [self.formsManager enableTargets:@[target]];
+                [self reloadItemsAtIndexPaths:enabledIndexPaths];
+            }
+        } break;
+        case HYPFormTargetActionDisable: {
+            NSArray *disabledIndexPaths = [self.formsManager disableTargets:@[target]];
+            [self reloadItemsAtIndexPaths:disabledIndexPaths];
         } break;
         case HYPFormTargetActionNone: break;
     }
@@ -485,13 +521,17 @@
     [HYPFormTarget filteredTargets:targets
                           filtered:^(NSArray *shownTargets,
                                      NSArray *hiddenTargets,
-                                     NSArray *updatedTargets) {
+                                     NSArray *updatedTargets,
+                                     NSArray *enabledTargets,
+                                     NSArray *disabledTargets) {
                               shownTargets  = [self sortTargets:shownTargets];
                               hiddenTargets = [self sortTargets:hiddenTargets];
 
                               NSArray *insertedIndexPaths;
                               NSArray *deletedIndexPaths;
                               NSArray *updatedIndexPaths;
+                              NSArray *enabledIndexPaths;
+                              NSArray *disabledIndexPaths;
 
                               if (shownTargets.count > 0) {
                                   insertedIndexPaths = [self.formsManager showTargets:shownTargets];
@@ -518,7 +558,19 @@
                                   } else {
                                       [self reloadItemsAtIndexPaths:updatedIndexPaths];
                                   }
+                              }
 
+                              BOOL shouldRunEnableTargets = (enabledTargets.count > 0 && !self.formsManager.disabled);
+                              if (shouldRunEnableTargets) {
+                                  enabledIndexPaths = [self.formsManager enableTargets:enabledTargets];
+
+                                  [self reloadItemsAtIndexPaths:enabledIndexPaths];
+                              }
+
+                              if (disabledTargets.count > 0) {
+                                  disabledIndexPaths = [self.formsManager disableTargets:disabledTargets];
+
+                                  [self reloadItemsAtIndexPaths:disabledIndexPaths];
                               }
                           }];
 }

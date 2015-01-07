@@ -10,6 +10,7 @@
 @property (nonatomic, strong) NSArray *targets;
 @property (nonatomic, strong) HYPFormField *field;
 @property (nonatomic, strong) NSNumber *value;
+@property (nonatomic) BOOL defaultValue;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 

@@ -204,6 +204,18 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return nil;
 }
 
+- (HYPFieldValue *)selectFieldValueWithValueID:(id)fieldValueID
+{
+    for (HYPFieldValue *fieldValue in self.values) {
+        if ([fieldValue identifierIsEqualTo:fieldValueID]) {
+            self.fieldValue = fieldValue;
+            return self.fieldValue;
+        }
+    }
+
+    return nil;
+}
+
 - (BOOL)validate
 {
     id validator;
