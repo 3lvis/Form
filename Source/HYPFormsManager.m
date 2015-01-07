@@ -146,7 +146,13 @@
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [self valuesForFormula:field];
         id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
+        
+        if ([result isKindOfClass:[NSString class]]) {
+            result = [result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        }
+
         field.fieldValue = result;
+
         if (result) [self.values setObject:result forKey:field.fieldID];
     }
 
