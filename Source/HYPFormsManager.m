@@ -28,6 +28,7 @@
     if (!self) return nil;
 
     _disabledFieldsIDs = disabledFieldIDs;
+    _disabled = disabled;
 
     [self generateFormsWithJSON:JSON
                   initialValues:initialValues
@@ -127,6 +128,12 @@
                             if (target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
                         }
                     }
+                } else {
+                    BOOL shouldUseDefaultValue = (fieldValue.defaultValue && !field.fieldValue);
+                    if (shouldUseDefaultValue) {
+                        field.fieldValue = fieldValue;
+                        self.values[field.fieldID] = fieldValue.valueID;
+                    }
                 }
             }
         }
@@ -139,7 +146,13 @@
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [self valuesForFormula:field];
         id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
+        
+        if ([result isKindOfClass:[NSString class]]) {
+            result = [result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        }
+
         field.fieldValue = result;
+
         if (result) [self.values setObject:result forKey:field.fieldID];
     }
 
@@ -556,67 +569,112 @@
 
         if (!field) continue;
 
-        NSArray *fieldIDs = [field.formula hyp_variables];
-        NSMutableDictionary *values = [NSMutableDictionary new];
+        if (target.targetValue) {
 
-        for (NSString *fieldID in fieldIDs) {
+            if (field.type == HYPFormFieldTypeSelect) {
+                HYPFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.targetValue];
 
-            id value = [self.values objectForKey:fieldID];
-            BOOL isNumericField = (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber);
-            NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
+                if (selectedFieldValue) {
+                    [self.values setObject:selectedFieldValue.valueID forKey:field.fieldID];
+                }
 
-            HYPFormField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
+            } else {
+                field.fieldValue = target.targetValue;
+                [self.values setObject:field.fieldValue forKey:field.fieldID];
+            }
 
-            if (targetField.type == HYPFormFieldTypeSelect) {
+        } else {
+            NSArray *fieldIDs = [field.formula hyp_variables];
+            NSMutableDictionary *values = [NSMutableDictionary new];
 
-                if ([targetField.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+            for (NSString *fieldID in fieldIDs) {
 
-                    HYPFieldValue *fieldValue = targetField.fieldValue;
+                id value = [self.values objectForKey:fieldID];
+                BOOL isNumericField = (field.type == HYPFormFieldTypeFloat || field.type == HYPFormFieldTypeNumber);
+                NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
 
-                    if (fieldValue.value) {
-                        [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
-                    }
-                } else {
-                    HYPFieldValue *foundFieldValue = nil;
-                    for (HYPFieldValue *fieldValue in field.values) {
-                        if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
-                            foundFieldValue = fieldValue;
+                HYPFormField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
+
+                if (targetField.type == HYPFormFieldTypeSelect) {
+
+                    if ([targetField.fieldValue isKindOfClass:[HYPFieldValue class]]) {
+
+                        HYPFieldValue *fieldValue = targetField.fieldValue;
+
+                        if (fieldValue.value) {
+                            [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                        }
+                    } else {
+                        HYPFieldValue *foundFieldValue = nil;
+                        for (HYPFieldValue *fieldValue in field.values) {
+                            if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
+                                foundFieldValue = fieldValue;
+                            }
+                        }
+                        if (foundFieldValue && foundFieldValue.value) {
+                            [values addEntriesFromDictionary:@{fieldID : foundFieldValue.value}];
                         }
                     }
-                    if (foundFieldValue && foundFieldValue.value) {
-                        [values addEntriesFromDictionary:@{fieldID : foundFieldValue.value}];
-                    }
-                }
 
-            } else if (value) {
-                if ([value isKindOfClass:[NSString class]]) {
-                    if ([value length] == 0) value = defaultEmptyValue;
-                    [values addEntriesFromDictionary:@{fieldID : value}];
-                } else {
-                    if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                        [self.values setObject:[value stringValue] forKey:field.fieldID];
-                        [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                } else if (value) {
+                    if ([value isKindOfClass:[NSString class]]) {
+                        if ([value length] == 0) value = defaultEmptyValue;
+                        [values addEntriesFromDictionary:@{fieldID : value}];
                     } else {
-                        [self.values setObject:@"" forKey:field.fieldID];
-                        [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
+                        if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+                            [self.values setObject:[value stringValue] forKey:field.fieldID];
+                            [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                        } else {
+                            [self.values setObject:@"" forKey:field.fieldID];
+                            [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
+                        }
                     }
+                } else {
+                    [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
                 }
-            } else {
-                [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
             }
-        }
 
-        id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
-        field.fieldValue = result;
+            id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
+            field.fieldValue = result;
 
-        if (result) {
-            [self.values setObject:result forKey:field.fieldID];
-        } else {
-            [self.values removeObjectForKey:field.fieldID];
+            if (result) {
+                [self.values setObject:result forKey:field.fieldID];
+            } else {
+                [self.values removeObjectForKey:field.fieldID];
+            }
         }
     }
 
     return updatedIndexPaths;
+}
+
+- (NSArray *)enableTargets:(NSArray *)targets
+{
+    return [self updateTargets:targets withEnabled:YES];
+}
+
+- (NSArray *)disableTargets:(NSArray *)targets
+{
+    return [self updateTargets:targets withEnabled:NO];
+}
+
+- (NSArray *)updateTargets:(NSArray *)targets withEnabled:(BOOL)enabled
+{
+    NSMutableArray *indexPaths = [NSMutableArray new];
+
+    for (HYPFormTarget *target in targets) {
+        if (target.type == HYPFormTargetTypeSection) continue;
+        if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
+
+        [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+            if (field) {
+                field.disabled = !enabled;
+                if (indexPath) [indexPaths addObject:indexPath];
+            }
+        }];
+    }
+
+    return indexPaths;
 }
 
 - (void)indexForSection:(HYPFormSection *)section form:(HYPForm *)form completion:(void (^)(BOOL found, NSInteger index))completion

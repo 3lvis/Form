@@ -97,14 +97,144 @@
             },
             "values":[
               {
+                "id":0,
+                "title":"Generated",
+                "subtitle":"Generate using firstname & lastname",
+                "default":true,
+                "targets":[
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"enable"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"enable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
                 "id":1,
-                "title":"Mr.Melk",
-                "subtitle":"Bork!"
+                "title":"Override",
+                "subtitle":"Enable manual editing for the display name",
+                "targets":[
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"enable"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"enable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"enable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
               },
               {
                 "id":2,
+                "title":"Mr.Melk",
+                "subtitle":"Bork!",
+                "targets":[
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":"Mr."
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":"Melk"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"update"
+                  },
+                  {
+                    "id":"contract_type",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":0
+                  }
+                ]
+              },
+              {
+                "id":3,
                 "title":"John Hyperseed",
-                "subtitle":"Other subtitle"
+                "subtitle":"Other subtitle",
+                "targets":[
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"disable"
+                  },
+                  {
+                    "id":"first_name",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":"John"
+                  },
+                  {
+                    "id":"last_name",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":"Hyperseed"
+                  },
+                  {
+                    "id":"display_name",
+                    "type":"field",
+                    "action":"update"
+                  },
+                  {
+                    "id":"contract_type",
+                    "type":"field",
+                    "action":"update",
+                    "target_value":1
+                  }
+                ]
               }
             ]
           },
@@ -157,6 +287,7 @@
               {
                 "id":0,
                 "title":"Permanent",
+                "default":true,
                 "targets":[
                   {
                     "id": "end_date",
