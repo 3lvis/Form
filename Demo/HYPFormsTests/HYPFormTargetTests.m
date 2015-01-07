@@ -38,8 +38,8 @@
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"disable");
     XCTAssertTrue(target.type == HYPFormTargetTypeField);
-
     XCTAssertTrue(target.actionType == HYPFormTargetActionDisable);
+
     target = [[HYPFormTarget alloc] initWithDictionary:@{@"id": @"last_name",
                                                          @"type": @"field",
                                                          @"action": @"enable"}];
