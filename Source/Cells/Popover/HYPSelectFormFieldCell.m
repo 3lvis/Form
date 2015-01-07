@@ -46,6 +46,12 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
         if ([field.fieldValue isKindOfClass:[HYPFieldValue class]]) {
             HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
             self.fieldValueLabel.text = fieldValue.title;
+
+            if (fieldValue.targets.count > 0) {
+                if ([self.delegate respondsToSelector:@selector(fieldCell:processTargets:)]) {
+                    [self.delegate fieldCell:self processTargets:fieldValue.targets];
+                }
+            }
         } else {
 
             for (HYPFieldValue *fieldValue in field.values) {
