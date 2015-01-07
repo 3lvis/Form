@@ -100,22 +100,18 @@
 {
     HYPFormField *targetField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(targetField.fieldValue, @" ");
-
     HYPFormTarget *updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
                                                                               @"id" : @"display_name",
                                                                               @"type" : @"field",
                                                                               @"action" : @"update",
                                                                               @"target_value": @"John Hyperseed"}];
-
     [self.dataSource processTarget:updateTarget];
-
     XCTAssertEqualObjects(targetField.fieldValue, @"John Hyperseed");
 }
 
 - (void)testDefaultValue
 {
     HYPFormField *usernameField = [self.manager fieldWithID:@"username" includingHiddenFields:YES];
-
     XCTAssertNotNil(usernameField.fieldValue);
 }
 
