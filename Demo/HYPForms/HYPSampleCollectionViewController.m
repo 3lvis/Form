@@ -152,10 +152,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
     [self.navigationController setToolbarHidden:NO animated:YES];
 
-    HYPFormTarget *target = [HYPFormTarget new];
-    target.targetID = @"employment-1";
-    target.typeString = @"section";
-    target.actionTypeString = @"hide";
+    HYPFormTarget *target = [HYPFormTarget hideSectionTargetWithID:@"employment-1"];
 
     [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
 }
@@ -233,15 +230,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 {
     [self.dataSource disable:sender.isOn];
 
-    HYPFormTarget *target = [HYPFormTarget new];
-    target.targetID = @"image";
-    target.typeString = @"field";
-
-    if (sender.isOn) {
-        target.actionTypeString = @"hide";
-    } else {
-        target.actionTypeString = @"show";
-    }
+    HYPFormTarget *target = [HYPFormTarget hideFieldTargetWithID:@"image"];
 
     [self.dataSource processTargets:@[target]];
 }
