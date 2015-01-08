@@ -1,3 +1,5 @@
 language: objective-c
 podfile: Demo/Podfile
+before_script:
+    - gem update cocoapods
 script: xctool -workspace Demo/HYPForms.xcworkspace -scheme HYPFormsTests -sdk iphonesimulator build test
