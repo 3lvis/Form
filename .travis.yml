@@ -1,3 +1,2 @@
 language: objective-c
-script: pod install --project-directory=Demo/
-script: xctool -workspace Demo/HYPForms.xcworkspace -scheme HYPFormsTests -sdk iphonesimulator build test
+script: pod install --project-directory=Demo/ && xctool -workspace Demo/HYPForms.xcworkspace -scheme HYPFormsTests -sdk iphonesimulator build test
