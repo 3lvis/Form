@@ -304,9 +304,7 @@ static const CGFloat HYPFormsDispatchTime = 0.1f;
 
     for (HYPFormSection *section in [self.formsManager.hiddenSections allValues]) {
         for (HYPFormField *field in section.fields) {
-            if (field.fieldID) {
-                [fields addEntriesFromDictionary:@{field.fieldID : field}];
-            }
+            if (field.fieldID) [fields addEntriesFromDictionary:@{field.fieldID : field}];
         }
     }
 
