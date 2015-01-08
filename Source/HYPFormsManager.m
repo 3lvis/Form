@@ -472,6 +472,8 @@
     NSMutableArray *insertedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
+        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
+        if (conditionFailed) continue;
 
         BOOL foundSection = NO;
 
@@ -531,6 +533,9 @@
     NSMutableArray *deletedSections = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
+        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
+        if (conditionFailed) continue;
+
         if (target.type == HYPFormTargetTypeField) {
             HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:NO];
             if (field && ![self.hiddenFieldsAndFieldIDsDictionary objectForKey:field.fieldID]) {
@@ -593,6 +598,7 @@
     for (HYPFormTarget *target in targets) {
         BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
         if (conditionFailed) continue;
+
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
