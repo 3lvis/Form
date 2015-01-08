@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, HYPFormTargetActionType) {
 @property (nonatomic, copy) id targetValue;
 @property (nonatomic, copy) NSString *typeString;
 @property (nonatomic, copy) NSString *actionTypeString;
+@property (nonatomic, copy) NSString *condition;
 
 @property (nonatomic, strong) HYPFieldValue *value;
 @property (nonatomic) HYPFormTargetType type;

@@ -12,6 +12,7 @@
     self.typeString = [dictionary andy_valueForKey:@"type"];
     self.actionTypeString = [dictionary andy_valueForKey:@"action"];
     self.targetValue = [dictionary andy_valueForKey:@"target_value"];
+    self.condition = [dictionary andy_valueForKey:@"condition"];
 
     return self;
 }
@@ -203,10 +204,10 @@
                 if (![updated containsObject:target]) [updated addObject:target];
                 break;
             case HYPFormTargetActionEnable:
-                if (![updated containsObject:target]) [enabled addObject:target];
+                if (![enabled containsObject:target]) [enabled addObject:target];
                 break;
             case HYPFormTargetActionDisable:
-                if (![updated containsObject:target]) [disabled addObject:target];
+                if (![disabled containsObject:target]) [disabled addObject:target];
                 break;
             case HYPFormTargetActionNone:
                 break;
@@ -222,7 +223,9 @@
 {
     BOOL equal = ([object.targetID isEqualToString:self.targetID] &&
                   object.actionType == self.actionType &&
-                  object.type == self.type);
+                  object.type == self.type &&
+                  [object.condition isEqualToString:self.condition] &&
+                  [object.targetValue isEqual:self.targetValue]);
 
     if (equal && self.value && object.value) {
         equal = ([self.value identifierIsEqualTo:object.value.valueID]);

@@ -1,1 +1,0 @@
-PODS_UISCREEN_HYPLIVEBOUNDS_OTHER_LDFLAGS = -framework "Foundation"

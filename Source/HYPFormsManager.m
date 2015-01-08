@@ -11,9 +11,13 @@
 #import "HYPFieldValidation.h"
 #import "NSString+HYPWordExtractor.h"
 
+#import "DDMathParser.h"
+#import "_DDVariableExpression.h"
+
 @interface HYPFormsManager ()
 
 @property (nonatomic, strong) NSMutableDictionary *requiredFields;
+@property (nonatomic, strong) DDMathEvaluator *evaluator;
 
 @end
 
@@ -37,6 +41,8 @@
 
     return self;
 }
+
+#pragma mark - Getters
 
 - (NSMutableArray *)forms
 {
@@ -81,6 +87,49 @@
     _values = [NSMutableDictionary new];
 
     return _values;
+}
+
+- (DDMathEvaluator *)evaluator
+{
+    if (_evaluator) return _evaluator;
+
+    _evaluator = [DDMathEvaluator new];
+
+    DDMathFunction function = ^ DDExpression* (NSArray *args, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
+
+        if (args.count < 2) {
+            *error = [NSError errorWithDomain:DDMathParserErrorDomain
+                                         code:DDErrorCodeInvalidNumberOfArguments
+                                     userInfo:@{NSLocalizedDescriptionKey : @"Invalid number of variables"
+                                                }];
+        }
+
+        NSArray *arguments = [args subarrayWithRange:NSMakeRange(1, args.count-1)];
+        NSNumber *isEqual = @YES;
+        NSString *baseKey = [args[0] variable];
+        NSString *baseValue = (variables[baseKey]) ?: baseKey;
+        NSString *otherValue;
+
+        for (DDExpression *expression in arguments) {
+            if (![expression isKindOfClass:[_DDVariableExpression class]]) {
+                isEqual = @NO;
+                break;
+            }
+
+            otherValue = (variables[expression.variable]) ?: expression.variable;
+
+            if (![baseValue isEqualToString:otherValue]) {
+                isEqual = @NO;
+                break;
+            }
+        }
+
+        return [DDExpression numberExpressionWithNumber:isEqual];
+    };
+
+    [_evaluator registerFunction:function forName:@"equals"];
+
+    return _evaluator;
 }
 
 - (void)generateFormsWithJSON:(NSArray *)JSON
@@ -142,19 +191,6 @@
     }];
 
     [self.values addEntriesFromDictionary:initialValues];
-
-    for (HYPFormField *field in fieldsWithFormula) {
-        NSMutableDictionary *values = [self valuesForFormula:field];
-        id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
-        
-        if ([result isKindOfClass:[NSString class]]) {
-            result = [result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        }
-
-        field.fieldValue = result;
-
-        if (result) [self.values setObject:result forKey:field.fieldID];
-    }
 
     for (HYPFormTarget *target in targetsToRun) {
 
@@ -555,6 +591,8 @@
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
+        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
+        if (conditionFailed) continue;
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
@@ -663,6 +701,8 @@
     NSMutableArray *indexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
+        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
+        if (conditionFailed) continue;
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
@@ -692,6 +732,19 @@
     if (completion) {
         completion(found, index);
     }
+}
+
+- (BOOL)evaluateCondition:(NSString *)condition
+{
+    NSError *error;
+    DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
+    if (error == nil) {
+        NSNumber *result = [self.evaluator evaluateExpression:expression
+                                            withSubstitutions:self.values
+                                                        error:&error];
+        return [result boolValue];
+    }
+    return NO;
 }
 
 @end

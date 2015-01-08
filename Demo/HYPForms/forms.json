@@ -23,7 +23,8 @@
               {
                 "id":"display_name",
                 "type":"field",
-                "action":"update"
+                "action":"update",
+                "condition":"$username == 0"
               }
             ]
           },
@@ -44,7 +45,8 @@
               {
                 "id":"display_name",
                 "type":"field",
-                "action":"update"
+                "action":"update",
+                "condition":"$username == 0"
               }
             ]
           },
@@ -57,7 +59,7 @@
               "width": 40,
               "height": 1
             },
-            "formula":"first_name last_name",
+            "formula":"first_name last_name"
           }
         ]
       },
@@ -116,11 +118,6 @@
                     "id":"display_name",
                     "type":"field",
                     "action":"disable"
-                  },
-                  {
-                    "id":"display_name",
-                    "type":"field",
-                    "action":"update"
                   }
                 ]
               },

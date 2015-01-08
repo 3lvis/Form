@@ -46,6 +46,12 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     self.headingLabel.text = field.title;
 
     [self updateWithField:field];
+
+    if (field.targets.count > 0) {
+        if ([self.delegate respondsToSelector:@selector(fieldCell:processTargets:)]) {
+            [self.delegate fieldCell:self processTargets:field.targets];
+        }
+    }
 }
 
 #pragma mark - Overwritables

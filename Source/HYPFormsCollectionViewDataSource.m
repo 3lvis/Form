@@ -294,9 +294,7 @@ static const CGFloat HYPFormsDispatchTime = 0.1f;
 
     for (HYPForm *form in self.formsManager.forms) {
         for (HYPFormField *field in form.fields) {
-            if (field.fieldID) {
-                [fields addEntriesFromDictionary:@{field.fieldID : field}];
-            }
+            if (field.fieldID) [fields addEntriesFromDictionary:@{field.fieldID : field}];
         }
     }
 
@@ -304,9 +302,7 @@ static const CGFloat HYPFormsDispatchTime = 0.1f;
 
     for (HYPFormSection *section in [self.formsManager.hiddenSections allValues]) {
         for (HYPFormField *field in section.fields) {
-            if (field.fieldID) {
-                [fields addEntriesFromDictionary:@{field.fieldID : field}];
-            }
+            if (field.fieldID) [fields addEntriesFromDictionary:@{field.fieldID : field}];
         }
     }
 
@@ -325,9 +321,8 @@ static const CGFloat HYPFormsDispatchTime = 0.1f;
                 BOOL hasFieldValue = (field.fieldValue && [field.fieldValue isKindOfClass:[HYPFieldValue class]]);
                 if (hasFieldValue) {
                     HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
-                    if (fieldValue.targets.count > 0) {
-                        [self processTargets:fieldValue.targets];
-                    }
+
+                    if (fieldValue.targets.count > 0) [self processTargets:fieldValue.targets];
                 }
             }
         }

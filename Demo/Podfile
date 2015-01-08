@@ -15,3 +15,5 @@ pod 'NSString-HYPFormula', :git => 'https://github.com/hyperoslo/NSString-HYPFor
 pod 'NSString-HYPWordExtractor', :git => 'https://github.com/hyperoslo/NSString-HYPWordExtractor.git'
 pod 'UIColor-ANDYHex', :git => 'https://github.com/NSElvis/UIColor-ANDYHex.git'
 pod 'NSString-HYPContainsString', :git => 'https://github.com/hyperoslo/NSString-HYPContainsString.git'
+pod 'DDMathParser', :git => 'https://github.com/hyperoslo/DDMathParser.git'
+

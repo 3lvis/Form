@@ -39,21 +39,6 @@
     XCTAssertTrue(manager.hiddenSections.count == 0);
 }
 
-- (void)testFormsGenerationFieldsWithFormulas
-{
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:@{@"first_name" : @"Elvis",
-                                                                       @"last_name" : @"Nunez"}
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
-
-    HYPFormField *displayNameField = [manager fieldWithID:@"display_name" includingHiddenFields:YES];
-
-    XCTAssertEqualObjects(displayNameField.fieldValue, @"Elvis Nunez");
-}
-
 - (void)testFormsGenerationHideTargets
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
