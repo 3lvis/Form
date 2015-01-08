@@ -703,7 +703,6 @@
     for (HYPFormTarget *target in targets) {
         BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
         if (conditionFailed) continue;
-
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
