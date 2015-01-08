@@ -14,7 +14,7 @@
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
 
-static const CGFloat HYPFormsDispatchTime = 0.1f;
+static const CGFloat HYPFormsDispatchTime = 0.05f;
 
 @interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate, HYPFormHeaderViewDelegate
 , UICollectionViewDataSource>
