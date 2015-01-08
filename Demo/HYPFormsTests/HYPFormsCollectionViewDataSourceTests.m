@@ -132,12 +132,7 @@
     [self.dataSource processTarget:updateTarget];
     XCTAssertNil(displayNameField.fieldValue);
 
-    updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
-                                                               @"id" : @"display_name",
-                                                               @"type" : @"field",
-                                                               @"action" : @"update",
-                                                               @"target_value": @"Mr.Melk",
-                                                               @"condition" : @"$username == 0"}];
+    updateTarget.condition = @"$username == 0";
     [self.dataSource processTarget:updateTarget];
     XCTAssertEqualObjects(displayNameField.fieldValue, @"Mr.Melk");
 }
