@@ -116,6 +116,32 @@
     XCTAssertNotNil(usernameField.fieldValue);
 }
 
+- (void)testCondition
+{
+    HYPFormField *displayNameField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
+    HYPFormField *usernameField = [self.manager fieldWithID:@"username" includingHiddenFields:YES];
+    HYPFieldValue *fieldValue = usernameField.fieldValue;
+    XCTAssertEqual(fieldValue.valueID, @0);
+
+    HYPFormTarget *updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
+                                                                              @"id" : @"display_name",
+                                                                              @"type" : @"field",
+                                                                              @"action" : @"update",
+                                                                              @"target_value": @"Mr.Melk",
+                                                                              @"condition" : @"$username == 2"}];
+    [self.dataSource processTarget:updateTarget];
+    XCTAssertNil(displayNameField.fieldValue);
+
+    updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
+                                                               @"id" : @"display_name",
+                                                               @"type" : @"field",
+                                                               @"action" : @"update",
+                                                               @"target_value": @"Mr.Melk",
+                                                               @"condition" : @"$username == 0"}];
+    [self.dataSource processTarget:updateTarget];
+    XCTAssertEqualObjects(displayNameField.fieldValue, @"Mr.Melk");
+}
+
 #pragma mark - HYPFormsLayoutDataSource
 
 - (NSArray *)forms
