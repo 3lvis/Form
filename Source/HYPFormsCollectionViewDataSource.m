@@ -325,9 +325,8 @@ static const CGFloat HYPFormsDispatchTime = 0.1f;
                 BOOL hasFieldValue = (field.fieldValue && [field.fieldValue isKindOfClass:[HYPFieldValue class]]);
                 if (hasFieldValue) {
                     HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
-                    if (fieldValue.targets.count > 0) {
-                        [self processTargets:fieldValue.targets];
-                    }
+
+                    if (fieldValue.targets.count > 0) [self processTargets:fieldValue.targets];
                 }
             }
         }
