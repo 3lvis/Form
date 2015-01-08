@@ -1,3 +1,4 @@
 language: objective-c
 podfile: Demo/Podfile
+install: bundle exec pod install
 script: xctool -workspace Demo/HYPForms.xcworkspace -scheme HYPFormsTests -sdk iphonesimulator build test
