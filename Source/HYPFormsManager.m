@@ -93,7 +93,6 @@
     if (_evaluator) return _evaluator;
 
     _evaluator = [DDMathEvaluator new];
-    _evaluator.resolvesFunctionsAsVariables = YES;
 
     return _evaluator;
 }
