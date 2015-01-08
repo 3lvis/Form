@@ -1,1 +1,0 @@
-PODS_NSSTRING_HYPFORMULA_OTHER_LDFLAGS = -framework "Foundation"
