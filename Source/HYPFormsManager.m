@@ -11,9 +11,12 @@
 #import "HYPFieldValidation.h"
 #import "NSString+HYPWordExtractor.h"
 
+#import "DDMathParser.h"
+
 @interface HYPFormsManager ()
 
 @property (nonatomic, strong) NSMutableDictionary *requiredFields;
+@property (nonatomic, strong) DDMathEvaluator *evaluator;
 
 @end
 
@@ -37,6 +40,8 @@
 
     return self;
 }
+
+#pragma mark - Getters
 
 - (NSMutableArray *)forms
 {
@@ -81,6 +86,16 @@
     _values = [NSMutableDictionary new];
 
     return _values;
+}
+
+- (DDMathEvaluator *)evaluator
+{
+    if (_evaluator) return _evaluator;
+
+    _evaluator = [DDMathEvaluator new];
+    _evaluator.resolvesFunctionsAsVariables = YES;
+
+    return _evaluator;
 }
 
 - (void)generateFormsWithJSON:(NSArray *)JSON
@@ -146,7 +161,7 @@
     for (HYPFormField *field in fieldsWithFormula) {
         NSMutableDictionary *values = [self valuesForFormula:field];
         id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
-        
+
         if ([result isKindOfClass:[NSString class]]) {
             result = [result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         }
@@ -567,6 +582,9 @@
             }
         }];
 
+        BOOL conditionFailed = (field.condition && ![self evaluateCondition:field.condition]);
+        if (conditionFailed) continue;
+
         if (!field) continue;
 
         if (target.targetValue) {
@@ -692,6 +710,17 @@
     if (completion) {
         completion(found, index);
     }
+}
+
+- (BOOL)evaluateCondition:(NSString *)condition
+{
+    NSError *error;
+    DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
+    if (error == nil) {
+        NSNumber *result = [self.evaluator evaluateExpression:expression withSubstitutions:self.values error:&error];
+        return [result boolValue];
+    }
+    return NO;
 }
 
 @end
