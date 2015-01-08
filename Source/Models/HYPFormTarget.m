@@ -204,10 +204,10 @@
                 if (![updated containsObject:target]) [updated addObject:target];
                 break;
             case HYPFormTargetActionEnable:
-                if (![updated containsObject:target]) [enabled addObject:target];
+                if (![enabled containsObject:target]) [enabled addObject:target];
                 break;
             case HYPFormTargetActionDisable:
-                if (![updated containsObject:target]) [disabled addObject:target];
+                if (![disabled containsObject:target]) [disabled addObject:target];
                 break;
             case HYPFormTargetActionNone:
                 break;
