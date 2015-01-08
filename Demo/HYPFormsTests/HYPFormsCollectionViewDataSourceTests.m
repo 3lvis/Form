@@ -99,7 +99,8 @@
 - (void)testUpdatingTargetValue
 {
     HYPFormField *targetField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
-    XCTAssertEqualObjects(targetField.fieldValue, @"");
+    XCTAssertNil(targetField.fieldValue);
+
     HYPFormTarget *updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
                                                                               @"id" : @"display_name",
                                                                               @"type" : @"field",
