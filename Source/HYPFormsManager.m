@@ -556,6 +556,8 @@
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
+        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
+        if (conditionFailed) continue;
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
@@ -567,9 +569,6 @@
                 if (indexPath) [updatedIndexPaths addObject:indexPath];
             }
         }];
-
-        BOOL conditionFailed = (field.condition && ![self evaluateCondition:field.condition]);
-        if (conditionFailed) continue;
 
         if (!field) continue;
 
@@ -667,6 +666,9 @@
     NSMutableArray *indexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
+        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
+        if (conditionFailed) continue;
+
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
