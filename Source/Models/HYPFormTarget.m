@@ -223,7 +223,9 @@
 {
     BOOL equal = ([object.targetID isEqualToString:self.targetID] &&
                   object.actionType == self.actionType &&
-                  object.type == self.type);
+                  object.type == self.type &&
+                  [object.condition isEqualToString:self.condition] &&
+                  [object.targetValue isEqual:self.targetValue]);
 
     if (equal && self.value && object.value) {
         equal = ([self.value identifierIsEqualTo:object.value.valueID]);
