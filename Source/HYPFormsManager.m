@@ -12,6 +12,7 @@
 #import "NSString+HYPWordExtractor.h"
 
 #import "DDMathParser.h"
+#import "_DDVariableExpression.h"
 
 @interface HYPFormsManager ()
 
@@ -93,6 +94,40 @@
     if (_evaluator) return _evaluator;
 
     _evaluator = [DDMathEvaluator new];
+
+    DDMathFunction function = ^ DDExpression* (NSArray *args, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
+
+        if (args.count < 2) {
+            *error = [NSError errorWithDomain:DDMathParserErrorDomain
+                                         code:DDErrorCodeInvalidNumberOfArguments
+                                     userInfo:@{NSLocalizedDescriptionKey : @"Invalid number of variables"
+                                                }];
+        }
+
+        NSArray *arguments = [args subarrayWithRange:NSMakeRange(1, args.count-1)];
+        NSNumber *isEqual = @YES;
+        NSString *baseKey = [args[0] variable];
+        NSString *baseValue = (variables[baseKey]) ?: baseKey;
+        NSString *otherValue;
+
+        for (DDExpression *expression in arguments) {
+            if (![expression isKindOfClass:[_DDVariableExpression class]]) {
+                isEqual = @NO;
+                break;
+            }
+
+            otherValue = (variables[expression.variable]) ?: expression.variable;
+
+            if (![baseValue isEqualToString:otherValue]) {
+                isEqual = @NO;
+                break;
+            }
+        }
+
+        return [DDExpression numberExpressionWithNumber:isEqual];
+    };
+
+    [_evaluator registerFunction:function forName:@"equals"];
 
     return _evaluator;
 }
