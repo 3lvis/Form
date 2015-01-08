@@ -58,6 +58,7 @@
               "height": 1
             },
             "formula":"first_name last_name",
+            "condition":"$username == 0"
           }
         ]
       },

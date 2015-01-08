@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 @property (nonatomic, strong) NSString *typeString;
 @property (nonatomic) HYPFormFieldType type;
 @property (nonatomic, strong) NSArray *values;
+@property (nonatomic, strong) NSString *condition;
 @property (nonatomic) BOOL disabled;
 @property (nonatomic, copy) NSDate *minimumDate;
 @property (nonatomic, copy) NSDate *maximumDate;
