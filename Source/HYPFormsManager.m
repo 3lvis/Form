@@ -717,7 +717,9 @@
     NSError *error;
     DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
     if (error == nil) {
-        NSNumber *result = [self.evaluator evaluateExpression:expression withSubstitutions:self.values error:&error];
+        NSNumber *result = [self.evaluator evaluateExpression:expression
+                                            withSubstitutions:self.values
+                                                        error:&error];
         return [result boolValue];
     }
     return NO;
