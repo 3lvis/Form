@@ -6,6 +6,12 @@
 // project.
 
 
+// DDMathParser
+#define COCOAPODS_POD_AVAILABLE_DDMathParser
+#define COCOAPODS_VERSION_MAJOR_DDMathParser 0
+#define COCOAPODS_VERSION_MINOR_DDMathParser 1
+#define COCOAPODS_VERSION_PATCH_DDMathParser 0
+
 // HYPImagePicker
 #define COCOAPODS_POD_AVAILABLE_HYPImagePicker
 #define COCOAPODS_VERSION_MAJOR_HYPImagePicker 0

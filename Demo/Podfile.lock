@@ -1,4 +1,5 @@
 PODS:
+  - DDMathParser (0.1)
   - HYPImagePicker (0.2)
   - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.8)
@@ -13,6 +14,7 @@ PODS:
   - UIScreen-HYPLiveBounds (1.3)
 
 DEPENDENCIES:
+  - DDMathParser (from `https://github.com/hyperoslo/DDMathParser.git`)
   - HYPImagePicker (from `https://github.com/hyperoslo/HYPImagePicker.git`)
   - HYPNorwegianAccountNumber
   - HYPNorwegianSSN (from `https://github.com/hyperoslo/HYPNorwegianSSN.git`)
@@ -26,6 +28,8 @@ DEPENDENCIES:
   - UIScreen-HYPLiveBounds
 
 EXTERNAL SOURCES:
+  DDMathParser:
+    :git: https://github.com/hyperoslo/DDMathParser.git
   HYPImagePicker:
     :git: https://github.com/hyperoslo/HYPImagePicker.git
   HYPNorwegianSSN:
@@ -40,6 +44,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
 CHECKOUT OPTIONS:
+  DDMathParser:
+    :commit: ad1fd49d1f91c8d42bc75219ca0ee9507b833cf5
+    :git: https://github.com/hyperoslo/DDMathParser.git
   HYPImagePicker:
     :commit: d7fb5dc36782bff5fff0256728eb922fa03dd12a
     :git: https://github.com/hyperoslo/HYPImagePicker.git
@@ -60,6 +67,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
 SPEC CHECKSUMS:
+  DDMathParser: c2d4aadb6690cda19e06d5ee591fea4c3c54421d
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
   HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
   HYPNorwegianSSN: d7a82481bca14cdc20f0867102c11f47274c9753
