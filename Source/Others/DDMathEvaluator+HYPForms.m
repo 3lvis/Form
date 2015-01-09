@@ -57,7 +57,6 @@
                                                 }];
         }
 
-
         NSString *baseKey = [args[0] variable];
         NSString *baseValue = variables[baseKey];
         NSNumber *present = (baseValue) ? @YES : @NO;
@@ -72,7 +71,6 @@
                                      userInfo:@{NSLocalizedDescriptionKey : @"Invalid number of variables"
                                                 }];
         }
-
 
         NSString *baseKey = [args[0] variable];
         NSString *baseValue = variables[baseKey];
