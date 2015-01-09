@@ -41,7 +41,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     _position = @(position);
     _validations = [dictionary andy_valueForKey:@"validations"];
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
-    _permanentlyDisabled = _disabled;
+    _initiallyDisabled = _disabled;
     _formula = [dictionary andy_valueForKey:@"formula"];
 
     NSMutableArray *targets = [NSMutableArray new];

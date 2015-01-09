@@ -313,7 +313,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
         if (disabled) {
             field.disabled = YES;
         } else if (shouldChangeState) {
-            if (!field.permanentlyDisabled) field.disabled = disabled;
+            if (!field.initiallyDisabled) field.disabled = disabled;
 
             if (field.targets.count > 0) {
                 [self processTargets:field.targets];
