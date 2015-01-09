@@ -167,6 +167,7 @@
     [self.values addEntriesFromDictionary:initialValues];
 
     for (HYPFormTarget *target in targetsToRun) {
+        if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeField) {
 
@@ -181,6 +182,7 @@
     }
 
     for (HYPFormTarget *target in targetsToRun) {
+        if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeField) {
 
