@@ -59,7 +59,8 @@
 
         NSString *baseKey = [args[0] variable];
         NSString *baseValue = variables[baseKey];
-        NSNumber *present = (baseValue) ? @YES : @NO;
+        BOOL baseValueIsPresent = (baseValue || ![baseValue isKindOfClass:[NSNull class]]);
+        NSNumber *present = (baseValueIsPresent) ? @YES : @NO;
 
         return [DDExpression numberExpressionWithNumber:present];
     };
@@ -75,7 +76,7 @@
         NSString *baseKey = [args[0] variable];
         NSString *baseValue = variables[baseKey];
 
-        BOOL baseValueIsMissing = (baseValue != nil && [baseValue isKindOfClass:[NSNull class]]);
+        BOOL baseValueIsMissing = (baseValue != nil || [baseValue isKindOfClass:[NSNull class]]);
         NSNumber *missing = (baseValueIsMissing)  ? @YES : @NO;
 
         return [DDExpression numberExpressionWithNumber:missing];
