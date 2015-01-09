@@ -47,7 +47,7 @@
         }
 
         return [DDExpression numberExpressionWithNumber:isEqual];
-    };;
+    };
 
     return [mutableDictionary copy];
 }
