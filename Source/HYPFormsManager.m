@@ -12,7 +12,7 @@
 #import "NSString+HYPWordExtractor.h"
 
 #import "DDMathParser.h"
-#import "_DDVariableExpression.h"
+#import "DDMathEvaluator+HYPForms.h"
 
 @interface HYPFormsManager ()
 
@@ -95,39 +95,12 @@
 
     _evaluator = [DDMathEvaluator new];
 
-    DDMathFunction function = ^ DDExpression* (NSArray *args, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
+    NSDictionary *functionDictonary = [DDMathEvaluator hyp_directoryFunctions];
+    __weak typeof(self)weakSelf = self;
 
-        if (args.count < 2) {
-            *error = [NSError errorWithDomain:DDMathParserErrorDomain
-                                         code:DDErrorCodeInvalidNumberOfArguments
-                                     userInfo:@{NSLocalizedDescriptionKey : @"Invalid number of variables"
-                                                }];
-        }
-
-        NSArray *arguments = [args subarrayWithRange:NSMakeRange(1, args.count-1)];
-        NSNumber *isEqual = @YES;
-        NSString *baseKey = [args[0] variable];
-        NSString *baseValue = (variables[baseKey]) ?: baseKey;
-        NSString *otherValue;
-
-        for (DDExpression *expression in arguments) {
-            if (![expression isKindOfClass:[_DDVariableExpression class]]) {
-                isEqual = @NO;
-                break;
-            }
-
-            otherValue = (variables[expression.variable]) ?: expression.variable;
-
-            if (![baseValue isEqualToString:otherValue]) {
-                isEqual = @NO;
-                break;
-            }
-        }
-
-        return [DDExpression numberExpressionWithNumber:isEqual];
-    };
-
-    [_evaluator registerFunction:function forName:@"equals"];
+    [functionDictonary enumerateKeysAndObjectsUsingBlock:^(id key, id function, BOOL *stop) {
+        [weakSelf.evaluator registerFunction:function forName:key];
+    }];
 
     return _evaluator;
 }
@@ -174,6 +147,7 @@
                     if (fieldValueMatchesInitialValue) {
 
                         for (HYPFormTarget *target in fieldValue.targets) {
+                            if (![self evaluateCondition:target.condition]) continue;
                             if (target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
                         }
                     }
@@ -193,6 +167,7 @@
     [self.values addEntriesFromDictionary:initialValues];
 
     for (HYPFormTarget *target in targetsToRun) {
+        if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeField) {
 
@@ -207,6 +182,7 @@
     }
 
     for (HYPFormTarget *target in targetsToRun) {
+        if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeField) {
 
@@ -472,8 +448,7 @@
     NSMutableArray *insertedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
-        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
-        if (conditionFailed) continue;
+        if (![self evaluateCondition:target.condition]) continue;
 
         BOOL foundSection = NO;
 
@@ -533,8 +508,7 @@
     NSMutableArray *deletedSections = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
-        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
-        if (conditionFailed) continue;
+        if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeField) {
             HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:NO];
@@ -596,8 +570,7 @@
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
-        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
-        if (conditionFailed) continue;
+        if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
@@ -707,8 +680,7 @@
     NSMutableArray *indexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
-        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
-        if (conditionFailed) continue;
+        if (![self evaluateCondition:target.condition]) continue;
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
@@ -742,15 +714,22 @@
 
 - (BOOL)evaluateCondition:(NSString *)condition
 {
-    NSError *error;
-    DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
-    if (error == nil) {
-        NSNumber *result = [self.evaluator evaluateExpression:expression
-                                            withSubstitutions:self.values
-                                                        error:&error];
-        return [result boolValue];
+    BOOL evaluatedResult = NO;
+
+    if (condition) {
+        NSError *error;
+        DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
+        if (error == nil && self.values.count > 0) {
+            NSNumber *result = [self.evaluator evaluateExpression:expression
+                                                withSubstitutions:self.values
+                                                            error:&error];
+            return [result boolValue];
+        }
+    } else {
+        evaluatedResult = YES;
     }
-    return NO;
+
+    return evaluatedResult;
 }
 
 @end

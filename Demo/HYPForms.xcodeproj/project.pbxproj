@@ -75,6 +75,8 @@
 		890DF4637B5C51A0210949DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9243ED4871CF70DD889729A /* libPods.a */; };
 		8C8DE8B54F88B31D22D47547 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9243ED4871CF70DD889729A /* libPods.a */; };
 		BD03AE7919F98D0700DF726E /* HYPPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD03AE7819F98D0700DF726E /* HYPPostalCodeManager.m */; };
+		BD0FBF401A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0FBF3F1A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.m */; };
+		BD0FBF411A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0FBF3F1A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.m */; };
 		BD171A311A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD171A301A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m */; };
 		BD30E7AC19F4FAB6001AFA58 /* HYPFloatFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD30E7AB19F4FAB6001AFA58 /* HYPFloatFormatter.m */; };
 		BD5DC2A31A35C8D500A652AD /* HYPBankAccountNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5DC2A21A35C8D500A652AD /* HYPBankAccountNumberValidator.m */; };
@@ -214,6 +216,8 @@
 		B9243ED4871CF70DD889729A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD03AE7719F98D0700DF726E /* HYPPostalCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeManager.h; sourceTree = "<group>"; };
 		BD03AE7819F98D0700DF726E /* HYPPostalCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeManager.m; sourceTree = "<group>"; };
+		BD0FBF3E1A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDMathEvaluator+HYPForms.h"; sourceTree = "<group>"; };
+		BD0FBF3F1A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDMathEvaluator+HYPForms.m"; sourceTree = "<group>"; };
 		BD171A301A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormsCollectionViewDataSourceTests.m; sourceTree = "<group>"; };
 		BD22D3E01A264FC400A3DB65 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		BD30E7AA19F4FAB6001AFA58 /* HYPFloatFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPFloatFormatter.h; sourceTree = "<group>"; };
@@ -520,6 +524,8 @@
 				4445D51819EBC78A0034A5D7 /* UIFont+HYPFormsStyles.m */,
 				BD03AE7719F98D0700DF726E /* HYPPostalCodeManager.h */,
 				BD03AE7819F98D0700DF726E /* HYPPostalCodeManager.m */,
+				BD0FBF3E1A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.h */,
+				BD0FBF3F1A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -748,6 +754,7 @@
 			files = (
 				1445E12C1A3EDF0500219DB0 /* HYPFormTargetTests.m in Sources */,
 				14EE7ED91A269E7F00AC17B0 /* HYPFormsManagerTests.m in Sources */,
+				BD0FBF411A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.m in Sources */,
 				1467089B1A3E84AC006EDCF9 /* HYPFormTests.m in Sources */,
 				149D207C1A38476500B7BD76 /* HYPPopoverFormFieldCellTests.m in Sources */,
 				1445E12E1A3EE42400219DB0 /* HYPFieldValueTests.m in Sources */,
@@ -794,6 +801,7 @@
 				441B77A619DEC4F4006AF67C /* main.m in Sources */,
 				1416FB4B1A2875D700991E33 /* HYPFormFieldHeadingLabel.m in Sources */,
 				44BDD18D19EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m in Sources */,
+				BD0FBF401A5FCF2200EB1F6E /* DDMathEvaluator+HYPForms.m in Sources */,
 				14EE7ED71A269D5100AC17B0 /* HYPFormsManager.m in Sources */,
 				14F1554C19F3EBBC00086002 /* UIDevice+HYPRealOrientation.m in Sources */,
 				4408F1BA19E81F67005AE53F /* HYPPhoneNumberFormatter.m in Sources */,
