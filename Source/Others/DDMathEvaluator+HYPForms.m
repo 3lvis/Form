@@ -74,9 +74,9 @@
 
         NSString *baseKey = [args[0] variable];
         NSString *baseValue = variables[baseKey];
-        NSNumber *present = (!baseValue) ? @YES : @NO;
+        NSNumber *missing = (!baseValue) ? @YES : @NO;
 
-        return [DDExpression numberExpressionWithNumber:present];
+        return [DDExpression numberExpressionWithNumber:missing];
     };
 
     return [mutableDictionary copy];
