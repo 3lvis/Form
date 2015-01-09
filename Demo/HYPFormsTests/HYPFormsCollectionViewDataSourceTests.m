@@ -96,6 +96,12 @@
     XCTAssertFalse(targetField.disabled);
 }
 
+- (void)testInitiallyDisabled
+{
+    HYPFormField *totalField = [self.manager fieldWithID:@"total" includingHiddenFields:YES];
+    XCTAssertTrue(totalField.disabled);
+}
+
 - (void)testUpdatingTargetValue
 {
     HYPFormField *targetField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
