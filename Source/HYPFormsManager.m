@@ -147,6 +147,7 @@
                     if (fieldValueMatchesInitialValue) {
 
                         for (HYPFormTarget *target in fieldValue.targets) {
+                            if (![self evaluateCondition:target.condition]) continue;
                             if (target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
                         }
                     }
