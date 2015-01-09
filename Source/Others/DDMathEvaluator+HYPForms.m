@@ -49,6 +49,22 @@
         return [DDExpression numberExpressionWithNumber:isEqual];
     };
 
+    mutableDictionary[@"present"] = ^ DDExpression* (NSArray *args, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
+        if (args.count != 1) {
+            *error = [NSError errorWithDomain:DDMathParserErrorDomain
+                                         code:DDErrorCodeInvalidNumberOfArguments
+                                     userInfo:@{NSLocalizedDescriptionKey : @"Invalid number of variables"
+                                                }];
+        }
+
+
+        NSString *baseKey = [args[0] variable];
+        NSString *baseValue = variables[baseKey];
+        NSNumber *present = (baseValue) ? @YES : @NO;
+
+        return [DDExpression numberExpressionWithNumber:present];
+    };
+
     return [mutableDictionary copy];
 }
 
