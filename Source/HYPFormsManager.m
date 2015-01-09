@@ -445,8 +445,7 @@
     NSMutableArray *insertedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
-        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
-        if (conditionFailed) continue;
+        if (![self evaluateCondition:target.condition]) continue;
 
         BOOL foundSection = NO;
 
@@ -506,8 +505,7 @@
     NSMutableArray *deletedSections = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
-        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
-        if (conditionFailed) continue;
+        if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeField) {
             HYPFormField *field = [self fieldWithID:target.targetID includingHiddenFields:NO];
@@ -569,8 +567,7 @@
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
-        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
-        if (conditionFailed) continue;
+        if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
@@ -680,8 +677,7 @@
     NSMutableArray *indexPaths = [NSMutableArray new];
 
     for (HYPFormTarget *target in targets) {
-        BOOL conditionFailed = (target.condition && ![self evaluateCondition:target.condition]);
-        if (conditionFailed) continue;
+        if (![self evaluateCondition:target.condition]) continue;
         if (target.type == HYPFormTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
@@ -715,15 +711,22 @@
 
 - (BOOL)evaluateCondition:(NSString *)condition
 {
-    NSError *error;
-    DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
-    if (error == nil) {
-        NSNumber *result = [self.evaluator evaluateExpression:expression
-                                            withSubstitutions:self.values
-                                                        error:&error];
-        return [result boolValue];
+    BOOL evaluatedResult = NO;
+
+    if (condition) {
+        NSError *error;
+        DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
+        if (error == nil) {
+            NSNumber *result = [self.evaluator evaluateExpression:expression
+                                                withSubstitutions:self.values
+                                                            error:&error];
+            return [result boolValue];
+        }
+    } else {
+        evaluatedResult = YES;
     }
-    return NO;
+
+    return evaluatedResult;
 }
 
 @end
