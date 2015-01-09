@@ -17,7 +17,7 @@
 {
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
 
-    DDMathFunction function = ^ DDExpression* (NSArray *args, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
+    mutableDictionary[@"equals"] = ^ DDExpression* (NSArray *args, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 
         if (args.count < 2) {
             *error = [NSError errorWithDomain:DDMathParserErrorDomain
@@ -47,9 +47,7 @@
         }
 
         return [DDExpression numberExpressionWithNumber:isEqual];
-    };
-
-    mutableDictionary[@"equals"] = function;
+    };;
 
     return [mutableDictionary copy];
 }
