@@ -719,7 +719,7 @@
     if (condition) {
         NSError *error;
         DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
-        if (error == nil) {
+        if (error == nil && self.values.count > 0) {
             NSNumber *result = [self.evaluator evaluateExpression:expression
                                                 withSubstitutions:self.values
                                                             error:&error];
