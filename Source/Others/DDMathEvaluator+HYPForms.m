@@ -74,7 +74,9 @@
 
         NSString *baseKey = [args[0] variable];
         NSString *baseValue = variables[baseKey];
-        NSNumber *missing = (!baseValue) ? @YES : @NO;
+
+        BOOL baseValueIsMissing = (baseValue != nil && [baseValue isKindOfClass:[NSNull class]]);
+        NSNumber *missing = (baseValueIsMissing)  ? @YES : @NO;
 
         return [DDExpression numberExpressionWithNumber:missing];
     };
