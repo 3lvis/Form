@@ -600,7 +600,7 @@
                 [self.values setObject:field.fieldValue forKey:field.fieldID];
             }
 
-        } else {
+        } else if (field.formula) {
             NSArray *fieldIDs = [field.formula hyp_variables];
             NSMutableDictionary *values = [NSMutableDictionary new];
 
