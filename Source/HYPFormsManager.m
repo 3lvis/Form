@@ -450,6 +450,12 @@
     for (HYPFormTarget *target in targets) {
         if (![self evaluateCondition:target.condition]) continue;
 
+        __block BOOL fieldIsShown = NO;
+        [self fieldWithID:target.targetID includingHiddenFields:NO completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+            if (field) fieldIsShown = YES;
+        }];
+        if (fieldIsShown) continue;
+
         BOOL foundSection = NO;
 
         if (target.type == HYPFormTargetTypeField) {
