@@ -455,53 +455,54 @@
                completion:^(HYPFormField *field, NSIndexPath *indexPath) {
                    if (field) fieldIsShown = YES;
                }];
-        if (fieldIsShown) continue;
 
-        BOOL foundSection = NO;
+        if (fieldIsShown) {
+            BOOL foundSection = NO;
 
-        if (target.type == HYPFormTargetTypeField) {
-            HYPFormField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
-            if (field) {
-                HYPForm *form = self.forms[[field.section.form.position integerValue]];
+            if (target.type == HYPFormTargetTypeField) {
+                HYPFormField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
+                if (field) {
+                    HYPForm *form = self.forms[[field.section.form.position integerValue]];
 
-                for (HYPFormSection *section in form.sections) {
-                    if ([section.sectionID isEqualToString:field.section.sectionID]) {
-                        foundSection = YES;
-                        NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
-                        [section.fields insertObject:field atIndex:fieldIndex];
+                    for (HYPFormSection *section in form.sections) {
+                        if ([section.sectionID isEqualToString:field.section.sectionID]) {
+                            foundSection = YES;
+                            NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
+                            [section.fields insertObject:field atIndex:fieldIndex];
+                        }
                     }
                 }
+            } else if (target.type == HYPFormTargetTypeSection) {
+                HYPFormSection *section = [self.hiddenSections objectForKey:target.targetID];
+                if (section) {
+                    NSInteger sectionIndex = [section indexInForms:self.forms];
+                    HYPForm *form = self.forms[[section.form.position integerValue]];
+                    [form.sections insertObject:section atIndex:sectionIndex];
+                }
             }
-        } else if (target.type == HYPFormTargetTypeSection) {
-            HYPFormSection *section = [self.hiddenSections objectForKey:target.targetID];
-            if (section) {
-                NSInteger sectionIndex = [section indexInForms:self.forms];
-                HYPForm *form = self.forms[[section.form.position integerValue]];
-                [form.sections insertObject:section atIndex:sectionIndex];
-            }
-        }
 
-        if (target.type == HYPFormTargetTypeField && foundSection) {
-            HYPFormField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
-            if (field) {
-                [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
-                    if (field) {
-                        [insertedIndexPaths addObject:indexPath];
-                    }
+            if (target.type == HYPFormTargetTypeField && foundSection) {
+                HYPFormField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
+                if (field) {
+                    [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+                        if (field) {
+                            [insertedIndexPaths addObject:indexPath];
+                        }
 
-                    [self.hiddenFieldsAndFieldIDsDictionary removeObjectForKey:target.targetID];
-                }];
-            }
-        } else if (target.type == HYPFormTargetTypeSection) {
-            HYPFormSection *section = [self.hiddenSections objectForKey:target.targetID];
-            if (section) {
-                [self sectionWithID:target.targetID completion:^(HYPFormSection *section, NSArray *indexPaths) {
-                    if (section) {
-                        [insertedIndexPaths addObjectsFromArray:indexPaths];
+                        [self.hiddenFieldsAndFieldIDsDictionary removeObjectForKey:target.targetID];
+                    }];
+                }
+            } else if (target.type == HYPFormTargetTypeSection) {
+                HYPFormSection *section = [self.hiddenSections objectForKey:target.targetID];
+                if (section) {
+                    [self sectionWithID:target.targetID completion:^(HYPFormSection *section, NSArray *indexPaths) {
+                        if (section) {
+                            [insertedIndexPaths addObjectsFromArray:indexPaths];
 
-                        [self.hiddenSections removeObjectForKey:section.sectionID];
-                    }
-                }];
+                            [self.hiddenSections removeObjectForKey:section.sectionID];
+                        }
+                    }];
+                }
             }
         }
     }
