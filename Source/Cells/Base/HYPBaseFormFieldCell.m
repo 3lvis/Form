@@ -1,8 +1,16 @@
 #import "HYPBaseFormFieldCell.h"
 
+#import "UIColor+ANDYHex.h"
+
 static const CGFloat HYPTextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
 static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
+
+@interface HYPBaseFormFieldCell ()
+
+@property (nonatomic, strong) UIView *separatorView;
+
+@end
 
 @implementation HYPBaseFormFieldCell
 
@@ -14,6 +22,7 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     if (!self) return nil;
 
     [self.contentView addSubview:self.headingLabel];
+    [self.contentView addSubview:self.separatorView];
 
     return self;
 }
@@ -29,6 +38,16 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     return _headingLabel;
 }
 
+- (UIView *)separatorView
+{
+    if (_separatorView) return _separatorView;
+
+    _separatorView = [[UIView alloc] initWithFrame:[self frameForSeparatorView]];
+    _separatorView.backgroundColor = [UIColor colorFromHex:@"C6C6C6"];
+    
+    return _separatorView;
+}
+
 #pragma mark - Setters
 
 - (void)setDisabled:(BOOL)disabled
@@ -42,16 +61,7 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 {
     _field = field;
 
-    self.headingLabel.hidden = (field.sectionSeparator);
-    self.headingLabel.text = field.title;
-
     [self updateWithField:field];
-
-    if (field.targets.count > 0) {
-        if ([self.delegate respondsToSelector:@selector(fieldCell:processTargets:)]) {
-            [self.delegate fieldCell:self processTargets:field.targets];
-        }
-    }
 }
 
 #pragma mark - Overwritables
@@ -63,7 +73,16 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 
 - (void)updateWithField:(HYPFormField *)field
 {
-    abort();
+    self.headingLabel.hidden = (field.sectionSeparator);
+    self.headingLabel.text = field.title;
+
+    self.separatorView.hidden = !field.sectionSeparator;
+
+    if (field.targets.count > 0) {
+        if ([self.delegate respondsToSelector:@selector(fieldCell:processTargets:)]) {
+            [self.delegate fieldCell:self processTargets:field.targets];
+        }
+    }
 }
 
 - (void)validate
@@ -78,6 +97,8 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     [super layoutSubviews];
 
     self.headingLabel.frame = [self frameForHeadingLabel];
+
+    self.separatorView.frame = [self frameForSeparatorView];
 }
 
 - (CGRect)frameForHeadingLabel
@@ -88,6 +109,16 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
     CGFloat height = HYPTextFormFieldCellLabelHeight;
     CGRect frame = CGRectMake(marginX, marginTop, width, height);
+
+    return frame;
+}
+
+- (CGRect)frameForSeparatorView
+{
+    CGRect frame = self.frame;
+    frame.origin.x = 0.0f;
+    frame.origin.y = CGRectGetHeight(frame) - 1.0f;
+    frame.size.height = 1.0f;
 
     return frame;
 }

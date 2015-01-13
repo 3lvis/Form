@@ -107,9 +107,10 @@
 {
     for (HYPFormSection *section in self.sections) {
         for (HYPFormField *field in section.fields) {
-            NSLog(@"field key: %@ --- value: %@ (%@ : %@)", field.fieldID, field.fieldValue,
+            NSLog(@"%@ --- %@ (section %@ : field %@)", field.fieldID, field.fieldValue,
                   field.section.position, field.position);
         }
+        NSLog(@" ");
     }
 }
 

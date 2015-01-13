@@ -91,6 +91,8 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 
 - (void)updateWithField:(HYPFormField *)field
 {
+    [super updateWithField:field];
+    
     self.iconImageView.hidden = field.disabled;
 
     self.fieldValueLabel.hidden = (field.sectionSeparator);
