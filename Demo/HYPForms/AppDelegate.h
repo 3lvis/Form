@@ -4,5 +4,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (BOOL)isUnitTesting;
+
 @end
 
