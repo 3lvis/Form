@@ -26,29 +26,12 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    NSDictionary *dictionary = @{ @"address" : @"Burger Park 667",
-                                  @"bank_account_number" : @"11111111111",
-                                  @"email_address" : @"me@example.no",
-                                  @"end_date" : @"2017-10-31 23:00:00 +00:00",
-                                  @"first_name" : @"Ola",
-                                  @"last_name" : @"Nordman",
-                                  @"hours_per_week" : @"37,5",
-                                  @"phone_number" : @"41119880",
-                                  @"postal_code" : @"0164",
-                                  @"social_security_number" : @"28118210000",
-                                  @"start_date" : @"2014-10-31 23:00:00 +00:00",
-                                  @"employment_type" : @2,
-                                  @"position": @3,
-                                  @"temporary_employee_type" : @3,
-                                  @"employment_percent" : @"100",
-                                  @"salary_type": @1,
-                                  @"hourly_pay_level": @2,
-                                  @"fixed_pay_premium_percent" : @"10",
-                                  @"fixed_pay_premium_currency" : @"10",
-                                  @"fixed_pay_level" : @3,
-                                  @"position" : @3,
-                                  @"country_code" : @"NO"
-                                  };
+    NSDictionary *dictionary = @{@"address" : @"Burger Park 667",
+                                 @"end_date" : @"2017-10-31 23:00:00 +00:00",
+                                 @"first_name" : @"Ola",
+                                 @"last_name" : @"Nordman",
+                                 @"start_date" : @"2014-10-31 23:00:00 +00:00"
+                                 };
 
     HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];
 
