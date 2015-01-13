@@ -462,7 +462,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets
 {
-    NSTimeInterval delay = ([NSObject isUnitTesting]) ? HYPFormsDispatchTime : 0.0;
+    NSTimeInterval delay = ([NSObject isUnitTesting]) ? HYPFormsDispatchTime : 0.0f;
     [self performSelector:@selector(processTargets:) withObject:targets afterDelay:delay];
 }
 
