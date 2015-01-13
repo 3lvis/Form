@@ -152,9 +152,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
     [self.navigationController setToolbarHidden:NO animated:YES];
 
-    HYPFormTarget *target = [HYPFormTarget hideSectionTargetWithID:@"employment-1"];
-
-    [self.dataSource processTargets:@[target, [HYPFormTarget hideFieldTargetWithID:@"image"]]];
+    [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"image"]];
 }
 
 #pragma mark - UICollectionViewDelegate
