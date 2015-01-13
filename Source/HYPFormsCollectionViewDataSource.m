@@ -145,12 +145,6 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
         self.configureCellBlock(cell, indexPath, field);
     } else {
         cell.field = field;
-
-        if (field.sectionSeparator) {
-            cell.backgroundColor = [UIColor colorFromHex:@"C6C6C6"];
-        } else {
-            cell.backgroundColor = [UIColor clearColor];
-        }
     }
 
     return cell;

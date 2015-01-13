@@ -2,7 +2,7 @@
 
 @protocol HYPFormsLayoutDataSource;
 
-static const NSInteger HYPFormMarginHorizontal = 20.0f;
+static const NSInteger HYPFormMarginHorizontal = 15.0f;
 static const NSInteger HYPFormMarginTop = 10.0f;
 static const NSInteger HYPFormMarginBottom = 30.0f;
 
