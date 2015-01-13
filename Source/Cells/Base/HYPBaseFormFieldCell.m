@@ -61,16 +61,7 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 {
     _field = field;
 
-    self.headingLabel.hidden = (field.sectionSeparator);
-    self.headingLabel.text = field.title;
-
     [self updateWithField:field];
-
-    if (field.targets.count > 0) {
-        if ([self.delegate respondsToSelector:@selector(fieldCell:processTargets:)]) {
-            [self.delegate fieldCell:self processTargets:field.targets];
-        }
-    }
 }
 
 #pragma mark - Overwritables
@@ -82,7 +73,16 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 
 - (void)updateWithField:(HYPFormField *)field
 {
+    self.headingLabel.hidden = (field.sectionSeparator);
+    self.headingLabel.text = field.title;
+
     self.separatorView.hidden = !field.sectionSeparator;
+
+    if (field.targets.count > 0) {
+        if ([self.delegate respondsToSelector:@selector(fieldCell:processTargets:)]) {
+            [self.delegate fieldCell:self processTargets:field.targets];
+        }
+    }
 }
 
 - (void)validate
