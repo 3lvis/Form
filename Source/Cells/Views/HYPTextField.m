@@ -168,8 +168,6 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
         type = HYPTextFieldTypeDate;
     } else if ([typeString isEqualToString:@"select"]) {
         type = HYPTextFieldTypeSelect;
-    } else if ([typeString isEqualToString:@"info"]) {
-        type = HYPTextFieldTypeInfo;
     } else if ([typeString isEqualToString:@"text"]) {
         type = HYPTextFieldTypeDefault;
     } else if (!typeString.length) {
