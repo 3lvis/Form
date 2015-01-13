@@ -42,6 +42,4 @@
 - (NSArray *)enableTargets:(NSArray *)targets;
 - (NSArray *)disableTargets:(NSArray *)targets;
 
-- (BOOL)evaluateCondition:(NSString *)condition;
-
 @end
