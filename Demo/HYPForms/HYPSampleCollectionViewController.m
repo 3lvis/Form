@@ -136,7 +136,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     UILabel *readOnlyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 90.0f, 40.0f)];
     readOnlyLabel.text = @"Read-only";
     readOnlyLabel.textColor = [UIColor colorFromHex:@"5182AF"];
-    readOnlyLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    readOnlyLabel.font = [UIFont boldSystemFontOfSize:17.0f];
     [readOnlyView addSubview:readOnlyLabel];
 
     UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(90.0f, 5.0f, 40.0f, 40.0f)];

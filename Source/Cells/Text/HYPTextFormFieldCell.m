@@ -172,6 +172,8 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
 
 - (void)updateWithField:(HYPFormField *)field
 {
+    [super updateWithField:field];
+
     self.textField.hidden          = (field.sectionSeparator);
     self.textField.inputValidator  = [self.field inputValidator];
     self.textField.formatter       = [self.field formatter];
