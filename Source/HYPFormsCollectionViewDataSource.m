@@ -13,6 +13,7 @@
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
+#import "NSObject+HYPTesting.h"
 
 static const CGFloat HYPFormsDispatchTime = 0.05f;
 
@@ -461,9 +462,8 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(HYPFormsDispatchTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self processTargets:targets];
-    });
+    NSTimeInterval delay = ([NSObject isUnitTesting]) ? HYPFormsDispatchTime : 0.0f;
+    [self performSelector:@selector(processTargets:) withObject:targets afterDelay:delay];
 }
 
 #pragma mark - Targets Procesing
