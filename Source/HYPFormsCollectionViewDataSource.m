@@ -128,7 +128,6 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
             identifier = HYPSelectFormFieldCellIdentifier;
             break;
 
-        case HYPFormFieldTypeInfo:
         case HYPFormFieldTypeText:
         case HYPFormFieldTypeFloat:
         case HYPFormFieldTypeNumber:

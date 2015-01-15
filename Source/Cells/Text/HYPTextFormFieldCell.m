@@ -215,7 +215,7 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
 
 - (void)cellTapAction
 {
-    BOOL shouldDisplaySubtitle = (self.field.type == HYPFormFieldTypeInfo && self.field.subtitle);
+    BOOL shouldDisplaySubtitle = (self.field.type == HYPFormFieldTypeText && self.field.subtitle);
     if (shouldDisplaySubtitle) {
         [self showSubtitle];
     } else {
