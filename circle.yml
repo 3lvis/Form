@@ -1,3 +1,0 @@
-test:
-  override:
-    - /usr/bin/xcodebuild -workspace Demo/HYPForms.xcworkspace test -scheme HYPFormsTests build test

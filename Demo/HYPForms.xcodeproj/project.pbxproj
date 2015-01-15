@@ -227,7 +227,6 @@
 		BD64BEFE1A0AC67B00A1D808 /* ic_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_calendar@2x.png"; sourceTree = "<group>"; };
 		BD7C6C2D19F686130084EF2E /* HYPForms.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = HYPForms.podspec; path = ../HYPForms.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BD9A14431A3A18D6005DB106 /* HYPTextFormFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPTextFormFieldCellTests.m; sourceTree = "<group>"; };
-		BDCDCBD31A67CC5B00A1BD99 /* circle.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = circle.yml; path = ../circle.yml; sourceTree = "<group>"; };
 		BDD6495C1A436CE500C99B76 /* HYPSubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSubtitleView.h; sourceTree = "<group>"; };
 		BDD6495D1A436CE500C99B76 /* HYPSubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSubtitleView.m; sourceTree = "<group>"; };
 		BDEEFE4119FA2A9D00D0C284 /* HYPPostalCodeValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeValidator.h; sourceTree = "<group>"; };
@@ -456,7 +455,6 @@
 			isa = PBXGroup;
 			children = (
 				BD22D3E01A264FC400A3DB65 /* .travis.yml */,
-				BDCDCBD31A67CC5B00A1BD99 /* circle.yml */,
 				BD7C6C2D19F686130084EF2E /* HYPForms.podspec */,
 				4408F15B19E81EA6005AE53F /* Source */,
 				441B77A219DEC4F3006AF67C /* HYPForms */,
