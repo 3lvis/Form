@@ -1,6 +1,3 @@
 test:
-  pre:
-    - gem install cocoapods -v '0.35'
-    - brew install xctool
   override:
-    - xctool -workspace Demo/HYPForms.xcworkspace -scheme HYPFormsTests -sdk iphonesimulator build test
+    - xcodebuild -workspace Demo/HYPForms.xcworkspace test -scheme HYPFormsTests build test
