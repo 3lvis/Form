@@ -1,0 +1,3 @@
+test:
+  override:
+    - xctool -workspace Demo/HYPForms.xcworkspace -scheme HYPFormsTests -sdk iphonesimulator build test
