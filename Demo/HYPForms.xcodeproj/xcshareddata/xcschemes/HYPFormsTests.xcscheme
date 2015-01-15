@@ -67,18 +67,6 @@
             ReferencedContainer = "container:HYPForms.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "XCODE_SCHEME"
-            value = "HYPFormsTests"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "XCODE_WORKSPACE"
-            value = "Demo/HYPForms.xcworkspace"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
