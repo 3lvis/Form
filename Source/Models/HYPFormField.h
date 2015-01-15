@@ -11,7 +11,6 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
     HYPFormFieldTypeDate,
     HYPFormFieldTypeFloat,
     HYPFormFieldTypeNumber,
-    HYPFormFieldTypeInfo,
     HYPFormFieldTypeCustom
 };
 

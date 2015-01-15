@@ -95,7 +95,6 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             }
         } break;
 
-        case HYPFormFieldTypeInfo:
         case HYPFormFieldTypeText:
         case HYPFormFieldTypeSelect:
         case HYPFormFieldTypeCustom:
@@ -122,7 +121,6 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         case HYPFormFieldTypeNumber:
             return @([self.fieldValue integerValue]);
 
-        case HYPFormFieldTypeInfo:
         case HYPFormFieldTypeText:
         case HYPFormFieldTypeSelect:
         case HYPFormFieldTypeDate:
@@ -181,8 +179,6 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         [typeString isEqualToString:@"name"] ||
         [typeString isEqualToString:@"email"]) {
         return HYPFormFieldTypeText;
-    } else if ([typeString isEqualToString:@"info"]) {
-        return HYPFormFieldTypeInfo;
     } else if ([typeString isEqualToString:@"select"]) {
         return HYPFormFieldTypeSelect;
     } else if ([typeString isEqualToString:@"date"]) {
