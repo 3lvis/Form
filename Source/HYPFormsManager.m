@@ -156,6 +156,11 @@
                     if (shouldUseDefaultValue) {
                         field.fieldValue = fieldValue;
                         self.values[field.fieldID] = fieldValue.valueID;
+
+                        for (HYPFormTarget *target in fieldValue.targets) {
+                            if (![self evaluateCondition:target.condition]) continue;
+                            if (target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
+                        }
                     }
                 }
             }
