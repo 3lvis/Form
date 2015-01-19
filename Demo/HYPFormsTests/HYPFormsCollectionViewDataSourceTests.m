@@ -127,7 +127,7 @@
     HYPFormField *displayNameField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
     HYPFormField *usernameField = [self.manager fieldWithID:@"username" includingHiddenFields:YES];
     HYPFieldValue *fieldValue = usernameField.fieldValue;
-    XCTAssertEqual(fieldValue.valueID, @0);
+    XCTAssertEqualObjects(fieldValue.valueID, @0);
 
     HYPFormTarget *updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
                                                                               @"id" : @"display_name",
