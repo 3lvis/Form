@@ -9,11 +9,11 @@
           {
             "id":"first_name",
             "title":"First name",
-            "subtitle": "Fornavn",
+            "subtitle":"Fornavn",
             "type":"name",
             "size":{
-              "width": 30,
-              "height": 1
+              "width":30,
+              "height":1
             },
             "validations":{
               "required":true,
@@ -34,8 +34,8 @@
             "type":"name",
             "subtitle":"Obs! Husk å kjøpe melk",
             "size":{
-              "width": 30,
-              "height": 1
+              "width":30,
+              "height":1
             },
             "validations":{
               "required":true,
@@ -56,8 +56,8 @@
             "subtitle":"This is the name that is going to be used across the application.",
             "type":"text",
             "size":{
-              "width": 40,
-              "height": 1
+              "width":40,
+              "height":1
             },
             "formula":"first_name last_name"
           }
@@ -71,18 +71,18 @@
             "title":"Address",
             "type":"text",
             "size":{
-              "width": 50,
-              "height": 1
+              "width":50,
+              "height":1
             }
           },
           {
             "id":"email",
             "title":"E-post",
-            "subtitle": "bork\nbork\nbork",
+            "subtitle":"bork\nbork\nbork",
             "type":"email",
             "size":{
-              "width": 25,
-              "height": 1
+              "width":25,
+              "height":1
             },
             "validations":{
               "format":"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}",
@@ -94,8 +94,8 @@
             "title":"Username",
             "type":"select",
             "size":{
-              "width": 25,
-              "height": 1
+              "width":25,
+              "height":1
             },
             "values":[
               {
@@ -236,11 +236,11 @@
             ]
           },
           {
-            "id": "image",
-            "type": "image",
-            "size": {
-              "width": 100,
-              "height": 1.7
+            "id":"image",
+            "type":"image",
+            "size":{
+              "width":100,
+              "height":1.7
             }
           }
         ]
@@ -249,7 +249,7 @@
   },
   {
     "id":"employment",
-    "title": "Employment",
+    "title":"Employment",
     "sections":[
       {
         "id":"employment-0",
@@ -259,8 +259,8 @@
             "title":"Start date",
             "type":"date",
             "size":{
-              "width": 25,
-              "height": 1
+              "width":25,
+              "height":1
             }
           },
           {
@@ -268,8 +268,8 @@
             "title":"End date",
             "type":"date",
             "size":{
-              "width": 25,
-              "height": 1
+              "width":25,
+              "height":1
             }
           },
           {
@@ -277,8 +277,8 @@
             "title":"Contract type",
             "type":"select",
             "size":{
-              "width": 50,
-              "height": 1
+              "width":50,
+              "height":1
             },
             "values":[
               {
@@ -287,12 +287,12 @@
                 "default":true,
                 "targets":[
                   {
-                    "id": "end_date",
+                    "id":"end_date",
                     "type":"field",
                     "action":"show"
                   },
                   {
-                    "id": "employment-1",
+                    "id":"employment-1",
                     "type":"section",
                     "action":"show"
                   }
@@ -303,12 +303,12 @@
                 "title":"Temporary",
                 "targets":[
                   {
-                    "id": "end_date",
+                    "id":"end_date",
                     "type":"field",
                     "action":"hide"
                   },
                   {
-                    "id": "employment-1",
+                    "id":"employment-1",
                     "type":"section",
                     "action":"hide"
                   }
@@ -326,8 +326,8 @@
             "title":"Base salary",
             "type":"select",
             "size":{
-              "width": 25,
-              "height": 1
+              "width":25,
+              "height":1
             },
             "values":[
               {
@@ -373,8 +373,8 @@
             "title":"Bonus enabled",
             "type":"select",
             "size":{
-              "width": 25,
-              "height": 1
+              "width":25,
+              "height":1
             },
             "values":[
               {
@@ -392,8 +392,8 @@
             "title":"Bonus",
             "type":"float",
             "size":{
-              "width": 25,
-              "height": 1
+              "width":25,
+              "height":1
             },
             "targets":[
               {
@@ -408,8 +408,8 @@
             "title":"Total",
             "type":"float",
             "size":{
-              "width": 25,
-              "height": 1
+              "width":25,
+              "height":1
             },
             "disabled":true,
             "formula":"base_salary + bonus"
@@ -419,60 +419,60 @@
     ]
   },
   {
-    "id": "companies",
-    "title": "Companies",
-    "sections": [
+    "id":"companies",
+    "title":"Companies",
+    "sections":[
       {
-        "id": "companies[0]",
-        "fields": [
+        "id":"companies[0]",
+        "fields":[
           {
-            "id": "companies[0].name",
-            "title": "Name 1",
-            "subtitle" : "Hyper",
-            "type": "name",
-            "validations": {
-              "required": true,
-              "min_length": 2
+            "id":"companies[0].name",
+            "title":"Name 1",
+            "subtitle":"Hyper",
+            "type":"name",
+            "validations":{
+              "required":true,
+              "min_length":2
             },
-            "size": {
-              "width": 70,
-              "height": 1
+            "size":{
+              "width":70,
+              "height":1
             }
           },
           {
-            "id": "companies[0].phone_number",
-            "title": "Phone number 1",
-            "type": "number",
-            "size": {
-              "width": 30,
-              "height": 1
+            "id":"companies[0].phone_number",
+            "title":"Phone number 1",
+            "type":"number",
+            "size":{
+              "width":30,
+              "height":1
             }
           }
         ]
       },
       {
-        "id": "companies[1]",
-        "fields": [
+        "id":"companies[1]",
+        "fields":[
           {
-            "id": "companies[1].name",
-            "title": "Name 2",
-            "type": "name",
-            "validations": {
-              "required": true,
-              "min_length": 2
+            "id":"companies[1].name",
+            "title":"Name 2",
+            "type":"name",
+            "validations":{
+              "required":true,
+              "min_length":2
             },
-            "size": {
-              "width": 70,
-              "height": 1
+            "size":{
+              "width":70,
+              "height":1
             }
           },
           {
-            "id": "companies[1].phone_number",
-            "title": "Phone number 1",
-            "type": "number",
-            "size": {
-              "width": 30,
-              "height": 1
+            "id":"companies[1].phone_number",
+            "title":"Phone number 1",
+            "type":"number",
+            "size":{
+              "width":30,
+              "height":1
             }
           }
         ]
