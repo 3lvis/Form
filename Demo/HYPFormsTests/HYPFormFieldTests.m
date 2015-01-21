@@ -106,9 +106,7 @@
     [manager indexForFieldWithID:field.fieldID
                  inSectionWithID:field.section.sectionID
                       completion:^(HYPFormSection *section, NSInteger index) {
-                          if (section) {
-                              [section.fields removeObjectAtIndex:index];
-                          }
+                          if (section) [section.fields removeObjectAtIndex:index];
                       }];
 
     field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
