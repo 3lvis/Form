@@ -37,9 +37,15 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 
 - (void)resetForms;
 - (void)validateForms;
-- (void)disable:(BOOL)disabled;
+
+- (void)enable;
+- (void)disable;
+- (BOOL)isDisabled;
+- (BOOL)isEnabled;
+
 - (void)processTarget:(HYPFormTarget *)target;
 - (void)processTargets:(NSArray *)targets;
+
 - (void)reloadWithDictionary:(NSDictionary *)dictionary;
 - (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
 

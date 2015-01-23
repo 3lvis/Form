@@ -24,6 +24,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 @property (nonatomic) UIEdgeInsets originalInset;
 @property (nonatomic) BOOL disabled;
 @property (nonatomic, weak) HYPFormsManager *formsManager;
+@property (nonatomic, strong) NSMutableArray *previouslyEnabledFields;
 
 @end
 
@@ -87,6 +88,15 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     _collapsedForms = [NSMutableArray new];
 
     return _collapsedForms;
+}
+
+- (NSMutableArray *)previouslyEnabledFields
+{
+    if (_previouslyEnabledFields) return _previouslyEnabledFields;
+
+    _previouslyEnabledFields = [NSMutableArray new];
+
+    return _previouslyEnabledFields;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -279,6 +289,16 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     return field;
 }
 
+- (void)enable
+{
+    [self disable:NO];
+}
+
+- (void)disable
+{
+    [self disable:YES];
+}
+
 - (void)disable:(BOOL)disabled
 {
     self.disabled = disabled;
@@ -300,14 +320,20 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
         }
     }
 
+    if (disabled) [self.previouslyEnabledFields removeAllObjects];
+
     for (NSString *fieldID in fields) {
         HYPFormField *field = [fields valueForKey:fieldID];
         BOOL shouldChangeState = (![self.formsManager.disabledFieldsIDs containsObject:fieldID]);
 
         if (disabled) {
+            if (!field.disabled) [self.previouslyEnabledFields addObject:field.fieldID];
+
             field.disabled = YES;
         } else if (shouldChangeState) {
-            if (!field.initiallyDisabled) field.disabled = disabled;
+            if (!field.initiallyDisabled) field.disabled = NO;
+
+            if ([self.previouslyEnabledFields containsObject:field.fieldID]) field.disabled = NO;
 
             if (field.targets.count > 0) {
                 [self processTargets:field.targets];
@@ -316,7 +342,15 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
                 if (hasFieldValue) {
                     HYPFieldValue *fieldValue = (HYPFieldValue *)field.fieldValue;
 
-                    if (fieldValue.targets.count > 0) [self processTargets:fieldValue.targets];
+                    NSMutableArray *targets = [NSMutableArray new];
+
+                    for (HYPFormTarget *target in fieldValue.targets) {
+                        BOOL targetIsNotEnableOrDisable = (target.actionType != HYPFormTargetActionEnable &&
+                                                           target.actionType != HYPFormTargetActionDisable);
+                        if (targetIsNotEnableOrDisable) [targets addObject:target];
+                    }
+
+                    if (targets.count > 0) [self processTargets:targets];
                 }
             }
         }
@@ -325,6 +359,16 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     [UIView performWithoutAnimation:^{
         [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
     }];
+}
+
+- (BOOL)isDisabled
+{
+    return self.disabled;
+}
+
+- (BOOL)isEnabled
+{
+    return !self.disabled;
 }
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
