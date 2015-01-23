@@ -60,6 +60,59 @@
             ]
           },
           {
+            "id":"salary_type",
+            "title":"Salary type",
+            "type":"select",
+            "size":{
+              "width": 50,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Super",
+                "targets":[
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"show"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"show"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"show"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Excelent",
+                "targets":[
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"hide"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "id":"start_date",
             "title":"Start date",
             "type":"date",

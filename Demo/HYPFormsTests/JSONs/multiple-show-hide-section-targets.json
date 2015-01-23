@@ -20,17 +20,17 @@
                 "title":"Permanent",
                 "targets":[
                   {
-                    "id": "employment-1",
+                    "id": "employment-2",
                     "type":"section",
                     "action":"show"
                   },
                   {
-                    "id": "employment-1",
+                    "id": "employment-2",
                     "type":"section",
                     "action":"show"
                   },
                   {
-                    "id": "employment-1",
+                    "id": "employment-2",
                     "type":"section",
                     "action":"show"
                   }
@@ -41,17 +41,17 @@
                 "title":"Temporary",
                 "targets":[
                   {
-                    "id": "employment-1",
+                    "id": "employment-2",
                     "type":"section",
                     "action":"hide"
                   },
                   {
-                    "id": "employment-1",
+                    "id": "employment-2",
                     "type":"section",
                     "action":"hide"
                   },
                   {
-                    "id": "employment-1",
+                    "id": "employment-2",
                     "type":"section",
                     "action":"hide"
                   }
@@ -63,6 +63,64 @@
       },
       {
         "id":"employment-1",
+        "fields":[
+          {
+            "id":"salary_type",
+            "title":"Salary type",
+            "type":"select",
+            "size":{
+              "width": 50,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Super",
+                "targets":[
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"show"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"show"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"show"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Excelent",
+                "targets":[
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"hide"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id":"employment-2",
         "fields":[
           {
             "id":"bonus_enabled",
