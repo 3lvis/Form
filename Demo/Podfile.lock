@@ -1,11 +1,11 @@
 PODS:
-  - DDMathParser (0.1)
+  - DDMathParser (0.2)
   - HYPImagePicker (0.2)
   - HYPNorwegianAccountNumber (1.2.1)
-  - HYPNorwegianSSN (1.8)
+  - HYPNorwegianSSN (1.8.3)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSJSONSerialization-ANDYJSONFile (1.1)
-  - NSObject-HYPTesting (0.1)
+  - NSObject-HYPTesting (1.0)
   - NSString-HYPContainsString (0.1)
   - NSString-HYPFormula (1.6.1):
     - NSString-HYPWordExtractor
@@ -49,22 +49,22 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   DDMathParser:
-    :commit: ad1fd49d1f91c8d42bc75219ca0ee9507b833cf5
+    :commit: db41b58379b8178947046b6071eead25d1f9e251
     :git: https://github.com/hyperoslo/DDMathParser.git
   HYPImagePicker:
-    :commit: d7fb5dc36782bff5fff0256728eb922fa03dd12a
+    :commit: aa0c9c8fce7498630f7259a2b09c0ef0ea675e07
     :git: https://github.com/hyperoslo/HYPImagePicker.git
   HYPNorwegianSSN:
-    :commit: fea0ac1ed0c416c429eee9cdbd43118954441369
+    :commit: eb63020b30521bfd4bfec950f65c1b9b4c66f2d0
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSObject-HYPTesting:
-    :commit: 418645b7e429a119d2674e658b9e28b8115f757b
+    :commit: 0b0e554d7914332f1479e8093c1633d98364681d
     :git: https://github.com/hyperoslo/NSObject-HYPTesting.git
   NSString-HYPContainsString:
-    :commit: 25e2ddee9385820edbd2ec466fc511201c7737cc
+    :commit: b72e010dc7d848fc1b4ddf8fccb47e65745e18ea
     :git: https://github.com/hyperoslo/NSString-HYPContainsString.git
   NSString-HYPFormula:
-    :commit: 1149cc13cd633445c67554169433aa978c98fb5b
+    :commit: 30f336adde1ca67e8e0f33d5c58d5d98431f56e4
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
   NSString-HYPWordExtractor:
     :commit: 3cc0736542980882fa2f5ce73719235010ad0cc3
@@ -74,14 +74,14 @@ CHECKOUT OPTIONS:
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
 SPEC CHECKSUMS:
-  DDMathParser: c2d4aadb6690cda19e06d5ee591fea4c3c54421d
+  DDMathParser: 02c20f58376d65f863e71ba0e3bca47f62f179f6
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
   HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
-  HYPNorwegianSSN: d7a82481bca14cdc20f0867102c11f47274c9753
+  HYPNorwegianSSN: 7b72655458461f3f5a84c6674530eb26dd68ab4f
   NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
-  NSObject-HYPTesting: 52fb56f16190b10eacac3131f01e301b8d546d48
-  NSString-HYPContainsString: 35c3ef0753507203d53c1fc4e83d71f9c1e8bd9e
+  NSObject-HYPTesting: 9259face0f51714a1fafbb281b91e92767589f01
+  NSString-HYPContainsString: d2d3916942e048d693f2ddf1fc2201e63503afbc
   NSString-HYPFormula: ace20bb486552fb282cc8510f9e6a5481be1106d
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
   NSString-ZENInflections: 27e3623bae0758cd932c462dfae15420ec9867f9
