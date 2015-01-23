@@ -115,31 +115,33 @@
     [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];
 }
 
-- (void)testHidingSectionMultipleTimes
+- (void)testShowingFieldMultipleTimes
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-hide-section-targets.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-field-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                             initialValues:nil
+                                                             initialValues:@{@"contract_type" : @1,
+                                                                             @"salary_type": @1}
                                                           disabledFieldIDs:nil
                                                                   disabled:NO];
 
-    NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
-    XCTAssertTrue(numberOfSections == 2);
+    NSUInteger numberOfFields = [[[normalManager.forms firstObject] fields] count];
+    XCTAssertEqual(numberOfFields, 2);
 
     HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                                initialValues:@{@"contract_type" : @1}
+                                                                initialValues:@{@"contract_type" : @0,
+                                                                                @"salary_type": @0}
                                                              disabledFieldIDs:nil
                                                                      disabled:NO];
 
-    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedManager.forms firstObject] sections] count];
-    XCTAssertTrue(numberOfSectionsWithHiddenTargets == 1);
+    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedManager.forms firstObject] fields] count];
+    XCTAssertEqual(numberOfFieldsWithHiddenTargets, 3);
 }
 
 - (void)testHidingFieldMultipleTimes
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-hide-field-targets.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-field-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
@@ -148,16 +150,63 @@
                                                                   disabled:NO];
 
     NSUInteger numberOfFields = [[[normalManager.forms firstObject] fields] count];
-    XCTAssertTrue(numberOfFields == 2);
+    XCTAssertEqual(numberOfFields, 3);
 
-    NSDictionary *values = @{@"contract_type" : @1};
     HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                                initialValues:values
+                                                                initialValues:@{@"contract_type" : @1,
+                                                                                @"salary_type": @1}
                                                              disabledFieldIDs:nil
                                                                      disabled:NO];
 
     NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedManager.forms firstObject] fields] count];
-    XCTAssertTrue(numberOfFieldsWithHiddenTargets == 1);
+    XCTAssertEqual(numberOfFieldsWithHiddenTargets, 2);
+}
+
+- (void)testShowingSectionMultipleTimes
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-section-targets.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                             initialValues:@{@"contract_type" : @1,
+                                                                             @"salary_type": @1}
+                                                          disabledFieldIDs:nil
+                                                                  disabled:NO];
+
+    NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
+    XCTAssertEqual(numberOfSections, 2);
+
+    HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                                initialValues:@{@"contract_type" : @0,
+                                                                                @"salary_type": @0}
+                                                             disabledFieldIDs:nil
+                                                                     disabled:NO];
+
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedManager.forms firstObject] sections] count];
+    XCTAssertEqual(numberOfSectionsWithHiddenTargets, 3);
+}
+
+- (void)testHidingSectionMultipleTimes
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-section-targets.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                             initialValues:nil
+                                                          disabledFieldIDs:nil
+                                                                  disabled:NO];
+
+    NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
+    XCTAssertEqual(numberOfSections, 3);
+
+    HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                                initialValues:@{@"contract_type" : @1,
+                                                                                @"salary_type": @1}
+                                                             disabledFieldIDs:nil
+                                                                     disabled:NO];
+
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedManager.forms firstObject] sections] count];
+    XCTAssertEqual(numberOfSectionsWithHiddenTargets, 2);
 }
 
 @end
