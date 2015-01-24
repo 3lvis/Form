@@ -85,15 +85,21 @@
 - (void)testEnableAndDisableTargets
 {
     HYPFormField *targetField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
-    XCTAssertFalse(targetField.disabled);
+    XCTAssertFalse(targetField.isDisabled);
 
     HYPFormTarget *disableTarget = [HYPFormTarget disableFieldTargetWithID:@"display_name"];
     [self.dataSource processTarget:disableTarget];
-    XCTAssertTrue(targetField.disabled);
+    XCTAssertTrue(targetField.isDisabled);
 
     HYPFormTarget *enableTarget = [HYPFormTarget enableFieldTargetWithID:@"display_name"];
     [self.dataSource processTargets:@[enableTarget]];
-    XCTAssertFalse(targetField.disabled);
+    XCTAssertFalse(targetField.isDisabled);
+
+    [self.dataSource disable];
+    XCTAssertTrue(targetField.isDisabled);
+
+    [self.dataSource enable];
+    XCTAssertFalse(targetField.isDisabled);
 }
 
 - (void)testInitiallyDisabled

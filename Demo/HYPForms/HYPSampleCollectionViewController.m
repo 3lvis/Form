@@ -226,7 +226,11 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
 - (void)readOnly:(UISwitch *)sender
 {
-    [self.dataSource disable:sender.isOn];
+    if (sender.isOn) {
+        [self.dataSource disable];
+    } else {
+        [self.dataSource enable];
+    }
 
     HYPFormTarget *target;
 
