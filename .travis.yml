@@ -2,8 +2,7 @@ language: objective-c
 podfile: Demo/Podfile
 before_install:
 - gem install cocoapods -v '0.35'
-script: xctool -workspace Demo/HYPForms.xcworkspace -scheme HYPFormsTests -sdk iphonesimulator
-  build test
+script: xctool -workspace Demo/HYPForms.xcworkspace -scheme HYPFormsTests -sdk iphonesimulator build test
 notifications:
   slack:
     secure: iK0wuHnCadqUxCJtnR2HE6eHS5dPED4KKNK7mQXd2mOhs0QziT4TIvjzGxkRkCIex2m5X4l3++9pCeO8RNKTFd2g7RoezFpa97V79uREJ3uQvkGwrxyF5DDSlEsporxqghRmdR5c9X+CTZg+dSoDFGEHMmnSmu697KbA11ZTauA=
