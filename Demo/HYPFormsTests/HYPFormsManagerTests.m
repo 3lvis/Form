@@ -21,7 +21,7 @@
 
 @implementation HYPFormsManagerTests
 
-- (void)testFormsGenerationOnlyJSON
+- (void)testFormsGeneration
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
@@ -37,6 +37,19 @@
     XCTAssertTrue(manager.hiddenFieldsAndFieldIDsDictionary.count == 0);
 
     XCTAssertTrue(manager.hiddenSections.count == 0);
+}
+
+- (void)testDefaultValues
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"default-values.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                       initialValues:@{@"contract_type" : [NSNull null]}
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
+
+    XCTAssertEqualObjects([manager.values objectForKey:@"contract_type"], @0);
 }
 
 - (void)testFormsGenerationHideTargets
