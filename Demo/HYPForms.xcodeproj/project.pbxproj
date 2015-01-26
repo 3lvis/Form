@@ -69,6 +69,7 @@
 		4445D51A19EBC78A0034A5D7 /* UIColor+HYPFormsColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51619EBC78A0034A5D7 /* UIColor+HYPFormsColors.m */; };
 		4445D51B19EBC78A0034A5D7 /* UIFont+HYPFormsStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4445D51819EBC78A0034A5D7 /* UIFont+HYPFormsStyles.m */; };
 		445DAF9619E52D76006F8052 /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */; };
+		44A5C4EF1A767A8100CE46CB /* default-values.json in Resources */ = {isa = PBXBuildFile; fileRef = 44A5C4EE1A767A8100CE46CB /* default-values.json */; };
 		44BDD18D19EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDD18919EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m */; };
 		44BDD18E19EBD644008E9CA9 /* HYPValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDD18B19EBD644008E9CA9 /* HYPValidator.m */; };
 		44D5600B19EBBDA30087067E /* HYPClassFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D5600A19EBBDA30087067E /* HYPClassFactory.m */; };
@@ -207,6 +208,7 @@
 		4445D51719EBC78A0034A5D7 /* UIFont+HYPFormsStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+HYPFormsStyles.h"; sourceTree = "<group>"; };
 		4445D51819EBC78A0034A5D7 /* UIFont+HYPFormsStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+HYPFormsStyles.m"; sourceTree = "<group>"; };
 		445DAF9419E52D76006F8052 /* ic_mini_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_arrow_down@2x.png"; sourceTree = "<group>"; };
+		44A5C4EE1A767A8100CE46CB /* default-values.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-values.json"; sourceTree = "<group>"; };
 		44BDD18819EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSocialSecurityNumberValidator.h; sourceTree = "<group>"; };
 		44BDD18919EBD644008E9CA9 /* HYPSocialSecurityNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSocialSecurityNumberValidator.m; sourceTree = "<group>"; };
 		44BDD18A19EBD644008E9CA9 /* HYPValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPValidator.h; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 		149FC6CD1A3A516D00763456 /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
+				44A5C4EE1A767A8100CE46CB /* default-values.json */,
 				14891FAB1A3E575A00EE45E0 /* field-validations.json */,
 				149FC6D01A3A553A00763456 /* multiple-show-hide-field-targets.json */,
 				149FC6CE1A3A516D00763456 /* multiple-show-hide-section-targets.json */,
@@ -661,6 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				149FC6D11A3A553A00763456 /* multiple-show-hide-field-targets.json in Resources */,
+				44A5C4EF1A767A8100CE46CB /* default-values.json in Resources */,
 				14891FAC1A3E575A00EE45E0 /* field-validations.json in Resources */,
 				149FC6CF1A3A516D00763456 /* multiple-show-hide-section-targets.json in Resources */,
 			);

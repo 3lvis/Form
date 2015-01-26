@@ -34,6 +34,8 @@
     _disabledFieldsIDs = disabledFieldIDs;
     _disabled = disabled;
 
+    [self.values addEntriesFromDictionary:initialValues];
+
     [self generateFormsWithJSON:JSON
                   initialValues:initialValues
               disabledFieldsIDs:disabledFieldIDs
@@ -168,8 +170,6 @@
 
         [self.forms addObject:form];
     }];
-
-    [self.values addEntriesFromDictionary:initialValues];
 
     for (HYPFormTarget *target in targetsToRun) {
         if (![self evaluateCondition:target.condition]) continue;

@@ -1,0 +1,68 @@
+[
+  {
+    "id":"employment",
+    "title":"Employment",
+    "sections":[
+      {
+        "id":"employment-0",
+        "fields":[
+          {
+            "id":"contract_type",
+            "title":"Contract type",
+            "type":"select",
+            "size":{
+              "width":50,
+              "height":1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Permanent",
+                "default":true
+              },
+              {
+                "id":1,
+                "title":"Temporary"
+              }
+            ]
+          },
+          {
+            "id":"start_date",
+            "title":"Start date",
+            "type":"date",
+            "size":{
+              "width":25,
+              "height":1
+            }
+          },
+          {
+            "id":"base_salary",
+            "title":"Base salary",
+            "type":"select",
+            "size":{
+              "width":25,
+              "height":1
+            },
+            "values":[
+              {
+                "title":"Salary 1",
+                "id":0,
+                "value":100.0
+              },
+              {
+                "title":"Salary 2",
+                "id":1,
+                "value":200.0
+              },
+              {
+                "title":"Salary 3",
+                "id":2,
+                "value":10.0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
