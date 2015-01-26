@@ -44,12 +44,18 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"default-values.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
+    NSDate *date = [NSDate date];
+
     HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:@{@"contract_type" : [NSNull null]}
+                                                       initialValues:@{@"contract_type" : [NSNull null],
+                                                                       @"start_date" : date,
+                                                                       @"base_salary": @2}
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
     XCTAssertEqualObjects([manager.values objectForKey:@"contract_type"], @0);
+    XCTAssertEqualObjects([manager.values objectForKey:@"start_date"], date);
+    XCTAssertEqualObjects([manager.values objectForKey:@"base_salary"], @2);
 }
 
 - (void)testFormsGenerationHideTargets
