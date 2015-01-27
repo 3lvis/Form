@@ -113,11 +113,9 @@
     HYPFormField *targetField = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertNil(targetField.fieldValue);
 
-    HYPFormTarget *updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
-                                                                              @"id" : @"display_name",
-                                                                              @"type" : @"field",
-                                                                              @"action" : @"update",
-                                                                              @"target_value": @"John Hyperseed"}];
+    HYPFormTarget *updateTarget = [HYPFormTarget updateFieldTargetWithID:@"display_name"];
+    updateTarget.targetValue = @"John Hyperseed";
+    
     [self.dataSource processTarget:updateTarget];
     XCTAssertEqualObjects(targetField.fieldValue, @"John Hyperseed");
 }
@@ -135,12 +133,10 @@
     HYPFieldValue *fieldValue = usernameField.fieldValue;
     XCTAssertEqualObjects(fieldValue.valueID, @0);
 
-    HYPFormTarget *updateTarget = [[HYPFormTarget alloc] initWithDictionary:@{
-                                                                              @"id" : @"display_name",
-                                                                              @"type" : @"field",
-                                                                              @"action" : @"update",
-                                                                              @"target_value": @"Mr.Melk",
-                                                                              @"condition" : @"$username == 2"}];
+    HYPFormTarget *updateTarget = [HYPFormTarget updateFieldTargetWithID:@"display_name"];
+    updateTarget.targetValue = @"Mr.Melk";
+
+    updateTarget.condition = @"$username == 2";
     [self.dataSource processTarget:updateTarget];
     XCTAssertNil(displayNameField.fieldValue);
 
