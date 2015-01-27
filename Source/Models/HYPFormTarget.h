@@ -42,16 +42,24 @@ typedef NS_ENUM(NSInteger, HYPFormTargetActionType) {
 + (HYPFormTarget *)hideFieldTargetWithID:(NSString *)targetID;
 + (HYPFormTarget *)enableFieldTargetWithID:(NSString *)targetID;
 + (HYPFormTarget *)disableFieldTargetWithID:(NSString *)targetID;
++ (HYPFormTarget *)updateFieldTargetWithID:(NSString *)targetID;
 
 + (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs;
 + (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs;
 + (NSArray *)enableFieldTargetsWithIDs:(NSArray *)targetIDs;
 + (NSArray *)disableFieldTargetsWithIDs:(NSArray *)targetIDs;
++ (NSArray *)updateFieldTargetsWithIDs:(NSArray *)targetIDs;
 
 + (HYPFormTarget *)showSectionTargetWithID:(NSString *)targetID;
 + (HYPFormTarget *)hideSectionTargetWithID:(NSString *)targetID;
++ (HYPFormTarget *)enableSectionTargetWithID:(NSString *)targetID;
++ (HYPFormTarget *)disableSectionTargetWithID:(NSString *)targetID;
++ (HYPFormTarget *)updateSectionTargetWithID:(NSString *)targetID;
 
 + (NSArray *)showSectionTargetsWithIDs:(NSArray *)targetIDs;
 + (NSArray *)hideSectionTargetsWithIDs:(NSArray *)targetIDs;
++ (NSArray *)enableSectionTargetsWithIDs:(NSArray *)targetIDs;
++ (NSArray *)disableSectionTargetsWithIDs:(NSArray *)targetIDs;
++ (NSArray *)updateSectionTargetsWithIDs:(NSArray *)targetIDs;
 
 @end
