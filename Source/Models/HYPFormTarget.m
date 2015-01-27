@@ -295,11 +295,20 @@
 
 - (BOOL)isEqual:(HYPFormTarget *)object
 {
-    BOOL equal = ([object.targetID isEqualToString:self.targetID] &&
+    BOOL sameTargetID = (object.targetID == nil ||
+                         [object.targetID isEqualToString:self.targetID]);
+
+    BOOL sameCondition = (object.condition == nil ||
+                          [object.condition isEqualToString:self.condition]);
+
+    BOOL sameTargetValue = (object.targetValue == nil ||
+                            [object.targetValue isEqual:self.targetValue]);
+
+    BOOL equal = (sameTargetID &&
                   object.actionType == self.actionType &&
                   object.type == self.type &&
-                  [object.condition isEqualToString:self.condition] &&
-                  [object.targetValue isEqual:self.targetValue]);
+                  sameCondition &&
+                  sameTargetValue);
 
     if (equal && self.value && object.value) {
         equal = ([self.value identifierIsEqualTo:object.value.valueID]);
