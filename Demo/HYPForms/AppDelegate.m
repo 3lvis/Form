@@ -4,6 +4,7 @@
 #import "HYPFormBackgroundView.h"
 #import "HYPFormsLayout.h"
 #import "UIColor+ANDYHex.h"
+#import "NSObject+HYPTesting.h"
 
 @interface AppDelegate ()
 
@@ -11,17 +12,10 @@
 
 @implementation AppDelegate
 
-- (BOOL)isUnitTesting
-{
-    NSDictionary *environment = [NSProcessInfo processInfo].environment;
-    NSString *injectBundlePath = environment[@"XCInjectBundle"];
-    return [injectBundlePath.pathExtension isEqualToString:@"xctest"];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #ifdef DEBUG
-    if ([self isUnitTesting]) return YES;
+    if ([NSObject isUnitTesting]) return YES;
 #endif
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

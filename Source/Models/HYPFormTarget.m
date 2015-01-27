@@ -3,6 +3,8 @@
 
 @implementation HYPFormTarget
 
+#pragma mark - Initializers
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
@@ -15,102 +17,6 @@
     self.condition = [dictionary andy_valueForKey:@"condition"];
 
     return self;
-}
-
-+ (HYPFormTarget *)showFieldTargetWithID:(NSString *)targetID
-{
-    return [self fieldTargetWithID:targetID
-                        actionType:HYPFormTargetActionShow];
-}
-
-+ (HYPFormTarget *)hideFieldTargetWithID:(NSString *)targetID
-{
-    return [self fieldTargetWithID:targetID
-                        actionType:HYPFormTargetActionHide];
-}
-
-+ (HYPFormTarget *)enableFieldTargetWithID:(NSString *)targetID
-{
-    return [self fieldTargetWithID:targetID
-                        actionType:HYPFormTargetActionEnable];
-}
-
-+ (HYPFormTarget *)disableFieldTargetWithID:(NSString *)targetID
-{
-    return [self fieldTargetWithID:targetID
-                        actionType:HYPFormTargetActionDisable];
-}
-
-+ (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs
-{
-    NSMutableArray *targets = [NSMutableArray new];
-    for (NSString *targetID in targetIDs) {
-        [targets addObject:[self showFieldTargetWithID:targetID]];
-    }
-
-    return targets;
-}
-
-+ (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs
-{
-    NSMutableArray *targets = [NSMutableArray new];
-    for (NSString *targetID in targetIDs) {
-        [targets addObject:[self hideFieldTargetWithID:targetID]];
-    }
-
-    return targets;
-}
-
-+ (HYPFormTarget *)showSectionTargetWithID:(NSString *)targetID
-{
-    return [self sectionTargetWithID:targetID
-                          actionType:HYPFormTargetActionShow];
-}
-
-+ (HYPFormTarget *)hideSectionTargetWithID:(NSString *)targetID
-{
-    return [self sectionTargetWithID:targetID
-                          actionType:HYPFormTargetActionHide];
-}
-
-+ (NSArray *)showSectionTargetsWithIDs:(NSArray *)targetIDs
-{
-    NSMutableArray *targets = [NSMutableArray new];
-    for (NSString *targetID in targetIDs) {
-        [targets addObject:[self showSectionTargetWithID:targetID]];
-    }
-
-    return targets;
-}
-
-+ (NSArray *)hideSectionTargetsWithIDs:(NSArray *)targetIDs
-{
-    NSMutableArray *targets = [NSMutableArray new];
-    for (NSString *targetID in targetIDs) {
-        [targets addObject:[self hideSectionTargetWithID:targetID]];
-    }
-
-    return targets;
-}
-
-+ (NSArray *)enableFieldTargetsWithIDs:(NSArray *)targetIDs
-{
-    NSMutableArray *targets = [NSMutableArray new];
-    for (NSString *targetID in targetIDs) {
-        [targets addObject:[self enableFieldTargetWithID:targetID]];
-    }
-
-    return targets;
-}
-
-+ (NSArray *)disableFieldTargetsWithIDs:(NSArray *)targetIDs
-{
-    NSMutableArray *targets = [NSMutableArray new];
-    for (NSString *targetID in targetIDs) {
-        [targets addObject:[self disableFieldTargetWithID:targetID]];
-    }
-
-    return targets;
 }
 
 + (HYPFormTarget *)fieldTargetWithID:(NSString *)targetID
@@ -173,6 +79,174 @@
     } else {
         self.actionType = HYPFormTargetActionNone;
     }
+}
+
+#pragma mark - Field target
+
++ (HYPFormTarget *)showFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionShow];
+}
+
++ (HYPFormTarget *)hideFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionHide];
+}
+
++ (HYPFormTarget *)enableFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionEnable];
+}
+
++ (HYPFormTarget *)disableFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionDisable];
+}
+
++ (HYPFormTarget *)updateFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionUpdate];
+}
+
+#pragma mark - Field targets
+
++ (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self showFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self hideFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)enableFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self enableFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)disableFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self disableFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)updateFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self updateFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
+#pragma mark - Section target
+
++ (HYPFormTarget *)showSectionTargetWithID:(NSString *)targetID
+{
+    return [self sectionTargetWithID:targetID
+                          actionType:HYPFormTargetActionShow];
+}
+
++ (HYPFormTarget *)hideSectionTargetWithID:(NSString *)targetID
+{
+    return [self sectionTargetWithID:targetID
+                          actionType:HYPFormTargetActionHide];
+}
+
++ (HYPFormTarget *)enableSectionTargetWithID:(NSString *)targetID
+{
+    return [self sectionTargetWithID:targetID
+                          actionType:HYPFormTargetActionEnable];
+}
+
++ (HYPFormTarget *)disableSectionTargetWithID:(NSString *)targetID
+{
+    return [self sectionTargetWithID:targetID
+                          actionType:HYPFormTargetActionDisable];
+}
+
++ (HYPFormTarget *)updateSectionTargetWithID:(NSString *)targetID
+{
+    return [self sectionTargetWithID:targetID
+                          actionType:HYPFormTargetActionUpdate];
+}
+
+#pragma mark - Section targets
+
++ (NSArray *)showSectionTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self showSectionTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)hideSectionTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self hideSectionTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)enableSectionTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self enableSectionTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)disableSectionTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self disableSectionTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)updateSectionTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self updateSectionTargetWithID:targetID]];
+    }
+
+    return targets;
 }
 
 + (void)filteredTargets:(NSArray*)targets

@@ -377,6 +377,8 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
         }];
     }];
 
+    [self processTargets:targets];
+
     if (updatedIndexPaths.count > 0) {
         [self.collectionView performBatchUpdates:^{
             [self reloadItemsAtIndexPaths:updatedIndexPaths];
