@@ -115,7 +115,7 @@
 
     HYPFormTarget *updateTarget = [HYPFormTarget updateFieldTargetWithID:@"display_name"];
     updateTarget.targetValue = @"John Hyperseed";
-    
+
     [self.dataSource processTarget:updateTarget];
     XCTAssertEqualObjects(targetField.fieldValue, @"John Hyperseed");
 }
@@ -143,6 +143,15 @@
     updateTarget.condition = @"$username == 0";
     [self.dataSource processTarget:updateTarget];
     XCTAssertEqualObjects(displayNameField.fieldValue, @"Mr.Melk");
+}
+
+- (void)testReloadWithDictionary
+{
+    [self.dataSource reloadWithDictionary:@{@"first_name" : @"Elvis",
+                                            @"last_name" : @"Nunez"}];
+
+    HYPFormField *field = [self.manager fieldWithID:@"display_name" includingHiddenFields:YES];
+    XCTAssertEqualObjects(field.fieldValue, @"Elvis Nunez");
 }
 
 #pragma mark - HYPFormsLayoutDataSource
