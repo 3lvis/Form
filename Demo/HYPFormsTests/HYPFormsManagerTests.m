@@ -71,7 +71,7 @@
 
     XCTAssertEqualObjects([manager.values objectForKey:@"base_salary"], @1);
     XCTAssertEqualObjects([manager.values objectForKey:@"bonus"], @100);
-    XCTAssertEqualObjects([manager.values objectForKey:@"total"], @200);
+    XCTAssertEqualObjects([manager.values objectForKey:@"total"], @300);
 }
 
 - (void)testFormsGenerationHideTargets
