@@ -284,4 +284,12 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     }
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"\n — Field: %@ —\n title: %@\n subtitle: %@\n size: %@\n position: %@\n fieldValue: %@\n type: %@\n values: %@\n disabled: %@\n initiallyDisabled: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n valid: %@\n sectionSeparator: %@\n",
+            self.fieldID, self.title, self.subtitle, NSStringFromCGSize(self.size), self.position,
+            self.fieldValue, self.typeString, self.values, (self.disabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
+            self.maximumDate, self.validations, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
+}
+
 @end
