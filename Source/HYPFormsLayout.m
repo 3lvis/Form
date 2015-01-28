@@ -33,9 +33,6 @@
 
 @interface HYPFormsLayout ()
 
-@property (nonatomic) CGFloat previousHeight;
-@property (nonatomic) CGFloat previousY;
-
 @end
 
 @implementation HYPFormsLayout
@@ -125,31 +122,23 @@
     }
 
     NSMutableArray *fields = [self fieldsAtSection:indexPath.section];
-
-    CGFloat bottomMargin = HYPFormHeaderContentMargin;
-    CGFloat height = [self heightForFields:fields];
-    CGFloat y = self.previousHeight + self.previousY + HYPFormHeaderHeight;
-
-    self.previousHeight = height;
-    self.previousY = y;
-
-    if (fields.count == 0) y = 0.0f;
+    CGFloat height = 0.0f;
+    if (fields.count > 0) {
+        height = [self heightForFields:fields];
+    }
 
     CGFloat width = self.collectionViewContentSize.width - (HYPFormBackgroundViewMargin * 2);
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
                                                                                                                withIndexPath:indexPath];
-
-    attributes.frame = CGRectMake(HYPFormBackgroundViewMargin, y, width, height - bottomMargin);
+    UICollectionViewLayoutAttributes *headerAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                                              atIndexPath:indexPath];
+    attributes.frame = CGRectMake(HYPFormBackgroundViewMargin, CGRectGetMaxY(headerAttributes.frame), width, height - HYPFormHeaderContentMargin);
     attributes.zIndex = -1;
-
     return attributes;
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
-    self.previousHeight = 0.0f;
-    self.previousY = 0.0f;
-
     NSArray *originalAttributes = [super layoutAttributesForElementsInRect:rect];
     NSMutableArray *attributes = [NSMutableArray new];
 
