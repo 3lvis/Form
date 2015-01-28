@@ -1,0 +1,87 @@
+[
+  {
+    "id":"form",
+    "title":"Form",
+    "sections":[
+      {
+        "id":"employment-1",
+        "fields":[
+          {
+            "id":"base_salary",
+            "title":"Base salary",
+            "type":"select",
+            "size":{
+              "width":25,
+              "height":1
+            },
+            "values":[
+              {
+                "title":"Salary 1",
+                "id":0,
+                "value":100.0,
+                "targets":[
+                  {
+                    "id":"total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title":"Salary 2",
+                "id":1,
+                "value":200.0,
+                "targets":[
+                  {
+                    "id":"total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              },
+              {
+                "title":"Salary 3",
+                "id":2,
+                "value":10.0,
+                "targets":[
+                  {
+                    "id":"total",
+                    "type":"field",
+                    "action":"update"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id":"bonus",
+            "title":"Bonus",
+            "type":"float",
+            "size":{
+              "width":25,
+              "height":1
+            },
+            "targets":[
+              {
+                "id":"total",
+                "type":"field",
+                "action":"update"
+              }
+            ]
+          },
+          {
+            "id":"total",
+            "title":"Total",
+            "type":"float",
+            "size":{
+              "width":25,
+              "height":1
+            },
+            "disabled":true,
+            "formula":"base_salary + bonus"
+          }
+        ]
+      }
+    ]
+  }
+]

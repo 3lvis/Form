@@ -58,6 +58,22 @@
     XCTAssertEqualObjects([manager.values objectForKey:@"base_salary"], @2);
 }
 
+- (void)testCalculatedValues
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"number-formula.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                                       initialValues:@{@"base_salary" : @1,
+                                                                       @"bonus" : @100}
+                                                    disabledFieldIDs:nil
+                                                            disabled:NO];
+
+    XCTAssertEqualObjects([manager.values objectForKey:@"base_salary"], @1);
+    XCTAssertEqualObjects([manager.values objectForKey:@"bonus"], @100);
+    XCTAssertEqualObjects([manager.values objectForKey:@"total"], @300);
+}
+
 - (void)testFormsGenerationHideTargets
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
