@@ -112,8 +112,8 @@
             disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                      disabled:(BOOL)disabled
 {
-    NSMutableArray *fieldsWithFormula = [NSMutableArray new];
-    NSMutableArray *targetsToRun = [NSMutableArray new];
+    NSMutableArray *hideTargets = [NSMutableArray new];
+    NSMutableArray *updateTargets = [NSMutableArray new];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
@@ -136,8 +136,6 @@
                 }
             }
 
-            if (field.formula) [fieldsWithFormula addObject:field];
-
             for (HYPFieldValue *fieldValue in field.values) {
 
                 id initialValue = [initialValues andy_valueForKey:field.fieldID];
@@ -150,7 +148,8 @@
 
                         for (HYPFormTarget *target in fieldValue.targets) {
                             if (![self evaluateCondition:target.condition]) continue;
-                            if (target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
+                            if (target.actionType == HYPFormTargetActionHide) [hideTargets addObject:target];
+                            if (target.actionType == HYPFormTargetActionUpdate) [updateTargets addObject:target];
                         }
                     }
                 } else {
@@ -161,7 +160,8 @@
 
                         for (HYPFormTarget *target in fieldValue.targets) {
                             if (![self evaluateCondition:target.condition]) continue;
-                            if (target.actionType == HYPFormTargetActionHide) [targetsToRun addObject:target];
+                            if (target.actionType == HYPFormTargetActionHide) [hideTargets addObject:target];
+                            if (target.actionType == HYPFormTargetActionUpdate) [updateTargets addObject:target];
                         }
                     }
                 }
@@ -171,7 +171,9 @@
         [self.forms addObject:form];
     }];
 
-    for (HYPFormTarget *target in targetsToRun) {
+    [self updateTargets:updateTargets];
+
+    for (HYPFormTarget *target in hideTargets) {
         if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeField) {
@@ -186,7 +188,7 @@
         }
     }
 
-    for (HYPFormTarget *target in targetsToRun) {
+    for (HYPFormTarget *target in hideTargets) {
         if (![self evaluateCondition:target.condition]) continue;
 
         if (target.type == HYPFormTargetTypeField) {
