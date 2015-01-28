@@ -317,4 +317,10 @@
     return equal;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"\n — Target: %@ —\n value: %@\n type: %@\n action type: %@\n condition: %@\n",
+            self.targetID, self.targetValue, self.typeString, self.actionTypeString, self.condition];
+}
+
 @end
