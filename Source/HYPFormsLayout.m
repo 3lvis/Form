@@ -134,6 +134,7 @@
                                                                                               atIndexPath:indexPath];
     attributes.frame = CGRectMake(HYPFormBackgroundViewMargin, CGRectGetMaxY(headerAttributes.frame), width, height - HYPFormHeaderContentMargin);
     attributes.zIndex = -1;
+
     return attributes;
 }
 
