@@ -295,7 +295,12 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 - (void)disable:(BOOL)disabled
 {
     self.disabled = disabled;
-    self.formsManager.disabled = disabled;
+
+    if (disabled) {
+        [self.formsManager disable];
+    } else {
+        [self.formsManager enable];
+    }
 
     NSMutableDictionary *fields = [NSMutableDictionary new];
 
@@ -510,7 +515,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
             [self reloadItemsAtIndexPaths:updatedIndexPaths];
         } break;
         case HYPFormTargetActionEnable: {
-            if (!self.formsManager.disabled) {
+            if ([self.formsManager isEnabled]) {
                 NSArray *enabledIndexPaths = [self.formsManager enableTargets:@[target]];
                 [self reloadItemsAtIndexPaths:enabledIndexPaths];
             }
@@ -575,7 +580,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
                                   }
                               }
 
-                              BOOL shouldRunEnableTargets = (enabledTargets.count > 0 && !self.formsManager.disabled);
+                              BOOL shouldRunEnableTargets = (enabledTargets.count > 0 && [self.formsManager isEnabled]);
                               if (shouldRunEnableTargets) {
                                   enabledIndexPaths = [self.formsManager enableTargets:enabledTargets];
 
