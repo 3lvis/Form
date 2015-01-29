@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *requiredFields;
 @property (nonatomic, strong) DDMathEvaluator *evaluator;
+@property (nonatomic) BOOL disabledForm;
 
 @end
 
@@ -32,7 +33,7 @@
     if (!self) return nil;
 
     _disabledFieldsIDs = disabledFieldIDs;
-    _disabled = disabled;
+    _disabledForm = disabled;
 
     [self.values addEntriesFromDictionary:initialValues];
 
@@ -753,6 +754,28 @@
     }
 
     return evaluatedResult;
+}
+
+#pragma mark - Enable/Disable
+
+- (void)disable
+{
+    self.disabledForm = YES;
+}
+
+- (void)enable
+{
+    self.disabledForm = NO;
+}
+
+- (BOOL)isDisabled
+{
+    return self.disabledForm;
+}
+
+- (BOOL)isEnabled
+{
+    return !self.disabledForm;
 }
 
 @end
