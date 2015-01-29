@@ -218,7 +218,10 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
 
     if (reloadedIndexPaths.count > 0) {
-        [self.collectionView insertItemsAtIndexPaths:reloadedIndexPaths];
+        [self.collectionView performBatchUpdates:^{
+            [self.collectionView reloadItemsAtIndexPaths:reloadedIndexPaths];
+            [self.collectionView insertItemsAtIndexPaths:reloadedIndexPaths];
+        } completion:nil];
     }
 }
 
