@@ -219,9 +219,12 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 
     if (reloadedIndexPaths.count > 0) {
         [self.collectionView performBatchUpdates:^{
-            [self.collectionView reloadItemsAtIndexPaths:reloadedIndexPaths];
             [self.collectionView insertItemsAtIndexPaths:reloadedIndexPaths];
-        } completion:nil];
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [self.collectionView reloadData];
+            }
+        }];
     }
 }
 
