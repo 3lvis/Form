@@ -114,6 +114,9 @@
 {
     NSMutableArray *hideTargets = [NSMutableArray new];
     NSMutableArray *updateTargets = [NSMutableArray new];
+    NSMutableArray *disabledFields = [NSMutableArray new];
+
+    [disabledFields addObjectsFromArray:disabledFieldsIDs];
 
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
@@ -150,6 +153,7 @@
                             if (![self evaluateCondition:target.condition]) continue;
                             if (target.actionType == HYPFormTargetActionHide) [hideTargets addObject:target];
                             if (target.actionType == HYPFormTargetActionUpdate) [updateTargets addObject:target];
+                            if (target.actionType == HYPFormTargetActionDisable) [disabledFields addObject:target.targetID];
                         }
                     }
                 } else {
@@ -162,6 +166,7 @@
                             if (![self evaluateCondition:target.condition]) continue;
                             if (target.actionType == HYPFormTargetActionHide) [hideTargets addObject:target];
                             if (target.actionType == HYPFormTargetActionUpdate) [updateTargets addObject:target];
+                            if (target.actionType == HYPFormTargetActionDisable) [disabledFields addObject:target.targetID];
                         }
                     }
                 }
@@ -171,6 +176,7 @@
         [self.forms addObject:form];
     }];
 
+    self.disabledFieldsIDs = disabledFields;
     [self updateTargets:updateTargets];
 
     for (HYPFormTarget *target in hideTargets) {
