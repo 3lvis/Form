@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "HYPForms"
-  s.version = "0.100"
+  s.version = "0.102"
   s.summary = "JSON driven forms"
   s.description = <<-DESC
                    * JSON driven forms
