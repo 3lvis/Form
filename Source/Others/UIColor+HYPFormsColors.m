@@ -41,6 +41,11 @@
     return [UIColor colorFromHex:@"979797"];
 }
 
++ (UIColor *)HYPFormsControlsBlue
+{
+    return [UIColor colorFromHex:@"5182AF"];
+}
+
 + (UIColor *)HYPFormsFieldForeground
 {
     return [UIColor colorFromHex:@"455C73"];
@@ -81,6 +86,11 @@
     return [UIColor colorFromHex:@"FFFFFF"];
 }
 
++ (UIColor *)HYPFormsFieldDisabledText
+{
+    return [UIColor colorFromHex:@"DEDEDE"];
+}
+
 + (UIColor *)HYPFormsFieldBorder
 {
     return [UIColor colorFromHex:@"3DAFEB"];
@@ -119,6 +129,11 @@
 + (UIColor *)HYPFormsRed
 {
     return [UIColor colorFromHex:@"EC3031"];
+}
+
++ (UIColor *)HYPFormsBrown
+{
+    return [UIColor colorFromHex:@"97591D"];
 }
 
 #pragma mark - Interface

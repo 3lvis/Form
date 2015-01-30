@@ -3,8 +3,10 @@
 #import "HYPSampleCollectionViewController.h"
 #import "HYPFormBackgroundView.h"
 #import "HYPFormsLayout.h"
+
 #import "UIColor+ANDYHex.h"
 #import "NSObject+HYPTesting.h"
+#import "UIColor+HYPFormsColors.h"
 
 @interface AppDelegate ()
 
@@ -30,7 +32,7 @@
     HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];
 
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
-    controller.view.tintColor = [UIColor colorFromHex:@"5182AF"];
+    controller.view.tintColor = [UIColor HYPFormsControlsBlue];
     controller.navigationBarHidden = YES;
 
     self.window.rootViewController = controller;

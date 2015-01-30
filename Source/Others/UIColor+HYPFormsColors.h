@@ -11,6 +11,7 @@
 + (UIColor *)HYPFormsLightGray;
 + (UIColor *)HYPFormsDarkGray;
 
++ (UIColor *)HYPFormsControlsBlue;
 + (UIColor *)HYPFormsFieldForeground;
 + (UIColor *)HYPFormsFieldForegroundActive;
 + (UIColor *)HYPFormsFieldForegroundInvalid;
@@ -20,6 +21,7 @@
 + (UIColor *)HYPFormsFieldBackgroundActive;
 + (UIColor *)HYPFormsFieldBackgroundInvalid;
 + (UIColor *)HYPFormsFieldBackgroundDisabled;
++ (UIColor *)HYPFormsFieldDisabledText;
 
 + (UIColor *)HYPFormsFieldBorder;
 + (UIColor *)HYPFormsFieldBorderActive;
@@ -30,6 +32,7 @@
 + (UIColor *)HYPFormsGreen;
 + (UIColor *)HYPFormsYellow;
 + (UIColor *)HYPFormsRed;
++ (UIColor *)HYPFormsBrown;
 
 + (UIColor *)tableCellBackground;
 + (UIColor *)tableCellBorder;

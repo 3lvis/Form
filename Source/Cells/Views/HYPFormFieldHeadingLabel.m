@@ -2,6 +2,7 @@
 
 #import "UIColor+ANDYHex.h"
 #import "UIFont+HYPFormsStyles.h"
+#import "UIColor+HYPFormsColors.h"
 
 @implementation HYPFormFieldHeadingLabel
 
@@ -11,7 +12,7 @@
     if (!self) return nil;
 
     self.font = [UIFont HYPFormsSmallSize];
-    self.textColor = [UIColor colorFromHex:@"28649C"];
+    self.textColor = [UIColor HYPFormsCoreBlue];
 
     return self;
 }

@@ -1,6 +1,7 @@
 #import "HYPFormBackgroundView.h"
 
 #import "UIColor+ANDYHex.h"
+#import "UIColor+HYPFormsColors.h"
 
 @interface HYPFormBackgroundView ()
 
@@ -29,7 +30,7 @@
 {
     self = [super initWithFrame:frame];
 
-    self.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
+    self.backgroundColor = [UIColor HYPFormsBackground];
 
     return self;
 }
