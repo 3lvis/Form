@@ -110,9 +110,11 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     if (enabled) {
         self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
         self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+        self.textColor = [UIColor colorFromHex:@"455C73"];
     } else {
         self.backgroundColor = [UIColor colorFromHex:@"F5F5F8"];
         self.layer.borderColor = [UIColor colorFromHex:@"DEDEDE"].CGColor;
+        self.textColor = [UIColor grayColor];
     }
 }
 
