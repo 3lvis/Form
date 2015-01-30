@@ -7,7 +7,6 @@
 //
 
 #import "DDMathEvaluator+HYPForms.h"
-#import "DDMathEvaluator.h"
 #import "DDExpression.h"
 #import "_DDVariableExpression.h"
 

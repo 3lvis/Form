@@ -96,7 +96,7 @@
 {
     if (_evaluator) return _evaluator;
 
-    _evaluator = [DDMathEvaluator new];
+    _evaluator = [DDMathEvaluator defaultMathEvaluator];
 
     NSDictionary *functionDictonary = [DDMathEvaluator hyp_directoryFunctions];
     __weak typeof(self)weakSelf = self;
