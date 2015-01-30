@@ -2,6 +2,8 @@
 
 #import "UIColor+ANDYHex.h"
 #import "UIScreen+HYPLiveBounds.h"
+#import "UIColor+HYPFormsColors.h"
+#import "UIFont+HYPFormsStyles.h"
 
 @interface HYPFormHeaderView ()
 
@@ -48,8 +50,8 @@
     _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(HYPFormTitleMargin, 0.0f, width, HYPFormHeaderHeight)];
     _headerLabel.backgroundColor = [UIColor clearColor];
     _headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    _headerLabel.font = [UIFont fontWithName:@"DIN-Medium" size:17.0];
-    _headerLabel.textColor = [UIColor colorFromHex:@"455C73"];
+    _headerLabel.font = [UIFont HYPFormsMediumSize];
+    _headerLabel.textColor = [UIColor HYPFormsDarkBlue];
 
     return _headerLabel;
 }

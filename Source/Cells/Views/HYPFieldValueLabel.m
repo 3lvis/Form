@@ -14,13 +14,13 @@
     if (!self) return nil;
 
     self.layer.borderWidth = HYPFormFieldCellBorderWidth;
-    self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+    self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
     self.layer.cornerRadius = HYPFormFieldCellCornerRadius;
     self.layer.masksToBounds = YES;
 
-    self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
+    self.backgroundColor = [UIColor HYPFormsFieldBackground];
     self.font = [UIFont HYPFormsTextFieldFont];
-    self.textColor = [UIColor colorFromHex:@"455C73"];
+    self.textColor = [UIColor HYPFormsDarkBlue];
 
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.userInteractionEnabled = YES;
@@ -52,11 +52,11 @@
     _active = active;
 
     if (active) {
-        self.backgroundColor = [UIColor colorFromHex:@"C0EAFF"];
-        self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+        self.backgroundColor = [UIColor HYPFormsFieldBackgroundActive];
+        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
     } else {
-        self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-        self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+        self.backgroundColor = [UIColor HYPFormsFieldBackground];
+        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
     }
 }
 
@@ -65,11 +65,11 @@
     [super setEnabled:enabled];
 
     if (enabled) {
-        self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-        self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+        self.backgroundColor = [UIColor HYPFormsFieldBackground];
+        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
     } else {
-        self.backgroundColor = [UIColor colorFromHex:@"F5F5F8"];
-        self.layer.borderColor = [UIColor colorFromHex:@"DEDEDE"].CGColor;
+        self.backgroundColor = [UIColor HYPFormsLightGray];
+        self.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
     }
 }
 
@@ -80,11 +80,11 @@
     if (!self.isEnabled) return;
 
     if (valid) {
-        self.backgroundColor = [UIColor colorFromHex:@"E1F5FF"];
-        self.layer.borderColor = [UIColor colorFromHex:@"3DAFEB"].CGColor;
+        self.backgroundColor = [UIColor HYPFormsFieldBackground];
+        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
     } else {
         self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
-        self.layer.borderColor = [UIColor colorFromHex:@"EC3031"].CGColor;
+        self.layer.borderColor = [UIColor HYPFormsRed].CGColor;
     }
 }
 

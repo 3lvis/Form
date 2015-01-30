@@ -10,6 +10,7 @@
 
 #import "UIColor+ANDYHex.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
+#import "UIColor+HYPFormsColors.h"
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate,
 HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
@@ -104,7 +105,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
-    self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
+    self.collectionView.backgroundColor = [UIColor HYPFormsBackground];
 
     [self.collectionView registerClass:[HYPImageFormFieldCell class]
             forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
@@ -135,13 +136,13 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 
     UILabel *readOnlyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 90.0f, 40.0f)];
     readOnlyLabel.text = @"Read-only";
-    readOnlyLabel.textColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlyLabel.textColor = [UIColor HYPFormsControlsBlue];
     readOnlyLabel.font = [UIFont boldSystemFontOfSize:17.0f];
     [readOnlyView addSubview:readOnlyLabel];
 
     UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(90.0f, 5.0f, 40.0f, 40.0f)];
-    readOnlySwitch.tintColor = [UIColor colorFromHex:@"5182AF"];
-    readOnlySwitch.onTintColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlySwitch.tintColor = [UIColor HYPFormsControlsBlue];
+    readOnlySwitch.onTintColor = [UIColor HYPFormsControlsBlue];
     readOnlySwitch.on = YES;
     [readOnlySwitch addTarget:self action:@selector(readOnly:) forControlEvents:UIControlEventValueChanged];
     [readOnlyView addSubview:readOnlySwitch];

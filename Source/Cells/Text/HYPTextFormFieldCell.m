@@ -4,6 +4,7 @@
 
 #import "UIColor+ANDYHex.h"
 #import "UIFont+HYPFormsStyles.h"
+#import "UIColor+HYPFormsColors.h"
 
 static const CGFloat HYPSubtitleViewMinimumWidth = 90.0f;
 static const CGFloat HYPSubtitleViewHeight = 44.0f;
@@ -139,7 +140,7 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
     _subtitleLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
 
     _subtitleLabel.font = [UIFont HYPFormsSmallSizeMedium];
-    _subtitleLabel.textColor = [UIColor colorFromHex:@"97591D"];
+    _subtitleLabel.textColor = [UIColor HYPFormsBrown];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _subtitleLabel.numberOfLines = HYPSubtitleNumberOfLines;
