@@ -70,7 +70,7 @@ CHECKOUT OPTIONS:
     :commit: 3cc0736542980882fa2f5ce73719235010ad0cc3
     :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
   UIColor-ANDYHex:
-    :commit: 8048b4d33bb37f7ac8a1711784d62531a725dea4
+    :commit: e4397f3ef67d2a9329752f8322586f45444b11f2
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
 SPEC CHECKSUMS:
