@@ -412,7 +412,7 @@
               "height":1
             },
             "disabled":true,
-            "formula":"base_salary + bonus"
+            "formula":"$base_salary + $bonus"
           }
         ]
       }

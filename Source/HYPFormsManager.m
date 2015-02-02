@@ -675,6 +675,7 @@
                 }
             }
 
+            field.formula = [field.formula stringByReplacingOccurrencesOfString:@"$" withString:@""];
             id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
             field.fieldValue = result;
 
