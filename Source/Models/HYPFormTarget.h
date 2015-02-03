@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, HYPFormTargetActionType) {
     HYPFormTargetActionUpdate,
     HYPFormTargetActionEnable,
     HYPFormTargetActionDisable,
+    HYPFormTargetActionClear,
     HYPFormTargetActionNone
 };
 
