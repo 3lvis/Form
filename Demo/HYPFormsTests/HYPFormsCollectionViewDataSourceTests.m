@@ -161,6 +161,10 @@
 
     firstNameField.fieldValue = @"John";
     XCTAssertNotNil(firstNameField.fieldValue);
+
+    HYPFormTarget *clearTarget = [HYPFormTarget clearFieldTargetWithID:@"first_name"];
+    [self.dataSource processTarget:clearTarget];
+    XCTAssertNil(firstNameField.fieldValue);
 }
 
 #pragma mark - HYPFormsLayoutDataSource
