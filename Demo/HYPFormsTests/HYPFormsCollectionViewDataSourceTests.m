@@ -154,6 +154,15 @@
     XCTAssertEqualObjects(field.fieldValue, @"Elvis Nunez");
 }
 
+- (void)testClearTarget
+{
+    HYPFormField *firstNameField = [self.manager fieldWithID:@"first_name" includingHiddenFields:YES];
+    XCTAssertNotNil(firstNameField);
+
+    firstNameField.fieldValue = @"John";
+    XCTAssertNotNil(firstNameField.fieldValue);
+}
+
 #pragma mark - HYPFormsLayoutDataSource
 
 - (NSArray *)forms
