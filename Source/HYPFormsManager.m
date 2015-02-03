@@ -743,10 +743,18 @@
 
     if (condition) {
         NSError *error;
+
+        NSSet *set = [self.values keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
+            return [obj isEqual:[NSNull null]];
+        }];
+
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:self.values];
+        [dictionary removeObjectsForKeys:[set allObjects]];
+
         DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
         if (error == nil && self.values) {
             NSNumber *result = [self.evaluator evaluateExpression:expression
-                                                withSubstitutions:self.values
+                                                withSubstitutions:dictionary
                                                             error:&error];
             return [result boolValue];
         }
