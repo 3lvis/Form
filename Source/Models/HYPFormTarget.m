@@ -76,6 +76,8 @@
         self.actionType = HYPFormTargetActionEnable;
     } else if ([actionTypeString isEqualToString:@"disable"]) {
         self.actionType = HYPFormTargetActionDisable;
+    } else if ([actionTypeString isEqualToString:@"clear"]) {
+        self.actionType = HYPFormTargetActionClear;
     } else {
         self.actionType = HYPFormTargetActionNone;
     }
