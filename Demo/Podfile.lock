@@ -2,7 +2,7 @@ PODS:
   - DDMathParser (0.2)
   - HYPImagePicker (0.2)
   - HYPNorwegianAccountNumber (1.2.1)
-  - HYPNorwegianSSN (1.8.3)
+  - HYPNorwegianSSN (1.9)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSObject-HYPTesting (1.1.1)
@@ -55,7 +55,7 @@ CHECKOUT OPTIONS:
     :commit: aa0c9c8fce7498630f7259a2b09c0ef0ea675e07
     :git: https://github.com/hyperoslo/HYPImagePicker.git
   HYPNorwegianSSN:
-    :commit: eb63020b30521bfd4bfec950f65c1b9b4c66f2d0
+    :commit: 1034c358ae4b24b13a3bb4506b2bea903a6bc645
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSObject-HYPTesting:
     :commit: f25e278eaca9fb77383fe12faee72b9582178541
@@ -77,7 +77,7 @@ SPEC CHECKSUMS:
   DDMathParser: 02c20f58376d65f863e71ba0e3bca47f62f179f6
   HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
   HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
-  HYPNorwegianSSN: 7b72655458461f3f5a84c6674530eb26dd68ab4f
+  HYPNorwegianSSN: 8dfebec78dfd002f4ff2e9875e542ac0f15165fe
   NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
   NSObject-HYPTesting: 6facd8de5f72b23a411f4d0b4f0175c9d701a118
