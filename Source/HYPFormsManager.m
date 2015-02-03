@@ -779,4 +779,15 @@
     return !self.disabledForm;
 }
 
+- (NSInteger)numberOfFields
+{
+    NSInteger numberOfFields = 0;
+
+    for (HYPForm *form in self.forms) {
+        numberOfFields += [form numberOfFields];
+    }
+
+    return numberOfFields;
+}
+
 @end

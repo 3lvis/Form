@@ -49,4 +49,6 @@
 
 - (BOOL)isEnabled;
 
+- (NSInteger)numberOfFields;
+
 @end
