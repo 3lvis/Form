@@ -44,12 +44,14 @@ typedef NS_ENUM(NSInteger, HYPFormTargetActionType) {
 + (HYPFormTarget *)enableFieldTargetWithID:(NSString *)targetID;
 + (HYPFormTarget *)disableFieldTargetWithID:(NSString *)targetID;
 + (HYPFormTarget *)updateFieldTargetWithID:(NSString *)targetID;
++ (HYPFormTarget *)clearFieldTargetWithID:(NSString *)targetID;
 
 + (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs;
 + (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs;
 + (NSArray *)enableFieldTargetsWithIDs:(NSArray *)targetIDs;
 + (NSArray *)disableFieldTargetsWithIDs:(NSArray *)targetIDs;
 + (NSArray *)updateFieldTargetsWithIDs:(NSArray *)targetIDs;
++ (NSArray *)clearFieldTargetsWithIDs:(NSArray *)targetIDs;
 
 + (HYPFormTarget *)showSectionTargetWithID:(NSString *)targetID;
 + (HYPFormTarget *)hideSectionTargetWithID:(NSString *)targetID;

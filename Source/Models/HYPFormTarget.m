@@ -115,6 +115,12 @@
                         actionType:HYPFormTargetActionUpdate];
 }
 
++ (HYPFormTarget *)clearFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionClear];
+}
+
 #pragma mark - Field targets
 
 + (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs
@@ -162,6 +168,16 @@
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self updateFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)clearFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self clearFieldTargetWithID:targetID]];
     }
 
     return targets;
