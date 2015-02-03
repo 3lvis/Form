@@ -5,7 +5,7 @@ PODS:
   - HYPNorwegianSSN (1.9)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSJSONSerialization-ANDYJSONFile (1.1)
-  - NSObject-HYPTesting (1.1.1)
+  - NSObject-HYPTesting (1.2)
   - NSString-HYPContainsString (0.1)
   - NSString-HYPFormula (1.6.1):
     - NSString-HYPWordExtractor
@@ -58,7 +58,7 @@ CHECKOUT OPTIONS:
     :commit: 1034c358ae4b24b13a3bb4506b2bea903a6bc645
     :git: https://github.com/hyperoslo/HYPNorwegianSSN.git
   NSObject-HYPTesting:
-    :commit: f25e278eaca9fb77383fe12faee72b9582178541
+    :commit: 3163be1813789337c526daa54a14971d451ad741
     :git: https://github.com/hyperoslo/NSObject-HYPTesting.git
   NSString-HYPContainsString:
     :commit: b72e010dc7d848fc1b4ddf8fccb47e65745e18ea
@@ -80,7 +80,7 @@ SPEC CHECKSUMS:
   HYPNorwegianSSN: 8dfebec78dfd002f4ff2e9875e542ac0f15165fe
   NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
-  NSObject-HYPTesting: 6facd8de5f72b23a411f4d0b4f0175c9d701a118
+  NSObject-HYPTesting: 27d99e2e3ec3432a1a0dd44d5b201e1bed433457
   NSString-HYPContainsString: d2d3916942e048d693f2ddf1fc2201e63503afbc
   NSString-HYPFormula: ace20bb486552fb282cc8510f9e6a5481be1106d
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
