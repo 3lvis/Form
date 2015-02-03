@@ -11,7 +11,6 @@
 + (HYPFormField *)usernameField;
 
 + (HYPFormField *)workHoursField;
-+ (HYPFormField *)workerTypeField;
 
 + (HYPFormField *)startDateField;
 + (HYPFormField *)endDateField;

@@ -109,36 +109,6 @@
     return field;
 }
 
-+ (HYPFormField *)workerTypeField
-{
-    HYPFormField *field = [self selectFormFieldWithID:@"worker_type"];
-    field.position = @1;
-
-    HYPFieldValue *value1 = [HYPFieldValue new];
-    value1.valueID = @"part_time";
-    value1.title = @"Part time";
-
-#warning TODO: update-> work_hours max value 3 * 5
-    value1.targets = nil;
-    value1.field = field;
-    value1.value = @3;
-    value1.field = field;
-
-    HYPFieldValue *value2 = [HYPFieldValue new];
-    value2.valueID = @"full_time";
-    value2.title = @"Full time";
-
-#warning TODO: update-> work_hours max value 7.5 * 5
-    value2.targets = nil;
-    value2.field = field;
-    value2.value = @7.5;
-    value2.field = field;
-
-    field.values = @[value1, value2];
-
-    return field;
-}
-
 #pragma mark Section 1
 
 + (HYPFormField *)startDateField
