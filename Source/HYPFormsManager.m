@@ -624,6 +624,9 @@
                 [self.values setObject:field.fieldValue forKey:field.fieldID];
             }
 
+        } else if (target.actionType == HYPFormTargetActionClear) {
+            field.fieldValue = nil;
+            [self.values setObject:[NSNull null] forKey:field.fieldID];
         } else if (field.formula) {
             NSArray *fieldIDs = [field.formula hyp_variables];
             NSMutableDictionary *values = [NSMutableDictionary new];

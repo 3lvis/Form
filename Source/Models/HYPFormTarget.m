@@ -292,6 +292,7 @@
             case HYPFormTargetActionHide:
                 if (![hidden containsObject:target]) [hidden addObject:target];
                 break;
+            case HYPFormTargetActionClear:
             case HYPFormTargetActionUpdate:
                 if (![updated containsObject:target]) [updated addObject:target];
                 break;
