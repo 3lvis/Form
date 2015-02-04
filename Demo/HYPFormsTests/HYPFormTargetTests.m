@@ -79,12 +79,16 @@
     [targets addObject:[HYPFormTarget updateFieldTargetWithID:@"bonus_enabled"]];
     [targets addObject:[HYPFormTarget updateFieldTargetWithID:@"bonus_enabled"]];
 
+    [targets addObject:[HYPFormTarget clearFieldTargetWithID:@"salary"]];
+    [targets addObject:[HYPFormTarget clearFieldTargetWithID:@"salary"]];
+    [targets addObject:[HYPFormTarget clearFieldTargetWithID:@"salary"]];
+
     [HYPFormTarget filteredTargets:targets
                           filtered:^(NSArray *shownTargets, NSArray *hiddenTargets, NSArray *updatedTargets,
                                      NSArray *enabledTargets, NSArray *disabledTargets) {
                               XCTAssertEqual(shownTargets.count, 1);
                               XCTAssertEqual(hiddenTargets.count, 1);
-                              XCTAssertEqual(updatedTargets.count, 1);
+                              XCTAssertEqual(updatedTargets.count, 2);
                               XCTAssertEqual(enabledTargets.count, 1);
                               XCTAssertEqual(disabledTargets.count, 1);
                           }];

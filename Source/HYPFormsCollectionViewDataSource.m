@@ -511,6 +511,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
             NSArray *deletedIndexPaths = [self.formsManager hideTargets:@[target]];
             [self deleteItemsAtIndexPaths:deletedIndexPaths];
         } break;
+        case HYPFormTargetActionClear:
         case HYPFormTargetActionUpdate: {
             NSArray *updatedIndexPaths = [self.formsManager updateTargets:@[target]];
             [self reloadItemsAtIndexPaths:updatedIndexPaths];

@@ -76,6 +76,8 @@
         self.actionType = HYPFormTargetActionEnable;
     } else if ([actionTypeString isEqualToString:@"disable"]) {
         self.actionType = HYPFormTargetActionDisable;
+    } else if ([actionTypeString isEqualToString:@"clear"]) {
+        self.actionType = HYPFormTargetActionClear;
     } else {
         self.actionType = HYPFormTargetActionNone;
     }
@@ -111,6 +113,12 @@
 {
     return [self fieldTargetWithID:targetID
                         actionType:HYPFormTargetActionUpdate];
+}
+
++ (HYPFormTarget *)clearFieldTargetWithID:(NSString *)targetID
+{
+    return [self fieldTargetWithID:targetID
+                        actionType:HYPFormTargetActionClear];
 }
 
 #pragma mark - Field targets
@@ -160,6 +168,16 @@
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self updateFieldTargetWithID:targetID]];
+    }
+
+    return targets;
+}
+
++ (NSArray *)clearFieldTargetsWithIDs:(NSArray *)targetIDs
+{
+    NSMutableArray *targets = [NSMutableArray new];
+    for (NSString *targetID in targetIDs) {
+        [targets addObject:[self clearFieldTargetWithID:targetID]];
     }
 
     return targets;
@@ -274,6 +292,7 @@
             case HYPFormTargetActionHide:
                 if (![hidden containsObject:target]) [hidden addObject:target];
                 break;
+            case HYPFormTargetActionClear:
             case HYPFormTargetActionUpdate:
                 if (![updated containsObject:target]) [updated addObject:target];
                 break;
