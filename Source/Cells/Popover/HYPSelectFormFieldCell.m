@@ -36,7 +36,7 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
     return _fieldValuesController;
 }
 
-#pragma mark - Private headers
+#pragma mark - HYPBaseFormFieldCell
 
 - (void)updateWithField:(HYPFormField *)field
 {
@@ -60,6 +60,8 @@ static const CGSize HYPSelectPopoverSize = { .width = 320.0f, .height = 308.0f }
         self.fieldValueLabel.text = nil;
     }
 }
+
+#pragma mark - HYPPopoverFormFieldCell
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {

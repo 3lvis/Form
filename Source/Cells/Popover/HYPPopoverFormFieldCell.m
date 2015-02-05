@@ -74,15 +74,21 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
     return [super becomeFirstResponder];
 }
 
+#pragma mark - HYPBaseFormFieldCell
+
 - (void)validate
 {
     [self.fieldValueLabel setValid:[self.field validate]];
 }
 
+#pragma mark - HYPPopoverFormFieldCell
+
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     abort();
 }
+
+#pragma mark - HYPBaseFormFieldCell
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
@@ -100,6 +106,8 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
     self.fieldValueLabel.userInteractionEnabled = !field.disabled;
     self.fieldValueLabel.valid = field.valid;
 }
+
+#pragma mark - Layout
 
 - (void)layoutSubviews
 {

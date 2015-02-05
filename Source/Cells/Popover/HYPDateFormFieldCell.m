@@ -81,7 +81,7 @@ UIPopoverControllerDelegate, HYPFieldValuesTableViewControllerDelegate>
     self.date = datePicker.date;
 }
 
-#pragma mark - Private methods
+#pragma mark - HYPBaseFormFieldCell
 
 - (void)updateWithField:(HYPFormField *)field
 {
@@ -107,6 +107,8 @@ UIPopoverControllerDelegate, HYPFieldValuesTableViewControllerDelegate>
         self.fieldValueLabel.text = nil;
     }
 }
+
+#pragma mark - HYPPopoverFormFieldCell
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {

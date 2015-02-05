@@ -166,6 +166,8 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
     return [super becomeFirstResponder];
 }
 
+#pragma mark - HYPBaseFormFieldCell
+
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
     self.textField.enabled = !disabled;
@@ -235,7 +237,7 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
     [self updateWithField:self.field];
 }
 
-#pragma mark - UIView
+#pragma mark - Layout
 
 - (void)layoutSubviews
 {
