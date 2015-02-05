@@ -191,6 +191,8 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
     [self.textField setValid:[self.field validate]];
 }
 
+#pragma mark - Private methods
+
 - (NSString *)rawTextForField:(HYPFormField *)field
 {
     if (field.fieldValue && field.type == HYPFormFieldTypeFloat) {
