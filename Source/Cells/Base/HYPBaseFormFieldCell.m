@@ -91,7 +91,7 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     NSLog(@"validation in progress");
 }
 
-#pragma mark - Private Methods
+#pragma mark - Layout
 
 - (void)layoutSubviews
 {
