@@ -18,6 +18,7 @@
     if (!self) return nil;
 
     [self.contentView addSubview:self.button];
+    self.headingLabel.hidden = YES;
 
     return self;
 }
@@ -30,19 +31,43 @@
 
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
 
-    _button.layer.borderColor = [UIColor HYPFormsCoreBlue].CGColor;
+    _button.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
     _button.layer.borderWidth = 1.0f;
     _button.layer.cornerRadius = 5.0f;
 
     [_button setTitle:@"Hola" forState:UIControlStateNormal];
 
-    _button.titleColor = [UIColor HYPFormsCoreBlue];
-    _button.highlightedTitleColor = [UIColor whiteColor];
+    _button.titleColor = [UIColor whiteColor];
+    _button.backgroundColor = [UIColor HYPFormsLightGray];
 
-    _button.backgroundColor = [UIColor whiteColor];
+    _button.highlightedTitleColor = [UIColor whiteColor];
     _button.highlightedBackgroundColor = [UIColor HYPFormsCoreBlue];
 
     return _button;
+}
+
+#pragma mark - HYPBaseFormFieldCell
+
+- (void)updateFieldWithDisabled:(BOOL)disabled
+{
+    if (disabled) {
+        self.button.titleColor = [UIColor grayColor];
+        self.button.backgroundColor = [UIColor HYPFormsLightGray];
+        self.button.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
+    } else {
+        self.button.titleColor = [UIColor HYPFormsCoreBlue];
+        self.button.backgroundColor = [UIColor whiteColor];
+        self.button.layer.borderColor = [UIColor HYPFormsCoreBlue].CGColor;
+    }
+}
+
+- (void)updateWithField:(HYPFormField *)field
+{
+    [super updateWithField:field];
+
+    self.button.enabled = !field.disabled;
+    self.disabled = field.disabled;
+    self.headingLabel.hidden = YES;
 }
 
 #pragma mark - Layout

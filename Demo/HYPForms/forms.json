@@ -485,7 +485,7 @@
             }
           },
           {
-            "id":"companies[0].remove",
+            "id":"companies[1].remove",
             "title":"Remove",
             "type":"button",
             "size":{
