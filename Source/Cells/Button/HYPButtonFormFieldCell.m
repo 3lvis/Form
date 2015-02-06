@@ -41,7 +41,9 @@
     _button.backgroundColor = [UIColor HYPFormsLightGray];
 
     _button.highlightedTitleColor = [UIColor whiteColor];
-    _button.highlightedBackgroundColor = [UIColor HYPFormsCoreBlue];
+    _button.highlightedBackgroundColor = [UIColor HYPFormsCallToAction];
+
+    [_button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
 
     return _button;
 }
@@ -52,12 +54,17 @@
 {
     if (disabled) {
         self.button.titleColor = [UIColor grayColor];
-        self.button.backgroundColor = [UIColor HYPFormsLightGray];
         self.button.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
+
+        self.button.backgroundColor = [UIColor HYPFormsLightGray];
+        self.button.highlightedBackgroundColor = [UIColor HYPFormsLightGray];
     } else {
-        self.button.titleColor = [UIColor HYPFormsCoreBlue];
-        self.button.backgroundColor = [UIColor whiteColor];
-        self.button.layer.borderColor = [UIColor HYPFormsCoreBlue].CGColor;
+        self.button.titleColor = [UIColor whiteColor];
+        self.button.highlightedTitleColor = [UIColor HYPFormsCallToAction];
+        self.button.layer.borderColor = [UIColor HYPFormsCallToAction].CGColor;
+
+        self.button.backgroundColor = [UIColor HYPFormsCallToAction];
+        self.button.highlightedBackgroundColor = [UIColor whiteColor];
     }
 }
 
@@ -90,6 +97,15 @@
     CGRect  frame  = CGRectMake(marginX, marginTop, width, height);
 
     return frame;
+}
+
+#pragma mark - Actions
+
+- (void)buttonAction
+{
+    if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
+        [self.delegate fieldCell:self updatedWithField:self.field];
+    }
 }
 
 @end
