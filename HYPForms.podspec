@@ -20,4 +20,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/**/*.{h,m}'
   s.frameworks = 'Foundation'
   s.requires_arc = true
+  
+  s.dependency 'UIButton-ANDYHighlighted'
 end
