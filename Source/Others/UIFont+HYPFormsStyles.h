@@ -15,5 +15,6 @@
 + (UIFont *)HYPFormsSmallSizeMedium;
 + (UIFont *)HYPFormsLabelFont;
 + (UIFont *)HYPFormsTextFieldFont;
++ (UIFont *)HYPFormsActionButtonFont;
 
 @end

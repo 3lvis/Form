@@ -67,4 +67,9 @@
     return [UIFont fontWithName:@"DIN-Regular" size:15.0];
 }
 
++ (UIFont *)HYPFormsActionButtonFont
+{
+    return [UIFont fontWithName:@"DIN-Bold" size:16.0];
+}
+
 @end

@@ -31,7 +31,7 @@
 
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
 
-    _button.titleLabel.font = [UIFont HYPFormsTextFieldFont];
+    _button.titleLabel.font = [UIFont HYPFormsActionButtonFont];
 
     _button.layer.borderWidth = 1.0f;
     _button.layer.cornerRadius = 5.0f;
