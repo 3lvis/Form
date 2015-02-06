@@ -33,15 +33,15 @@
 
     _button.titleLabel.font = [UIFont HYPFormsTextFieldFont];
 
-    _button.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
     _button.layer.borderWidth = 1.0f;
     _button.layer.cornerRadius = 5.0f;
 
     _button.titleColor = [UIColor whiteColor];
-    _button.backgroundColor = [UIColor HYPFormsLightGray];
+    _button.highlightedTitleColor = [UIColor HYPFormsCallToAction];
+    _button.layer.borderColor = [UIColor HYPFormsCallToAction].CGColor;
 
-    _button.highlightedTitleColor = [UIColor whiteColor];
-    _button.highlightedBackgroundColor = [UIColor HYPFormsCallToAction];
+    _button.backgroundColor = [UIColor HYPFormsCallToAction];
+    _button.highlightedBackgroundColor = [UIColor whiteColor];
 
     [_button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
 
@@ -52,20 +52,7 @@
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
-    if (disabled) {
-        self.button.titleColor = [UIColor grayColor];
-        self.button.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
-
-        self.button.backgroundColor = [UIColor HYPFormsLightGray];
-        self.button.highlightedBackgroundColor = [UIColor HYPFormsLightGray];
-    } else {
-        self.button.titleColor = [UIColor whiteColor];
-        self.button.highlightedTitleColor = [UIColor HYPFormsCallToAction];
-        self.button.layer.borderColor = [UIColor HYPFormsCallToAction].CGColor;
-
-        self.button.backgroundColor = [UIColor HYPFormsCallToAction];
-        self.button.highlightedBackgroundColor = [UIColor whiteColor];
-    }
+    self.button.alpha = disabled ? 0.0f : 1.0f;
 }
 
 - (void)updateWithField:(HYPFormField *)field
