@@ -36,7 +36,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 {
     if (_fieldValueLabel) return _fieldValueLabel;
 
-    _fieldValueLabel = [[HYPFieldValueLabel alloc] initWithFrame:[self frameForFieldValueLabel]];
+    _fieldValueLabel = [[HYPFieldValueLabel alloc] initWithFrame:[self fieldValueLabelFrame]];
     _fieldValueLabel.delegate = self;
 
     return _fieldValueLabel;
@@ -58,7 +58,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 {
     if (_iconImageView) return _iconImageView;
 
-    _iconImageView = [[UIImageView alloc] initWithFrame:[self frameForIconButton]];
+    _iconImageView = [[UIImageView alloc] initWithFrame:[self iconImageViewFrame]];
     _iconImageView.contentMode = UIViewContentModeRight;
     _iconImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
@@ -74,15 +74,21 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
     return [super becomeFirstResponder];
 }
 
+#pragma mark - HYPBaseFormFieldCell
+
 - (void)validate
 {
     [self.fieldValueLabel setValid:[self.field validate]];
 }
 
+#pragma mark - HYPPopoverFormFieldCell
+
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(HYPFormField *)field
 {
     abort();
 }
+
+#pragma mark - HYPBaseFormFieldCell
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
@@ -92,7 +98,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
 - (void)updateWithField:(HYPFormField *)field
 {
     [super updateWithField:field];
-    
+
     self.iconImageView.hidden = field.disabled;
 
     self.fieldValueLabel.hidden = (field.sectionSeparator);
@@ -101,15 +107,17 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
     self.fieldValueLabel.valid = field.valid;
 }
 
+#pragma mark - Layout
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
 
-    self.fieldValueLabel.frame = [self frameForFieldValueLabel];
-    self.iconImageView.frame = [self frameForIconButton];
+    self.fieldValueLabel.frame = [self fieldValueLabelFrame];
+    self.iconImageView.frame = [self iconImageViewFrame];
 }
 
-- (CGRect)frameForFieldValueLabel
+- (CGRect)fieldValueLabelFrame
 {
     CGFloat marginX = HYPTextFormFieldCellMarginX;
     CGFloat marginTop = HYPFormFieldCellMarginTop;
@@ -122,7 +130,7 @@ static const CGFloat HYPIconButtonHeight = 38.0f;
     return frame;
 }
 
-- (CGRect)frameForIconButton
+- (CGRect)iconImageViewFrame
 {
     CGFloat x = CGRectGetWidth(self.frame) - HYPIconButtonWidth - (HYPTextFormFieldCellMarginX * 2);
     CGFloat y = HYPIconButtonHeight - 4;

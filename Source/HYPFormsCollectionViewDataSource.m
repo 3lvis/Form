@@ -6,6 +6,7 @@
 #import "HYPTextFormFieldCell.h"
 #import "HYPSelectFormFieldCell.h"
 #import "HYPDateFormFieldCell.h"
+#import "HYPButtonFormFieldCell.h"
 #import "HYPFieldValue.h"
 
 #import "UIColor+ANDYHex.h"
@@ -60,6 +61,9 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 
     [collectionView registerClass:[HYPDateFormFieldCell class]
        forCellWithReuseIdentifier:HYPDateFormFieldCellIdentifier];
+
+    [collectionView registerClass:[HYPButtonFormFieldCell class]
+       forCellWithReuseIdentifier:HYPButtonFormFieldCellIdentifier];
 
     [collectionView registerClass:[HYPFormHeaderView class]
        forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -132,6 +136,10 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
         case HYPFormFieldTypeFloat:
         case HYPFormFieldTypeNumber:
             identifier = HYPTextFormFieldCellIdentifier;
+            break;
+
+        case HYPFormFieldTypeButton:
+            identifier = HYPButtonFormFieldCellIdentifier;
             break;
 
         case HYPFormFieldTypeCustom: abort();

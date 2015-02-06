@@ -34,7 +34,7 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 {
     if (_headingLabel) return _headingLabel;
 
-    _headingLabel = [[HYPFormFieldHeadingLabel alloc] initWithFrame:[self frameForHeadingLabel]];
+    _headingLabel = [[HYPFormFieldHeadingLabel alloc] initWithFrame:[self headingLabelFrame]];
 
     return _headingLabel;
 }
@@ -43,7 +43,7 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 {
     if (_separatorView) return _separatorView;
 
-    _separatorView = [[UIView alloc] initWithFrame:[self frameForSeparatorView]];
+    _separatorView = [[UIView alloc] initWithFrame:[self separatorViewFrame]];
     _separatorView.backgroundColor = [UIColor HYPFormsFieldBorderDisabled];
 
     return _separatorView;
@@ -91,18 +91,18 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     NSLog(@"validation in progress");
 }
 
-#pragma mark - Private Methods
+#pragma mark - Layout
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
 
-    self.headingLabel.frame = [self frameForHeadingLabel];
+    self.headingLabel.frame = [self headingLabelFrame];
 
-    self.separatorView.frame = [self frameForSeparatorView];
+    self.separatorView.frame = [self separatorViewFrame];
 }
 
-- (CGRect)frameForHeadingLabel
+- (CGRect)headingLabelFrame
 {
     CGFloat marginX = HYPTextFormFieldCellMarginX + HYPTextFormFieldCellLabelMarginX;
     CGFloat marginTop = HYPTextFormFieldCellLabelMarginTop;
@@ -114,7 +114,7 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     return frame;
 }
 
-- (CGRect)frameForSeparatorView
+- (CGRect)separatorViewFrame
 {
     CGRect frame = self.frame;
     frame.origin.x = 0.0f;

@@ -224,6 +224,8 @@ static UIImage *HYPPopoverBackgroundTopArrowImage = nil;
     return self;
 }
 
+#pragma mark - Layout
+
 - (void)layoutSubviews
 {
     CGFloat popoverImageOriginX = 0.0f;

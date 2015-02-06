@@ -94,7 +94,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     return view;
 }
 
-#pragma mark - Overwritables
+#pragma mark - Layout
 
 - (void)layoutSubviews
 {
@@ -102,8 +102,6 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
 
     self.contentView.frame = [self contentViewFrame];
 }
-
-#pragma mark - Private methods
 
 - (CGRect)contentViewFrame
 {

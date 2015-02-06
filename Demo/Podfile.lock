@@ -11,6 +11,7 @@ PODS:
     - NSString-HYPWordExtractor
   - NSString-HYPWordExtractor (1.1)
   - NSString-ZENInflections (1.2)
+  - UIButton-ANDYHighlighted (0.2)
   - UIColor-ANDYHex (1.0)
   - UIScreen-HYPLiveBounds (1.3)
 
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`)
   - NSString-HYPWordExtractor (from `https://github.com/hyperoslo/NSString-HYPWordExtractor.git`)
   - NSString-ZENInflections
+  - UIButton-ANDYHighlighted (from `https://github.com/NSElvis/UIButton-ANDYHighlighted.git`, branch `feature/highlightedTitleColor`)
   - UIColor-ANDYHex (from `https://github.com/NSElvis/UIColor-ANDYHex.git`)
   - UIScreen-HYPLiveBounds
 
@@ -44,6 +46,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
   NSString-HYPWordExtractor:
     :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
+  UIButton-ANDYHighlighted:
+    :branch: feature/highlightedTitleColor
+    :git: https://github.com/NSElvis/UIButton-ANDYHighlighted.git
   UIColor-ANDYHex:
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
@@ -69,6 +74,9 @@ CHECKOUT OPTIONS:
   NSString-HYPWordExtractor:
     :commit: 3cc0736542980882fa2f5ce73719235010ad0cc3
     :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
+  UIButton-ANDYHighlighted:
+    :commit: 5dc93a895bc0703181eef1b578e12611aa82b67b
+    :git: https://github.com/NSElvis/UIButton-ANDYHighlighted.git
   UIColor-ANDYHex:
     :commit: e4397f3ef67d2a9329752f8322586f45444b11f2
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
@@ -85,6 +93,7 @@ SPEC CHECKSUMS:
   NSString-HYPFormula: ace20bb486552fb282cc8510f9e6a5481be1106d
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
   NSString-ZENInflections: 27e3623bae0758cd932c462dfae15420ec9867f9
+  UIButton-ANDYHighlighted: aa1a6c4616503f77ece2f0dfcf643791cc789a59
   UIColor-ANDYHex: 6262f384b07f12a9d37fdd0ba149cf751b54e8f9
   UIScreen-HYPLiveBounds: b9910aa6f80f12638aec07463e960b5528a99e45
 

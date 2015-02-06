@@ -51,7 +51,7 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
 {
     if (_textField) return _textField;
 
-    _textField = [[HYPTextField alloc] initWithFrame:[self frameForTextField]];
+    _textField = [[HYPTextField alloc] initWithFrame:[self textFieldFrame]];
     _textField.textFieldDelegate = self;
 
     return _textField;
@@ -166,6 +166,8 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
     return [super becomeFirstResponder];
 }
 
+#pragma mark - HYPBaseFormFieldCell
+
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
     self.textField.enabled = !disabled;
@@ -188,6 +190,8 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
 {
     [self.textField setValid:[self.field validate]];
 }
+
+#pragma mark - Private methods
 
 - (NSString *)rawTextForField:(HYPFormField *)field
 {
@@ -235,16 +239,16 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
     [self updateWithField:self.field];
 }
 
-#pragma mark - Private methods
+#pragma mark - Layout
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
 
-    self.textField.frame = [self frameForTextField];
+    self.textField.frame = [self textFieldFrame];
 }
 
-- (CGRect)frameForTextField
+- (CGRect)textFieldFrame
 {
     CGFloat marginX = HYPTextFormFieldCellMarginX;
     CGFloat marginTop = HYPFormFieldCellMarginTop;

@@ -18,6 +18,8 @@
 		1445E12C1A3EDF0500219DB0 /* HYPFormTargetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1445E12B1A3EDF0500219DB0 /* HYPFormTargetTests.m */; };
 		1445E12E1A3EE42400219DB0 /* HYPFieldValueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1445E12D1A3EE42400219DB0 /* HYPFieldValueTests.m */; };
 		145721C319EF260600195051 /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145721C219EF260600195051 /* camera-icon@2x.png */; };
+		145BC5521A83973A00C78F28 /* HYPButtonFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 145BC5511A83973A00C78F28 /* HYPButtonFormFieldCell.m */; };
+		145BC5531A83973A00C78F28 /* HYPButtonFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 145BC5511A83973A00C78F28 /* HYPButtonFormFieldCell.m */; };
 		1467089B1A3E84AC006EDCF9 /* HYPFormTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1467089A1A3E84AC006EDCF9 /* HYPFormTests.m */; };
 		1478934C19DFCC9000BC2497 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 1478934B19DFCC9000BC2497 /* forms.json */; };
 		14891FAC1A3E575A00EE45E0 /* field-validations.json in Resources */ = {isa = PBXBuildFile; fileRef = 14891FAB1A3E575A00EE45E0 /* field-validations.json */; };
@@ -123,6 +125,8 @@
 		1445E12B1A3EDF0500219DB0 /* HYPFormTargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormTargetTests.m; sourceTree = "<group>"; };
 		1445E12D1A3EE42400219DB0 /* HYPFieldValueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFieldValueTests.m; sourceTree = "<group>"; };
 		145721C219EF260600195051 /* camera-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon@2x.png"; sourceTree = "<group>"; };
+		145BC5501A83973A00C78F28 /* HYPButtonFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPButtonFormFieldCell.h; sourceTree = "<group>"; };
+		145BC5511A83973A00C78F28 /* HYPButtonFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPButtonFormFieldCell.m; sourceTree = "<group>"; };
 		1467089A1A3E84AC006EDCF9 /* HYPFormTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormTests.m; sourceTree = "<group>"; };
 		1478934B19DFCC9000BC2497 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; tabWidth = 2; };
 		14891FAB1A3E575A00EE45E0 /* field-validations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "field-validations.json"; sourceTree = "<group>"; };
@@ -294,6 +298,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		145BC54F1A83970F00C78F28 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				145BC5501A83973A00C78F28 /* HYPButtonFormFieldCell.h */,
+				145BC5511A83973A00C78F28 /* HYPButtonFormFieldCell.m */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		149D207D1A3847ED00B7BD76 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +388,7 @@
 				4408F15D19E81EA6005AE53F /* Base */,
 				1416FB351A28758E00991E33 /* Popover */,
 				4408F17019E81EA6005AE53F /* Text */,
+				145BC54F1A83970F00C78F28 /* Button */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -770,6 +784,7 @@
 				1445E12E1A3EE42400219DB0 /* HYPFieldValueTests.m in Sources */,
 				149D20801A3847ED00B7BD76 /* HYPFormField+Tests.m in Sources */,
 				14C1287B1A27947F00729825 /* HYPFormFieldTests.m in Sources */,
+				145BC5531A83973A00C78F28 /* HYPButtonFormFieldCell.m in Sources */,
 				BD171A311A25C0D90092CA32 /* HYPFormsCollectionViewDataSourceTests.m in Sources */,
 				BD9A14441A3A18D6005DB106 /* HYPTextFormFieldCellTests.m in Sources */,
 				1428F8011A3E6A0F00D2B882 /* HYPFormSectionTests.m in Sources */,
@@ -788,6 +803,7 @@
 				1416FB4D1A2875D700991E33 /* HYPTextField.m in Sources */,
 				BD03AE7919F98D0700DF726E /* HYPPostalCodeManager.m in Sources */,
 				4408F19B19E81EA6005AE53F /* HYPFormField.m in Sources */,
+				145BC5521A83973A00C78F28 /* HYPButtonFormFieldCell.m in Sources */,
 				1416FB3E1A28758E00991E33 /* HYPDateFormFieldCell.m in Sources */,
 				BD5DC2A31A35C8D500A652AD /* HYPBankAccountNumberValidator.m in Sources */,
 				BDD6495E1A436CE500C99B76 /* HYPSubtitleView.m in Sources */,

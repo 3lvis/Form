@@ -8,6 +8,7 @@ pod 'NSDictionary-ANDYSafeValue'
 pod 'NSJSONSerialization-ANDYJSONFile'
 pod 'NSString-ZENInflections'
 pod 'UIScreen-HYPLiveBounds'
+pod 'UIButton-ANDYHighlighted', git: 'https://github.com/NSElvis/UIButton-ANDYHighlighted.git', branch: 'feature/highlightedTitleColor'
 
 pod 'HYPImagePicker', :git => 'https://github.com/hyperoslo/HYPImagePicker.git'
 pod 'HYPNorwegianSSN', :git => 'https://github.com/hyperoslo/HYPNorwegianSSN.git'
@@ -17,4 +18,3 @@ pod 'UIColor-ANDYHex', :git => 'https://github.com/NSElvis/UIColor-ANDYHex.git'
 pod 'NSString-HYPContainsString', :git => 'https://github.com/hyperoslo/NSString-HYPContainsString.git'
 pod 'DDMathParser', :git => 'https://github.com/hyperoslo/DDMathParser.git'
 pod 'NSObject-HYPTesting', :git => 'https://github.com/hyperoslo/NSObject-HYPTesting.git'
-

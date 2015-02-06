@@ -97,6 +97,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
         case HYPFormFieldTypeText:
         case HYPFormFieldTypeSelect:
+        case HYPFormFieldTypeButton:
         case HYPFormFieldTypeCustom:
             break;
     }
@@ -126,6 +127,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         case HYPFormFieldTypeDate:
             return self.fieldValue;
 
+        case HYPFormFieldTypeButton:
         case HYPFormFieldTypeCustom:
             return nil;
     }
@@ -187,6 +189,8 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
         return HYPFormFieldTypeFloat;
     } else if ([typeString isEqualToString:@"number"]) {
         return HYPFormFieldTypeNumber;
+    } else if ([typeString isEqualToString:@"button"]) {
+        return HYPFormFieldTypeButton;
     } else {
         return HYPFormFieldTypeCustom;
     }

@@ -435,7 +435,7 @@
               "min_length":2
             },
             "size":{
-              "width":70,
+              "width":50,
               "height":1
             }
           },
@@ -445,6 +445,15 @@
             "type":"number",
             "size":{
               "width":30,
+              "height":1
+            }
+          },
+          {
+            "id":"companies[0].remove",
+            "title":"Remove",
+            "type":"button",
+            "size":{
+              "width":20,
               "height":1
             }
           }
@@ -462,7 +471,7 @@
               "min_length":2
             },
             "size":{
-              "width":70,
+              "width":50,
               "height":1
             }
           },
@@ -472,6 +481,15 @@
             "type":"number",
             "size":{
               "width":30,
+              "height":1
+            }
+          },
+          {
+            "id":"companies[1].remove",
+            "title":"Remove",
+            "type":"button",
+            "size":{
+              "width":20,
               "height":1
             }
           }
