@@ -1,8 +1,8 @@
 #import "HYPButtonFormFieldCell.h"
 
 #import "UIColor+HYPFormsColors.h"
-
 #import "UIButton+ANDYHighlighted.h"
+#import "UIFont+HYPFormsStyles.h"
 
 @interface HYPButtonFormFieldCell ()
 
@@ -31,11 +31,11 @@
 
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
 
+    _button.titleLabel.font = [UIFont HYPFormsTextFieldFont];
+
     _button.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
     _button.layer.borderWidth = 1.0f;
     _button.layer.cornerRadius = 5.0f;
-
-    [_button setTitle:@"Hola" forState:UIControlStateNormal];
 
     _button.titleColor = [UIColor whiteColor];
     _button.backgroundColor = [UIColor HYPFormsLightGray];
@@ -75,6 +75,8 @@
     self.button.enabled = !field.disabled;
     self.disabled = field.disabled;
     self.headingLabel.hidden = YES;
+
+    [self.button setTitle:field.title forState:UIControlStateNormal];
 }
 
 #pragma mark - Layout
