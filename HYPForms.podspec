@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "HYPForms"
-  s.version = "0.107"
+  s.version = "0.108"
   s.summary = "JSON driven forms"
   s.description = <<-DESC
                    * JSON driven forms
@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/**/*.{h,m}'
   s.frameworks = 'Foundation'
   s.requires_arc = true
-  
+
   s.dependency 'UIButton-ANDYHighlighted'
 end
