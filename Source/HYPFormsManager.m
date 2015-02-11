@@ -617,6 +617,7 @@
 
                 if (selectedFieldValue) {
                     [self.values setObject:selectedFieldValue.valueID forKey:field.fieldID];
+                    field.fieldValue = selectedFieldValue;
                 }
 
             } else {
