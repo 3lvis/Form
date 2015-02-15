@@ -22,7 +22,9 @@ typedef UICollectionViewCell * (^HYPFieldConfigureCellForItemAtIndexPath)(HYPFor
 
 @interface HYPFormsCollectionViewDataSource : NSObject <UICollectionViewDataSource, HYPFormsLayoutDataSource>
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView andFormsManager:(HYPFormsManager *)formsManager;
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
+                                layout:(HYPFormsLayout *)layout
+                       andFormsManager:(HYPFormsManager *)formsManager;
 
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
 

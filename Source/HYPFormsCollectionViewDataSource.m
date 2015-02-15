@@ -24,6 +24,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 @property (nonatomic) BOOL disabled;
 @property (nonatomic, strong) HYPFormsManager *formsManager;
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) HYPFormsLayout *layout;
 
 @end
 
@@ -41,6 +42,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 #pragma mark - Initializers
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
+                                layout:(HYPFormsLayout *)layout
                        andFormsManager:(HYPFormsManager *)formsManager
 {
     self = [super init];
@@ -50,7 +52,11 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 
     _collectionView = collectionView;
 
+    _layout = layout;
+
     _originalInset = collectionView.contentInset;
+
+    layout.dataSource = self;
 
     [collectionView registerClass:[HYPTextFormFieldCell class]
        forCellWithReuseIdentifier:HYPTextFormFieldCellIdentifier];
@@ -77,10 +83,6 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
-
-    collectionView.dataSource = self;
-
-    NSLog(@"Initializated with %ld sections", (long)[collectionView numberOfSections]);
 
     return self;
 }
@@ -110,7 +112,8 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
         return 0;
     }
 
-    return [form numberOfFields:self.formsManager.hiddenSections];
+    NSInteger numberOfItems = [form numberOfFields:self.formsManager.hiddenSections];
+    return numberOfItems;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -268,11 +271,14 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     CGFloat width = 0.0f;
     CGFloat height = 0.0f;
 
-    HYPFormField *field = fields[indexPath.row];
+    HYPFormField *field;
+    if (indexPath.row < fields.count) {
+        field = fields[indexPath.row];
+    }
     if (field.sectionSeparator) {
         width = deviceWidth;
         height = HYPFieldCellItemSmallHeight;
-    } else {
+    } else if (field) {
         width = floor(deviceWidth * (field.size.width / 100.0f));
 
         if (field.type == HYPFormFieldTypeCustom) {

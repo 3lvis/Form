@@ -7,7 +7,7 @@
 #import "HYPFormsCollectionViewDataSource.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
-@interface HYPFormFieldTests : XCTestCase <HYPFormsLayoutDataSource>
+@interface HYPFormFieldTests : XCTestCase
 
 @property (nonatomic, strong) HYPFormsManager *manager;
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
@@ -21,7 +21,6 @@
     [super setUp];
 
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
-    layout.dataSource = self;
 
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds]
                                                           collectionViewLayout:layout];
@@ -34,6 +33,7 @@
                                                 disabled:NO];
 
     self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView
+                                                                                layout:layout
                                                                        andFormsManager:self.manager];
 }
 
@@ -112,18 +112,6 @@
     field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
 
     XCTAssertNil(field);
-}
-
-#pragma mark - HYPFormsLayoutDataSource
-
-- (NSArray *)forms
-{
-    return self.manager.forms;
-}
-
-- (NSArray *)collapsedForms
-{
-    return self.dataSource.collapsedForms;
 }
 
 @end

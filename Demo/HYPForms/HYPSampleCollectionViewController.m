@@ -35,6 +35,13 @@
     self.layout = layout;
     self.initialValues = dictionary;
 
+    [self.collectionView registerClass:[HYPImageFormFieldCell class]
+            forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
+
+    self.collectionView.dataSource = self.dataSource;
+
+    NSLog(@"Initializated with %ld sections", (long)[self.collectionView numberOfSections]);
+
     return self;
 }
 
@@ -59,8 +66,8 @@
     if (_dataSource) return _dataSource;
 
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
+                                                                            layout:self.layout
                                                                    andFormsManager:self.formsManager];
-    self.layout.dataSource = _dataSource;
 
     _dataSource.configureCellForIndexPath = ^(HYPFormField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
         BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
@@ -114,12 +121,6 @@
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor HYPFormsBackground];
-
-    [self.collectionView registerClass:[HYPImageFormFieldCell class]
-            forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
-
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self.dataSource;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -160,8 +161,6 @@
     [self setToolbarItems:@[validateButtonItem, flexibleBarButtonItem, updateButtonItem, flexibleBarButtonItem, readOnlyBarButtonItem]];
 
     [self.navigationController setToolbarHidden:NO animated:YES];
-
-    [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"image"]];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -244,9 +243,9 @@
     HYPFormTarget *target;
 
     if (sender.isOn) {
-        target = [HYPFormTarget hideFieldTargetWithID:@"image"];
+        target = [HYPFormTarget disableFieldTargetWithID:@"image"];
     } else {
-        target = [HYPFormTarget showFieldTargetWithID:@"image"];
+        target = [HYPFormTarget enableFieldTargetWithID:@"image"];
     }
 
     [self.dataSource processTargets:@[target]];
