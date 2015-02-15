@@ -12,8 +12,7 @@
 #import "NSJSONSerialization+ANDYJSONFile.h"
 #import "UIColor+HYPFormsColors.h"
 
-@interface HYPSampleCollectionViewController () <HYPImagePickerDelegate,
-HYPFormsCollectionViewDataSourceDataSource>
+@interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *initialValues;
@@ -61,10 +60,17 @@ HYPFormsCollectionViewDataSourceDataSource>
 
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
                                                                    andFormsManager:self.formsManager];
-
-    self.collectionView.dataSource = _dataSource;
     self.layout.dataSource = _dataSource;
-    _dataSource.dataSource = self;
+
+    _dataSource.configureCellForIndexPath = ^(HYPFormField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
+        BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
+        id cell;
+        if (isImageCell) {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
+                                                             forIndexPath:indexPath];
+        }
+        return cell;
+    };
 
     __weak typeof(self)weakSelf = self;
 
@@ -244,23 +250,6 @@ HYPFormsCollectionViewDataSourceDataSource>
     }
 
     [self.dataSource processTargets:@[target]];
-}
-
-#pragma mark - HYPFormsCollectionViewDataSourceDataSource
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-               formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
-                            cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath
-{
-    HYPImageFormFieldCell *cell;
-
-    BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
-    if (isImageCell) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
-                                                         forIndexPath:indexPath];
-    }
-
-    return cell;
 }
 
 @end

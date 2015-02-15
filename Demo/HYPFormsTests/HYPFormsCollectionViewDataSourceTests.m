@@ -12,7 +12,7 @@
 
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
-@interface HYPFormsCollectionViewDataSourceTests : XCTestCase <HYPFormsCollectionViewDataSourceDataSource>
+@interface HYPFormsCollectionViewDataSourceTests : XCTestCase
 
 @property (nonatomic, strong) HYPFormsManager *manager;
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
@@ -42,10 +42,17 @@
 
     self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView
                                                                        andFormsManager:self.manager];
-
-    collectionView.dataSource = self.dataSource;
     layout.dataSource = self.dataSource;
-    self.dataSource.dataSource = self;
+
+    self.dataSource.configureCellForIndexPath = ^(HYPFormField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
+        BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
+        id cell;
+        if (isImageCell) {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
+                                                             forIndexPath:indexPath];
+        }
+        return cell;
+    };
 }
 
 - (void)tearDown
@@ -172,23 +179,6 @@
     HYPFormTarget *clearTarget = [HYPFormTarget clearFieldTargetWithID:@"first_name"];
     [self.dataSource processTarget:clearTarget];
     XCTAssertNil(firstNameField.fieldValue);
-}
-
-#pragma mark - HYPFormsCollectionViewDataSourceDataSource
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-               formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
-                            cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath
-{
-    HYPImageFormFieldCell *cell;
-
-    BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
-    if (isImageCell) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
-                                                         forIndexPath:indexPath];
-    }
-
-    return cell;
 }
 
 @end

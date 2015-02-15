@@ -78,6 +78,10 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
 
+    collectionView.dataSource = self;
+
+    NSLog(@"Initializated with %ld sections", (long)[collectionView numberOfSections]);
+
     return self;
 }
 
@@ -116,9 +120,9 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
 
-    if ([self.dataSource respondsToSelector:@selector(collectionView:formsCollectionDataSource:cellForField:atIndexPath:)]) {
-        UICollectionViewCell *cell = [self.dataSource collectionView:collectionView formsCollectionDataSource:self cellForField:field atIndexPath:indexPath];
-        if (cell) return cell;
+    if (self.configureCellForIndexPath) {
+        id configuredCell = self.configureCellForIndexPath(field, collectionView, indexPath);
+        if (configuredCell) return configuredCell;
     }
 
     NSString *identifier;
