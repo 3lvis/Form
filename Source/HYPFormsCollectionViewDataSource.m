@@ -116,8 +116,8 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
 
-    if ([self.dataSource respondsToSelector:@selector(formsCollectionDataSource:cellForField:atIndexPath:)]) {
-        UICollectionViewCell *cell = [self.dataSource formsCollectionDataSource:self cellForField:field atIndexPath:indexPath];
+    if ([self.dataSource respondsToSelector:@selector(collectionView:formsCollectionDataSource:cellForField:atIndexPath:)]) {
+        UICollectionViewCell *cell = [self.dataSource collectionView:collectionView formsCollectionDataSource:self cellForField:field atIndexPath:indexPath];
         if (cell) return cell;
     }
 

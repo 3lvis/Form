@@ -8,10 +8,11 @@
 #import "HYPFormSection.h"
 #import "HYPFormsManager.h"
 #import "HYPFormTarget.h"
+#import "HYPImageFormFieldCell.h"
 
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
-@interface HYPFormsCollectionViewDataSourceTests : XCTestCase <HYPFormsLayoutDataSource>
+@interface HYPFormsCollectionViewDataSourceTests : XCTestCase <HYPFormsCollectionViewDataSourceDataSource>
 
 @property (nonatomic, strong) HYPFormsManager *manager;
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
@@ -25,10 +26,12 @@
     [super setUp];
 
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
-    layout.dataSource = self;
 
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds]
                                                           collectionViewLayout:layout];
+
+    [collectionView registerClass:[HYPImageFormFieldCell class]
+       forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
 
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
@@ -39,6 +42,10 @@
 
     self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView
                                                                        andFormsManager:self.manager];
+
+    collectionView.dataSource = self.dataSource;
+    layout.dataSource = self.dataSource;
+    self.dataSource.dataSource = self;
 }
 
 - (void)tearDown
@@ -167,16 +174,21 @@
     XCTAssertNil(firstNameField.fieldValue);
 }
 
-#pragma mark - HYPFormsLayoutDataSource
+#pragma mark - HYPFormsCollectionViewDataSourceDataSource
 
-- (NSArray *)forms
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+               formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
+                            cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath
 {
-    return self.manager.forms;
-}
+    HYPImageFormFieldCell *cell;
 
-- (NSArray *)collapsedForms
-{
-    return self.dataSource.collapsedForms;
+    BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
+    if (isImageCell) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
+                                                         forIndexPath:indexPath];
+    }
+
+    return cell;
 }
 
 @end

@@ -248,15 +248,16 @@ HYPFormsCollectionViewDataSourceDataSource>
 
 #pragma mark - HYPFormsCollectionViewDataSourceDataSource
 
-- (UICollectionViewCell *)formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
-                                       cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+               formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
+                            cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath
 {
     HYPImageFormFieldCell *cell;
 
     BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
     if (isImageCell) {
-        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
-                                                              forIndexPath:indexPath];
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
+                                                         forIndexPath:indexPath];
     }
 
     return cell;

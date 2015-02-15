@@ -57,7 +57,8 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 
 @protocol HYPFormsCollectionViewDataSourceDataSource <NSObject>
 
-- (UICollectionViewCell *)formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
-                                       cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath;
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+               formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
+                            cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath;
 
 @end
