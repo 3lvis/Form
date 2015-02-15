@@ -1,6 +1,6 @@
 PODS:
   - DDMathParser (0.2)
-  - HYPImagePicker (0.2)
+  - HYPImagePicker (0.3)
   - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.9)
   - NSDictionary-ANDYSafeValue (0.3)
@@ -27,7 +27,7 @@ DEPENDENCIES:
   - NSString-HYPFormula (from `https://github.com/hyperoslo/NSString-HYPFormula.git`)
   - NSString-HYPWordExtractor (from `https://github.com/hyperoslo/NSString-HYPWordExtractor.git`)
   - NSString-ZENInflections
-  - UIButton-ANDYHighlighted (from `https://github.com/NSElvis/UIButton-ANDYHighlighted.git`, branch `feature/highlightedTitleColor`)
+  - UIButton-ANDYHighlighted
   - UIColor-ANDYHex (from `https://github.com/NSElvis/UIColor-ANDYHex.git`)
   - UIScreen-HYPLiveBounds
 
@@ -46,9 +46,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/hyperoslo/NSString-HYPFormula.git
   NSString-HYPWordExtractor:
     :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
-  UIButton-ANDYHighlighted:
-    :branch: feature/highlightedTitleColor
-    :git: https://github.com/NSElvis/UIButton-ANDYHighlighted.git
   UIColor-ANDYHex:
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
@@ -57,7 +54,7 @@ CHECKOUT OPTIONS:
     :commit: db41b58379b8178947046b6071eead25d1f9e251
     :git: https://github.com/hyperoslo/DDMathParser.git
   HYPImagePicker:
-    :commit: aa0c9c8fce7498630f7259a2b09c0ef0ea675e07
+    :commit: 1a497ac1315d42da8c552fe4da3b1002f63896ea
     :git: https://github.com/hyperoslo/HYPImagePicker.git
   HYPNorwegianSSN:
     :commit: 1034c358ae4b24b13a3bb4506b2bea903a6bc645
@@ -74,16 +71,13 @@ CHECKOUT OPTIONS:
   NSString-HYPWordExtractor:
     :commit: 3cc0736542980882fa2f5ce73719235010ad0cc3
     :git: https://github.com/hyperoslo/NSString-HYPWordExtractor.git
-  UIButton-ANDYHighlighted:
-    :commit: 5dc93a895bc0703181eef1b578e12611aa82b67b
-    :git: https://github.com/NSElvis/UIButton-ANDYHighlighted.git
   UIColor-ANDYHex:
     :commit: e4397f3ef67d2a9329752f8322586f45444b11f2
     :git: https://github.com/NSElvis/UIColor-ANDYHex.git
 
 SPEC CHECKSUMS:
   DDMathParser: 02c20f58376d65f863e71ba0e3bca47f62f179f6
-  HYPImagePicker: 918e9f2894c2d3a87ca7ea87e89320e1553bdd00
+  HYPImagePicker: 0341268a36bf7ab85f72683e16387aa4d9b8bdea
   HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
   HYPNorwegianSSN: 8dfebec78dfd002f4ff2e9875e542ac0f15165fe
   NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
@@ -93,7 +87,7 @@ SPEC CHECKSUMS:
   NSString-HYPFormula: ace20bb486552fb282cc8510f9e6a5481be1106d
   NSString-HYPWordExtractor: 4471987f55704424c1339b0f3c0f9951e3539a47
   NSString-ZENInflections: 27e3623bae0758cd932c462dfae15420ec9867f9
-  UIButton-ANDYHighlighted: aa1a6c4616503f77ece2f0dfcf643791cc789a59
+  UIButton-ANDYHighlighted: 332798d1e6c19fcbf226f9bc823bfa15707f4295
   UIColor-ANDYHex: 6262f384b07f12a9d37fdd0ba149cf751b54e8f9
   UIScreen-HYPLiveBounds: b9910aa6f80f12638aec07463e960b5528a99e45
 
