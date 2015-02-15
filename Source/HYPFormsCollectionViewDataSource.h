@@ -19,7 +19,7 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 
 @protocol HYPFormsCollectionViewDataSourceDataSource;
 
-@interface HYPFormsCollectionViewDataSource : NSObject <UICollectionViewDataSource>
+@interface HYPFormsCollectionViewDataSource : NSObject <UICollectionViewDataSource, HYPFormsLayoutDataSource>
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView andFormsManager:(HYPFormsManager *)formsManager;
 

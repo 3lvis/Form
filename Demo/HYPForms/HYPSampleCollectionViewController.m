@@ -13,12 +13,13 @@
 #import "UIColor+HYPFormsColors.h"
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate,
-HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
+HYPFormsCollectionViewDataSourceDataSource>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
 @property (nonatomic, strong) HYPFormsManager *formsManager;
+@property (nonatomic, strong) HYPFormsLayout *layout;
 
 @end
 
@@ -29,11 +30,10 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
-
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
-    layout.dataSource = self;
+    self.layout = layout;
     self.initialValues = dictionary;
 
     return self;
@@ -62,6 +62,8 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
                                                                    andFormsManager:self.formsManager];
 
+    self.collectionView.dataSource = _dataSource;
+    self.layout.dataSource = _dataSource;
     _dataSource.dataSource = self;
 
     __weak typeof(self)weakSelf = self;
@@ -258,18 +260,6 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     }
 
     return cell;
-}
-
-#pragma mark - HYPFormsLayoutDataSource
-
-- (NSArray *)forms
-{
-    return self.formsManager.forms;
-}
-
-- (NSArray *)collapsedForms
-{
-    return self.dataSource.collapsedForms;
 }
 
 @end
