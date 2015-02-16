@@ -18,7 +18,6 @@
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
-@property (nonatomic, strong) HYPFormsManager *formsManager;
 @property (nonatomic, strong) HYPFormsLayout *layout;
 
 @end
@@ -50,27 +49,16 @@
 
 #pragma mark - Getters
 
-- (HYPFormsManager *)formsManager
-{
-    if (_formsManager) return _formsManager;
-
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-
-    _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                            initialValues:self.initialValues
-                                         disabledFieldIDs:@[@"display_name"]
-                                                 disabled:YES];
-
-    return _formsManager;
-}
-
 - (HYPFormsCollectionViewDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
-                                                                            layout:self.layout
-                                                                   andFormsManager:self.formsManager];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
+    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:JSON
+                                                          collectionView:self.collectionView
+                                                                  layout:self.layout
+                                                                  values:self.initialValues];
 
     _dataSource.configureCellForIndexPath = ^(HYPFormField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
         BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
@@ -90,7 +78,7 @@
         BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
 
         if (shouldUpdateStartDate) {
-            [weakSelf.formsManager fieldWithID:@"start_date" includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+            [weakSelf.dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
                 if (field) {
                     field.fieldValue = [NSDate date];
                     field.minimumDate = [NSDate date];

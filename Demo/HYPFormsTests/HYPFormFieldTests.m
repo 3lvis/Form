@@ -9,41 +9,9 @@
 
 @interface HYPFormFieldTests : XCTestCase
 
-@property (nonatomic, strong) HYPFormsManager *manager;
-@property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
-
 @end
 
 @implementation HYPFormFieldTests
-
-- (void)setUp
-{
-    [super setUp];
-
-    HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
-
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds]
-                                                          collectionViewLayout:layout];
-
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-
-    self.manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                           initialValues:nil
-                                        disabledFieldIDs:nil
-                                                disabled:NO];
-
-    self.dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:collectionView
-                                                                                layout:layout
-                                                                       andFormsManager:self.manager];
-}
-
-- (void)tearDown
-{
-    self.manager = nil;
-    self.dataSource = nil;
-
-    [super tearDown];
-}
 
 - (void)testInitWithDictionary
 {

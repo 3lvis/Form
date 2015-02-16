@@ -14,9 +14,6 @@
 
 @interface HYPFormsManagerTests : XCTestCase
 
-@property (nonatomic, strong) HYPFormsManager *manager;
-@property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
-
 @end
 
 @implementation HYPFormsManagerTests
@@ -127,27 +124,33 @@
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                                       initialValues:@{@"first_name" : @"Elvis",
-                                                                       @"last_name" : @"Nunez"}
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
+    HYPFormsCollectionViewDataSource *dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:JSON
+                                                                                           collectionView:nil
+                                                                                                   layout:nil
+                                                                                                   values:@{@"first_name" : @"Elvis",
+                                                                                                            @"last_name" : @"Nunez"}];
+    [dataSource enable];
 
-    HYPFormField *firstNameField = [manager fieldWithID:@"first_name" includingHiddenFields:NO];
+    HYPFormField *firstNameField = [dataSource.formsManager fieldWithID:@"first_name" includingHiddenFields:NO];
     XCTAssertNotNil(firstNameField);
     XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
+    XCTAssertEqualObjects(firstNameField.fieldValue, @"Elvis");
 
-    [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"start_date"]];
-    HYPFormField *startDateField = [manager fieldWithID:@"start_date" includingHiddenFields:NO];
+    HYPFormField *startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
     XCTAssertEqualObjects(startDateField.fieldID, @"start_date");
-    [self.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"start_date"]];
+    [dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"start_date"]];
+    startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
+    XCTAssertNil(startDateField);
+    [dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"start_date"]];
+    startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
+    XCTAssertNotNil(startDateField);
 
-    [self.dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"employment-1"]];
-    HYPFormField *contractTypeField = [manager fieldWithID:@"contract_type" includingHiddenFields:NO];
+    [dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"employment-1"]];
+    HYPFormField *contractTypeField = [dataSource.formsManager fieldWithID:@"contract_type" includingHiddenFields:NO];
     XCTAssertNotNil(contractTypeField);
     XCTAssertEqualObjects(contractTypeField.fieldID, @"contract_type");
-    [self.dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];
+    [dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];
 }
 
 - (void)testShowingFieldMultipleTimes

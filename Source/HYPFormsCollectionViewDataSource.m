@@ -22,9 +22,10 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 
 @property (nonatomic) UIEdgeInsets originalInset;
 @property (nonatomic) BOOL disabled;
-@property (nonatomic, strong) HYPFormsManager *formsManager;
+@property (nonatomic, strong, readwrite) HYPFormsManager *formsManager;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) HYPFormsLayout *layout;
+@property (nonatomic, copy) NSArray *JSON;
 
 @end
 
@@ -41,14 +42,13 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 
 #pragma mark - Initializers
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
-                                layout:(HYPFormsLayout *)layout
-                       andFormsManager:(HYPFormsManager *)formsManager
+- (instancetype)initWithJSON:(NSArray *)JSON
+              collectionView:(UICollectionView *)collectionView
+                      layout:(HYPFormsLayout *)layout
+                      values:(NSDictionary *)values
 {
     self = [super init];
     if (!self) return nil;
-
-    _formsManager = formsManager;
 
     _collectionView = collectionView;
 
@@ -57,6 +57,11 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     _originalInset = collectionView.contentInset;
 
     layout.dataSource = self;
+
+    _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                            initialValues:values
+                                         disabledFieldIDs:@[]
+                                                 disabled:YES];
 
     [collectionView registerClass:[HYPTextFormFieldCell class]
        forCellWithReuseIdentifier:HYPTextFormFieldCellIdentifier];
