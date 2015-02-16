@@ -25,7 +25,8 @@ typedef UICollectionViewCell * (^HYPFieldConfigureCellForItemAtIndexPath)(HYPFor
 - (instancetype)initWithJSON:(NSArray *)JSON
               collectionView:(UICollectionView *)collectionView
                       layout:(HYPFormsLayout *)layout
-                      values:(NSDictionary *)values;
+                      values:(NSDictionary *)values
+                     disabled:(BOOL)disabled;
 
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
 @property (nonatomic, strong, readonly) HYPFormsManager *formsManager;

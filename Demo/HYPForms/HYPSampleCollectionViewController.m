@@ -58,7 +58,8 @@
     _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:JSON
                                                           collectionView:self.collectionView
                                                                   layout:self.layout
-                                                                  values:self.initialValues];
+                                                                  values:self.initialValues
+                                                                disabled:YES];
 
     _dataSource.configureCellForIndexPath = ^(HYPFormField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
         id cell;

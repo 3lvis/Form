@@ -128,8 +128,8 @@
                                                                                            collectionView:nil
                                                                                                    layout:nil
                                                                                                    values:@{@"first_name" : @"Elvis",
-                                                                                                            @"last_name" : @"Nunez"}];
-    [dataSource enable];
+                                                                                                            @"last_name" : @"Nunez"}
+                                                                                                 disabled:NO];
 
     HYPFormField *firstNameField = [dataSource.formsManager fieldWithID:@"first_name" includingHiddenFields:NO];
     XCTAssertNotNil(firstNameField);

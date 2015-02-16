@@ -46,6 +46,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
               collectionView:(UICollectionView *)collectionView
                       layout:(HYPFormsLayout *)layout
                       values:(NSDictionary *)values
+                    disabled:(BOOL)disabled
 {
     self = [super init];
     if (!self) return nil;
@@ -61,7 +62,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
                                             initialValues:values
                                          disabledFieldIDs:@[]
-                                                 disabled:YES];
+                                                 disabled:disabled];
 
     [collectionView registerClass:[HYPTextFormFieldCell class]
        forCellWithReuseIdentifier:HYPTextFormFieldCellIdentifier];
