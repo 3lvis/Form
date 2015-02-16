@@ -61,8 +61,8 @@
                                                                   values:self.initialValues];
 
     _dataSource.configureCellForIndexPath = ^(HYPFormField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
-        BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
         id cell;
+        BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
         if (isImageCell) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
                                                              forIndexPath:indexPath];

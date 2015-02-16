@@ -117,8 +117,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
         return 0;
     }
 
-    NSInteger numberOfItems = [form numberOfFields:self.formsManager.hiddenSections];
-    return numberOfItems;
+    return [form numberOfFields:self.formsManager.hiddenSections];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
