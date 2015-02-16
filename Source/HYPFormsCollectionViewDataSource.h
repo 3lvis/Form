@@ -16,20 +16,25 @@
 typedef void (^HYPFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, HYPFormField *field);
 typedef void (^HYPFieldConfigureHeaderViewBlock)(HYPFormHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, HYPForm *form);
 typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field);
+typedef UICollectionViewCell * (^HYPFieldConfigureCellForItemAtIndexPath)(HYPFormField *field, UICollectionView *collectionView, NSIndexPath *indexPath);
 
 @protocol HYPFormsCollectionViewDataSourceDataSource;
 
-@interface HYPFormsCollectionViewDataSource : NSObject <UICollectionViewDataSource>
+@interface HYPFormsCollectionViewDataSource : NSObject <UICollectionViewDataSource, HYPFormsLayoutDataSource>
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView andFormsManager:(HYPFormsManager *)formsManager;
+- (instancetype)initWithJSON:(NSArray *)JSON
+              collectionView:(UICollectionView *)collectionView
+                      layout:(HYPFormsLayout *)layout
+                      values:(NSDictionary *)values
+                     disabled:(BOOL)disabled;
 
 @property (nonatomic, strong) NSMutableArray *collapsedForms;
+@property (nonatomic, strong, readonly) HYPFormsManager *formsManager;
 
 @property (nonatomic, copy) HYPFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) HYPFieldConfigureHeaderViewBlock configureHeaderViewBlock;
 @property (nonatomic, copy) HYPFieldConfigureFieldUpdatedBlock configureFieldUpdatedBlock;
-
-@property (nonatomic, weak) id <HYPFormsCollectionViewDataSourceDataSource> dataSource;
+@property (nonatomic, copy) HYPFieldConfigureCellForItemAtIndexPath configureCellForIndexPath;
 
 - (BOOL)formFieldsAreValid;
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -52,12 +57,5 @@ typedef void (^HYPFieldConfigureFieldUpdatedBlock)(id cell, HYPFormField *field)
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
-
-@end
-
-@protocol HYPFormsCollectionViewDataSourceDataSource <NSObject>
-
-- (UICollectionViewCell *)formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
-                                       cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath;
 
 @end

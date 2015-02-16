@@ -11,14 +11,14 @@
 #import "UIColor+ANDYHex.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 #import "UIColor+HYPFormsColors.h"
+#import "NSObject+HYPTesting.h"
 
-@interface HYPSampleCollectionViewController () <HYPImagePickerDelegate,
-HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
+@interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
 @property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
-@property (nonatomic, strong) HYPFormsManager *formsManager;
+@property (nonatomic, strong) HYPFormsLayout *layout;
 
 @end
 
@@ -29,40 +29,47 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
-
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
-    layout.dataSource = self;
+    self.layout = layout;
     self.initialValues = dictionary;
+
+    [self.collectionView registerClass:[HYPImageFormFieldCell class]
+            forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
+
+    self.collectionView.dataSource = self.dataSource;
+
+    if ([NSObject isUnitTesting]) {
+        [self.collectionView numberOfSections];
+    }
 
     return self;
 }
 
 #pragma mark - Getters
 
-- (HYPFormsManager *)formsManager
-{
-    if (_formsManager) return _formsManager;
-
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-
-    _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
-                                            initialValues:self.initialValues
-                                         disabledFieldIDs:@[@"display_name"]
-                                                 disabled:YES];
-
-    return _formsManager;
-}
-
 - (HYPFormsCollectionViewDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
-                                                                   andFormsManager:self.formsManager];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
-    _dataSource.dataSource = self;
+    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:JSON
+                                                          collectionView:self.collectionView
+                                                                  layout:self.layout
+                                                                  values:self.initialValues
+                                                                disabled:YES];
+
+    _dataSource.configureCellForIndexPath = ^(HYPFormField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
+        id cell;
+        BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
+        if (isImageCell) {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
+                                                             forIndexPath:indexPath];
+        }
+        return cell;
+    };
 
     __weak typeof(self)weakSelf = self;
 
@@ -72,7 +79,7 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
         BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
 
         if (shouldUpdateStartDate) {
-            [weakSelf.formsManager fieldWithID:@"start_date" includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+            [weakSelf.dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
                 if (field) {
                     field.fieldValue = [NSDate date];
                     field.minimumDate = [NSDate date];
@@ -106,12 +113,6 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor HYPFormsBackground];
-
-    [self.collectionView registerClass:[HYPImageFormFieldCell class]
-            forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
-
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self.dataSource;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -152,8 +153,6 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     [self setToolbarItems:@[validateButtonItem, flexibleBarButtonItem, updateButtonItem, flexibleBarButtonItem, readOnlyBarButtonItem]];
 
     [self.navigationController setToolbarHidden:NO animated:YES];
-
-    [self.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"image"]];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -236,40 +235,12 @@ HYPFormsCollectionViewDataSourceDataSource, HYPFormsLayoutDataSource>
     HYPFormTarget *target;
 
     if (sender.isOn) {
-        target = [HYPFormTarget hideFieldTargetWithID:@"image"];
+        target = [HYPFormTarget disableFieldTargetWithID:@"image"];
     } else {
-        target = [HYPFormTarget showFieldTargetWithID:@"image"];
+        target = [HYPFormTarget enableFieldTargetWithID:@"image"];
     }
 
     [self.dataSource processTargets:@[target]];
-}
-
-#pragma mark - HYPFormsCollectionViewDataSourceDataSource
-
-- (UICollectionViewCell *)formsCollectionDataSource:(HYPFormsCollectionViewDataSource *)formsCollectionDataSource
-                                       cellForField:(HYPFormField *)field atIndexPath:(NSIndexPath *)indexPath
-{
-    HYPImageFormFieldCell *cell;
-
-    BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
-    if (isImageCell) {
-        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
-                                                              forIndexPath:indexPath];
-    }
-
-    return cell;
-}
-
-#pragma mark - HYPFormsLayoutDataSource
-
-- (NSArray *)forms
-{
-    return self.formsManager.forms;
-}
-
-- (NSArray *)collapsedForms
-{
-    return self.dataSource.collapsedForms;
 }
 
 @end

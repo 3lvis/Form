@@ -18,13 +18,14 @@
 
 static const CGFloat HYPFormsDispatchTime = 0.05f;
 
-@interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate, HYPFormHeaderViewDelegate
-, UICollectionViewDataSource>
+@interface HYPFormsCollectionViewDataSource () <HYPBaseFormFieldCellDelegate, HYPFormHeaderViewDelegate>
 
-@property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic) UIEdgeInsets originalInset;
 @property (nonatomic) BOOL disabled;
-@property (nonatomic, weak) HYPFormsManager *formsManager;
+@property (nonatomic, strong, readwrite) HYPFormsManager *formsManager;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) HYPFormsLayout *layout;
+@property (nonatomic, copy) NSArray *JSON;
 
 @end
 
@@ -41,17 +42,27 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 
 #pragma mark - Initializers
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
-                       andFormsManager:(HYPFormsManager *)formsManager
+- (instancetype)initWithJSON:(NSArray *)JSON
+              collectionView:(UICollectionView *)collectionView
+                      layout:(HYPFormsLayout *)layout
+                      values:(NSDictionary *)values
+                    disabled:(BOOL)disabled
 {
     self = [super init];
     if (!self) return nil;
 
-    _formsManager = formsManager;
-
     _collectionView = collectionView;
 
+    _layout = layout;
+
     _originalInset = collectionView.contentInset;
+
+    layout.dataSource = self;
+
+    _formsManager = [[HYPFormsManager alloc] initWithJSON:JSON
+                                            initialValues:values
+                                         disabledFieldIDs:@[]
+                                                 disabled:disabled];
 
     [collectionView registerClass:[HYPTextFormFieldCell class]
        forCellWithReuseIdentifier:HYPTextFormFieldCellIdentifier];
@@ -117,9 +128,9 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     NSArray *fields = form.fields;
     HYPFormField *field = fields[indexPath.row];
 
-    if ([self.dataSource respondsToSelector:@selector(formsCollectionDataSource:cellForField:atIndexPath:)]) {
-        UICollectionViewCell *cell = [self.dataSource formsCollectionDataSource:self cellForField:field atIndexPath:indexPath];
-        if (cell) return cell;
+    if (self.configureCellForIndexPath) {
+        id configuredCell = self.configureCellForIndexPath(field, collectionView, indexPath);
+        if (configuredCell) return configuredCell;
     }
 
     NSString *identifier;
@@ -265,11 +276,14 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     CGFloat width = 0.0f;
     CGFloat height = 0.0f;
 
-    HYPFormField *field = fields[indexPath.row];
+    HYPFormField *field;
+    if (indexPath.row < fields.count) {
+        field = fields[indexPath.row];
+    }
     if (field.sectionSeparator) {
         width = deviceWidth;
         height = HYPFieldCellItemSmallHeight;
-    } else {
+    } else if (field) {
         width = floor(deviceWidth * (field.size.width / 100.0f));
 
         if (field.type == HYPFormFieldTypeCustom) {
@@ -673,6 +687,13 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 - (void)formHeaderViewWasPressed:(HYPFormHeaderView *)headerView
 {
     [self collapseFieldsInSection:headerView.section collectionView:self.collectionView];
+}
+
+#pragma mark - HYPFormsLayoutDataSource
+
+- (NSArray *)forms
+{
+    return self.formsManager.forms;
 }
 
 @end
