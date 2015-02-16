@@ -11,6 +11,7 @@
 #import "UIColor+ANDYHex.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 #import "UIColor+HYPFormsColors.h"
+#import "NSObject+HYPTesting.h"
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
@@ -40,7 +41,9 @@
 
     self.collectionView.dataSource = self.dataSource;
 
-    NSLog(@"Initializated with %ld sections", (long)[self.collectionView numberOfSections]);
+    if ([NSObject isUnitTesting]) {
+        [self.collectionView numberOfSections];
+    }
 
     return self;
 }
