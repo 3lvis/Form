@@ -123,14 +123,14 @@ UIPopoverControllerDelegate, HYPFieldValuesTableViewControllerDelegate>
 
     if (self.field.fieldValue) {
         self.datePicker.date = self.field.fieldValue;
+    }
 
-        if (self.field.minimumDate) {
-            self.datePicker.minimumDate = self.field.minimumDate;
-        }
+    if (self.field.minimumDate) {
+        self.datePicker.minimumDate = self.field.minimumDate;
+    }
 
-        if (self.field.maximumDate) {
-            self.datePicker.maximumDate = self.field.maximumDate;
-        }
+    if (self.field.maximumDate) {
+        self.datePicker.maximumDate = self.field.maximumDate;
     }
 }
 

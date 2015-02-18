@@ -43,6 +43,8 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
     _initiallyDisabled = _disabled;
     _formula = [dictionary andy_valueForKey:@"formula"];
+    _maximumDate = [dictionary andy_valueForKey:@"maximum_date"];
+    _minimumDate = [dictionary andy_valueForKey:@"minimum_date"];
 
     NSMutableArray *targets = [NSMutableArray new];
 
