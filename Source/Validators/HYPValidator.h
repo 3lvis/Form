@@ -1,5 +1,18 @@
 @import Foundation;
 
+typedef NS_ENUM(NSInteger, HYPFormValidation) {
+    HYPFormValidationUnknown = 0,
+    HYPFormValidationPassed = 1,
+    HYPFormValidationTooShort,
+    HYPFormValidationTooLong,
+    HYPFormValidationValueMissing,
+    HYPFormValidationInvalidFormat,
+    HYPFormValidationInvalidEmail,
+    HYPFormValidationInvalidSSN,
+    HYPFormValidationInvalidPostalCode,
+    HYPFormValidationInvalidBankAccount
+};
+
 @interface HYPValidator : NSObject
 
 - (instancetype)initWithValidations:(NSDictionary *)validations;
