@@ -3,9 +3,15 @@
 
 @implementation HYPPostalCodeValidator
 
-- (BOOL)validateFieldValue:(id)fieldValue
+- (HYPFormValidation)validateFieldValue:(id)fieldValue
 {
-    return ([[HYPPostalCodeManager sharedManager] validatePostalCode:fieldValue]) ?: NO;
+    BOOL postalCodeIsValid = ([[HYPPostalCodeManager sharedManager] validatePostalCode:fieldValue]);
+
+    if (!postalCodeIsValid) {
+        return HYPFormValidationInvalidPostalCode;
+    } else {
+        return HYPFormValidationPassed;
+    }
 }
 
 @end

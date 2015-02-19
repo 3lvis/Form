@@ -4,12 +4,19 @@
 
 @implementation HYPBankAccountNumberValidator
 
-- (BOOL)validateFieldValue:(id)fieldValue
+- (HYPFormValidation)validateFieldValue:(id)fieldValue
 {
-    if (![super validateFieldValue:fieldValue]) return NO;
+    HYPFormValidation superValidation = [super validateFieldValue:fieldValue];
+    if (superValidation != HYPFormValidationPassed) return superValidation;
 
     NSString *accountNumber = (NSString *)fieldValue;
-    return [HYPNorwegianAccountNumber validateWithString:accountNumber];
+    BOOL validationPassed = [HYPNorwegianAccountNumber validateWithString:accountNumber];
+
+    if (!validationPassed) {
+        return HYPFormValidationInvalidBankAccount;
+    } else {
+        return HYPFormValidationPassed;
+    }
 }
 
 @end

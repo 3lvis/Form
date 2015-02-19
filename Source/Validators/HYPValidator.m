@@ -20,20 +20,19 @@
     return self;
 }
 
-- (BOOL)validateFieldValue:(id)fieldValue
+- (HYPFormValidation)validateFieldValue:(id)fieldValue
 {
-    if (!self.validations) return YES;
+    if (!self.validations) return HYPFormValidationPassed;
 
-    BOOL valid = YES;
     BOOL required = (self.validations[@"required"] &&
                      [self.validations[@"required"] boolValue] == YES);
-    
+
     NSUInteger minimumLength = 0;
 
     if (!fieldValue && !required) return YES;
 
     if ([fieldValue isKindOfClass:[HYPFieldValue class]]) {
-        return YES;
+        return HYPFormValidationPassed;
     }
 
     if (self.validations[@"min_length"] != nil) {
@@ -46,22 +45,26 @@
 
     if (minimumLength > 0) {
         if (!fieldValue) {
-            valid = NO;
+            return HYPFormValidationValueMissing;
         } else if ([fieldValue isKindOfClass:[NSString class]]) {
-            valid = ([fieldValue length] >= minimumLength);
+            BOOL fieldValueIsShorter = ([fieldValue length] < minimumLength);
+            if (fieldValueIsShorter) return HYPFormValidationTooShort;
         }
     }
 
-    if (valid && [fieldValue isKindOfClass:[NSString class]] && self.validations[@"max_length"]) {
-        valid = ([fieldValue length] <= [self.validations[@"max_length"] unsignedIntegerValue]);
+    if ([fieldValue isKindOfClass:[NSString class]] && self.validations[@"max_length"]) {
+        BOOL fieldValueIsLonger = ([fieldValue length] > [self.validations[@"max_length"] unsignedIntegerValue]);
+        if (fieldValueIsLonger) return HYPFormValidationTooLong;
     }
 
-    if (valid && [fieldValue isKindOfClass:[NSString class]] && self.validations[@"format"]) {
-        valid = [self validateString:fieldValue
-                          withFormat:self.validations[@"format"]];
+    if ([fieldValue isKindOfClass:[NSString class]] && self.validations[@"format"]) {
+        if (![self validateString:fieldValue
+                      withFormat:self.validations[@"format"]]) {
+            return HYPFormValidationInvalidFormat;
+        }
     }
 
-    return valid;
+    return HYPFormValidationPassed;
 }
 
 - (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format

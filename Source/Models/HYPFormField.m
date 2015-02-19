@@ -219,7 +219,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return nil;
 }
 
-- (BOOL)validate
+- (HYPFormValidation)validate
 {
     id validator;
     Class validatorClass;
@@ -227,7 +227,9 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     validatorClass = ([HYPClassFactory classFromString:self.fieldID withSuffix:@"Validator"]) ?: [HYPValidator class];
     validator = [[validatorClass alloc] initWithValidations:self.validations];
 
-    self.valid = [validator validateFieldValue:self.fieldValue];
+    HYPFormValidation validation = [validator validateFieldValue:self.fieldValue];
+
+    self.valid = (validation == HYPFormValidationPassed);
 
     return self.valid;
 }

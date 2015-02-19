@@ -5,6 +5,8 @@
 @class HYPFieldValue;
 @class HYPFieldValidation;
 
+#import "HYPValidator.h"
+
 typedef NS_ENUM(NSInteger, HYPFormFieldType) {
     HYPFormFieldTypeText = 0,
     HYPFormFieldTypeSelect,
@@ -55,7 +57,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 - (NSArray *)safeTargets;
 
-- (BOOL)validate;
+- (HYPFormValidation)validate;
 - (id)rawFieldValue;
 - (id)inputValidator;
 - (id)formatter;
