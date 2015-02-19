@@ -467,6 +467,7 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
     }
 }
 
+#warning needs testing!
 - (BOOL)formFieldsAreValid
 {
     for (HYPForm *form in self.formsManager.forms) {
