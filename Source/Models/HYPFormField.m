@@ -231,7 +231,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     self.validationType = [validator validateFieldValue:self.fieldValue];
     self.valid = (self.validationType == HYPFormValidationTypePassed);
 
-    return self.valid;
+    return self.validationType;
 }
 
 #pragma mark - Public Methods
