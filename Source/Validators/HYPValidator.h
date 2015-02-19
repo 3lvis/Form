@@ -10,7 +10,8 @@ typedef NS_ENUM(NSInteger, HYPFormValidation) {
     HYPFormValidationInvalidEmail,
     HYPFormValidationInvalidSSN,
     HYPFormValidationInvalidPostalCode,
-    HYPFormValidationInvalidBankAccount
+    HYPFormValidationInvalidBankAccount,
+    HYPFormValidationCustom
 };
 
 @interface HYPValidator : NSObject
