@@ -29,6 +29,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
     _valid = YES;
     _fieldID = remoteID;
+    _validationType = HYPFormValidationTypePassed;
     _title = [dictionary andy_valueForKey:@"title"];
     _subtitle = [dictionary andy_valueForKey:@"subtitle"];
     _typeString  = [dictionary andy_valueForKey:@"type"];
