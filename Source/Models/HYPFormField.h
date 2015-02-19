@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 
 - (NSArray *)safeTargets;
 
-- (HYPFormValidation)validate;
+- (HYPFormValidationType)validate;
 - (id)rawFieldValue;
 - (id)inputValidator;
 - (id)formatter;

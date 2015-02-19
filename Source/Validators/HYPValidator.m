@@ -20,9 +20,9 @@
     return self;
 }
 
-- (HYPFormValidation)validateFieldValue:(id)fieldValue
+- (HYPFormValidationType)validateFieldValue:(id)fieldValue
 {
-    if (!self.validations) return HYPFormValidationPassed;
+    if (!self.validations) return HYPFormValidationTypePassed;
 
     BOOL required = (self.validations[@"required"] &&
                      [self.validations[@"required"] boolValue] == YES);
@@ -32,7 +32,7 @@
     if (!fieldValue && !required) return YES;
 
     if ([fieldValue isKindOfClass:[HYPFieldValue class]]) {
-        return HYPFormValidationPassed;
+        return HYPFormValidationTypePassed;
     }
 
     if (self.validations[@"min_length"] != nil) {
@@ -45,26 +45,26 @@
 
     if (minimumLength > 0) {
         if (!fieldValue) {
-            return HYPFormValidationValueMissing;
+            return HYPFormValidationTypeValueMissing;
         } else if ([fieldValue isKindOfClass:[NSString class]]) {
             BOOL fieldValueIsShorter = ([fieldValue length] < minimumLength);
-            if (fieldValueIsShorter) return HYPFormValidationTooShort;
+            if (fieldValueIsShorter) return HYPFormValidationTypeTooShort;
         }
     }
 
     if ([fieldValue isKindOfClass:[NSString class]] && self.validations[@"max_length"]) {
         BOOL fieldValueIsLonger = ([fieldValue length] > [self.validations[@"max_length"] unsignedIntegerValue]);
-        if (fieldValueIsLonger) return HYPFormValidationTooLong;
+        if (fieldValueIsLonger) return HYPFormValidationTypeTooLong;
     }
 
     if ([fieldValue isKindOfClass:[NSString class]] && self.validations[@"format"]) {
         if (![self validateString:fieldValue
                       withFormat:self.validations[@"format"]]) {
-            return HYPFormValidationInvalidFormat;
+            return HYPFormValidationTypeInvalidFormat;
         }
     }
 
-    return HYPFormValidationPassed;
+    return HYPFormValidationTypePassed;
 }
 
 - (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format
