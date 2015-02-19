@@ -224,7 +224,8 @@
 
     NSArray *fields = [self.requiredFields allValues];
     for (HYPFormField *field in fields) {
-        BOOL requiredFieldFailedValidation = (![field validate]);
+        HYPFormValidationType fieldValidation = [field validate];
+        BOOL requiredFieldFailedValidation = (fieldValidation != HYPFormValidationTypePassed);
         if (requiredFieldFailedValidation) [invalidFormFields addObject:field];
     }
 
