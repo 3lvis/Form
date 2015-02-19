@@ -227,9 +227,8 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     validatorClass = ([HYPClassFactory classFromString:self.fieldID withSuffix:@"Validator"]) ?: [HYPValidator class];
     validator = [[validatorClass alloc] initWithValidations:self.validations];
 
-    HYPFormValidationType validation = [validator validateFieldValue:self.fieldValue];
-
-    self.valid = (validation == HYPFormValidationTypePassed);
+    self.validationType = [validator validateFieldValue:self.fieldValue];
+    self.valid = (self.validationType == HYPFormValidationTypePassed);
 
     return self.valid;
 }

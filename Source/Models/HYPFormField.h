@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger, HYPFormFieldType) {
 @property (nonatomic, strong) HYPFormSection *section;
 
 @property (nonatomic) BOOL valid;
+@property (nonatomic) HYPFormValidationType validationType;
 @property (nonatomic) BOOL sectionSeparator;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
