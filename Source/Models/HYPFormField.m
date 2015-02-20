@@ -29,7 +29,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
     _valid = YES;
     _fieldID = remoteID;
-    _validationType = HYPFormValidationTypePassed;
+    _validationType = HYPFormValidationResultTypeNone;
     _title = [dictionary andy_valueForKey:@"title"];
     _subtitle = [dictionary andy_valueForKey:@"subtitle"];
     _typeString  = [dictionary andy_valueForKey:@"type"];
@@ -220,7 +220,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return nil;
 }
 
-- (HYPFormValidationType)validate
+- (HYPFormValidationResultType)validate
 {
     id validator;
     Class validatorClass;
@@ -229,7 +229,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     validator = [[validatorClass alloc] initWithValidations:self.validations];
 
     self.validationType = [validator validateFieldValue:self.fieldValue];
-    self.valid = (self.validationType == HYPFormValidationTypePassed);
+    self.valid = (self.validationType == HYPFormValidationResultTypePassed);
 
     return self.validationType;
 }

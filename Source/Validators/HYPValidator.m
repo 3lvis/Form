@@ -20,9 +20,9 @@
     return self;
 }
 
-- (HYPFormValidationType)validateFieldValue:(id)fieldValue
+- (HYPFormValidationResultType)validateFieldValue:(id)fieldValue
 {
-    if (!self.validations) return HYPFormValidationTypePassed;
+    if (!self.validations) return HYPFormValidationResultTypePassed;
 
     BOOL required = (self.validations[@"required"] &&
                      [self.validations[@"required"] boolValue] == YES);
@@ -32,7 +32,7 @@
     if (!fieldValue && !required) return YES;
 
     if ([fieldValue isKindOfClass:[HYPFieldValue class]]) {
-        return HYPFormValidationTypePassed;
+        return HYPFormValidationResultTypePassed;
     }
 
     if (self.validations[@"min_length"] != nil) {
@@ -45,26 +45,26 @@
 
     if (minimumLength > 0) {
         if (!fieldValue) {
-            return HYPFormValidationTypeValueMissing;
+            return HYPFormValidationResultTypeValueMissing;
         } else if ([fieldValue isKindOfClass:[NSString class]]) {
             BOOL fieldValueIsShorter = ([fieldValue length] < minimumLength);
-            if (fieldValueIsShorter) return HYPFormValidationTypeTooShort;
+            if (fieldValueIsShorter) return HYPFormValidationResultTypeTooShort;
         }
     }
 
     if ([fieldValue isKindOfClass:[NSString class]] && self.validations[@"max_length"]) {
         BOOL fieldValueIsLonger = ([fieldValue length] > [self.validations[@"max_length"] unsignedIntegerValue]);
-        if (fieldValueIsLonger) return HYPFormValidationTypeTooLong;
+        if (fieldValueIsLonger) return HYPFormValidationResultTypeTooLong;
     }
 
     if ([fieldValue isKindOfClass:[NSString class]] && self.validations[@"format"]) {
         if (![self validateString:fieldValue
                       withFormat:self.validations[@"format"]]) {
-            return HYPFormValidationTypeInvalidFormat;
+            return HYPFormValidationResultTypeInvalidFormat;
         }
     }
 
-    return HYPFormValidationTypePassed;
+    return HYPFormValidationResultTypePassed;
 }
 
 - (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format

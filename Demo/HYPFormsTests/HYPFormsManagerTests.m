@@ -257,10 +257,10 @@
                                                                                                  disabled:NO];
 
     HYPFormField *emailField = [dataSource.formsManager fieldWithID:@"email" includingHiddenFields:NO];
-    XCTAssertEqual(HYPFormValidationTypeInvalidFormat, [emailField validate]);
+    XCTAssertEqual(HYPFormValidationResultTypeInvalidFormat, [emailField validate]);
 
     [dataSource reloadWithDictionary:@{@"email" : @"teknologi@hyper.no"}];
-    XCTAssertEqual(HYPFormValidationTypePassed, [emailField validate]);
+    XCTAssertEqual(HYPFormValidationResultTypePassed, [emailField validate]);
 }
 
 @end

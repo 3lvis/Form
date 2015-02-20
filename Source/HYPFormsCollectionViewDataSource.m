@@ -471,8 +471,8 @@ static const CGFloat HYPFormsDispatchTime = 0.05f;
 {
     for (HYPForm *form in self.formsManager.forms) {
         for (HYPFormField *field in form.fields) {
-            HYPFormValidationType fieldValidation = [field validate];
-            BOOL requiredFieldFailedValidation = (fieldValidation != HYPFormValidationTypePassed);
+            HYPFormValidationResultType fieldValidation = [field validate];
+            BOOL requiredFieldFailedValidation = (fieldValidation != HYPFormValidationResultTypePassed);
             if (requiredFieldFailedValidation) {
                 return NO;
             }
