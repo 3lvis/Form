@@ -222,11 +222,13 @@
 {
     NSMutableArray *invalidFormFields = [NSMutableArray new];
 
-    NSArray *fields = [self.requiredFields allValues];
-    for (HYPFormField *field in fields) {
-        HYPFormValidationResultType fieldValidation = [field validate];
-        BOOL requiredFieldFailedValidation = (fieldValidation != HYPFormValidationResultTypePassed);
-        if (requiredFieldFailedValidation) [invalidFormFields addObject:field];
+    for (HYPForm *form in self.forms) {
+        for (HYPFormSection *section in form.sections) {
+            for (HYPFormField *field in section.fields) {
+                BOOL fieldIsValid = (field.validations && [field validate] != HYPFormValidationResultTypePassed);
+                if (fieldIsValid) [invalidFormFields addObject:field];
+            }
+        }
     }
 
     return invalidFormFields;
