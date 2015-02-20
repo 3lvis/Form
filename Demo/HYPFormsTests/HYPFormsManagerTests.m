@@ -247,7 +247,7 @@
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 2);
 }
 
-- (void)testEmailValidation
+- (void)testFormatValidation
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
     HYPFormsCollectionViewDataSource *dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:JSON
