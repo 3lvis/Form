@@ -27,7 +27,9 @@
 
 - (HYPSampleCollectionViewController *)controller
 {
-    HYPSampleCollectionViewController *controller = [[HYPSampleCollectionViewController alloc] initWithDictionary:@{}];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
+    HYPSampleCollectionViewController *controller = [[HYPSampleCollectionViewController alloc] initWithJSON:JSON andInitialValues:@{}];
 
     return controller;
 }

@@ -9,7 +9,6 @@
 #import "HYPTextFormFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
-#import "NSJSONSerialization+ANDYJSONFile.h"
 #import "UIColor+HYPFormsColors.h"
 #import "NSObject+HYPTesting.h"
 
@@ -19,6 +18,7 @@
 @property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
 @property (nonatomic, strong) HYPFormsLayout *layout;
+@property (nonatomic, copy) NSArray *JSON;
 
 @end
 
@@ -26,14 +26,15 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+- (instancetype)initWithJSON:(NSArray *)JSON andInitialValues:(NSDictionary *)initialValues
 {
     HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
+    _JSON = JSON;
     self.layout = layout;
-    self.initialValues = dictionary;
+    self.initialValues = initialValues;
 
     [self.collectionView registerClass:[HYPImageFormFieldCell class]
             forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
@@ -53,9 +54,7 @@
 {
     if (_dataSource) return _dataSource;
 
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-
-    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:JSON
+    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:self.JSON
                                                           collectionView:self.collectionView
                                                                   layout:self.layout
                                                                   values:self.initialValues

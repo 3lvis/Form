@@ -5,6 +5,6 @@
 
 @interface HYPSampleCollectionViewController : UICollectionViewController
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithJSON:(NSArray *)JSON andInitialValues:(NSDictionary *)initialValues;
 
 @end
