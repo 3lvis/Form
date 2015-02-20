@@ -188,7 +188,8 @@ static const NSInteger HYPSubtitleNumberOfLines = 4;
 
 - (void)validate
 {
-    [self.textField setValid:[self.field validate]];
+    BOOL validation = ([self.field validate] == HYPFormValidationResultTypePassed);
+    [self.textField setValid:validation];
 }
 
 #pragma mark - Private methods
