@@ -29,6 +29,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
     _valid = YES;
     _fieldID = remoteID;
+    _validationType = HYPFormValidationTypePassed;
     _title = [dictionary andy_valueForKey:@"title"];
     _subtitle = [dictionary andy_valueForKey:@"subtitle"];
     _typeString  = [dictionary andy_valueForKey:@"type"];
@@ -219,7 +220,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     return nil;
 }
 
-- (BOOL)validate
+- (HYPFormValidationType)validate
 {
     id validator;
     Class validatorClass;
@@ -227,9 +228,10 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     validatorClass = ([HYPClassFactory classFromString:self.fieldID withSuffix:@"Validator"]) ?: [HYPValidator class];
     validator = [[validatorClass alloc] initWithValidations:self.validations];
 
-    self.valid = [validator validateFieldValue:self.fieldValue];
+    self.validationType = [validator validateFieldValue:self.fieldValue];
+    self.valid = (self.validationType == HYPFormValidationTypePassed);
 
-    return self.valid;
+    return self.validationType;
 }
 
 #pragma mark - Public Methods

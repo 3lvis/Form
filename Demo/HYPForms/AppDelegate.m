@@ -7,6 +7,7 @@
 #import "UIColor+ANDYHex.h"
 #import "NSObject+HYPTesting.h"
 #import "UIColor+HYPFormsColors.h"
+#import "NSJSONSerialization+ANDYJSONFile.h"
 
 @interface AppDelegate ()
 
@@ -29,7 +30,9 @@
                                  @"start_date" : @"2014-10-31 23:00:00 +00:00"
                                  };
 
-    HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithDictionary:dictionary];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
+    HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithJSON:JSON andInitialValues:dictionary];
 
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
     controller.view.tintColor = [UIColor HYPFormsControlsBlue];

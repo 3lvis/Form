@@ -27,7 +27,9 @@
 
 - (HYPSampleCollectionViewController *)controller
 {
-    HYPSampleCollectionViewController *controller = [[HYPSampleCollectionViewController alloc] initWithDictionary:@{}];
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+
+    HYPSampleCollectionViewController *controller = [[HYPSampleCollectionViewController alloc] initWithJSON:JSON andInitialValues:@{}];
 
     return controller;
 }
@@ -165,6 +167,19 @@
     HYPFormTarget *clearTarget = [HYPFormTarget clearFieldTargetWithID:@"first_name"];
     [controller.dataSource processTarget:clearTarget];
     XCTAssertNil(firstNameField.fieldValue);
+}
+
+- (void)testFormFieldsAreValid
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"field-validations.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    HYPSampleCollectionViewController *controller = [[HYPSampleCollectionViewController alloc] initWithJSON:JSON andInitialValues:@{}];
+    XCTAssertFalse([controller.dataSource formFieldsAreValid]);
+
+    [controller.dataSource reloadWithDictionary:@{@"first_name" : @"Supermancito"}];
+
+    XCTAssertTrue([controller.dataSource formFieldsAreValid]);
 }
 
 @end

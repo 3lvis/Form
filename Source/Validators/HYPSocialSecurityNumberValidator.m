@@ -4,12 +4,17 @@
 
 @implementation HYPSocialSecurityNumberValidator
 
-- (BOOL)validateFieldValue:(id)fieldValue
+- (HYPFormValidationType)validateFieldValue:(id)fieldValue
 {
-    if (![super validateFieldValue:fieldValue]) return NO;
+    HYPFormValidationType superValidation = [super validateFieldValue:fieldValue];
+    if (superValidation != HYPFormValidationTypePassed) return superValidation;
 
-    NSString *ssn = (NSString *)fieldValue;
-    return [HYPNorwegianSSN validateWithString:ssn];
+    NSString *SSNString = (NSString *)fieldValue;
+    if (![HYPNorwegianSSN validateWithString:SSNString]) {
+        return HYPFormValidationTypeInvalidSSN;
+    } else {
+        return HYPFormValidationTypePassed;
+    }
 }
 
 @end
