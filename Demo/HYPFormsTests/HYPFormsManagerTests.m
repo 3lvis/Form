@@ -247,4 +247,20 @@
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 2);
 }
 
+- (void)testEmailValidation
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
+    HYPFormsCollectionViewDataSource *dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:JSON
+                                                                                           collectionView:nil
+                                                                                                   layout:nil
+                                                                                                   values:@{@"email" : @"faultyEmail"}
+                                                                                                 disabled:NO];
+
+    HYPFormField *emailField = [dataSource.formsManager fieldWithID:@"email" includingHiddenFields:NO];
+    XCTAssertEqual(HYPFormValidationTypeInvalidFormat, [emailField validate]);
+
+    [dataSource reloadWithDictionary:@{@"email" : @"teknologi@hyper.no"}];
+    XCTAssertEqual(HYPFormValidationTypePassed, [emailField validate]);
+}
+
 @end
