@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Form"
-  s.version = "0.113"
+  s.version = "1.0.0"
   s.summary = "JSON driven forms"
   s.description = <<-DESC
                    * JSON driven forms
