@@ -9,7 +9,7 @@
 #import "FORMButtonFieldCell.h"
 #import "FORMFieldValue.h"
 
-#import "UIColor+ANDYHex.h"
+#import "UIColor+Hex.h"
 #import "UIScreen+HYPLiveBounds.h"
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPFormula.h"

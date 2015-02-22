@@ -22,4 +22,16 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency 'UIButton-ANDYHighlighted'
+  s.dependency 'NSDictionary-ANDYSafeValue'
+  s.dependency 'NSJSONSerialization-ANDYJSONFile'
+  s.dependency 'NSString-ZENInflections'
+  s.dependency 'UIScreen-HYPLiveBounds'
+  s.dependency 'HYPImagePicker'
+  s.dependency 'HYPNorwegianSSN'
+  s.dependency 'NSString-HYPFormula'
+  s.dependency 'NSString-HYPWordExtractor'
+  s.dependency 'Hex'
+  s.dependency 'NSString-HYPContainsString'
+  s.dependency 'DDMathParser', :git => 'https://github.com/hyperoslo/DDMathParser.git'
+  s.dependency 'NSObject-HYPTesting'
 end

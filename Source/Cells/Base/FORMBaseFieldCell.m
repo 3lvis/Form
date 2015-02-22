@@ -1,6 +1,6 @@
 #import "FORMBaseFieldCell.h"
 
-#import "UIColor+ANDYHex.h"
+#import "UIColor+Hex.h"
 #import "UIColor+HYPFormsColors.h"
 
 static const CGFloat HYPTextFormFieldCellLabelMarginTop = 10.0f;

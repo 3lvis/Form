@@ -3,7 +3,7 @@
 #import "FORMBaseFieldCell.h"
 
 #import "UIColor+HYPFormsColors.h"
-#import "UIColor+ANDYHex.h"
+#import "UIColor+Hex.h"
 #import "UIFont+HYPFormsStyles.h"
 #import "FORMTextFieldTypeManager.h"
 

@@ -2,7 +2,7 @@
 
 #import "FORMSubtitleView.h"
 
-#import "UIColor+ANDYHex.h"
+#import "UIColor+Hex.h"
 #import "UIFont+HYPFormsStyles.h"
 #import "UIColor+HYPFormsColors.h"
 
