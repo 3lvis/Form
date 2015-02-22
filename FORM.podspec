@@ -2,10 +2,7 @@ Pod::Spec.new do |s|
   s.name = "Form"
   s.version = "1.0.0"
   s.summary = "JSON driven forms"
-  s.description = <<-DESC
-                   * JSON driven forms
-                   DESC
-  s.homepage = "https://github.com/hyperoslo/HYPForms"
+  s.homepage = "https://github.com/hyperoslo/Form"
   s.license = {
     :type => 'MIT',
     :file => 'LICENSE.md'
@@ -14,7 +11,7 @@ Pod::Spec.new do |s|
   s.social_media_url = "http://twitter.com/hyperoslo"
   s.platform = :ios, '7.0'
   s.source = {
-    :git => 'https://github.com/hyperoslo/HYPForms.git',
+    :git => 'https://github.com/hyperoslo/Form.git',
     :tag => s.version.to_s
   }
   s.source_files = 'Source/**/*.{h,m}'
