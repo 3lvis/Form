@@ -1,0 +1,148 @@
+[
+  {
+    "id":"employment",
+    "title": "Employment",
+    "sections":[
+      {
+        "id":"employment-0",
+        "fields":[
+          {
+            "id":"contract_type",
+            "title":"Contract type",
+            "type":"select",
+            "size":{
+              "width": 50,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Permanent",
+                "targets":[
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"show"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"show"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"show"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Temporary",
+                "targets":[
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"hide"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id":"employment-1",
+        "fields":[
+          {
+            "id":"salary_type",
+            "title":"Salary type",
+            "type":"select",
+            "size":{
+              "width": 50,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Super",
+                "targets":[
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"show"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"show"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"show"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Excelent",
+                "targets":[
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "employment-2",
+                    "type":"section",
+                    "action":"hide"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id":"employment-2",
+        "fields":[
+          {
+            "id":"bonus_enabled",
+            "title":"Bonus enabled",
+            "type":"select",
+            "size":{
+              "width": 25,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":true,
+                "title":"Ja"
+              },
+              {
+                "id":false,
+                "title":"Nei"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
