@@ -1,8 +1,8 @@
 #import "AppDelegate.h"
 
 #import "HYPSampleCollectionViewController.h"
-#import "HYPFormBackgroundView.h"
-#import "HYPFormsLayout.h"
+#import "FORMBackgroundView.h"
+#import "FORMCollectionViewLayout.h"
 
 #import "UIColor+ANDYHex.h"
 #import "NSObject+HYPTesting.h"

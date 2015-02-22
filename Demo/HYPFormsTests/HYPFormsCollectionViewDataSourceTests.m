@@ -1,13 +1,13 @@
 @import UIKit;
 @import XCTest;
 
-#import "HYPFieldValidation.h"
-#import "HYPForm.h"
-#import "HYPFormField.h"
-#import "HYPFormsCollectionViewDataSource.h"
-#import "HYPFormSection.h"
-#import "HYPFormsManager.h"
-#import "HYPFormTarget.h"
+#import "FORMFieldValidation.h"
+#import "FORMGroup.h"
+#import "FORMField.h"
+#import "FORMCollectionViewDataSource.h"
+#import "FORMSection.h"
+#import "FORMData.h"
+#import "FORMTarget.h"
 #import "HYPImageFormFieldCell.h"
 #import "HYPSampleCollectionViewController.h"
 
@@ -15,7 +15,7 @@
 
 @interface HYPSampleCollectionViewController ()
 
-@property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) FORMCollectionViewDataSource *dataSource;
 
 @end
 
@@ -38,35 +38,35 @@
 {
     HYPSampleCollectionViewController *controller = [self controller];
 
-    [controller.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"display_name"]];
-    [controller.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"display_name"]];
-    HYPFormField *field = [controller.dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
+    [controller.dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"display_name"]];
+    [controller.dataSource processTarget:[FORMTarget showFieldTargetWithID:@"display_name"]];
+    FORMField *field = [controller.dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
     NSUInteger index = [field indexInSectionUsingForms:controller.dataSource.formsManager.forms];
     XCTAssertEqual(index, 2);
 
-    [controller.dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"username"]];
-    [controller.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"username"]];
+    [controller.dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"username"]];
+    [controller.dataSource processTarget:[FORMTarget showFieldTargetWithID:@"username"]];
     field = [controller.dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:controller.dataSource.formsManager.forms];
     XCTAssertEqual(index, 2);
 
-    [controller.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"first_name",
+    [controller.dataSource processTargets:[FORMTarget hideFieldTargetsWithIDs:@[@"first_name",
                                                                              @"address",
                                                                              @"username"]]];
-    [controller.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"username"]];
+    [controller.dataSource processTarget:[FORMTarget showFieldTargetWithID:@"username"]];
     field = [controller.dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:controller.dataSource.formsManager.forms];
     XCTAssertEqual(index, 1);
-    [controller.dataSource processTargets:[HYPFormTarget showFieldTargetsWithIDs:@[@"first_name",
+    [controller.dataSource processTargets:[FORMTarget showFieldTargetsWithIDs:@[@"first_name",
                                                                              @"address"]]];
 
-    [controller.dataSource processTargets:[HYPFormTarget hideFieldTargetsWithIDs:@[@"last_name",
+    [controller.dataSource processTargets:[FORMTarget hideFieldTargetsWithIDs:@[@"last_name",
                                                                              @"address"]]];
-    [controller.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"address"]];
+    [controller.dataSource processTarget:[FORMTarget showFieldTargetWithID:@"address"]];
     field = [controller.dataSource.formsManager fieldWithID:@"address" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:controller.dataSource.formsManager.forms];
     XCTAssertEqual(index, 0);
-    [controller.dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"last_name"]];
+    [controller.dataSource processTarget:[FORMTarget showFieldTargetWithID:@"last_name"]];
 }
 
 - (void)testEnableAndDisableTargets
@@ -74,14 +74,14 @@
     HYPSampleCollectionViewController *controller = [self controller];
     [controller.dataSource enable];
 
-    HYPFormField *targetField = [controller.dataSource.formsManager fieldWithID:@"base_salary" includingHiddenFields:YES];
+    FORMField *targetField = [controller.dataSource.formsManager fieldWithID:@"base_salary" includingHiddenFields:YES];
     XCTAssertFalse(targetField.isDisabled);
 
-    HYPFormTarget *disableTarget = [HYPFormTarget disableFieldTargetWithID:@"base_salary"];
+    FORMTarget *disableTarget = [FORMTarget disableFieldTargetWithID:@"base_salary"];
     [controller.dataSource processTarget:disableTarget];
     XCTAssertTrue(targetField.isDisabled);
 
-    HYPFormTarget *enableTarget = [HYPFormTarget enableFieldTargetWithID:@"base_salary"];
+    FORMTarget *enableTarget = [FORMTarget enableFieldTargetWithID:@"base_salary"];
     [controller.dataSource processTargets:@[enableTarget]];
     XCTAssertFalse(targetField.isDisabled);
 
@@ -96,7 +96,7 @@
 {
     HYPSampleCollectionViewController *controller = [self controller];
 
-    HYPFormField *totalField = [controller.dataSource.formsManager fieldWithID:@"total" includingHiddenFields:YES];
+    FORMField *totalField = [controller.dataSource.formsManager fieldWithID:@"total" includingHiddenFields:YES];
     XCTAssertTrue(totalField.disabled);
 }
 
@@ -104,10 +104,10 @@
 {
     HYPSampleCollectionViewController *controller = [self controller];
 
-    HYPFormField *targetField = [controller.dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
+    FORMField *targetField = [controller.dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertNil(targetField.fieldValue);
 
-    HYPFormTarget *updateTarget = [HYPFormTarget updateFieldTargetWithID:@"display_name"];
+    FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
     updateTarget.targetValue = @"John Hyperseed";
 
     [controller.dataSource processTarget:updateTarget];
@@ -118,7 +118,7 @@
 {
     HYPSampleCollectionViewController *controller = [self controller];
 
-    HYPFormField *usernameField = [controller.dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
+    FORMField *usernameField = [controller.dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
     XCTAssertNotNil(usernameField.fieldValue);
 }
 
@@ -126,12 +126,12 @@
 {
     HYPSampleCollectionViewController *controller = [self controller];
 
-    HYPFormField *displayNameField = [controller.dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
-    HYPFormField *usernameField = [controller.dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
-    HYPFieldValue *fieldValue = usernameField.fieldValue;
+    FORMField *displayNameField = [controller.dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
+    FORMField *usernameField = [controller.dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
+    FORMFieldValue *fieldValue = usernameField.fieldValue;
     XCTAssertEqualObjects(fieldValue.valueID, @0);
 
-    HYPFormTarget *updateTarget = [HYPFormTarget updateFieldTargetWithID:@"display_name"];
+    FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
     updateTarget.targetValue = @"Mr.Melk";
 
     updateTarget.condition = @"$username == 2";
@@ -150,7 +150,7 @@
     [controller.dataSource reloadWithDictionary:@{@"first_name" : @"Elvis",
                                             @"last_name" : @"Nunez"}];
 
-    HYPFormField *field = [controller.dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
+    FORMField *field = [controller.dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.fieldValue, @"Elvis Nunez");
 }
 
@@ -158,13 +158,13 @@
 {
     HYPSampleCollectionViewController *controller = [self controller];
 
-    HYPFormField *firstNameField = [controller.dataSource.formsManager fieldWithID:@"first_name" includingHiddenFields:YES];
+    FORMField *firstNameField = [controller.dataSource.formsManager fieldWithID:@"first_name" includingHiddenFields:YES];
     XCTAssertNotNil(firstNameField);
 
     firstNameField.fieldValue = @"John";
     XCTAssertNotNil(firstNameField.fieldValue);
 
-    HYPFormTarget *clearTarget = [HYPFormTarget clearFieldTargetWithID:@"first_name"];
+    FORMTarget *clearTarget = [FORMTarget clearFieldTargetWithID:@"first_name"];
     [controller.dataSource processTarget:clearTarget];
     XCTAssertNil(firstNameField.fieldValue);
 }

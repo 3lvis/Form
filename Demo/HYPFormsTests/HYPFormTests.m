@@ -1,6 +1,6 @@
 @import XCTest;
 
-#import "HYPForm.h"
+#import "FORMGroup.h"
 
 @interface HYPFormTests : XCTestCase
 
@@ -10,7 +10,7 @@
 
 - (void)testInitWithDictionary
 {
-    HYPForm *form = [[HYPForm alloc] initWithDictionary:@{@"id": @"some_form",
+    FORMGroup *form = [[FORMGroup alloc] initWithDictionary:@{@"id": @"some_form",
                                                           @"title": @"Some form"}
                                                position:0
                                                disabled:NO
@@ -21,7 +21,7 @@
     XCTAssertEqualObjects(form.title, @"Some form");
     XCTAssertEqualObjects(form.position, @0);
 
-    form = [[HYPForm alloc] initWithDictionary:@{@"id": @"other_form",
+    form = [[FORMGroup alloc] initWithDictionary:@{@"id": @"other_form",
                                                  @"title": @"Other form"}
                                       position:1
                                       disabled:NO

@@ -1,13 +1,13 @@
 @import XCTest;
 
-#import "HYPFormsManager.h"
+#import "FORMData.h"
 
-#import "HYPForm.h"
-#import "HYPFormSection.h"
-#import "HYPFormField.h"
-#import "HYPFormTarget.h"
-#import "HYPFieldValidation.h"
-#import "HYPFormsCollectionViewDataSource.h"
+#import "FORMGroup.h"
+#import "FORMSection.h"
+#import "FORMField.h"
+#import "FORMTarget.h"
+#import "FORMFieldValidation.h"
+#import "FORMCollectionViewDataSource.h"
 
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
@@ -22,7 +22,7 @@
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
                                                        initialValues:nil
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
@@ -43,7 +43,7 @@
 
     NSDate *date = [NSDate date];
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
                                                        initialValues:@{@"contract_type" : [NSNull null],
                                                                        @"start_date" : date,
                                                                        @"base_salary": @2}
@@ -60,7 +60,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"number-formula.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
                                                        initialValues:@{@"base_salary" : @1,
                                                                        @"bonus" : @100}
                                                     disabledFieldIDs:nil
@@ -75,7 +75,7 @@
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
                                                        initialValues:@{@"contract_type" : @1}
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
@@ -89,7 +89,7 @@
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
                                                        initialValues:nil
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
@@ -108,7 +108,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"field-validations.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
                                                        initialValues:nil
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
@@ -124,33 +124,33 @@
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
-    HYPFormsCollectionViewDataSource *dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
                                                                                            collectionView:nil
                                                                                                    layout:nil
                                                                                                    values:@{@"first_name" : @"Elvis",
                                                                                                             @"last_name" : @"Nunez"}
                                                                                                  disabled:NO];
 
-    HYPFormField *firstNameField = [dataSource.formsManager fieldWithID:@"first_name" includingHiddenFields:NO];
+    FORMField *firstNameField = [dataSource.formsManager fieldWithID:@"first_name" includingHiddenFields:NO];
     XCTAssertNotNil(firstNameField);
     XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
     XCTAssertEqualObjects(firstNameField.fieldValue, @"Elvis");
 
-    HYPFormField *startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
+    FORMField *startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
     XCTAssertEqualObjects(startDateField.fieldID, @"start_date");
-    [dataSource processTarget:[HYPFormTarget hideFieldTargetWithID:@"start_date"]];
+    [dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"start_date"]];
     startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNil(startDateField);
-    [dataSource processTarget:[HYPFormTarget showFieldTargetWithID:@"start_date"]];
+    [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"start_date"]];
     startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
 
-    [dataSource processTarget:[HYPFormTarget hideSectionTargetWithID:@"employment-1"]];
-    HYPFormField *contractTypeField = [dataSource.formsManager fieldWithID:@"contract_type" includingHiddenFields:NO];
+    [dataSource processTarget:[FORMTarget hideSectionTargetWithID:@"employment-1"]];
+    FORMField *contractTypeField = [dataSource.formsManager fieldWithID:@"contract_type" includingHiddenFields:NO];
     XCTAssertNotNil(contractTypeField);
     XCTAssertEqualObjects(contractTypeField.fieldID, @"contract_type");
-    [dataSource processTarget:[HYPFormTarget showSectionTargetWithID:@"employment-1"]];
+    [dataSource processTarget:[FORMTarget showSectionTargetWithID:@"employment-1"]];
 }
 
 - (void)testShowingFieldMultipleTimes
@@ -158,7 +158,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-field-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
                                                              initialValues:@{@"contract_type" : @1,
                                                                              @"salary_type": @1}
                                                           disabledFieldIDs:nil
@@ -167,7 +167,7 @@
     NSUInteger numberOfFields = [[[normalManager.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFields, 2);
 
-    HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
                                                                 initialValues:@{@"contract_type" : @0,
                                                                                 @"salary_type": @0}
                                                              disabledFieldIDs:nil
@@ -182,7 +182,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-field-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
                                                              initialValues:nil
                                                           disabledFieldIDs:nil
                                                                   disabled:NO];
@@ -190,7 +190,7 @@
     NSUInteger numberOfFields = [[[normalManager.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFields, 3);
 
-    HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
                                                                 initialValues:@{@"contract_type" : @1,
                                                                                 @"salary_type": @1}
                                                              disabledFieldIDs:nil
@@ -205,7 +205,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-section-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
                                                              initialValues:@{@"contract_type" : @1,
                                                                              @"salary_type": @1}
                                                           disabledFieldIDs:nil
@@ -214,7 +214,7 @@
     NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 2);
 
-    HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
                                                                 initialValues:@{@"contract_type" : @0,
                                                                                 @"salary_type": @0}
                                                              disabledFieldIDs:nil
@@ -229,7 +229,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-section-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    HYPFormsManager *normalManager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
                                                              initialValues:nil
                                                           disabledFieldIDs:nil
                                                                   disabled:NO];
@@ -237,7 +237,7 @@
     NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 3);
 
-    HYPFormsManager *evaluatedManager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
                                                                 initialValues:@{@"contract_type" : @1,
                                                                                 @"salary_type": @1}
                                                              disabledFieldIDs:nil
@@ -250,17 +250,17 @@
 - (void)testFormatValidation
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
-    HYPFormsCollectionViewDataSource *dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
                                                                                            collectionView:nil
                                                                                                    layout:nil
                                                                                                    values:@{@"email" : @"faultyEmail"}
                                                                                                  disabled:NO];
 
-    HYPFormField *emailField = [dataSource.formsManager fieldWithID:@"email" includingHiddenFields:NO];
-    XCTAssertEqual(HYPFormValidationResultTypeInvalidFormat, [emailField validate]);
+    FORMField *emailField = [dataSource.formsManager fieldWithID:@"email" includingHiddenFields:NO];
+    XCTAssertEqual(FORMValidationResultTypeInvalidFormat, [emailField validate]);
 
     [dataSource reloadWithDictionary:@{@"email" : @"teknologi@hyper.no"}];
-    XCTAssertEqual(HYPFormValidationResultTypePassed, [emailField validate]);
+    XCTAssertEqual(FORMValidationResultTypePassed, [emailField validate]);
 }
 
 @end

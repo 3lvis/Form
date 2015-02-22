@@ -1,15 +1,15 @@
 #import "HYPFormField+Tests.h"
 
-#import "HYPFieldValue.h"
-#import "HYPFormTarget.h"
+#import "FORMFieldValue.h"
+#import "FORMTarget.h"
 
-@implementation HYPFormField (Tests)
+@implementation FORMField (Tests)
 
 #pragma mark - Convenience
 
-+ (HYPFormField *)formFieldWithID:(NSString *)fieldID typeString:(NSString *)typeString
++ (FORMField *)formFieldWithID:(NSString *)fieldID typeString:(NSString *)typeString
 {
-    HYPFormField *textFormField = [HYPFormField new];
+    FORMField *textFormField = [FORMField new];
     textFormField.fieldID = fieldID;
     textFormField.title = fieldID;
     textFormField.typeString = typeString;
@@ -19,22 +19,22 @@
     return textFormField;
 }
 
-+ (HYPFormField *)textFormFieldWithID:(NSString *)fieldID
++ (FORMField *)textFormFieldWithID:(NSString *)fieldID
 {
     return [self formFieldWithID:fieldID typeString:@"text"];
 }
 
-+ (HYPFormField *)floatFormFieldWithID:(NSString *)fieldID
++ (FORMField *)floatFormFieldWithID:(NSString *)fieldID
 {
     return [self formFieldWithID:fieldID typeString:@"float"];
 }
 
-+ (HYPFormField *)selectFormFieldWithID:(NSString *)fieldID
++ (FORMField *)selectFormFieldWithID:(NSString *)fieldID
 {
     return [self formFieldWithID:fieldID typeString:@"select"];
 }
 
-+ (HYPFormField *)dateFormFieldWithID:(NSString *)fieldID
++ (FORMField *)dateFormFieldWithID:(NSString *)fieldID
 {
     return [self formFieldWithID:fieldID typeString:@"date"];
 }
@@ -43,27 +43,27 @@
 
 #pragma mark Section 0
 
-+ (HYPFormField *)firstNameField
++ (FORMField *)firstNameField
 {
-    HYPFormField *formField = [HYPFormField textFormFieldWithID:@"first_name"];
+    FORMField *formField = [FORMField textFormFieldWithID:@"first_name"];
     formField.position = @0;
     formField.validations = @{@"required" : @YES};
 
     return formField;
 }
 
-+ (HYPFormField *)lastNameField
++ (FORMField *)lastNameField
 {
-    HYPFormField *formField = [HYPFormField textFormFieldWithID:@"last_name"];
+    FORMField *formField = [FORMField textFormFieldWithID:@"last_name"];
     formField.position = @1;
     formField.validations = @{@"required" : @YES};
 
     return formField;
 }
 
-+ (HYPFormField *)displayNameField
++ (FORMField *)displayNameField
 {
-    HYPFormField *formField = [HYPFormField textFormFieldWithID:@"display_name"];
+    FORMField *formField = [FORMField textFormFieldWithID:@"display_name"];
     formField.position = @2;
     formField.formula = @"first_name last_name";
 
@@ -72,26 +72,26 @@
 
 #pragma mark Section 1
 
-+ (HYPFormField *)addressField
++ (FORMField *)addressField
 {
-    HYPFormField *field = [HYPFormField textFormFieldWithID:@"address"];
+    FORMField *field = [FORMField textFormFieldWithID:@"address"];
     field.position = @0;
 
     return field;
 }
 
-+ (HYPFormField *)emailField
++ (FORMField *)emailField
 {
-    HYPFormField *field = [HYPFormField textFormFieldWithID:@"email"];
+    FORMField *field = [FORMField textFormFieldWithID:@"email"];
     field.position = @1;
     field.validations = @{@"required" : @YES, @"format": @"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}"};
 
     return field;
 }
 
-+ (HYPFormField *)usernameField
++ (FORMField *)usernameField
 {
-    HYPFormField *field = [HYPFormField textFormFieldWithID:@"username"];
+    FORMField *field = [FORMField textFormFieldWithID:@"username"];
     field.position = @2;
 
     return field;
@@ -101,9 +101,9 @@
 
 #pragma mark Section 0
 
-+ (HYPFormField *)workHoursField
++ (FORMField *)workHoursField
 {
-    HYPFormField *field = [HYPFormField floatFormFieldWithID:@"work_hours"];
+    FORMField *field = [FORMField floatFormFieldWithID:@"work_hours"];
     field.position = @0;
 
     return field;
@@ -111,39 +111,39 @@
 
 #pragma mark Section 1
 
-+ (HYPFormField *)startDateField
++ (FORMField *)startDateField
 {
-    HYPFormField *field = [self dateFormFieldWithID:@"start_date"];
+    FORMField *field = [self dateFormFieldWithID:@"start_date"];
     field.position = @0;
 
     return field;
 }
 
-+ (HYPFormField *)endDateField
++ (FORMField *)endDateField
 {
-    HYPFormField *field = [self dateFormFieldWithID:@"end_date"];
+    FORMField *field = [self dateFormFieldWithID:@"end_date"];
     field.position = @1;
 
     return field;
 }
 
-+ (HYPFormField *)contractTypeField
++ (FORMField *)contractTypeField
 {
-    HYPFormField *field = [self selectFormFieldWithID:@"contract_type"];
+    FORMField *field = [self selectFormFieldWithID:@"contract_type"];
     field.position = @2;
 
-    HYPFieldValue *value1 = [HYPFieldValue new];
+    FORMFieldValue *value1 = [FORMFieldValue new];
     value1.valueID = @0;
     value1.title = @"Permanent";
-    value1.targets = @[[HYPFormTarget showFieldTargetWithID:@"end_date"],
-                       [HYPFormTarget showSectionTargetWithID:@"employment-2"]];
+    value1.targets = @[[FORMTarget showFieldTargetWithID:@"end_date"],
+                       [FORMTarget showSectionTargetWithID:@"employment-2"]];
     value1.field = field;
 
-    HYPFieldValue *value2 = [HYPFieldValue new];
+    FORMFieldValue *value2 = [FORMFieldValue new];
     value2.valueID = @1;
     value2.title = @"Temporary";
-    value2.targets = @[[HYPFormTarget hideFieldTargetWithID:@"end_date"],
-                       [HYPFormTarget hideSectionTargetWithID:@"employment-2"]];
+    value2.targets = @[[FORMTarget hideFieldTargetWithID:@"end_date"],
+                       [FORMTarget hideSectionTargetWithID:@"employment-2"]];
     value2.field = field;
 
     field.values = @[value1, value2];
@@ -153,26 +153,26 @@
 
 #pragma mark Section 2
 
-+ (HYPFormField *)baseSalaryTypeField
++ (FORMField *)baseSalaryTypeField
 {
-    HYPFormField *field = [self selectFormFieldWithID:@"base_salary"];
+    FORMField *field = [self selectFormFieldWithID:@"base_salary"];
     field.position = @0;
 
-    HYPFieldValue *value1 = [HYPFieldValue new];
+    FORMFieldValue *value1 = [FORMFieldValue new];
     value1.valueID = @"base_salary_1";
     value1.title = @"Base salary 1";
     value1.field = field;
     value1.value = @100;
     value1.field = field;
 
-    HYPFieldValue *value2 = [HYPFieldValue new];
+    FORMFieldValue *value2 = [FORMFieldValue new];
     value2.valueID = @"base_salary_2";
     value2.title = @"Base salary 2";
     value2.field = field;
     value2.value = @114;
     value2.field = field;
 
-    HYPFieldValue *value3 = [HYPFieldValue new];
+    FORMFieldValue *value3 = [FORMFieldValue new];
     value3.valueID = @"base_salary_3";
     value3.title = @"Base salary 3";
     value3.field = field;
@@ -184,18 +184,18 @@
     return field;
 }
 
-+ (HYPFormField *)bonusEnabledField
++ (FORMField *)bonusEnabledField
 {
-    HYPFormField *field = [self selectFormFieldWithID:@"bonus_enabled"];
+    FORMField *field = [self selectFormFieldWithID:@"bonus_enabled"];
     field.position = @1;
 
-    HYPFieldValue *value1 = [HYPFieldValue new];
+    FORMFieldValue *value1 = [FORMFieldValue new];
     value1.valueID = @"bonus_enabled_yes";
     value1.title = @"YES";
     value1.field = field;
     value1.field = field;
 
-    HYPFieldValue *value2 = [HYPFieldValue new];
+    FORMFieldValue *value2 = [FORMFieldValue new];
     value2.valueID = @"bonus_enabled_no";
     value2.title = @"NO";
     value2.field = field;
@@ -206,17 +206,17 @@
     return field;
 }
 
-+ (HYPFormField *)bonusField
++ (FORMField *)bonusField
 {
-    HYPFormField *field = [HYPFormField floatFormFieldWithID:@"bonus"];
+    FORMField *field = [FORMField floatFormFieldWithID:@"bonus"];
     field.position = @2;
 
     return field;
 }
 
-+ (HYPFormField *)totalField
++ (FORMField *)totalField
 {
-    HYPFormField *field = [HYPFormField floatFormFieldWithID:@"total"];
+    FORMField *field = [FORMField floatFormFieldWithID:@"total"];
     field.position = @3;
     field.formula = @"base_salary + bonus";
 

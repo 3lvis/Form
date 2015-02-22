@@ -1,12 +1,12 @@
 #import "HYPSampleCollectionViewController.h"
 
-#import "HYPFormsCollectionViewDataSource.h"
+#import "FORMCollectionViewDataSource.h"
 #import "HYPPostalCodeManager.h"
-#import "HYPFieldValue.h"
+#import "FORMFieldValue.h"
 #import "HYPImagePicker.h"
 #import "HYPImageFormFieldCell.h"
-#import "HYPFormsManager.h"
-#import "HYPTextFormFieldCell.h"
+#import "FORMData.h"
+#import "FORMTextFieldCell.h"
 
 #import "UIColor+ANDYHex.h"
 #import "UIColor+HYPFormsColors.h"
@@ -14,10 +14,10 @@
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
-@property (nonatomic, strong) HYPFormsCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) FORMCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
-@property (nonatomic, strong) HYPFormsLayout *layout;
+@property (nonatomic, strong) FORMCollectionViewLayout *layout;
 @property (nonatomic, copy) NSArray *JSON;
 
 @end
@@ -28,7 +28,7 @@
 
 - (instancetype)initWithJSON:(NSArray *)JSON andInitialValues:(NSDictionary *)initialValues
 {
-    HYPFormsLayout *layout = [[HYPFormsLayout alloc] init];
+    FORMCollectionViewLayout *layout = [[FORMCollectionViewLayout alloc] init];
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
@@ -50,19 +50,19 @@
 
 #pragma mark - Getters
 
-- (HYPFormsCollectionViewDataSource *)dataSource
+- (FORMCollectionViewDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[HYPFormsCollectionViewDataSource alloc] initWithJSON:self.JSON
+    _dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:self.JSON
                                                           collectionView:self.collectionView
                                                                   layout:self.layout
                                                                   values:self.initialValues
                                                                 disabled:YES];
 
-    _dataSource.configureCellForIndexPath = ^(HYPFormField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
+    _dataSource.configureCellForIndexPath = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
         id cell;
-        BOOL isImageCell = (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
+        BOOL isImageCell = (field.type == FORMFieldTypeCustom && [field.typeString isEqual:@"image"]);
         if (isImageCell) {
             cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
                                                              forIndexPath:indexPath];
@@ -72,13 +72,13 @@
 
     __weak typeof(self)weakSelf = self;
 
-    _dataSource.configureFieldUpdatedBlock = ^(id cell, HYPFormField *field) {
+    _dataSource.configureFieldUpdatedBlock = ^(id cell, FORMField *field) {
         NSLog(@"field updated: %@ --- %@", field.fieldID, field.fieldValue);
 
         BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
 
         if (shouldUpdateStartDate) {
-            [weakSelf.dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:YES completion:^(HYPFormField *field, NSIndexPath *indexPath) {
+            [weakSelf.dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
                 if (field) {
                     field.fieldValue = [NSDate date];
                     field.minimumDate = [NSDate date];
@@ -158,15 +158,15 @@
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
-    return (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]);
+    FORMField *field = [self.dataSource formFieldAtIndexPath:indexPath];
+    return (field.type == FORMFieldTypeCustom && [field.typeString isEqual:@"image"]);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HYPFormField *field = [self.dataSource formFieldAtIndexPath:indexPath];
+    FORMField *field = [self.dataSource formFieldAtIndexPath:indexPath];
 
-    if (field.type == HYPFormFieldTypeCustom && [field.typeString isEqual:@"image"]) {
+    if (field.type == FORMFieldTypeCustom && [field.typeString isEqual:@"image"]) {
         [self.imagePicker invokeCamera];
     }
 }
@@ -231,12 +231,12 @@
         [self.dataSource enable];
     }
 
-    HYPFormTarget *target;
+    FORMTarget *target;
 
     if (sender.isOn) {
-        target = [HYPFormTarget disableFieldTargetWithID:@"image"];
+        target = [FORMTarget disableFieldTargetWithID:@"image"];
     } else {
-        target = [HYPFormTarget enableFieldTargetWithID:@"image"];
+        target = [FORMTarget enableFieldTargetWithID:@"image"];
     }
 
     [self.dataSource processTargets:@[target]];

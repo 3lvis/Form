@@ -1,89 +1,89 @@
 @import XCTest;
 
-#import "HYPFormTarget.h"
+#import "FORMTarget.h"
 
-@interface HYPFormTargetTests : XCTestCase
+@interface FORMTargetTests : XCTestCase
 
 @end
 
-@implementation HYPFormTargetTests
+@implementation FORMTargetTests
 
 - (void)testInitWithDictionary
 {
-    HYPFormTarget *target = [[HYPFormTarget alloc] initWithDictionary:@{@"id": @"start_date",
+    FORMTarget *target = [[FORMTarget alloc] initWithDictionary:@{@"id": @"start_date",
                                                                         @"type": @"field",
                                                                         @"action": @"show"}];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"start_date");
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"show");
-    XCTAssertTrue(target.type == HYPFormTargetTypeField);
-    XCTAssertTrue(target.actionType == HYPFormTargetActionShow);
+    XCTAssertTrue(target.type == FORMTargetTypeField);
+    XCTAssertTrue(target.actionType == FORMTargetActionShow);
 
-    target = [[HYPFormTarget alloc] initWithDictionary:@{@"id": @"section_id",
+    target = [[FORMTarget alloc] initWithDictionary:@{@"id": @"section_id",
                                                          @"type": @"section",
                                                          @"action": @"hide"}];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"section_id");
     XCTAssertEqualObjects(target.typeString, @"section");
     XCTAssertEqualObjects(target.actionTypeString, @"hide");
-    XCTAssertTrue(target.type == HYPFormTargetTypeSection);
-    XCTAssertTrue(target.actionType == HYPFormTargetActionHide);
+    XCTAssertTrue(target.type == FORMTargetTypeSection);
+    XCTAssertTrue(target.actionType == FORMTargetActionHide);
 
-    target = [[HYPFormTarget alloc] initWithDictionary:@{@"id": @"first_name",
+    target = [[FORMTarget alloc] initWithDictionary:@{@"id": @"first_name",
                                                          @"type": @"field",
                                                          @"action": @"disable"}];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"first_name");
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"disable");
-    XCTAssertTrue(target.type == HYPFormTargetTypeField);
-    XCTAssertTrue(target.actionType == HYPFormTargetActionDisable);
+    XCTAssertTrue(target.type == FORMTargetTypeField);
+    XCTAssertTrue(target.actionType == FORMTargetActionDisable);
 
-    target = [[HYPFormTarget alloc] initWithDictionary:@{@"id": @"last_name",
+    target = [[FORMTarget alloc] initWithDictionary:@{@"id": @"last_name",
                                                          @"type": @"field",
                                                          @"action": @"enable"}];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"last_name");
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"enable");
-    XCTAssertTrue(target.type == HYPFormTargetTypeField);
-    XCTAssertTrue(target.actionType == HYPFormTargetActionEnable);
+    XCTAssertTrue(target.type == FORMTargetTypeField);
+    XCTAssertTrue(target.actionType == FORMTargetActionEnable);
 }
 
 - (void)testFilteredTargets
 {
     NSMutableArray *targets = [NSMutableArray new];
 
-    [targets addObject:[HYPFormTarget showFieldTargetWithID:@"first_name"]];
-    [targets addObject:[HYPFormTarget showFieldTargetWithID:@"first_name"]];
-    [targets addObject:[HYPFormTarget showFieldTargetWithID:@"first_name"]];
+    [targets addObject:[FORMTarget showFieldTargetWithID:@"first_name"]];
+    [targets addObject:[FORMTarget showFieldTargetWithID:@"first_name"]];
+    [targets addObject:[FORMTarget showFieldTargetWithID:@"first_name"]];
 
-    [targets addObject:[HYPFormTarget hideFieldTargetWithID:@"last_name"]];
-    [targets addObject:[HYPFormTarget hideFieldTargetWithID:@"last_name"]];
-    [targets addObject:[HYPFormTarget hideFieldTargetWithID:@"last_name"]];
+    [targets addObject:[FORMTarget hideFieldTargetWithID:@"last_name"]];
+    [targets addObject:[FORMTarget hideFieldTargetWithID:@"last_name"]];
+    [targets addObject:[FORMTarget hideFieldTargetWithID:@"last_name"]];
 
-    [targets addObject:[HYPFormTarget enableFieldTargetWithID:@"start_date"]];
-    [targets addObject:[HYPFormTarget enableFieldTargetWithID:@"start_date"]];
-    [targets addObject:[HYPFormTarget enableFieldTargetWithID:@"start_date"]];
+    [targets addObject:[FORMTarget enableFieldTargetWithID:@"start_date"]];
+    [targets addObject:[FORMTarget enableFieldTargetWithID:@"start_date"]];
+    [targets addObject:[FORMTarget enableFieldTargetWithID:@"start_date"]];
 
-    [targets addObject:[HYPFormTarget disableFieldTargetWithID:@"end_date"]];
-    [targets addObject:[HYPFormTarget disableFieldTargetWithID:@"end_date"]];
-    [targets addObject:[HYPFormTarget disableFieldTargetWithID:@"end_date"]];
+    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
+    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
+    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
 
-    [targets addObject:[HYPFormTarget disableFieldTargetWithID:@"end_date"]];
-    [targets addObject:[HYPFormTarget disableFieldTargetWithID:@"end_date"]];
-    [targets addObject:[HYPFormTarget disableFieldTargetWithID:@"end_date"]];
+    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
+    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
+    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
 
-    [targets addObject:[HYPFormTarget updateFieldTargetWithID:@"bonus_enabled"]];
-    [targets addObject:[HYPFormTarget updateFieldTargetWithID:@"bonus_enabled"]];
-    [targets addObject:[HYPFormTarget updateFieldTargetWithID:@"bonus_enabled"]];
+    [targets addObject:[FORMTarget updateFieldTargetWithID:@"bonus_enabled"]];
+    [targets addObject:[FORMTarget updateFieldTargetWithID:@"bonus_enabled"]];
+    [targets addObject:[FORMTarget updateFieldTargetWithID:@"bonus_enabled"]];
 
-    [targets addObject:[HYPFormTarget clearFieldTargetWithID:@"salary"]];
-    [targets addObject:[HYPFormTarget clearFieldTargetWithID:@"salary"]];
-    [targets addObject:[HYPFormTarget clearFieldTargetWithID:@"salary"]];
+    [targets addObject:[FORMTarget clearFieldTargetWithID:@"salary"]];
+    [targets addObject:[FORMTarget clearFieldTargetWithID:@"salary"]];
+    [targets addObject:[FORMTarget clearFieldTargetWithID:@"salary"]];
 
-    [HYPFormTarget filteredTargets:targets
+    [FORMTarget filteredTargets:targets
                           filtered:^(NSArray *shownTargets, NSArray *hiddenTargets, NSArray *updatedTargets,
                                      NSArray *enabledTargets, NSArray *disabledTargets) {
                               XCTAssertEqual(shownTargets.count, 1);

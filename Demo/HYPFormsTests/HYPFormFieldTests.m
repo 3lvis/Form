@@ -1,21 +1,21 @@
 @import XCTest;
 
-#import "HYPFormsManager.h"
-#import "HYPFormField.h"
-#import "HYPFormSection.h"
-#import "HYPFormsLayout.h"
-#import "HYPFormsCollectionViewDataSource.h"
+#import "FORMData.h"
+#import "FORMField.h"
+#import "FORMSection.h"
+#import "FORMCollectionViewLayout.h"
+#import "FORMCollectionViewDataSource.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
-@interface HYPFormFieldTests : XCTestCase
+@interface FORMFieldTests : XCTestCase
 
 @end
 
-@implementation HYPFormFieldTests
+@implementation FORMFieldTests
 
 - (void)testInitWithDictionary
 {
-    HYPFormField *field = [[HYPFormField alloc] initWithDictionary:@{@"id": @"first_name",
+    FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id": @"first_name",
                                                                      @"title": @"First name",
                                                                      @"type": @"name",
                                                                      @"size": @{@"width": @30,
@@ -32,12 +32,12 @@
     XCTAssertEqualObjects(field.fieldID, @"first_name");
     XCTAssertEqualObjects(field.title, @"First name");
     XCTAssertEqualObjects(field.typeString, @"name");
-    XCTAssertTrue(field.type == HYPFormFieldTypeText);
+    XCTAssertTrue(field.type == FORMFieldTypeText);
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
     XCTAssertFalse(field.disabled);
     XCTAssertNotNil(field.validations);
 
-    field = [[HYPFormField alloc] initWithDictionary:@{@"id": @"start_date",
+    field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_date",
                                                        @"title": @"Start date",
                                                        @"type": @"date",
                                                        @"size": @{@"width": @10,
@@ -52,7 +52,7 @@
     XCTAssertEqualObjects(field.fieldID, @"start_date");
     XCTAssertEqualObjects(field.title, @"Start date");
     XCTAssertEqualObjects(field.typeString, @"date");
-    XCTAssertTrue(field.type == HYPFormFieldTypeDate);
+    XCTAssertTrue(field.type == FORMFieldTypeDate);
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
     XCTAssertTrue(field.disabled);
     XCTAssertNil(field.validations);
@@ -62,18 +62,18 @@
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
-    HYPFormsManager *manager = [[HYPFormsManager alloc] initWithJSON:JSON
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
                                                        initialValues:@{@"first_name" : @"Elvis",
                                                                        @"last_name" : @"Nunez"}
                                                     disabledFieldIDs:nil
                                                             disabled:NO];
 
-    HYPFormField *field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
+    FORMField *field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.fieldID, @"first_name");
 
     [manager indexForFieldWithID:field.fieldID
                  inSectionWithID:field.section.sectionID
-                      completion:^(HYPFormSection *section, NSInteger index) {
+                      completion:^(FORMSection *section, NSInteger index) {
                           if (section) [section.fields removeObjectAtIndex:index];
                       }];
 

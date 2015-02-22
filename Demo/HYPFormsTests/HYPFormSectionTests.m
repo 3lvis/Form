@@ -1,6 +1,6 @@
 @import XCTest;
 
-#import "HYPFormSection.h"
+#import "FORMSection.h"
 
 @interface HYPFormSectionTests : XCTestCase
 
@@ -10,7 +10,7 @@
 
 - (void)testInitWithDictionary
 {
-    HYPFormSection *section = [[HYPFormSection alloc] initWithDictionary:@{@"id": @"section"}
+    FORMSection *section = [[FORMSection alloc] initWithDictionary:@{@"id": @"section"}
                                                                 position:0
                                                                 disabled:YES
                                                        disabledFieldsIDs:nil
@@ -21,7 +21,7 @@
     XCTAssertEqualObjects(section.position, @0);
     XCTAssertTrue(section.fields.count == 1);
 
-    section = [[HYPFormSection alloc] initWithDictionary:@{@"id": @"something"}
+    section = [[FORMSection alloc] initWithDictionary:@{@"id": @"something"}
                                                 position:1
                                                 disabled:YES
                                        disabledFieldsIDs:nil

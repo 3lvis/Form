@@ -1,6 +1,6 @@
 @import XCTest;
 
-#import "HYPFieldValue.h"
+#import "FORMFieldValue.h"
 
 @interface HYPFieldValueTests : XCTestCase
 
@@ -10,7 +10,7 @@
 
 - (void)testInitWithDictionary
 {
-    HYPFieldValue *fieldValue = [[HYPFieldValue alloc] initWithDictionary:@{@"id": @"contract_type",
+    FORMFieldValue *fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": @"contract_type",
                                                                             @"title": @"Contract Type",
                                                                             @"subtitle": @"This is ma' contract",
                                                                             @"value": @1,
@@ -22,7 +22,7 @@
     XCTAssertEqualObjects(fieldValue.value, @1);
     XCTAssertTrue(fieldValue.defaultValue);
 
-    fieldValue = [[HYPFieldValue alloc] initWithDictionary:@{@"id": @0,
+    fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": @0,
                                                              @"title": @"Full time"}];
     XCTAssertNotNil(fieldValue);
     XCTAssertEqualObjects(fieldValue.valueID, @0);

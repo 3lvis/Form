@@ -1,24 +1,24 @@
-#import "HYPFormField.h"
+#import "FORMField.h"
 
-@interface HYPFormField (Tests)
+@interface FORMField (Tests)
 
-+ (HYPFormField *)firstNameField;
-+ (HYPFormField *)lastNameField;
-+ (HYPFormField *)displayNameField;
++ (FORMField *)firstNameField;
++ (FORMField *)lastNameField;
++ (FORMField *)displayNameField;
 
-+ (HYPFormField *)addressField;
-+ (HYPFormField *)emailField;
-+ (HYPFormField *)usernameField;
++ (FORMField *)addressField;
++ (FORMField *)emailField;
++ (FORMField *)usernameField;
 
-+ (HYPFormField *)workHoursField;
++ (FORMField *)workHoursField;
 
-+ (HYPFormField *)startDateField;
-+ (HYPFormField *)endDateField;
-+ (HYPFormField *)contractTypeField;
++ (FORMField *)startDateField;
++ (FORMField *)endDateField;
++ (FORMField *)contractTypeField;
 
-+ (HYPFormField *)baseSalaryTypeField;
-+ (HYPFormField *)bonusEnabledField;
-+ (HYPFormField *)bonusField;
-+ (HYPFormField *)totalField;
++ (FORMField *)baseSalaryTypeField;
++ (FORMField *)bonusEnabledField;
++ (FORMField *)bonusField;
++ (FORMField *)totalField;
 
 @end

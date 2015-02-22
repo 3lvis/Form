@@ -1,9 +1,9 @@
 @import UIKit;
 @import XCTest;
 
-#import "HYPTextFormFieldCell.h"
+#import "FORMTextFieldCell.h"
 
-@interface HYPTextFormFieldCell (Tests)
+@interface FORMTextFieldCell (Tests)
 
 - (CGRect)labelFrameUsingString:(NSString *)string;
 
@@ -17,7 +17,7 @@
 
 - (void)testWidthCalculation
 {
-    HYPTextFormFieldCell *cell = [[HYPTextFormFieldCell alloc] init];
+    FORMTextFieldCell *cell = [[FORMTextFieldCell alloc] init];
     CGRect rect = [cell labelFrameUsingString:@"bork"];
     XCTAssertEqual(rect.size.width, 90.0f);
     XCTAssertEqual(rect.size.height, 55.0f);

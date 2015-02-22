@@ -1,6 +1,6 @@
 @import XCTest;
 
-#import "HYPPopoverFormFieldCell.h"
+#import "FORMPopoverFieldCell.h"
 
 #import "HYPFormField+Tests.h"
 
@@ -12,8 +12,8 @@
 
 - (void)testPopoverSelectionWithDisabledField
 {
-    HYPPopoverFormFieldCell *cell = [[HYPPopoverFormFieldCell alloc] init];
-    HYPFormField *field = [HYPFormField contractTypeField];
+    FORMPopoverFieldCell *cell = [[FORMPopoverFieldCell alloc] init];
+    FORMField *field = [FORMField contractTypeField];
 
     cell.field = field;
     XCTAssertTrue(cell.fieldValueLabel.userInteractionEnabled);
