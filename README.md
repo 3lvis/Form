@@ -1,8 +1,6 @@
 # Forms
 [![Build Status](https://img.shields.io/travis/hyperoslo/Form.svg?style=flat)](https://travis-ci.org/hyperoslo/Form)
 
-##This is a work in progress, stay tuned!
-
 JSON driven forms.
 
 # README TODO
