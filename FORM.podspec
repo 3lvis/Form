@@ -32,6 +32,6 @@ Pod::Spec.new do |s|
   s.dependency 'NSString-HYPWordExtractor'
   s.dependency 'Hex'
   s.dependency 'NSString-HYPContainsString'
-  s.dependency "DDMathParser", :git => "git://github.com/hyperoslo/DDMathParser.git"
+  s.dependency "HYPMathParser"
   s.dependency 'NSObject-HYPTesting'
 end
