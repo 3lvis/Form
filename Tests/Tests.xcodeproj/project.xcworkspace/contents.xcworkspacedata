@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:HYPForms.xcodeproj">
+      location = "self:Tests.xcodeproj">
    </FileRef>
 </Workspace>
