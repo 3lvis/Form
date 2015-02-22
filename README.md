@@ -1,13 +1,7 @@
 # Forms
 [![Build Status](https://img.shields.io/travis/hyperoslo/Form.svg?style=flat)](https://travis-ci.org/hyperoslo/Form)
 
-JSON driven forms.
-
-# README TODO
-- [ ] Explain rules
-- [ ] Explain formulas
-- [ ] Explain structure
-- [ ] Explain targets
+JSON driven forms, check our [Demo](https://github.com/hyperoslo/Form/tree/master/Demos/Basic-ObjC) for an example on how to use Form.
 
 ## Contributing
 
