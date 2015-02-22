@@ -9,14 +9,8 @@
 /* Begin PBXBuildFile section */
 		14E49BFC1A99B75500F19988 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49BFB1A99B75500F19988 /* main.m */; };
 		14E49C071A99B75500F19988 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C061A99B75500F19988 /* Images.xcassets */; };
-		14E49C0A1A99B75500F19988 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C081A99B75500F19988 /* LaunchScreen.xib */; };
 		14E49C161A99B75500F19988 /* Basic_ObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C151A99B75500F19988 /* Basic_ObjCTests.m */; };
 		14E49C351A99B7D600F19988 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C211A99B7D600F19988 /* AppDelegate.m */; };
-		14E49C361A99B7D600F19988 /* DIN-BLAC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C241A99B7D600F19988 /* DIN-BLAC.OTF */; };
-		14E49C371A99B7D600F19988 /* DIN-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C251A99B7D600F19988 /* DIN-BOLD.OTF */; };
-		14E49C381A99B7D600F19988 /* DIN-LIGH.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C261A99B7D600F19988 /* DIN-LIGH.OTF */; };
-		14E49C391A99B7D600F19988 /* DIN-MEDI.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C271A99B7D600F19988 /* DIN-MEDI.OTF */; };
-		14E49C3A1A99B7D600F19988 /* DIN-REGU.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C281A99B7D600F19988 /* DIN-REGU.OTF */; };
 		14E49C3B1A99B7D600F19988 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C291A99B7D600F19988 /* forms.json */; };
 		14E49C3C1A99B7D600F19988 /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C2B1A99B7D600F19988 /* camera-icon@2x.png */; };
 		14E49C3D1A99B7D600F19988 /* ic_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C2C1A99B7D600F19988 /* ic_calendar@2x.png */; };
@@ -24,6 +18,7 @@
 		14E49C3F1A99B7D600F19988 /* ic_mini_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C2E1A99B7D600F19988 /* ic_mini_clear@2x.png */; };
 		14E49C401A99B7D600F19988 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C311A99B7D600F19988 /* HYPSampleCollectionViewController.m */; };
 		14E49C411A99B7D600F19988 /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C341A99B7D600F19988 /* HYPImageFormFieldCell.m */; };
+		1E1A35C89938DD4BA1A656D3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29491F317417C0D1E29829A7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,17 +36,11 @@
 		14E49BFA1A99B75500F19988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14E49BFB1A99B75500F19988 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		14E49C061A99B75500F19988 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		14E49C091A99B75500F19988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		14E49C0F1A99B75500F19988 /* Basic-ObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Basic-ObjCTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14E49C141A99B75500F19988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14E49C151A99B75500F19988 /* Basic_ObjCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Basic_ObjCTests.m; sourceTree = "<group>"; };
 		14E49C201A99B7D600F19988 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		14E49C211A99B7D600F19988 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		14E49C241A99B7D600F19988 /* DIN-BLAC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-BLAC.OTF"; sourceTree = "<group>"; };
-		14E49C251A99B7D600F19988 /* DIN-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-BOLD.OTF"; sourceTree = "<group>"; };
-		14E49C261A99B7D600F19988 /* DIN-LIGH.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-LIGH.OTF"; sourceTree = "<group>"; };
-		14E49C271A99B7D600F19988 /* DIN-MEDI.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-MEDI.OTF"; sourceTree = "<group>"; };
-		14E49C281A99B7D600F19988 /* DIN-REGU.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-REGU.OTF"; sourceTree = "<group>"; };
 		14E49C291A99B7D600F19988 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
 		14E49C2B1A99B7D600F19988 /* camera-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon@2x.png"; sourceTree = "<group>"; };
 		14E49C2C1A99B7D600F19988 /* ic_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_calendar@2x.png"; sourceTree = "<group>"; };
@@ -61,6 +50,9 @@
 		14E49C311A99B7D600F19988 /* HYPSampleCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSampleCollectionViewController.m; sourceTree = "<group>"; };
 		14E49C331A99B7D600F19988 /* HYPImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPImageFormFieldCell.h; sourceTree = "<group>"; };
 		14E49C341A99B7D600F19988 /* HYPImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPImageFormFieldCell.m; sourceTree = "<group>"; };
+		24255EE596DCD2C0FE5C4CFB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		29491F317417C0D1E29829A7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C74849DF53D9C3C7FE00770 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E1A35C89938DD4BA1A656D3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +80,8 @@
 				14E49BF81A99B75500F19988 /* Basic-ObjC */,
 				14E49C121A99B75500F19988 /* Basic-ObjCTests */,
 				14E49BF71A99B75500F19988 /* Products */,
+				9A2CB4BACB8976C31DF24BCC /* Pods */,
+				9661221E81F7A73DE1DDD54C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				14E49C061A99B75500F19988 /* Images.xcassets */,
-				14E49C081A99B75500F19988 /* LaunchScreen.xib */,
 				14E49BFA1A99B75500F19988 /* Info.plist */,
 				14E49BFB1A99B75500F19988 /* main.m */,
 			);
@@ -151,23 +145,10 @@
 		14E49C221A99B7D600F19988 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				14E49C231A99B7D600F19988 /* Fonts */,
 				14E49C291A99B7D600F19988 /* forms.json */,
 				14E49C2A1A99B7D600F19988 /* Images */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		14E49C231A99B7D600F19988 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				14E49C241A99B7D600F19988 /* DIN-BLAC.OTF */,
-				14E49C251A99B7D600F19988 /* DIN-BOLD.OTF */,
-				14E49C261A99B7D600F19988 /* DIN-LIGH.OTF */,
-				14E49C271A99B7D600F19988 /* DIN-MEDI.OTF */,
-				14E49C281A99B7D600F19988 /* DIN-REGU.OTF */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		14E49C2A1A99B7D600F19988 /* Images */ = {
@@ -199,6 +180,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		9661221E81F7A73DE1DDD54C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29491F317417C0D1E29829A7 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A2CB4BACB8976C31DF24BCC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C74849DF53D9C3C7FE00770 /* Pods.debug.xcconfig */,
+				24255EE596DCD2C0FE5C4CFB /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -206,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14E49C191A99B75500F19988 /* Build configuration list for PBXNativeTarget "Basic-ObjC" */;
 			buildPhases = (
+				59B737624E5F197F9DC7808B /* Check Pods Manifest.lock */,
 				14E49BF21A99B75500F19988 /* Sources */,
 				14E49BF31A99B75500F19988 /* Frameworks */,
 				14E49BF41A99B75500F19988 /* Resources */,
+				5363A2951A16517EF2EF62A6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,17 +279,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14E49C371A99B7D600F19988 /* DIN-BOLD.OTF in Resources */,
 				14E49C3B1A99B7D600F19988 /* forms.json in Resources */,
-				14E49C381A99B7D600F19988 /* DIN-LIGH.OTF in Resources */,
-				14E49C3A1A99B7D600F19988 /* DIN-REGU.OTF in Resources */,
 				14E49C3D1A99B7D600F19988 /* ic_calendar@2x.png in Resources */,
-				14E49C391A99B7D600F19988 /* DIN-MEDI.OTF in Resources */,
-				14E49C0A1A99B75500F19988 /* LaunchScreen.xib in Resources */,
 				14E49C3F1A99B7D600F19988 /* ic_mini_clear@2x.png in Resources */,
 				14E49C071A99B75500F19988 /* Images.xcassets in Resources */,
 				14E49C3C1A99B7D600F19988 /* camera-icon@2x.png in Resources */,
-				14E49C361A99B7D600F19988 /* DIN-BLAC.OTF in Resources */,
 				14E49C3E1A99B7D600F19988 /* ic_mini_arrow_down@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +296,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5363A2951A16517EF2EF62A6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59B737624E5F197F9DC7808B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		14E49BF21A99B75500F19988 /* Sources */ = {
@@ -332,17 +359,6 @@
 			targetProxy = 14E49C101A99B75500F19988 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		14E49C081A99B75500F19988 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				14E49C091A99B75500F19988 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		14E49C171A99B75500F19988 /* Debug */ = {
@@ -425,6 +441,7 @@
 		};
 		14E49C1A1A99B75500F19988 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C74849DF53D9C3C7FE00770 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -436,6 +453,7 @@
 		};
 		14E49C1B1A99B75500F19988 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24255EE596DCD2C0FE5C4CFB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -498,6 +516,7 @@
 				14E49C1B1A99B75500F19988 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		14E49C1C1A99B75500F19988 /* Build configuration list for PBXNativeTarget "Basic-ObjCTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +525,7 @@
 				14E49C1E1A99B75500F19988 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

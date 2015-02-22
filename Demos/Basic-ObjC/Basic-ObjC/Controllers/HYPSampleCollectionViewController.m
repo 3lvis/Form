@@ -8,7 +8,7 @@
 #import "FORMData.h"
 #import "FORMTextFieldCell.h"
 
-#import "UIColor+ANDYHex.h"
+#import "UIColor+Hex.h"
 #import "UIColor+HYPFormsColors.h"
 #import "NSObject+HYPTesting.h"
 

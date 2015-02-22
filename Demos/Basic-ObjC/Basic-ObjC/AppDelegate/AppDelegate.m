@@ -4,7 +4,7 @@
 #import "FORMBackgroundView.h"
 #import "FORMCollectionViewLayout.h"
 
-#import "UIColor+ANDYHex.h"
+#import "UIColor+Hex.h"
 #import "NSObject+HYPTesting.h"
 #import "UIColor+HYPFormsColors.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
