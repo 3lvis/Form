@@ -1,6 +1,6 @@
 #import "UIColor+HYPFormsColors.h"
 
-#import "UIColor+ANDYHex.h"
+#import "UIColor+Hex.h"
 
 @implementation UIColor (HYPFormsColors)
 

@@ -1,0 +1,19 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '7.0'
+
+pod 'HYPNorwegianAccountNumber'
+pod 'NSDictionary-ANDYSafeValue'
+pod 'NSJSONSerialization-ANDYJSONFile'
+pod 'NSString-ZENInflections'
+pod 'UIScreen-HYPLiveBounds'
+pod 'UIButton-ANDYHighlighted'
+pod 'HYPImagePicker'
+pod 'HYPNorwegianSSN'
+pod 'NSString-HYPFormula'
+pod 'NSString-HYPWordExtractor'
+pod 'Hex'
+pod 'NSString-HYPContainsString'
+pod 'NSObject-HYPTesting'
+
+pod 'DDMathParser', :git => 'https://github.com/hyperoslo/DDMathParser.git'

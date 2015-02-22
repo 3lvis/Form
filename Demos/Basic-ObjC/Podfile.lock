@@ -1,0 +1,63 @@
+PODS:
+  - Form (0.113):
+    - Hex
+    - HYPImagePicker
+    - HYPMathParser
+    - HYPNorwegianAccountNumber
+    - HYPNorwegianSSN
+    - NSDictionary-ANDYSafeValue
+    - NSJSONSerialization-ANDYJSONFile
+    - NSObject-HYPTesting
+    - NSString-HYPContainsString
+    - NSString-HYPFormula
+    - NSString-HYPWordExtractor
+    - NSString-ZENInflections
+    - UIButton-ANDYHighlighted
+    - UIScreen-HYPLiveBounds
+  - Hex (1.1.1)
+  - HYPImagePicker (0.3)
+  - HYPMathParser (0.3)
+  - HYPNorwegianAccountNumber (1.2.1)
+  - HYPNorwegianSSN (1.9)
+  - NSDictionary-ANDYSafeValue (0.3)
+  - NSJSONSerialization-ANDYJSONFile (1.1)
+  - NSObject-HYPTesting (1.2)
+  - NSString-HYPContainsString (0.1)
+  - NSString-HYPFormula (1.6.1):
+    - NSString-HYPWordExtractor
+  - NSString-HYPWordExtractor (1.1)
+  - NSString-ZENInflections (1.2)
+  - UIButton-ANDYHighlighted (0.2.1)
+  - UIScreen-HYPLiveBounds (1.3)
+
+DEPENDENCIES:
+  - Form (from `https://github.com/hyperoslo/HYPForms`, branch `rename/HYPForm-FORM`)
+
+EXTERNAL SOURCES:
+  Form:
+    :branch: rename/HYPForm-FORM
+    :git: https://github.com/hyperoslo/HYPForms
+
+CHECKOUT OPTIONS:
+  Form:
+    :commit: db00bcafcdec7a1d49aa11d2739526aee4b6c636
+    :git: https://github.com/hyperoslo/HYPForms
+
+SPEC CHECKSUMS:
+  Form: 8af7c35cb02091b9239c161e948aa87bafd96439
+  Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
+  HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
+  HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16
+  HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
+  HYPNorwegianSSN: 0c49429f0459b8c5477c7c119d0bbb267a6f79da
+  NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
+  NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
+  NSObject-HYPTesting: f54d8bf73f75e2f2f4e49f4baa985df6fa699c2a
+  NSString-HYPContainsString: d5a89f8238b8267f892e1b139866e659ffc165ac
+  NSString-HYPFormula: 4bf6fc5ef5053291638b9d2eae73bda9c1c88800
+  NSString-HYPWordExtractor: b2961841c0cb658b3aa402e14f18a61bf02a0b48
+  NSString-ZENInflections: 27e3623bae0758cd932c462dfae15420ec9867f9
+  UIButton-ANDYHighlighted: d11522ea39a27f17f6cbf7af03f6447633999fef
+  UIScreen-HYPLiveBounds: b9910aa6f80f12638aec07463e960b5528a99e45
+
+COCOAPODS: 0.35.0
