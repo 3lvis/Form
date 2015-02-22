@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
   s.dependency 'UIScreen-HYPLiveBounds'
   s.dependency 'HYPImagePicker'
   s.dependency 'HYPNorwegianSSN'
+  s.dependency 'HYPNorwegianAccountNumber'
   s.dependency 'NSString-HYPFormula'
   s.dependency 'NSString-HYPWordExtractor'
   s.dependency 'Hex'
