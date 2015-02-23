@@ -4,7 +4,7 @@
 #import "FORMField.h"
 #import "FORMSection.h"
 #import "FORMCollectionViewLayout.h"
-#import "FORMCollectionViewDataSource.h"
+#import "FORMDataSource.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
 @interface FORMFieldTests : XCTestCase

@@ -26,7 +26,7 @@
 		144A28CB1A99B2CF004A9086 /* FORMPhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28771A99B2CF004A9086 /* FORMPhoneNumberFormatter.m */; };
 		144A28CC1A99B2CF004A9086 /* FORMSocialSecurityNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28791A99B2CF004A9086 /* FORMSocialSecurityNumberFormatter.m */; };
 		144A28CD1A99B2CF004A9086 /* FORMBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A287B1A99B2CF004A9086 /* FORMBackgroundView.m */; };
-		144A28CE1A99B2CF004A9086 /* FORMCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A287D1A99B2CF004A9086 /* FORMCollectionViewDataSource.m */; };
+		144A28CE1A99B2CF004A9086 /* FORMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A287D1A99B2CF004A9086 /* FORMDataSource.m */; };
 		144A28CF1A99B2CF004A9086 /* FORMCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A287F1A99B2CF004A9086 /* FORMCollectionViewLayout.m */; };
 		144A28D01A99B2CF004A9086 /* FORMData.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28811A99B2CF004A9086 /* FORMData.m */; };
 		144A28D11A99B2CF004A9086 /* FORMGroupHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28831A99B2CF004A9086 /* FORMGroupHeaderView.m */; };
@@ -118,8 +118,8 @@
 		144A28791A99B2CF004A9086 /* FORMSocialSecurityNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSocialSecurityNumberFormatter.m; sourceTree = "<group>"; };
 		144A287A1A99B2CF004A9086 /* FORMBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMBackgroundView.h; sourceTree = "<group>"; };
 		144A287B1A99B2CF004A9086 /* FORMBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMBackgroundView.m; sourceTree = "<group>"; };
-		144A287C1A99B2CF004A9086 /* FORMCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMCollectionViewDataSource.h; sourceTree = "<group>"; };
-		144A287D1A99B2CF004A9086 /* FORMCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMCollectionViewDataSource.m; sourceTree = "<group>"; };
+		144A287C1A99B2CF004A9086 /* FORMDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMDataSource.h; sourceTree = "<group>"; };
+		144A287D1A99B2CF004A9086 /* FORMDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMDataSource.m; sourceTree = "<group>"; };
 		144A287E1A99B2CF004A9086 /* FORMCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMCollectionViewLayout.h; sourceTree = "<group>"; };
 		144A287F1A99B2CF004A9086 /* FORMCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMCollectionViewLayout.m; sourceTree = "<group>"; };
 		144A28801A99B2CF004A9086 /* FORMData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMData.h; sourceTree = "<group>"; };
@@ -462,8 +462,8 @@
 				144A286F1A99B2CF004A9086 /* Formatters */,
 				144A287A1A99B2CF004A9086 /* FORMBackgroundView.h */,
 				144A287B1A99B2CF004A9086 /* FORMBackgroundView.m */,
-				144A287C1A99B2CF004A9086 /* FORMCollectionViewDataSource.h */,
-				144A287D1A99B2CF004A9086 /* FORMCollectionViewDataSource.m */,
+				144A287C1A99B2CF004A9086 /* FORMDataSource.h */,
+				144A287D1A99B2CF004A9086 /* FORMDataSource.m */,
 				144A287E1A99B2CF004A9086 /* FORMCollectionViewLayout.h */,
 				144A287F1A99B2CF004A9086 /* FORMCollectionViewLayout.m */,
 				144A28801A99B2CF004A9086 /* FORMData.h */,
@@ -644,7 +644,7 @@
 				144A28CF1A99B2CF004A9086 /* FORMCollectionViewLayout.m in Sources */,
 				144A28E21A99B2CF004A9086 /* DDMathEvaluator+HYPForms.m in Sources */,
 				149C29271A9A23DD00F88B91 /* HYPFormTests.m in Sources */,
-				144A28CE1A99B2CF004A9086 /* FORMCollectionViewDataSource.m in Sources */,
+				144A28CE1A99B2CF004A9086 /* FORMDataSource.m in Sources */,
 				144A28D21A99B2CF004A9086 /* FORMSubtitleView.m in Sources */,
 				144A28D91A99B2CF004A9086 /* FORMPostalCodeInputValidator.m in Sources */,
 				149C29211A9A23DD00F88B91 /* HYPFieldValueTests.m in Sources */,

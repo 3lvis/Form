@@ -4,7 +4,7 @@
 #import "FORMFieldValidation.h"
 #import "FORMGroup.h"
 #import "FORMField.h"
-#import "FORMCollectionViewDataSource.h"
+#import "FORMDataSource.h"
 #import "FORMSection.h"
 #import "FORMData.h"
 #import "FORMTarget.h"
@@ -23,7 +23,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                    collectionView:nil
                                                                                            layout:nil
                                                                                            values:nil
@@ -65,7 +65,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                    collectionView:nil
                                                                                            layout:nil
                                                                                            values:nil
@@ -95,7 +95,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                    collectionView:nil
                                                                                            layout:nil
                                                                                            values:nil
@@ -110,7 +110,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                    collectionView:nil
                                                                                            layout:nil
                                                                                            values:nil
@@ -131,7 +131,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                    collectionView:nil
                                                                                            layout:nil
                                                                                            values:nil
@@ -146,7 +146,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                    collectionView:nil
                                                                                            layout:nil
                                                                                            values:nil
@@ -174,7 +174,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                    collectionView:nil
                                                                                            layout:nil
                                                                                            values:nil
@@ -192,7 +192,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                    collectionView:nil
                                                                                            layout:nil
                                                                                            values:nil
@@ -214,7 +214,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"field-validations.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                    collectionView:nil
                                                                                            layout:nil
                                                                                            values:nil

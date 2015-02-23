@@ -18,7 +18,7 @@ typedef void (^FORMFieldConfigureHeaderViewBlock)(FORMGroupHeaderView *headerVie
 typedef void (^FORMFieldConfigureFieldUpdatedBlock)(id cell, FORMField *field);
 typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath);
 
-@interface FORMCollectionViewDataSource : NSObject <UICollectionViewDataSource, HYPFormsLayoutDataSource>
+@interface FORMDataSource : NSObject <UICollectionViewDataSource, HYPFormsLayoutDataSource>
 
 - (instancetype)initWithJSON:(NSArray *)JSON
               collectionView:(UICollectionView *)collectionView

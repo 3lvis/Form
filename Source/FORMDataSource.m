@@ -1,4 +1,4 @@
-#import "FORMCollectionViewDataSource.h"
+#import "FORMDataSource.h"
 
 #import "FORMBackgroundView.h"
 #import "FORMCollectionViewLayout.h"
@@ -18,7 +18,7 @@
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
-@interface FORMCollectionViewDataSource () <FORMBaseFieldCellDelegate, FORMHeaderViewDelegate>
+@interface FORMDataSource () <FORMBaseFieldCellDelegate, FORMHeaderViewDelegate>
 
 @property (nonatomic) UIEdgeInsets originalInset;
 @property (nonatomic) BOOL disabled;
@@ -29,7 +29,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
 @end
 
-@implementation FORMCollectionViewDataSource
+@implementation FORMDataSource
 
 #pragma mark - Dealloc
 
