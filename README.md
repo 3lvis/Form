@@ -21,6 +21,7 @@ Don't forget to check our [Demo](https://github.com/hyperoslo/Form/tree/master/D
 
 This is the required form to create a basic form with a first name field.
 
+#### JSON
 ```json
 [
   {
@@ -46,6 +47,7 @@ This is the required form to create a basic form with a first name field.
 ]
 ```
 
+#### In your app (you need a UICollectionViewController)
 ```objc
 - (FORMCollectionViewDataSource *)dataSource
 {
