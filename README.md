@@ -55,10 +55,10 @@ This is the required form to create a basic form with a first name field.
     if (_dataSource) return _dataSource;
 
     _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
-                                                          collectionView:self.collectionView
-                                                                  layout:self.layout
-                                                                  values:nil
-                                                                disabled:NO];
+                                        collectionView:self.collectionView
+                                                layout:self.layout
+                                                values:nil
+                                              disabled:NO];
 
     return _dataSource;
 }
