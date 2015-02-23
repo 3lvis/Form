@@ -1,5 +1,5 @@
 PODS:
-  - Form (0.113):
+  - Form (0.114):
     - Hex
     - HYPImagePicker
     - HYPMathParser
@@ -31,20 +31,19 @@ PODS:
   - UIScreen-HYPLiveBounds (1.3)
 
 DEPENDENCIES:
-  - Form (from `https://github.com/hyperoslo/HYPForms`, branch `rename/HYPForm-FORM`)
+  - Form (from `https://github.com/hyperoslo/HYPForms`)
 
 EXTERNAL SOURCES:
   Form:
-    :branch: rename/HYPForm-FORM
     :git: https://github.com/hyperoslo/HYPForms
 
 CHECKOUT OPTIONS:
   Form:
-    :commit: db00bcafcdec7a1d49aa11d2739526aee4b6c636
+    :commit: 8f6465dc03ae34a5443c61d0dce7f975c4787c31
     :git: https://github.com/hyperoslo/HYPForms
 
 SPEC CHECKSUMS:
-  Form: 8af7c35cb02091b9239c161e948aa87bafd96439
+  Form: ca917eb5e2fad3def318569be9ab88552b9db0a2
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
   HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
   HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16
