@@ -16,6 +16,8 @@ Form includes the following features:
 
 Don't forget to check our [Basic Demo](https://github.com/hyperoslo/Form/tree/master/Demos/Basic-ObjC) for a basic example on how to use Form.
 
+At the moment Form only supports iPads, support for iPhone will come soon.
+
 ## Usage
 
 ### Basic Form
@@ -48,7 +50,7 @@ This is the required form to create a basic form with a first name field.
 ]
 ```
 
-#### In your app
+#### In your iPad app
 ```objc
 - (FORMDataSource *)dataSource
 {
