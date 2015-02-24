@@ -16,7 +16,7 @@ Form includes the following features:
 
 Don't forget to check our [Basic Demo](https://github.com/hyperoslo/Form/tree/master/Demos/Basic-ObjC) for a basic example on how to use Form.
 
-At the moment Form only supports iPads, support for iPhone will come soon.
+At the moment Form only supports the iPad, support for the iPhone will come soon.
 
 ## Usage
 
