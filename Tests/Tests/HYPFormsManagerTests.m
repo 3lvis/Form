@@ -7,7 +7,7 @@
 #import "FORMField.h"
 #import "FORMTarget.h"
 #import "FORMFieldValidation.h"
-#import "FORMCollectionViewDataSource.h"
+#import "FORMDataSource.h"
 
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
@@ -128,7 +128,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                            collectionView:nil
                                                                                                    layout:nil
                                                                                                    values:@{@"first_name" : @"Elvis",
@@ -255,7 +255,7 @@
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
-    FORMCollectionViewDataSource *dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:JSON
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                                                            collectionView:nil
                                                                                                    layout:nil
                                                                                                    values:@{@"email" : @"faultyEmail"}

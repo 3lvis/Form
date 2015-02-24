@@ -50,15 +50,15 @@ This is the required form to create a basic form with a first name field.
 
 #### In your app
 ```objc
-- (FORMCollectionViewDataSource *)dataSource
+- (FORMDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:self.JSON
-                                                          collectionView:self.collectionView
-                                                                  layout:self.layout
-                                                                  values:nil
-                                                                disabled:NO];
+    _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
+                                        collectionView:self.collectionView
+                                                layout:self.layout
+                                                values:nil
+                                              disabled:NO];
 
     return _dataSource;
 }
