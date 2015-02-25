@@ -111,4 +111,15 @@
     [self.fields removeObjectAtIndex:index];
 }
 
+- (NSString *)description
+{
+    NSMutableArray *fields = [NSMutableArray new];
+    for (FORMField *field in fields) {
+        [fields addObject:field.fieldID];
+    }
+
+    return [NSString stringWithFormat:@"\n — Section: %@ —\n position: %@\n formID: %@\n shouldValidate: %@\n containsSpecialField: %@\n isLast: %@\n fields: %@\n",
+            self.sectionID, self.position, self.form.formID, self.shouldValidate ? @"YES" : @"NO", self.containsSpecialField ? @"YES" : @"NO", self.isLast ? @"YES" : @"NO", fields];
+}
+
 @end
