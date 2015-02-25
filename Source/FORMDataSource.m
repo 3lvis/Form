@@ -1,7 +1,7 @@
 #import "FORMDataSource.h"
 
 #import "FORMBackgroundView.h"
-#import "FORMCollectionViewLayout.h"
+#import "FORMLayout.h"
 
 #import "FORMTextFieldCell.h"
 #import "FORMSelectFieldCell.h"
@@ -22,10 +22,11 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
 @property (nonatomic) UIEdgeInsets originalInset;
 @property (nonatomic) BOOL disabled;
-@property (nonatomic, strong, readwrite) FORMData *formsManager;
+@property (nonatomic, strong) FORMData *formsManager;
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) FORMCollectionViewLayout *layout;
+@property (nonatomic, strong) FORMLayout *layout;
 @property (nonatomic, copy) NSArray *JSON;
+@property (nonatomic, strong) NSMutableArray *collapsedForms;
 
 @end
 
@@ -44,7 +45,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
 - (instancetype)initWithJSON:(NSArray *)JSON
               collectionView:(UICollectionView *)collectionView
-                      layout:(FORMCollectionViewLayout *)layout
+                      layout:(FORMLayout *)layout
                       values:(NSDictionary *)values
                     disabled:(BOOL)disabled
 {
@@ -60,9 +61,9 @@ static const CGFloat FORMDispatchTime = 0.05f;
     layout.dataSource = self;
 
     _formsManager = [[FORMData alloc] initWithJSON:JSON
-                                            initialValues:values
-                                         disabledFieldIDs:@[]
-                                                 disabled:disabled];
+                                     initialValues:values
+                                  disabledFieldIDs:@[]
+                                          disabled:disabled];
 
     [collectionView registerClass:[FORMTextFieldCell class]
        forCellWithReuseIdentifier:FORMTextFieldCellIdentifier];
@@ -157,7 +158,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
     }
 
     FORMBaseFieldCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
-                                                                           forIndexPath:indexPath];
+                                                                        forIndexPath:indexPath];
     cell.delegate = self;
 
     if (self.configureCellBlock) {
@@ -175,8 +176,8 @@ static const CGFloat FORMDispatchTime = 0.05f;
 {
     if (kind == UICollectionElementKindSectionHeader) {
         FORMGroupHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                           withReuseIdentifier:FORMHeaderReuseIdentifier
-                                                                                  forIndexPath:indexPath];
+                                                                             withReuseIdentifier:FORMHeaderReuseIdentifier
+                                                                                    forIndexPath:indexPath];
 
         FORMGroup *form = self.formsManager.forms[indexPath.section];
         headerView.section = indexPath.section;
@@ -565,60 +566,60 @@ static const CGFloat FORMDispatchTime = 0.05f;
 - (void)processTargets:(NSArray *)targets
 {
     [FORMTarget filteredTargets:targets
-                          filtered:^(NSArray *shownTargets,
-                                     NSArray *hiddenTargets,
-                                     NSArray *updatedTargets,
-                                     NSArray *enabledTargets,
-                                     NSArray *disabledTargets) {
-                              shownTargets  = [self sortTargets:shownTargets];
-                              hiddenTargets = [self sortTargets:hiddenTargets];
+                       filtered:^(NSArray *shownTargets,
+                                  NSArray *hiddenTargets,
+                                  NSArray *updatedTargets,
+                                  NSArray *enabledTargets,
+                                  NSArray *disabledTargets) {
+                           shownTargets  = [self sortTargets:shownTargets];
+                           hiddenTargets = [self sortTargets:hiddenTargets];
 
-                              NSArray *insertedIndexPaths;
-                              NSArray *deletedIndexPaths;
-                              NSArray *updatedIndexPaths;
-                              NSArray *enabledIndexPaths;
-                              NSArray *disabledIndexPaths;
+                           NSArray *insertedIndexPaths;
+                           NSArray *deletedIndexPaths;
+                           NSArray *updatedIndexPaths;
+                           NSArray *enabledIndexPaths;
+                           NSArray *disabledIndexPaths;
 
-                              if (shownTargets.count > 0) {
-                                  insertedIndexPaths = [self.formsManager showTargets:shownTargets];
-                                  [self insertItemsAtIndexPaths:insertedIndexPaths];
-                              }
+                           if (shownTargets.count > 0) {
+                               insertedIndexPaths = [self.formsManager showTargets:shownTargets];
+                               [self insertItemsAtIndexPaths:insertedIndexPaths];
+                           }
 
-                              if (hiddenTargets.count > 0) {
-                                  deletedIndexPaths = [self.formsManager hideTargets:hiddenTargets];
-                                  [self deleteItemsAtIndexPaths:deletedIndexPaths];
-                              }
+                           if (hiddenTargets.count > 0) {
+                               deletedIndexPaths = [self.formsManager hideTargets:hiddenTargets];
+                               [self deleteItemsAtIndexPaths:deletedIndexPaths];
+                           }
 
-                              if (updatedTargets.count > 0) {
-                                  updatedIndexPaths = [self.formsManager updateTargets:updatedTargets];
+                           if (updatedTargets.count > 0) {
+                               updatedIndexPaths = [self.formsManager updateTargets:updatedTargets];
 
-                                  if (deletedIndexPaths) {
-                                      NSMutableArray *filteredIndexPaths = [updatedIndexPaths mutableCopy];
-                                      for (NSIndexPath *indexPath in updatedIndexPaths) {
-                                          if ([deletedIndexPaths containsObject:indexPath]) {
-                                              [filteredIndexPaths removeObject:indexPath];
-                                          }
-                                      }
+                               if (deletedIndexPaths) {
+                                   NSMutableArray *filteredIndexPaths = [updatedIndexPaths mutableCopy];
+                                   for (NSIndexPath *indexPath in updatedIndexPaths) {
+                                       if ([deletedIndexPaths containsObject:indexPath]) {
+                                           [filteredIndexPaths removeObject:indexPath];
+                                       }
+                                   }
 
-                                      [self reloadItemsAtIndexPaths:filteredIndexPaths];
-                                  } else {
-                                      [self reloadItemsAtIndexPaths:updatedIndexPaths];
-                                  }
-                              }
+                                   [self reloadItemsAtIndexPaths:filteredIndexPaths];
+                               } else {
+                                   [self reloadItemsAtIndexPaths:updatedIndexPaths];
+                               }
+                           }
 
-                              BOOL shouldRunEnableTargets = (enabledTargets.count > 0 && [self.formsManager isEnabled]);
-                              if (shouldRunEnableTargets) {
-                                  enabledIndexPaths = [self.formsManager enableTargets:enabledTargets];
+                           BOOL shouldRunEnableTargets = (enabledTargets.count > 0 && [self.formsManager isEnabled]);
+                           if (shouldRunEnableTargets) {
+                               enabledIndexPaths = [self.formsManager enableTargets:enabledTargets];
 
-                                  [self reloadItemsAtIndexPaths:enabledIndexPaths];
-                              }
+                               [self reloadItemsAtIndexPaths:enabledIndexPaths];
+                           }
 
-                              if (disabledTargets.count > 0) {
-                                  disabledIndexPaths = [self.formsManager disableTargets:disabledTargets];
+                           if (disabledTargets.count > 0) {
+                               disabledIndexPaths = [self.formsManager disableTargets:disabledTargets];
 
-                                  [self reloadItemsAtIndexPaths:disabledIndexPaths];
-                              }
-                          }];
+                               [self reloadItemsAtIndexPaths:disabledIndexPaths];
+                           }
+                       }];
 }
 
 #pragma mark - Target helpers
@@ -691,11 +692,87 @@ static const CGFloat FORMDispatchTime = 0.05f;
     [self collapseFieldsInSection:headerView.section collectionView:self.collectionView];
 }
 
-#pragma mark - HYPFormsLayoutDataSource
+#pragma mark - FORMLayoutDataSource
 
 - (NSArray *)forms
 {
     return self.formsManager.forms;
+}
+
+//// /////
+
+- (NSArray *)invalidFormFields
+{
+    return [self.formsManager invalidFormFields];
+}
+
+- (NSDictionary *)requiredFormFields
+{
+    return [self.formsManager requiredFormFields];
+}
+
+- (NSMutableDictionary *)valuesForFormula:(FORMField *)field
+{
+    return [self.formsManager valuesForFormula:field];
+}
+
+- (FORMSection *)sectionWithID:(NSString *)sectionID
+{
+    return [self.formsManager sectionWithID:sectionID];
+}
+
+- (void)sectionWithID:(NSString *)sectionID
+           completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion
+{
+    [self.formsManager sectionWithID:sectionID completion:completion];
+}
+
+- (void)indexForFieldWithID:(NSString *)fieldID
+            inSectionWithID:(NSString *)sectionID
+                 completion:(void (^)(FORMSection *section, NSInteger index))completion
+{
+    [self.formsManager indexForFieldWithID:fieldID inSectionWithID:sectionID completion:completion];
+}
+
+- (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+{
+    return [self.formsManager fieldWithID:fieldID includingHiddenFields:includingHiddenFields];
+}
+
+- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+         completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion
+{
+    [self.formsManager fieldWithID:fieldID includingHiddenFields:includingHiddenFields completion:completion];
+}
+
+- (NSArray *)showTargets:(NSArray *)targets
+{
+    return [self.formsManager showTargets:targets];
+}
+
+- (NSArray *)hideTargets:(NSArray *)targets
+{
+    return [self.formsManager hideTargets:targets];
+}
+
+- (NSArray *)updateTargets:(NSArray *)targets
+{
+    return [self.formsManager updateTargets:targets];
+}
+
+- (NSArray *)enableTargets:(NSArray *)targets
+{
+    return [self.formsManager enableTargets:targets];
+}
+
+- (NSArray *)disableTargets:(NSArray *)targets
+{
+    return [self.formsManager disableTargets:targets];
+}
+
+- (NSInteger)numberOfFields
+{
+    return [self.formsManager numberOfFields];
 }
 
 @end

@@ -1,18 +1,18 @@
 @import UIKit;
 
-@protocol HYPFormsLayoutDataSource;
+@protocol FORMLayoutDataSource;
 
 static const NSInteger FORMMarginHorizontal = 15.0f;
 static const NSInteger FORMMarginTop = 10.0f;
 static const NSInteger FORMMarginBottom = 30.0f;
 
-@interface FORMCollectionViewLayout : UICollectionViewFlowLayout
+@interface FORMLayout : UICollectionViewFlowLayout
 
-@property (nonatomic, weak) id <HYPFormsLayoutDataSource> dataSource;
+@property (nonatomic, weak) id <FORMLayoutDataSource> dataSource;
 
 @end
 
-@protocol HYPFormsLayoutDataSource <NSObject>
+@protocol FORMLayoutDataSource <NSObject>
 
 - (NSArray *)forms;
 - (NSArray *)collapsedForms;

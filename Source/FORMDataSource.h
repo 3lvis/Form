@@ -1,7 +1,7 @@
 @import Foundation;
 @import UIKit;
 
-#import "FORMCollectionViewLayout.h"
+#import "FORMLayout.h"
 
 #import "FORMBaseFieldCell.h"
 #import "FORMGroupHeaderView.h"
@@ -18,16 +18,13 @@ typedef void (^FORMFieldConfigureHeaderViewBlock)(FORMGroupHeaderView *headerVie
 typedef void (^FORMFieldConfigureFieldUpdatedBlock)(id cell, FORMField *field);
 typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath);
 
-@interface FORMDataSource : NSObject <UICollectionViewDataSource, HYPFormsLayoutDataSource>
+@interface FORMDataSource : NSObject <UICollectionViewDataSource, FORMLayoutDataSource>
 
 - (instancetype)initWithJSON:(NSArray *)JSON
               collectionView:(UICollectionView *)collectionView
-                      layout:(FORMCollectionViewLayout *)layout
+                      layout:(FORMLayout *)layout
                       values:(NSDictionary *)values
-                     disabled:(BOOL)disabled;
-
-@property (nonatomic, strong) NSMutableArray *collapsedForms;
-@property (nonatomic, strong, readonly) FORMData *formsManager;
+                    disabled:(BOOL)disabled;
 
 @property (nonatomic, copy) FORMFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) FORMFieldConfigureHeaderViewBlock configureHeaderViewBlock;
@@ -55,5 +52,37 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
+
+//// FORMData methods
+
+- (NSArray *)invalidFormFields;
+
+- (NSDictionary *)requiredFormFields;
+
+- (NSMutableDictionary *)valuesForFormula:(FORMField *)field;
+
+- (FORMSection *)sectionWithID:(NSString *)sectionID;
+
+- (void)sectionWithID:(NSString *)sectionID
+           completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion;
+
+- (void)indexForFieldWithID:(NSString *)fieldID
+            inSectionWithID:(NSString *)sectionID
+                 completion:(void (^)(FORMSection *section, NSInteger index))completion;
+
+- (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields;
+
+- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+         completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
+
+- (NSArray *)showTargets:(NSArray *)targets;
+- (NSArray *)hideTargets:(NSArray *)targets;
+- (NSArray *)updateTargets:(NSArray *)targets;
+- (NSArray *)enableTargets:(NSArray *)targets;
+- (NSArray *)disableTargets:(NSArray *)targets;
+
+- (NSInteger)numberOfFields;
+
+- (NSArray *)forms;
 
 @end
