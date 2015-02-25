@@ -6,12 +6,16 @@
 #import "FORMTextFieldCell.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 #import "UIColor+HYPFormsColors.h"
+#import "FORMTextField.h"
+#import "FORMButtonFieldCell.h"
+#import "FORMBaseFieldCell.h"
 
-@interface HYPDemoLoginCollectionViewController ()
+@interface HYPDemoLoginCollectionViewController () <FORMBaseFieldCellDelegate, HYPTextFieldDelegate>
 
 @property (nonatomic, strong) NSArray *JSON;
 @property (nonatomic, strong) FORMDataSource *dataSource;
 @property (nonatomic, strong) FORMCollectionViewLayout *layout;
+@property (nonatomic, strong) FORMTextField *emailTextField;
 
 @end
 
@@ -26,11 +30,10 @@
     self.JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"JSON.json"];
     self.layout = layout;
 
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
     self.collectionView.dataSource = self.dataSource;
 
     self.collectionView.contentInset = UIEdgeInsetsMake([UIScreen mainScreen].bounds.size.width/3, 0, 0, 0);
-    self.collectionView.backgroundColor = [UIColor HYPFormsDarkGray];
+    self.collectionView.backgroundColor = [UIColor HYPFormsLightGray];
 }
 
 #pragma mark - Data source collection view
@@ -57,6 +60,23 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.dataSource sizeForItemAtIndexPath:indexPath];
+}
+
+#pragma mark - Text field methods
+
+- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(FORMField *)field
+{
+
+}
+
+- (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets
+{
+
+}
+
+- (void)textFormField:(FORMTextField *)textField didUpdateWithText:(NSString *)text
+{
+    
 }
 
 @end
