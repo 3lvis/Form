@@ -5,6 +5,7 @@
 #import "FORMData.h"
 #import "FORMTextFieldCell.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
+#import "UIColor+HYPFormsColors.h"
 
 @interface HYPDemoLoginCollectionViewController ()
 
@@ -27,7 +28,9 @@
 
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
     self.collectionView.dataSource = self.dataSource;
+
     self.collectionView.contentInset = UIEdgeInsetsMake([UIScreen mainScreen].bounds.size.width/3, 0, 0, 0);
+    self.collectionView.backgroundColor = [UIColor HYPFormsDarkGray];
 }
 
 #pragma mark - Data source collection view

@@ -18,7 +18,7 @@
                     {
                         "id":"password",
                         "title":"Password",
-                        "type":"text",
+                        "type":"password",
                         "size":{
                           "width":60,
                           "height":1
