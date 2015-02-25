@@ -114,7 +114,7 @@
 - (NSString *)description
 {
     NSMutableArray *fields = [NSMutableArray new];
-    for (FORMField *field in fields) {
+    for (FORMField *field in self.fields) {
         [fields addObject:field.fieldID];
     }
 
