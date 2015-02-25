@@ -1,6 +1,6 @@
 #import "HYPSampleCollectionViewController.h"
 
-#import "FORMDataSource.h"
+#import "FORMCollectionViewDataSource.h"
 #import "HYPPostalCodeManager.h"
 #import "FORMFieldValue.h"
 #import "HYPImagePicker.h"
@@ -14,7 +14,7 @@
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
-@property (nonatomic, strong) FORMDataSource *dataSource;
+@property (nonatomic, strong) FORMCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
 @property (nonatomic, strong) FORMCollectionViewLayout *layout;
@@ -39,8 +39,6 @@
     [self.collectionView registerClass:[HYPImageFormFieldCell class]
             forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
 
-    self.collectionView.dataSource = self.dataSource;
-
     if ([NSObject isUnitTesting]) {
         [self.collectionView numberOfSections];
     }
@@ -50,11 +48,11 @@
 
 #pragma mark - Getters
 
-- (FORMDataSource *)dataSource
+- (FORMCollectionViewDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
+    _dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:self.JSON
                                                           collectionView:self.collectionView
                                                                   layout:self.layout
                                                                   values:self.initialValues
@@ -112,6 +110,8 @@
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor HYPFormsBackground];
+
+    self.collectionView.dataSource = self.dataSource;
 }
 
 - (void)viewDidAppear:(BOOL)animated

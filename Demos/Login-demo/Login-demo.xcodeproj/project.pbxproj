@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A49A4CC1266829DA220CDA4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC563973FE23E4F285E91561 /* libPods.a */; };
-		F6AF1D111A9DC7F6000433CA /* JSON in Resources */ = {isa = PBXBuildFile; fileRef = F6AF1D101A9DC7F6000433CA /* JSON */; };
+		F6AF1D111A9DC7F6000433CA /* JSON.json in Resources */ = {isa = PBXBuildFile; fileRef = F6AF1D101A9DC7F6000433CA /* JSON.json */; };
 		F6AF1D171A9DCAFE000433CA /* HYPDemoLoginCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6AF1D161A9DCAFE000433CA /* HYPDemoLoginCollectionViewController.m */; };
 		F6D859A21A9D336600546123 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D859A11A9D336600546123 /* main.m */; };
 		F6D859A51A9D336600546123 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D859A41A9D336600546123 /* AppDelegate.m */; };
@@ -32,7 +32,7 @@
 		0313BC2E4AA3CA8483A52793 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		89A08BABBCCE352EAE0C2077 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DC563973FE23E4F285E91561 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6AF1D101A9DC7F6000433CA /* JSON */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSON; sourceTree = "<group>"; };
+		F6AF1D101A9DC7F6000433CA /* JSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JSON.json; sourceTree = "<group>"; };
 		F6AF1D151A9DCAFE000433CA /* HYPDemoLoginCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPDemoLoginCollectionViewController.h; sourceTree = "<group>"; };
 		F6AF1D161A9DCAFE000433CA /* HYPDemoLoginCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPDemoLoginCollectionViewController.m; sourceTree = "<group>"; };
 		F6D8599C1A9D336600546123 /* Login-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Login-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +130,7 @@
 		F6D8599F1A9D336600546123 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F6AF1D101A9DC7F6000433CA /* JSON */,
+				F6AF1D101A9DC7F6000433CA /* JSON.json */,
 				F6D859A01A9D336600546123 /* Info.plist */,
 				F6D859A11A9D336600546123 /* main.m */,
 			);
@@ -238,7 +238,7 @@
 			files = (
 				F6D859AB1A9D336600546123 /* Main.storyboard in Resources */,
 				F6D859B01A9D336600546123 /* LaunchScreen.xib in Resources */,
-				F6AF1D111A9DC7F6000433CA /* JSON in Resources */,
+				F6AF1D111A9DC7F6000433CA /* JSON.json in Resources */,
 				F6D859AD1A9D336600546123 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,7 +1,10 @@
 #import "HYPDemoLoginCollectionViewController.h"
 #import "FORMDataSource.h"
-
-static NSString * const reuseIdentifier = @"Cell";
+#import "HYPPostalCodeManager.h"
+#import "FORMFieldValue.h"
+#import "FORMData.h"
+#import "FORMTextFieldCell.h"
+#import "NSJSONSerialization+ANDYJSONFile.h"
 
 @interface HYPDemoLoginCollectionViewController ()
 
@@ -16,7 +19,13 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+
+    FORMCollectionViewLayout *layout = [FORMCollectionViewLayout new];
+
+    self.JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"JSON.json"];
+    self.layout = layout;
+
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
     self.collectionView.dataSource = self.dataSource;
 }
 
@@ -24,15 +33,26 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (FORMDataSource *)dataSource
 {
-    if (self.dataSource) return self.dataSource;
+    if (_dataSource) return _dataSource;
 
-    self.dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
+    _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
                                         collectionView:self.collectionView
                                                 layout:self.layout
                                                 values:nil
                                               disabled:NO];
 
-    return self.dataSource;
+    _dataSource.configureCellForIndexPath = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
+        id cell;
+        return cell;
+    };
+
+    return _dataSource;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.dataSource sizeForItemAtIndexPath:indexPath];
 }
 
 @end
