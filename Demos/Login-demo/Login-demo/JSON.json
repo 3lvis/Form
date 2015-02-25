@@ -4,15 +4,33 @@
         "title":"Group title",
         "sections":[
             {
-                "id":"section-0",
+                "id":"mainSection",
                 "fields":[
                     {
-                        "id":"first_name",
-                        "title":"First name",
-                        "type":"name",
+                        "id":"email",
+                        "title":"Email",
+                        "type":"email",
                         "size":{
-                            "width":30,
+                            "width":60,
                             "height":1
+                        }
+                    },
+                    {
+                        "id":"password",
+                        "title":"Password",
+                        "type":"text",
+                        "size":{
+                          "width":60,
+                          "height":1
+                        }
+                    },
+                    {
+                        "id":"login",
+                        "title":"Login",
+                        "type":"button",
+                        "size":{
+                          "width":60,
+                          "height":1
                         }
                     }
                 ]
