@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Form"
-  s.version = "0.118"
+  s.version = "0.118.1"
   s.summary = "JSON driven forms"
   s.homepage = "https://github.com/hyperoslo/Form"
   s.license = {
