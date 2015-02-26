@@ -85,4 +85,8 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 
 - (NSArray *)forms;
 
+- (void)updateValuesWithDictionary:(NSDictionary *)dictionary;
+
+- (NSDictionary *)valuesDictionary;
+
 @end

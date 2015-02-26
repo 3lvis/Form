@@ -775,4 +775,16 @@ static const CGFloat FORMDispatchTime = 0.05f;
     return [self.formsManager numberOfFields];
 }
 
+- (void)updateValuesWithDictionary:(NSDictionary *)dictionary
+{
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        self.formsManager.values[key] = obj;
+    }];
+}
+
+- (NSDictionary *)valuesDictionary
+{
+    return [self.formsManager.values copy];
+}
+
 @end
