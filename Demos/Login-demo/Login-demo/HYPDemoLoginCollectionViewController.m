@@ -7,15 +7,16 @@
 #import "NSJSONSerialization+ANDYJSONFile.h"
 #import "UIColor+HYPFormsColors.h"
 #import "FORMTextField.h"
+#import "FORMCollectionViewLayout.h"
 #import "FORMButtonFieldCell.h"
-#import "FORMBaseFieldCell.h"
 
-@interface HYPDemoLoginCollectionViewController () <FORMBaseFieldCellDelegate, HYPTextFieldDelegate>
+@interface HYPDemoLoginCollectionViewController () <HYPTextFieldDelegate>
 
 @property (nonatomic, strong) NSArray *JSON;
 @property (nonatomic, strong) FORMDataSource *dataSource;
 @property (nonatomic, strong) FORMCollectionViewLayout *layout;
-@property (nonatomic, strong) FORMTextField *emailTextField;
+@property (nonatomic) FORMTextField *emailTextField;
+@property (nonatomic) FORMTextField *passwordTextField;
 
 @end
 
@@ -48,11 +49,6 @@
                                                 values:nil
                                               disabled:NO];
 
-    _dataSource.configureCellForIndexPath = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
-        id cell;
-        return cell;
-    };
-
     return _dataSource;
 }
 
@@ -60,23 +56,6 @@
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.dataSource sizeForItemAtIndexPath:indexPath];
-}
-
-#pragma mark - Text field methods
-
-- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(FORMField *)field
-{
-
-}
-
-- (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets
-{
-
-}
-
-- (void)textFormField:(FORMTextField *)textField didUpdateWithText:(NSString *)text
-{
-    
 }
 
 @end
