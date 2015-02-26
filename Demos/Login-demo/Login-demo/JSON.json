@@ -9,7 +9,7 @@
                     {
                         "id":"email",
                         "title":"Email",
-                        "type":"email",
+                        "type":"text",
                         "size":{
                             "width":60,
                             "height":1

@@ -15,7 +15,7 @@
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
 @property (nonatomic, strong) FORMCollectionViewDataSource *dataSource;
-@property (nonatomic, copy) NSDictionary *initialValues;
+@property (nonatomic, copy) NSDictionary *sdinitialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
 @property (nonatomic, strong) FORMCollectionViewLayout *layout;
 @property (nonatomic, copy) NSArray *JSON;

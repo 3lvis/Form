@@ -18,6 +18,7 @@
 @property (nonatomic) FORMField *emailTextField;
 @property (nonatomic) FORMField *passwordTextField;
 @property (nonatomic) FORMField *buttonCell;
+@property (nonatomic) FORMTextField *textField;
 
 @end
 
@@ -49,6 +50,10 @@
                                                 values:nil
                                               disabled:NO];
 
+    for (FORMField *field in self.dataSource.forms) {
+        NSLog(@"%@", field);
+    }
+
     __weak typeof(self)weakSelf = self;
 
     _dataSource.configureFieldUpdatedBlock = ^(id cell, FORMField *field) {
@@ -78,10 +83,14 @@
     return _dataSource;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.dataSource sizeForItemAtIndexPath:indexPath];
+}
+
+- (void)textFormField:(FORMTextField *)textField didUpdateWithText:(NSString *)text
+{
+
 }
 
 @end
