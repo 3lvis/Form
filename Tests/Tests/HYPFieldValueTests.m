@@ -11,10 +11,10 @@
 - (void)testInitWithDictionary
 {
     FORMFieldValue *fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": @"contract_type",
-                                                                            @"title": @"Contract Type",
-                                                                            @"subtitle": @"This is ma' contract",
-                                                                            @"value": @1,
-                                                                            @"default": @YES}];
+                                                                              @"title": @"Contract Type",
+                                                                              @"subtitle": @"This is ma' contract",
+                                                                              @"value": @1,
+                                                                              @"default": @YES}];
     XCTAssertNotNil(fieldValue);
     XCTAssertEqualObjects(fieldValue.valueID, @"contract_type");
     XCTAssertEqualObjects(fieldValue.title, @"Contract Type");
@@ -23,7 +23,7 @@
     XCTAssertTrue(fieldValue.defaultValue);
 
     fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": @0,
-                                                             @"title": @"Full time"}];
+                                                              @"title": @"Full time"}];
     XCTAssertNotNil(fieldValue);
     XCTAssertEqualObjects(fieldValue.valueID, @0);
     XCTAssertEqualObjects(fieldValue.title, @"Full time");

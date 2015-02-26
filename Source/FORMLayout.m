@@ -1,4 +1,4 @@
-#import "FORMCollectionViewLayout.h"
+#import "FORMLayout.h"
 
 #import "FORMBackgroundView.h"
 #import "FORMBaseFieldCell.h"
@@ -31,11 +31,11 @@
 
 @end
 
-@interface FORMCollectionViewLayout ()
+@interface FORMLayout ()
 
 @end
 
-@implementation FORMCollectionViewLayout
+@implementation FORMLayout
 
 #pragma mark - Initializers
 
