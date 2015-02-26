@@ -1,0 +1,97 @@
+{
+  "groups":[
+    {
+      "id":"personal-details",
+      "title":"Personal Details",
+      "sections":[
+        {
+          "id":"personal-details-0",
+          "fields":[
+            {
+              "id":"first_name",
+              "title":"First name",
+              "subtitle":"Fornavn",
+              "type":"name",
+              "size":{
+                "width":30,
+                "height":1
+              },
+              "validations":{
+                "required":true,
+                "min_length":2
+              }
+            },
+            {
+              "id":"last_name",
+              "title":"Last name",
+              "type":"name",
+              "subtitle":"Obs! Husk å kjøpe melk",
+              "size":{
+                "width":30,
+                "height":1
+              },
+              "validations":{
+                "required":true,
+                "min_length":2
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "templates":[
+    {
+      "sections":[
+        {
+          "id":"companies[:id]",
+          "fields":[
+            {
+              "id":"companies[:id].name",
+              "title":"Name 1",
+              "subtitle":"Hyper",
+              "type":"name",
+              "validations":{
+                "required":true,
+                "min_length":2
+              },
+              "size":{
+                "width":50,
+                "height":1
+              }
+            },
+            {
+              "id":"companies[:id].phone_number",
+              "title":"Phone number 1",
+              "type":"number",
+              "size":{
+                "width":30,
+                "height":1
+              }
+            },
+            {
+              "id":"companies[:id].remove",
+              "title":"Remove",
+              "type":"button",
+              "size":{
+                "width":20,
+                "height":1
+              }
+            }
+          ]
+        }
+      ],
+      "fields":[
+        {
+          "id":"tags[:id].text",
+          "title":"Tag",
+          "type":"text",
+          "size":{
+            "width":30,
+            "height":1
+          }
+        }
+      ]
+    }
+  ]
+}
