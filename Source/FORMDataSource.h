@@ -52,41 +52,28 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
-
-//// FORMData methods
-
-- (NSArray *)invalidFormFields;
-
-- (NSDictionary *)requiredFormFields;
-
-- (NSMutableDictionary *)valuesForFormula:(FORMField *)field;
-
-- (FORMSection *)sectionWithID:(NSString *)sectionID;
-
-- (void)sectionWithID:(NSString *)sectionID
-           completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion;
-
-- (void)indexForFieldWithID:(NSString *)fieldID
-            inSectionWithID:(NSString *)sectionID
-                 completion:(void (^)(FORMSection *section, NSInteger index))completion;
-
-- (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields;
-
-- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
-         completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
-
 - (NSArray *)showTargets:(NSArray *)targets;
 - (NSArray *)hideTargets:(NSArray *)targets;
 - (NSArray *)updateTargets:(NSArray *)targets;
 - (NSArray *)enableTargets:(NSArray *)targets;
 - (NSArray *)disableTargets:(NSArray *)targets;
-
+- (NSArray *)invalidFormFields;
+- (NSDictionary *)requiredFormFields;
+- (NSMutableDictionary *)valuesForFormula:(FORMField *)field;
+- (FORMSection *)sectionWithID:(NSString *)sectionID;
+- (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields;
 - (NSInteger)numberOfFields;
-
 - (NSArray *)forms;
+- (NSDictionary *)valuesDictionary;
 
+- (void)sectionWithID:(NSString *)sectionID
+           completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion;
+- (void)indexForFieldWithID:(NSString *)fieldID
+            inSectionWithID:(NSString *)sectionID
+                 completion:(void (^)(FORMSection *section, NSInteger index))completion;
+- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+         completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
 - (void)updateValuesWithDictionary:(NSDictionary *)dictionary;
 
-- (NSDictionary *)valuesDictionary;
 
 @end
