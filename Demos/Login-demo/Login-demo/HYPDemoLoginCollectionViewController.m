@@ -7,14 +7,14 @@
 #import "NSJSONSerialization+ANDYJSONFile.h"
 #import "UIColor+HYPFormsColors.h"
 #import "FORMTextField.h"
-#import "FORMCollectionViewLayout.h"
+#import "FORMLayout.h"
 #import "FORMButtonFieldCell.h"
 
 @interface HYPDemoLoginCollectionViewController () <HYPTextFieldDelegate>
 
 @property (nonatomic, strong) NSArray *JSON;
 @property (nonatomic, strong) FORMDataSource *dataSource;
-@property (nonatomic, strong) FORMCollectionViewLayout *layout;
+@property (nonatomic, strong) FORMLayout *layout;
 @property (nonatomic) FORMTextField *emailTextField;
 @property (nonatomic) FORMTextField *passwordTextField;
 
@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
 
-    FORMCollectionViewLayout *layout = [FORMCollectionViewLayout new];
+    FORMLayout *layout = [FORMLayout new];
 
     self.JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"JSON.json"];
     self.layout = layout;

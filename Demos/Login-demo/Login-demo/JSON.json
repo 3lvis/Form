@@ -28,7 +28,7 @@
                           "height":1
                         },
                         "validations":{
-                          "min-length": 6,
+                          "min_length": 6,
                           "required":true
                         }
                     },

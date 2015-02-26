@@ -2,4 +2,4 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '7.0'
 
-pod 'Form', git: 'https://github.com/hyperoslo/HYPForms'
+pod 'Form', git: 'https://github.com/hyperoslo/Form'
