@@ -699,7 +699,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
     return self.formsManager.forms;
 }
 
-//// /////
+#pragma mark - FORMData bridge
 
 - (NSArray *)invalidFormFields
 {
