@@ -182,8 +182,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 {
     if ([typeString isEqualToString:@"text"] ||
         [typeString isEqualToString:@"name"] ||
-        [typeString isEqualToString:@"email"] ||
-        [typeString isEqualToString:@"password"]) {
+        [typeString isEqualToString:@"email"]) {
         return FORMFieldTypeText;
     } else if ([typeString isEqualToString:@"select"]) {
         return FORMFieldTypeSelect;

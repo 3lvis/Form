@@ -172,8 +172,6 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
         type = FORMTextFieldTypeSelect;
     } else if ([typeString isEqualToString:@"text"]) {
         type = FORMTextFieldTypeDefault;
-    } else if ([typeString isEqualToString:@"password"]) {
-        type = FORMTextFieldTypePassword;
     } else if (!typeString.length) {
         type = FORMTextFieldTypeDefault;
     } else {
