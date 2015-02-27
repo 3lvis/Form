@@ -44,7 +44,7 @@
     {
       "fields":[
         {
-          "id":"tags[:id].text",
+          "id":"tags[:index].text",
           "title":"Tag",
           "type":"text",
           "size":{
@@ -55,10 +55,10 @@
       ],
       "sections":[
         {
-          "id":"companies[:id]",
+          "id":"companies[:index]",
           "fields":[
             {
-              "id":"companies[:id].name",
+              "id":"companies[:index].name",
               "title":"Name 1",
               "subtitle":"Hyper",
               "type":"name",
@@ -72,7 +72,7 @@
               }
             },
             {
-              "id":"companies[:id].phone_number",
+              "id":"companies[:index].phone_number",
               "title":"Phone number 1",
               "type":"number",
               "size":{
@@ -81,7 +81,7 @@
               }
             },
             {
-              "id":"companies[:id].remove",
+              "id":"companies[:index].remove",
               "title":"Remove",
               "type":"button",
               "size":{
