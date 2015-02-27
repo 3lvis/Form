@@ -1,130 +1,128 @@
-{
-  "groups":[
-    {
-      "id":"employment",
-      "title":"Employment",
-      "sections":[
-        {
-          "id":"employment-0",
-          "fields":[
-            {
-              "id":"contract_type",
-              "title":"Contract type",
-              "type":"select",
-              "size":{
-                "width":50,
-                "height":1
-              },
-              "values":[
-                {
-                  "id":0,
-                  "title":"Permanent",
-                  "targets":[
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"show"
-                    },
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"show"
-                    },
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"show"
-                    }
-                  ]
-                },
-                {
-                  "id":1,
-                  "title":"Temporary",
-                  "targets":[
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"hide"
-                    },
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"hide"
-                    },
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"hide"
-                    }
-                  ]
-                }
-              ]
+[
+  {
+    "id":"employment",
+    "title": "Employment",
+    "sections":[
+      {
+        "id":"employment-0",
+        "fields":[
+          {
+            "id":"contract_type",
+            "title":"Contract type",
+            "type":"select",
+            "size":{
+              "width": 50,
+              "height": 1
             },
-            {
-              "id":"salary_type",
-              "title":"Salary type",
-              "type":"select",
-              "size":{
-                "width":50,
-                "height":1
+            "values":[
+              {
+                "id":0,
+                "title":"Permanent",
+                "targets":[
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"show"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"show"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"show"
+                  }
+                ]
               },
-              "values":[
-                {
-                  "id":0,
-                  "title":"Super",
-                  "targets":[
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"show"
-                    },
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"show"
-                    },
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"show"
-                    }
-                  ]
-                },
-                {
-                  "id":1,
-                  "title":"Excelent",
-                  "targets":[
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"hide"
-                    },
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"hide"
-                    },
-                    {
-                      "id":"start_date",
-                      "type":"field",
-                      "action":"hide"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id":"start_date",
-              "title":"Start date",
-              "type":"date",
-              "size":{
-                "width":25,
-                "height":1
+              {
+                "id":1,
+                "title":"Temporary",
+                "targets":[
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"hide"
+                  }
+                ]
               }
+            ]
+          },
+          {
+            "id":"salary_type",
+            "title":"Salary type",
+            "type":"select",
+            "size":{
+              "width": 50,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Super",
+                "targets":[
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"show"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"show"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"show"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Excelent",
+                "targets":[
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "start_date",
+                    "type":"field",
+                    "action":"hide"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id":"start_date",
+            "title":"Start date",
+            "type":"date",
+            "size":{
+              "width": 25,
+              "height": 1
             }
-          ]
-        }
-      ]
-    }
-  ]
-}
+          }
+        ]
+      }
+    ]
+  }
+]
