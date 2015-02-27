@@ -500,6 +500,26 @@ static const CGFloat FORMDispatchTime = 0.05f;
         self.configureFieldUpdatedBlock(fieldCell, field);
     }
 
+    NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
+    if (components.count == 2 && [components.lastObject isEqualToString:@"add"]) {
+        NSInteger index = 0;
+        NSString *dynamicSectionID = [components firstObject];
+        FORMSection *templateSection = [[self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID] copy];
+        templateSection.sectionID = [NSString stringWithFormat:@"%@.[%ld]", templateSection.sectionID, (long)index];
+        for (FORMField *templateField in templateSection.fields) {
+            templateField.fieldID = [templateField.fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+        }
+
+        [self.formsManager sectionWithID:dynamicSectionID completion:^(FORMSection *dynamicSection, NSArray *indexPaths) {
+            [dynamicSection.form.sections addObject:templateSection];
+            [self.collectionView reloadData];
+        }];
+
+        // Find template {components[0]} in template
+        // Generate the section with the correct id {company[0]}
+        // look throught fields and replace the :index by the current index
+    }
+
     if (!field.fieldValue) {
         [self.formsManager.values removeObjectForKey:field.fieldID];
     } else if ([field.fieldValue isKindOfClass:[FORMFieldValue class]]) {
