@@ -18,6 +18,11 @@
               }
             }
           ]
+        },
+        {
+          "id":"companies",
+          "type":"dynamic",
+          "fields":null
         }
       ]
     }
