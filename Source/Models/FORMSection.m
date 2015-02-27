@@ -15,9 +15,12 @@
     self = [super init];
     if (!self) return nil;
 
-    self.sectionID = [dictionary andy_valueForKey:@"id"];
-    self.position = @(position);
-    self.isLast = isLastSection;
+    _sectionID = [dictionary andy_valueForKey:@"id"];
+    _position = @(position);
+    _isLast = isLastSection;
+    _typeString  = [dictionary andy_valueForKey:@"type"] ?: @"default";
+    _type = [self typeFromTypeString:_typeString];
+    NSLog(@"_typeString: %@", _typeString);
 
     NSArray *dataSourceFields = [dictionary andy_valueForKey:@"fields"];
     NSMutableArray *fields = [NSMutableArray new];
@@ -32,6 +35,19 @@
         [fields addObject:field];
     }];
 
+    if (_type == FORMSectionTypeDynamic) {
+        FORMField *field = [FORMField new];
+        field.position = @(fields.count);
+        field.section = self;
+        field.fieldID = [NSString stringWithFormat:@"%@.add", self.sectionID];
+        field.typeString = @"button";
+        field.type = FORMFieldTypeButton;
+        field.title = [NSString stringWithFormat:@"✚ %@", [self.sectionID uppercaseString]];
+        field.section = self;
+        field.size = CGSizeMake(100.0f, 2.0f);
+        [fields addObject:field];
+    }
+
     if (!isLastSection) {
         FORMField *field = [FORMField new];
         field.sectionSeparator = YES;
@@ -43,6 +59,15 @@
     self.fields = fields;
 
     return self;
+}
+
+- (FORMSectionType)typeFromTypeString:(NSString *)typeString
+{
+    if ([typeString isEqualToString:@"dynamic"]) {
+        return FORMSectionTypeDynamic;
+    } else {
+        return FORMSectionTypeDefault;
+    }
 }
 
 #pragma mark - Public Methods
