@@ -27,54 +27,52 @@
       ]
     }
   ],
-  "templates":[
-    {
-      "fields":[
-        {
-          "id":"tags[:index].text",
-          "title":"Tag",
-          "type":"text",
-          "size":{
-            "width":30,
-            "height":1
-          }
+  "templates":{
+    "fields":[
+      {
+        "id":"tags[:index].text",
+        "title":"Tag",
+        "type":"text",
+        "size":{
+          "width":30,
+          "height":1
         }
-      ],
-      "sections":[
-        {
-          "id":"companies[:index]",
-          "fields":[
-            {
-              "id":"companies[:index].name",
-              "title":"Name 1",
-              "subtitle":"Hyper",
-              "type":"name",
-              "size":{
-                "width":50,
-                "height":1
-              }
-            },
-            {
-              "id":"companies[:index].phone_number",
-              "title":"Phone number 1",
-              "type":"number",
-              "size":{
-                "width":30,
-                "height":1
-              }
-            },
-            {
-              "id":"companies[:index].remove",
-              "title":"Remove",
-              "type":"remove",
-              "size":{
-                "width":20,
-                "height":1
-              }
+      }
+    ],
+    "sections":[
+      {
+        "id":"companies",
+        "fields":[
+          {
+            "id":"companies[:index].name",
+            "title":"Name 1",
+            "subtitle":"Hyper",
+            "type":"name",
+            "size":{
+              "width":50,
+              "height":1
             }
-          ]
-        }
-      ]
-    }
-  ]
+          },
+          {
+            "id":"companies[:index].phone_number",
+            "title":"Phone number 1",
+            "type":"number",
+            "size":{
+              "width":30,
+              "height":1
+            }
+          },
+          {
+            "id":"companies[:index].remove",
+            "title":"Remove",
+            "type":"remove",
+            "size":{
+              "width":20,
+              "height":1
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
