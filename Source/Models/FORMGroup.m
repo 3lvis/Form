@@ -45,6 +45,7 @@
                                                                isLastSection:isLastSection];
 
         section.form = self;
+
         [sections addObject:section];
     }];
 
