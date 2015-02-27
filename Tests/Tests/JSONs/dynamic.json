@@ -42,6 +42,17 @@
   ],
   "templates":[
     {
+      "fields":[
+        {
+          "id":"tags[:id].text",
+          "title":"Tag",
+          "type":"text",
+          "size":{
+            "width":30,
+            "height":1
+          }
+        }
+      ],
       "sections":[
         {
           "id":"companies[:id]",
@@ -79,17 +90,6 @@
               }
             }
           ]
-        }
-      ],
-      "fields":[
-        {
-          "id":"tags[:id].text",
-          "title":"Tag",
-          "type":"text",
-          "size":{
-            "width":30,
-            "height":1
-          }
         }
       ]
     }

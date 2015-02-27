@@ -108,7 +108,7 @@
     return _evaluator;
 }
 
-- (void)generateFormsWithJSON:(NSArray *)JSON
+- (void)generateFormsWithJSON:(NSDictionary *)JSON
                 initialValues:(NSDictionary *)initialValues
             disabledFieldsIDs:(NSArray *)disabledFieldsIDs
                      disabled:(BOOL)disabled
@@ -119,7 +119,9 @@
 
     [disabledFields addObjectsFromArray:disabledFieldsIDs];
 
-    [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
+    NSArray *groups = [JSON valueForKey:@"groups"];
+
+    [groups enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
         FORMGroup *form = [[FORMGroup alloc] initWithDictionary:formDict
                                                        position:formIndex
