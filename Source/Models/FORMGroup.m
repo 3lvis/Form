@@ -4,9 +4,9 @@
 #import "FORMField.h"
 #import "FORMFieldValue.h"
 #import "FORMTarget.h"
-
 #import "FORMClassFactory.h"
 #import "FORMValidator.h"
+#import "AutoCoding.h"
 
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
@@ -116,6 +116,16 @@
 
     return [NSString stringWithFormat:@"\n — Group: %@ —\n title: %@\n position: %@\n shouldValidate: %@\n sections: %@\n",
             self.formID, self.title, self.position, self.shouldValidate ? @"YES" : @"NO", fields];
+}
+
+- (id)copyWithZone:(id)zone
+{
+    id copy = [[[self class] alloc] init];
+    for (NSString *key in [self codableProperties]) {
+        [copy setValue:[self valueForKey:key] forKey:key];
+    }
+
+    return copy;
 }
 
 @end
