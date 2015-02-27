@@ -12,7 +12,6 @@
 
 static NSString * const FORMFieldSelectType = @"select";
 static NSString * const FORMInputValidatorSelector = @"validateString:text:";
-static NSString * const HYPFormatterClass = @"HYP%@Formatter";
 static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 @implementation FORMField
