@@ -8,31 +8,13 @@
           "id":"personal-details-0",
           "fields":[
             {
-              "id":"first_name",
-              "title":"First name",
-              "subtitle":"Fornavn",
+              "id":"name",
+              "title":"Name",
+              "subtitle":"This is your name!",
               "type":"name",
               "size":{
                 "width":30,
                 "height":1
-              },
-              "validations":{
-                "required":true,
-                "min_length":2
-              }
-            },
-            {
-              "id":"last_name",
-              "title":"Last name",
-              "type":"name",
-              "subtitle":"Obs! Husk å kjøpe melk",
-              "size":{
-                "width":30,
-                "height":1
-              },
-              "validations":{
-                "required":true,
-                "min_length":2
               }
             }
           ]
@@ -62,10 +44,6 @@
               "title":"Name 1",
               "subtitle":"Hyper",
               "type":"name",
-              "validations":{
-                "required":true,
-                "min_length":2
-              },
               "size":{
                 "width":50,
                 "height":1
@@ -83,7 +61,7 @@
             {
               "id":"companies[:index].remove",
               "title":"Remove",
-              "type":"button",
+              "type":"remove",
               "size":{
                 "width":20,
                 "height":1
