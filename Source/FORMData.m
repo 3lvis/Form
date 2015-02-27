@@ -92,6 +92,24 @@
     return _values;
 }
 
+- (NSMutableDictionary *)sectionTemplatesDictionary
+{
+    if (_sectionTemplatesDictionary) return _sectionTemplatesDictionary;
+
+    _sectionTemplatesDictionary = [NSMutableDictionary new];
+
+    return _sectionTemplatesDictionary;
+}
+
+- (NSMutableDictionary *)fieldTemplatesDictionary
+{
+    if (_fieldTemplatesDictionary) return _fieldTemplatesDictionary;
+
+    _fieldTemplatesDictionary = [NSMutableDictionary new];
+
+    return _fieldTemplatesDictionary;
+}
+
 - (DDMathEvaluator *)evaluator
 {
     if (_evaluator) return _evaluator;
@@ -125,6 +143,26 @@
         groups = JSON;
     } else if ([JSON isKindOfClass:[NSDictionary class]]) {
         groups = [JSON valueForKey:@"groups"];
+
+        NSDictionary *templates = [JSON valueForKey:@"templates"];
+        NSArray *fieldTemplates = [templates valueForKey:@"fields"];
+        [fieldTemplates enumerateObjectsUsingBlock:^(NSDictionary *fieldDictionary, NSUInteger idx, BOOL *stop) {
+            FORMField *field = [[FORMField alloc] initWithDictionary:fieldDictionary
+                                                            position:idx
+                                                            disabled:disabled
+                                                   disabledFieldsIDs:disabledFieldsIDs];
+            self.fieldTemplatesDictionary[field.fieldID] = field;
+        }];
+
+        NSArray *sectionsTemplates = [templates valueForKey:@"sections"];
+        [sectionsTemplates enumerateObjectsUsingBlock:^(NSDictionary *sectionDictionary, NSUInteger idx, BOOL *stop) {
+            FORMSection *section = [[FORMSection alloc] initWithDictionary:sectionDictionary
+                                                                  position:idx
+                                                                  disabled:disabled
+                                                         disabledFieldsIDs:disabledFieldsIDs
+                                                             isLastSection:YES];
+            self.sectionTemplatesDictionary[section.sectionID] = section;
+        }];
     } else {
         NSLog(@"Not a valid JSON format");
         abort();

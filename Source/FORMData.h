@@ -9,6 +9,8 @@
 @property (nonatomic, strong) NSMutableDictionary *hiddenSections;
 @property (nonatomic, strong) NSArray *disabledFieldsIDs;
 @property (nonatomic, strong) NSMutableDictionary *values;
+@property (nonatomic, strong) NSMutableDictionary *sectionTemplatesDictionary;
+@property (nonatomic, strong) NSMutableDictionary *fieldTemplatesDictionary;
 
 - (instancetype)initWithJSON:(id)JSON
                initialValues:(NSDictionary *)initialValues
