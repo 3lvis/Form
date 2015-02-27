@@ -3,6 +3,7 @@
 #import "FORMGroup.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "FORMTarget.h"
+#import "AutoCoding.h"
 
 @implementation FORMSection
 
@@ -120,6 +121,17 @@
 
     return [NSString stringWithFormat:@"\n — Section: %@ —\n position: %@\n formID: %@\n shouldValidate: %@\n containsSpecialField: %@\n isLast: %@\n fields: %@\n",
             self.sectionID, self.position, self.form.formID, self.shouldValidate ? @"YES" : @"NO", self.containsSpecialField ? @"YES" : @"NO", self.isLast ? @"YES" : @"NO", fields];
+}
+
+- (id)copyWithZone:(id)zone
+{
+    id copy = [[[self class] alloc] init];
+    
+    for (NSString *key in [self codableProperties]) {
+        [copy setValue:[self valueForKey:key] forKey:key];
+    }
+
+    return copy;
 }
 
 @end
