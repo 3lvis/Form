@@ -1,6 +1,6 @@
 #import "HYPSampleCollectionViewController.h"
 
-#import "FORMCollectionViewDataSource.h"
+#import "FORMDataSource.h"
 #import "HYPPostalCodeManager.h"
 #import "FORMFieldValue.h"
 #import "HYPImagePicker.h"
@@ -14,8 +14,8 @@
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
-@property (nonatomic, strong) FORMCollectionViewDataSource *dataSource;
-@property (nonatomic, copy) NSDictionary *sdinitialValues;
+@property (nonatomic, strong) FORMDataSource *dataSource;
+@property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
 @property (nonatomic, strong) FORMLayout *layout;
 @property (nonatomic, copy) NSArray *JSON;
@@ -48,11 +48,11 @@
 
 #pragma mark - Getters
 
-- (FORMCollectionViewDataSource *)dataSource
+- (FORMDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
 
-    _dataSource = [[FORMCollectionViewDataSource alloc] initWithJSON:self.JSON
+    _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
                                                           collectionView:self.collectionView
                                                                   layout:self.layout
                                                                   values:self.initialValues
