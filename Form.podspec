@@ -32,4 +32,5 @@ Pod::Spec.new do |s|
   s.dependency 'NSString-HYPContainsString'
   s.dependency 'HYPMathParser'
   s.dependency 'NSObject-HYPTesting'
+  s.dependency 'AutoCoding'
 end
