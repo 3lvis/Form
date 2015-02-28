@@ -10,15 +10,14 @@
 #import "FORMLayout.h"
 #import "FORMButtonFieldCell.h"
 
-@interface HYPDemoLoginCollectionViewController () <HYPTextFieldDelegate>
+@interface HYPDemoLoginCollectionViewController () <FORMBaseFieldCellDelegate>
 
 @property (nonatomic, strong) NSArray *JSON;
 @property (nonatomic, strong) FORMDataSource *dataSource;
 @property (nonatomic, strong) FORMLayout *layout;
 @property (nonatomic) FORMField *emailTextField;
 @property (nonatomic) FORMField *passwordTextField;
-@property (nonatomic) FORMField *buttonCell;
-@property (nonatomic) FORMTextField *textField;
+@property NSIndexPath *indexPathButton;
 
 @end
 
@@ -50,33 +49,24 @@
                                                 values:nil
                                               disabled:NO];
 
-    for (FORMField *field in self.dataSource.forms) {
-        NSLog(@"%@", field);
-    }
-
     __weak typeof(self)weakSelf = self;
 
-    _dataSource.configureFieldUpdatedBlock = ^(id cell, FORMField *field) {
+    _dataSource.configureCellForIndexPath = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
+        FORMBaseFieldCell *cell;
+        if ([field.typeString isEqualToString:@"button"]) {
+            weakSelf.indexPathButton = indexPath;
+        }
+        return cell;
+    };
+
+    _dataSource.configureFieldUpdatedBlock = ^(FORMBaseFieldCell *cell, FORMField *field) {
+        cell.delegate = weakSelf;
         if ([field.title isEqualToString:@"Email"]) {
             weakSelf.emailTextField = field;
         } else if ([field.title isEqualToString:@"Password"]) {
             weakSelf.passwordTextField = field;
-        } else if ([field.typeString isEqualToString:@"button"] && weakSelf.emailTextField.valid && weakSelf.passwordTextField.valid) {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hey" message:@"You just logged in! Congratulations" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *alertActionNice = [UIAlertAction actionWithTitle:@"NICE" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-                [alertController dismissViewControllerAnimated:YES completion:nil];
-            }];
-
-            [alertController addAction:alertActionNice];
-            [weakSelf presentViewController:alertController animated:YES completion:nil];
         } else {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hey" message:@"You need to enter correct values. The password should be at least 6 characters long" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *alertActionNice = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                [alertController dismissViewControllerAnimated:YES completion:nil];
-            }];
-
-            [alertController addAction:alertActionNice];
-            [weakSelf presentViewController:alertController animated:YES completion:nil];
+            [weakSelf checkButtonPressedWithField:field];
         }
     };
 
@@ -88,9 +78,38 @@
     return [self.dataSource sizeForItemAtIndexPath:indexPath];
 }
 
-- (void)textFormField:(FORMTextField *)textField didUpdateWithText:(NSString *)text
-{
+#pragma mark - Delegate methods
 
+// It's a must do, otherways the button won't work.
+
+- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(FORMField *)field
+{
+    if (self.emailTextField.valid && self.passwordTextField.valid) {
+        FORMButtonFieldCell *cell = (FORMButtonFieldCell *)[self.collectionView cellForItemAtIndexPath:self.indexPathButton];
+        cell.disabled = NO;
+    }
+
+    if ([field.typeString isEqualToString:@"button"]) {
+        [self checkButtonPressedWithField:field];
+    }
 }
+
+- (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets { }
+
+#pragma mark - Helper methods
+
+- (void)checkButtonPressedWithField:(FORMField *)field
+{
+    if ([field.typeString isEqualToString:@"button"] && self.emailTextField.valid && self.passwordTextField.valid) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hey" message:@"You just logged in! Congratulations" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *alertActionNice = [UIAlertAction actionWithTitle:@"NICE" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+        }];
+
+        [alertController addAction:alertActionNice];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
 
 @end

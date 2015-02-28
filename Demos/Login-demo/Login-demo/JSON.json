@@ -17,7 +17,7 @@
                         "validations":{
                           "format":"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}",
                           "required":true
-                        },
+                        }
                     },
                     {
                         "id":"password",
@@ -36,6 +36,7 @@
                         "id":"login",
                         "title":"Login",
                         "type":"button",
+                        "disabled":true,
                         "size":{
                           "width":60,
                           "height":1
