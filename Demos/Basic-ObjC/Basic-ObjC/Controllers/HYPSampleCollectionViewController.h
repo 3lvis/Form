@@ -1,7 +1,7 @@
 @import UIKit;
 @import Foundation;
 
-#import "FORMCollectionViewLayout.h"
+#import "FORMLayout.h"
 
 @interface HYPSampleCollectionViewController : UICollectionViewController
 

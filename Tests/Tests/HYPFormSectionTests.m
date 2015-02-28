@@ -11,10 +11,10 @@
 - (void)testInitWithDictionary
 {
     FORMSection *section = [[FORMSection alloc] initWithDictionary:@{@"id": @"section"}
-                                                                position:0
-                                                                disabled:YES
-                                                       disabledFieldsIDs:nil
-                                                           isLastSection:NO];
+                                                          position:0
+                                                          disabled:YES
+                                                 disabledFieldsIDs:nil
+                                                     isLastSection:NO];
 
     XCTAssertNotNil(section);
     XCTAssertEqualObjects(section.sectionID, @"section");
@@ -22,10 +22,10 @@
     XCTAssertTrue(section.fields.count == 1);
 
     section = [[FORMSection alloc] initWithDictionary:@{@"id": @"something"}
-                                                position:1
-                                                disabled:YES
-                                       disabledFieldsIDs:nil
-                                           isLastSection:YES];
+                                             position:1
+                                             disabled:YES
+                                    disabledFieldsIDs:nil
+                                        isLastSection:YES];
 
     XCTAssertNotNil(section);
     XCTAssertEqualObjects(section.sectionID, @"something");

@@ -122,9 +122,9 @@
     [JSON enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
 
         FORMGroup *form = [[FORMGroup alloc] initWithDictionary:formDict
-                                                   position:formIndex
-                                                   disabled:disabled
-                                          disabledFieldsIDs:disabledFieldsIDs];
+                                                       position:formIndex
+                                                       disabled:disabled
+                                              disabledFieldsIDs:disabledFieldsIDs];
 
         for (FORMField *field in form.fields) {
 

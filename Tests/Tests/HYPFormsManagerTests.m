@@ -24,9 +24,9 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *manager = [[FORMData alloc] initWithJSON:JSON
-                                                       initialValues:nil
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
+                                         initialValues:nil
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
 
     XCTAssertNotNil(manager.forms);
 
@@ -45,11 +45,11 @@
     NSDate *date = [NSDate date];
 
     FORMData *manager = [[FORMData alloc] initWithJSON:JSON
-                                                       initialValues:@{@"contract_type" : [NSNull null],
-                                                                       @"start_date" : date,
-                                                                       @"base_salary": @2}
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
+                                         initialValues:@{@"contract_type" : [NSNull null],
+                                                         @"start_date" : date,
+                                                         @"base_salary": @2}
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
 
     XCTAssertEqualObjects([manager.values objectForKey:@"contract_type"], @0);
     XCTAssertEqualObjects([manager.values objectForKey:@"start_date"], date);
@@ -62,10 +62,10 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *manager = [[FORMData alloc] initWithJSON:JSON
-                                                       initialValues:@{@"base_salary" : @1,
-                                                                       @"bonus" : @100}
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
+                                         initialValues:@{@"base_salary" : @1,
+                                                         @"bonus" : @100}
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
 
     XCTAssertEqualObjects([manager.values objectForKey:@"base_salary"], @1);
     XCTAssertEqualObjects([manager.values objectForKey:@"bonus"], @100);
@@ -78,9 +78,9 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *manager = [[FORMData alloc] initWithJSON:JSON
-                                                       initialValues:@{@"contract_type" : @1}
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
+                                         initialValues:@{@"contract_type" : @1}
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
 
     XCTAssertTrue(manager.hiddenFieldsAndFieldIDsDictionary.count > 0);
 
@@ -93,9 +93,9 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *manager = [[FORMData alloc] initWithJSON:JSON
-                                                       initialValues:nil
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
+                                         initialValues:nil
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
 
     NSDictionary *requiredFormFields = [manager requiredFormFields];
 
@@ -112,9 +112,9 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *manager = [[FORMData alloc] initWithJSON:JSON
-                                                       initialValues:nil
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
+                                         initialValues:nil
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
 
     NSArray *fields = [manager invalidFormFields];
 
@@ -129,29 +129,29 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                           collectionView:nil
-                                                                                                   layout:nil
-                                                                                                   values:@{@"first_name" : @"Elvis",
-                                                                                                            @"last_name" : @"Nunez"}
-                                                                                                 disabled:NO];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"first_name" : @"Elvis",
+                                                                        @"last_name" : @"Nunez"}
+                                                             disabled:NO];
 
-    FORMField *firstNameField = [dataSource.formsManager fieldWithID:@"first_name" includingHiddenFields:NO];
+    FORMField *firstNameField = [dataSource fieldWithID:@"first_name" includingHiddenFields:NO];
     XCTAssertNotNil(firstNameField);
     XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
     XCTAssertEqualObjects(firstNameField.fieldValue, @"Elvis");
 
-    FORMField *startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
+    FORMField *startDateField = [dataSource fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
     XCTAssertEqualObjects(startDateField.fieldID, @"start_date");
     [dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"start_date"]];
-    startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
+    startDateField = [dataSource fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNil(startDateField);
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"start_date"]];
-    startDateField = [dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:NO];
+    startDateField = [dataSource fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
 
     [dataSource processTarget:[FORMTarget hideSectionTargetWithID:@"employment-1"]];
-    FORMField *contractTypeField = [dataSource.formsManager fieldWithID:@"contract_type" includingHiddenFields:NO];
+    FORMField *contractTypeField = [dataSource fieldWithID:@"contract_type" includingHiddenFields:NO];
     XCTAssertNotNil(contractTypeField);
     XCTAssertEqualObjects(contractTypeField.fieldID, @"contract_type");
     [dataSource processTarget:[FORMTarget showSectionTargetWithID:@"employment-1"]];
@@ -163,19 +163,19 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
-                                                             initialValues:@{@"contract_type" : @1,
-                                                                             @"salary_type": @1}
-                                                          disabledFieldIDs:nil
-                                                                  disabled:NO];
+                                               initialValues:@{@"contract_type" : @1,
+                                                               @"salary_type": @1}
+                                            disabledFieldIDs:nil
+                                                    disabled:NO];
 
     NSUInteger numberOfFields = [[[normalManager.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFields, 2);
 
     FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
-                                                                initialValues:@{@"contract_type" : @0,
-                                                                                @"salary_type": @0}
-                                                             disabledFieldIDs:nil
-                                                                     disabled:NO];
+                                                  initialValues:@{@"contract_type" : @0,
+                                                                  @"salary_type": @0}
+                                               disabledFieldIDs:nil
+                                                       disabled:NO];
 
     NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedManager.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFieldsWithHiddenTargets, 3);
@@ -187,18 +187,18 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
-                                                             initialValues:nil
-                                                          disabledFieldIDs:nil
-                                                                  disabled:NO];
+                                               initialValues:nil
+                                            disabledFieldIDs:nil
+                                                    disabled:NO];
 
     NSUInteger numberOfFields = [[[normalManager.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFields, 3);
 
     FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
-                                                                initialValues:@{@"contract_type" : @1,
-                                                                                @"salary_type": @1}
-                                                             disabledFieldIDs:nil
-                                                                     disabled:NO];
+                                                  initialValues:@{@"contract_type" : @1,
+                                                                  @"salary_type": @1}
+                                               disabledFieldIDs:nil
+                                                       disabled:NO];
 
     NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedManager.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFieldsWithHiddenTargets, 2);
@@ -210,19 +210,19 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
-                                                             initialValues:@{@"contract_type" : @1,
-                                                                             @"salary_type": @1}
-                                                          disabledFieldIDs:nil
-                                                                  disabled:NO];
+                                               initialValues:@{@"contract_type" : @1,
+                                                               @"salary_type": @1}
+                                            disabledFieldIDs:nil
+                                                    disabled:NO];
 
     NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 2);
 
     FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
-                                                                initialValues:@{@"contract_type" : @0,
-                                                                                @"salary_type": @0}
-                                                             disabledFieldIDs:nil
-                                                                     disabled:NO];
+                                                  initialValues:@{@"contract_type" : @0,
+                                                                  @"salary_type": @0}
+                                               disabledFieldIDs:nil
+                                                       disabled:NO];
 
     NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedManager.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 3);
@@ -234,18 +234,18 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
-                                                             initialValues:nil
-                                                          disabledFieldIDs:nil
-                                                                  disabled:NO];
+                                               initialValues:nil
+                                            disabledFieldIDs:nil
+                                                    disabled:NO];
 
     NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 3);
 
     FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
-                                                                initialValues:@{@"contract_type" : @1,
-                                                                                @"salary_type": @1}
-                                                             disabledFieldIDs:nil
-                                                                     disabled:NO];
+                                                  initialValues:@{@"contract_type" : @1,
+                                                                  @"salary_type": @1}
+                                               disabledFieldIDs:nil
+                                                       disabled:NO];
 
     NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedManager.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 2);
@@ -256,12 +256,12 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                           collectionView:nil
-                                                                                                   layout:nil
-                                                                                                   values:@{@"email" : @"faultyEmail"}
-                                                                                                 disabled:NO];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"email" : @"faultyEmail"}
+                                                             disabled:NO];
 
-    FORMField *emailField = [dataSource.formsManager fieldWithID:@"email" includingHiddenFields:NO];
+    FORMField *emailField = [dataSource fieldWithID:@"email" includingHiddenFields:NO];
     XCTAssertEqual(FORMValidationResultTypeInvalidFormat, [emailField validate]);
 
     [dataSource reloadWithDictionary:@{@"email" : @"teknologi@hyper.no"}];

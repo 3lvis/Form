@@ -1,4 +1,7 @@
 #import "FORMTarget.h"
+
+#import "AutoCoding.h"
+
 #import "NSDictionary+ANDYSafeValue.h"
 
 @implementation FORMTarget
@@ -340,6 +343,17 @@
 {
     return [NSString stringWithFormat:@"\n — Target: %@ —\n value: %@\n type: %@\n action type: %@\n condition: %@\n",
             self.targetID, self.targetValue, self.typeString, self.actionTypeString, self.condition];
+}
+
+- (id)copyWithZone:(id)zone
+{
+    id copy = [[[self class] alloc] init];
+    
+    for (NSString *key in [self codableProperties]) {
+        [copy setValue:[self valueForKey:key] forKey:key];
+    }
+
+    return copy;
 }
 
 @end

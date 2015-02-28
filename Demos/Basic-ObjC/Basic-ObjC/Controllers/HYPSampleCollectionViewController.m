@@ -17,7 +17,7 @@
 @property (nonatomic, strong) FORMCollectionViewDataSource *dataSource;
 @property (nonatomic, copy) NSDictionary *sdinitialValues;
 @property (nonatomic, strong) HYPImagePicker *imagePicker;
-@property (nonatomic, strong) FORMCollectionViewLayout *layout;
+@property (nonatomic, strong) FORMLayout *layout;
 @property (nonatomic, copy) NSArray *JSON;
 
 @end
@@ -28,7 +28,7 @@
 
 - (instancetype)initWithJSON:(NSArray *)JSON andInitialValues:(NSDictionary *)initialValues
 {
-    FORMCollectionViewLayout *layout = [[FORMCollectionViewLayout alloc] init];
+    FORMLayout *layout = [[FORMLayout alloc] init];
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
 
@@ -76,7 +76,7 @@
         BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
 
         if (shouldUpdateStartDate) {
-            [weakSelf.dataSource.formsManager fieldWithID:@"start_date" includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
+            [weakSelf.dataSource fieldWithID:@"start_date" includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
                 if (field) {
                     field.fieldValue = [NSDate date];
                     field.minimumDate = [NSDate date];

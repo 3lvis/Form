@@ -24,29 +24,29 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                   collectionView:nil
-                                                                                           layout:nil
-                                                                                           values:nil
-                                                                                         disabled:YES];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
 
     [dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"display_name"]];
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"display_name"]];
-    FORMField *field = [dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
-    NSUInteger index = [field indexInSectionUsingForms:dataSource.formsManager.forms];
+    FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
+    NSUInteger index = [field indexInSectionUsingForms:dataSource.forms];
     XCTAssertEqual(index, 2);
 
     [dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"username"]];
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"username"]];
-    field = [dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
-    index = [field indexInSectionUsingForms:dataSource.formsManager.forms];
+    field = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
+    index = [field indexInSectionUsingForms:dataSource.forms];
     XCTAssertEqual(index, 2);
 
     [dataSource processTargets:[FORMTarget hideFieldTargetsWithIDs:@[@"first_name",
                                                                      @"address",
                                                                      @"username"]]];
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"username"]];
-    field = [dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
-    index = [field indexInSectionUsingForms:dataSource.formsManager.forms];
+    field = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
+    index = [field indexInSectionUsingForms:dataSource.forms];
     XCTAssertEqual(index, 1);
     [dataSource processTargets:[FORMTarget showFieldTargetsWithIDs:@[@"first_name",
                                                                      @"address"]]];
@@ -54,8 +54,8 @@
     [dataSource processTargets:[FORMTarget hideFieldTargetsWithIDs:@[@"last_name",
                                                                      @"address"]]];
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"address"]];
-    field = [dataSource.formsManager fieldWithID:@"address" includingHiddenFields:YES];
-    index = [field indexInSectionUsingForms:dataSource.formsManager.forms];
+    field = [dataSource fieldWithID:@"address" includingHiddenFields:YES];
+    index = [field indexInSectionUsingForms:dataSource.forms];
     XCTAssertEqual(index, 0);
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"last_name"]];
 }
@@ -66,13 +66,13 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                   collectionView:nil
-                                                                                           layout:nil
-                                                                                           values:nil
-                                                                                         disabled:YES];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
     [dataSource enable];
 
-    FORMField *targetField = [dataSource.formsManager fieldWithID:@"base_salary" includingHiddenFields:YES];
+    FORMField *targetField = [dataSource fieldWithID:@"base_salary" includingHiddenFields:YES];
     XCTAssertFalse(targetField.isDisabled);
 
     FORMTarget *disableTarget = [FORMTarget disableFieldTargetWithID:@"base_salary"];
@@ -96,12 +96,12 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                   collectionView:nil
-                                                                                           layout:nil
-                                                                                           values:nil
-                                                                                         disabled:YES];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
 
-    FORMField *totalField = [dataSource.formsManager fieldWithID:@"total" includingHiddenFields:YES];
+    FORMField *totalField = [dataSource fieldWithID:@"total" includingHiddenFields:YES];
     XCTAssertTrue(totalField.disabled);
 }
 
@@ -111,12 +111,12 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                   collectionView:nil
-                                                                                           layout:nil
-                                                                                           values:nil
-                                                                                         disabled:YES];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
 
-    FORMField *targetField = [dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
+    FORMField *targetField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertNil(targetField.fieldValue);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
@@ -132,12 +132,12 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                   collectionView:nil
-                                                                                           layout:nil
-                                                                                           values:nil
-                                                                                         disabled:YES];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
 
-    FORMField *usernameField = [dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
+    FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
     XCTAssertNotNil(usernameField.fieldValue);
 }
 
@@ -147,13 +147,13 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                   collectionView:nil
-                                                                                           layout:nil
-                                                                                           values:nil
-                                                                                         disabled:YES];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
 
-    FORMField *displayNameField = [dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
-    FORMField *usernameField = [dataSource.formsManager fieldWithID:@"username" includingHiddenFields:YES];
+    FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
+    FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
     FORMFieldValue *fieldValue = usernameField.fieldValue;
     XCTAssertEqualObjects(fieldValue.valueID, @0);
 
@@ -175,15 +175,15 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                   collectionView:nil
-                                                                                           layout:nil
-                                                                                           values:nil
-                                                                                         disabled:YES];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
 
     [dataSource reloadWithDictionary:@{@"first_name" : @"Elvis",
                                        @"last_name" : @"Nunez"}];
 
-    FORMField *field = [dataSource.formsManager fieldWithID:@"display_name" includingHiddenFields:YES];
+    FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.fieldValue, @"Elvis Nunez");
 }
 
@@ -193,12 +193,12 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                   collectionView:nil
-                                                                                           layout:nil
-                                                                                           values:nil
-                                                                                         disabled:YES];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
 
-    FORMField *firstNameField = [dataSource.formsManager fieldWithID:@"first_name" includingHiddenFields:YES];
+    FORMField *firstNameField = [dataSource fieldWithID:@"first_name" includingHiddenFields:YES];
     XCTAssertNotNil(firstNameField);
 
     firstNameField.fieldValue = @"John";
@@ -215,10 +215,10 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                                                   collectionView:nil
-                                                                                           layout:nil
-                                                                                           values:nil
-                                                                                         disabled:YES];
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
     XCTAssertFalse([dataSource formFieldsAreValid]);
 
     [dataSource reloadWithDictionary:@{@"first_name" : @"Supermancito"}];

@@ -3,7 +3,7 @@
 #import "FORMData.h"
 #import "FORMField.h"
 #import "FORMSection.h"
-#import "FORMCollectionViewLayout.h"
+#import "FORMLayout.h"
 #import "FORMDataSource.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
@@ -16,16 +16,16 @@
 - (void)testInitWithDictionary
 {
     FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id": @"first_name",
-                                                                     @"title": @"First name",
-                                                                     @"type": @"name",
-                                                                     @"size": @{@"width": @30,
-                                                                                @"height": @1},
-                                                                     @"validations": @{@"required": @YES,
-                                                                                       @"min_length": @2}
-                                                                     }
-                                                          position:0
-                                                          disabled:NO
-                                                 disabledFieldsIDs:nil];
+                                                               @"title": @"First name",
+                                                               @"type": @"name",
+                                                               @"size": @{@"width": @30,
+                                                                          @"height": @1},
+                                                               @"validations": @{@"required": @YES,
+                                                                                 @"min_length": @2}
+                                                               }
+                                                    position:0
+                                                    disabled:NO
+                                           disabledFieldsIDs:nil];
 
     XCTAssertNotNil(field);
     XCTAssertEqualObjects(field.position, @0);
@@ -38,14 +38,14 @@
     XCTAssertNotNil(field.validations);
 
     field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_date",
-                                                       @"title": @"Start date",
-                                                       @"type": @"date",
-                                                       @"size": @{@"width": @10,
-                                                                  @"height": @4}
-                                                       }
-                                            position:1
-                                            disabled:NO
-                                   disabledFieldsIDs:@[@"start_date"]];
+                                                    @"title": @"Start date",
+                                                    @"type": @"date",
+                                                    @"size": @{@"width": @10,
+                                                               @"height": @4}
+                                                    }
+                                         position:1
+                                         disabled:NO
+                                disabledFieldsIDs:@[@"start_date"]];
 
     XCTAssertNotNil(field);
     XCTAssertEqualObjects(field.position, @1);
@@ -64,10 +64,10 @@
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *manager = [[FORMData alloc] initWithJSON:JSON
-                                                       initialValues:@{@"first_name" : @"Elvis",
-                                                                       @"last_name" : @"Nunez"}
-                                                    disabledFieldIDs:nil
-                                                            disabled:NO];
+                                         initialValues:@{@"first_name" : @"Elvis",
+                                                         @"last_name" : @"Nunez"}
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
 
     FORMField *field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.fieldID, @"first_name");
@@ -81,6 +81,32 @@
     field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
 
     XCTAssertNil(field);
+}
+
+- (void)testCopy
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+                                         initialValues:nil
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
+
+    FORMField *field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
+    XCTAssertEqualObjects(field.fieldID, @"first_name");
+
+    FORMField *copiedField = [field copy];
+    XCTAssertEqualObjects(copiedField.fieldID, @"first_name");
+    XCTAssertEqualObjects(copiedField.title, @"First name");
+    XCTAssertEqualObjects(copiedField.subtitle, @"Fornavn");
+    XCTAssertEqualObjects(copiedField.typeString, @"name");
+    XCTAssertEqual(copiedField.type, FORMFieldTypeText);
+    XCTAssertEqual(copiedField.size.width, 30.0f);
+    XCTAssertEqual(copiedField.size.height, 1.0f);
+    NSDictionary *validations = @{@"required":@YES,
+                                  @"min_length":@2};
+    XCTAssertEqualObjects(copiedField.validations, validations);
 }
 
 @end

@@ -2,7 +2,7 @@
 
 #import "HYPSampleCollectionViewController.h"
 #import "FORMBackgroundView.h"
-#import "FORMCollectionViewLayout.h"
+#import "FORMLayout.h"
 
 #import "UIColor+Hex.h"
 #import "NSObject+HYPTesting.h"

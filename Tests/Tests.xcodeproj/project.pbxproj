@@ -27,7 +27,7 @@
 		144A28CC1A99B2CF004A9086 /* FORMSocialSecurityNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28791A99B2CF004A9086 /* FORMSocialSecurityNumberFormatter.m */; };
 		144A28CD1A99B2CF004A9086 /* FORMBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A287B1A99B2CF004A9086 /* FORMBackgroundView.m */; };
 		144A28CE1A99B2CF004A9086 /* FORMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A287D1A99B2CF004A9086 /* FORMDataSource.m */; };
-		144A28CF1A99B2CF004A9086 /* FORMCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A287F1A99B2CF004A9086 /* FORMCollectionViewLayout.m */; };
+		144A28CF1A99B2CF004A9086 /* FORMLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A287F1A99B2CF004A9086 /* FORMLayout.m */; };
 		144A28D01A99B2CF004A9086 /* FORMData.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28811A99B2CF004A9086 /* FORMData.m */; };
 		144A28D11A99B2CF004A9086 /* FORMGroupHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28831A99B2CF004A9086 /* FORMGroupHeaderView.m */; };
 		144A28D21A99B2CF004A9086 /* FORMSubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28851A99B2CF004A9086 /* FORMSubtitleView.m */; };
@@ -120,8 +120,8 @@
 		144A287B1A99B2CF004A9086 /* FORMBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMBackgroundView.m; sourceTree = "<group>"; };
 		144A287C1A99B2CF004A9086 /* FORMDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMDataSource.h; sourceTree = "<group>"; };
 		144A287D1A99B2CF004A9086 /* FORMDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMDataSource.m; sourceTree = "<group>"; };
-		144A287E1A99B2CF004A9086 /* FORMCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMCollectionViewLayout.h; sourceTree = "<group>"; };
-		144A287F1A99B2CF004A9086 /* FORMCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMCollectionViewLayout.m; sourceTree = "<group>"; };
+		144A287E1A99B2CF004A9086 /* FORMLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMLayout.h; sourceTree = "<group>"; };
+		144A287F1A99B2CF004A9086 /* FORMLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMLayout.m; sourceTree = "<group>"; };
 		144A28801A99B2CF004A9086 /* FORMData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMData.h; sourceTree = "<group>"; };
 		144A28811A99B2CF004A9086 /* FORMData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMData.m; sourceTree = "<group>"; };
 		144A28821A99B2CF004A9086 /* FORMGroupHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMGroupHeaderView.h; sourceTree = "<group>"; };
@@ -464,8 +464,8 @@
 				144A287B1A99B2CF004A9086 /* FORMBackgroundView.m */,
 				144A287C1A99B2CF004A9086 /* FORMDataSource.h */,
 				144A287D1A99B2CF004A9086 /* FORMDataSource.m */,
-				144A287E1A99B2CF004A9086 /* FORMCollectionViewLayout.h */,
-				144A287F1A99B2CF004A9086 /* FORMCollectionViewLayout.m */,
+				144A287E1A99B2CF004A9086 /* FORMLayout.h */,
+				144A287F1A99B2CF004A9086 /* FORMLayout.m */,
 				144A28801A99B2CF004A9086 /* FORMData.h */,
 				144A28811A99B2CF004A9086 /* FORMData.m */,
 				144A28821A99B2CF004A9086 /* FORMGroupHeaderView.h */,
@@ -641,7 +641,7 @@
 				149C29311A9A241D00F88B91 /* HYPImageFormFieldCell.m in Sources */,
 				144A28D41A99B2CF004A9086 /* FORMFloatInputValidator.m in Sources */,
 				144A28C31A99B2CF004A9086 /* FORMTextFieldCell.m in Sources */,
-				144A28CF1A99B2CF004A9086 /* FORMCollectionViewLayout.m in Sources */,
+				144A28CF1A99B2CF004A9086 /* FORMLayout.m in Sources */,
 				144A28E21A99B2CF004A9086 /* DDMathEvaluator+HYPForms.m in Sources */,
 				149C29271A9A23DD00F88B91 /* HYPFormTests.m in Sources */,
 				144A28CE1A99B2CF004A9086 /* FORMDataSource.m in Sources */,

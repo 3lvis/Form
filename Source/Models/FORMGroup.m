@@ -4,9 +4,9 @@
 #import "FORMField.h"
 #import "FORMFieldValue.h"
 #import "FORMTarget.h"
-
 #import "FORMClassFactory.h"
 #import "FORMValidator.h"
+#import "AutoCoding.h"
 
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
@@ -103,15 +103,30 @@
     return count;
 }
 
-- (void)printFieldValues
+- (NSString *)description
 {
+    NSMutableArray *fields = [NSMutableArray new];
+
     for (FORMSection *section in self.sections) {
         for (FORMField *field in section.fields) {
-            NSLog(@"%@ --- %@ (section %@ : field %@)", field.fieldID, field.fieldValue,
-                  field.section.position, field.position);
+            [fields addObject:[NSString stringWithFormat:@"%@ --- %@ (section %@ : field %@)\n", field.fieldID, field.fieldValue, field.section.position, field.position]];
         }
-        NSLog(@" ");
+        [fields addObject:@" "];
     }
+
+    return [NSString stringWithFormat:@"\n — Group: %@ —\n title: %@\n position: %@\n shouldValidate: %@\n sections: %@\n",
+            self.formID, self.title, self.position, self.shouldValidate ? @"YES" : @"NO", fields];
+}
+
+- (id)copyWithZone:(id)zone
+{
+    id copy = [[[self class] alloc] init];
+    
+    for (NSString *key in [self codableProperties]) {
+        [copy setValue:[self valueForKey:key] forKey:key];
+    }
+
+    return copy;
 }
 
 @end

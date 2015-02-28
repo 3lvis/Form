@@ -1,5 +1,5 @@
 PODS:
-  - Form (0.114):
+  - Form (0.118.1):
     - Hex
     - HYPImagePicker
     - HYPMathParser
@@ -18,7 +18,7 @@ PODS:
   - HYPImagePicker (0.3)
   - HYPMathParser (0.3)
   - HYPNorwegianAccountNumber (1.2.1)
-  - HYPNorwegianSSN (1.9)
+  - HYPNorwegianSSN (1.10)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSObject-HYPTesting (1.2)
@@ -31,24 +31,24 @@ PODS:
   - UIScreen-HYPLiveBounds (1.3)
 
 DEPENDENCIES:
-  - Form (from `https://github.com/hyperoslo/HYPForms`)
+  - Form (from `https://github.com/hyperoslo/Form`)
 
 EXTERNAL SOURCES:
   Form:
-    :git: https://github.com/hyperoslo/HYPForms
+    :git: https://github.com/hyperoslo/Form
 
 CHECKOUT OPTIONS:
   Form:
-    :commit: 8f6465dc03ae34a5443c61d0dce7f975c4787c31
-    :git: https://github.com/hyperoslo/HYPForms
+    :commit: 102937ffd887e841663152da9f5ee3372e57c33a
+    :git: https://github.com/hyperoslo/Form
 
 SPEC CHECKSUMS:
-  Form: ca917eb5e2fad3def318569be9ab88552b9db0a2
+  Form: 697d3aa3571c59eca605eb97df8716d3878c3f28
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
   HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
   HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16
   HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
-  HYPNorwegianSSN: 0c49429f0459b8c5477c7c119d0bbb267a6f79da
+  HYPNorwegianSSN: d28618a7b4fe3d281115180251679aaec69129f2
   NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
   NSObject-HYPTesting: f54d8bf73f75e2f2f4e49f4baa985df6fa699c2a
