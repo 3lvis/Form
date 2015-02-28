@@ -1,13 +1,5 @@
-//
-//  Login_demoTests.m
-//  Login-demoTests
-//
-//  Created by Ramon Gilabert Llop on 2/24/15.
-//  Copyright (c) 2015 Ramon Gilabert. All rights reserved.
-//
-
-#import <UIKit/UIKit.h>
-#import <XCTest/XCTest.h>
+@import UIKit;
+@import XCTest;
 
 @interface Login_demoTests : XCTestCase
 
