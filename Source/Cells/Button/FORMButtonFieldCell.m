@@ -52,7 +52,8 @@
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
-    self.button.alpha = disabled ? 0.0f : 1.0f;
+    self.button.alpha = disabled ? 0.5f : 1.0f;
+    self.button.enabled = disabled ? NO : YES;
 }
 
 - (void)updateWithField:(FORMField *)field
