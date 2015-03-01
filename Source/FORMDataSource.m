@@ -16,6 +16,7 @@
 #import "UIDevice+HYPRealOrientation.h"
 #import "NSObject+HYPTesting.h"
 #import "NSString+HYPRelationshipParser.h"
+#import "NSString+HYPContainsString.h"
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
@@ -504,7 +505,21 @@ static const CGFloat FORMDispatchTime = 0.05f;
     NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
     if (components.count == 2) {
         if ([components.lastObject isEqualToString:@"add"]) {
-            NSInteger index = 0;
+            NSInteger index = -1;
+            NSString *sectionID = [components firstObject];
+            FORMSection *section = [self.formsManager sectionWithID:sectionID];
+            for (FORMSection *existingSection in section.form.sections) {
+                if ([existingSection.sectionID hyp_containsString:sectionID]) {
+                    index++;
+                }
+            }
+
+            for (NSString *hiddenSectionID in self.formsManager.hiddenSections) {
+                if ([hiddenSectionID hyp_containsString:sectionID]) {
+                    index++;
+                }
+            }
+
             NSString *dynamicSectionID = [components firstObject];
             FORMSection *templateSection = [[self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID] copy];
             templateSection.sectionID = [NSString stringWithFormat:@"%@[%ld]", templateSection.sectionID, (long)index];
@@ -526,6 +541,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
             NSDictionary *parsed = [field.fieldID hyp_parseRelationship];
             NSString *sectionID = [NSString stringWithFormat:@"%@[%@]", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"]];
             [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+                [self.formsManager.hiddenSections setObject:section forKey:sectionID];
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
                 if (indexPaths) {
