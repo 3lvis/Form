@@ -345,15 +345,4 @@
             self.targetID, self.targetValue, self.typeString, self.actionTypeString, self.condition];
 }
 
-- (id)copyWithZone:(id)zone
-{
-    id copy = [[[self class] alloc] init];
-    
-    for (NSString *key in [self codableProperties]) {
-        [copy setValue:[self valueForKey:key] forKey:key];
-    }
-
-    return copy;
-}
-
 @end
