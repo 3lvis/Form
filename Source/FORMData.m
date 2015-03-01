@@ -144,8 +144,8 @@
     } else if ([JSON isKindOfClass:[NSDictionary class]]) {
         groups = [JSON valueForKey:@"groups"];
 
-        NSDictionary *templates = [JSON valueForKey:@"templates"];
-        NSArray *fieldTemplates = [templates valueForKey:@"fields"];
+        NSDictionary *templates = [JSON andy_valueForKey:@"templates"];
+        NSArray *fieldTemplates = [templates andy_valueForKey:@"fields"];
         [fieldTemplates enumerateObjectsUsingBlock:^(NSDictionary *fieldDictionary, NSUInteger idx, BOOL *stop) {
             FORMField *field = [[FORMField alloc] initWithDictionary:fieldDictionary
                                                             position:idx
@@ -154,7 +154,7 @@
             self.fieldTemplatesDictionary[field.fieldID] = field;
         }];
 
-        NSArray *sectionsTemplates = [templates valueForKey:@"sections"];
+        NSArray *sectionsTemplates = [templates andy_valueForKey:@"sections"];
         [sectionsTemplates enumerateObjectsUsingBlock:^(NSDictionary *sectionDictionary, NSUInteger idx, BOOL *stop) {
             FORMSection *section = [[FORMSection alloc] initWithDictionary:sectionDictionary
                                                                   position:idx
