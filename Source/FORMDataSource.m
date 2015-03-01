@@ -15,6 +15,7 @@
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
 #import "NSObject+HYPTesting.h"
+#import "NSString+HYPRelationshipParser.h"
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
@@ -501,23 +502,37 @@ static const CGFloat FORMDispatchTime = 0.05f;
     }
 
     NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
-    if (components.count == 2 && [components.lastObject isEqualToString:@"add"]) {
-        NSInteger index = 0;
-        NSString *dynamicSectionID = [components firstObject];
-        FORMSection *templateSection = [[self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID] copy];
-        templateSection.sectionID = [NSString stringWithFormat:@"%@.[%ld]", templateSection.sectionID, (long)index];
-        for (FORMField *templateField in templateSection.fields) {
-            templateField.fieldID = [templateField.fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+    if (components.count == 2) {
+        if ([components.lastObject isEqualToString:@"add"]) {
+            NSInteger index = 0;
+            NSString *dynamicSectionID = [components firstObject];
+            FORMSection *templateSection = [[self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID] copy];
+            templateSection.sectionID = [NSString stringWithFormat:@"%@[%ld]", templateSection.sectionID, (long)index];
+            for (FORMField *templateField in templateSection.fields) {
+                templateField.fieldID = [templateField.fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+            }
+
+            [self.formsManager sectionWithID:dynamicSectionID completion:^(FORMSection *dynamicSection, NSArray *indexPaths) {
+                templateSection.form = dynamicSection.form;
+                [dynamicSection.form.sections addObject:templateSection];
+
+                [self.formsManager sectionWithID:templateSection.sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+                    if (indexPaths) {
+                        [self.collectionView insertItemsAtIndexPaths:indexPaths];
+                    }
+                }];
+            }];
+        } else if ([components.lastObject isEqualToString:@"remove"]) {
+            NSDictionary *parsed = [field.fieldID hyp_parseRelationship];
+            NSString *sectionID = [NSString stringWithFormat:@"%@[%@]", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"]];
+            [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+                FORMGroup *group = section.form;
+                [group.sections removeObject:section];
+                if (indexPaths) {
+                    [self.collectionView deleteItemsAtIndexPaths:indexPaths];
+                }
+            }];
         }
-
-        [self.formsManager sectionWithID:dynamicSectionID completion:^(FORMSection *dynamicSection, NSArray *indexPaths) {
-            [dynamicSection.form.sections addObject:templateSection];
-            [self.collectionView reloadData];
-        }];
-
-        // Find template {components[0]} in template
-        // Generate the section with the correct id {company[0]}
-        // look throught fields and replace the :index by the current index
     }
 
     if (!field.fieldValue) {
