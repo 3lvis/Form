@@ -7,7 +7,6 @@
 #import "FORMFieldValue.h"
 #import "FORMClassFactory.h"
 #import "FORMTarget.h"
-#import "AutoCoding.h"
 
 #import "NSDictionary+ANDYSafeValue.h"
 
