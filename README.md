@@ -1,8 +1,9 @@
 [![Build Status](https://img.shields.io/travis/hyperoslo/Form.svg?style=flat)](https://travis-ci.org/hyperoslo/Form)
 
-<img src="https://raw.githubusercontent.com/hyperoslo/Form/improve/icon/Images/logo.png" alt="Form Icon" align="right" />
+
 Form came out from our need to a form that could share logic between our iOS apps and our web clients, we found that JSON was one way to achieve this.
 
+<img src="https://raw.githubusercontent.com/hyperoslo/Form/improve/icon/Images/logo.png" alt="Form Icon" align="right" />
 Form includes the following features:
 
 - Multiple groups: For example you can have a group for personal details and another one for shipping information
