@@ -39,8 +39,6 @@
     [self.collectionView registerClass:[HYPImageFormFieldCell class]
             forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
 
-    self.collectionView.dataSource = self.dataSource;
-
     if ([NSObject isUnitTesting]) {
         [self.collectionView numberOfSections];
     }
@@ -55,10 +53,10 @@
     if (_dataSource) return _dataSource;
 
     _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
-                                        collectionView:self.collectionView
-                                                layout:self.layout
-                                                values:self.initialValues
-                                              disabled:YES];
+                                                          collectionView:self.collectionView
+                                                                  layout:self.layout
+                                                                  values:self.initialValues
+                                                                disabled:YES];
 
     _dataSource.configureCellForIndexPath = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
         id cell;
@@ -112,6 +110,8 @@
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor HYPFormsBackground];
+
+    self.collectionView.dataSource = self.dataSource;
 }
 
 - (void)viewDidAppear:(BOOL)animated

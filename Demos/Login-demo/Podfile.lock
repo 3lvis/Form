@@ -41,7 +41,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Form:
-    :commit: 830336f8bc989d5f553e2266df387985cf2e249f
+    :commit: efe11c4a6010f464ca0da320768f98dce080045b
     :git: https://github.com/hyperoslo/Form
 
 SPEC CHECKSUMS:
