@@ -1,7 +1,5 @@
 PODS:
-  - AutoCoding (2.2.1)
-  - Form (0.120):
-    - AutoCoding
+  - Form (0.121):
     - Hex
     - HYPImagePicker
     - HYPMathParser
@@ -45,12 +43,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Form:
-    :commit: 5f5abc0396235d8c071d1f13fb7cd4bcd314750e
+    :commit: f78a89bdc3658cee161e8775bd44a0df65c5f47d
     :git: https://github.com/hyperoslo/Form
 
 SPEC CHECKSUMS:
-  AutoCoding: 5165b83fa6199573cc82dfb5d2cc72e11b458a1f
-  Form: 92f28fc92d87c1329c1b3738eb5aaddcfad9ad2f
+  Form: a045569205343150dd5a027a0002da244b8c0f71
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
   HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
   HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16
