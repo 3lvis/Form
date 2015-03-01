@@ -21,7 +21,6 @@
     _isLast = isLastSection;
     _typeString  = [dictionary andy_valueForKey:@"type"] ?: @"default";
     _type = [self typeFromTypeString:_typeString];
-    NSLog(@"_typeString: %@", _typeString);
 
     NSArray *dataSourceFields = [dictionary andy_valueForKey:@"fields"];
     NSMutableArray *fields = [NSMutableArray new];
@@ -151,7 +150,7 @@
 - (id)copyWithZone:(id)zone
 {
     id copy = [[[self class] alloc] init];
-    
+
     for (NSString *key in [self codableProperties]) {
         [copy setValue:[self valueForKey:key] forKey:key];
     }
