@@ -300,4 +300,32 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             self.maximumDate, self.validations, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
 }
 
+- (id)copyWithZone:(id)zone
+{
+    FORMField *copy = [FORMField new];
+
+    copy.fieldID = [self.fieldID copy];
+    copy.title = [self.title copy];
+    copy.subtitle = [self.subtitle copy];
+    copy.size = self.size;
+    copy.position = [self.position copy];
+    copy.fieldValue = self.fieldValue; // copy field value
+    copy.typeString = [self.typeString copy];
+    copy.type = self.type;
+    copy.values = self.values; // copy values
+    copy.disabled = self.disabled;
+    copy.initiallyDisabled = self.initiallyDisabled;
+    copy.minimumDate = [self.minimumDate copy];
+    copy.maximumDate = [self.maximumDate copy];
+    copy.validations = [self.validations copy];
+    copy.formula = [self.formula copy];
+    copy.targets = self.targets; // copy targets
+    copy.section = self.section;
+    copy.valid = self.valid;
+    copy.validationType = self.validationType;
+    copy.sectionSeparator = self.sectionSeparator;
+
+    return copy;
+}
+
 @end
