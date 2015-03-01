@@ -85,4 +85,4 @@ and if you're using this library we probably want to hire you.
 
 ## License
 
-HYPForms is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/Form/raw/master/LICENSE.md) file for more info.
+Forms is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/Form/raw/master/LICENSE.md) file for more info.
