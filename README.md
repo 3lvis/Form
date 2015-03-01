@@ -7,7 +7,7 @@ Form came out from our need to a form that could share logic between our iOS app
 Form includes the following features:
 
 - Multiple groups: For example you can have a group for personal details and another one for shipping information
-- [Field validations](https://github.com/hyperoslo/Form/blob/master/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L18): We support `required`, `maximum lenght`, `minimum length` and `format` (regex). We also support many field types, for example: `text`, `number`, `phone_number`, `email`, `date`, `name` and more
+- [Field validations](https://github.com/hyperoslo/Form/blob/master/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L18): We support `required`, `maximum length`, `minimum length` and `format` (regex). We also support many field types, for example: `text`, `number`, `phone_number`, `email`, `date`, `name` and more
 - [Custom sizes](https://github.com/hyperoslo/Form/blob/master/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L14): Total `width` is handled as 100% while `height` is handled in chunks of [85 px](https://github.com/hyperoslo/Form/blob/b1a542d042a45a9a3056fb8969b5704e51fda1f4/Source/Cells/Base/FORMBaseFieldCell.h#L15)
 - [Custom fields](https://github.com/hyperoslo/Form/blob/master/Demos/Basic-ObjC/Basic-ObjC/Controllers/HYPSampleCollectionViewController.m#L63): You can register your custom fields, it's pretty simple (our basic example includes how to make an `image` field)
 - [Formulas or computed values](https://github.com/hyperoslo/Form/blob/master/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L62): We support fields that contain generated values from other fields
