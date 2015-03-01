@@ -19,21 +19,7 @@
 
 @implementation HYPDemoLoginCollectionViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    FORMLayout *layout = [FORMLayout new];
-
-    self.JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"JSON.json"];
-    self.layout = layout;
-
-    self.collectionView.dataSource = self.dataSource;
-    self.collectionView.contentInset = UIEdgeInsetsMake([UIScreen mainScreen].bounds.size.width/3, 0, 0, 0);
-    self.collectionView.backgroundColor = [UIColor HYPFormsLightGray];
-}
-
-#pragma mark - Data source collection view
+#pragma mark - Getters
 
 - (FORMDataSource *)dataSource
 {
@@ -69,14 +55,31 @@
     return _dataSource;
 }
 
+#pragma mark - View Lifecycle
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    FORMLayout *layout = [FORMLayout new];
+
+    self.JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"JSON.json"];
+    self.layout = layout;
+
+    self.collectionView.dataSource = self.dataSource;
+    self.collectionView.contentInset = UIEdgeInsetsMake([UIScreen mainScreen].bounds.size.width/3, 0, 0, 0);
+    self.collectionView.backgroundColor = [UIColor HYPFormsLightGray];
+}
+
+#pragma mark - UICollectionViewDelegate
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.dataSource sizeForItemAtIndexPath:indexPath];
 }
 
-#pragma mark - Delegate methods
-
-// It's a must do, otherways the button won't work.
+#pragma mark - FORMBaseFieldCellDelegate
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(FORMField *)field
 {
@@ -92,7 +95,7 @@
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets { }
 
-#pragma mark - Helper methods
+#pragma mark - Private methods
 
 - (void)checkButtonPressedWithField:(FORMField *)field
 {
