@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1449AE741AA07E0700BCC40E /* HYPFormField+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1449AE731AA07E0700BCC40E /* HYPFormField+Tests.m */; };
 		144A28BB1A99B2CF004A9086 /* FORMBaseFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28521A99B2CF004A9086 /* FORMBaseFieldCell.m */; };
 		144A28BC1A99B2CF004A9086 /* FORMButtonFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28551A99B2CF004A9086 /* FORMButtonFieldCell.m */; };
 		144A28BD1A99B2CF004A9086 /* FORMDateFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28581A99B2CF004A9086 /* FORMDateFieldCell.m */; };
@@ -55,7 +56,7 @@
 		144A28E81A99B2CF004A9086 /* FORMPostalCodeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28B51A99B2CF004A9086 /* FORMPostalCodeValidator.m */; };
 		144A28E91A99B2CF004A9086 /* FORMSocialSecurityNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28B71A99B2CF004A9086 /* FORMSocialSecurityNumberValidator.m */; };
 		144A28EA1A99B2CF004A9086 /* FORMValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28B91A99B2CF004A9086 /* FORMValidator.m */; };
-		149C29201A9A23DD00F88B91 /* HYPFormField+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29101A9A23DD00F88B91 /* HYPFormField+Tests.m */; };
+		1492C05A1A9F740900D80D91 /* dynamic.json in Resources */ = {isa = PBXBuildFile; fileRef = 1492C0591A9F740900D80D91 /* dynamic.json */; };
 		149C29211A9A23DD00F88B91 /* HYPFieldValueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29111A9A23DD00F88B91 /* HYPFieldValueTests.m */; };
 		149C29221A9A23DD00F88B91 /* HYPFormFieldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29121A9A23DD00F88B91 /* HYPFormFieldTests.m */; };
 		149C29231A9A23DD00F88B91 /* HYPFormsCollectionViewDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29131A9A23DD00F88B91 /* HYPFormsCollectionViewDataSourceTests.m */; };
@@ -80,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		0F976971F56B077A5DA2E58E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		1449AE721AA07E0700BCC40E /* HYPFormField+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYPFormField+Tests.h"; sourceTree = "<group>"; };
+		1449AE731AA07E0700BCC40E /* HYPFormField+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYPFormField+Tests.m"; sourceTree = "<group>"; };
 		144A28511A99B2CF004A9086 /* FORMBaseFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMBaseFieldCell.h; sourceTree = "<group>"; };
 		144A28521A99B2CF004A9086 /* FORMBaseFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMBaseFieldCell.m; sourceTree = "<group>"; };
 		144A28541A99B2CF004A9086 /* FORMButtonFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMButtonFieldCell.h; sourceTree = "<group>"; };
@@ -176,8 +179,7 @@
 		144A28B71A99B2CF004A9086 /* FORMSocialSecurityNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSocialSecurityNumberValidator.m; sourceTree = "<group>"; };
 		144A28B81A99B2CF004A9086 /* FORMValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMValidator.h; sourceTree = "<group>"; };
 		144A28B91A99B2CF004A9086 /* FORMValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMValidator.m; sourceTree = "<group>"; };
-		149C290F1A9A23DD00F88B91 /* HYPFormField+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYPFormField+Tests.h"; sourceTree = "<group>"; };
-		149C29101A9A23DD00F88B91 /* HYPFormField+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYPFormField+Tests.m"; sourceTree = "<group>"; };
+		1492C0591A9F740900D80D91 /* dynamic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dynamic.json; sourceTree = "<group>"; };
 		149C29111A9A23DD00F88B91 /* HYPFieldValueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFieldValueTests.m; sourceTree = "<group>"; };
 		149C29121A9A23DD00F88B91 /* HYPFormFieldTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormFieldTests.m; sourceTree = "<group>"; };
 		149C29131A9A23DD00F88B91 /* HYPFormsCollectionViewDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPFormsCollectionViewDataSourceTests.m; sourceTree = "<group>"; };
@@ -387,10 +389,10 @@
 		149C290E1A9A23DD00F88B91 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1449AE721AA07E0700BCC40E /* HYPFormField+Tests.h */,
+				1449AE731AA07E0700BCC40E /* HYPFormField+Tests.m */,
 				149C292F1A9A241D00F88B91 /* HYPImageFormFieldCell.h */,
 				149C29301A9A241D00F88B91 /* HYPImageFormFieldCell.m */,
-				149C290F1A9A23DD00F88B91 /* HYPFormField+Tests.h */,
-				149C29101A9A23DD00F88B91 /* HYPFormField+Tests.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -399,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				149C29321A9A251800F88B91 /* forms.json */,
+				1492C0591A9F740900D80D91 /* dynamic.json */,
 				149C291B1A9A23DD00F88B91 /* default-values.json */,
 				149C291C1A9A23DD00F88B91 /* field-validations.json */,
 				149C291D1A9A23DD00F88B91 /* multiple-show-hide-field-targets.json */,
@@ -573,6 +576,7 @@
 				149C292A1A9A23DD00F88B91 /* default-values.json in Resources */,
 				14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */,
 				149C292B1A9A23DD00F88B91 /* field-validations.json in Resources */,
+				1492C05A1A9F740900D80D91 /* dynamic.json in Resources */,
 				149C29331A9A251800F88B91 /* forms.json in Resources */,
 				14C4183E1A019A1500636FD6 /* FORM.podspec in Resources */,
 				149C292D1A9A23DD00F88B91 /* multiple-show-hide-section-targets.json in Resources */,
@@ -654,6 +658,7 @@
 				144A28E31A99B2CF004A9086 /* HYPPostalCodeManager.m in Sources */,
 				149C29291A9A23DD00F88B91 /* HYPTextFormFieldCellTests.m in Sources */,
 				144A28DD1A99B2CF004A9086 /* FORMFieldValidation.m in Sources */,
+				1449AE741AA07E0700BCC40E /* HYPFormField+Tests.m in Sources */,
 				144A28C21A99B2CF004A9086 /* FORMSelectFieldCell.m in Sources */,
 				144A28E01A99B2CF004A9086 /* FORMSection.m in Sources */,
 				144A28C01A99B2CF004A9086 /* FORMFieldValuesTableViewHeader.m in Sources */,
@@ -668,7 +673,6 @@
 				144A28DA1A99B2CF004A9086 /* FORMSocialSecurityNumberInputValidator.m in Sources */,
 				144A28C41A99B2CF004A9086 /* FORMFieldHeadingLabel.m in Sources */,
 				149C29251A9A23DD00F88B91 /* HYPFormsManagerTests.m in Sources */,
-				149C29201A9A23DD00F88B91 /* HYPFormField+Tests.m in Sources */,
 				149C29221A9A23DD00F88B91 /* HYPFormFieldTests.m in Sources */,
 				144A28DB1A99B2CF004A9086 /* FORMClassFactory.m in Sources */,
 				144A28BB1A99B2CF004A9086 /* FORMBaseFieldCell.m in Sources */,

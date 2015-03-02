@@ -83,30 +83,4 @@
     XCTAssertNil(field);
 }
 
-- (void)testCopy
-{
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
-                                                             inBundle:[NSBundle bundleForClass:[self class]]];
-
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
-                                         initialValues:nil
-                                      disabledFieldIDs:nil
-                                              disabled:NO];
-
-    FORMField *field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
-    XCTAssertEqualObjects(field.fieldID, @"first_name");
-
-    FORMField *copiedField = [field copy];
-    XCTAssertEqualObjects(copiedField.fieldID, @"first_name");
-    XCTAssertEqualObjects(copiedField.title, @"First name");
-    XCTAssertEqualObjects(copiedField.subtitle, @"Fornavn");
-    XCTAssertEqualObjects(copiedField.typeString, @"name");
-    XCTAssertEqual(copiedField.type, FORMFieldTypeText);
-    XCTAssertEqual(copiedField.size.width, 30.0f);
-    XCTAssertEqual(copiedField.size.height, 1.0f);
-    NSDictionary *validations = @{@"required":@YES,
-                                  @"min_length":@2};
-    XCTAssertEqualObjects(copiedField.validations, validations);
-}
-
 @end

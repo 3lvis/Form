@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Form"
-  s.version = "0.120"
+  s.version = "0.122"
   s.summary = "JSON driven forms"
   s.homepage = "https://github.com/hyperoslo/Form"
   s.license = {
@@ -32,5 +32,6 @@ Pod::Spec.new do |s|
   s.dependency 'NSString-HYPContainsString'
   s.dependency 'HYPMathParser'
   s.dependency 'NSObject-HYPTesting'
-  s.dependency 'AutoCoding'
+  s.dependency 'NSString-HYPRelationshipParser'
+  s.dependency 'NSString-HYPContainsString'
 end

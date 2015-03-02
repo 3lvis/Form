@@ -1,6 +1,7 @@
 @import Foundation;
 
 #import "FORMField.h"
+#import "FORMGroup.h"
 
 @interface FORMData : NSObject
 
@@ -9,6 +10,8 @@
 @property (nonatomic, strong) NSMutableDictionary *hiddenSections;
 @property (nonatomic, strong) NSArray *disabledFieldsIDs;
 @property (nonatomic, strong) NSMutableDictionary *values;
+@property (nonatomic, strong) NSMutableDictionary *sectionTemplatesDictionary;
+@property (nonatomic, strong) NSMutableDictionary *fieldTemplatesDictionary;
 
 - (instancetype)initWithJSON:(id)JSON
                initialValues:(NSDictionary *)initialValues
@@ -50,5 +53,7 @@
 - (BOOL)isEnabled;
 
 - (NSInteger)numberOfFields;
+
+- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form;
 
 @end

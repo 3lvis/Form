@@ -7,13 +7,11 @@
 #import "FORMFieldValue.h"
 #import "FORMClassFactory.h"
 #import "FORMTarget.h"
-#import "AutoCoding.h"
 
 #import "NSDictionary+ANDYSafeValue.h"
 
 static NSString * const FORMFieldSelectType = @"select";
 static NSString * const FORMInputValidatorSelector = @"validateString:text:";
-static NSString * const HYPFormatterClass = @"HYP%@Formatter";
 static NSString * const HYPFormatterSelector = @"formatString:reverse:";
 
 @implementation FORMField
@@ -300,17 +298,6 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
             self.fieldID, self.title, self.subtitle, NSStringFromCGSize(self.size), self.position,
             self.fieldValue, self.typeString, self.values, (self.disabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
             self.maximumDate, self.validations, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
-}
-
-- (id)copyWithZone:(id)zone
-{
-    id copy = [[[self class] alloc] init];
-    
-    for (NSString *key in [self codableProperties]) {
-        [copy setValue:[self valueForKey:key] forKey:key];
-    }
-
-    return copy;
 }
 
 @end
