@@ -337,6 +337,14 @@
 
     XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:4 inSection:0]);
 
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    [dataSource fieldWithID:@"companies[1].name" includingHiddenFields:NO completion:^(FORMField *field, NSIndexPath *indexPath) {
+        fieldIndexPath = indexPath;
+    }];
+
+    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:7 inSection:0]);
+
     field = [dataSource fieldWithID:@"contacts.add" includingHiddenFields:NO];
     XCTAssertNotNil(field);
 
@@ -346,7 +354,7 @@
         fieldIndexPath = indexPath;
     }];
 
-    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:11 inSection:0]);
+    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:14 inSection:0]);
 }
 
 @end
