@@ -3,7 +3,6 @@
 #import "FORMGroup.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "FORMTarget.h"
-#import "AutoCoding.h"
 
 @implementation FORMSection
 
@@ -16,9 +15,11 @@
     self = [super init];
     if (!self) return nil;
 
-    self.sectionID = [dictionary andy_valueForKey:@"id"];
-    self.position = @(position);
-    self.isLast = isLastSection;
+    _sectionID = [dictionary andy_valueForKey:@"id"];
+    _position = @(position);
+    _isLast = isLastSection;
+    _typeString  = [dictionary andy_valueForKey:@"type"] ?: @"default";
+    _type = [self typeFromTypeString:_typeString];
 
     NSArray *dataSourceFields = [dictionary andy_valueForKey:@"fields"];
     NSMutableArray *fields = [NSMutableArray new];
@@ -26,12 +27,32 @@
     [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
 
         FORMField *field = [[FORMField  alloc] initWithDictionary:fieldDict
-                                                               position:fieldIndex
-                                                               disabled:disabled
-                                                      disabledFieldsIDs:disabledFieldsIDs];
+                                                         position:fieldIndex
+                                                         disabled:disabled
+                                                disabledFieldsIDs:disabledFieldsIDs];
         field.section = self;
         [fields addObject:field];
     }];
+
+    if (_type == FORMSectionTypeDynamic) {
+        FORMField *field = [FORMField new];
+        field.position = @(fields.count);
+        field.section = self;
+        field.fieldID = [NSString stringWithFormat:@"%@.add", self.sectionID];
+        field.typeString = @"button";
+        field.type = FORMFieldTypeButton;
+
+        NSString *actionTitle = [dictionary andy_valueForKey:@"action_title"];
+        if (!actionTitle) {
+            NSLog(@"Specify and `action_title` for your dynamic section");
+            abort();
+        }
+        field.title = actionTitle;
+        field.section = self;
+        field.size = CGSizeMake(100.0f, 2.0f);
+        field.disabled = disabled;
+        [fields addObject:field];
+    }
 
     if (!isLastSection) {
         FORMField *field = [FORMField new];
@@ -44,6 +65,15 @@
     self.fields = fields;
 
     return self;
+}
+
+- (FORMSectionType)typeFromTypeString:(NSString *)typeString
+{
+    if ([typeString isEqualToString:@"dynamic"]) {
+        return FORMSectionTypeDynamic;
+    } else {
+        return FORMSectionTypeDefault;
+    }
 }
 
 #pragma mark - Public Methods
@@ -121,17 +151,6 @@
 
     return [NSString stringWithFormat:@"\n — Section: %@ —\n position: %@\n formID: %@\n shouldValidate: %@\n containsSpecialField: %@\n isLast: %@\n fields: %@\n",
             self.sectionID, self.position, self.form.formID, self.shouldValidate ? @"YES" : @"NO", self.containsSpecialField ? @"YES" : @"NO", self.isLast ? @"YES" : @"NO", fields];
-}
-
-- (id)copyWithZone:(id)zone
-{
-    id copy = [[[self class] alloc] init];
-    
-    for (NSString *key in [self codableProperties]) {
-        [copy setValue:[self valueForKey:key] forKey:key];
-    }
-
-    return copy;
 }
 
 @end

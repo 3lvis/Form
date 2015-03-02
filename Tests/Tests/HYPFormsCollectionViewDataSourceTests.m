@@ -12,6 +12,12 @@
 
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
+@interface FORMDataSource ()
+
+- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(FORMField *)field;
+
+@end
+
 @interface HYPFormsCollectionViewDataSourceTests : XCTestCase
 
 @end
@@ -224,6 +230,88 @@
     [dataSource reloadWithDictionary:@{@"first_name" : @"Supermancito"}];
 
     XCTAssertTrue([dataSource formFieldsAreValid]);
+}
+
+- (void)testAddingAndRemovingDynamicFields
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    FORMField *field = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+
+    NSInteger numberOfFields = [dataSource numberOfFields];
+
+    [dataSource fieldCell:nil updatedWithField:field];
+    XCTAssertEqual(numberOfFields + 3, [dataSource numberOfFields]);
+
+    FORMSection *section = [dataSource sectionWithID:@"companies[0]"];
+    XCTAssertNotNil(section);
+
+    FORMField *nameField = [dataSource fieldWithID:@"companies[0].name" includingHiddenFields:NO];
+    XCTAssertNotNil(nameField);
+
+    FORMField *phoneNumberField = [dataSource fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
+    XCTAssertNotNil(phoneNumberField);
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:NO];
+    XCTAssertNotNil(removeField);
+
+    [dataSource fieldCell:nil updatedWithField:removeField];
+    XCTAssertEqual(numberOfFields, [dataSource numberOfFields]);
+
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    section = [dataSource sectionWithID:@"companies[1]"];
+    XCTAssertNotNil(section);
+
+    nameField = [dataSource fieldWithID:@"companies[1].name" includingHiddenFields:NO];
+    XCTAssertNotNil(nameField);
+
+    phoneNumberField = [dataSource fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
+    XCTAssertNotNil(phoneNumberField);
+
+    removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:NO];
+    XCTAssertNotNil(removeField);
+}
+
+- (void)testDynamicWithInitialValues
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"companies[0].name" : @"Facebook",
+                                                                        @"companies[0].phone_number" : @"1222333",
+                                                                        @"companies[1].name" : @"Google",
+                                                                        @"companies[1].phone_number" : @"4555666"}
+                                                             disabled:YES];
+
+    FORMSection *section = [dataSource sectionWithID:@"companies[0]"];
+    XCTAssertNotNil(section);
+
+    FORMField *field = [dataSource fieldWithID:@"companies[0].name" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.fieldValue, @"Facebook");
+
+    field = [dataSource fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.fieldValue, @"1222333");
+
+    section = [dataSource sectionWithID:@"companies[1]"];
+    XCTAssertNotNil(section);
+
+    field = [dataSource fieldWithID:@"companies[1].name" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.fieldValue, @"Google");
+
+    field = [dataSource fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.fieldValue, @"4555666");
 }
 
 @end

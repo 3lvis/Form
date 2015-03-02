@@ -4,12 +4,19 @@
 @class FORMGroup;
 @class FORMField;
 
+typedef NS_ENUM(NSInteger, FORMSectionType) {
+    FORMSectionTypeDefault = 0,
+    FORMSectionTypeDynamic
+};
+
 @interface FORMSection : NSObject
 
 @property (nonatomic, strong) NSMutableArray *fields;
 @property (nonatomic, strong) NSString *sectionID;
 @property (nonatomic, strong) NSNumber *position;
 @property (nonatomic, strong) FORMGroup *form;
+@property (nonatomic, strong) NSString *typeString;
+@property (nonatomic) FORMSectionType type;
 
 @property (nonatomic) BOOL shouldValidate;
 @property (nonatomic) BOOL containsSpecialField;

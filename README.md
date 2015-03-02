@@ -1,6 +1,7 @@
 [![Build Status](https://img.shields.io/travis/hyperoslo/Form.svg?style=flat)](https://travis-ci.org/hyperoslo/Form)
 
-<img src="https://raw.githubusercontent.com/hyperoslo/Form/improve/icon/Images/logo.png" alt="Form Icon" align="right" />
+![Form](https://github.com/hyperoslo/Form/blob/master/Images/logo.png)
+
 Form came out from our need to a form that could share logic between our iOS apps and our web clients, we found that JSON was one way to achieve this.
 
 Form includes the following features:
@@ -84,4 +85,4 @@ and if you're using this library we probably want to hire you.
 
 ## License
 
-HYPForms is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/Form/raw/master/LICENSE.md) file for more info.
+Forms is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/Form/raw/master/LICENSE.md) file for more info.

@@ -15,6 +15,9 @@
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
 #import "NSObject+HYPTesting.h"
+#import "NSString+HYPRelationshipParser.h"
+#import "NSString+HYPContainsString.h"
+#import "NSDictionary+ANDYSafeValue.h"
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
@@ -498,6 +501,26 @@ static const CGFloat FORMDispatchTime = 0.05f;
 {
     if (self.configureFieldUpdatedBlock) {
         self.configureFieldUpdatedBlock(fieldCell, field);
+    }
+
+    NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
+    if (components.count == 2) {
+        if ([components.lastObject isEqualToString:@"add"]) {
+            NSString *sectionTemplateID = [components firstObject];
+            FORMSection *section = [self sectionWithID:sectionTemplateID];
+            [self.formsManager insertTemplateSectionWithID:sectionTemplateID intoCollectionView:self.collectionView usingForm:section.form];
+        } else if ([components.lastObject isEqualToString:@"remove"]) {
+            NSDictionary *parsed = [field.fieldID hyp_parseRelationship];
+            NSString *sectionID = [NSString stringWithFormat:@"%@[%@]", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"]];
+            [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+                [self.formsManager.hiddenSections setObject:section forKey:sectionID];
+                FORMGroup *group = section.form;
+                [group.sections removeObject:section];
+                if (indexPaths) {
+                    [self.collectionView deleteItemsAtIndexPaths:indexPaths];
+                }
+            }];
+        }
     }
 
     if (!field.fieldValue) {
