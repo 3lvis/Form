@@ -314,4 +314,39 @@
     XCTAssertEqualObjects(field.fieldValue, @"4555666");
 }
 
+- (void)testAddingAndRemovingMultipleDynamicFields
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    FORMField *field = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    __block NSIndexPath *fieldIndexPath;
+    [dataSource fieldWithID:@"companies[0].name" includingHiddenFields:NO completion:^(FORMField *field, NSIndexPath *indexPath) {
+        fieldIndexPath = indexPath;
+    }];
+
+    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:4 inSection:0]);
+
+    field = [dataSource fieldWithID:@"contacts.add" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    [dataSource fieldWithID:@"contacts[0].name" includingHiddenFields:NO completion:^(FORMField *field, NSIndexPath *indexPath) {
+        fieldIndexPath = indexPath;
+    }];
+
+    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:11 inSection:0]);
+}
+
 @end
