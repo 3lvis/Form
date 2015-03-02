@@ -41,7 +41,9 @@
         field.fieldID = [NSString stringWithFormat:@"%@.add", self.sectionID];
         field.typeString = @"button";
         field.type = FORMFieldTypeButton;
-        field.title = [NSString stringWithFormat:@"✚ %@", [self.sectionID uppercaseString]];
+
+        NSString *actionTitle = [dictionary andy_valueForKey:@"action_title"] ?: [NSString stringWithFormat:@"✚ %@", [self.sectionID uppercaseString]];
+        field.title = actionTitle;
         field.section = self;
         field.size = CGSizeMake(100.0f, 2.0f);
         field.disabled = disabled;
