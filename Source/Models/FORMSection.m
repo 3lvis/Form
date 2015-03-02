@@ -54,7 +54,7 @@
         [fields addObject:field];
     }
 
-    if (!isLastSection) {
+    if (!isLastSection || _type == FORMSectionTypeDynamic) {
         FORMField *field = [FORMField new];
         field.sectionSeparator = YES;
         field.position = @(fields.count);

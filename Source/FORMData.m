@@ -904,8 +904,16 @@
 
     [templateSectionDictionary setValue:[fields copy] forKey:@"fields"];
 
+    FORMSection *actionSection = [self sectionWithID:sectionTemplateID];
+    NSInteger sectionPosition = [actionSection.position integerValue];
+    for (FORMSection *currentSection in form.sections) {
+        if ([currentSection.sectionID hyp_containsString:sectionTemplateID]) {
+            sectionPosition++;
+        }
+    }
+
     FORMSection *section = [[FORMSection alloc] initWithDictionary:templateSectionDictionary
-                                                          position:index + 1
+                                                          position:sectionPosition
                                                           disabled:NO
                                                  disabledFieldsIDs:nil
                                                      isLastSection:YES];
@@ -917,7 +925,14 @@
         }
     }
 
-    [form.sections addObject:section];
+    NSInteger sectionIndex = [section.position integerValue];
+    [form.sections insertObject:section atIndex:sectionIndex];
+
+    [form.sections enumerateObjectsUsingBlock:^(FORMSection *currentSection, NSUInteger idx, BOOL *stop) {
+        if (idx > sectionIndex) {
+            currentSection.position = @([currentSection.position integerValue] + 1);
+        }
+    }];
 
     if (collectionView) {
         [self sectionWithID:section.sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
