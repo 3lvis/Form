@@ -192,35 +192,7 @@
                             field.fieldValue = [self.values objectForKey:valueID];
                         } else {
                             NSInteger index = [self indexForDynamicSectionWithID:sectionTemplateID inForm:form];
-
-                            NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:sectionTemplateID];
-                            NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
-                            [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", sectionTemplateID, (long)index] forKey:@"id"];
-
-                            NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
-                            NSMutableArray *fields = [NSMutableArray new];
-                            for (NSDictionary *fieldTemplateDictionary in templateFields) {
-                                NSMutableDictionary *fieldDictionary = [NSMutableDictionary dictionaryWithDictionary:fieldTemplateDictionary];
-                                NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
-                                NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
-                                [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
-                                [fields addObject:[fieldDictionary copy]];
-                            }
-
-                            [templateSectionDictionary setValue:[fields copy] forKey:@"fields"];
-
-                            FORMSection *section = [[FORMSection alloc] initWithDictionary:templateSectionDictionary
-                                                                                  position:index + 1
-                                                                                  disabled:NO
-                                                                         disabledFieldsIDs:nil
-                                                                             isLastSection:YES];
-                            section.form = form;
-
-                            for (FORMField *field in section.fields) {
-                                field.fieldValue = [self.values objectForKey:valueID];
-                            }
-
-                            [form.sections addObject:section];
+                            [self generateDynamicSectionWithID:sectionTemplateID inForm:form index:index valueID:valueID inCollectionView:nil];
                         }
                     }
                 }
@@ -924,6 +896,48 @@
     }
 
     return index;
+}
+
+- (void)generateDynamicSectionWithID:(NSString *)dynamicSectionID inForm:(FORMGroup *)form index:(NSInteger)index valueID:(NSString *)valueID inCollectionView:(UICollectionView *)collectionView
+{
+    NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:dynamicSectionID];
+    NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
+    [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", dynamicSectionID, (long)index] forKey:@"id"];
+
+    NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
+    NSMutableArray *fields = [NSMutableArray new];
+    for (NSDictionary *fieldTemplateDictionary in templateFields) {
+        NSMutableDictionary *fieldDictionary = [NSMutableDictionary dictionaryWithDictionary:fieldTemplateDictionary];
+        NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
+        NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+        [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
+        [fields addObject:[fieldDictionary copy]];
+    }
+
+    [templateSectionDictionary setValue:[fields copy] forKey:@"fields"];
+
+    FORMSection *section = [[FORMSection alloc] initWithDictionary:templateSectionDictionary
+                                                          position:index + 1
+                                                          disabled:NO
+                                                 disabledFieldsIDs:nil
+                                                     isLastSection:YES];
+    section.form = form;
+
+    if (valueID) {
+        for (FORMField *field in section.fields) {
+            field.fieldValue = [self.values objectForKey:valueID];
+        }
+    }
+
+    [form.sections addObject:section];
+
+    if (collectionView) {
+        [self sectionWithID:section.sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+            if (indexPaths) {
+                [collectionView insertItemsAtIndexPaths:indexPaths];
+            }
+        }];
+    }
 }
 
 @end

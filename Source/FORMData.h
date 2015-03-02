@@ -56,4 +56,6 @@
 
 - (NSInteger)indexForDynamicSectionWithID:(NSString *)sectionID inForm:(FORMGroup *)form;
 
+- (void)generateDynamicSectionWithID:(NSString *)dynamicSectionID inForm:(FORMGroup *)form index:(NSInteger)index valueID:(NSString *)valueID inCollectionView:(UICollectionView *)collectionView;
+
 @end

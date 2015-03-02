@@ -506,42 +506,11 @@ static const CGFloat FORMDispatchTime = 0.05f;
     NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
     if (components.count == 2) {
         if ([components.lastObject isEqualToString:@"add"]) {
-            NSString *sectionID = [components firstObject];
-            FORMSection *section = [self sectionWithID:sectionID];
-            NSInteger index = [self.formsManager indexForDynamicSectionWithID:sectionID inForm:section.form];
-
             NSString *dynamicSectionID = [components firstObject];
-            NSDictionary *sectionTemplate = [self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID];
-            NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
-            [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", dynamicSectionID, (long)index] forKey:@"id"];
+            FORMSection *section = [self sectionWithID:dynamicSectionID];
+            NSInteger index = [self.formsManager indexForDynamicSectionWithID:dynamicSectionID inForm:section.form];
 
-            NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
-            NSMutableArray *fields = [NSMutableArray new];
-            for (NSDictionary *fieldTemplateDictionary in templateFields) {
-                NSMutableDictionary *fieldDictionary = [NSMutableDictionary dictionaryWithDictionary:fieldTemplateDictionary];
-                NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
-                NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
-                [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
-                [fields addObject:[fieldDictionary copy]];
-            }
-
-            [templateSectionDictionary setValue:[fields copy] forKey:@"fields"];
-
-            [self.formsManager sectionWithID:dynamicSectionID completion:^(FORMSection *dynamicSection, NSArray *indexPaths) {
-                FORMSection *section = [[FORMSection alloc] initWithDictionary:templateSectionDictionary
-                                                                      position:index + 1
-                                                                      disabled:NO
-                                                             disabledFieldsIDs:nil
-                                                                 isLastSection:YES];
-                section.form = dynamicSection.form;
-                [dynamicSection.form.sections addObject:section];
-
-                [self.formsManager sectionWithID:section.sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
-                    if (indexPaths) {
-                        [self.collectionView insertItemsAtIndexPaths:indexPaths];
-                    }
-                }];
-            }];
+            [self.formsManager generateDynamicSectionWithID:dynamicSectionID inForm:section.form index:index valueID:nil inCollectionView:self.collectionView];
         } else if ([components.lastObject isEqualToString:@"remove"]) {
             NSDictionary *parsed = [field.fieldID hyp_parseRelationship];
             NSString *sectionID = [NSString stringWithFormat:@"%@[%@]", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"]];
