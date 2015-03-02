@@ -66,7 +66,7 @@
               "subtitle":"bork\nbork\nbork",
               "type":"email",
               "size":{
-                "width":25,
+                "width":50,
                 "height":1
               },
               "validations":{
