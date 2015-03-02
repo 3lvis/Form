@@ -42,7 +42,11 @@
         field.typeString = @"button";
         field.type = FORMFieldTypeButton;
 
-        NSString *actionTitle = [dictionary andy_valueForKey:@"action_title"] ?: [NSString stringWithFormat:@"✚ %@", [self.sectionID uppercaseString]];
+        NSString *actionTitle = [dictionary andy_valueForKey:@"action_title"];
+        if (!actionTitle) {
+            NSLog(@"Specify and `action_title` for your dynamic section");
+            abort();
+        }
         field.title = actionTitle;
         field.section = self;
         field.size = CGSizeMake(100.0f, 2.0f);
