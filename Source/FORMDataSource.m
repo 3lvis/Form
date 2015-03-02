@@ -522,14 +522,17 @@ static const CGFloat FORMDispatchTime = 0.05f;
             }
 
             NSString *dynamicSectionID = [components firstObject];
-            NSMutableDictionary *templateSectionDictionary = [[self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID] mutableCopy];
+            NSDictionary *sectionTemplate = [self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID];
+            NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
             [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", dynamicSectionID, (long)index] forKey:@"id"];
 
             NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
             NSMutableArray *fields = [NSMutableArray new];
-            for (NSDictionary *fieldDictionary in templateFields) {
+            for (NSDictionary *fieldTemplateDictionary in templateFields) {
+                NSMutableDictionary *fieldDictionary = [NSMutableDictionary dictionaryWithDictionary:fieldTemplateDictionary];
                 NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
-                [fieldDictionary setValue:[fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]] forKey:@"id"];
+                NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+                [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
                 [fields addObject:[fieldDictionary copy]];
             }
 
@@ -541,9 +544,6 @@ static const CGFloat FORMDispatchTime = 0.05f;
                                                                       disabled:NO
                                                              disabledFieldsIDs:nil
                                                                  isLastSection:YES];
-                for (FORMField *field in section.fields) {
-                    field.fieldID = [field.fieldID stringByReplacingOccurrencesOfString:@"[0]" withString:[NSString stringWithFormat:@"[%ld]", (long)index]];
-                }
                 section.form = dynamicSection.form;
                 [dynamicSection.form.sections addObject:section];
 
