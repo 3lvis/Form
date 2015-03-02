@@ -27,9 +27,9 @@
     [dataSourceFields enumerateObjectsUsingBlock:^(NSDictionary *fieldDict, NSUInteger fieldIndex, BOOL *stop) {
 
         FORMField *field = [[FORMField  alloc] initWithDictionary:fieldDict
-                                                               position:fieldIndex
-                                                               disabled:disabled
-                                                      disabledFieldsIDs:disabledFieldsIDs];
+                                                         position:fieldIndex
+                                                         disabled:disabled
+                                                disabledFieldsIDs:disabledFieldsIDs];
         field.section = self;
         [fields addObject:field];
     }];
