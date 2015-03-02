@@ -191,8 +191,7 @@
                             FORMField *field = [self fieldWithID:valueID includingHiddenFields:YES];
                             field.fieldValue = [self.values objectForKey:valueID];
                         } else {
-                            NSInteger index = [self indexForDynamicSectionWithID:sectionTemplateID inForm:form];
-                            [self generateDynamicSectionWithID:sectionTemplateID inForm:form index:index valueID:valueID inCollectionView:nil];
+                            [self insertTemplateSectionWithID:sectionTemplateID intoCollectionView:nil usingForm:form valueID:valueID];
                         }
                     }
                 }
@@ -880,29 +879,18 @@
 
 #pragma mark - Dynamic
 
-- (NSInteger)indexForDynamicSectionWithID:(NSString *)sectionID inForm:(FORMGroup *)form
+- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form
 {
-    NSInteger index = -1;
-    for (FORMSection *existingSection in form.sections) {
-        if ([existingSection.sectionID hyp_containsString:sectionID]) {
-            index++;
-        }
-    }
-
-    for (NSString *hiddenSectionID in self.hiddenSections) {
-        if ([hiddenSectionID hyp_containsString:sectionID]) {
-            index++;
-        }
-    }
-
-    return index;
+    [self insertTemplateSectionWithID:sectionTemplateID intoCollectionView:collectionView usingForm:form valueID:nil];
 }
 
-- (void)generateDynamicSectionWithID:(NSString *)dynamicSectionID inForm:(FORMGroup *)form index:(NSInteger)index valueID:(NSString *)valueID inCollectionView:(UICollectionView *)collectionView
+- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form valueID:(NSString *)valueID
 {
-    NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:dynamicSectionID];
+    NSInteger index = [self indexForTemplateSectionWithID:sectionTemplateID inForm:form];
+
+    NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:sectionTemplateID];
     NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
-    [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", dynamicSectionID, (long)index] forKey:@"id"];
+    [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", sectionTemplateID, (long)index] forKey:@"id"];
 
     NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
     NSMutableArray *fields = [NSMutableArray new];
@@ -938,6 +926,24 @@
             }
         }];
     }
+}
+
+- (NSInteger)indexForTemplateSectionWithID:(NSString *)sectionID inForm:(FORMGroup *)form
+{
+    NSInteger index = -1;
+    for (FORMSection *existingSection in form.sections) {
+        if ([existingSection.sectionID hyp_containsString:sectionID]) {
+            index++;
+        }
+    }
+
+    for (NSString *hiddenSectionID in self.hiddenSections) {
+        if ([hiddenSectionID hyp_containsString:sectionID]) {
+            index++;
+        }
+    }
+
+    return index;
 }
 
 @end

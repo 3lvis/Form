@@ -506,11 +506,9 @@ static const CGFloat FORMDispatchTime = 0.05f;
     NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
     if (components.count == 2) {
         if ([components.lastObject isEqualToString:@"add"]) {
-            NSString *dynamicSectionID = [components firstObject];
-            FORMSection *section = [self sectionWithID:dynamicSectionID];
-            NSInteger index = [self.formsManager indexForDynamicSectionWithID:dynamicSectionID inForm:section.form];
-
-            [self.formsManager generateDynamicSectionWithID:dynamicSectionID inForm:section.form index:index valueID:nil inCollectionView:self.collectionView];
+            NSString *sectionTemplateID = [components firstObject];
+            FORMSection *section = [self sectionWithID:sectionTemplateID];
+            [self.formsManager insertTemplateSectionWithID:sectionTemplateID intoCollectionView:self.collectionView usingForm:section.form];
         } else if ([components.lastObject isEqualToString:@"remove"]) {
             NSDictionary *parsed = [field.fieldID hyp_parseRelationship];
             NSString *sectionID = [NSString stringWithFormat:@"%@[%@]", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"]];
