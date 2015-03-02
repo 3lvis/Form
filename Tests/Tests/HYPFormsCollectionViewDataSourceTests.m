@@ -232,7 +232,7 @@
     XCTAssertTrue([dataSource formFieldsAreValid]);
 }
 
-- (void)testDynamicFields
+- (void)testAddingAndRemovingDynamicFields
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
@@ -279,6 +279,27 @@
 
     removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:NO];
     XCTAssertNotNil(removeField);
+}
+
+- (void)testDynamicWithInitialValues
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"companies[0].name" : @"Facebook",
+                                                                        @"companies[0].phone_number" : @"1222333",
+                                                                        @"companies[1].name" : @"Google",
+                                                                        @"companies[1].phone_number" : @"4555666"}
+                                                             disabled:YES];
+
+    FORMSection *section = [dataSource sectionWithID:@"companies[0]"];
+    XCTAssertNotNil(section);
+
+    section = [dataSource sectionWithID:@"companies[1]"];
+    XCTAssertNotNil(section);
 }
 
 @end

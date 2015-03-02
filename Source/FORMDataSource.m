@@ -17,6 +17,7 @@
 #import "NSObject+HYPTesting.h"
 #import "NSString+HYPRelationshipParser.h"
 #import "NSString+HYPContainsString.h"
+#import "NSDictionary+ANDYSafeValue.h"
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
@@ -521,17 +522,32 @@ static const CGFloat FORMDispatchTime = 0.05f;
             }
 
             NSString *dynamicSectionID = [components firstObject];
-            FORMSection *templateSection = [[self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID] copy];
-            templateSection.sectionID = [NSString stringWithFormat:@"%@[%ld]", templateSection.sectionID, (long)index];
-            for (FORMField *templateField in templateSection.fields) {
-                templateField.fieldID = [templateField.fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+            NSMutableDictionary *templateSectionDictionary = [[self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID] mutableCopy];
+            [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", dynamicSectionID, (long)index] forKey:@"id"];
+
+            NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
+            NSMutableArray *fields = [NSMutableArray new];
+            for (NSDictionary *fieldDictionary in templateFields) {
+                NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
+                [fieldDictionary setValue:[fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]] forKey:@"id"];
+                [fields addObject:[fieldDictionary copy]];
             }
 
-            [self.formsManager sectionWithID:dynamicSectionID completion:^(FORMSection *dynamicSection, NSArray *indexPaths) {
-                templateSection.form = dynamicSection.form;
-                [dynamicSection.form.sections addObject:templateSection];
+            [templateSectionDictionary setValue:[fields copy] forKey:@"fields"];
 
-                [self.formsManager sectionWithID:templateSection.sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+            [self.formsManager sectionWithID:dynamicSectionID completion:^(FORMSection *dynamicSection, NSArray *indexPaths) {
+                FORMSection *section = [[FORMSection alloc] initWithDictionary:templateSectionDictionary
+                                                                      position:index + 1
+                                                                      disabled:NO
+                                                             disabledFieldsIDs:nil
+                                                                 isLastSection:YES];
+                for (FORMField *field in section.fields) {
+                    field.fieldID = [field.fieldID stringByReplacingOccurrencesOfString:@"[0]" withString:[NSString stringWithFormat:@"[%ld]", (long)index]];
+                }
+                section.form = dynamicSection.form;
+                [dynamicSection.form.sections addObject:section];
+
+                [self.formsManager sectionWithID:section.sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
                     if (indexPaths) {
                         [self.collectionView insertItemsAtIndexPaths:indexPaths];
                     }

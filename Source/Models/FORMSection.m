@@ -146,30 +146,4 @@
             self.sectionID, self.position, self.form.formID, self.shouldValidate ? @"YES" : @"NO", self.containsSpecialField ? @"YES" : @"NO", self.isLast ? @"YES" : @"NO", fields];
 }
 
-- (id)copyWithZone:(id)zone
-{
-    FORMSection *copy = [FORMSection new];
-
-    copy.sectionID = [self.sectionID copy];
-    copy.position = [self.position copy];
-    copy.position = [self.position copy];
-    copy.typeString = [self.typeString copy];
-    copy.type = self.type;
-    copy.shouldValidate = self.shouldValidate;
-    copy.containsSpecialField = self.containsSpecialField;
-    copy.isLast = self.isLast;
-    copy.form = self.form;
-
-    NSMutableArray *fields = [NSMutableArray new];
-    for (FORMField *existingField in self.fields) {
-        FORMField *field = [existingField copy];
-        field.section = copy;
-        [fields addObject:field];
-    }
-
-    copy.fields = fields;
-
-    return copy;
-}
-
 @end

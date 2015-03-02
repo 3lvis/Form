@@ -147,21 +147,18 @@
         NSDictionary *templates = [JSON andy_valueForKey:@"templates"];
         NSArray *fieldTemplates = [templates andy_valueForKey:@"fields"];
         [fieldTemplates enumerateObjectsUsingBlock:^(NSDictionary *fieldDictionary, NSUInteger idx, BOOL *stop) {
-            FORMField *field = [[FORMField alloc] initWithDictionary:fieldDictionary
-                                                            position:idx
-                                                            disabled:disabled
-                                                   disabledFieldsIDs:disabledFieldsIDs];
-            self.fieldTemplatesDictionary[field.fieldID] = field;
+            NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
+            if (fieldID) {
+                self.fieldTemplatesDictionary[fieldID] = fieldDictionary;
+            }
         }];
 
         NSArray *sectionsTemplates = [templates andy_valueForKey:@"sections"];
         [sectionsTemplates enumerateObjectsUsingBlock:^(NSDictionary *sectionDictionary, NSUInteger idx, BOOL *stop) {
-            FORMSection *section = [[FORMSection alloc] initWithDictionary:sectionDictionary
-                                                                  position:idx
-                                                                  disabled:disabled
-                                                         disabledFieldsIDs:disabledFieldsIDs
-                                                             isLastSection:YES];
-            self.sectionTemplatesDictionary[section.sectionID] = section;
+            NSString *sectionID = [sectionDictionary andy_valueForKey:@"id"];
+            if (sectionID) {
+                self.sectionTemplatesDictionary[sectionID] = sectionDictionary;
+            }
         }];
     } else {
         NSLog(@"Not a valid JSON format");
