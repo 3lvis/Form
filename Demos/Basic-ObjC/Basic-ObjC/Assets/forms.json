@@ -258,6 +258,7 @@
         {
           "id":"companies",
           "type":"dynamic",
+          "action_title":"ADD COMPANY ✛",
           "fields":null
         }
       ]
