@@ -298,8 +298,20 @@
     FORMSection *section = [dataSource sectionWithID:@"companies[0]"];
     XCTAssertNotNil(section);
 
+    FORMField *field = [dataSource fieldWithID:@"companies[0].name" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.fieldValue, @"Facebook");
+
+    field = [dataSource fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.fieldValue, @"1222333");
+
     section = [dataSource sectionWithID:@"companies[1]"];
     XCTAssertNotNil(section);
+
+    field = [dataSource fieldWithID:@"companies[1].name" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.fieldValue, @"Google");
+
+    field = [dataSource fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.fieldValue, @"4555666");
 }
 
 @end

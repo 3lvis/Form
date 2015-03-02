@@ -5,13 +5,13 @@
 #import "FORMField.h"
 #import "FORMFieldValue.h"
 #import "FORMTarget.h"
+#import "DDMathParser.h"
+#import "FORMFieldValidation.h"
 
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
-#import "FORMFieldValidation.h"
 #import "NSString+HYPWordExtractor.h"
-
-#import "DDMathParser.h"
+#import "NSString+HYPContainsString.h"
 #import "DDMathEvaluator+HYPForms.h"
 
 @interface FORMData ()
@@ -171,6 +171,72 @@
                                                        position:formIndex
                                                        disabled:disabled
                                               disabledFieldsIDs:disabledFieldsIDs];
+
+        for (NSString *sectionTemplateID in self.sectionTemplatesDictionary) {
+            NSArray *valueIDs = [[self.values allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            for (NSString *valueID in valueIDs) {
+                if ([valueID hyp_containsString:sectionTemplateID]) {
+                    NSArray *components = [valueID componentsSeparatedByString:@"."];
+                    if (components.count > 1) {
+                        NSString *sectionID = [components firstObject];
+
+                        FORMSection *existingSection;
+                        for (FORMSection *section in form.sections) {
+                            if ([section.sectionID isEqualToString:sectionID]) {
+                                existingSection = section;
+                            }
+                        }
+
+                        if (existingSection) {
+                            FORMField *field = [self fieldWithID:valueID includingHiddenFields:YES];
+                            field.fieldValue = [self.values objectForKey:valueID];
+                        } else {
+                            NSInteger index = -1;
+                            for (FORMSection *existingSection in form.sections) {
+                                if ([existingSection.sectionID hyp_containsString:sectionTemplateID]) {
+                                    index++;
+                                }
+                            }
+
+                            for (NSString *hiddenSectionID in self.hiddenSections) {
+                                if ([hiddenSectionID hyp_containsString:sectionTemplateID]) {
+                                    index++;
+                                }
+                            }
+
+                            NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:sectionTemplateID];
+                            NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
+                            [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", sectionTemplateID, (long)index] forKey:@"id"];
+
+                            NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
+                            NSMutableArray *fields = [NSMutableArray new];
+                            for (NSDictionary *fieldTemplateDictionary in templateFields) {
+                                NSMutableDictionary *fieldDictionary = [NSMutableDictionary dictionaryWithDictionary:fieldTemplateDictionary];
+                                NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
+                                NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+                                [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
+                                [fields addObject:[fieldDictionary copy]];
+                            }
+
+                            [templateSectionDictionary setValue:[fields copy] forKey:@"fields"];
+
+                            FORMSection *section = [[FORMSection alloc] initWithDictionary:templateSectionDictionary
+                                                                                  position:index + 1
+                                                                                  disabled:NO
+                                                                         disabledFieldsIDs:nil
+                                                                             isLastSection:YES];
+                            section.form = form;
+
+                            for (FORMField *field in section.fields) {
+                                field.fieldValue = [self.values objectForKey:valueID];
+                            }
+
+                            [form.sections addObject:section];
+                        }
+                    }
+                }
+            }
+        }
 
         for (FORMField *field in form.fields) {
 
