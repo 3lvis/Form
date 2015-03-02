@@ -44,6 +44,7 @@
         field.title = [NSString stringWithFormat:@"✚ %@", [self.sectionID uppercaseString]];
         field.section = self;
         field.size = CGSizeMake(100.0f, 2.0f);
+        field.disabled = disabled;
         [fields addObject:field];
     }
 
