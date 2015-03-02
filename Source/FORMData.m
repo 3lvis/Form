@@ -923,6 +923,10 @@
         [self sectionWithID:section.sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
             if (indexPaths) {
                 [collectionView insertItemsAtIndexPaths:indexPaths];
+
+                [collectionView scrollToItemAtIndexPath:indexPaths.lastObject
+                                       atScrollPosition:UICollectionViewScrollPositionTop
+                                               animated:YES];
             }
         }];
     }
