@@ -1,6 +1,7 @@
 @import Foundation;
 
 #import "FORMField.h"
+#import "FORMGroup.h"
 
 @interface FORMData : NSObject
 
@@ -52,5 +53,7 @@
 - (BOOL)isEnabled;
 
 - (NSInteger)numberOfFields;
+
+- (NSInteger)indexForDynamicSectionWithID:(NSString *)sectionID inForm:(FORMGroup *)form;
 
 @end

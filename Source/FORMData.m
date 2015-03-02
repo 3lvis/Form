@@ -191,18 +191,7 @@
                             FORMField *field = [self fieldWithID:valueID includingHiddenFields:YES];
                             field.fieldValue = [self.values objectForKey:valueID];
                         } else {
-                            NSInteger index = -1;
-                            for (FORMSection *existingSection in form.sections) {
-                                if ([existingSection.sectionID hyp_containsString:sectionTemplateID]) {
-                                    index++;
-                                }
-                            }
-
-                            for (NSString *hiddenSectionID in self.hiddenSections) {
-                                if ([hiddenSectionID hyp_containsString:sectionTemplateID]) {
-                                    index++;
-                                }
-                            }
+                            NSInteger index = [self indexForDynamicSectionWithID:sectionTemplateID inForm:form];
 
                             NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:sectionTemplateID];
                             NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
@@ -915,6 +904,26 @@
     }
 
     return numberOfFields;
+}
+
+#pragma mark - Dynamic
+
+- (NSInteger)indexForDynamicSectionWithID:(NSString *)sectionID inForm:(FORMGroup *)form
+{
+    NSInteger index = -1;
+    for (FORMSection *existingSection in form.sections) {
+        if ([existingSection.sectionID hyp_containsString:sectionID]) {
+            index++;
+        }
+    }
+
+    for (NSString *hiddenSectionID in self.hiddenSections) {
+        if ([hiddenSectionID hyp_containsString:sectionID]) {
+            index++;
+        }
+    }
+
+    return index;
 }
 
 @end

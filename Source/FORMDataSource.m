@@ -506,20 +506,9 @@ static const CGFloat FORMDispatchTime = 0.05f;
     NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
     if (components.count == 2) {
         if ([components.lastObject isEqualToString:@"add"]) {
-            NSInteger index = -1;
             NSString *sectionID = [components firstObject];
-            FORMSection *section = [self.formsManager sectionWithID:sectionID];
-            for (FORMSection *existingSection in section.form.sections) {
-                if ([existingSection.sectionID hyp_containsString:sectionID]) {
-                    index++;
-                }
-            }
-
-            for (NSString *hiddenSectionID in self.formsManager.hiddenSections) {
-                if ([hiddenSectionID hyp_containsString:sectionID]) {
-                    index++;
-                }
-            }
+            FORMSection *section = [self sectionWithID:sectionID];
+            NSInteger index = [self.formsManager indexForDynamicSectionWithID:sectionID inForm:section.form];
 
             NSString *dynamicSectionID = [components firstObject];
             NSDictionary *sectionTemplate = [self.formsManager.sectionTemplatesDictionary valueForKey:dynamicSectionID];
