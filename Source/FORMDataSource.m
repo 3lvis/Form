@@ -513,6 +513,12 @@ static const CGFloat FORMDispatchTime = 0.05f;
             NSDictionary *parsed = [field.fieldID hyp_parseRelationship];
             NSString *sectionID = [NSString stringWithFormat:@"%@[%@]", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"]];
             [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+                for (FORMSection *currentSection in section.form.sections) {
+                    if ([currentSection.position integerValue] > [section.position integerValue]) {
+                        currentSection.position = @([currentSection.position integerValue] - 1);
+                    }
+                }
+
                 [self.formsManager.hiddenSections setObject:section forKey:sectionID];
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
