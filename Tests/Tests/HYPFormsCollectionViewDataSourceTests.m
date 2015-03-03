@@ -357,9 +357,34 @@
     XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:14 inSection:0]);
 }
 
-- (void)testMultipleAdditionAndRemovalsOfDynamicSections
+- (void)testUpdatedSectionPositionWhenRemovingDynamicSections
 {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
 
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    FORMField *addField = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:NO];
+    XCTAssertNotNil(removeField);
+
+    FORMSection *section = [dataSource sectionWithID:@"companies[0]"];
+    XCTAssertNotNil(section);
+    XCTAssertEqualObjects(section.position, @2);
+
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    section = [dataSource sectionWithID:@"personal-details-1"];
+    XCTAssertEqualObjects(section.position, @2);
+    XCTAssertNotNil(section);
 }
 
 @end
