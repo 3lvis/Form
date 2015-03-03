@@ -260,6 +260,12 @@
           "type":"dynamic",
           "action_title":"ADD COMPANY ✛",
           "fields":null
+        },
+        {
+          "id":"contacts",
+          "type":"dynamic",
+          "action_title":"ADD CONTACT ✛",
+          "fields":null
         }
       ]
     }
@@ -272,8 +278,7 @@
         "fields":[
           {
             "id":"companies[:index].name",
-            "title":"Name",
-            "subtitle":"Hyper",
+            "title":"Company Name",
             "type":"name",
             "validations":{
               "required":true,
@@ -295,6 +300,42 @@
           },
           {
             "id":"companies[:index].remove",
+            "title":"Remove",
+            "type":"button",
+            "size":{
+              "width":20,
+              "height":1
+            }
+          }
+        ]
+      },
+      {
+        "id":"contacts",
+        "fields":[
+          {
+            "id":"contacts[:index].name",
+            "title":"Contact name",
+            "type":"name",
+            "validations":{
+              "required":true,
+              "min_length":2
+            },
+            "size":{
+              "width":50,
+              "height":1
+            }
+          },
+          {
+            "id":"contacts[:index].phone_number",
+            "title":"Phone number",
+            "type":"number",
+            "size":{
+              "width":30,
+              "height":1
+            }
+          },
+          {
+            "id":"contacts[:index].remove",
             "title":"Remove",
             "type":"button",
             "size":{
