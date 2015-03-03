@@ -294,5 +294,12 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     }
 }
 
+#pragma mark - Appearance
+
+- (void)setCornerRadius:(CGFloat)cornerRadius
+{
+    self.layer.cornerRadius = cornerRadius;
+}
+
 
 @end

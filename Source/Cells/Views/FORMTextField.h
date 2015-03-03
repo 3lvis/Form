@@ -35,6 +35,8 @@ typedef NS_ENUM(NSInteger, FORMTextFieldType) {
 
 @property (nonatomic, weak) id <HYPTextFieldDelegate> textFieldDelegate;
 
+- (void)setCornerRadius:(CGFloat)cornerRadius UI_APPEARANCE_SELECTOR;
+
 @end
 
 @protocol HYPTextFieldDelegate <NSObject>
