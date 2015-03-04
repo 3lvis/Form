@@ -24,14 +24,14 @@
     [[FORMSeparatorView appearance] setBackgroundColor:[UIColor colorFromHex:@"C6C6C6"]];
 
     [[FORMButton appearance] setBackgroundColor:[UIColor colorFromHex:@"3DAFEB"]];
-//    _button.titleLabel.font = [UIFont HYPFormsActionButtonFont];
-//    _button.layer.borderWidth = 1.0f;
-//    _button.layer.cornerRadius = 5.0f;
-//    _button.highlightedTitleColor = [UIColor HYPFormsCallToAction];
-//    _button.layer.borderColor = [UIColor HYPFormsCallToAction].CGColor;
-//    _button.highlightedBackgroundColor = [UIColor whiteColor];
-//    _button.titleColor = [UIColor whiteColor];
-//
+    [[FORMButton appearance] setTitleLabelFont:[UIFont fontWithName:@"DIN-Bold" size:16.0]];
+    [[FORMButton appearance] setBorderWidth:1.0f];
+    [[FORMButton appearance] setCornerRadius:5.0f];
+    [[FORMButton appearance] setHighlightedTitleColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMButton appearance] setBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMButton appearance] setHighlightedBackgroundColor:[UIColor whiteColor]];
+    [[FORMButton appearance] setTitleColor:[UIColor whiteColor]];
+
 //    FORMFieldValueCell
 //    self.textLabel.font = [UIFont HYPFormsMediumSize];
 //    self.textLabel.textColor = [UIColor HYPFormsDarkBlue];
