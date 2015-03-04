@@ -7,6 +7,7 @@
 #import "HYPImageFormFieldCell.h"
 #import "FORMData.h"
 #import "FORMTextFieldCell.h"
+#import "FORMDefaultStyle.h"
 
 #import "NSObject+HYPTesting.h"
 #import "UIColor+Hex.h"
@@ -111,6 +112,8 @@
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 
     self.collectionView.dataSource = self.dataSource;
+
+    [FORMDefaultStyle applyStyle];
 }
 
 - (void)viewDidAppear:(BOOL)animated

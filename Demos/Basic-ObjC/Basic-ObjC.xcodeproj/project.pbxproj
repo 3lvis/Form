@@ -65,6 +65,7 @@
 		44332A441AA6F65600C170B5 /* FORMPostalCodeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A121AA6F65600C170B5 /* FORMPostalCodeValidator.m */; };
 		44332A451AA6F65600C170B5 /* FORMSocialSecurityNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A141AA6F65600C170B5 /* FORMSocialSecurityNumberValidator.m */; };
 		44332A461AA6F65600C170B5 /* FORMValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A161AA6F65600C170B5 /* FORMValidator.m */; };
+		44332A491AA6F94A00C170B5 /* FORMDefaultStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A481AA6F94A00C170B5 /* FORMDefaultStyle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,8 @@
 		44332A141AA6F65600C170B5 /* FORMSocialSecurityNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSocialSecurityNumberValidator.m; sourceTree = "<group>"; };
 		44332A151AA6F65600C170B5 /* FORMValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMValidator.h; sourceTree = "<group>"; };
 		44332A161AA6F65600C170B5 /* FORMValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMValidator.m; sourceTree = "<group>"; };
+		44332A471AA6F94A00C170B5 /* FORMDefaultStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMDefaultStyle.h; sourceTree = "<group>"; };
+		44332A481AA6F94A00C170B5 /* FORMDefaultStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMDefaultStyle.m; sourceTree = "<group>"; };
 		5C74849DF53D9C3C7FE00770 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -340,6 +343,8 @@
 				443329F41AA6F65600C170B5 /* Models */,
 				44332A031AA6F65600C170B5 /* Others */,
 				44332A0E1AA6F65600C170B5 /* Validators */,
+				44332A471AA6F94A00C170B5 /* FORMDefaultStyle.h */,
+				44332A481AA6F94A00C170B5 /* FORMDefaultStyle.m */,
 			);
 			name = Source;
 			path = ../../Source;
@@ -664,6 +669,7 @@
 			files = (
 				44332A241AA6F65600C170B5 /* FORMBankAccountNumberFormatter.m in Sources */,
 				44332A361AA6F65600C170B5 /* FORMSocialSecurityNumberInputValidator.m in Sources */,
+				44332A491AA6F94A00C170B5 /* FORMDefaultStyle.m in Sources */,
 				14E49C351A99B7D600F19988 /* AppDelegate.m in Sources */,
 				44332A3F1AA6F65600C170B5 /* HYPPostalCodeManager.m in Sources */,
 				44332A171AA6F65600C170B5 /* FORMBaseFieldCell.m in Sources */,
