@@ -1,9 +1,6 @@
 #import "FORMGroupHeaderView.h"
 
-#import "UIColor+Hex.h"
 #import "UIScreen+HYPLiveBounds.h"
-#import "UIColor+HYPFormsColors.h"
-#import "UIFont+HYPFormsStyles.h"
 
 @interface FORMGroupHeaderView ()
 
@@ -50,8 +47,9 @@
     _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(FORMTitleMargin, 0.0f, width, FORMHeaderHeight)];
     _headerLabel.backgroundColor = [UIColor clearColor];
     _headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    _headerLabel.font = [UIFont HYPFormsMediumSize];
-    _headerLabel.textColor = [UIColor HYPFormsDarkBlue];
+    #warning needs custom style
+//    _headerLabel.font = [UIFont HYPFormsMediumSize];
+//    _headerLabel.textColor = [UIColor HYPFormsDarkBlue];
 
     return _headerLabel;
 }

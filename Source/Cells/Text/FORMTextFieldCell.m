@@ -2,10 +2,6 @@
 
 #import "FORMSubtitleView.h"
 
-#import "UIColor+Hex.h"
-#import "UIFont+HYPFormsStyles.h"
-#import "UIColor+HYPFormsColors.h"
-
 static const CGFloat FORMSubtitleViewMinimumWidth = 90.0f;
 static const CGFloat FORMSubtitleViewHeight = 44.0f;
 static const NSInteger FORMSubtitleNumberOfLines = 4;
@@ -139,8 +135,9 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
     _subtitleLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
 
-    _subtitleLabel.font = [UIFont HYPFormsSmallSizeMedium];
-    _subtitleLabel.textColor = [UIColor HYPFormsBrown];
+#warning needs custom style
+//    _subtitleLabel.font = [UIFont HYPFormsSmallSizeMedium];
+//    _subtitleLabel.textColor = [UIColor HYPFormsBrown];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _subtitleLabel.numberOfLines = FORMSubtitleNumberOfLines;

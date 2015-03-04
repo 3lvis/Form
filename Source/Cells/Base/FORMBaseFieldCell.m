@@ -1,8 +1,5 @@
 #import "FORMBaseFieldCell.h"
 
-#import "UIColor+Hex.h"
-#import "UIColor+HYPFormsColors.h"
-
 static const CGFloat HYPTextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
 static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
@@ -44,7 +41,9 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     if (_separatorView) return _separatorView;
 
     _separatorView = [[UIView alloc] initWithFrame:[self separatorViewFrame]];
-    _separatorView.backgroundColor = [UIColor HYPFormsFieldBorderDisabled];
+
+#warning needs custom style
+    // _separatorView.backgroundColor = [UIColor HYPFormsFieldBorderDisabled];
 
     return _separatorView;
 }

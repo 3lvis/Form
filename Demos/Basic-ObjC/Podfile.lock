@@ -1,20 +1,4 @@
 PODS:
-  - Form (0.122):
-    - Hex
-    - HYPImagePicker
-    - HYPMathParser
-    - HYPNorwegianAccountNumber
-    - HYPNorwegianSSN
-    - NSDictionary-ANDYSafeValue
-    - NSJSONSerialization-ANDYJSONFile
-    - NSObject-HYPTesting
-    - NSString-HYPContainsString
-    - NSString-HYPFormula
-    - NSString-HYPRelationshipParser
-    - NSString-HYPWordExtractor
-    - NSString-ZENInflections
-    - UIButton-ANDYHighlighted
-    - UIScreen-HYPLiveBounds
   - Hex (1.1.1)
   - HYPImagePicker (0.3)
   - HYPMathParser (0.3)
@@ -34,20 +18,23 @@ PODS:
   - UIScreen-HYPLiveBounds (1.3)
 
 DEPENDENCIES:
-  - Form (from `https://github.com/hyperoslo/Form`, branch `feature/dynamic-sections`)
-
-EXTERNAL SOURCES:
-  Form:
-    :branch: feature/dynamic-sections
-    :git: https://github.com/hyperoslo/Form
-
-CHECKOUT OPTIONS:
-  Form:
-    :commit: 3444ace1a17e739eb7272dc257e9ecab8e7c952a
-    :git: https://github.com/hyperoslo/Form
+  - Hex
+  - HYPImagePicker
+  - HYPMathParser
+  - HYPNorwegianAccountNumber
+  - HYPNorwegianSSN
+  - NSDictionary-ANDYSafeValue
+  - NSJSONSerialization-ANDYJSONFile
+  - NSObject-HYPTesting
+  - NSString-HYPContainsString
+  - NSString-HYPFormula
+  - NSString-HYPRelationshipParser
+  - NSString-HYPWordExtractor
+  - NSString-ZENInflections
+  - UIButton-ANDYHighlighted
+  - UIScreen-HYPLiveBounds
 
 SPEC CHECKSUMS:
-  Form: 21096648e193959de35d57c39be742afea555a5f
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
   HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
   HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16

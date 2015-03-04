@@ -2,9 +2,6 @@
 
 #import "FORMFieldValue.h"
 
-#import "UIFont+HYPFormsStyles.h"
-#import "UIColor+HYPFormsColors.h"
-
 @implementation FORMFieldValueCell
 
 #pragma mark - Initializers
@@ -14,13 +11,15 @@
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (!self) return nil;
 
-    self.textLabel.font = [UIFont HYPFormsMediumSize];
-    self.textLabel.textColor = [UIColor HYPFormsDarkBlue];
+    #warning needs custom style
+//    self.textLabel.font = [UIFont HYPFormsMediumSize];
+//    self.textLabel.textColor = [UIColor HYPFormsDarkBlue];
     self.textLabel.highlightedTextColor = [UIColor whiteColor];
     self.textLabel.textAlignment = NSTextAlignmentLeft;
 
-    self.detailTextLabel.font = [UIFont HYPFormsSmallSize];
-    self.detailTextLabel.textColor = [UIColor HYPFormsDarkBlue];
+    #warning needs custom style
+//    self.detailTextLabel.font = [UIFont HYPFormsSmallSize];
+//    self.detailTextLabel.textColor = [UIColor HYPFormsDarkBlue];
     self.detailTextLabel.highlightedTextColor = [UIColor whiteColor];
     self.detailTextLabel.textAlignment = NSTextAlignmentLeft;
 
@@ -29,7 +28,8 @@
     self.separatorInset = UIEdgeInsetsZero;
 
     UIView *selectedBackgroundView = [[UIView alloc] init];
-    selectedBackgroundView.backgroundColor = [UIColor HYPFormsCallToActionPressed];
+    #warning needs custom style
+//    selectedBackgroundView.backgroundColor = [UIColor HYPFormsCallToActionPressed];
     self.selectedBackgroundView = selectedBackgroundView;
     self.separatorInset = UIEdgeInsetsZero;
 

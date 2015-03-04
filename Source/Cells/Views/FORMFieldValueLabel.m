@@ -2,10 +2,6 @@
 
 #import "FORMBaseFieldCell.h"
 
-#import "UIColor+Hex.h"
-#import "UIFont+HYPFormsStyles.h"
-#import "UIColor+HYPFormsColors.h"
-
 @implementation FORMFieldValueLabel
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -13,14 +9,16 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.layer.borderWidth = FORMFieldCellBorderWidth;
-    self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-    self.layer.cornerRadius = FORMFieldCellCornerRadius;
+#warning needs custom style
+//    self.layer.borderWidth = FORMFieldCellBorderWidth;
+//    self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//    self.layer.cornerRadius = FORMFieldCellCornerRadius;
     self.layer.masksToBounds = YES;
 
-    self.backgroundColor = [UIColor HYPFormsFieldBackground];
-    self.font = [UIFont HYPFormsTextFieldFont];
-    self.textColor = [UIColor HYPFormsDarkBlue];
+#warning needs custom style
+//    self.backgroundColor = [UIColor HYPFormsFieldBackground];
+//    self.font = [UIFont HYPFormsTextFieldFont];
+//    self.textColor = [UIColor HYPFormsDarkBlue];
 
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.userInteractionEnabled = YES;
@@ -51,26 +49,28 @@
 {
     _active = active;
 
-    if (active) {
-        self.backgroundColor = [UIColor HYPFormsFieldBackgroundActive];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-    } else {
-        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-    }
+#warning needs custom style
+//    if (active) {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundActive];
+//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//    } else {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
+//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//    }
 }
 
 - (void)setEnabled:(BOOL)enabled
 {
     [super setEnabled:enabled];
 
-    if (enabled) {
-        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-    } else {
-        self.backgroundColor = [UIColor HYPFormsLightGray];
-        self.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
-    }
+#warning needs custom style
+//    if (enabled) {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
+//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//    } else {
+//        self.backgroundColor = [UIColor HYPFormsLightGray];
+//        self.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
+//    }
 }
 
 - (void)setValid:(BOOL)valid
@@ -79,13 +79,14 @@
 
     if (!self.isEnabled) return;
 
-    if (valid) {
-        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-    } else {
-        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
-        self.layer.borderColor = [UIColor HYPFormsRed].CGColor;
-    }
+#warning needs custom style
+//    if (valid) {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
+//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//    } else {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
+//        self.layer.borderColor = [UIColor HYPFormsRed].CGColor;
+//    }
 }
 
 #pragma mark - Actions

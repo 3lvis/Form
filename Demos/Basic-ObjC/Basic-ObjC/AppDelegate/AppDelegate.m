@@ -4,10 +4,9 @@
 #import "FORMBackgroundView.h"
 #import "FORMLayout.h"
 
-#import "UIColor+Hex.h"
 #import "NSObject+HYPTesting.h"
-#import "UIColor+HYPFormsColors.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
+#import "UIColor+Hex.h"
 
 @interface AppDelegate ()
 
@@ -35,7 +34,8 @@
     HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithJSON:JSON andInitialValues:dictionary];
 
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
-    controller.view.tintColor = [UIColor HYPFormsControlsBlue];
+
+    controller.view.tintColor = [UIColor colorFromHex:@"5182AF"];
     controller.navigationBarHidden = YES;
 
     self.window.rootViewController = controller;

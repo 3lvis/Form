@@ -2,9 +2,6 @@
 
 #import "FORMBaseFieldCell.h"
 
-#import "UIColor+HYPFormsColors.h"
-#import "UIColor+Hex.h"
-#import "UIFont+HYPFormsStyles.h"
 #import "FORMTextFieldTypeManager.h"
 
 static const CGFloat HYPTextFieldClearButtonWidth = 30.0f;
@@ -27,17 +24,19 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.layer.borderWidth = FORMFieldCellBorderWidth;
-    self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-    self.layer.cornerRadius = FORMFieldCellCornerRadius;
+    #warning needs custom style
+//    self.layer.borderWidth = FORMFieldCellBorderWidth;
+//    self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//    self.layer.cornerRadius = FORMFieldCellCornerRadius;
 
     self.delegate = self;
 
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-    self.backgroundColor = [UIColor HYPFormsFieldBackground];
-    self.font = [UIFont HYPFormsTextFieldFont];
-    self.textColor = [UIColor HYPFormsDarkBlue];
+    #warning needs custom style
+//    self.backgroundColor = [UIColor HYPFormsFieldBackground];
+//    self.font = [UIFont HYPFormsTextFieldFont];
+//    self.textColor = [UIColor HYPFormsDarkBlue];
 
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, FORMFieldCellLeftMargin, 0.0f)];
     self.leftView = paddingView;
@@ -94,28 +93,30 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
 {
     _active = active;
 
-    if (active) {
-        self.backgroundColor = [UIColor HYPFormsFieldBackgroundActive];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-    } else {
-        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-    }
+    #warning needs custom style
+//    if (active) {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundActive];
+//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//    } else {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
+//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//    }
 }
 
 - (void)setEnabled:(BOOL)enabled
 {
     [super setEnabled:enabled];
 
-    if (enabled) {
-        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-        self.textColor = [UIColor HYPFormsDarkBlue];
-    } else {
-        self.backgroundColor = [UIColor HYPFormsLightGray];
-        self.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
-        self.textColor = [UIColor grayColor];
-    }
+    #warning needs custom style
+//    if (enabled) {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
+//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//        self.textColor = [UIColor HYPFormsDarkBlue];
+//    } else {
+//        self.backgroundColor = [UIColor HYPFormsLightGray];
+//        self.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
+//        self.textColor = [UIColor grayColor];
+//    }
 }
 
 - (void)setRawText:(NSString *)rawText
@@ -138,13 +139,14 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
 
     if (!self.isEnabled) return;
 
-    if (valid) {
-        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-    } else {
-        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
-        self.layer.borderColor = [UIColor HYPFormsRed].CGColor;
-    }
+    #warning needs custom style
+//    if (valid) {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
+//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+//    } else {
+//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
+//        self.layer.borderColor = [UIColor HYPFormsRed].CGColor;
+//    }
 }
 
 - (void)setTypeString:(NSString *)typeString

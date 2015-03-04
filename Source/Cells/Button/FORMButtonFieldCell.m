@@ -1,8 +1,6 @@
 #import "FORMButtonFieldCell.h"
 
-#import "UIColor+HYPFormsColors.h"
 #import "UIButton+ANDYHighlighted.h"
-#import "UIFont+HYPFormsStyles.h"
 
 @interface FORMButtonFieldCell ()
 
@@ -31,16 +29,19 @@
 
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
 
-    _button.titleLabel.font = [UIFont HYPFormsActionButtonFont];
+    #warning needs custom style
+//    _button.titleLabel.font = [UIFont HYPFormsActionButtonFont];
 
     _button.layer.borderWidth = 1.0f;
     _button.layer.cornerRadius = 5.0f;
 
     _button.titleColor = [UIColor whiteColor];
-    _button.highlightedTitleColor = [UIColor HYPFormsCallToAction];
-    _button.layer.borderColor = [UIColor HYPFormsCallToAction].CGColor;
+    #warning needs custom style
+//    _button.highlightedTitleColor = [UIColor HYPFormsCallToAction];
+//    _button.layer.borderColor = [UIColor HYPFormsCallToAction].CGColor;
 
-    _button.backgroundColor = [UIColor HYPFormsCallToAction];
+    #warning needs custom style
+//    _button.backgroundColor = [UIColor HYPFormsCallToAction];
     _button.highlightedBackgroundColor = [UIColor whiteColor];
 
     [_button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
