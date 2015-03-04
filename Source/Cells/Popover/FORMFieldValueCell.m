@@ -2,8 +2,8 @@
 
 #import "FORMFieldValue.h"
 
-#import "UIFont+HYPFormsStyles.h"
-#import "UIColor+HYPFormsColors.h"
+#import "UIFont+FORMStyles.h"
+#import "UIColor+FORMColors.h"
 
 @implementation FORMFieldValueCell
 
@@ -14,13 +14,13 @@
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (!self) return nil;
 
-    self.textLabel.font = [UIFont HYPFormsMediumSize];
-    self.textLabel.textColor = [UIColor HYPFormsDarkBlue];
+    self.textLabel.font = [UIFont FORMMediumSize];
+    self.textLabel.textColor = [UIColor FORMDarkBlue];
     self.textLabel.highlightedTextColor = [UIColor whiteColor];
     self.textLabel.textAlignment = NSTextAlignmentLeft;
 
-    self.detailTextLabel.font = [UIFont HYPFormsSmallSize];
-    self.detailTextLabel.textColor = [UIColor HYPFormsDarkBlue];
+    self.detailTextLabel.font = [UIFont FORMSmallSize];
+    self.detailTextLabel.textColor = [UIColor FORMDarkBlue];
     self.detailTextLabel.highlightedTextColor = [UIColor whiteColor];
     self.detailTextLabel.textAlignment = NSTextAlignmentLeft;
 
@@ -29,7 +29,7 @@
     self.separatorInset = UIEdgeInsetsZero;
 
     UIView *selectedBackgroundView = [[UIView alloc] init];
-    selectedBackgroundView.backgroundColor = [UIColor HYPFormsCallToActionPressed];
+    selectedBackgroundView.backgroundColor = [UIColor FORMCallToActionPressed];
     self.selectedBackgroundView = selectedBackgroundView;
     self.separatorInset = UIEdgeInsetsZero;
 

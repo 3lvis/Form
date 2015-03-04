@@ -2,11 +2,11 @@
 
 #import "FORMSection.h"
 
-@interface HYPFormSectionTests : XCTestCase
+@interface FORMectionTests : XCTestCase
 
 @end
 
-@implementation HYPFormSectionTests
+@implementation FORMectionTests
 
 - (void)testInitWithDictionary
 {

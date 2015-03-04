@@ -1,11 +1,11 @@
 #import "FORMPostalCodeValidator.h"
-#import "HYPPostalCodeManager.h"
+#import "FORMPostalCodeManager.h"
 
 @implementation FORMPostalCodeValidator
 
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue
 {
-    BOOL postalCodeIsValid = ([[HYPPostalCodeManager sharedManager] validatePostalCode:fieldValue]);
+    BOOL postalCodeIsValid = ([[FORMPostalCodeManager sharedManager] validatePostalCode:fieldValue]);
 
     if (!postalCodeIsValid) {
         return FORMValidationResultTypeInvalidPostalCode;

@@ -1,21 +1,21 @@
-#import "HYPPostalCodeManager.h"
+#import "FORMPostalCodeManager.h"
 
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
-@interface HYPPostalCodeManager ()
+@interface FORMPostalCodeManager ()
 
 @property (nonatomic, retain) NSDictionary *postalCodes;
 
 @end
 
-@implementation HYPPostalCodeManager
+@implementation FORMPostalCodeManager
 
 + (instancetype)sharedManager
 {
-    static HYPPostalCodeManager *_sharedManager = nil;
+    static FORMPostalCodeManager *_sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedManager = [HYPPostalCodeManager new];
+        _sharedManager = [FORMPostalCodeManager new];
     });
 
     return _sharedManager;
@@ -27,7 +27,7 @@
     if (!self) return nil;
 
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"postal_codes.json"
-                                                             inBundle:[NSBundle bundleForClass:[HYPPostalCodeManager class]]];
+                                                             inBundle:[NSBundle bundleForClass:[FORMPostalCodeManager class]]];
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
 
     for (NSDictionary *entry in JSON) {

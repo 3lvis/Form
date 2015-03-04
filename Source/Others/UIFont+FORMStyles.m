@@ -1,73 +1,73 @@
-#import "UIFont+HYPFormsStyles.h"
+#import "UIFont+FORMStyles.h"
 
-@implementation UIFont (HYPFormsStyles)
+@implementation UIFont (FORMStyles)
 
-+ (UIFont *)HYPFormsLargeSize
++ (UIFont *)FORMLargeSize
 {
     return [UIFont fontWithName:@"DIN-Medium" size:20.0];
 }
 
-+ (UIFont *)HYPFormsLargeSizeBold
++ (UIFont *)FORMLargeSizeBold
 {
     return [UIFont fontWithName:@"DIN-Bold" size:20.0];
 }
 
-+ (UIFont *)HYPFormsLargeSizeRegular
++ (UIFont *)FORMLargeSizeRegular
 {
     return [UIFont fontWithName:@"DIN-Regular" size:20.0];
 }
 
-+ (UIFont *)HYPFormsMediumSize
++ (UIFont *)FORMMediumSize
 {
     return [UIFont fontWithName:@"DIN-Medium" size:17.0];
 }
 
-+ (UIFont *)HYPFormsMediumSizeBolder
++ (UIFont *)FORMMediumSizeBolder
 {
     return [UIFont fontWithName:@"DIN-Bold" size:17.0];
 }
 
-+ (UIFont *)HYPFormsMediumSizeBold
++ (UIFont *)FORMMediumSizeBold
 {
     return [UIFont fontWithName:@"DIN-Medium" size:17.0];
 }
 
-+ (UIFont *)HYPFormsMediumSizeLight
++ (UIFont *)FORMMediumSizeLight
 {
     return [UIFont fontWithName:@"DIN-Light" size:17.0];
 }
 
-+ (UIFont *)HYPFormsSmallSizeBold
++ (UIFont *)FORMSmallSizeBold
 {
     return [UIFont fontWithName:@"DIN-Bold" size:14.0];
 }
 
-+ (UIFont *)HYPFormsSmallSize
++ (UIFont *)FORMSmallSize
 {
     return [UIFont fontWithName:@"DIN-Regular" size:14.0];
 }
 
-+ (UIFont *)HYPFormsSmallSizeLight
++ (UIFont *)FORMSmallSizeLight
 {
     return [UIFont fontWithName:@"DIN-Light" size:14.0];
 }
 
-+ (UIFont *)HYPFormsSmallSizeMedium
++ (UIFont *)FORMSmallSizeMedium
 {
     return [UIFont fontWithName:@"DIN-Medium" size:14.0];
 }
 
-+ (UIFont *)HYPFormsLabelFont
++ (UIFont *)FORMLabelFont
 {
     return [UIFont fontWithName:@"DIN-Light" size:13.0];
 }
 
-+ (UIFont *)HYPFormsTextFieldFont
++ (UIFont *)FORMTextFieldFont
 {
     return [UIFont fontWithName:@"DIN-Regular" size:15.0];
 }
 
-+ (UIFont *)HYPFormsActionButtonFont
++ (UIFont *)FORMActionButtonFont
 {
     return [UIFont fontWithName:@"DIN-Bold" size:16.0];
 }

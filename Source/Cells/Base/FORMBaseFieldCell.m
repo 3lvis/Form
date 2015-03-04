@@ -1,11 +1,11 @@
 #import "FORMBaseFieldCell.h"
 
 #import "UIColor+Hex.h"
-#import "UIColor+HYPFormsColors.h"
+#import "UIColor+FORMColors.h"
 
-static const CGFloat HYPTextFormFieldCellLabelMarginTop = 10.0f;
-static const CGFloat HYPTextFormFieldCellLabelHeight = 20.0f;
-static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
+static const CGFloat FORMTextFormFieldCellLabelMarginTop = 10.0f;
+static const CGFloat FORMTextFormFieldCellLabelHeight = 20.0f;
+static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 @interface FORMBaseFieldCell ()
 
@@ -44,7 +44,7 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
     if (_separatorView) return _separatorView;
 
     _separatorView = [[UIView alloc] initWithFrame:[self separatorViewFrame]];
-    _separatorView.backgroundColor = [UIColor HYPFormsFieldBorderDisabled];
+    _separatorView.backgroundColor = [UIColor FORMFieldBorderDisabled];
 
     return _separatorView;
 }
@@ -104,11 +104,11 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 
 - (CGRect)headingLabelFrame
 {
-    CGFloat marginX = FORMTextFieldCellMarginX + HYPTextFormFieldCellLabelMarginX;
-    CGFloat marginTop = HYPTextFormFieldCellLabelMarginTop;
+    CGFloat marginX = FORMTextFieldCellMarginX + FORMTextFormFieldCellLabelMarginX;
+    CGFloat marginTop = FORMTextFormFieldCellLabelMarginTop;
 
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
-    CGFloat height = HYPTextFormFieldCellLabelHeight;
+    CGFloat height = FORMTextFormFieldCellLabelHeight;
     CGRect frame = CGRectMake(marginX, marginTop, width, height);
 
     return frame;

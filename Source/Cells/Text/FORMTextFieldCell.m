@@ -3,14 +3,14 @@
 #import "FORMSubtitleView.h"
 
 #import "UIColor+Hex.h"
-#import "UIFont+HYPFormsStyles.h"
-#import "UIColor+HYPFormsColors.h"
+#import "UIFont+FORMStyles.h"
+#import "UIColor+FORMColors.h"
 
 static const CGFloat FORMSubtitleViewMinimumWidth = 90.0f;
 static const CGFloat FORMSubtitleViewHeight = 44.0f;
 static const NSInteger FORMSubtitleNumberOfLines = 4;
 
-@interface FORMTextFieldCell () <HYPTextFieldDelegate>
+@interface FORMTextFieldCell () <FORMTextFieldDelegate>
 
 @property (nonatomic, strong) FORMTextField *textField;
 @property (nonatomic, strong) UIPopoverController *popoverController;
@@ -139,8 +139,8 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
     _subtitleLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
 
-    _subtitleLabel.font = [UIFont HYPFormsSmallSizeMedium];
-    _subtitleLabel.textColor = [UIColor HYPFormsBrown];
+    _subtitleLabel.font = [UIFont FORMSmallSizeMedium];
+    _subtitleLabel.textColor = [UIColor FORMBrown];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _subtitleLabel.numberOfLines = FORMSubtitleNumberOfLines;
@@ -166,7 +166,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     return [super becomeFirstResponder];
 }
 
-#pragma mark - HYPBaseFormFieldCell
+#pragma mark - FORMBaseFormFieldCell
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {
@@ -303,7 +303,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     }
 }
 
-#pragma mark - HYPTextFieldDelegate
+#pragma mark - FORMTextFieldDelegate
 
 - (void)textFormFieldDidBeginEditing:(FORMTextField *)textField
 {

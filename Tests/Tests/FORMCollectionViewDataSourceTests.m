@@ -8,7 +8,7 @@
 #import "FORMSection.h"
 #import "FORMData.h"
 #import "FORMTarget.h"
-#import "HYPImageFormFieldCell.h"
+#import "FORMImageFormFieldCell.h"
 
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
@@ -18,11 +18,11 @@
 
 @end
 
-@interface HYPFormsCollectionViewDataSourceTests : XCTestCase
+@interface FORMCollectionViewDataSourceTests : XCTestCase
 
 @end
 
-@implementation HYPFormsCollectionViewDataSourceTests
+@implementation FORMCollectionViewDataSourceTests
 
 - (void)testIndexInForms
 {

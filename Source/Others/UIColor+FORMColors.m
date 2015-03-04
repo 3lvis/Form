@@ -1,137 +1,137 @@
-#import "UIColor+HYPFormsColors.h"
+#import "UIColor+FORMColors.h"
 
 #import "UIColor+Hex.h"
 
-@implementation UIColor (HYPFormsColors)
+@implementation UIColor (FORMColors)
 
 #pragma mark - Color scheme
 
-+ (UIColor *)HYPFormsCoreBlue
++ (UIColor *)FORMCoreBlue
 {
     return [UIColor colorFromHex:@"28649C"];
 }
 
-+ (UIColor *)HYPFormsDarkBlue
++ (UIColor *)FORMDarkBlue
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)HYPFormsCallToAction
++ (UIColor *)FORMCallToAction
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)HYPFormsCallToActionPressed
++ (UIColor *)FORMCallToActionPressed
 {
     return [UIColor colorFromHex:@"008ED9"];
 }
 
-+ (UIColor *)HYPFormsBackground
++ (UIColor *)FORMBackground
 {
     return [UIColor colorFromHex:@"DAE2EA"];
 }
 
-+ (UIColor *)HYPFormsLightGray
++ (UIColor *)FORMLightGray
 {
     return [UIColor colorFromHex:@"F5F5F8"];
 }
 
-+ (UIColor *)HYPFormsDarkGray
++ (UIColor *)FORMDarkGray
 {
     return [UIColor colorFromHex:@"979797"];
 }
 
-+ (UIColor *)HYPFormsControlsBlue
++ (UIColor *)FORMControlsBlue
 {
     return [UIColor colorFromHex:@"5182AF"];
 }
 
-+ (UIColor *)HYPFormsFieldForeground
++ (UIColor *)FORMFieldForeground
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)HYPFormsFieldForegroundActive
++ (UIColor *)FORMFieldForegroundActive
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)HYPFormsFieldForegroundInvalid
++ (UIColor *)FORMFieldForegroundInvalid
 {
     return [UIColor colorFromHex:@"455C73"];
 }
 
-+ (UIColor *)HYPFormsFieldForegroundDisabled
++ (UIColor *)FORMFieldForegroundDisabled
 {
     return [UIColor colorFromHex:@"C6C6C6"];
 }
 
-+ (UIColor *)HYPFormsFieldBackground
++ (UIColor *)FORMFieldBackground
 {
     return [UIColor colorFromHex:@"E1F5FF"];
 }
 
-+ (UIColor *)HYPFormsFieldBackgroundActive
++ (UIColor *)FORMFieldBackgroundActive
 {
     return [UIColor colorFromHex:@"C0EAFF"];
 }
 
-+ (UIColor *)HYPFormsFieldBackgroundInvalid
++ (UIColor *)FORMFieldBackgroundInvalid
 {
     return [UIColor colorFromHex:@"FFD7D7"];
 }
 
-+ (UIColor *)HYPFormsFieldBackgroundDisabled
++ (UIColor *)FORMFieldBackgroundDisabled
 {
     return [UIColor colorFromHex:@"FFFFFF"];
 }
 
-+ (UIColor *)HYPFormsFieldDisabledText
++ (UIColor *)FORMFieldDisabledText
 {
     return [UIColor colorFromHex:@"DEDEDE"];
 }
 
-+ (UIColor *)HYPFormsFieldBorder
++ (UIColor *)FORMFieldBorder
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)HYPFormsFieldBorderActive
++ (UIColor *)FORMFieldBorderActive
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)HYPFormsFieldBorderInvalid
++ (UIColor *)FORMFieldBorderInvalid
 {
     return [UIColor colorFromHex:@"EC3031"];
 }
 
-+ (UIColor *)HYPFormsFieldBorderDisabled
++ (UIColor *)FORMFieldBorderDisabled
 {
     return [UIColor colorFromHex:@"C6C6C6"];
 }
 
-+ (UIColor *)HYPFormsBlue
++ (UIColor *)FORMBlue
 {
     return [UIColor colorFromHex:@"3DAFEB"];
 }
 
-+ (UIColor *)HYPFormsGreen
++ (UIColor *)FORMGreen
 {
     return [UIColor colorFromHex:@"69C204"];
 }
 
-+ (UIColor *)HYPFormsYellow
++ (UIColor *)FORMYellow
 {
     return [UIColor colorFromHex:@"FEC22E"];
 }
 
-+ (UIColor *)HYPFormsRed
++ (UIColor *)FORMRed
 {
     return [UIColor colorFromHex:@"EC3031"];
 }
 
-+ (UIColor *)HYPFormsBrown
++ (UIColor *)FORMBrown
 {
     return [UIColor colorFromHex:@"97591D"];
 }
@@ -145,17 +145,17 @@
 
 + (UIColor *)tableCellBorder
 {
-    return [UIColor HYPFormsDarkBlue];
+    return [UIColor FORMDarkBlue];
 }
 
 + (UIColor *)borderColor
 {
-    return [UIColor HYPFormsBlue];
+    return [UIColor FORMBlue];
 }
 
 + (UIColor *)windowBackgroundColor
 {
-    return [UIColor HYPFormsBackground];
+    return [UIColor FORMBackground];
 }
 
 + (UIColor *)navigationForgroundColor
@@ -165,7 +165,7 @@
 
 + (UIColor *)navigationBackgroundColor
 {
-    return [UIColor HYPFormsCoreBlue];
+    return [UIColor FORMCoreBlue];
 }
 
 + (UIColor *)messageViewForeground
@@ -175,10 +175,10 @@
 
 + (UIColor *)messageViewBackground
 {
-    return [UIColor HYPFormsRed];
+    return [UIColor FORMRed];
 }
 
-+ (UIColor *)HYPFormsShadowColor
++ (UIColor *)FORMShadowColor
 {
     return [UIColor colorWithRed: 0.271 green: 0.361 blue: 0.451 alpha: 0.46];
 }

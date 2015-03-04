@@ -72,10 +72,10 @@ static const CGFloat FORMDispatchTime = 0.05f;
        forCellWithReuseIdentifier:FORMTextFieldCellIdentifier];
 
     [collectionView registerClass:[FORMSelectFieldCell class]
-       forCellWithReuseIdentifier:HYPSelectFormFieldCellIdentifier];
+       forCellWithReuseIdentifier:FORMSelectFormFieldCellIdentifier];
 
     [collectionView registerClass:[FORMDateFieldCell class]
-       forCellWithReuseIdentifier:HYPDateFormFieldCellIdentifier];
+       forCellWithReuseIdentifier:FORMDateFormFieldCellIdentifier];
 
     [collectionView registerClass:[FORMButtonFieldCell class]
        forCellWithReuseIdentifier:FORMButtonFieldCellIdentifier];
@@ -141,10 +141,10 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
     switch (field.type) {
         case FORMFieldTypeDate:
-            identifier = HYPDateFormFieldCellIdentifier;
+            identifier = FORMDateFormFieldCellIdentifier;
             break;
         case FORMFieldTypeSelect:
-            identifier = HYPSelectFormFieldCellIdentifier;
+            identifier = FORMSelectFormFieldCellIdentifier;
             break;
 
         case FORMFieldTypeText:

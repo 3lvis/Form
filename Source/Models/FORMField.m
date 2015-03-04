@@ -12,7 +12,7 @@
 
 static NSString * const FORMFieldSelectType = @"select";
 static NSString * const FORMInputValidatorSelector = @"validateString:text:";
-static NSString * const HYPFormatterSelector = @"formatString:reverse:";
+static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
 @implementation FORMField
 
@@ -166,7 +166,7 @@ static NSString * const HYPFormatterSelector = @"formatString:reverse:";
     FORMFormatter *formatter;
     Class fieldFormatter = [FORMClassFactory classFromString:fieldClassName withSuffix:@"Formatter"];
     Class typeFormatter = [FORMClassFactory classFromString:self.typeString withSuffix:@"Formatter"];
-    SEL selector = NSSelectorFromString(HYPFormatterSelector);
+    SEL selector = NSSelectorFromString(FORMFormatterSelector);
 
     if (fieldFormatter && [fieldFormatter instanceMethodForSelector:selector]) {
         formatter = [[fieldFormatter alloc] init];

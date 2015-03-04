@@ -1,8 +1,8 @@
 #import "FORMButtonFieldCell.h"
 
-#import "UIColor+HYPFormsColors.h"
+#import "UIColor+FORMColors.h"
 #import "UIButton+ANDYHighlighted.h"
-#import "UIFont+HYPFormsStyles.h"
+#import "UIFont+FORMStyles.h"
 
 @interface FORMButtonFieldCell ()
 
@@ -31,16 +31,16 @@
 
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
 
-    _button.titleLabel.font = [UIFont HYPFormsActionButtonFont];
+    _button.titleLabel.font = [UIFont FORMActionButtonFont];
 
     _button.layer.borderWidth = 1.0f;
     _button.layer.cornerRadius = 5.0f;
 
     _button.titleColor = [UIColor whiteColor];
-    _button.highlightedTitleColor = [UIColor HYPFormsCallToAction];
-    _button.layer.borderColor = [UIColor HYPFormsCallToAction].CGColor;
+    _button.highlightedTitleColor = [UIColor FORMCallToAction];
+    _button.layer.borderColor = [UIColor FORMCallToAction].CGColor;
 
-    _button.backgroundColor = [UIColor HYPFormsCallToAction];
+    _button.backgroundColor = [UIColor FORMCallToAction];
     _button.highlightedBackgroundColor = [UIColor whiteColor];
 
     [_button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -48,7 +48,7 @@
     return _button;
 }
 
-#pragma mark - HYPBaseFormFieldCell
+#pragma mark - FORMBaseFormFieldCell
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {

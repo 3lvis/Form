@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, FORMTextFieldType) {
     FORMTextFieldTypeUnknown
 };
 
-@protocol HYPTextFieldDelegate;
+@protocol FORMTextFieldDelegate;
 
 @interface FORMTextField : UITextField
 
@@ -33,11 +33,11 @@ typedef NS_ENUM(NSInteger, FORMTextFieldType) {
 @property (nonatomic, getter = isValid)    BOOL valid;
 @property (nonatomic, getter = isActive)   BOOL active;
 
-@property (nonatomic, weak) id <HYPTextFieldDelegate> textFieldDelegate;
+@property (nonatomic, weak) id <FORMTextFieldDelegate> textFieldDelegate;
 
 @end
 
-@protocol HYPTextFieldDelegate <NSObject>
+@protocol FORMTextFieldDelegate <NSObject>
 
 @optional
 

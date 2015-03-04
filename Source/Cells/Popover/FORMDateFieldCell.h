@@ -1,6 +1,6 @@
 #import "FORMSelectFieldCell.h"
 
-static NSString * const HYPDateFormFieldCellIdentifier = @"HYPDateFormFieldCellIdentifier";
+static NSString * const FORMDateFormFieldCellIdentifier = @"FORMDateFormFieldCellIdentifier";
 
 @interface FORMDateFieldCell : FORMSelectFieldCell
 
