@@ -283,8 +283,7 @@
             FORMSection *section = [self sectionWithID:target.targetID];
             if (section) {
                 FORMGroup *form = section.form;
-                NSInteger index = [section indexInForms:self.forms];
-                [form.sections removeObjectAtIndex:index];
+                [form removeSection:section];
             }
         }
     }
