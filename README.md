@@ -1,7 +1,5 @@
 ![Form](https://github.com/hyperoslo/Form/blob/master/Images/logo-v2.png)
 
-[![Build Status](https://img.shields.io/travis/hyperoslo/Form.svg?style=flat)](https://travis-ci.org/hyperoslo/Form)
-
 Form came out from our need to a form that could share logic between our iOS apps and our web clients, we found that JSON was one way to achieve this.
 
 Form includes the following features:
