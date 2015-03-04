@@ -314,4 +314,77 @@
     XCTAssertEqualObjects(field.fieldValue, @"4555666");
 }
 
+- (void)testAddingAndRemovingMultipleDynamicSections
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    FORMField *field = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    __block NSIndexPath *fieldIndexPath;
+    [dataSource fieldWithID:@"companies[0].name" includingHiddenFields:NO completion:^(FORMField *field, NSIndexPath *indexPath) {
+        fieldIndexPath = indexPath;
+    }];
+
+    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:4 inSection:0]);
+
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    [dataSource fieldWithID:@"companies[1].name" includingHiddenFields:NO completion:^(FORMField *field, NSIndexPath *indexPath) {
+        fieldIndexPath = indexPath;
+    }];
+
+    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:7 inSection:0]);
+
+    field = [dataSource fieldWithID:@"contacts.add" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    [dataSource fieldWithID:@"contacts[0].name" includingHiddenFields:NO completion:^(FORMField *field, NSIndexPath *indexPath) {
+        fieldIndexPath = indexPath;
+    }];
+
+    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:14 inSection:0]);
+}
+
+- (void)testUpdatedSectionPositionWhenRemovingDynamicSections
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    FORMField *addField = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:NO];
+    XCTAssertNotNil(removeField);
+
+    FORMSection *section = [dataSource sectionWithID:@"companies[0]"];
+    XCTAssertNotNil(section);
+    XCTAssertEqualObjects(section.position, @2);
+
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    section = [dataSource sectionWithID:@"personal-details-1"];
+    XCTAssertEqualObjects(section.position, @2);
+    XCTAssertNotNil(section);
+}
+
 @end
