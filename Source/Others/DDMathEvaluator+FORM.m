@@ -1,16 +1,16 @@
 //
-//  DDMathEvaluator+HYPForms.m
-//  HYPForms
+//  DDMathEvaluator+FORM.m
+//  FORM
 //
 //  Created by Christoffer Winterkvist on 1/9/15.
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
-#import "DDMathEvaluator+HYPForms.h"
+#import "DDMathEvaluator+FORM.h"
 #import "DDExpression.h"
 #import "_DDVariableExpression.h"
 
-@implementation DDMathEvaluator (HYPForms)
+@implementation DDMathEvaluator (FORM)
 
 + (NSDictionary *)hyp_directoryFunctions
 {

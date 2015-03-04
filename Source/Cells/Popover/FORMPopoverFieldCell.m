@@ -74,21 +74,21 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
     return [super becomeFirstResponder];
 }
 
-#pragma mark - HYPBaseFormFieldCell
+#pragma mark - FORMBaseFormFieldCell
 
 - (void)validate
 {
     [self.fieldValueLabel setValid:[self.field validate]];
 }
 
-#pragma mark - HYPPopoverFormFieldCell
+#pragma mark - FORMPopoverFormFieldCell
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field
 {
     abort();
 }
 
-#pragma mark - HYPBaseFormFieldCell
+#pragma mark - FORMBaseFormFieldCell
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {

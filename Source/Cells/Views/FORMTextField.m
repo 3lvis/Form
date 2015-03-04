@@ -2,13 +2,13 @@
 
 #import "FORMBaseFieldCell.h"
 
-#import "UIColor+HYPFormsColors.h"
+#import "UIColor+FORMColors.h"
 #import "UIColor+Hex.h"
-#import "UIFont+HYPFormsStyles.h"
+#import "UIFont+FORMStyles.h"
 #import "FORMTextFieldTypeManager.h"
 
-static const CGFloat HYPTextFieldClearButtonWidth = 30.0f;
-static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
+static const CGFloat FORMTextFieldClearButtonWidth = 30.0f;
+static const CGFloat FORMTextFieldClearButtonHeight = 20.0f;
 
 @interface FORMTextField () <UITextFieldDelegate>
 
@@ -28,16 +28,16 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     if (!self) return nil;
 
     self.layer.borderWidth = FORMFieldCellBorderWidth;
-    self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+    self.layer.borderColor = [UIColor FORMBlue].CGColor;
     self.layer.cornerRadius = FORMFieldCellCornerRadius;
 
     self.delegate = self;
 
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-    self.backgroundColor = [UIColor HYPFormsFieldBackground];
-    self.font = [UIFont HYPFormsTextFieldFont];
-    self.textColor = [UIColor HYPFormsDarkBlue];
+    self.backgroundColor = [UIColor FORMFieldBackground];
+    self.font = [UIFont FORMTextFieldFont];
+    self.textColor = [UIColor FORMDarkBlue];
 
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, FORMFieldCellLeftMargin, 0.0f)];
     self.leftView = paddingView;
@@ -51,7 +51,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [clearButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
     [clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    clearButton.frame = CGRectMake(0.0f, 0.0f, HYPTextFieldClearButtonWidth, HYPTextFieldClearButtonHeight);
+    clearButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldClearButtonWidth, FORMTextFieldClearButtonHeight);
     self.rightView = clearButton;
     self.rightViewMode = UITextFieldViewModeWhileEditing;
 
@@ -95,11 +95,11 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     _active = active;
 
     if (active) {
-        self.backgroundColor = [UIColor HYPFormsFieldBackgroundActive];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+        self.backgroundColor = [UIColor FORMFieldBackgroundActive];
+        self.layer.borderColor = [UIColor FORMBlue].CGColor;
     } else {
-        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+        self.backgroundColor = [UIColor FORMFieldBackground];
+        self.layer.borderColor = [UIColor FORMBlue].CGColor;
     }
 }
 
@@ -108,12 +108,12 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     [super setEnabled:enabled];
 
     if (enabled) {
-        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-        self.textColor = [UIColor HYPFormsDarkBlue];
+        self.backgroundColor = [UIColor FORMFieldBackground];
+        self.layer.borderColor = [UIColor FORMBlue].CGColor;
+        self.textColor = [UIColor FORMDarkBlue];
     } else {
-        self.backgroundColor = [UIColor HYPFormsLightGray];
-        self.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
+        self.backgroundColor = [UIColor FORMLightGray];
+        self.layer.borderColor = [UIColor FORMFieldDisabledText].CGColor;
         self.textColor = [UIColor grayColor];
     }
 }
@@ -139,11 +139,11 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     if (!self.isEnabled) return;
 
     if (valid) {
-        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
+        self.backgroundColor = [UIColor FORMFieldBackground];
+        self.layer.borderColor = [UIColor FORMBlue].CGColor;
     } else {
-        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
-        self.layer.borderColor = [UIColor HYPFormsRed].CGColor;
+        self.backgroundColor = [UIColor FORMFieldBackgroundInvalid];
+        self.layer.borderColor = [UIColor FORMRed].CGColor;
     }
 }
 

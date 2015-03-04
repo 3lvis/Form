@@ -12,7 +12,7 @@
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPContainsString.h"
-#import "DDMathEvaluator+HYPForms.h"
+#import "DDMathEvaluator+FORM.h"
 
 @interface FORMData ()
 

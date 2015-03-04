@@ -2,8 +2,8 @@
 
 #import "FORMFieldValueCell.h"
 
-#import "UIFont+HYPFormsStyles.h"
-#import "UIColor+HYPFormsColors.h"
+#import "UIFont+FORMStyles.h"
+#import "UIColor+FORMColors.h"
 
 static const CGFloat FORMLabelHeight = 25.0f;
 
@@ -38,8 +38,8 @@ static const CGFloat FORMLabelHeight = 25.0f;
     CGRect rect = CGRectMake(0.0f, 8.0f, FORMFieldValuesHeaderWidth, FORMLabelHeight);
 
     _titleLabel = [[UILabel alloc] initWithFrame:rect];
-    _titleLabel.font = [UIFont HYPFormsMediumSizeBold];
-    _titleLabel.textColor = [UIColor HYPFormsDarkBlue];
+    _titleLabel.font = [UIFont FORMMediumSizeBold];
+    _titleLabel.textColor = [UIColor FORMDarkBlue];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
 
     return _titleLabel;
@@ -53,8 +53,8 @@ static const CGFloat FORMLabelHeight = 25.0f;
     CGRect rect = CGRectMake(0.0f, y, FORMFieldValuesHeaderWidth, FORMLabelHeight);
 
     _subtitleLabel = [[UILabel alloc] initWithFrame:rect];
-    _subtitleLabel.font = [UIFont HYPFormsMediumSizeLight];
-    _subtitleLabel.textColor = [UIColor HYPFormsCoreBlue];
+    _subtitleLabel.font = [UIFont FORMMediumSizeLight];
+    _subtitleLabel.textColor = [UIColor FORMCoreBlue];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
 
     return _subtitleLabel;

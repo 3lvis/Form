@@ -12,11 +12,11 @@
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
-@interface HYPFormsManagerTests : XCTestCase
+@interface FORMManagerTests : XCTestCase
 
 @end
 
-@implementation HYPFormsManagerTests
+@implementation FORMManagerTests
 
 - (void)testFormsGeneration
 {

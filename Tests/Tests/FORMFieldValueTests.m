@@ -2,11 +2,11 @@
 
 #import "FORMFieldValue.h"
 
-@interface HYPFieldValueTests : XCTestCase
+@interface FORMFieldValueTests : XCTestCase
 
 @end
 
-@implementation HYPFieldValueTests
+@implementation FORMFieldValueTests
 
 - (void)testInitWithDictionary
 {

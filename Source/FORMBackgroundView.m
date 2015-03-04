@@ -1,7 +1,7 @@
 #import "FORMBackgroundView.h"
 
 #import "UIColor+Hex.h"
-#import "UIColor+HYPFormsColors.h"
+#import "UIColor+FORMColors.h"
 
 @interface FORMBackgroundView ()
 
@@ -30,7 +30,7 @@
 {
     self = [super initWithFrame:frame];
 
-    self.backgroundColor = [UIColor HYPFormsBackground];
+    self.backgroundColor = [UIColor FORMBackground];
 
     return self;
 }
