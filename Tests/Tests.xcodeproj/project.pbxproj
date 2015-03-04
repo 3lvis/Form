@@ -70,6 +70,8 @@
 		149C292E1A9A23DD00F88B91 /* number-formula.json in Resources */ = {isa = PBXBuildFile; fileRef = 149C291F1A9A23DD00F88B91 /* number-formula.json */; };
 		149C29311A9A241D00F88B91 /* FORMImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29301A9A241D00F88B91 /* FORMImageFormFieldCell.m */; };
 		149C29331A9A251800F88B91 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 149C29321A9A251800F88B91 /* forms.json */; };
+		14AFC1111AA7CF5C00583FC0 /* FORMSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFC1101AA7CF5C00583FC0 /* FORMSeparatorView.m */; };
+		14AFC1141AA7CF6D00583FC0 /* FORMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFC1131AA7CF6D00583FC0 /* FORMButton.m */; };
 		14B564731A06D87B00342CDA /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 14B564721A06D87B00342CDA /* .travis.yml */; };
 		14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 14C418391A019A1500636FD6 /* LICENSE.md */; };
 		14C4183E1A019A1500636FD6 /* FORM.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 14C4183A1A019A1500636FD6 /* FORM.podspec */; };
@@ -189,6 +191,10 @@
 		149C292F1A9A241D00F88B91 /* FORMImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMImageFormFieldCell.h; sourceTree = "<group>"; };
 		149C29301A9A241D00F88B91 /* FORMImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMImageFormFieldCell.m; sourceTree = "<group>"; };
 		149C29321A9A251800F88B91 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
+		14AFC10F1AA7CF5C00583FC0 /* FORMSeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMSeparatorView.h; sourceTree = "<group>"; };
+		14AFC1101AA7CF5C00583FC0 /* FORMSeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSeparatorView.m; sourceTree = "<group>"; };
+		14AFC1121AA7CF6D00583FC0 /* FORMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMButton.h; sourceTree = "<group>"; };
+		14AFC1131AA7CF6D00583FC0 /* FORMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMButton.m; sourceTree = "<group>"; };
 		14B564721A06D87B00342CDA /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		14C418261A01919C00636FD6 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C4182C1A01919C00636FD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -461,6 +467,10 @@
 				144A287F1A99B2CF004A9086 /* FORMLayout.m */,
 				144A28801A99B2CF004A9086 /* FORMData.h */,
 				144A28811A99B2CF004A9086 /* FORMData.m */,
+				14AFC1121AA7CF6D00583FC0 /* FORMButton.h */,
+				14AFC1131AA7CF6D00583FC0 /* FORMButton.m */,
+				14AFC10F1AA7CF5C00583FC0 /* FORMSeparatorView.h */,
+				14AFC1101AA7CF5C00583FC0 /* FORMSeparatorView.m */,
 				144A28821A99B2CF004A9086 /* FORMGroupHeaderView.h */,
 				144A28831A99B2CF004A9086 /* FORMGroupHeaderView.m */,
 				144A28841A99B2CF004A9086 /* FORMSubtitleView.h */,
@@ -622,6 +632,7 @@
 				144A28CB1A99B2CF004A9086 /* FORMPhoneNumberFormatter.m in Sources */,
 				144A28D71A99B2CF004A9086 /* FORMNumberInputValidator.m in Sources */,
 				144A28BE1A99B2CF004A9086 /* FORMFieldValueCell.m in Sources */,
+				14AFC1111AA7CF5C00583FC0 /* FORMSeparatorView.m in Sources */,
 				144A28E51A99B2CF004A9086 /* UIDevice+HYPRealOrientation.m in Sources */,
 				144A28CC1A99B2CF004A9086 /* FORMSocialSecurityNumberFormatter.m in Sources */,
 				144A28D31A99B2CF004A9086 /* FORMBankAccountNumberInputValidator.m in Sources */,
@@ -664,6 +675,7 @@
 				149C29221A9A23DD00F88B91 /* FORMFieldTests.m in Sources */,
 				144A28DB1A99B2CF004A9086 /* FORMClassFactory.m in Sources */,
 				144A28BB1A99B2CF004A9086 /* FORMBaseFieldCell.m in Sources */,
+				14AFC1141AA7CF6D00583FC0 /* FORMButton.m in Sources */,
 				144A28C91A99B2CF004A9086 /* FORMFloatFormatter.m in Sources */,
 				144A28E11A99B2CF004A9086 /* FORMTarget.m in Sources */,
 				144A28D11A99B2CF004A9086 /* FORMGroupHeaderView.m in Sources */,
