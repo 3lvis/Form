@@ -6,6 +6,7 @@
 #import "FORMSeparatorView.h"
 #import "FORMButton.h"
 #import "FORMFieldValueLabel.h"
+#import "FORMFieldValueCell.h"
 
 #import "UIColor+Hex.h"
 
@@ -32,14 +33,13 @@
     [[FORMButton appearance] setHighlightedBackgroundColor:[UIColor whiteColor]];
     [[FORMButton appearance] setTitleColor:[UIColor whiteColor]];
 
-//    FORMFieldValueCell
-//    self.textLabel.font = [UIFont HYPFormsMediumSize];
-//    self.textLabel.textColor = [UIColor HYPFormsDarkBlue];
-//    self.textLabel.highlightedTextColor = [UIColor whiteColor];
-//    self.detailTextLabel.font = [UIFont HYPFormsSmallSize];
-//    self.detailTextLabel.textColor = [UIColor HYPFormsDarkBlue];
-//    self.detailTextLabel.highlightedTextColor = [UIColor whiteColor];
-//    selectedBackgroundView.backgroundColor = [UIColor HYPFormsCallToActionPressed];
+    [[FORMFieldValueCell appearance] setTextLabelFont:[UIFont fontWithName:@"DIN-Medium" size:17.0]];
+    [[FORMFieldValueCell appearance] setTextLabelColor:[UIColor colorFromHex:@"455C73"]];
+    [[FORMFieldValueCell appearance] setDetailTextLabelHighlightedTextColor:[UIColor whiteColor]];
+    [[FORMFieldValueCell appearance] setDetailTextLabelFont:[UIFont fontWithName:@"DIN-Regular" size:14.0]];
+    [[FORMFieldValueCell appearance] setDetailTextLabelColor:[UIColor colorFromHex:@"455C73"]];
+    [[FORMFieldValueCell appearance] setDetailTextLabelHighlightedTextColor:[UIColor whiteColor]];
+    [[FORMFieldValueCell appearance] setSelectedBackgroundViewColor:[UIColor colorFromHex:@"008ED9"]];
 
     [[FORMTextField appearance] setFont:[UIFont fontWithName:@"DIN-Regular" size:15.0]];
     [[FORMTextField appearance] setTextColor:[UIColor colorFromHex:@"455C73"]];
