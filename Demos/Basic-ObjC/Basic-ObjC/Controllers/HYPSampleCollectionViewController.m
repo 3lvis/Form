@@ -1,7 +1,7 @@
 #import "HYPSampleCollectionViewController.h"
 
 #import "FORMDataSource.h"
-#import "HYPPostalCodeManager.h"
+#import "FORMPostalCodeManager.h"
 #import "FORMFieldValue.h"
 #import "HYPImagePicker.h"
 #import "HYPImageFormFieldCell.h"

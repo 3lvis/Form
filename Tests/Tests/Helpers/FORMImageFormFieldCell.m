@@ -1,9 +1,5 @@
 #import "FORMImageFormFieldCell.h"
 
-#import "UIColor+Hex.h"
-#import "UIFont+FORMStyles.h"
-#import "UIColor+FORMColors.h"
-
 static const CGFloat FORMImageFormFieldTopMargin = 20.0f;
 static const CGFloat FORMImageFormFieldHorizontalMargin = 10.0f;
 
@@ -30,8 +26,6 @@ static const CGFloat FORMImageFormFieldContainerWidth = 360.0f;
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.contentView.backgroundColor = [UIColor FORMLightGray];
-
     self.contentView.layer.cornerRadius = 5.0f;
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
@@ -57,8 +51,6 @@ static const CGFloat FORMImageFormFieldContainerWidth = 360.0f;
     CGRect labelFrame = CGRectMake(FORMImageFormFieldLabelsX, FORMImageFormFieldLabelY,
                                    FORMImageFormFieldLabelsWidth, FORMImageFormFieldLabelHeight);
     UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
-    label.font = [UIFont FORMLargeSize];
-    label.textColor = [UIColor FORMCoreBlue];
     label.text = @"Main title";
 
     return label;
@@ -69,8 +61,6 @@ static const CGFloat FORMImageFormFieldContainerWidth = 360.0f;
     CGRect infoFrame = CGRectMake(FORMImageFormFieldLabelsX, FORMImageFormFieldInfoY,
                                   FORMImageFormFieldLabelsWidth, FORMImageFormFieldInfoHeight);
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
-    infoLabel.font = [UIFont FORMSmallSize];
-    infoLabel.textColor = [UIColor FORMCoreBlue];
     infoLabel.text = @"Some info on the button";
     infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
     infoLabel.numberOfLines = 0;

@@ -58,14 +58,14 @@
 		44332A3B1AA6F65600C170B5 /* FORMGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 443329FE1AA6F65600C170B5 /* FORMGroup.m */; };
 		44332A3C1AA6F65600C170B5 /* FORMSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A001AA6F65600C170B5 /* FORMSection.m */; };
 		44332A3D1AA6F65600C170B5 /* FORMTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A021AA6F65600C170B5 /* FORMTarget.m */; };
-		44332A3E1AA6F65600C170B5 /* DDMathEvaluator+HYPForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A051AA6F65600C170B5 /* DDMathEvaluator+HYPForms.m */; };
-		44332A3F1AA6F65600C170B5 /* HYPPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A071AA6F65600C170B5 /* HYPPostalCodeManager.m */; };
 		44332A411AA6F65600C170B5 /* UIDevice+HYPRealOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A0B1AA6F65600C170B5 /* UIDevice+HYPRealOrientation.m */; };
 		44332A431AA6F65600C170B5 /* FORMBankAccountNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A101AA6F65600C170B5 /* FORMBankAccountNumberValidator.m */; };
 		44332A441AA6F65600C170B5 /* FORMPostalCodeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A121AA6F65600C170B5 /* FORMPostalCodeValidator.m */; };
 		44332A451AA6F65600C170B5 /* FORMSocialSecurityNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A141AA6F65600C170B5 /* FORMSocialSecurityNumberValidator.m */; };
 		44332A461AA6F65600C170B5 /* FORMValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A161AA6F65600C170B5 /* FORMValidator.m */; };
 		44332A491AA6F94A00C170B5 /* FORMDefaultStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 44332A481AA6F94A00C170B5 /* FORMDefaultStyle.m */; };
+		4457AF571AA70926009C5837 /* DDMathEvaluator+FORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457AF541AA70926009C5837 /* DDMathEvaluator+FORM.m */; };
+		4457AF581AA70926009C5837 /* FORMPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457AF561AA70926009C5837 /* FORMPostalCodeManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,10 +177,6 @@
 		44332A001AA6F65600C170B5 /* FORMSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSection.m; sourceTree = "<group>"; };
 		44332A011AA6F65600C170B5 /* FORMTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTarget.h; sourceTree = "<group>"; };
 		44332A021AA6F65600C170B5 /* FORMTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTarget.m; sourceTree = "<group>"; };
-		44332A041AA6F65600C170B5 /* DDMathEvaluator+HYPForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDMathEvaluator+HYPForms.h"; sourceTree = "<group>"; };
-		44332A051AA6F65600C170B5 /* DDMathEvaluator+HYPForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDMathEvaluator+HYPForms.m"; sourceTree = "<group>"; };
-		44332A061AA6F65600C170B5 /* HYPPostalCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPostalCodeManager.h; sourceTree = "<group>"; };
-		44332A071AA6F65600C170B5 /* HYPPostalCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPostalCodeManager.m; sourceTree = "<group>"; };
 		44332A0A1AA6F65600C170B5 /* UIDevice+HYPRealOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+HYPRealOrientation.h"; sourceTree = "<group>"; };
 		44332A0B1AA6F65600C170B5 /* UIDevice+HYPRealOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+HYPRealOrientation.m"; sourceTree = "<group>"; };
 		44332A0F1AA6F65600C170B5 /* FORMBankAccountNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMBankAccountNumberValidator.h; sourceTree = "<group>"; };
@@ -193,6 +189,10 @@
 		44332A161AA6F65600C170B5 /* FORMValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMValidator.m; sourceTree = "<group>"; };
 		44332A471AA6F94A00C170B5 /* FORMDefaultStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMDefaultStyle.h; sourceTree = "<group>"; };
 		44332A481AA6F94A00C170B5 /* FORMDefaultStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMDefaultStyle.m; sourceTree = "<group>"; };
+		4457AF531AA70926009C5837 /* DDMathEvaluator+FORM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDMathEvaluator+FORM.h"; sourceTree = "<group>"; };
+		4457AF541AA70926009C5837 /* DDMathEvaluator+FORM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDMathEvaluator+FORM.m"; sourceTree = "<group>"; };
+		4457AF551AA70926009C5837 /* FORMPostalCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMPostalCodeManager.h; sourceTree = "<group>"; };
+		4457AF561AA70926009C5837 /* FORMPostalCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPostalCodeManager.m; sourceTree = "<group>"; };
 		5C74849DF53D9C3C7FE00770 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -487,10 +487,10 @@
 		44332A031AA6F65600C170B5 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				44332A041AA6F65600C170B5 /* DDMathEvaluator+HYPForms.h */,
-				44332A051AA6F65600C170B5 /* DDMathEvaluator+HYPForms.m */,
-				44332A061AA6F65600C170B5 /* HYPPostalCodeManager.h */,
-				44332A071AA6F65600C170B5 /* HYPPostalCodeManager.m */,
+				4457AF531AA70926009C5837 /* DDMathEvaluator+FORM.h */,
+				4457AF541AA70926009C5837 /* DDMathEvaluator+FORM.m */,
+				4457AF551AA70926009C5837 /* FORMPostalCodeManager.h */,
+				4457AF561AA70926009C5837 /* FORMPostalCodeManager.m */,
 				44332A0A1AA6F65600C170B5 /* UIDevice+HYPRealOrientation.h */,
 				44332A0B1AA6F65600C170B5 /* UIDevice+HYPRealOrientation.m */,
 			);
@@ -671,18 +671,17 @@
 				44332A361AA6F65600C170B5 /* FORMSocialSecurityNumberInputValidator.m in Sources */,
 				44332A491AA6F94A00C170B5 /* FORMDefaultStyle.m in Sources */,
 				14E49C351A99B7D600F19988 /* AppDelegate.m in Sources */,
-				44332A3F1AA6F65600C170B5 /* HYPPostalCodeManager.m in Sources */,
 				44332A171AA6F65600C170B5 /* FORMBaseFieldCell.m in Sources */,
 				44332A381AA6F65600C170B5 /* FORMField.m in Sources */,
 				44332A291AA6F65600C170B5 /* FORMBackgroundView.m in Sources */,
 				44332A201AA6F65600C170B5 /* FORMFieldHeadingLabel.m in Sources */,
 				44332A1D1AA6F65600C170B5 /* FORMPopoverFieldCell.m in Sources */,
+				4457AF581AA70926009C5837 /* FORMPostalCodeManager.m in Sources */,
 				44332A3A1AA6F65600C170B5 /* FORMFieldValue.m in Sources */,
 				44332A231AA6F65600C170B5 /* FORMTextFieldTypeManager.m in Sources */,
 				44332A351AA6F65600C170B5 /* FORMPostalCodeInputValidator.m in Sources */,
 				44332A331AA6F65600C170B5 /* FORMNumberInputValidator.m in Sources */,
 				44332A191AA6F65600C170B5 /* FORMDateFieldCell.m in Sources */,
-				44332A3E1AA6F65600C170B5 /* DDMathEvaluator+HYPForms.m in Sources */,
 				44332A411AA6F65600C170B5 /* UIDevice+HYPRealOrientation.m in Sources */,
 				44332A441AA6F65600C170B5 /* FORMPostalCodeValidator.m in Sources */,
 				44332A3C1AA6F65600C170B5 /* FORMSection.m in Sources */,
@@ -704,6 +703,7 @@
 				44332A431AA6F65600C170B5 /* FORMBankAccountNumberValidator.m in Sources */,
 				44332A211AA6F65600C170B5 /* FORMFieldValueLabel.m in Sources */,
 				44332A3B1AA6F65600C170B5 /* FORMGroup.m in Sources */,
+				4457AF571AA70926009C5837 /* DDMathEvaluator+FORM.m in Sources */,
 				44332A2C1AA6F65600C170B5 /* FORMGroupHeaderView.m in Sources */,
 				44332A311AA6F65600C170B5 /* FORMInputValidator.m in Sources */,
 				44332A2B1AA6F65600C170B5 /* FORMDataSource.m in Sources */,

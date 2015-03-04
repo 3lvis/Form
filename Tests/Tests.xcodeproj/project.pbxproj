@@ -48,9 +48,7 @@
 		144A28E01A99B2CF004A9086 /* FORMSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28A31A99B2CF004A9086 /* FORMSection.m */; };
 		144A28E11A99B2CF004A9086 /* FORMTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28A51A99B2CF004A9086 /* FORMTarget.m */; };
 		144A28E21A99B2CF004A9086 /* DDMathEvaluator+FORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28A81A99B2CF004A9086 /* DDMathEvaluator+FORM.m */; };
-		144A28E41A99B2CF004A9086 /* UIColor+FORMColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28AC1A99B2CF004A9086 /* UIColor+FORMColors.m */; };
 		144A28E51A99B2CF004A9086 /* UIDevice+HYPRealOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28AE1A99B2CF004A9086 /* UIDevice+HYPRealOrientation.m */; };
-		144A28E61A99B2CF004A9086 /* UIFont+FORMStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28B01A99B2CF004A9086 /* UIFont+FORMStyles.m */; };
 		144A28E71A99B2CF004A9086 /* FORMBankAccountNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28B31A99B2CF004A9086 /* FORMBankAccountNumberValidator.m */; };
 		144A28E81A99B2CF004A9086 /* FORMPostalCodeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28B51A99B2CF004A9086 /* FORMPostalCodeValidator.m */; };
 		144A28E91A99B2CF004A9086 /* FORMSocialSecurityNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28B71A99B2CF004A9086 /* FORMSocialSecurityNumberValidator.m */; };
@@ -163,12 +161,8 @@
 		144A28A51A99B2CF004A9086 /* FORMTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTarget.m; sourceTree = "<group>"; };
 		144A28A71A99B2CF004A9086 /* DDMathEvaluator+FORM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDMathEvaluator+FORM.h"; sourceTree = "<group>"; };
 		144A28A81A99B2CF004A9086 /* DDMathEvaluator+FORM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDMathEvaluator+FORM.m"; sourceTree = "<group>"; };
-		144A28AB1A99B2CF004A9086 /* UIColor+FORMColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FORMColors.h"; sourceTree = "<group>"; };
-		144A28AC1A99B2CF004A9086 /* UIColor+FORMColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FORMColors.m"; sourceTree = "<group>"; };
 		144A28AD1A99B2CF004A9086 /* UIDevice+HYPRealOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+HYPRealOrientation.h"; sourceTree = "<group>"; };
 		144A28AE1A99B2CF004A9086 /* UIDevice+HYPRealOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+HYPRealOrientation.m"; sourceTree = "<group>"; };
-		144A28AF1A99B2CF004A9086 /* UIFont+FORMStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FORMStyles.h"; sourceTree = "<group>"; };
-		144A28B01A99B2CF004A9086 /* UIFont+FORMStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FORMStyles.m"; sourceTree = "<group>"; };
 		144A28B21A99B2CF004A9086 /* FORMBankAccountNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMBankAccountNumberValidator.h; sourceTree = "<group>"; };
 		144A28B31A99B2CF004A9086 /* FORMBankAccountNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMBankAccountNumberValidator.m; sourceTree = "<group>"; };
 		144A28B41A99B2CF004A9086 /* FORMPostalCodeValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMPostalCodeValidator.h; sourceTree = "<group>"; };
@@ -361,12 +355,8 @@
 				144A28A81A99B2CF004A9086 /* DDMathEvaluator+FORM.m */,
 				BDB7E31D1AA7016D00AF00BC /* FORMPostalCodeManager.h */,
 				BDB7E31E1AA7016D00AF00BC /* FORMPostalCodeManager.m */,
-				144A28AB1A99B2CF004A9086 /* UIColor+FORMColors.h */,
-				144A28AC1A99B2CF004A9086 /* UIColor+FORMColors.m */,
 				144A28AD1A99B2CF004A9086 /* UIDevice+HYPRealOrientation.h */,
 				144A28AE1A99B2CF004A9086 /* UIDevice+HYPRealOrientation.m */,
-				144A28AF1A99B2CF004A9086 /* UIFont+FORMStyles.h */,
-				144A28B01A99B2CF004A9086 /* UIFont+FORMStyles.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -630,14 +620,12 @@
 				144A28C51A99B2CF004A9086 /* FORMFieldValueLabel.m in Sources */,
 				144A28E91A99B2CF004A9086 /* FORMSocialSecurityNumberValidator.m in Sources */,
 				144A28CB1A99B2CF004A9086 /* FORMPhoneNumberFormatter.m in Sources */,
-				144A28E61A99B2CF004A9086 /* UIFont+FORMStyles.m in Sources */,
 				144A28D71A99B2CF004A9086 /* FORMNumberInputValidator.m in Sources */,
 				144A28BE1A99B2CF004A9086 /* FORMFieldValueCell.m in Sources */,
 				144A28E51A99B2CF004A9086 /* UIDevice+HYPRealOrientation.m in Sources */,
 				144A28CC1A99B2CF004A9086 /* FORMSocialSecurityNumberFormatter.m in Sources */,
 				144A28D31A99B2CF004A9086 /* FORMBankAccountNumberInputValidator.m in Sources */,
 				144A28BD1A99B2CF004A9086 /* FORMDateFieldCell.m in Sources */,
-				144A28E41A99B2CF004A9086 /* UIColor+FORMColors.m in Sources */,
 				149C29261A9A23DD00F88B91 /* FORMTargetTests.m in Sources */,
 				144A28DE1A99B2CF004A9086 /* FORMFieldValue.m in Sources */,
 				144A28CA1A99B2CF004A9086 /* FORMFormatter.m in Sources */,
