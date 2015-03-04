@@ -5,6 +5,12 @@
       "title":"Personal Details",
       "sections":[
         {
+          "id":"companies",
+          "type":"dynamic",
+          "action_title":"ADD COMPANY ✛",
+          "fields":null
+        },
+        {
           "id":"personal-details-0",
           "fields":[
             {
@@ -17,12 +23,6 @@
               }
             }
           ]
-        },
-        {
-          "id":"companies",
-          "type":"dynamic",
-          "action_title":"ADD COMPANY ✛",
-          "fields":null
         },
         {
           "id":"personal-details-1",
