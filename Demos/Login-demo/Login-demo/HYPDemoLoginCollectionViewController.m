@@ -1,10 +1,11 @@
 #import "HYPDemoLoginCollectionViewController.h"
 #import "FORMDataSource.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
-#import "UIColor+HYPFormsColors.h"
 #import "FORMTextField.h"
 #import "FORMLayout.h"
 #import "FORMButtonFieldCell.h"
+
+#import "UIColor+Hex.h"
 
 @interface HYPDemoLoginCollectionViewController () <FORMBaseFieldCellDelegate>
 
@@ -69,7 +70,7 @@
 
     self.collectionView.dataSource = self.dataSource;
     self.collectionView.contentInset = UIEdgeInsetsMake([UIScreen mainScreen].bounds.size.width/3, 0, 0, 0);
-    self.collectionView.backgroundColor = [UIColor HYPFormsLightGray];
+    self.collectionView.backgroundColor = [UIColor colorFromHex:@"F5F5F8"];
 }
 
 #pragma mark - UICollectionViewDelegate
