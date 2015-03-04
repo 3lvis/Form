@@ -60,4 +60,16 @@
     }
 }
 
+#pragma mark - Styling
+
+- (void)setHeaderLabelFont:(UIFont *)headerLabelFont
+{
+    self.headerLabel.font = headerLabelFont;
+}
+
+- (void)setHeaderLabelTextColor:(UIColor *)headerLabelTextColor
+{
+    self.headerLabel.textColor = headerLabelTextColor;
+}
+
 @end

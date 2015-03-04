@@ -15,6 +15,9 @@ static NSString * const FORMHeaderReuseIdentifier = @"FORMHeaderReuseIdentifier"
 
 @property (nonatomic, weak) id <FORMHeaderViewDelegate> delegate;
 
+- (void)setHeaderLabelFont:(UIFont *)headerLabelFont UI_APPEARANCE_SELECTOR;
+- (void)setHeaderLabelTextColor:(UIColor *)headerLabelTextColor UI_APPEARANCE_SELECTOR;
+
 @end
 
 @protocol FORMHeaderViewDelegate <NSObject>

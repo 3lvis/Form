@@ -7,6 +7,9 @@
 #import "FORMButton.h"
 #import "FORMFieldValueLabel.h"
 #import "FORMFieldValueCell.h"
+#import "FORMGroupHeaderView.h"
+#import "FORMFieldValuesTableViewHeader.h"
+#import "FORMTextFieldCell.h"
 
 #import "UIColor+Hex.h"
 
@@ -43,74 +46,52 @@
 
     [[FORMTextField appearance] setFont:[UIFont fontWithName:@"DIN-Regular" size:15.0]];
     [[FORMTextField appearance] setTextColor:[UIColor colorFromHex:@"455C73"]];
-//    self.layer.borderWidth = FORMFieldCellBorderWidth;
-//    self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    self.layer.cornerRadius = FORMFieldCellCornerRadius;
-//    if (active) {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundActive];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    } else {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    }
-//    if (enabled) {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//        self.textColor = [UIColor HYPFormsDarkBlue];
-//    } else {
-//        self.backgroundColor = [UIColor HYPFormsLightGray];
-//        self.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
-//        self.textColor = [UIColor grayColor];
-//    }
-//    if (valid) {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    } else {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
-//        self.layer.borderColor = [UIColor HYPFormsRed].CGColor;
-//    }
+    [[FORMTextField appearance] setBorderWidth:1.0f];
+    [[FORMTextField appearance] setBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMTextField appearance] setCornerRadius:5.0f];
+    [[FORMTextField appearance] setActiveBackgroundColor:[UIColor colorFromHex:@"C0EAFF"]];
+    [[FORMTextField appearance] setActiveBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMTextField appearance] setInactiveBackgroundColor:[UIColor colorFromHex:@"E1F5FF"]];
+    [[FORMTextField appearance] setInactiveBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMTextField appearance] setEnabledBackgroundColor:[UIColor colorFromHex:@"E1F5FF"]];
+    [[FORMTextField appearance] setEnabledBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMTextField appearance] setEnabledTextColor:[UIColor colorFromHex:@"455C73"]];
+    [[FORMTextField appearance] setDisabledBackgroundColor:[UIColor colorFromHex:@"F5F5F8"]];
+    [[FORMTextField appearance] setDisabledBorderColor:[UIColor colorFromHex:@"DEDEDE"]];
+    [[FORMTextField appearance] setDisabledTextColor:[UIColor grayColor]];
+    [[FORMTextField appearance] setValidBackgroundColor:[UIColor colorFromHex:@"E1F5FF"]];
+    [[FORMTextField appearance] setValidBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMTextField appearance] setInvalidBackgroundColor:[UIColor colorFromHex:@"FFD7D7"]];
+    [[FORMTextField appearance] setInvalidBorderColor:[UIColor colorFromHex:@"EC3031"]];
 
     [[FORMFieldValueLabel appearance] setFont:[UIFont fontWithName:@"DIN-Regular" size:15.0]];
     [[FORMFieldValueLabel appearance] setTextColor:[UIColor colorFromHex:@"455C73"]];
-//    self.layer.borderWidth = FORMFieldCellBorderWidth;
-//    self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    self.layer.cornerRadius = FORMFieldCellCornerRadius;
-//    if (active) {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundActive];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    } else {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    }
-//    if (enabled) {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    } else {
-//        self.backgroundColor = [UIColor HYPFormsLightGray];
-//        self.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
-//    }
-//    if (valid) {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    } else {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
-//        self.layer.borderColor = [UIColor HYPFormsRed].CGColor;
-//    }
+    [[FORMFieldValueLabel appearance] setBorderWidth:1.0f];
+    [[FORMFieldValueLabel appearance] setBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMFieldValueLabel appearance] setCornerRadius:5.0f];
+    [[FORMFieldValueLabel appearance] setActiveBackgroundColor:[UIColor colorFromHex:@"C0EAFF"]];
+    [[FORMFieldValueLabel appearance] setActiveBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMFieldValueLabel appearance] setInactiveBackgroundColor:[UIColor colorFromHex:@"E1F5FF"]];
+    [[FORMFieldValueLabel appearance] setInactiveBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMFieldValueLabel appearance] setEnabledBackgroundColor:[UIColor colorFromHex:@"E1F5FF"]];
+    [[FORMFieldValueLabel appearance] setEnabledBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMFieldValueLabel appearance] setDisabledBackgroundColor:[UIColor colorFromHex:@"F5F5F8"]];
+    [[FORMFieldValueLabel appearance] setDisabledBorderColor:[UIColor colorFromHex:@"DEDEDE"]];
+    [[FORMFieldValueLabel appearance] setValidBackgroundColor:[UIColor colorFromHex:@"E1F5FF"]];
+    [[FORMFieldValueLabel appearance] setValidBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMFieldValueLabel appearance] setInvalidBackgroundColor:[UIColor colorFromHex:@"FFD7D7"]];
+    [[FORMFieldValueLabel appearance] setInvalidBorderColor:[UIColor colorFromHex:@"EC3031"]];
 
-// FORMGroupHeaderView
-// _headerLabel.font = [UIFont HYPFormsMediumSize];
-// _headerLabel.textColor = [UIColor HYPFormsDarkBlue];
+    [[FORMGroupHeaderView appearance] setHeaderLabelFont:[UIFont fontWithName:@"DIN-Medium" size:17.0]];
+    [[FORMGroupHeaderView appearance] setHeaderLabelTextColor:[UIColor colorFromHex:@"455C73"]];
 
-//    FORMFieldValuesTableViewHeader
-//    _titleLabel.font = [UIFont HYPFormsMediumSizeBold];
-//    _titleLabel.textColor = [UIColor HYPFormsDarkBlue];
-//    _subtitleLabel.font = [UIFont HYPFormsMediumSizeLight];
-//    _subtitleLabel.textColor = [UIColor HYPFormsCoreBlue];
+    [[FORMFieldValuesTableViewHeader appearance] setTitleLabelFont:[UIFont fontWithName:@"DIN-Medium" size:17.0]];
+    [[FORMFieldValuesTableViewHeader appearance] setTitleLabelTextColor:[UIColor colorFromHex:@"455C73"]];
+    [[FORMFieldValuesTableViewHeader appearance] setSubtitleLabelFont:[UIFont fontWithName:@"DIN-Light" size:17.0]];
+    [[FORMFieldValuesTableViewHeader appearance] setSubtitleLabelTextColor:[UIColor colorFromHex:@"28649C"]];
 
-//    FORMTextFieldCell
-//    _subtitleLabel.font = [UIFont HYPFormsSmallSizeMedium];
-//    _subtitleLabel.textColor = [UIColor HYPFormsBrown];
-
+    [[FORMTextFieldCell appearance] setSubtitleLabelFont:[UIFont fontWithName:@"DIN-Medium" size:14.0]];
+    [[FORMTextFieldCell appearance] setSubtitleLabelTextColor:[UIColor colorFromHex:@"97591D"]];
 }
 
 @end

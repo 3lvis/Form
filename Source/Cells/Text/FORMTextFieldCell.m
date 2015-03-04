@@ -329,4 +329,16 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     }
 }
 
+#pragma mark - Styling
+
+- (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont
+{
+    self.subtitleLabel.font = subtitleLabelFont;
+}
+
+- (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor
+{
+    self.subtitleLabel.textColor = subtitleLabelTextColor;
+}
+
 @end

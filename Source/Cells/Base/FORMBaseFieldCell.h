@@ -16,8 +16,6 @@ static const NSInteger FORMFieldCellItemHeight = 85.0f;
 
 static const CGFloat FORMTextFieldCellMarginX = 10.0f;
 
-static const CGFloat FORMFieldCellBorderWidth = 1.0f;
-static const CGFloat FORMFieldCellCornerRadius = 5.0f;
 static const CGFloat FORMFieldCellLeftMargin = 10.0f;
 
 @protocol FORMBaseFieldCellDelegate;
