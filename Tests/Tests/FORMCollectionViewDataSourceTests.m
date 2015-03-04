@@ -403,8 +403,8 @@
 
     [dataSource fieldCell:nil updatedWithField:addField];
 
-    FORMField *field = [dataSource fieldWithID:@"contacts[0].name" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.position, @3);
+    FORMSection *section = [dataSource sectionWithID:@"contacts[0]"];
+    XCTAssertEqualObjects(section.position, @3);
 }
 
 @end
