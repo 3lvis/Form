@@ -1,10 +1,12 @@
 #import "FORMButtonFieldCell.h"
 
+#import "FORMButton.h"
+
 #import "UIButton+ANDYHighlighted.h"
 
 @interface FORMButtonFieldCell ()
 
-@property (nonatomic, strong) UIButton *button;
+@property (nonatomic, strong) FORMButton *button;
 
 @end
 
@@ -23,26 +25,11 @@
 
 #pragma mark - Getters
 
-- (UIButton *)button
+- (FORMButton *)button
 {
     if (_button) return _button;
 
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
-
-    #warning needs custom style
-//    _button.titleLabel.font = [UIFont HYPFormsActionButtonFont];
-
-    _button.layer.borderWidth = 1.0f;
-    _button.layer.cornerRadius = 5.0f;
-
-    _button.titleColor = [UIColor whiteColor];
-    #warning needs custom style
-//    _button.highlightedTitleColor = [UIColor HYPFormsCallToAction];
-//    _button.layer.borderColor = [UIColor HYPFormsCallToAction].CGColor;
-
-    #warning needs custom style
-//    _button.backgroundColor = [UIColor HYPFormsCallToAction];
-    _button.highlightedBackgroundColor = [UIColor whiteColor];
 
     [_button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
 

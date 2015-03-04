@@ -21,16 +21,4 @@
     [rectanglePath fill];
 }
 
-#pragma mark - Initializers
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-
-    #warning needs custom style
-//    self.backgroundColor = [UIColor HYPFormsBackground];
-
-    return self;
-}
-
 @end

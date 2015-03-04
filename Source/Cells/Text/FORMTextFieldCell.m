@@ -135,9 +135,6 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
     _subtitleLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
 
-#warning needs custom style
-//    _subtitleLabel.font = [UIFont HYPFormsSmallSizeMedium];
-//    _subtitleLabel.textColor = [UIColor HYPFormsBrown];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _subtitleLabel.numberOfLines = FORMSubtitleNumberOfLines;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		142E07771AA7A27F00511DC5 /* FORMSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 142E07761AA7A27F00511DC5 /* FORMSeparatorView.m */; };
+		142E077A1AA7A32C00511DC5 /* FORMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 142E07791AA7A32C00511DC5 /* FORMButton.m */; };
 		14E49BFC1A99B75500F19988 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49BFB1A99B75500F19988 /* main.m */; };
 		14E49C071A99B75500F19988 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C061A99B75500F19988 /* Images.xcassets */; };
 		14E49C161A99B75500F19988 /* Basic_ObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C151A99B75500F19988 /* Basic_ObjCTests.m */; };
@@ -79,6 +81,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		142E07751AA7A27F00511DC5 /* FORMSeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMSeparatorView.h; sourceTree = "<group>"; };
+		142E07761AA7A27F00511DC5 /* FORMSeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSeparatorView.m; sourceTree = "<group>"; };
+		142E07781AA7A32C00511DC5 /* FORMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMButton.h; sourceTree = "<group>"; };
+		142E07791AA7A32C00511DC5 /* FORMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMButton.m; sourceTree = "<group>"; };
 		14E49BF61A99B75500F19988 /* Basic-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Basic-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14E49BFA1A99B75500F19988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14E49BFB1A99B75500F19988 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -345,6 +351,10 @@
 				44332A0E1AA6F65600C170B5 /* Validators */,
 				44332A471AA6F94A00C170B5 /* FORMDefaultStyle.h */,
 				44332A481AA6F94A00C170B5 /* FORMDefaultStyle.m */,
+				142E07751AA7A27F00511DC5 /* FORMSeparatorView.h */,
+				142E07761AA7A27F00511DC5 /* FORMSeparatorView.m */,
+				142E07781AA7A32C00511DC5 /* FORMButton.h */,
+				142E07791AA7A32C00511DC5 /* FORMButton.m */,
 			);
 			name = Source;
 			path = ../../Source;
@@ -692,7 +702,9 @@
 				44332A2A1AA6F65600C170B5 /* FORMData.m in Sources */,
 				44332A391AA6F65600C170B5 /* FORMFieldValidation.m in Sources */,
 				44332A281AA6F65600C170B5 /* FORMSocialSecurityNumberFormatter.m in Sources */,
+				142E077A1AA7A32C00511DC5 /* FORMButton.m in Sources */,
 				44332A261AA6F65600C170B5 /* FORMFormatter.m in Sources */,
+				142E07771AA7A27F00511DC5 /* FORMSeparatorView.m in Sources */,
 				44332A301AA6F65600C170B5 /* FORMFloatInputValidator.m in Sources */,
 				44332A271AA6F65600C170B5 /* FORMPhoneNumberFormatter.m in Sources */,
 				14E49C401A99B7D600F19988 /* HYPSampleCollectionViewController.m in Sources */,

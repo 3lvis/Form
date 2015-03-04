@@ -9,16 +9,7 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-#warning needs custom style
-//    self.layer.borderWidth = FORMFieldCellBorderWidth;
-//    self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    self.layer.cornerRadius = FORMFieldCellCornerRadius;
     self.layer.masksToBounds = YES;
-
-#warning needs custom style
-//    self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//    self.font = [UIFont HYPFormsTextFieldFont];
-//    self.textColor = [UIColor HYPFormsDarkBlue];
 
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.userInteractionEnabled = YES;
@@ -48,29 +39,11 @@
 - (void)setActive:(BOOL)active
 {
     _active = active;
-
-#warning needs custom style
-//    if (active) {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundActive];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    } else {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    }
 }
 
 - (void)setEnabled:(BOOL)enabled
 {
     [super setEnabled:enabled];
-
-#warning needs custom style
-//    if (enabled) {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    } else {
-//        self.backgroundColor = [UIColor HYPFormsLightGray];
-//        self.layer.borderColor = [UIColor HYPFormsFieldDisabledText].CGColor;
-//    }
 }
 
 - (void)setValid:(BOOL)valid
@@ -78,15 +51,6 @@
     _valid = valid;
 
     if (!self.isEnabled) return;
-
-#warning needs custom style
-//    if (valid) {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackground];
-//        self.layer.borderColor = [UIColor HYPFormsBlue].CGColor;
-//    } else {
-//        self.backgroundColor = [UIColor HYPFormsFieldBackgroundInvalid];
-//        self.layer.borderColor = [UIColor HYPFormsRed].CGColor;
-//    }
 }
 
 #pragma mark - Actions

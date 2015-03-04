@@ -47,9 +47,6 @@
     _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(FORMTitleMargin, 0.0f, width, FORMHeaderHeight)];
     _headerLabel.backgroundColor = [UIColor clearColor];
     _headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    #warning needs custom style
-//    _headerLabel.font = [UIFont HYPFormsMediumSize];
-//    _headerLabel.textColor = [UIColor HYPFormsDarkBlue];
 
     return _headerLabel;
 }

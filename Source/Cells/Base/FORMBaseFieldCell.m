@@ -1,12 +1,14 @@
 #import "FORMBaseFieldCell.h"
 
+#import "FORMSeparatorView.h"
+
 static const CGFloat FORMTextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat FORMTextFormFieldCellLabelHeight = 20.0f;
 static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 @interface FORMBaseFieldCell ()
 
-@property (nonatomic, strong) UIView *separatorView;
+@property (nonatomic, strong) FORMSeparatorView *separatorView;
 
 @end
 
@@ -36,14 +38,11 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
     return _headingLabel;
 }
 
-- (UIView *)separatorView
+- (FORMSeparatorView *)separatorView
 {
     if (_separatorView) return _separatorView;
 
-    _separatorView = [[UIView alloc] initWithFrame:[self separatorViewFrame]];
-
-#warning needs custom style
-    // _separatorView.backgroundColor = [UIColor HYPFormsFieldBorderDisabled];
+    _separatorView = [[FORMSeparatorView alloc] initWithFrame:[self separatorViewFrame]];
 
     return _separatorView;
 }

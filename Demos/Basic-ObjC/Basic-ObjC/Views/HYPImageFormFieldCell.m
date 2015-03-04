@@ -1,5 +1,7 @@
 #import "HYPImageFormFieldCell.h"
 
+#import "UIColor+Hex.h"
+
 static const CGFloat HYPImageFormFieldTopMargin = 20.0f;
 static const CGFloat HYPImageFormFieldHorizontalMargin = 10.0f;
 
@@ -26,8 +28,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-#warning needs custom style
-//    self.contentView.backgroundColor = [UIColor HYPFormsLightGray];
+    self.contentView.backgroundColor = [UIColor colorFromHex:@"F5F5F8"];
 
     self.contentView.layer.cornerRadius = 5.0f;
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -54,9 +55,8 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     CGRect labelFrame = CGRectMake(HYPImageFormFieldLabelsX, HYPImageFormFieldLabelY,
                                    HYPImageFormFieldLabelsWidth, HYPImageFormFieldLabelHeight);
     UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
-#warning needs custom style
-//    label.font = [UIFont HYPFormsLargeSize];
-//    label.textColor = [UIColor HYPFormsCoreBlue];
+    label.font = [UIFont fontWithName:@"DIN-Medium" size:20.0];
+    label.textColor = [UIColor colorFromHex:@"28649C"];
     label.text = @"Main title";
 
     return label;
@@ -67,9 +67,8 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     CGRect infoFrame = CGRectMake(HYPImageFormFieldLabelsX, HYPImageFormFieldInfoY,
                                   HYPImageFormFieldLabelsWidth, HYPImageFormFieldInfoHeight);
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
-#warning needs custom style
-//    infoLabel.font = [UIFont HYPFormsSmallSize];
-//    infoLabel.textColor = [UIColor HYPFormsCoreBlue];
+    infoLabel.font = [UIFont fontWithName:@"DIN-Regular" size:14.0];
+    infoLabel.textColor = [UIColor colorFromHex:@"28649C"];
     infoLabel.text = @"Some info on the button";
     infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
     infoLabel.numberOfLines = 0;
