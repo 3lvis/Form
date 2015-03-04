@@ -24,6 +24,8 @@
 
 @implementation HYPSampleCollectionViewController
 
+#pragma mark - Deallocation
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
