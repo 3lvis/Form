@@ -2,11 +2,11 @@
 
 #import "FORMGroup.h"
 
-@interface HYPFormTests : XCTestCase
+@interface FORMTests : XCTestCase
 
 @end
 
-@implementation HYPFormTests
+@implementation FORMTests
 
 - (void)testInitWithDictionary
 {

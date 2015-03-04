@@ -49,7 +49,7 @@
     return _button;
 }
 
-#pragma mark - HYPBaseFormFieldCell
+#pragma mark - FORMBaseFormFieldCell
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
 {

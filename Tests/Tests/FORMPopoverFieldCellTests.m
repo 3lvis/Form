@@ -2,13 +2,13 @@
 
 #import "FORMPopoverFieldCell.h"
 
-#import "HYPFormField+Tests.h"
+#import "FORMField+Tests.h"
 
-@interface HYPPopoverFormFieldCellTests : XCTestCase
+@interface FORMPopoverFieldCellTests : XCTestCase
 
 @end
 
-@implementation HYPPopoverFormFieldCellTests
+@implementation FORMPopoverFieldCellTests
 
 - (void)testPopoverSelectionWithDisabledField
 {

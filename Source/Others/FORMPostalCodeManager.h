@@ -1,6 +1,6 @@
 @import Foundation;
 
-@interface HYPPostalCodeManager : NSObject
+@interface FORMPostalCodeManager : NSObject
 
 + (instancetype)sharedManager;
 

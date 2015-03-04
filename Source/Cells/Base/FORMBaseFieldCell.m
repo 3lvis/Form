@@ -103,11 +103,11 @@ static const CGFloat HYPTextFormFieldCellLabelMarginX = 5.0f;
 
 - (CGRect)headingLabelFrame
 {
-    CGFloat marginX = FORMTextFieldCellMarginX + HYPTextFormFieldCellLabelMarginX;
-    CGFloat marginTop = HYPTextFormFieldCellLabelMarginTop;
+    CGFloat marginX = FORMTextFieldCellMarginX + FORMTextFormFieldCellLabelMarginX;
+    CGFloat marginTop = FORMTextFormFieldCellLabelMarginTop;
 
     CGFloat width = CGRectGetWidth(self.frame) - (marginX * 2);
-    CGFloat height = HYPTextFormFieldCellLabelHeight;
+    CGFloat height = FORMTextFormFieldCellLabelHeight;
     CGRect frame = CGRectMake(marginX, marginTop, width, height);
 
     return frame;

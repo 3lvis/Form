@@ -1,4 +1,4 @@
-#import "HYPFormField+Tests.h"
+#import "FORMField+Tests.h"
 
 #import "FORMFieldValue.h"
 #import "FORMTarget.h"

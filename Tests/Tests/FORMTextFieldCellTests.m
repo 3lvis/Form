@@ -9,11 +9,11 @@
 
 @end
 
-@interface HYPTextFormFieldCellTests : XCTestCase
+@interface FORMTextFormFieldCellTests : XCTestCase
 
 @end
 
-@implementation HYPTextFormFieldCellTests
+@implementation FORMTextFormFieldCellTests
 
 - (void)testWidthCalculation
 {

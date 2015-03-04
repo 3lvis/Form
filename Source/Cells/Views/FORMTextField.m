@@ -4,8 +4,8 @@
 
 #import "FORMTextFieldTypeManager.h"
 
-static const CGFloat HYPTextFieldClearButtonWidth = 30.0f;
-static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
+static const CGFloat FORMTextFieldClearButtonWidth = 30.0f;
+static const CGFloat FORMTextFieldClearButtonHeight = 20.0f;
 
 @interface FORMTextField () <UITextFieldDelegate>
 
@@ -50,7 +50,7 @@ static const CGFloat HYPTextFieldClearButtonHeight = 20.0f;
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [clearButton setImage:[UIImage imageNamed:@"ic_mini_clear"] forState:UIControlStateNormal];
     [clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    clearButton.frame = CGRectMake(0.0f, 0.0f, HYPTextFieldClearButtonWidth, HYPTextFieldClearButtonHeight);
+    clearButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldClearButtonWidth, FORMTextFieldClearButtonHeight);
     self.rightView = clearButton;
     self.rightViewMode = UITextFieldViewModeWhileEditing;
 

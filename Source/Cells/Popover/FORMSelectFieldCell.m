@@ -4,7 +4,7 @@
 
 static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f };
 
-@interface FORMSelectFieldCell () <HYPTextFieldDelegate, FORMFieldValuesTableViewControllerDelegate>
+@interface FORMSelectFieldCell () <FORMTextFieldDelegate, FORMFieldValuesTableViewControllerDelegate>
 
 @end
 
@@ -35,7 +35,7 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
     return _fieldValuesController;
 }
 
-#pragma mark - HYPBaseFormFieldCell
+#pragma mark - FORMBaseFormFieldCell
 
 - (void)updateWithField:(FORMField *)field
 {
@@ -60,7 +60,7 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
     }
 }
 
-#pragma mark - HYPPopoverFormFieldCell
+#pragma mark - FORMPopoverFormFieldCell
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field
 {

@@ -1,9 +1,9 @@
 #import "FORMDateFieldCell.h"
 #import "FORMFieldValue.h"
 
-static const CGSize HYPDatePopoverSize = { 320.0f, 284.0f };
+static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
 
-@interface FORMDateFieldCell () <HYPTextFieldDelegate,
+@interface FORMDateFieldCell () <FORMTextFieldDelegate,
 UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 
 @property (nonatomic, strong) UIPopoverController *popoverController;
@@ -18,7 +18,7 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame contentViewController:self.fieldValuesController
-                 andContentSize:HYPDatePopoverSize];
+                 andContentSize:FORMDatePopoverSize];
     if (!self) return nil;
 
     self.iconImageView.image = [UIImage imageNamed:@"ic_calendar"];
@@ -35,7 +35,7 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 
 - (CGRect)datePickerFrame
 {
-    return CGRectMake(0.0f, 25.0f, HYPDatePopoverSize.width, 196);
+    return CGRectMake(0.0f, 25.0f, FORMDatePopoverSize.width, 196);
 }
 
 - (UIDatePicker *)datePicker
@@ -81,7 +81,7 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
     self.date = datePicker.date;
 }
 
-#pragma mark - HYPBaseFormFieldCell
+#pragma mark - FORMBaseFormFieldCell
 
 - (void)updateWithField:(FORMField *)field
 {
@@ -108,7 +108,7 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
     }
 }
 
-#pragma mark - HYPPopoverFormFieldCell
+#pragma mark - FORMPopoverFormFieldCell
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field
 {

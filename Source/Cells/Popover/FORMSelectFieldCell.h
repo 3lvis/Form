@@ -1,7 +1,7 @@
 #import "FORMPopoverFieldCell.h"
 #import "FORMFieldValuesTableViewController.h"
 
-static NSString * const HYPSelectFormFieldCellIdentifier = @"HYPSelectFormFieldCellIdentifier";
+static NSString * const FORMSelectFormFieldCellIdentifier = @"FORMSelectFormFieldCellIdentifier";
 
 @interface FORMSelectFieldCell : FORMPopoverFieldCell
 
