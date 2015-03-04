@@ -14,13 +14,30 @@
           "id":"personal-details-0",
           "fields":[
             {
-              "id":"name",
-              "title":"Name",
-              "type":"name",
+              "id":"title",
+              "title":"Title",
+              "type":"select",
               "size":{
                 "width":100,
                 "height":1
-              }
+              },
+              "values":[
+                {
+                  "id":0,
+                  "title":"Mr.",
+                  "targets":[
+                    {
+                      "id":"personal-details-1",
+                      "type":"section",
+                      "action":"hide"
+                    }
+                  ]
+                },
+                {
+                  "id":1,
+                  "title":"Mrs."
+                }
+              ]
             }
           ]
         },

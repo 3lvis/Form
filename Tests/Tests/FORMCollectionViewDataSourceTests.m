@@ -387,4 +387,24 @@
     XCTAssertNotNil(section);
 }
 
+- (void)testDynamicSectionsInvolvingHideTargets
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"title" : @0}
+                                                             disabled:YES];
+
+    FORMField *addField = [dataSource fieldWithID:@"contacts.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    FORMField *field = [dataSource fieldWithID:@"contacts[0].name" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.position, @3);
+}
+
 @end
