@@ -1,7 +1,5 @@
 PODS:
-  - AutoCoding (2.2.1)
-  - Form (0.120):
-    - AutoCoding
+  - Form (0.124):
     - Hex
     - HYPImagePicker
     - HYPMathParser
@@ -12,6 +10,7 @@ PODS:
     - NSObject-HYPTesting
     - NSString-HYPContainsString
     - NSString-HYPFormula
+    - NSString-HYPRelationshipParser
     - NSString-HYPWordExtractor
     - NSString-ZENInflections
     - UIButton-ANDYHighlighted
@@ -27,6 +26,8 @@ PODS:
   - NSString-HYPContainsString (0.1)
   - NSString-HYPFormula (1.6.1):
     - NSString-HYPWordExtractor
+  - NSString-HYPRelationshipParser (0.2):
+    - NSString-ZENInflections
   - NSString-HYPWordExtractor (1.1)
   - NSString-ZENInflections (1.2)
   - UIButton-ANDYHighlighted (0.2.1)
@@ -41,12 +42,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Form:
-    :commit: efe11c4a6010f464ca0da320768f98dce080045b
+    :commit: 5025d8774a281c402dd5b780ff0dd364d6851246
     :git: https://github.com/hyperoslo/Form
 
 SPEC CHECKSUMS:
-  AutoCoding: 5165b83fa6199573cc82dfb5d2cc72e11b458a1f
-  Form: 6cf90e80fcb0d633c123df848fed18e235377e23
+  Form: c7ba1cdfd9062717a6b23affbf813ba492e69b2f
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
   HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
   HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16
@@ -57,6 +57,7 @@ SPEC CHECKSUMS:
   NSObject-HYPTesting: f54d8bf73f75e2f2f4e49f4baa985df6fa699c2a
   NSString-HYPContainsString: d5a89f8238b8267f892e1b139866e659ffc165ac
   NSString-HYPFormula: 4bf6fc5ef5053291638b9d2eae73bda9c1c88800
+  NSString-HYPRelationshipParser: da56f9b7a26e869849803ee9e4f38d98a5d7d59c
   NSString-HYPWordExtractor: b2961841c0cb658b3aa402e14f18a61bf02a0b48
   NSString-ZENInflections: 27e3623bae0758cd932c462dfae15420ec9867f9
   UIButton-ANDYHighlighted: d11522ea39a27f17f6cbf7af03f6447633999fef
