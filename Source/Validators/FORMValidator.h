@@ -1,5 +1,7 @@
 @import Foundation;
 
+#import "FORMFieldValidation.h"
+
 typedef NS_ENUM(NSInteger, FORMValidationResultType) {
     FORMValidationResultTypeNone = 0,
     FORMValidationResultTypePassed,
@@ -16,7 +18,7 @@ typedef NS_ENUM(NSInteger, FORMValidationResultType) {
 
 @interface FORMValidator : NSObject
 
-- (instancetype)initWithValidations:(NSDictionary *)validations;
+- (instancetype)initWithValidation:(FORMFieldValidation *)validation;
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue;
 + (Class)classForKey:(NSString *)key andType:(NSString *)type;
 

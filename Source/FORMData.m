@@ -297,7 +297,7 @@
     for (FORMGroup *form in self.forms) {
         for (FORMSection *section in form.sections) {
             for (FORMField *field in section.fields) {
-                BOOL fieldIsValid = (field.validations && [field validate] != FORMValidationResultTypePassed);
+                BOOL fieldIsValid = (field.validation && [field validate] != FORMValidationResultTypePassed);
                 if (fieldIsValid) [invalidFormFields addObject:field];
             }
         }
@@ -315,11 +315,8 @@
     for (FORMGroup *form in self.forms) {
         for (FORMSection *section in form.sections) {
             for (FORMField *field in section.fields) {
-                if (field.validations) {
-                    BOOL required = [[field.validations andy_valueForKey:@"required"] boolValue];
-                    if (required) {
-                        [_requiredFields setObject:field forKey:field.fieldID];
-                    }
+                if (field.validation && field.validation.isRequired) {
+                    [_requiredFields setObject:field forKey:field.fieldID];
                 }
             }
         }

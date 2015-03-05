@@ -35,7 +35,7 @@
     XCTAssertTrue(field.type == FORMFieldTypeText);
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
     XCTAssertFalse(field.disabled);
-    XCTAssertNotNil(field.validations);
+    XCTAssertNotNil(field.validation);
 
     field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_date",
                                                     @"title": @"Start date",
@@ -55,7 +55,7 @@
     XCTAssertTrue(field.type == FORMFieldTypeDate);
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
     XCTAssertTrue(field.disabled);
-    XCTAssertNil(field.validations);
+    XCTAssertNil(field.validation);
 }
 
 - (void)testFieldWithID
