@@ -10,4 +10,6 @@
 @property (nonatomic) CGFloat minimumValue;
 @property (nonatomic) CGFloat maximumValue;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

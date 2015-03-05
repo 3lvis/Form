@@ -7,6 +7,7 @@
 #import "FORMFieldValue.h"
 #import "FORMClassFactory.h"
 #import "FORMTarget.h"
+#import "FORMFieldValidation.h"
 
 #import "NSDictionary+ANDYSafeValue.h"
 
@@ -39,7 +40,13 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _size = CGSizeMake([width floatValue], [height floatValue]);
     _position = @(position);
-    _validations = [dictionary andy_valueForKey:@"validations"];
+    
+    NSDictionary *validations = [dictionary andy_valueForKey:@"validations"];
+    if (validations && [validations count] > 0) {
+        _validation = [[FORMFieldValidation alloc]
+                       initWithDictionary:[dictionary andy_valueForKey:@"validations"]];
+    }
+    
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
     _initiallyDisabled = _disabled;
     _formula = [dictionary andy_valueForKey:@"formula"];
@@ -149,7 +156,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     }
 
     if (inputValidator) {
-        inputValidator.validations = self.validations;
+        inputValidator.validation = self.validation;
     }
 
     return inputValidator;
@@ -224,9 +231,9 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 {
     id validator;
     Class validatorClass;
-
+    
     validatorClass = ([FORMClassFactory classFromString:self.fieldID withSuffix:@"Validator"]) ?: [FORMValidator class];
-    validator = [[validatorClass alloc] initWithValidations:self.validations];
+    validator = [[validatorClass alloc] initWithValidation:self.validation];
 
     self.validationType = [validator validateFieldValue:self.fieldValue];
     self.valid = (self.validationType == FORMValidationResultTypePassed);
@@ -297,7 +304,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     return [NSString stringWithFormat:@"\n — Field: %@ —\n title: %@\n subtitle: %@\n size: %@\n position: %@\n fieldValue: %@\n type: %@\n values: %@\n disabled: %@\n initiallyDisabled: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n valid: %@\n sectionSeparator: %@\n",
             self.fieldID, self.title, self.subtitle, NSStringFromCGSize(self.size), self.position,
             self.fieldValue, self.typeString, self.values, (self.disabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
-            self.maximumDate, self.validations, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
+            self.maximumDate, self.validation, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
 }
 
 @end
