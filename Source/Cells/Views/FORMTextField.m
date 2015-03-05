@@ -24,6 +24,8 @@ static UIColor *validBorderColor;
 static UIColor *invalidBackgroundColor;
 static UIColor *invalidBorderColor;
 
+static BOOL enabledProperty;
+
 @interface FORMTextField () <UITextFieldDelegate>
 
 @property (nonatomic, getter = isModified) BOOL modified;
@@ -113,11 +115,12 @@ static UIColor *invalidBorderColor;
 {
     [super setEnabled:enabled];
 
+    enabledProperty = enabled;
+
     if (enabled) {
         self.backgroundColor = enabledBackgroundColor;
         self.layer.borderColor = enabledBorderColor.CGColor;
         self.textColor = enabledTextColor;
-
     } else {
         self.backgroundColor = inactiveBackgroundColor;
         self.layer.borderColor = inactiveBorderColor.CGColor;
@@ -386,6 +389,7 @@ static UIColor *invalidBorderColor;
 - (void)setInvalidBorderColor:(UIColor *)color
 {
     invalidBorderColor = color;
+    self.enabled = enabledProperty;
 }
 
 @end
