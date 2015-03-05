@@ -3,6 +3,7 @@
 #import "HYPSampleCollectionViewController.h"
 #import "FORMBackgroundView.h"
 #import "FORMLayout.h"
+#import "FORMDefaultStyle.h"
 
 #import "NSObject+HYPTesting.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
@@ -19,6 +20,7 @@
 #ifdef DEBUG
     if ([NSObject isUnitTesting]) return YES;
 #endif
+    [FORMDefaultStyle applyStyle];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
