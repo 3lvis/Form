@@ -17,7 +17,7 @@
     BOOL valid = YES;
 
     if (self.validation.maximumLength) {
-        valid = (textLength <= self.validation.maximumLength);
+        valid = (textLength <= [self.validation.maximumLength unsignedIntegerValue]);
     }
 
     if (self.validation.maximumValue && text) {
@@ -26,7 +26,7 @@
         NSNumberFormatter *formatter = [NSNumberFormatter new];
         formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
         NSNumber *newValue = [formatter numberFromString:newString];
-        NSNumber *maxValue = @(self.validation.maximumValue);
+        NSNumber *maxValue = self.validation.maximumValue;
 
         BOOL eligibleForCompare = (newValue && maxValue);
         if (eligibleForCompare) valid = ([newValue floatValue] <= [maxValue floatValue]);

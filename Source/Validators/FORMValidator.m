@@ -34,13 +34,13 @@
         if (!fieldValue) {
             return FORMValidationResultTypeValueMissing;
         } else if ([fieldValue isKindOfClass:[NSString class]]) {
-            BOOL fieldValueIsShorter = ([fieldValue length] < self.validation.minimumLength);
+            BOOL fieldValueIsShorter = ([fieldValue length] < [self.validation.minimumLength unsignedIntegerValue]);
             if (fieldValueIsShorter) return FORMValidationResultTypeTooShort;
         }
     }
 
     if ([fieldValue isKindOfClass:[NSString class]] && self.validation.maximumLength) {
-        BOOL fieldValueIsLonger = ([fieldValue length] > self.validation.maximumLength);
+        BOOL fieldValueIsLonger = ([fieldValue length] > [self.validation.maximumLength unsignedIntegerValue]);
         if (fieldValueIsLonger) return FORMValidationResultTypeTooLong;
     }
 
