@@ -315,10 +315,8 @@
     for (FORMGroup *form in self.forms) {
         for (FORMSection *section in form.sections) {
             for (FORMField *field in section.fields) {
-                if (field.validation) {
-                    if (field.validation.isRequired) {
-                        [_requiredFields setObject:field forKey:field.fieldID];
-                    }
+                if (field.validation && field.validation.isRequired) {
+                    [_requiredFields setObject:field forKey:field.fieldID];
                 }
             }
         }

@@ -40,13 +40,13 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _size = CGSizeMake([width floatValue], [height floatValue]);
     _position = @(position);
-    
+
     NSDictionary *validations = [dictionary andy_valueForKey:@"validations"];
     if (validations && [validations count] > 0) {
         _validation = [[FORMFieldValidation alloc]
                        initWithDictionary:[dictionary andy_valueForKey:@"validations"]];
     }
-    
+
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
     _initiallyDisabled = _disabled;
     _formula = [dictionary andy_valueForKey:@"formula"];
@@ -231,7 +231,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 {
     id validator;
     Class validatorClass;
-    
+
     validatorClass = ([FORMClassFactory classFromString:self.fieldID withSuffix:@"Validator"]) ?: [FORMValidator class];
     validator = [[validatorClass alloc] initWithValidation:self.validation];
 

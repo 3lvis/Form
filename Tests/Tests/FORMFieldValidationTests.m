@@ -24,7 +24,7 @@
     XCTAssertEqualObjects(fieldValidation.format, @"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}");
     XCTAssertEqualObjects(fieldValidation.minimumValue, @1.1);
     XCTAssertEqualObjects(fieldValidation.maximumValue, @9.9);
-    
+
     fieldValidation = [[FORMFieldValidation alloc]
                                             initWithDictionary:@{}];
     XCTAssertNotNil(fieldValidation);
