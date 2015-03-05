@@ -17,6 +17,8 @@ static UIColor *validBorderColor;
 static UIColor *invalidBackgroundColor;
 static UIColor *invalidBorderColor;
 
+static BOOL enabledProperty;
+
 @interface FORMFieldValueLabel ()
 
 @end
@@ -71,6 +73,8 @@ static UIColor *invalidBorderColor;
 - (void)setEnabled:(BOOL)enabled
 {
     [super setEnabled:enabled];
+
+    enabledProperty = enabled;
 
     if (enabled) {
         self.backgroundColor = enabledBackgroundColor;
@@ -180,6 +184,7 @@ static UIColor *invalidBorderColor;
 - (void)setInvalidBorderColor:(UIColor *)color
 {
     invalidBorderColor = color;
+    self.enabled = enabledProperty;
 }
 
 @end
