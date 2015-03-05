@@ -4,12 +4,12 @@
 #import "FORMFieldHeadingLabel.h"
 #import "FORMBackgroundView.h"
 #import "FORMSeparatorView.h"
-#import "FORMButton.h"
 #import "FORMFieldValueLabel.h"
 #import "FORMFieldValueCell.h"
 #import "FORMGroupHeaderView.h"
 #import "FORMFieldValuesTableViewHeader.h"
 #import "FORMTextFieldCell.h"
+#import "FORMButtonFieldCell.h"
 
 #import "UIColor+Hex.h"
 
@@ -27,14 +27,14 @@
 
     [[FORMSeparatorView appearance] setBackgroundColor:[UIColor colorFromHex:@"C6C6C6"]];
 
-    [[FORMButton appearance] setBackgroundColor:[UIColor colorFromHex:@"3DAFEB"]];
-    [[FORMButton appearance] setTitleLabelFont:[UIFont fontWithName:@"DIN-Bold" size:16.0]];
-    [[FORMButton appearance] setBorderWidth:1.0f];
-    [[FORMButton appearance] setCornerRadius:5.0f];
-    [[FORMButton appearance] setHighlightedTitleColor:[UIColor colorFromHex:@"3DAFEB"]];
-    [[FORMButton appearance] setBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
-    [[FORMButton appearance] setHighlightedBackgroundColor:[UIColor whiteColor]];
-    [[FORMButton appearance] setTitleColor:[UIColor whiteColor]];
+    [[FORMButtonFieldCell appearance] setBackgroundColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMButtonFieldCell appearance] setTitleLabelFont:[UIFont fontWithName:@"DIN-Bold" size:16.0]];
+    [[FORMButtonFieldCell appearance] setBorderWidth:1.0f];
+    [[FORMButtonFieldCell appearance] setCornerRadius:5.0f];
+    [[FORMButtonFieldCell appearance] setHighlightedTitleColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMButtonFieldCell appearance] setBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMButtonFieldCell appearance] setHighlightedBackgroundColor:[UIColor whiteColor]];
+    [[FORMButtonFieldCell appearance] setTitleColor:[UIColor whiteColor]];
 
     [[FORMFieldValueCell appearance] setTextLabelFont:[UIFont fontWithName:@"DIN-Medium" size:17.0]];
     [[FORMFieldValueCell appearance] setTextLabelColor:[UIColor colorFromHex:@"455C73"]];

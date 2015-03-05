@@ -1,12 +1,9 @@
 #import "FORMButtonFieldCell.h"
-
-#import "FORMButton.h"
-
 #import "UIButton+ANDYHighlighted.h"
 
 @interface FORMButtonFieldCell ()
 
-@property (nonatomic, strong) FORMButton *button;
+@property (nonatomic, strong) UIButton *button;
 
 @end
 
@@ -25,7 +22,7 @@
 
 #pragma mark - Getters
 
-- (FORMButton *)button
+- (UIButton *)button
 {
     if (_button) return _button;
 
@@ -84,6 +81,48 @@
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];
     }
+}
+
+#pragma mark - Styling
+
+- (void)setTitleLabelFont:(UIFont *)titleLabelFont
+{
+    self.button.titleLabel.font = titleLabelFont;
+}
+
+- (void)setBorderWidth:(CGFloat)borderWidth
+{
+    self.button.layer.borderWidth = borderWidth;
+}
+
+- (void)setCornerRadius:(CGFloat)cornerRadius
+{
+    self.button.layer.cornerRadius = cornerRadius;
+}
+
+- (void)setHighlightedTitleColor:(UIColor *)highlightedTitleColor
+{
+    self.button.highlightedTitleColor = highlightedTitleColor;
+}
+
+- (void)setBorderColor:(UIColor *)borderColor
+{
+    self.button.layer.borderColor = borderColor.CGColor;
+}
+
+- (void)setHighlightedBackgroundColor:(UIColor *)highlightedBackgroundColor
+{
+    self.button.highlightedBackgroundColor = highlightedBackgroundColor;
+}
+
+- (void)setTitleColor:(UIColor *)titleColor
+{
+    self.button.titleColor = titleColor;
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    self.button.backgroundColor = backgroundColor;
 }
 
 @end
