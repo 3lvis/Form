@@ -34,11 +34,11 @@ PODS:
   - UIScreen-HYPLiveBounds (1.3)
 
 DEPENDENCIES:
-  - Form (from `https://github.com/hyperoslo/Form`)
+  - Form (from `../../`)
 
 EXTERNAL SOURCES:
   Form:
-    :git: https://github.com/hyperoslo/Form
+    :path: ../../
 
 CHECKOUT OPTIONS:
   Form:

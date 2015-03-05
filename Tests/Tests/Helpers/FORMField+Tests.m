@@ -2,6 +2,7 @@
 
 #import "FORMFieldValue.h"
 #import "FORMTarget.h"
+#import "FORMFieldValidation.h"
 
 @implementation FORMField (Tests)
 
@@ -47,7 +48,7 @@
 {
     FORMField *formField = [FORMField textFormFieldWithID:@"first_name"];
     formField.position = @0;
-    formField.validations = @{@"required" : @YES};
+    formField.validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"required" : @YES}];
 
     return formField;
 }
@@ -56,7 +57,7 @@
 {
     FORMField *formField = [FORMField textFormFieldWithID:@"last_name"];
     formField.position = @1;
-    formField.validations = @{@"required" : @YES};
+    formField.validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"required" : @YES}];
 
     return formField;
 }
@@ -84,7 +85,9 @@
 {
     FORMField *field = [FORMField textFormFieldWithID:@"email"];
     field.position = @1;
-    field.validations = @{@"required" : @YES, @"format": @"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}"};
+    field.validation = [[FORMFieldValidation alloc]
+                        initWithDictionary:@{@"required" : @YES,
+                                             @"format": @"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}"}];
 
     return field;
 }
