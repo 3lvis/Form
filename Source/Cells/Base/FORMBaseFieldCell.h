@@ -1,9 +1,6 @@
 @import UIKit;
 
-#import "FORMFieldHeadingLabel.h"
-
 #import "FORMTextField.h"
-#import "FORMFieldHeadingLabel.h"
 
 #import "FORMField.h"
 
@@ -22,7 +19,7 @@ static const CGFloat FORMFieldCellLeftMargin = 10.0f;
 
 @interface FORMBaseFieldCell : UICollectionViewCell
 
-@property (nonatomic, strong) FORMFieldHeadingLabel *headingLabel;
+@property (nonatomic, strong) UILabel *headingLabel;
 
 @property (nonatomic, strong) FORMField *field;
 @property (nonatomic, getter = isDisabled) BOOL disabled;
@@ -32,6 +29,9 @@ static const CGFloat FORMFieldCellLeftMargin = 10.0f;
 - (void)updateFieldWithDisabled:(BOOL)disabled;
 - (void)updateWithField:(FORMField *)field;
 - (void)validate;
+
+- (void)setHeadingLabelFont:(UIFont *)font UI_APPEARANCE_SELECTOR;
+- (void)setHeadingLabelTextColor:(UIColor *)color UI_APPEARANCE_SELECTOR;
 
 @end
 

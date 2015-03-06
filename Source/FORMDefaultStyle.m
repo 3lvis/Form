@@ -1,7 +1,6 @@
 #import "FORMDefaultStyle.h"
 
 #import "FORMTextField.h"
-#import "FORMFieldHeadingLabel.h"
 #import "FORMBackgroundView.h"
 #import "FORMSeparatorView.h"
 #import "FORMFieldValueLabel.h"
@@ -10,6 +9,7 @@
 #import "FORMFieldValuesTableViewHeader.h"
 #import "FORMTextFieldCell.h"
 #import "FORMButtonFieldCell.h"
+#import "FORMBaseFieldCell.h"
 
 #import "UIColor+Hex.h"
 
@@ -20,8 +20,8 @@
     [[FORMTextField appearance] setTextColor:[UIColor redColor]];
     [[FORMTextField appearance] setBackgroundColor:[UIColor yellowColor]];
 
-    [[FORMFieldHeadingLabel appearance] setFont:[UIFont fontWithName:@"DIN-Bold" size:14.0]];
-    [[FORMFieldHeadingLabel appearance] setTextColor:[UIColor colorFromHex:@"28649C"]];
+    [[FORMBaseFieldCell appearance] setHeadingLabelFont:[UIFont fontWithName:@"DIN-Bold" size:14.0]];
+    [[FORMBaseFieldCell appearance] setHeadingLabelTextColor:[UIColor colorFromHex:@"28649C"]];
 
     [[FORMBackgroundView appearance] setBackgroundColor:[UIColor colorFromHex:@"DAE2EA"]];
 

@@ -29,11 +29,11 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 #pragma mark - Getters
 
-- (FORMFieldHeadingLabel *)headingLabel
+- (UILabel *)headingLabel
 {
     if (_headingLabel) return _headingLabel;
 
-    _headingLabel = [[FORMFieldHeadingLabel alloc] initWithFrame:[self headingLabelFrame]];
+    _headingLabel = [[UILabel alloc] initWithFrame:[self headingLabelFrame]];
 
     return _headingLabel;
 }
@@ -120,6 +120,18 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
     frame.size.height = 1.0f;
 
     return frame;
+}
+
+#pragma mark - Styling
+
+- (void)setHeadingLabelFont:(UIFont *)font
+{
+    self.headingLabel.font = font;
+}
+
+- (void)setHeadingLabelTextColor:(UIColor *)color
+{
+    self.headingLabel.textColor = color;
 }
 
 @end
