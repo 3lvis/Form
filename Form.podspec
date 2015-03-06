@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name = "Form"
-  s.version = "0.124"
+  s.version = "1.0.0"
   s.summary = "JSON driven forms"
   s.homepage = "https://github.com/hyperoslo/Form"
   s.license = {
     :type => 'MIT',
     :file => 'LICENSE.md'
   }
-  s.author = { "Hyper" => "teknologi@hyper.no" }
+  s.author = { "Hyper Interaktiv AS" => "ios@hyper.no" }
   s.social_media_url = "http://twitter.com/hyperoslo"
   s.platform = :ios, '7.0'
   s.source = {
