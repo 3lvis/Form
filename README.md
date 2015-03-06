@@ -50,6 +50,16 @@ This is the required form to create a basic form with a first name field.
 
 #### In your iPad app
 ```objc
+// AppDelegate
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    // Don't forget to set your style, or use the default one if you want
+    [FORMDefaultStyle applyStyle]; 
+    
+    //...
+}
+
+// UICollectionViewController subclass
 - (FORMDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
