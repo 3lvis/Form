@@ -80,8 +80,8 @@ static BOOL enabledProperty;
         self.backgroundColor = enabledBackgroundColor;
         self.layer.borderColor = enabledBorderColor.CGColor;
     } else {
-        self.backgroundColor = inactiveBackgroundColor;
-        self.layer.borderColor = inactiveBorderColor.CGColor;
+        self.backgroundColor = disabledBackgroundColor;
+        self.layer.borderColor = disabledBackgroundColor.CGColor;
     }
 }
 
@@ -164,6 +164,7 @@ static BOOL enabledProperty;
 - (void)setDisabledBorderColor:(UIColor *)color
 {
     disabledBorderColor = color;
+    self.enabled = enabledProperty;
 }
 
 - (void)setValidBackgroundColor:(UIColor *)color
