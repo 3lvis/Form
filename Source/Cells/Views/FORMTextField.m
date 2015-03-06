@@ -132,14 +132,14 @@ static BOOL enabledProperty;
 {
     _valid = valid;
 
-    if (!self.isEnabled) return;
-
-    if (valid) {
-        self.backgroundColor = validBackgroundColor;
-        self.layer.borderColor = validBorderColor.CGColor;
-    } else {
-        self.backgroundColor = invalidBackgroundColor;
-        self.layer.borderColor = invalidBorderColor.CGColor;
+    if (self.isEnabled) {
+        if (valid) {
+            self.backgroundColor = validBackgroundColor;
+            self.layer.borderColor = validBorderColor.CGColor;
+        } else {
+            self.backgroundColor = invalidBackgroundColor;
+            self.layer.borderColor = invalidBorderColor.CGColor;
+        }
     }
 }
 
