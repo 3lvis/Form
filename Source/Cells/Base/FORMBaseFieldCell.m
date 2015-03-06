@@ -1,7 +1,6 @@
 #import "FORMBaseFieldCell.h"
 
-#import "UIColor+Hex.h"
-#import "UIColor+FORMColors.h"
+#import "FORMSeparatorView.h"
 
 static const CGFloat FORMTextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat FORMTextFormFieldCellLabelHeight = 20.0f;
@@ -9,7 +8,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 @interface FORMBaseFieldCell ()
 
-@property (nonatomic, strong) UIView *separatorView;
+@property (nonatomic, strong) FORMSeparatorView *separatorView;
 
 @end
 
@@ -30,21 +29,20 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 #pragma mark - Getters
 
-- (FORMFieldHeadingLabel *)headingLabel
+- (UILabel *)headingLabel
 {
     if (_headingLabel) return _headingLabel;
 
-    _headingLabel = [[FORMFieldHeadingLabel alloc] initWithFrame:[self headingLabelFrame]];
+    _headingLabel = [[UILabel alloc] initWithFrame:[self headingLabelFrame]];
 
     return _headingLabel;
 }
 
-- (UIView *)separatorView
+- (FORMSeparatorView *)separatorView
 {
     if (_separatorView) return _separatorView;
 
-    _separatorView = [[UIView alloc] initWithFrame:[self separatorViewFrame]];
-    _separatorView.backgroundColor = [UIColor FORMFieldBorderDisabled];
+    _separatorView = [[FORMSeparatorView alloc] initWithFrame:[self separatorViewFrame]];
 
     return _separatorView;
 }
@@ -122,6 +120,18 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
     frame.size.height = 1.0f;
 
     return frame;
+}
+
+#pragma mark - Styling
+
+- (void)setHeadingLabelFont:(UIFont *)font
+{
+    self.headingLabel.font = font;
+}
+
+- (void)setHeadingLabelTextColor:(UIColor *)color
+{
+    self.headingLabel.textColor = color;
 }
 
 @end

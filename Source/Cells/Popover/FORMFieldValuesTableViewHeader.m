@@ -2,9 +2,6 @@
 
 #import "FORMFieldValueCell.h"
 
-#import "UIFont+FORMStyles.h"
-#import "UIColor+FORMColors.h"
-
 static const CGFloat FORMLabelHeight = 25.0f;
 
 @interface FORMFieldValuesTableViewHeader ()
@@ -38,8 +35,6 @@ static const CGFloat FORMLabelHeight = 25.0f;
     CGRect rect = CGRectMake(0.0f, 8.0f, FORMFieldValuesHeaderWidth, FORMLabelHeight);
 
     _titleLabel = [[UILabel alloc] initWithFrame:rect];
-    _titleLabel.font = [UIFont FORMMediumSizeBold];
-    _titleLabel.textColor = [UIColor FORMDarkBlue];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
 
     return _titleLabel;
@@ -53,8 +48,6 @@ static const CGFloat FORMLabelHeight = 25.0f;
     CGRect rect = CGRectMake(0.0f, y, FORMFieldValuesHeaderWidth, FORMLabelHeight);
 
     _subtitleLabel = [[UILabel alloc] initWithFrame:rect];
-    _subtitleLabel.font = [UIFont FORMMediumSizeLight];
-    _subtitleLabel.textColor = [UIColor FORMCoreBlue];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
 
     return _subtitleLabel;
@@ -68,6 +61,26 @@ static const CGFloat FORMLabelHeight = 25.0f;
 
     self.titleLabel.text = field.title;
     self.subtitleLabel.text = field.subtitle;
+}
+
+- (void)setTitleLabelFont:(UIFont *)titleLabelFont
+{
+    self.titleLabel.font = titleLabelFont;
+}
+
+- (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor
+{
+    self.titleLabel.textColor = titleLabelTextColor;
+}
+
+- (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont
+{
+    self.subtitleLabel.font = subtitleLabelFont;
+}
+
+- (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor
+{
+    self.subtitleLabel.textColor = subtitleLabelTextColor;
 }
 
 @end

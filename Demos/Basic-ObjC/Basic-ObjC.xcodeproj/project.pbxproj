@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		14E49BFC1A99B75500F19988 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49BFB1A99B75500F19988 /* main.m */; };
 		14E49C071A99B75500F19988 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C061A99B75500F19988 /* Images.xcassets */; };
-		14E49C161A99B75500F19988 /* Basic_ObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C151A99B75500F19988 /* Basic_ObjCTests.m */; };
 		14E49C351A99B7D600F19988 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C211A99B7D600F19988 /* AppDelegate.m */; };
 		14E49C3B1A99B7D600F19988 /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C291A99B7D600F19988 /* forms.json */; };
 		14E49C3C1A99B7D600F19988 /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E49C2B1A99B7D600F19988 /* camera-icon@2x.png */; };
@@ -21,24 +20,11 @@
 		1E1A35C89938DD4BA1A656D3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29491F317417C0D1E29829A7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		14E49C101A99B75500F19988 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 14E49BEE1A99B75500F19988 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 14E49BF51A99B75500F19988;
-			remoteInfo = "Basic-ObjC";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		14E49BF61A99B75500F19988 /* Basic-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Basic-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14E49BFA1A99B75500F19988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14E49BFB1A99B75500F19988 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		14E49C061A99B75500F19988 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		14E49C0F1A99B75500F19988 /* Basic-ObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Basic-ObjCTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		14E49C141A99B75500F19988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14E49C151A99B75500F19988 /* Basic_ObjCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Basic_ObjCTests.m; sourceTree = "<group>"; };
 		14E49C201A99B7D600F19988 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		14E49C211A99B7D600F19988 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		14E49C291A99B7D600F19988 /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
@@ -64,13 +50,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		14E49C0C1A99B75500F19988 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				14E49BF81A99B75500F19988 /* Basic-ObjC */,
-				14E49C121A99B75500F19988 /* Basic-ObjCTests */,
 				14E49BF71A99B75500F19988 /* Products */,
 				9A2CB4BACB8976C31DF24BCC /* Pods */,
 				9661221E81F7A73DE1DDD54C /* Frameworks */,
@@ -89,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				14E49BF61A99B75500F19988 /* Basic-ObjC.app */,
-				14E49C0F1A99B75500F19988 /* Basic-ObjCTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,23 +89,6 @@
 				14E49C061A99B75500F19988 /* Images.xcassets */,
 				14E49BFA1A99B75500F19988 /* Info.plist */,
 				14E49BFB1A99B75500F19988 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		14E49C121A99B75500F19988 /* Basic-ObjCTests */ = {
-			isa = PBXGroup;
-			children = (
-				14E49C151A99B75500F19988 /* Basic_ObjCTests.m */,
-				14E49C131A99B75500F19988 /* Supporting Files */,
-			);
-			path = "Basic-ObjCTests";
-			sourceTree = "<group>";
-		};
-		14E49C131A99B75500F19988 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				14E49C141A99B75500F19988 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -219,24 +179,6 @@
 			productReference = 14E49BF61A99B75500F19988 /* Basic-ObjC.app */;
 			productType = "com.apple.product-type.application";
 		};
-		14E49C0E1A99B75500F19988 /* Basic-ObjCTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 14E49C1C1A99B75500F19988 /* Build configuration list for PBXNativeTarget "Basic-ObjCTests" */;
-			buildPhases = (
-				14E49C0B1A99B75500F19988 /* Sources */,
-				14E49C0C1A99B75500F19988 /* Frameworks */,
-				14E49C0D1A99B75500F19988 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				14E49C111A99B75500F19988 /* PBXTargetDependency */,
-			);
-			name = "Basic-ObjCTests";
-			productName = "Basic-ObjCTests";
-			productReference = 14E49C0F1A99B75500F19988 /* Basic-ObjCTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -248,10 +190,6 @@
 				TargetAttributes = {
 					14E49BF51A99B75500F19988 = {
 						CreatedOnToolsVersion = 6.1.1;
-					};
-					14E49C0E1A99B75500F19988 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 14E49BF51A99B75500F19988;
 					};
 				};
 			};
@@ -269,7 +207,6 @@
 			projectRoot = "";
 			targets = (
 				14E49BF51A99B75500F19988 /* Basic-ObjC */,
-				14E49C0E1A99B75500F19988 /* Basic-ObjCTests */,
 			);
 		};
 /* End PBXProject section */
@@ -285,13 +222,6 @@
 				14E49C071A99B75500F19988 /* Images.xcassets in Resources */,
 				14E49C3C1A99B7D600F19988 /* camera-icon@2x.png in Resources */,
 				14E49C3E1A99B7D600F19988 /* ic_mini_arrow_down@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		14E49C0D1A99B75500F19988 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,23 +272,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		14E49C0B1A99B75500F19988 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14E49C161A99B75500F19988 /* Basic_ObjCTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		14E49C111A99B75500F19988 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 14E49BF51A99B75500F19988 /* Basic-ObjC */;
-			targetProxy = 14E49C101A99B75500F19988 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		14E49C171A99B75500F19988 /* Debug */ = {
@@ -463,40 +377,6 @@
 			};
 			name = Release;
 		};
-		14E49C1D1A99B75500F19988 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Basic-ObjCTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Basic-ObjC.app/Basic-ObjC";
-			};
-			name = Debug;
-		};
-		14E49C1E1A99B75500F19988 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Basic-ObjCTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Basic-ObjC.app/Basic-ObjC";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -514,15 +394,6 @@
 			buildConfigurations = (
 				14E49C1A1A99B75500F19988 /* Debug */,
 				14E49C1B1A99B75500F19988 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		14E49C1C1A99B75500F19988 /* Build configuration list for PBXNativeTarget "Basic-ObjCTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				14E49C1D1A99B75500F19988 /* Debug */,
-				14E49C1E1A99B75500F19988 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

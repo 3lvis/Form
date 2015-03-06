@@ -7,4 +7,7 @@ static NSString * const FORMTextFieldCellIdentifier = @"FORMTextFieldCellIdentif
 
 @interface FORMTextFieldCell : FORMBaseFieldCell
 
+- (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont UI_APPEARANCE_SELECTOR;
+- (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor UI_APPEARANCE_SELECTOR;
+
 @end

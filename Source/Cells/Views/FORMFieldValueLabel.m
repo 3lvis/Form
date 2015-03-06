@@ -2,9 +2,28 @@
 
 #import "FORMBaseFieldCell.h"
 
-#import "UIColor+Hex.h"
-#import "UIFont+FORMStyles.h"
-#import "UIColor+FORMColors.h"
+static UIColor *activeBackgroundColor;
+static UIColor *activeBorderColor;
+static UIColor *inactiveBackgroundColor;
+static UIColor *inactiveBorderColor;
+
+static UIColor *enabledBackgroundColor;
+static UIColor *enabledBorderColor;
+static UIColor *enabledTextColor;
+static UIColor *disabledBackgroundColor;
+static UIColor *disabledBorderColor;
+static UIColor *disabledTextColor;
+
+static UIColor *validBackgroundColor;
+static UIColor *validBorderColor;
+static UIColor *invalidBackgroundColor;
+static UIColor *invalidBorderColor;
+
+static BOOL enabledProperty;
+
+@interface FORMFieldValueLabel ()
+
+@end
 
 @implementation FORMFieldValueLabel
 
@@ -13,14 +32,7 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.layer.borderWidth = FORMFieldCellBorderWidth;
-    self.layer.borderColor = [UIColor FORMBlue].CGColor;
-    self.layer.cornerRadius = FORMFieldCellCornerRadius;
     self.layer.masksToBounds = YES;
-
-    self.backgroundColor = [UIColor FORMFieldBackground];
-    self.font = [UIFont FORMTextFieldFont];
-    self.textColor = [UIColor FORMDarkBlue];
 
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.userInteractionEnabled = YES;
@@ -52,11 +64,11 @@
     _active = active;
 
     if (active) {
-        self.backgroundColor = [UIColor FORMFieldBackgroundActive];
-        self.layer.borderColor = [UIColor FORMBlue].CGColor;
+        self.backgroundColor = activeBackgroundColor;
+        self.layer.borderColor = activeBorderColor.CGColor;
     } else {
-        self.backgroundColor = [UIColor FORMFieldBackground];
-        self.layer.borderColor = [UIColor FORMBlue].CGColor;
+        self.backgroundColor = inactiveBackgroundColor;
+        self.layer.borderColor = inactiveBorderColor.CGColor;
     }
 }
 
@@ -64,12 +76,16 @@
 {
     [super setEnabled:enabled];
 
+    enabledProperty = enabled;
+
     if (enabled) {
-        self.backgroundColor = [UIColor FORMFieldBackground];
-        self.layer.borderColor = [UIColor FORMBlue].CGColor;
+        self.backgroundColor = enabledBackgroundColor;
+        self.layer.borderColor = enabledBorderColor.CGColor;
+        self.textColor = enabledTextColor;
     } else {
-        self.backgroundColor = [UIColor FORMLightGray];
-        self.layer.borderColor = [UIColor FORMFieldDisabledText].CGColor;
+        self.backgroundColor = disabledBackgroundColor;
+        self.layer.borderColor = disabledBackgroundColor.CGColor;
+        self.textColor = disabledTextColor;
     }
 }
 
@@ -80,11 +96,11 @@
     if (!self.isEnabled) return;
 
     if (valid) {
-        self.backgroundColor = [UIColor FORMFieldBackground];
-        self.layer.borderColor = [UIColor FORMBlue].CGColor;
+        self.backgroundColor = validBackgroundColor;
+        self.layer.borderColor = validBorderColor.CGColor;
     } else {
-        self.backgroundColor = [UIColor FORMFieldBackgroundInvalid];
-        self.layer.borderColor = [UIColor FORMRed].CGColor;
+        self.backgroundColor = invalidBackgroundColor;
+        self.layer.borderColor = invalidBorderColor.CGColor;
     }
 }
 
@@ -95,6 +111,95 @@
     if ([self.delegate respondsToSelector:@selector(titleLabelPressed:)]) {
         [self.delegate titleLabelPressed:self];
     }
+}
+
+#pragma mark - Appearance
+
+- (void)setBorderWidth:(CGFloat)borderWidth
+{
+    self.layer.borderWidth = borderWidth;
+}
+
+- (void)setBorderColor:(UIColor *)borderColor
+{
+    self.layer.borderColor = borderColor.CGColor;
+}
+
+- (void)setCornerRadius:(CGFloat)cornerRadius
+{
+    self.layer.cornerRadius = cornerRadius;
+}
+
+- (void)setActiveBackgroundColor:(UIColor *)color
+{
+    activeBackgroundColor = color;
+}
+
+- (void)setActiveBorderColor:(UIColor *)color
+{
+    activeBorderColor = color;
+}
+
+- (void)setInactiveBackgroundColor:(UIColor *)color
+{
+    inactiveBackgroundColor = color;
+}
+
+- (void)setInactiveBorderColor:(UIColor *)color
+{
+    inactiveBorderColor = color;
+}
+
+- (void)setEnabledBackgroundColor:(UIColor *)color
+{
+    enabledBackgroundColor = color;
+}
+
+- (void)setEnabledBorderColor:(UIColor *)color
+{
+    enabledBorderColor = color;
+}
+
+- (void)setEnabledTextColor:(UIColor *)color
+{
+    enabledTextColor = color;
+}
+
+- (void)setDisabledBackgroundColor:(UIColor *)color
+{
+    disabledBackgroundColor = color;
+}
+
+- (void)setDisabledBorderColor:(UIColor *)color
+{
+    disabledBorderColor = color;
+}
+
+- (void)setDisabledTextColor:(UIColor *)color
+{
+    disabledTextColor = color;
+    self.enabled = enabledProperty;
+}
+
+- (void)setValidBackgroundColor:(UIColor *)color
+{
+    validBackgroundColor = color;
+}
+
+- (void)setValidBorderColor:(UIColor *)color
+{
+    validBorderColor = color;
+}
+
+- (void)setInvalidBackgroundColor:(UIColor *)color
+{
+    invalidBackgroundColor = color;
+}
+
+- (void)setInvalidBorderColor:(UIColor *)color
+{
+    invalidBorderColor = color;
+    self.enabled = enabledProperty;
 }
 
 @end

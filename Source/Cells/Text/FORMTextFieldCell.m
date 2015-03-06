@@ -2,10 +2,6 @@
 
 #import "FORMSubtitleView.h"
 
-#import "UIColor+Hex.h"
-#import "UIFont+FORMStyles.h"
-#import "UIColor+FORMColors.h"
-
 static const CGFloat FORMSubtitleViewMinimumWidth = 90.0f;
 static const CGFloat FORMSubtitleViewHeight = 44.0f;
 static const NSInteger FORMSubtitleNumberOfLines = 4;
@@ -139,8 +135,6 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
     _subtitleLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
 
-    _subtitleLabel.font = [UIFont FORMSmallSizeMedium];
-    _subtitleLabel.textColor = [UIColor FORMBrown];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _subtitleLabel.numberOfLines = FORMSubtitleNumberOfLines;
@@ -333,6 +327,18 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];
     }
+}
+
+#pragma mark - Styling
+
+- (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont
+{
+    self.subtitleLabel.font = subtitleLabelFont;
+}
+
+- (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor
+{
+    self.subtitleLabel.textColor = subtitleLabelTextColor;
 }
 
 @end

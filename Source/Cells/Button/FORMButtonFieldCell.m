@@ -1,8 +1,5 @@
 #import "FORMButtonFieldCell.h"
-
-#import "UIColor+FORMColors.h"
 #import "UIButton+ANDYHighlighted.h"
-#import "UIFont+FORMStyles.h"
 
 @interface FORMButtonFieldCell ()
 
@@ -30,18 +27,6 @@
     if (_button) return _button;
 
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
-
-    _button.titleLabel.font = [UIFont FORMActionButtonFont];
-
-    _button.layer.borderWidth = 1.0f;
-    _button.layer.cornerRadius = 5.0f;
-
-    _button.titleColor = [UIColor whiteColor];
-    _button.highlightedTitleColor = [UIColor FORMCallToAction];
-    _button.layer.borderColor = [UIColor FORMCallToAction].CGColor;
-
-    _button.backgroundColor = [UIColor FORMCallToAction];
-    _button.highlightedBackgroundColor = [UIColor whiteColor];
 
     [_button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
 
@@ -96,6 +81,48 @@
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];
     }
+}
+
+#pragma mark - Styling
+
+- (void)setTitleLabelFont:(UIFont *)titleLabelFont
+{
+    self.button.titleLabel.font = titleLabelFont;
+}
+
+- (void)setBorderWidth:(CGFloat)borderWidth
+{
+    self.button.layer.borderWidth = borderWidth;
+}
+
+- (void)setCornerRadius:(CGFloat)cornerRadius
+{
+    self.button.layer.cornerRadius = cornerRadius;
+}
+
+- (void)setHighlightedTitleColor:(UIColor *)highlightedTitleColor
+{
+    self.button.highlightedTitleColor = highlightedTitleColor;
+}
+
+- (void)setBorderColor:(UIColor *)borderColor
+{
+    self.button.layer.borderColor = borderColor.CGColor;
+}
+
+- (void)setHighlightedBackgroundColor:(UIColor *)highlightedBackgroundColor
+{
+    self.button.highlightedBackgroundColor = highlightedBackgroundColor;
+}
+
+- (void)setTitleColor:(UIColor *)titleColor
+{
+    self.button.titleColor = titleColor;
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    self.button.backgroundColor = backgroundColor;
 }
 
 @end
