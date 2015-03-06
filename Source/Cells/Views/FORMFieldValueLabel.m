@@ -9,8 +9,10 @@ static UIColor *inactiveBorderColor;
 
 static UIColor *enabledBackgroundColor;
 static UIColor *enabledBorderColor;
+static UIColor *enabledTextColor;
 static UIColor *disabledBackgroundColor;
 static UIColor *disabledBorderColor;
+static UIColor *disabledTextColor;
 
 static UIColor *validBackgroundColor;
 static UIColor *validBorderColor;
@@ -79,9 +81,11 @@ static BOOL enabledProperty;
     if (enabled) {
         self.backgroundColor = enabledBackgroundColor;
         self.layer.borderColor = enabledBorderColor.CGColor;
+        self.textColor = enabledTextColor;
     } else {
         self.backgroundColor = disabledBackgroundColor;
         self.layer.borderColor = disabledBackgroundColor.CGColor;
+        self.textColor = disabledTextColor;
     }
 }
 
@@ -156,6 +160,11 @@ static BOOL enabledProperty;
     enabledBorderColor = color;
 }
 
+- (void)setEnabledTextColor:(UIColor *)color
+{
+    enabledTextColor = color;
+}
+
 - (void)setDisabledBackgroundColor:(UIColor *)color
 {
     disabledBackgroundColor = color;
@@ -164,6 +173,11 @@ static BOOL enabledProperty;
 - (void)setDisabledBorderColor:(UIColor *)color
 {
     disabledBorderColor = color;
+}
+
+- (void)setDisabledTextColor:(UIColor *)color
+{
+    disabledTextColor = color;
     self.enabled = enabledProperty;
 }
 

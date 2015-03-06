@@ -75,8 +75,10 @@
     [[FORMFieldValueLabel appearance] setInactiveBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
     [[FORMFieldValueLabel appearance] setEnabledBackgroundColor:[UIColor colorFromHex:@"E1F5FF"]];
     [[FORMFieldValueLabel appearance] setEnabledBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMFieldValueLabel appearance] setEnabledTextColor:[UIColor colorFromHex:@"455C73"]];
     [[FORMFieldValueLabel appearance] setDisabledBackgroundColor:[UIColor colorFromHex:@"F5F5F8"]];
     [[FORMFieldValueLabel appearance] setDisabledBorderColor:[UIColor colorFromHex:@"DEDEDE"]];
+    [[FORMFieldValueLabel appearance] setDisabledTextColor:[UIColor grayColor]];
     [[FORMFieldValueLabel appearance] setValidBackgroundColor:[UIColor colorFromHex:@"E1F5FF"]];
     [[FORMFieldValueLabel appearance] setValidBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
     [[FORMFieldValueLabel appearance] setInvalidBackgroundColor:[UIColor colorFromHex:@"FFD7D7"]];

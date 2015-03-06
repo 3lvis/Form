@@ -132,6 +132,8 @@ static BOOL enabledProperty;
 {
     _valid = valid;
 
+    if (!self.isEnabled) return;
+
     if (self.isEnabled) {
         if (valid) {
             self.backgroundColor = validBackgroundColor;

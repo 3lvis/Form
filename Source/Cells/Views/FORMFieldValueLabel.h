@@ -19,8 +19,10 @@
 
 - (void)setEnabledBackgroundColor:(UIColor *)backgroundColor UI_APPEARANCE_SELECTOR;
 - (void)setEnabledBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;
+- (void)setEnabledTextColor:(UIColor *)textColor UI_APPEARANCE_SELECTOR;
 - (void)setDisabledBackgroundColor:(UIColor *)backgroundColor UI_APPEARANCE_SELECTOR;
 - (void)setDisabledBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;
+- (void)setDisabledTextColor:(UIColor *)textColor UI_APPEARANCE_SELECTOR;
 
 - (void)setValidBackgroundColor:(UIColor *)backgroundColor UI_APPEARANCE_SELECTOR;
 - (void)setValidBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;
