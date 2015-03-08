@@ -1,6 +1,8 @@
 ![Form](https://github.com/hyperoslo/Form/blob/master/Images/logo-v2.png)
 
-Form came out from our need to a form that could share logic between our iOS apps and our web clients, we found that JSON was one way to achieve this.
+Form is the most flexible and powerful way to build a form on iOS.
+
+Form came out from our need to have a form that could share logic between our iOS apps and our web clients, we found that JSON was the best way to achieve this.
 
 Form includes the following features:
 
