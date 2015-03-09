@@ -22,7 +22,7 @@ At the moment Form only supports the iPad, support for the iPhone will come soon
 
 ### Basic Form
 
-This is the required form to create a basic form with a first name field.
+This are the required steps to create a basic form with a first name field.
 
 ![Form](https://github.com/hyperoslo/Form/blob/master/Images/basic-form.png)
 
