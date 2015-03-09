@@ -29,6 +29,8 @@
 - (void)setInvalidBackgroundColor:(UIColor *)backgroundColor UI_APPEARANCE_SELECTOR;
 - (void)setInvalidBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;
 
+- (void)setCustomFont:(UIFont *)font  UI_APPEARANCE_SELECTOR;
+
 @end
 
 @protocol FORMTitleLabelDelegate <NSObject>
