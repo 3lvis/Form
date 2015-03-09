@@ -83,6 +83,7 @@ This is the required form to create a basic form with a first name field.
 }
 
 ```
+<hr>
 
 ### Targets
 
