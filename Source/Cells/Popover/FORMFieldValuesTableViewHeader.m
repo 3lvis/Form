@@ -6,8 +6,8 @@ static const CGFloat FORMLabelHeight = 25.0f;
 
 @interface FORMFieldValuesTableViewHeader ()
 
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *subtitleLabel;
+@property (nonatomic) UILabel *titleLabel;
+@property (nonatomic) UILabel *subtitleLabel;
 
 @end
 

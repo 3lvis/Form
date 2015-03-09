@@ -4,7 +4,7 @@
 
 @interface FORMValidator ()
 
-@property (nonatomic, strong) FORMFieldValidation *validation;
+@property (nonatomic) FORMFieldValidation *validation;
 
 @end
 

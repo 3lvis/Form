@@ -4,7 +4,7 @@
 
 @interface FORMGroupHeaderView ()
 
-@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic) UIView *contentView;
 
 @end
 

@@ -5,13 +5,13 @@
 
 @interface FORMData : NSObject
 
-@property (nonatomic, strong) NSMutableArray *forms;
-@property (nonatomic, strong) NSMutableDictionary *hiddenFieldsAndFieldIDsDictionary;
-@property (nonatomic, strong) NSMutableDictionary *hiddenSections;
-@property (nonatomic, strong) NSArray *disabledFieldsIDs;
-@property (nonatomic, strong) NSMutableDictionary *values;
-@property (nonatomic, strong) NSMutableDictionary *sectionTemplatesDictionary;
-@property (nonatomic, strong) NSMutableDictionary *fieldTemplatesDictionary;
+@property (nonatomic) NSMutableArray *forms;
+@property (nonatomic) NSMutableDictionary *hiddenFieldsAndFieldIDsDictionary;
+@property (nonatomic) NSMutableDictionary *hiddenSections;
+@property (nonatomic) NSArray *disabledFieldsIDs;
+@property (nonatomic) NSMutableDictionary *values;
+@property (nonatomic) NSMutableDictionary *sectionTemplatesDictionary;
+@property (nonatomic) NSMutableDictionary *fieldTemplatesDictionary;
 
 - (instancetype)initWithJSON:(id)JSON
                initialValues:(NSDictionary *)initialValues

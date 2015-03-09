@@ -25,11 +25,11 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
 @property (nonatomic) UIEdgeInsets originalInset;
 @property (nonatomic) BOOL disabled;
-@property (nonatomic, strong) FORMData *formsManager;
-@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) FORMLayout *layout;
+@property (nonatomic) FORMData *formsManager;
+@property (nonatomic) UICollectionView *collectionView;
+@property (nonatomic) FORMLayout *layout;
 @property (nonatomic, copy) NSArray *JSON;
-@property (nonatomic, strong) NSMutableArray *collapsedForms;
+@property (nonatomic) NSMutableArray *collapsedForms;
 
 @end
 
