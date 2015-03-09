@@ -8,6 +8,7 @@
 @property (nonatomic, getter = isActive)   BOOL active;
 @property (nonatomic, weak) id <FORMTitleLabelDelegate> delegate;
 
+- (void)setCustomFont:(UIFont *)font  UI_APPEARANCE_SELECTOR;
 - (void)setBorderWidth:(CGFloat)borderWidth UI_APPEARANCE_SELECTOR;
 - (void)setBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;
 - (void)setCornerRadius:(CGFloat)cornerRadius UI_APPEARANCE_SELECTOR;
@@ -28,8 +29,6 @@
 - (void)setValidBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;
 - (void)setInvalidBackgroundColor:(UIColor *)backgroundColor UI_APPEARANCE_SELECTOR;
 - (void)setInvalidBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;
-
-- (void)setCustomFont:(UIFont *)font  UI_APPEARANCE_SELECTOR;
 
 @end
 
