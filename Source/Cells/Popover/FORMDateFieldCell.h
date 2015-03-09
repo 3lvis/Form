@@ -4,8 +4,8 @@ static NSString * const FORMDateFormFieldCellIdentifier = @"FORMDateFormFieldCel
 
 @interface FORMDateFieldCell : FORMSelectFieldCell
 
-@property (nonatomic, copy) NSDate *date;
-@property (nonatomic, copy) NSDate *minimumDate;
-@property (nonatomic, copy) NSDate *maximumDate;
+@property (nonatomic) NSDate *date;
+@property (nonatomic) NSDate *minimumDate;
+@property (nonatomic) NSDate *maximumDate;
 
 @end

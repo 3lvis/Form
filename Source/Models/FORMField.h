@@ -30,8 +30,8 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic, strong) NSArray *values;
 @property (nonatomic, getter=isDisabled) BOOL disabled;
 @property (nonatomic) BOOL initiallyDisabled;
-@property (nonatomic, copy) NSDate *minimumDate;
-@property (nonatomic, copy) NSDate *maximumDate;
+@property (nonatomic) NSDate *minimumDate;
+@property (nonatomic) NSDate *maximumDate;
 
 @property (nonatomic, strong) FORMFieldValidation *validation;
 @property (nonatomic, strong) NSString *formula;
