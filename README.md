@@ -111,7 +111,7 @@ Targets are one of the most powerful features of form, we support: `hide`, `show
             "values":[
               {
                 "id":0,
-                "title": "Part time",
+                "title":"Part time",
                 "default":true,
                 "targets":[
                   {
@@ -149,6 +149,7 @@ Targets are one of the most powerful features of form, we support: `hide`, `show
   }
 ]
 ```
+
 #### Example
 
 ![Targets](https://github.com/hyperoslo/Form/blob/master/Images/target.gif)
