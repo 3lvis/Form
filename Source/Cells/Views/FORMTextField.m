@@ -123,7 +123,7 @@ static BOOL enabledProperty;
         self.textColor = enabledTextColor;
     } else {
         self.backgroundColor = disabledBackgroundColor;
-        self.layer.borderColor = disabledBackgroundColor.CGColor;
+        self.layer.borderColor = disabledBorderColor.CGColor;
         self.textColor = disabledTextColor;
     }
 }
