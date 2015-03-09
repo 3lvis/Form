@@ -115,6 +115,11 @@ static BOOL enabledProperty;
 
 #pragma mark - Appearance
 
+- (void)setCustomFont:(UIFont *)font
+{
+    self.font = font;
+}
+
 - (void)setBorderWidth:(CGFloat)borderWidth
 {
     self.layer.borderWidth = borderWidth;
