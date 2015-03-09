@@ -89,6 +89,8 @@ This is the required form to create a basic form with a first name field.
 
 Targets are one of the most powerful features of form, we support: `hide`, `show`, `update`, `enable`, `disable` or `clear` a field using a target. You can even set a condition for your target to run!
 
+In the following example we show how to hide or show a field based on a dropdown selection.
+
 #### JSON
 
 ```json
