@@ -1,5 +1,5 @@
 PODS:
-  - Form (0.124):
+  - Form (1.0.0):
     - Hex
     - HYPImagePicker
     - HYPMathParser
@@ -40,13 +40,8 @@ EXTERNAL SOURCES:
   Form:
     :path: ../../
 
-CHECKOUT OPTIONS:
-  Form:
-    :commit: 5025d8774a281c402dd5b780ff0dd364d6851246
-    :git: https://github.com/hyperoslo/Form
-
 SPEC CHECKSUMS:
-  Form: c7ba1cdfd9062717a6b23affbf813ba492e69b2f
+  Form: d2e4f5eccde737ce5689d2dc778171b56a462d81
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
   HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
   HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16

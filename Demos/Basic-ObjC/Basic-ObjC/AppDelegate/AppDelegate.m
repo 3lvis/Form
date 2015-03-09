@@ -3,11 +3,11 @@
 #import "HYPSampleCollectionViewController.h"
 #import "FORMBackgroundView.h"
 #import "FORMLayout.h"
+#import "FORMDefaultStyle.h"
 
-#import "UIColor+Hex.h"
 #import "NSObject+HYPTesting.h"
-#import "UIColor+FORMColors.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
+#import "UIColor+Hex.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +20,7 @@
 #ifdef DEBUG
     if ([NSObject isUnitTesting]) return YES;
 #endif
+    [FORMDefaultStyle applyStyle];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
@@ -35,7 +36,8 @@
     HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithJSON:JSON andInitialValues:dictionary];
 
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
-    controller.view.tintColor = [UIColor FORMControlsBlue];
+
+    controller.view.tintColor = [UIColor colorFromHex:@"5182AF"];
     controller.navigationBarHidden = YES;
 
     self.window.rootViewController = controller;

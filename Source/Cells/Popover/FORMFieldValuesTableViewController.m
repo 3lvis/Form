@@ -5,9 +5,6 @@
 #import "FORMFieldValuesTableViewHeader.h"
 #import "FORMFieldValueCell.h"
 
-#import "UIFont+FORMStyles.h"
-#import "UIColor+FORMColors.h"
-
 static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 
 @interface FORMFieldValuesTableViewController ()

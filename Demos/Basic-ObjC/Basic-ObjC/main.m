@@ -1,12 +1,4 @@
-//
-//  main.m
-//  Basic-ObjC
-//
-//  Created by Elvis Nuñez on 2/22/15.
-//  Copyright (c) 2015 Hyper. All rights reserved.
-//
-
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "AppDelegate.h"
 
 int main(int argc, char * argv[]) {

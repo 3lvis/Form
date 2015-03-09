@@ -7,10 +7,10 @@
 #import "HYPImageFormFieldCell.h"
 #import "FORMData.h"
 #import "FORMTextFieldCell.h"
+#import "FORMDefaultStyle.h"
 
-#import "UIColor+Hex.h"
-#import "UIColor+FORMColors.h"
 #import "NSObject+HYPTesting.h"
+#import "UIColor+Hex.h"
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
@@ -23,14 +23,6 @@
 @end
 
 @implementation HYPSampleCollectionViewController
-
-#pragma mark - Deallocation
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
-}
 
 #pragma mark - Initialization
 
@@ -50,16 +42,6 @@
     if ([NSObject isUnitTesting]) {
         [self.collectionView numberOfSections];
     }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
 
     return self;
 }
@@ -127,7 +109,7 @@
 
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
-    self.collectionView.backgroundColor = [UIColor FORMBackground];
+    self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 
     self.collectionView.dataSource = self.dataSource;
 }
@@ -154,13 +136,13 @@
 
     UILabel *readOnlyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 90.0f, 40.0f)];
     readOnlyLabel.text = @"Read-only";
-    readOnlyLabel.textColor = [UIColor FORMControlsBlue];
+    readOnlyLabel.textColor = [UIColor colorFromHex:@"5182AF"];
     readOnlyLabel.font = [UIFont boldSystemFontOfSize:17.0f];
     [readOnlyView addSubview:readOnlyLabel];
 
     UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(90.0f, 5.0f, 40.0f, 40.0f)];
-    readOnlySwitch.tintColor = [UIColor FORMControlsBlue];
-    readOnlySwitch.onTintColor = [UIColor FORMControlsBlue];
+    readOnlySwitch.tintColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlySwitch.onTintColor = [UIColor colorFromHex:@"5182AF"];
     readOnlySwitch.on = YES;
     [readOnlySwitch addTarget:self action:@selector(readOnly:) forControlEvents:UIControlEventValueChanged];
     [readOnlyView addSubview:readOnlySwitch];
@@ -214,16 +196,6 @@
     NSLog(@"picture gotten");
 }
 
-#pragma mark - Notifications
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    [self keyboardWillToggle:notification];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    [self keyboardWillToggle:notification];
-}
-
 #pragma mark - Actions
 
 - (void)updateButtonAction
@@ -268,35 +240,6 @@
     }
 
     [self.dataSource processTargets:@[target]];
-}
-
-- (void)keyboardWillToggle:(NSNotification *)notification
-{
-    NSDictionary* userInfo = [notification userInfo];
-    NSTimeInterval animationDuration;
-    UIViewAnimationCurve animationCurve;
-    CGRect keyboardFrame;
-
-    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
-    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
-    [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardFrame];
-
-    CGRect navigationControllerRect = self.navigationController.toolbar.frame;
-    CGFloat navigationControllerY;
-
-    if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
-        navigationControllerY = navigationControllerRect.origin.y - keyboardFrame.size.height;
-    } else {
-        navigationControllerY = navigationControllerRect.origin.y + keyboardFrame.size.height;
-    }
-
-    CGRect rect = CGRectMake(navigationControllerRect.origin.x,
-                             navigationControllerY,
-                             navigationControllerRect.size.width,
-                             navigationControllerRect.size.height);
-
-    [self.navigationController.toolbar setFrame:rect];
-    [UIView commitAnimations];
 }
 
 @end

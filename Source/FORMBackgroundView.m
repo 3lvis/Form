@@ -1,8 +1,5 @@
 #import "FORMBackgroundView.h"
 
-#import "UIColor+Hex.h"
-#import "UIColor+FORMColors.h"
-
 @interface FORMBackgroundView ()
 
 @end
@@ -22,17 +19,6 @@
 
     [[UIColor whiteColor] setFill];
     [rectanglePath fill];
-}
-
-#pragma mark - Initializers
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-
-    self.backgroundColor = [UIColor FORMBackground];
-
-    return self;
 }
 
 @end
