@@ -10,7 +10,7 @@
 @interface FORMFieldValuesTableViewController : UITableViewController
 
 @property (nonatomic, weak) FORMField *field;
-@property (nonatomic, strong) FORMFieldValuesTableViewHeader *headerView;
+@property (nonatomic) FORMFieldValuesTableViewHeader *headerView;
 @property (nonatomic) CGFloat customHeight;
 
 @property (nonatomic, weak) id <FORMFieldValuesTableViewControllerDelegate> delegate;

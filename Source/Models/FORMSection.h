@@ -11,11 +11,11 @@ typedef NS_ENUM(NSInteger, FORMSectionType) {
 
 @interface FORMSection : NSObject
 
-@property (nonatomic, strong) NSMutableArray *fields;
-@property (nonatomic, strong) NSString *sectionID;
-@property (nonatomic, strong) NSNumber *position;
-@property (nonatomic, strong) FORMGroup *form;
-@property (nonatomic, strong) NSString *typeString;
+@property (nonatomic) NSMutableArray *fields;
+@property (nonatomic) NSString *sectionID;
+@property (nonatomic) NSNumber *position;
+@property (nonatomic) FORMGroup *form;
+@property (nonatomic) NSString *typeString;
 @property (nonatomic) FORMSectionType type;
 
 @property (nonatomic) BOOL shouldValidate;

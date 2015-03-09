@@ -3,7 +3,7 @@
 
 @interface FORMButtonFieldCell ()
 
-@property (nonatomic, strong) UIButton *button;
+@property (nonatomic) UIButton *button;
 
 @end
 

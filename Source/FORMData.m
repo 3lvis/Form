@@ -16,8 +16,8 @@
 
 @interface FORMData ()
 
-@property (nonatomic, strong) NSMutableDictionary *requiredFields;
-@property (nonatomic, strong) DDMathEvaluator *evaluator;
+@property (nonatomic) NSMutableDictionary *requiredFields;
+@property (nonatomic) DDMathEvaluator *evaluator;
 @property (nonatomic) BOOL disabledForm;
 
 @end

@@ -8,10 +8,10 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 @interface FORMTextFieldCell () <FORMTextFieldDelegate>
 
-@property (nonatomic, strong) FORMTextField *textField;
-@property (nonatomic, strong) UIPopoverController *popoverController;
-@property (nonatomic, strong) UILabel *subtitleLabel;
-@property (nonatomic, strong) FORMSubtitleView *subtitleView;
+@property (nonatomic) FORMTextField *textField;
+@property (nonatomic) UIPopoverController *popoverController;
+@property (nonatomic) UILabel *subtitleLabel;
+@property (nonatomic) FORMSubtitleView *subtitleView;
 
 @end
 
