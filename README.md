@@ -56,8 +56,8 @@ This is the required form to create a basic form with a first name field.
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Don't forget to set your style, or use the default one if you want
-    [FORMDefaultStyle applyStyle]; 
-    
+    [FORMDefaultStyle applyStyle];
+
     //...
 }
 
@@ -83,6 +83,74 @@ This is the required form to create a basic form with a first name field.
 }
 
 ```
+
+### Targets
+
+Targets are one of the most powerful features of form, we support: `hide`, `show`, `update`, `enable`, `disable` or `clear` a field using a target. You can even set a condition for your target to run!
+
+#### JSON
+
+```json
+[
+  {
+    "id":"group-id",
+    "title":"Group title",
+    "sections":[
+      {
+        "id":"section-0",
+        "fields":[
+          {
+            "id":"employment_type",
+            "title":"Employment type",
+            "type":"select",
+            "size":{
+              "width":30,
+              "height":1
+            },
+            "values":[
+              {
+                "id":0,
+                "title": "Part time",
+                "default":true,
+                "targets":[
+                  {
+                    "id":"bonus",
+                    "type":"field",
+                    "action":"hide"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Full time",
+                "targets":[
+                  {
+                    "id":"bonus",
+                    "type":"field",
+                    "action":"show"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id":"bonus",
+            "title":"Bonus",
+            "type":"number",
+            "size":{
+              "width":30,
+              "height":1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+#### Example
+
+![Targets](https://github.com/hyperoslo/Form/blob/master/Images/target.gif)
 
 ## Contributing
 
