@@ -106,6 +106,10 @@
               "id":"end_date",
               "title":"End date",
               "type":"date",
+              "validations":{
+                    "compare_to":"start_date",
+                    "compare_rule":">",
+                    },
               "size":{
                 "width":25,
                 "height":1
