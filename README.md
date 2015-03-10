@@ -53,8 +53,10 @@ This are the required steps to create a basic form with a first name field.
 ```
 
 #### In your iPad app
+
+##### AppDelegate
+
 ```objc
-// AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Don't forget to set your style, or use the default one if you want
@@ -62,8 +64,10 @@ This are the required steps to create a basic form with a first name field.
 
     //...
 }
+```
 
-// UICollectionViewController subclass
+##### UICollectionViewController
+```objc
 - (FORMDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
