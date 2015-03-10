@@ -53,10 +53,10 @@
     if (_dataSource) return _dataSource;
 
     _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
-                                                          collectionView:self.collectionView
-                                                                  layout:self.layout
-                                                                  values:self.initialValues
-                                                                disabled:YES];
+                                        collectionView:self.collectionView
+                                                layout:self.layout
+                                                values:self.initialValues
+                                              disabled:YES];
 
     _dataSource.configureCellForIndexPath = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
         id cell;
