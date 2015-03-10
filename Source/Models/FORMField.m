@@ -236,8 +236,12 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     validator = [[validatorClass alloc] initWithValidation:self.validation];
 
     self.validationType = [validator validateFieldValue:self.fieldValue];
+  
+    if (self.validation.compareToFieldID.length) {
+      id dependantFieldValue = [self.class fieldForFieldID:self.validation.compareToFieldID inSection:self.section].fieldValue;
+      self.validationType = [validator validateFieldValue:self.fieldValue withDependentValue:dependantFieldValue withComparator:self.validation.compareRule];
+    }
     self.valid = (self.validationType == FORMValidationResultTypePassed);
-
     return self.validationType;
 }
 
@@ -246,8 +250,18 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 + (FORMField *)fieldAtIndexPath:(NSIndexPath *)indexPath inSection:(FORMSection *)section
 {
     FORMField *field = section.fields[indexPath.row];
-
     return field;
+}
+
++ (FORMField *)fieldForFieldID:(NSString *)fieldID inSection:(FORMSection *)section
+{
+  __block FORMField *formField;
+  [section.fields enumerateObjectsUsingBlock:^(FORMField *field, NSUInteger idx, BOOL *stop) {
+    if ([field.fieldID isEqualToString:fieldID]) {
+      formField = field;
+    }
+  }];
+  return formField;
 }
 
 - (NSUInteger)indexInSectionUsingForms:(NSArray *)forms

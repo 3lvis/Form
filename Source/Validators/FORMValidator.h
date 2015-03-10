@@ -16,6 +16,12 @@ typedef NS_ENUM(NSInteger, FORMValidationResultType) {
     FORMValidationResultTypeOther
 };
 
+typedef NS_ENUM(NSInteger, FORMValidationRule) {
+  FORMValidationRuleLessThanOrEqualTo,
+  FORMValidationRuleGreaterThan,
+  FORMValidationRuleGreaterThanOrEqualTo,
+  FORMValidationRuleEqualTo,
+
 @interface FORMValidator : NSObject
 
 - (instancetype)initWithValidation:(FORMFieldValidation *)validation;
