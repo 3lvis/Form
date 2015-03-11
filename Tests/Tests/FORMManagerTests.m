@@ -127,6 +127,11 @@
     [manager hideTargets:@[target]];
     section = [manager sectionWithID:@"section-2"];
     XCTAssertEqualObjects(section.position, @1);
+    
+    target = [FORMTarget showSectionTargetWithID:@"section-1"];
+    [manager showTargets:@[target]];
+    section = [manager sectionWithID:@"section-2"];
+    XCTAssertEqualObjects(section.position, @2);
 }
 
 - (void)testRequiredFields
