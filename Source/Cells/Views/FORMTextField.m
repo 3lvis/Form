@@ -98,53 +98,6 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)setActive:(BOOL)active
-{
-    _active = active;
-
-    if (active) {
-        self.backgroundColor = activeBackgroundColor;
-        self.layer.borderColor = activeBorderColor.CGColor;
-    } else {
-        self.backgroundColor = inactiveBackgroundColor;
-        self.layer.borderColor = inactiveBorderColor.CGColor;
-    }
-}
-
-- (void)setEnabled:(BOOL)enabled
-{
-    [super setEnabled:enabled];
-
-    enabledProperty = enabled;
-
-    if (enabled) {
-        self.backgroundColor = enabledBackgroundColor;
-        self.layer.borderColor = enabledBorderColor.CGColor;
-        self.textColor = enabledTextColor;
-    } else {
-        self.backgroundColor = disabledBackgroundColor;
-        self.layer.borderColor = disabledBorderColor.CGColor;
-        self.textColor = disabledTextColor;
-    }
-}
-
-- (void)setValid:(BOOL)valid
-{
-    _valid = valid;
-
-    if (!self.isEnabled) return;
-
-    if (self.isEnabled) {
-        if (valid) {
-            self.backgroundColor = validBackgroundColor;
-            self.layer.borderColor = validBorderColor.CGColor;
-        } else {
-            self.backgroundColor = invalidBackgroundColor;
-            self.layer.borderColor = invalidBorderColor.CGColor;
-        }
-    }
-}
-
 - (void)setRawText:(NSString *)rawText
 {
     BOOL shouldFormat = (self.formatter && (rawText.length >= _rawText.length ||
@@ -308,6 +261,56 @@ static BOOL enabledProperty;
 
 #pragma mark - Appearance
 
+- (void)setActive:(BOOL)active
+{
+    _active = active;
+
+    if (active) {
+        self.backgroundColor = activeBackgroundColor;
+        self.layer.borderColor = activeBorderColor.CGColor;
+    } else {
+        self.backgroundColor = inactiveBackgroundColor;
+        self.layer.borderColor = inactiveBorderColor.CGColor;
+    }
+}
+
+- (void)setEnabled:(BOOL)enabled
+{
+    [super setEnabled:enabled];
+
+    enabledProperty = enabled;
+
+    if (enabled) {
+        self.backgroundColor = enabledBackgroundColor;
+        self.layer.borderColor = enabledBorderColor.CGColor;
+        self.textColor = enabledTextColor;
+    } else {
+        self.backgroundColor = disabledBackgroundColor;
+        self.layer.borderColor = disabledBorderColor.CGColor;
+        self.textColor = disabledTextColor;
+    }
+}
+
+- (void)setValid:(BOOL)valid
+{
+    _valid = valid;
+
+    if (!self.isEnabled) return;
+
+    if (valid) {
+        self.backgroundColor = validBackgroundColor;
+        self.layer.borderColor = validBorderColor.CGColor;
+    } else {
+        self.backgroundColor = invalidBackgroundColor;
+        self.layer.borderColor = invalidBorderColor.CGColor;
+    }
+}
+
+- (void)setCustomFont:(UIFont *)font
+{
+    self.font = font;
+}
+
 - (void)setBorderWidth:(CGFloat)borderWidth
 {
     self.layer.borderWidth = borderWidth;
@@ -392,6 +395,7 @@ static BOOL enabledProperty;
 - (void)setInvalidBorderColor:(UIColor *)color
 {
     invalidBorderColor = color;
+    self.enabled = enabledProperty;
 }
 
 @end
