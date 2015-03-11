@@ -59,6 +59,17 @@ static BOOL enabledProperty;
     return CGRectInset(frame, FORMFieldCellLeftMargin, 0.0f);
 }
 
+#pragma mark - Actions
+
+- (void)titleLabelTapAction
+{
+    if ([self.delegate respondsToSelector:@selector(titleLabelPressed:)]) {
+        [self.delegate titleLabelPressed:self];
+    }
+}
+
+#pragma mark - Appearance
+
 - (void)setActive:(BOOL)active
 {
     _active = active;
@@ -84,7 +95,7 @@ static BOOL enabledProperty;
         self.textColor = enabledTextColor;
     } else {
         self.backgroundColor = disabledBackgroundColor;
-        self.layer.borderColor = disabledBackgroundColor.CGColor;
+        self.layer.borderColor = disabledBorderColor.CGColor;
         self.textColor = disabledTextColor;
     }
 }
@@ -103,17 +114,6 @@ static BOOL enabledProperty;
         self.layer.borderColor = invalidBorderColor.CGColor;
     }
 }
-
-#pragma mark - Actions
-
-- (void)titleLabelTapAction
-{
-    if ([self.delegate respondsToSelector:@selector(titleLabelPressed:)]) {
-        [self.delegate titleLabelPressed:self];
-    }
-}
-
-#pragma mark - Appearance
 
 - (void)setCustomFont:(UIFont *)font
 {

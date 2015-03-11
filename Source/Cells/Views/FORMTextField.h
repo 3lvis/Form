@@ -35,6 +35,7 @@ typedef NS_ENUM(NSInteger, FORMTextFieldType) {
 
 @property (nonatomic, weak) id <FORMTextFieldDelegate> textFieldDelegate;
 
+- (void)setCustomFont:(UIFont *)font  UI_APPEARANCE_SELECTOR;
 - (void)setBorderWidth:(CGFloat)borderWidth UI_APPEARANCE_SELECTOR;
 - (void)setBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;
 - (void)setCornerRadius:(CGFloat)cornerRadius UI_APPEARANCE_SELECTOR;
