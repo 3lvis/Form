@@ -123,13 +123,13 @@
                                                              disabled:YES];
 
     FORMField *targetField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
-    XCTAssertNil(targetField.fieldValue);
+    XCTAssertNil(targetField.value);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
     updateTarget.targetValue = @"John Hyperseed";
 
     [dataSource processTarget:updateTarget];
-    XCTAssertEqualObjects(targetField.fieldValue, @"John Hyperseed");
+    XCTAssertEqualObjects(targetField.value, @"John Hyperseed");
 }
 
 - (void)testDefaultValue
@@ -144,7 +144,7 @@
                                                              disabled:YES];
 
     FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
-    XCTAssertNotNil(usernameField.fieldValue);
+    XCTAssertNotNil(usernameField.value);
 }
 
 - (void)testCondition
@@ -160,7 +160,7 @@
 
     FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
-    FORMFieldValue *fieldValue = usernameField.fieldValue;
+    FORMFieldValue *fieldValue = usernameField.value;
     XCTAssertEqualObjects(fieldValue.valueID, @0);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
@@ -168,11 +168,11 @@
 
     updateTarget.condition = @"$username == 2";
     [dataSource processTarget:updateTarget];
-    XCTAssertNil(displayNameField.fieldValue);
+    XCTAssertNil(displayNameField.value);
 
     updateTarget.condition = @"$username == 0";
     [dataSource processTarget:updateTarget];
-    XCTAssertEqualObjects(displayNameField.fieldValue, @"Mr.Melk");
+    XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
 }
 
 - (void)testReloadWithDictionary
@@ -190,7 +190,7 @@
                                        @"last_name" : @"Nunez"}];
 
     FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
-    XCTAssertEqualObjects(field.fieldValue, @"Elvis Nunez");
+    XCTAssertEqualObjects(field.value, @"Elvis Nunez");
 }
 
 - (void)testClearTarget
@@ -207,12 +207,12 @@
     FORMField *firstNameField = [dataSource fieldWithID:@"first_name" includingHiddenFields:YES];
     XCTAssertNotNil(firstNameField);
 
-    firstNameField.fieldValue = @"John";
-    XCTAssertNotNil(firstNameField.fieldValue);
+    firstNameField.value = @"John";
+    XCTAssertNotNil(firstNameField.value);
 
     FORMTarget *clearTarget = [FORMTarget clearFieldTargetWithID:@"first_name"];
     [dataSource processTarget:clearTarget];
-    XCTAssertNil(firstNameField.fieldValue);
+    XCTAssertNil(firstNameField.value);
 }
 
 - (void)testFormFieldsAreValid
@@ -299,19 +299,19 @@
     XCTAssertNotNil(section);
 
     FORMField *field = [dataSource fieldWithID:@"companies[0].name" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.fieldValue, @"Facebook");
+    XCTAssertEqualObjects(field.value, @"Facebook");
 
     field = [dataSource fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.fieldValue, @"1222333");
+    XCTAssertEqualObjects(field.value, @"1222333");
 
     section = [dataSource sectionWithID:@"companies[1]"];
     XCTAssertNotNil(section);
 
     field = [dataSource fieldWithID:@"companies[1].name" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.fieldValue, @"Google");
+    XCTAssertEqualObjects(field.value, @"Google");
 
     field = [dataSource fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.fieldValue, @"4555666");
+    XCTAssertEqualObjects(field.value, @"4555666");
 }
 
 - (void)testAddingAndRemovingMultipleDynamicSections

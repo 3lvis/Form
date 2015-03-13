@@ -109,7 +109,7 @@
 
     for (FORMSection *section in self.sections) {
         for (FORMField *field in section.fields) {
-            [fields addObject:[NSString stringWithFormat:@"%@ --- %@ (section %@ : field %@)\n", field.fieldID, field.fieldValue, field.section.position, field.position]];
+            [fields addObject:[NSString stringWithFormat:@"%@ --- %@ (section %@ : field %@)\n", field.fieldID, field.value, field.section.position, field.position]];
         }
         [fields addObject:@" "];
     }

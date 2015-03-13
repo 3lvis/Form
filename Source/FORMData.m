@@ -189,7 +189,7 @@
 
                         if (existingSection) {
                             FORMField *field = [self fieldWithID:valueID includingHiddenFields:YES];
-                            field.fieldValue = [self.values objectForKey:valueID];
+                            field.value = [self.values objectForKey:valueID];
                         } else {
                             [self insertTemplateSectionWithID:sectionTemplateID intoCollectionView:nil usingForm:form valueID:valueID];
                         }
@@ -205,10 +205,10 @@
                     for (FORMFieldValue *value in field.values) {
 
                         BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:field.fieldID]]);
-                        if (isInitialValue) field.fieldValue = value;
+                        if (isInitialValue) field.value = value;
                     }
                 } else {
-                    field.fieldValue = [initialValues andy_valueForKey:field.fieldID];
+                    field.value = [initialValues andy_valueForKey:field.fieldID];
                 }
             }
 
@@ -230,9 +230,9 @@
                         }
                     }
                 } else {
-                    BOOL shouldUseDefaultValue = (fieldValue.defaultValue && !field.fieldValue);
+                    BOOL shouldUseDefaultValue = (fieldValue.defaultValue && !field.value);
                     if (shouldUseDefaultValue) {
-                        field.fieldValue = fieldValue;
+                        field.value = fieldValue;
                         self.values[field.fieldID] = fieldValue.valueID;
 
                         for (FORMTarget *target in fieldValue.targets) {
@@ -339,10 +339,10 @@
 
     for (NSString *fieldID in fieldIDs) {
         FORMField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
-        id value = targetField.fieldValue;
+        id value = targetField.value;
         if (value) {
             if (targetField.type == FORMFieldTypeSelect) {
-                FORMFieldValue *fieldValue = targetField.fieldValue;
+                FORMFieldValue *fieldValue = targetField.value;
                 if (fieldValue.value) {
                     [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
                 }
@@ -689,16 +689,16 @@
 
                 if (selectedFieldValue) {
                     [self.values setObject:selectedFieldValue.valueID forKey:field.fieldID];
-                    field.fieldValue = selectedFieldValue;
+                    field.value = selectedFieldValue;
                 }
 
             } else {
-                field.fieldValue = target.targetValue;
-                [self.values setObject:field.fieldValue forKey:field.fieldID];
+                field.value = target.targetValue;
+                [self.values setObject:field.value forKey:field.fieldID];
             }
 
         } else if (target.actionType == FORMTargetActionClear) {
-            field.fieldValue = nil;
+            field.value = nil;
             [self.values setObject:[NSNull null] forKey:field.fieldID];
         } else if (field.formula) {
             NSArray *fieldIDs = [field.formula hyp_variables];
@@ -714,9 +714,9 @@
 
                 if (targetField.type == FORMFieldTypeSelect) {
 
-                    if ([targetField.fieldValue isKindOfClass:[FORMFieldValue class]]) {
+                    if ([targetField.value isKindOfClass:[FORMFieldValue class]]) {
 
-                        FORMFieldValue *fieldValue = targetField.fieldValue;
+                        FORMFieldValue *fieldValue = targetField.value;
 
                         if (fieldValue.value) {
                             [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
@@ -724,7 +724,7 @@
                     } else {
                         FORMFieldValue *foundFieldValue = nil;
                         for (FORMFieldValue *fieldValue in field.values) {
-                            if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
+                            if ([fieldValue identifierIsEqualTo:field.value]) {
                                 foundFieldValue = fieldValue;
                             }
                         }
@@ -753,7 +753,7 @@
 
             field.formula = [field.formula stringByReplacingOccurrencesOfString:@"$" withString:@""];
             id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
-            field.fieldValue = result;
+            field.value = result;
 
             if (result) {
                 [self.values setObject:result forKey:field.fieldID];
@@ -918,7 +918,7 @@
 
     if (valueID) {
         for (FORMField *field in section.fields) {
-            field.fieldValue = [self.values objectForKey:valueID];
+            field.value = [self.values objectForKey:valueID];
         }
     }
 

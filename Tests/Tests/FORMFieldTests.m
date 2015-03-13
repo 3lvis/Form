@@ -17,6 +17,7 @@
 {
     FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id": @"first_name",
                                                                @"title": @"First name",
+                                                               @"value": @"John Malkobitch",
                                                                @"type": @"name",
                                                                @"size": @{@"width": @30,
                                                                           @"height": @1},
@@ -26,7 +27,6 @@
                                                     position:0
                                                     disabled:NO
                                            disabledFieldsIDs:nil];
-
     XCTAssertNotNil(field);
     XCTAssertEqualObjects(field.position, @0);
     XCTAssertEqualObjects(field.fieldID, @"first_name");
@@ -46,11 +46,7 @@
                                          position:1
                                          disabled:NO
                                 disabledFieldsIDs:@[@"start_date"]];
-
     XCTAssertNotNil(field);
-    XCTAssertEqualObjects(field.position, @1);
-    XCTAssertEqualObjects(field.fieldID, @"start_date");
-    XCTAssertEqualObjects(field.title, @"Start date");
     XCTAssertEqualObjects(field.typeString, @"date");
     XCTAssertTrue(field.type == FORMFieldTypeDate);
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));

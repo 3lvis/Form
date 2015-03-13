@@ -138,7 +138,7 @@
     FORMField *firstNameField = [dataSource fieldWithID:@"first_name" includingHiddenFields:NO];
     XCTAssertNotNil(firstNameField);
     XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
-    XCTAssertEqualObjects(firstNameField.fieldValue, @"Elvis");
+    XCTAssertEqualObjects(firstNameField.value, @"Elvis");
 
     FORMField *startDateField = [dataSource fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
