@@ -1,0 +1,136 @@
+[
+  {
+    "id":"group",
+    "title": "Group",
+    "sections":[
+      {
+        "id":"section-0",
+        "fields":[
+          {
+            "id":"section-0-field-0",
+            "title":"Field 0",
+            "type":"select",
+            "size":{
+              "width": 50,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Value 0",
+                "targets":[
+                  {
+                    "id": "section-0-field-2",
+                    "type":"field",
+                    "action":"hide"
+                  },
+                  {
+                    "id": "section-1",
+                    "type":"section",
+                    "action":"hide"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id":"section-0-field-1",
+            "title":"Field 1",
+            "type":"select",
+            "size":{
+              "width": 50,
+              "height": 1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Value 0",
+                "targets":[
+                  {
+                    "id": "section-0-field-2",
+                    "type":"field",
+                    "action":"show"
+                  },
+                  {
+                    "id": "section-1",
+                    "type":"section",
+                    "action":"show"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id":"section-0-field-2",
+            "title":"Field 2",
+            "type":"date",
+            "size":{
+              "width": 25,
+              "height": 1
+            }
+          },
+          {
+            "id":"section-0-field-3",
+            "title":"Field 3",
+            "type":"date",
+            "size":{
+              "width": 25,
+              "height": 1
+            }
+          },
+          {
+            "id":"section-0-field-4",
+            "title":"Field 4",
+            "type":"date",
+            "size":{
+              "width": 25,
+              "height": 1
+            }
+          }
+        ]
+      },
+      {
+        "id":"section-1",
+        "fields":[
+          {
+            "id":"section-1-field-0",
+            "title":"Field 0",
+            "type":"text",
+            "size":{
+              "width": 50,
+              "height": 1
+            }
+          }
+        ]
+      },
+      {
+        "id":"section-2",
+        "fields":[
+          {
+            "id":"section-2-field-0",
+            "title":"Field 0",
+            "type":"text",
+            "size":{
+              "width": 50,
+              "height": 1
+            }
+          }
+        ]
+      },
+      {
+        "id":"section-3",
+        "fields":[
+          {
+            "id":"section-3-field-0",
+            "title":"Field 0",
+            "type":"text",
+            "size":{
+              "width": 50,
+              "height": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

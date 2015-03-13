@@ -132,10 +132,16 @@
 - (void)removeField:(FORMField *)field inForms:(NSArray *)forms
 {
     __block NSInteger index = 0;
-    [self.fields enumerateObjectsUsingBlock:^(FORMField *aField, NSUInteger idx, BOOL *stop) {
-        if ([aField.fieldID isEqualToString:field.fieldID]) {
+    __block BOOL found = NO;
+
+    [self.fields enumerateObjectsUsingBlock:^(FORMField *currentField, NSUInteger idx, BOOL *stop) {
+        if ([currentField.fieldID isEqualToString:field.fieldID]) {
             index = idx;
-            *stop = YES;
+            found = YES;
+        }
+
+        if (found) {
+            currentField.position = @([currentField.position integerValue] - 1);
         }
     }];
 

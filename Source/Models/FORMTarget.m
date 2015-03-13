@@ -3,6 +3,9 @@
 
 #import "NSDictionary+ANDYSafeValue.h"
 
+@interface FORMTarget ()
+@end
+
 @implementation FORMTarget
 
 #pragma mark - Initializers
@@ -22,29 +25,29 @@
 }
 
 + (FORMTarget *)fieldTargetWithID:(NSString *)targetID
-                          actionType:(FORMTargetActionType)actionType
+                 actionTypeString:(NSString *)actionTypeString
 {
     return [self targetWithID:targetID
-                         type:FORMTargetTypeField
-                   actionType:actionType];
+                   typeString:@"field"
+             actionTypeString:actionTypeString];
 }
 
 + (FORMTarget *)sectionTargetWithID:(NSString *)targetID
-                            actionType:(FORMTargetActionType)actionType
+                   actionTypeString:(NSString *)actionTypeString
 {
     return [self targetWithID:targetID
-                         type:FORMTargetTypeSection
-                   actionType:actionType];
+                   typeString:@"section"
+             actionTypeString:actionTypeString];
 }
 
 + (FORMTarget *)targetWithID:(NSString *)targetID
-                           type:(FORMTargetType)type
-                     actionType:(FORMTargetActionType)actionType
+                  typeString:(NSString *)typeString
+            actionTypeString:(NSString *)actionTypeString
 {
     FORMTarget *target = [FORMTarget new];
     target.targetID = targetID;
-    target.type = type;
-    target.actionType = actionType;
+    target.typeString = typeString;
+    target.actionTypeString = actionTypeString;
 
     return target;
 }
@@ -90,37 +93,37 @@
 + (FORMTarget *)showFieldTargetWithID:(NSString *)targetID
 {
     return [self fieldTargetWithID:targetID
-                        actionType:FORMTargetActionShow];
+                  actionTypeString:@"show"];
 }
 
 + (FORMTarget *)hideFieldTargetWithID:(NSString *)targetID
 {
     return [self fieldTargetWithID:targetID
-                        actionType:FORMTargetActionHide];
+                  actionTypeString:@"hide"];
 }
 
 + (FORMTarget *)enableFieldTargetWithID:(NSString *)targetID
 {
     return [self fieldTargetWithID:targetID
-                        actionType:FORMTargetActionEnable];
+                  actionTypeString:@"enable"];
 }
 
 + (FORMTarget *)disableFieldTargetWithID:(NSString *)targetID
 {
     return [self fieldTargetWithID:targetID
-                        actionType:FORMTargetActionDisable];
+                  actionTypeString:@"disable"];
 }
 
 + (FORMTarget *)updateFieldTargetWithID:(NSString *)targetID
 {
     return [self fieldTargetWithID:targetID
-                        actionType:FORMTargetActionUpdate];
+                  actionTypeString:@"update"];
 }
 
 + (FORMTarget *)clearFieldTargetWithID:(NSString *)targetID
 {
     return [self fieldTargetWithID:targetID
-                        actionType:FORMTargetActionClear];
+                  actionTypeString:@"clear"];
 }
 
 #pragma mark - Field targets
@@ -190,31 +193,31 @@
 + (FORMTarget *)showSectionTargetWithID:(NSString *)targetID
 {
     return [self sectionTargetWithID:targetID
-                          actionType:FORMTargetActionShow];
+                    actionTypeString:@"show"];
 }
 
 + (FORMTarget *)hideSectionTargetWithID:(NSString *)targetID
 {
     return [self sectionTargetWithID:targetID
-                          actionType:FORMTargetActionHide];
+                    actionTypeString:@"hide"];
 }
 
 + (FORMTarget *)enableSectionTargetWithID:(NSString *)targetID
 {
     return [self sectionTargetWithID:targetID
-                          actionType:FORMTargetActionEnable];
+                    actionTypeString:@"enable"];
 }
 
 + (FORMTarget *)disableSectionTargetWithID:(NSString *)targetID
 {
     return [self sectionTargetWithID:targetID
-                          actionType:FORMTargetActionDisable];
+                    actionTypeString:@"disable"];
 }
 
 + (FORMTarget *)updateSectionTargetWithID:(NSString *)targetID
 {
     return [self sectionTargetWithID:targetID
-                          actionType:FORMTargetActionUpdate];
+                    actionTypeString:@"update"];
 }
 
 #pragma mark - Section targets

@@ -335,7 +335,7 @@
         fieldIndexPath = indexPath;
     }];
 
-    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:4 inSection:0]);
+    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:2 inSection:0]);
 
     [dataSource fieldCell:nil updatedWithField:field];
 
@@ -343,7 +343,7 @@
         fieldIndexPath = indexPath;
     }];
 
-    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:7 inSection:0]);
+    XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:5 inSection:0]);
 
     field = [dataSource fieldWithID:@"contacts.add" includingHiddenFields:NO];
     XCTAssertNotNil(field);
@@ -378,13 +378,33 @@
 
     FORMSection *section = [dataSource sectionWithID:@"companies[0]"];
     XCTAssertNotNil(section);
-    XCTAssertEqualObjects(section.position, @2);
+    XCTAssertEqualObjects(section.position, @1);
 
     [dataSource fieldCell:nil updatedWithField:removeField];
 
     section = [dataSource sectionWithID:@"personal-details-1"];
     XCTAssertEqualObjects(section.position, @2);
     XCTAssertNotNil(section);
+}
+
+- (void)testDynamicSectionsInvolvingHideTargets
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"title" : @0}
+                                                             disabled:YES];
+
+    FORMField *addField = [dataSource fieldWithID:@"contacts.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    FORMSection *section = [dataSource sectionWithID:@"contacts[0]"];
+    XCTAssertEqualObjects(section.position, @3);
 }
 
 @end

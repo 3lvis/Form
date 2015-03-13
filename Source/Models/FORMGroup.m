@@ -118,4 +118,33 @@
             self.formID, self.title, self.position, self.shouldValidate ? @"YES" : @"NO", fields];
 }
 
+- (void)removeSection:(FORMSection *)section
+{
+    __block BOOL found = NO;
+    __block NSInteger index = 0;
+
+    [self.sections enumerateObjectsUsingBlock:^(FORMSection *currentSection, NSUInteger idx, BOOL *stop) {
+        if (found) {
+            currentSection.position = @([currentSection.position integerValue] - 1);
+        }
+
+        if ([currentSection.sectionID isEqualToString:section.sectionID]) {
+            index = idx;
+            found = YES;
+        }
+    }];
+
+    if (!found) index = [self.sections count];
+
+    [self.sections removeObjectAtIndex:index];
+    [self updateSectionPositions];
+}
+
+- (void)updateSectionPositions
+{
+    [self.sections enumerateObjectsUsingBlock:^(FORMSection *section, NSUInteger idx, BOOL *stop) {
+        section.position = @(idx);
+    }];
+}
+
 @end
