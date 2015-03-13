@@ -300,7 +300,6 @@
                              navigationControllerToolbarRect.size.height);
 
     [self.navigationController.toolbar setFrame:rect];
-    [UIView commitAnimations];
 }
 
 @end
