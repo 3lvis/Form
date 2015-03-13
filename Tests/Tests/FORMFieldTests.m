@@ -31,6 +31,7 @@
     XCTAssertEqualObjects(field.position, @0);
     XCTAssertEqualObjects(field.fieldID, @"first_name");
     XCTAssertEqualObjects(field.title, @"First name");
+    XCTAssertEqualObjects(field.value, @"John Malkobitch");
     XCTAssertEqualObjects(field.typeString, @"name");
     XCTAssertTrue(field.type == FORMFieldTypeText);
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
@@ -40,6 +41,9 @@
     field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_date",
                                                     @"title": @"Start date",
                                                     @"type": @"date",
+                                                    @"minimum_date":@"2010-12-01T00:00:00+01:00",
+                                                    @"maximum_date":@"2020-12-01T00:00:00+01:00",
+                                                    @"value":@"2014-12-01T00:00:00+01:00",
                                                     @"size": @{@"width": @10,
                                                                @"height": @4}
                                                     }
