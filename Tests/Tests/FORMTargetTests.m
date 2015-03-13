@@ -10,45 +10,37 @@
 
 - (void)testInitWithDictionary
 {
-    FORMTarget *target = [[FORMTarget alloc] initWithDictionary:@{@"id": @"start_date",
-                                                                  @"type": @"field",
-                                                                  @"action": @"show"}];
+    FORMTarget *target = [FORMTarget showFieldTargetWithID:@"start_date"];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"start_date");
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"show");
-    XCTAssertTrue(target.type == FORMTargetTypeField);
-    XCTAssertTrue(target.actionType == FORMTargetActionShow);
+    XCTAssertEqual(target.type, FORMTargetTypeField);
+    XCTAssertEqual(target.actionType, FORMTargetActionShow);
 
-    target = [[FORMTarget alloc] initWithDictionary:@{@"id": @"section_id",
-                                                      @"type": @"section",
-                                                      @"action": @"hide"}];
+    target = [FORMTarget hideSectionTargetWithID:@"section_id"];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"section_id");
     XCTAssertEqualObjects(target.typeString, @"section");
     XCTAssertEqualObjects(target.actionTypeString, @"hide");
-    XCTAssertTrue(target.type == FORMTargetTypeSection);
-    XCTAssertTrue(target.actionType == FORMTargetActionHide);
+    XCTAssertEqual(target.type, FORMTargetTypeSection);
+    XCTAssertEqual(target.actionType, FORMTargetActionHide);
 
-    target = [[FORMTarget alloc] initWithDictionary:@{@"id": @"first_name",
-                                                      @"type": @"field",
-                                                      @"action": @"disable"}];
+    target = [FORMTarget disableFieldTargetWithID:@"first_name"];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"first_name");
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"disable");
-    XCTAssertTrue(target.type == FORMTargetTypeField);
-    XCTAssertTrue(target.actionType == FORMTargetActionDisable);
+    XCTAssertEqual(target.type, FORMTargetTypeField);
+    XCTAssertEqual(target.actionType, FORMTargetActionDisable);
 
-    target = [[FORMTarget alloc] initWithDictionary:@{@"id": @"last_name",
-                                                      @"type": @"field",
-                                                      @"action": @"enable"}];
+    target = [FORMTarget enableFieldTargetWithID:@"last_name"];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"last_name");
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"enable");
-    XCTAssertTrue(target.type == FORMTargetTypeField);
-    XCTAssertTrue(target.actionType == FORMTargetActionEnable);
+    XCTAssertEqual(target.type, FORMTargetTypeField);
+    XCTAssertEqual(target.actionType, FORMTargetActionEnable);
 }
 
 - (void)testFilteredTargets

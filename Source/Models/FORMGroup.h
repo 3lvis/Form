@@ -1,6 +1,7 @@
 @import Foundation;
 
 @class FORMField;
+@class FORMSection;
 
 @interface FORMGroup : NSObject
 
@@ -20,5 +21,7 @@
 
 - (NSInteger)numberOfFields;
 - (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections;
+- (void)removeSection:(FORMSection *)section;
+- (void)updateSectionPositions;
 
 @end

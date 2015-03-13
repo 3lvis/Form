@@ -283,8 +283,7 @@
             FORMSection *section = [self sectionWithID:target.targetID];
             if (section) {
                 FORMGroup *form = section.form;
-                NSInteger index = [section indexInForms:self.forms];
-                [form.sections removeObjectAtIndex:index];
+                [form removeSection:section];
             }
         }
     }
@@ -566,6 +565,7 @@
                     NSInteger sectionIndex = [section indexInForms:self.forms];
                     FORMGroup *form = self.forms[[section.form.position integerValue]];
                     [form.sections insertObject:section atIndex:sectionIndex];
+                    [form updateSectionPositions];
                 }
             }
 
@@ -651,11 +651,23 @@
 
     for (FORMSection *section in deletedSections) {
         FORMGroup *form = self.forms[[section.form.position integerValue]];
-        [self indexForSection:section form:form completion:^(BOOL found, NSInteger index) {
+
+        __block NSInteger index = 0;
+        __block BOOL found = NO;
+        [form.sections enumerateObjectsUsingBlock:^(FORMSection *aSection, NSUInteger idx, BOOL *stop) {
             if (found) {
-                [form.sections removeObjectAtIndex:index];
+                aSection.position = @([aSection.position integerValue] - 1);
+            }
+
+            if ([aSection.sectionID isEqualToString:section.sectionID]) {
+                index = idx;
+                found = YES;
             }
         }];
+
+        if (found) {
+            [form.sections removeObjectAtIndex:index];
+        }
     }
 
     return [deletedIndexPaths allObjects];

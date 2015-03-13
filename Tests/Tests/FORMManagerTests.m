@@ -72,19 +72,66 @@
     XCTAssertEqualObjects([manager.values objectForKey:@"total"], @300);
 }
 
-- (void)testFormsGenerationHideTargets
+- (void)testFormGenerationSectionPositions
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *manager = [[FORMData alloc] initWithJSON:JSON
-                                         initialValues:@{@"contract_type" : @1}
+                                         initialValues:nil
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
+
+    FORMSection *section = [manager sectionWithID:@"section-2"];
+    XCTAssertNotNil(section);
+    XCTAssertEqualObjects(section.position, @2);
+
+    FORMField *field = [manager fieldWithID:@"section-0-field-3" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.position, @3);
+}
+
+- (void)testFormGenerationSectionPositionsWithHiddenTargets
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+                                         initialValues:@{@"section-0-field-0" : @0}
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
     XCTAssertTrue(manager.hiddenFieldsAndFieldIDsDictionary.count > 0);
-
     XCTAssertTrue(manager.hiddenSections.count > 0);
+
+    FORMSection *section = [manager sectionWithID:@"section-2"];
+    FORMField *field = [manager fieldWithID:@"section-0-field-3" includingHiddenFields:NO];
+    XCTAssertEqualObjects(section.position, @1);
+    XCTAssertEqualObjects(field.position, @2);
+}
+
+- (void)testSectionPositionForHideAndShowTargets
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+                                         initialValues:nil
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
+
+    FORMSection *section = [manager sectionWithID:@"section-2"];
+    XCTAssertEqualObjects(section.position, @2);
+
+    FORMTarget *target = [FORMTarget hideSectionTargetWithID:@"section-1"];
+    [manager hideTargets:@[target]];
+    section = [manager sectionWithID:@"section-2"];
+    XCTAssertEqualObjects(section.position, @1);
+    
+    target = [FORMTarget showSectionTargetWithID:@"section-1"];
+    [manager showTargets:@[target]];
+    section = [manager sectionWithID:@"section-2"];
+    XCTAssertEqualObjects(section.position, @2);
 }
 
 - (void)testRequiredFields
