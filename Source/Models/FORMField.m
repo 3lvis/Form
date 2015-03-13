@@ -50,8 +50,21 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
     _initiallyDisabled = _disabled;
     _formula = [dictionary andy_valueForKey:@"formula"];
-    _maximumDate = [dictionary andy_valueForKey:@"maximum_date"];
-    _minimumDate = [dictionary andy_valueForKey:@"minimum_date"];
+
+    NSDateFormatter *isoDateFormatter = [NSDateFormatter new];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    isoDateFormatter.locale = enUSPOSIXLocale;
+    isoDateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+
+    NSString *maximumDateString = [dictionary andy_valueForKey:@"maximum_date"];
+    NSString *minimumDateString = [dictionary andy_valueForKey:@"minimum_date"];
+    if (maximumDateString) {
+        _maximumDate = [isoDateFormatter dateFromString:maximumDateString];
+    }
+
+    if (minimumDateString) {
+        _minimumDate = [isoDateFormatter dateFromString:minimumDateString];
+    }
 
     NSMutableArray *targets = [NSMutableArray new];
 
@@ -78,6 +91,12 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     }
 
     _values = values;
+
+    _value = [dictionary andy_valueForKey:@"value"];
+
+    if (_value && _type == FORMFieldTypeDate) {
+        _value = [isoDateFormatter dateFromString:_value];
+    }
 
     return self;
 }
