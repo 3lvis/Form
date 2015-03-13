@@ -565,6 +565,7 @@
                     NSInteger sectionIndex = [section indexInForms:self.forms];
                     FORMGroup *form = self.forms[[section.form.position integerValue]];
                     [form.sections insertObject:section atIndex:sectionIndex];
+                    [self processSections:form.sections];
                 }
             }
 
@@ -971,6 +972,13 @@
     }
 
     return index;
+}
+
+- (void)processSections:(NSMutableArray *)sections
+{
+    [sections enumerateObjectsUsingBlock:^(FORMSection *section, NSUInteger idx, BOOL *stop) {
+        section.position = @(idx);
+    }];
 }
 
 @end
