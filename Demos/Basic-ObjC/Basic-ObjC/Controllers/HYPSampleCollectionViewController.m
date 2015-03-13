@@ -277,8 +277,8 @@
 - (void)keyboardWillToggle:(NSNotification *)notification
 {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGRect navigationControllerRect = self.navigationController.toolbar.frame;
-    CGFloat initialY = screenRect.size.height - navigationControllerRect.size.height;
+    CGRect navigationControllerToolbarRect = self.navigationController.toolbar.frame;
+    CGFloat initialY = screenRect.size.height - navigationControllerToolbarRect.size.height;
 
     NSDictionary *userInfo = [notification userInfo];
     NSTimeInterval animationDuration;
@@ -289,10 +289,15 @@
     [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
     [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
 
-    CGRect rect = CGRectMake(navigationControllerRect.origin.x,
-                             initialY - keyboardFrame.size.height,
-                             navigationControllerRect.size.width,
-                             navigationControllerRect.size.height);
+    CGFloat navigationControllerToolbarY = initialY - keyboardFrame.size.height;
+    if ([notification.name isEqualToString:UIKeyboardWillHideNotification]) {
+        navigationControllerToolbarY = initialY;
+    }
+
+    CGRect rect = CGRectMake(navigationControllerToolbarRect.origin.x,
+                             navigationControllerToolbarY,
+                             navigationControllerToolbarRect.size.width,
+                             navigationControllerToolbarRect.size.height);
 
     [self.navigationController.toolbar setFrame:rect];
     [UIView commitAnimations];
