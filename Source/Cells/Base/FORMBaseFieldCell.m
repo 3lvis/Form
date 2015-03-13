@@ -8,7 +8,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 @interface FORMBaseFieldCell ()
 
-@property (nonatomic, strong) FORMSeparatorView *separatorView;
+@property (nonatomic) FORMSeparatorView *separatorView;
 
 @end
 

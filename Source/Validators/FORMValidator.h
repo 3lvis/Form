@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, FORMValidationResultType) {
 
 - (instancetype)initWithValidation:(FORMFieldValidation *)validation;
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue;
+- (FORMValidationResultType)validateFieldValue:(id)fieldValue withDependentValue:(id)dependentValue withComparator:(NSString *)comparator;
 + (Class)classForKey:(NSString *)key andType:(NSString *)type;
 
 @end

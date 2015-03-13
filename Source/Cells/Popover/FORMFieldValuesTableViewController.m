@@ -9,7 +9,7 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 
 @interface FORMFieldValuesTableViewController ()
 
-@property (nonatomic, strong) NSArray *values;
+@property (nonatomic) NSArray *values;
 
 @end
 

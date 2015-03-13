@@ -9,9 +9,9 @@
 
 @interface HYPDemoLoginCollectionViewController () <FORMBaseFieldCellDelegate>
 
-@property (nonatomic, strong) NSArray *JSON;
-@property (nonatomic, strong) FORMDataSource *dataSource;
-@property (nonatomic, strong) FORMLayout *layout;
+@property (nonatomic) NSArray *JSON;
+@property (nonatomic) FORMDataSource *dataSource;
+@property (nonatomic) FORMLayout *layout;
 @property (nonatomic) FORMField *emailTextField;
 @property (nonatomic) FORMField *passwordTextField;
 @property NSIndexPath *indexPathButton;

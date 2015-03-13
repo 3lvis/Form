@@ -1,4 +1,4 @@
-![Form](https://github.com/hyperoslo/Form/blob/master/Images/logo-v2.png)
+![Form](https://github.com/hyperoslo/Form/blob/master/Images/logo-v4.png)
 
 The most flexible and powerful way to build a form on iOS.
 
@@ -7,11 +7,11 @@ Form came out from our need to have a form that could share logic between our iO
 Form includes the following features:
 
 - Multiple groups: For example you can have a group for personal details and another one for shipping information
-- [Field validations](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L19): We support `required`, `maximum length`, `minimum length` and `format` (regex). We also support many field types, for example: `text`, `number`, `phone_number`, `email`, `date`, `name` and more
+- [Field validations](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L19): We support `required`, `maximum_length`, `minimum_length` and `format` (regex). We also support many field types, for example: `text`, `number`, `phone_number`, `email`, `date`, `name` and more
 - [Custom sizes](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L15): Total `width` is handled as 100% while `height` is handled in chunks of [85 px](https://github.com/hyperoslo/Form/blob/b1a542d042a45a9a3056fb8969b5704e51fda1f4/Source/Cells/Base/FORMBaseFieldCell.h#L15)
 - [Custom fields](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L78): You can register your custom fields, it's pretty simple (our basic example includes how to make an `image` field)
 - [Formulas or computed values](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L47): We support fields that contain generated values from other fields
-- [Targets](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L127): `Hide`, `show`, `update`, `enable`, `disable` or `clear` a field using a target. It's pretty powerful, you can even set a condition for your target to run
+- [Targets](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L127): `hide`, `show`, `update`, `enable`, `disable` or `clear` a field using a target. It's pretty powerful, you can even set a condition for your target to run
 - [Dropdowns](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L122): Generating dropdowns is as easy as adding values to your field, values support `default` flags, targets (in case you want to trigger hiding a field based on a selection), string values or numeric values and subtitles (in case you want to hint the consequences of your selection)
 
 Don't forget to check our [Basic Demo](https://github.com/hyperoslo/Form/tree/master/Demos/Basic-ObjC) for a basic example on how to use Form.
@@ -22,7 +22,9 @@ At the moment Form only supports the iPad, support for the iPhone will come soon
 
 ### Basic Form
 
-This is the required form to create a basic form with a first name field.
+This are the required steps to create a basic form with a first name field.
+
+![Form](https://github.com/hyperoslo/Form/blob/master/Images/basic-form.png)
 
 #### JSON
 ```json
@@ -51,17 +53,21 @@ This is the required form to create a basic form with a first name field.
 ```
 
 #### In your iPad app
+
+##### AppDelegate
+
 ```objc
-// AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Don't forget to set your style, or use the default one if you want
-    [FORMDefaultStyle applyStyle]; 
-    
+    [FORMDefaultStyle applyStyle];
+
     //...
 }
+```
 
-// UICollectionViewController subclass
+##### UICollectionViewController
+```objc
 - (FORMDataSource *)dataSource
 {
     if (_dataSource) return _dataSource;
@@ -82,6 +88,76 @@ This is the required form to create a basic form with a first name field.
     self.collectionView.dataSource = self.dataSource;
 }
 
+```
+<hr>
+
+### Targets
+
+Targets are one of the most powerful features of form, we support: `hide`, `show`, `update`, `enable`, `disable` or `clear` a field using a target. You can even set a condition for your target to run!
+
+In the following example we show how to hide or show a field based on a dropdown selection.
+
+![Targets](https://github.com/hyperoslo/Form/blob/master/Images/target.gif)
+
+#### JSON
+
+```json
+[
+  {
+    "id":"group-id",
+    "title":"Group title",
+    "sections":[
+      {
+        "id":"section-0",
+        "fields":[
+          {
+            "id":"employment_type",
+            "title":"Employment type",
+            "type":"select",
+            "size":{
+              "width":30,
+              "height":1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Part time",
+                "default":true,
+                "targets":[
+                  {
+                    "id":"bonus",
+                    "type":"field",
+                    "action":"hide"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Full time",
+                "targets":[
+                  {
+                    "id":"bonus",
+                    "type":"field",
+                    "action":"show"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id":"bonus",
+            "title":"Bonus",
+            "type":"number",
+            "size":{
+              "width":30,
+              "height":1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
 ```
 
 ## Contributing

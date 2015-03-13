@@ -19,9 +19,9 @@ static const CGFloat FORMFieldCellLeftMargin = 10.0f;
 
 @interface FORMBaseFieldCell : UICollectionViewCell
 
-@property (nonatomic, strong) UILabel *headingLabel;
+@property (nonatomic) UILabel *headingLabel;
 
-@property (nonatomic, strong) FORMField *field;
+@property (nonatomic) FORMField *field;
 @property (nonatomic, getter = isDisabled) BOOL disabled;
 
 @property (nonatomic, weak) id <FORMBaseFieldCellDelegate> delegate;

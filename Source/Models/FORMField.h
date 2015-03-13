@@ -19,25 +19,25 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 
 @interface FORMField : NSObject
 
-@property (nonatomic, strong) NSString *fieldID;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *subtitle;
+@property (nonatomic) NSString *fieldID;
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSString *subtitle;
 @property (nonatomic) CGSize size;
-@property (nonatomic, strong) NSNumber *position;
-@property (nonatomic, strong) id fieldValue;
-@property (nonatomic, strong) NSString *typeString;
+@property (nonatomic) NSNumber *position;
+@property (nonatomic) id fieldValue;
+@property (nonatomic) NSString *typeString;
 @property (nonatomic) FORMFieldType type;
-@property (nonatomic, strong) NSArray *values;
+@property (nonatomic) NSArray *values;
 @property (nonatomic, getter=isDisabled) BOOL disabled;
 @property (nonatomic) BOOL initiallyDisabled;
-@property (nonatomic, copy) NSDate *minimumDate;
-@property (nonatomic, copy) NSDate *maximumDate;
+@property (nonatomic) NSDate *minimumDate;
+@property (nonatomic) NSDate *maximumDate;
 
-@property (nonatomic, strong) FORMFieldValidation *validation;
-@property (nonatomic, strong) NSString *formula;
-@property (nonatomic, strong) NSArray *targets;
+@property (nonatomic) FORMFieldValidation *validation;
+@property (nonatomic) NSString *formula;
+@property (nonatomic) NSArray *targets;
 
-@property (nonatomic, strong) FORMSection *section;
+@property (nonatomic) FORMSection *section;
 
 @property (nonatomic) BOOL valid;
 @property (nonatomic) FORMValidationResultType validationType;

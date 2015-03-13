@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Form"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
   s.summary = "JSON driven form"
   s.homepage = "https://github.com/hyperoslo/Form"
   s.license = {
@@ -18,20 +18,19 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation'
   s.requires_arc = true
 
-  s.dependency 'UIButton-ANDYHighlighted'
-  s.dependency 'NSDictionary-ANDYSafeValue'
-  s.dependency 'NSJSONSerialization-ANDYJSONFile'
-  s.dependency 'NSString-ZENInflections'
-  s.dependency 'UIScreen-HYPLiveBounds'
-  s.dependency 'HYPImagePicker'
-  s.dependency 'HYPNorwegianSSN'
-  s.dependency 'HYPNorwegianAccountNumber'
-  s.dependency 'NSString-HYPFormula'
-  s.dependency 'NSString-HYPWordExtractor'
-  s.dependency 'Hex'
-  s.dependency 'NSString-HYPContainsString'
-  s.dependency 'HYPMathParser'
-  s.dependency 'NSObject-HYPTesting'
-  s.dependency 'NSString-HYPRelationshipParser'
-  s.dependency 'NSString-HYPContainsString'
+  s.dependency 'Hex', '~> 1.1.1'
+  s.dependency 'HYPImagePicker', '~> 0.3'
+  s.dependency 'HYPMathParser', '~> 0.3'
+  s.dependency 'HYPNorwegianAccountNumber', '~> 1.2.1'
+  s.dependency 'HYPNorwegianSSN', '~> 1.10'
+  s.dependency 'NSDictionary-ANDYSafeValue', '~> 0.3'
+  s.dependency 'NSJSONSerialization-ANDYJSONFile', '~> 1.1'
+  s.dependency 'NSObject-HYPTesting', '~> 1.2'
+  s.dependency 'NSString-HYPContainsString', '~> 0.1'
+  s.dependency 'NSString-HYPFormula', '~> 1.6.1'
+  s.dependency 'NSString-HYPRelationshipParser', '~> 0.2'
+  s.dependency 'NSString-HYPWordExtractor', '~> 1.1'
+  s.dependency 'NSString-ZENInflections', '~> 1.2'
+  s.dependency 'UIButton-ANDYHighlighted', '~> 0.2.1'
+  s.dependency 'UIScreen-HYPLiveBounds', '~> 1.3'
 end

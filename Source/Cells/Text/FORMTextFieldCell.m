@@ -8,10 +8,10 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 @interface FORMTextFieldCell () <FORMTextFieldDelegate>
 
-@property (nonatomic, strong) FORMTextField *textField;
-@property (nonatomic, strong) UIPopoverController *popoverController;
-@property (nonatomic, strong) UILabel *subtitleLabel;
-@property (nonatomic, strong) FORMSubtitleView *subtitleView;
+@property (nonatomic) FORMTextField *textField;
+@property (nonatomic) UIPopoverController *popoverController;
+@property (nonatomic) UILabel *subtitleLabel;
+@property (nonatomic) FORMSubtitleView *subtitleView;
 
 @end
 
@@ -30,6 +30,8 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignFirstResponder) name:FORMResignFirstResponderNotification object:nil];
     }
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissTooltip) name:FORMDismissTooltipNotification object:nil];
+
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapAction)];
     [self addGestureRecognizer:tapGestureRecognizer];
 
@@ -38,7 +40,11 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMResignFirstResponderNotification object:nil];
+    if ([self respondsToSelector:@selector(dismissTooltip)]) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMResignFirstResponderNotification object:nil];
+    }
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMDismissTooltipNotification object:nil];
 }
 
 #pragma mark - Getters
@@ -142,24 +148,6 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     return _subtitleLabel;
 }
 
-#pragma mark - Private headers
-
-- (BOOL)resignFirstResponder
-{
-    [self.textField resignFirstResponder];
-
-    [self.subtitleView removeFromSuperview];
-
-    return [super resignFirstResponder];
-}
-
-- (BOOL)becomeFirstResponder
-{
-    [self.textField becomeFirstResponder];
-
-    return [super becomeFirstResponder];
-}
-
 #pragma mark - FORMBaseFormFieldCell
 
 - (void)updateFieldWithDisabled:(BOOL)disabled
@@ -259,7 +247,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 - (void)showSubtitle
 {
     if (self.field.subtitle) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:FORMResignFirstResponderNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
 
         [self.contentView addSubview:self.subtitleView];
         self.subtitleView.frame = [self subtitleViewFrame];
@@ -339,6 +327,31 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 - (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor
 {
     self.subtitleLabel.textColor = subtitleLabelTextColor;
+}
+
+#pragma mark - Notifications
+
+- (void)dismissTooltip
+{
+    if (self.field.subtitle) {
+        [self.subtitleView removeFromSuperview];
+    }
+}
+
+#pragma mark - Private headers
+
+- (BOOL)resignFirstResponder
+{
+    [self.textField resignFirstResponder];
+
+    return [super resignFirstResponder];
+}
+
+- (BOOL)becomeFirstResponder
+{
+    [self.textField becomeFirstResponder];
+
+    return [super becomeFirstResponder];
 }
 
 @end

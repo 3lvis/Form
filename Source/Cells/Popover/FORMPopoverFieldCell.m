@@ -6,7 +6,7 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
 
 @interface FORMPopoverFieldCell () <FORMTitleLabelDelegate, UIPopoverControllerDelegate>
 
-@property (nonatomic, strong) UIViewController *contentViewController;
+@property (nonatomic) UIViewController *contentViewController;
 @property (nonatomic) CGSize contentSize;
 
 @end

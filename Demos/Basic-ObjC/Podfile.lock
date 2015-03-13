@@ -1,20 +1,20 @@
 PODS:
-  - Form (1.0.0):
-    - Hex
-    - HYPImagePicker
-    - HYPMathParser
-    - HYPNorwegianAccountNumber
-    - HYPNorwegianSSN
-    - NSDictionary-ANDYSafeValue
-    - NSJSONSerialization-ANDYJSONFile
-    - NSObject-HYPTesting
-    - NSString-HYPContainsString
-    - NSString-HYPFormula
-    - NSString-HYPRelationshipParser
-    - NSString-HYPWordExtractor
-    - NSString-ZENInflections
-    - UIButton-ANDYHighlighted
-    - UIScreen-HYPLiveBounds
+  - Form (1.0.1):
+    - Hex (~> 1.1.1)
+    - HYPImagePicker (~> 0.3)
+    - HYPMathParser (~> 0.3)
+    - HYPNorwegianAccountNumber (~> 1.2.1)
+    - HYPNorwegianSSN (~> 1.10)
+    - NSDictionary-ANDYSafeValue (~> 0.3)
+    - NSJSONSerialization-ANDYJSONFile (~> 1.1)
+    - NSObject-HYPTesting (~> 1.2)
+    - NSString-HYPContainsString (~> 0.1)
+    - NSString-HYPFormula (~> 1.6.1)
+    - NSString-HYPRelationshipParser (~> 0.2)
+    - NSString-HYPWordExtractor (~> 1.1)
+    - NSString-ZENInflections (~> 1.2)
+    - UIButton-ANDYHighlighted (~> 0.2.1)
+    - UIScreen-HYPLiveBounds (~> 1.3)
   - Hex (1.1.1)
   - HYPImagePicker (0.3)
   - HYPMathParser (0.3)
@@ -41,7 +41,7 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Form: 02c75df53863fb16edd1dcb147f5d1fb1a61ce54
+  Form: 2d9a998b36a23917f57d0231d532a9032388ba9a
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
   HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
   HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16
@@ -58,4 +58,4 @@ SPEC CHECKSUMS:
   UIButton-ANDYHighlighted: d11522ea39a27f17f6cbf7af03f6447633999fef
   UIScreen-HYPLiveBounds: b9910aa6f80f12638aec07463e960b5528a99e45
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0

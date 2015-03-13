@@ -5,10 +5,10 @@
 
 @interface FORMGroup : NSObject
 
-@property (nonatomic, strong) NSString *formID;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSMutableArray *sections;
-@property (nonatomic, strong) NSNumber *position;
+@property (nonatomic) NSString *formID;
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSMutableArray *sections;
+@property (nonatomic) NSNumber *position;
 
 @property (nonatomic) BOOL shouldValidate;
 

@@ -4,7 +4,7 @@
 
 @interface FORMValidator ()
 
-@property (nonatomic, strong) FORMFieldValidation *validation;
+@property (nonatomic) FORMFieldValidation *validation;
 
 @end
 
@@ -45,14 +45,43 @@
     }
 
     if ([fieldValue isKindOfClass:[NSString class]] && self.validation.format) {
-        if (![self validateString:fieldValue
-                      withFormat:self.validation.format]) {
+        if (![self validateString:fieldValue withFormat:self.validation.format]) {
             return FORMValidationResultTypeInvalidFormat;
         }
     }
 
     return FORMValidationResultTypePassed;
 }
+
+- (FORMValidationResultType)validateFieldValue:(id)fieldValue withDependentValue:(id)dependentValue withComparator:(NSString *)comparator
+{
+  if ([fieldValue isKindOfClass:[NSDate class]]) {
+    if ([comparator isEqualToString:@">"] && [fieldValue laterDate:dependentValue] == fieldValue) {
+      return FORMValidationResultTypePassed;
+    }
+    else if ([comparator isEqualToString:@"<"] && [fieldValue earlierDate:dependentValue] == fieldValue) {
+      return FORMValidationResultTypePassed;
+    }
+  }
+  
+  if ([comparator isEqualToString:@">"] && fieldValue > dependentValue) {
+    return FORMValidationResultTypePassed;
+  }
+  if ([comparator isEqualToString:@">="] && fieldValue >= dependentValue) {
+    return FORMValidationResultTypePassed;
+  }
+  if ([comparator isEqualToString:@"<"] && fieldValue < dependentValue) {
+    return FORMValidationResultTypePassed;
+  }
+  if ([comparator isEqualToString:@"<="] && fieldValue <= dependentValue) {
+    return FORMValidationResultTypePassed;
+  }
+  if ([comparator isEqualToString:@"=="] && fieldValue == dependentValue) {
+    return FORMValidationResultTypePassed;
+  }
+  return FORMValidationResultTypeTooShort;
+}
+
 
 - (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format
 {

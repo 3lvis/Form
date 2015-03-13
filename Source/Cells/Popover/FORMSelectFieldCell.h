@@ -5,6 +5,6 @@ static NSString * const FORMSelectFormFieldCellIdentifier = @"FORMSelectFormFiel
 
 @interface FORMSelectFieldCell : FORMPopoverFieldCell
 
-@property (nonatomic, strong) FORMFieldValuesTableViewController *fieldValuesController;
+@property (nonatomic) FORMFieldValuesTableViewController *fieldValuesController;
 
 @end
