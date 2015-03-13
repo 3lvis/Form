@@ -24,6 +24,14 @@
 
 @implementation HYPSampleCollectionViewController
 
+#pragma mark - Deallocation
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+}
+
 #pragma mark - Initialization
 
 - (instancetype)initWithJSON:(NSArray *)JSON andInitialValues:(NSDictionary *)initialValues
@@ -42,6 +50,16 @@
     if ([NSObject isUnitTesting]) {
         [self.collectionView numberOfSections];
     }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 
     return self;
 }
@@ -154,6 +172,18 @@
     [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
+#pragma mark - Notifications
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    [self keyboardWillToggle:notification];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    [self keyboardWillToggle:notification];
+}
+
 #pragma mark - UICollectionViewDelegate
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -240,6 +270,37 @@
     }
 
     [self.dataSource processTargets:@[target]];
+}
+
+#pragma mark - Private methods
+
+- (void)keyboardWillToggle:(NSNotification *)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    CGRect keyboardFrame;
+
+    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
+    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
+    [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardFrame];
+
+    CGRect navigationControllerRect = self.navigationController.toolbar.frame;
+    CGFloat navigationControllerY;
+
+    if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
+        navigationControllerY = navigationControllerRect.origin.y - keyboardFrame.size.height;
+    } else {
+        navigationControllerY = navigationControllerRect.origin.y + keyboardFrame.size.height;
+    }
+
+    CGRect rect = CGRectMake(navigationControllerRect.origin.x,
+                             navigationControllerY,
+                             navigationControllerRect.size.width,
+                             navigationControllerRect.size.height);
+
+    [self.navigationController.toolbar setFrame:rect];
+    [UIView commitAnimations];
 }
 
 @end
