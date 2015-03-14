@@ -75,7 +75,7 @@ This are the required steps to create a basic form with a first name field.
     _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
                                         collectionView:self.collectionView
                                                 layout:self.layout
-                                                values:nil
+                                                values:@{@"first_name" : @"Ola"}
                                               disabled:NO];
 
     return _dataSource;
