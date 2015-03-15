@@ -1,4 +1,4 @@
-![Form](https://raw.githubusercontent.com/hyperoslo/Form/master/Images/logo-v5.png)
+![Form logo](https://raw.githubusercontent.com/hyperoslo/Form/master/Images/logo-v5.png)
 
 The most flexible and powerful way to build a form on iOS.
 
