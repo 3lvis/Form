@@ -6,6 +6,7 @@
 #import "FORMLayout.h"
 #import "FORMDataSource.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
+#import "NSDate+HYPString.h"
 
 @interface FORMFieldTests : XCTestCase
 
@@ -57,9 +58,9 @@
     NSDateFormatter *stringDateFormatter = [[NSDateFormatter alloc] init];
     stringDateFormatter.dateFormat = @"dd-MM-yyyy";
 
-    XCTAssertEqualObjects(field.minimumDate, [stringDateFormatter dateFromString:@"01-12-2010"]);
-    XCTAssertEqualObjects(field.maximumDate, [stringDateFormatter dateFromString:@"01-12-2020"]);
-    XCTAssertEqualObjects(field.value, [stringDateFormatter dateFromString:@"01-12-2014"]);
+    XCTAssertEqualObjects([field.minimumDate hyp_dateString], [stringDateFormatter dateFromString:@"01-12-2010"]);
+    XCTAssertEqualObjects([field.maximumDate hyp_dateString], [stringDateFormatter dateFromString:@"01-12-2020"]);
+    XCTAssertEqualObjects([field.value hyp_dateString], [stringDateFormatter dateFromString:@"01-12-2014"]);
 
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
     XCTAssertTrue(field.disabled);

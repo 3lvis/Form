@@ -4,6 +4,7 @@ PODS:
   - HYPMathParser (0.3)
   - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.10)
+  - NSDate-HYPString (0.2)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSObject-HYPTesting (1.2)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - HYPMathParser
   - HYPNorwegianAccountNumber
   - HYPNorwegianSSN
+  - NSDate-HYPString
   - NSDictionary-ANDYSafeValue
   - NSJSONSerialization-ANDYJSONFile
   - NSObject-HYPTesting
@@ -40,6 +42,7 @@ SPEC CHECKSUMS:
   HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16
   HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
   HYPNorwegianSSN: d28618a7b4fe3d281115180251679aaec69129f2
+  NSDate-HYPString: b87cf854edd44ec1e186b32526c601502180846d
   NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
   NSObject-HYPTesting: f54d8bf73f75e2f2f4e49f4baa985df6fa699c2a
