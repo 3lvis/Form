@@ -171,4 +171,4 @@ and if you're using this library we probably want to [hire you](http://www.hyper
 
 ## License
 
-Form is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/Form/raw/master/LICENSE.md) file for more info.
+Form is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/Form/blob/master/LICENSE.md) file for more info.
