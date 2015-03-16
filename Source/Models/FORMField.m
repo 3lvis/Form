@@ -10,6 +10,7 @@
 #import "FORMFieldValidation.h"
 
 #import "NSDictionary+ANDYSafeValue.h"
+#import "ISO8601DateFormatter.h"
 
 static NSString * const FORMFieldSelectType = @"select";
 static NSString * const FORMInputValidatorSelector = @"validateString:text:";
@@ -51,19 +52,16 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _initiallyDisabled = _disabled;
     _formula = [dictionary andy_valueForKey:@"formula"];
 
-    NSDateFormatter *isoDateFormatter = [NSDateFormatter new];
-    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    isoDateFormatter.locale = enUSPOSIXLocale;
-    isoDateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+    ISO8601DateFormatter *dateFormatter = [ISO8601DateFormatter new];
 
     NSString *maximumDateString = [dictionary andy_valueForKey:@"maximum_date"];
-    NSString *minimumDateString = [dictionary andy_valueForKey:@"minimum_date"];
     if (maximumDateString) {
-        _maximumDate = [isoDateFormatter dateFromString:maximumDateString];
+        _maximumDate = [dateFormatter dateFromString:maximumDateString];
     }
 
+    NSString *minimumDateString = [dictionary andy_valueForKey:@"minimum_date"];
     if (minimumDateString) {
-        _minimumDate = [isoDateFormatter dateFromString:minimumDateString];
+        _minimumDate = [dateFormatter dateFromString:minimumDateString];
     }
 
     NSMutableArray *targets = [NSMutableArray new];
@@ -95,7 +93,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _value = [dictionary andy_valueForKey:@"value"];
 
     if (_value && _type == FORMFieldTypeDate) {
-        _value = [isoDateFormatter dateFromString:_value];
+        _value = [dateFormatter dateFromString:_value];
     }
 
     return self;

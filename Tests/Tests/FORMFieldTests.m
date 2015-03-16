@@ -42,9 +42,9 @@
     field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_date",
                                                     @"title": @"Start date",
                                                     @"type": @"date",
-                                                    @"minimum_date":@"2010-12-01T00:00:00+01:00",
-                                                    @"maximum_date":@"2020-12-01T00:00:00+01:00",
-                                                    @"value":@"2014-12-01T00:00:00+01:00",
+                                                    @"minimum_date":@"2000-01-01T00:00:00.002Z",
+                                                    @"maximum_date":@"2015-01-01T00:00:00.002Z",
+                                                    @"value":@"2014-01-01T00:00:00.002Z",
                                                     @"size": @{@"width": @10,
                                                                @"height": @4}
                                                     }
@@ -55,12 +55,9 @@
     XCTAssertEqualObjects(field.typeString, @"date");
     XCTAssertTrue(field.type == FORMFieldTypeDate);
 
-    NSDateFormatter *stringDateFormatter = [[NSDateFormatter alloc] init];
-    stringDateFormatter.dateFormat = @"dd-MM-yyyy";
-
-    XCTAssertEqualObjects([field.minimumDate hyp_dateString], [stringDateFormatter dateFromString:@"01-12-2010"]);
-    XCTAssertEqualObjects([field.maximumDate hyp_dateString], [stringDateFormatter dateFromString:@"01-12-2020"]);
-    XCTAssertEqualObjects([field.value hyp_dateString], [stringDateFormatter dateFromString:@"01-12-2014"]);
+    XCTAssertEqualObjects([field.minimumDate hyp_dateString], @"2000-01-01");
+    XCTAssertEqualObjects([field.maximumDate hyp_dateString], @"2015-01-01");
+    XCTAssertEqualObjects([field.value hyp_dateString], @"2014-01-01");
 
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
     XCTAssertTrue(field.disabled);
