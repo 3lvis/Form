@@ -41,15 +41,15 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
 {
     [super updateWithField:field];
 
-    if (field.fieldValue) {
-        if ([field.fieldValue isKindOfClass:[FORMFieldValue class]]) {
-            FORMFieldValue *fieldValue = (FORMFieldValue *)field.fieldValue;
+    if (field.value) {
+        if ([field.value isKindOfClass:[FORMFieldValue class]]) {
+            FORMFieldValue *fieldValue = (FORMFieldValue *)field.value;
             self.fieldValueLabel.text = fieldValue.title;
         } else {
 
             for (FORMFieldValue *fieldValue in field.values) {
-                if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
-                    field.fieldValue = fieldValue;
+                if ([fieldValue identifierIsEqualTo:field.value]) {
+                    field.value = fieldValue;
                     self.fieldValueLabel.text = fieldValue.title;
                     break;
                 }
@@ -72,7 +72,7 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
 - (void)fieldValuesTableViewController:(FORMFieldValuesTableViewController *)fieldValuesTableViewController
                       didSelectedValue:(FORMFieldValue *)selectedValue
 {
-    self.field.fieldValue = selectedValue;
+    self.field.value = selectedValue;
 
     [self updateWithField:self.field];
 

@@ -357,9 +357,9 @@ static const CGFloat FORMDispatchTime = 0.05f;
             if (field.targets.count > 0) {
                 [self processTargets:field.targets];
             } else if (field.type == FORMFieldTypeSelect) {
-                BOOL hasFieldValue = (field.fieldValue && [field.fieldValue isKindOfClass:[FORMFieldValue class]]);
+                BOOL hasFieldValue = (field.value && [field.value isKindOfClass:[FORMFieldValue class]]);
                 if (hasFieldValue) {
-                    FORMFieldValue *fieldValue = (FORMFieldValue *)field.fieldValue;
+                    FORMFieldValue *fieldValue = (FORMFieldValue *)field.value;
 
                     NSMutableArray *targets = [NSMutableArray new];
 
@@ -402,12 +402,12 @@ static const CGFloat FORMDispatchTime = 0.05f;
             BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
             if (field) {
-                field.fieldValue = (shouldBeNil) ? nil : value;
+                field.value = (shouldBeNil) ? nil : value;
                 if (indexPath) [updatedIndexPaths addObject:indexPath];
                 [targets addObjectsFromArray:[field safeTargets]];
             } else {
                 field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
-                if (field) field.fieldValue = (shouldBeNil) ? nil : value;
+                if (field) field.value = (shouldBeNil) ? nil : value;
             }
         }];
     }];
@@ -529,17 +529,17 @@ static const CGFloat FORMDispatchTime = 0.05f;
         }
     }
 
-    if (!field.fieldValue) {
+    if (!field.value) {
         [self.formsManager.values removeObjectForKey:field.fieldID];
-    } else if ([field.fieldValue isKindOfClass:[FORMFieldValue class]]) {
-        FORMFieldValue *fieldValue = field.fieldValue;
+    } else if ([field.value isKindOfClass:[FORMFieldValue class]]) {
+        FORMFieldValue *fieldValue = field.value;
         self.formsManager.values[field.fieldID] = fieldValue.valueID;
     } else {
-        self.formsManager.values[field.fieldID] = field.fieldValue;
+        self.formsManager.values[field.fieldID] = field.value;
     }
 
-    if (field.fieldValue && [field.fieldValue isKindOfClass:[FORMFieldValue class]]) {
-        FORMFieldValue *fieldValue = field.fieldValue;
+    if (field.value && [field.value isKindOfClass:[FORMFieldValue class]]) {
+        FORMFieldValue *fieldValue = field.value;
         [self processTargets:fieldValue.targets];
     } else if (field.targets.count > 0) {
         [self processTargets:field.targets];

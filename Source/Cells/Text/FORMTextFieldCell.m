@@ -178,12 +178,12 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 - (NSString *)rawTextForField:(FORMField *)field
 {
-    if (field.fieldValue && field.type == FORMFieldTypeFloat) {
+    if (field.value && field.type == FORMFieldTypeFloat) {
 
-        NSNumber *value = field.fieldValue;
+        NSNumber *value = field.value;
 
-        if ([field.fieldValue isKindOfClass:[NSString class]]) {
-            NSMutableString *fieldValue = [field.fieldValue mutableCopy];
+        if ([field.value isKindOfClass:[NSString class]]) {
+            NSMutableString *fieldValue = [field.value mutableCopy];
             [fieldValue replaceOccurrencesOfString:@","
                                         withString:@"."
                                            options:NSCaseInsensitiveSearch
@@ -196,7 +196,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
         return [NSString stringWithFormat:@"%.2f", [value doubleValue]];
     }
 
-    return field.fieldValue;
+    return field.value;
 }
 
 #pragma mark - Actions
@@ -218,7 +218,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 - (void)clearAction
 {
-    self.field.fieldValue = nil;
+    self.field.value = nil;
     [self updateWithField:self.field];
 }
 
@@ -305,7 +305,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 - (void)textFormField:(FORMTextField *)textField didUpdateWithText:(NSString *)text
 {
-    self.field.fieldValue = text;
+    self.field.value = text;
     [self validate];
 
     if (!self.textField.valid) {

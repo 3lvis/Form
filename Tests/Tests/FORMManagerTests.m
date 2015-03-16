@@ -185,7 +185,7 @@
     FORMField *firstNameField = [dataSource fieldWithID:@"first_name" includingHiddenFields:NO];
     XCTAssertNotNil(firstNameField);
     XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
-    XCTAssertEqualObjects(firstNameField.fieldValue, @"Elvis");
+    XCTAssertEqualObjects(firstNameField.value, @"Elvis");
 
     FORMField *startDateField = [dataSource fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
@@ -313,6 +313,31 @@
 
     [dataSource reloadWithDictionary:@{@"email" : @"teknologi@hyper.no"}];
     XCTAssertEqual(FORMValidationResultTypePassed, [emailField validate]);
+}
+
+- (void)testFieldWithIDIncludingHiddenFields
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+                                         initialValues:@{@"first_name" : @"Elvis",
+                                                         @"last_name" : @"Nunez"}
+                                      disabledFieldIDs:nil
+                                              disabled:NO];
+
+    FORMField *field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
+    XCTAssertEqualObjects(field.fieldID, @"first_name");
+
+    [manager indexForFieldWithID:field.fieldID
+                 inSectionWithID:field.section.sectionID
+                      completion:^(FORMSection *section, NSInteger index) {
+                          if (section) [section.fields removeObjectAtIndex:index];
+                      }];
+
+    field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
+
+    XCTAssertNil(field);
 }
 
 @end

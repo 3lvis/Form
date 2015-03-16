@@ -83,14 +83,14 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
     FORMFieldValue *fieldValue = self.values[indexPath.row];
     cell.fieldValue = fieldValue;
 
-    if ([self.field.fieldValue isKindOfClass:[FORMFieldValue class]]) {
-        FORMFieldValue *currentFieldValue = self.field.fieldValue;
+    if ([self.field.value isKindOfClass:[FORMFieldValue class]]) {
+        FORMFieldValue *currentFieldValue = self.field.value;
 
         if ([currentFieldValue identifierIsEqualTo:fieldValue.valueID]) {
             [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
     } else {
-        if ([fieldValue identifierIsEqualTo:self.field.fieldValue]) {
+        if ([fieldValue identifierIsEqualTo:self.field.value]) {
             [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
     }

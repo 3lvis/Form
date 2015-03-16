@@ -99,8 +99,8 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 
     field.values = @[confirmValue, clearValue];
 
-    if (field.fieldValue) {
-        self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.fieldValue
+    if (field.value) {
+        self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.value
                                                                    dateStyle:NSDateFormatterMediumStyle
                                                                    timeStyle:NSDateFormatterNoStyle];
     } else {
@@ -121,8 +121,8 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
         [self.datePicker setFrame:frame];
     }
 
-    if (self.field.fieldValue) {
-        self.datePicker.date = self.field.fieldValue;
+    if (self.field.value) {
+        self.datePicker.date = self.field.value;
     }
 
     if (self.field.minimumDate) {
@@ -140,9 +140,9 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
                       didSelectedValue:(FORMFieldValue *)selectedValue
 {
     if ([selectedValue.value boolValue] == YES) {
-        self.field.fieldValue = self.datePicker.date;
+        self.field.value = self.datePicker.date;
     } else {
-        self.field.fieldValue = nil;
+        self.field.value = nil;
     }
 
     [self updateWithField:self.field];
