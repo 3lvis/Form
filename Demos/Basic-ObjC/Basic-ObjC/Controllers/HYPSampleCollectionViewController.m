@@ -89,14 +89,14 @@
     __weak typeof(self)weakSelf = self;
 
     _dataSource.configureFieldUpdatedBlock = ^(id cell, FORMField *field) {
-        NSLog(@"field updated: %@ --- %@", field.fieldID, field.fieldValue);
+        NSLog(@"field updated: %@ --- %@", field.fieldID, field.value);
 
         BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
 
         if (shouldUpdateStartDate) {
             [weakSelf.dataSource fieldWithID:@"start_date" includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
                 if (field) {
-                    field.fieldValue = [NSDate date];
+                    field.value = [NSDate date];
                     field.minimumDate = [NSDate date];
                     [weakSelf.dataSource reloadItemsAtIndexPaths:@[indexPath]];
                 }
