@@ -33,4 +33,5 @@ Pod::Spec.new do |s|
   s.dependency 'NSString-ZENInflections', '~> 1.2'
   s.dependency 'UIButton-ANDYHighlighted', '~> 0.2.1'
   s.dependency 'UIScreen-HYPLiveBounds', '~> 1.3'
+  s.dependency 'NSString-HYPDate', '~> 0.2'
 end
