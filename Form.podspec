@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
   s.dependency 'HYPMathParser', '~> 0.3'
   s.dependency 'HYPNorwegianAccountNumber', '~> 1.2.1'
   s.dependency 'HYPNorwegianSSN', '~> 1.10'
+  s.dependency 'ISO8601DateFormatter', '~> 0.7'
   s.dependency 'NSDictionary-ANDYSafeValue', '~> 0.3'
   s.dependency 'NSJSONSerialization-ANDYJSONFile', '~> 1.1'
   s.dependency 'NSObject-HYPTesting', '~> 1.2'
