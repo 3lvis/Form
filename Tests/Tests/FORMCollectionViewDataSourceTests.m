@@ -359,7 +359,24 @@
 
 - (void)testRemovingMultipleDynamicSections
 {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
 
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"companies[0].name" : @"Facebook",
+                                                                        @"companies[0].phone_number" : @"1222333",
+                                                                        @"companies[1].name" : @"Google",
+                                                                        @"companies[1].phone_number" : @"4555666"}
+                                                             disabled:YES];
+    XCTAssertFalse(dataSource.removedDynamicValues.count);
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
+
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    XCTAssertTrue(dataSource.removedDynamicValues.count);
 }
 
 - (void)testUpdatedSectionPositionWhenRemovingDynamicSections
