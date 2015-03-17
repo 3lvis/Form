@@ -539,22 +539,22 @@ static const CGFloat FORMDispatchTime = 0.05f;
                 }
             }];
         }
-    }
-
-    if (!field.value) {
-        [self.formsManager.values removeObjectForKey:field.fieldID];
-    } else if ([field.value isKindOfClass:[FORMFieldValue class]]) {
-        FORMFieldValue *fieldValue = field.value;
-        self.formsManager.values[field.fieldID] = fieldValue.valueID;
     } else {
-        self.formsManager.values[field.fieldID] = field.value;
-    }
+        if (!field.value) {
+            [self.formsManager.values removeObjectForKey:field.fieldID];
+        } else if ([field.value isKindOfClass:[FORMFieldValue class]]) {
+            FORMFieldValue *fieldValue = field.value;
+            self.formsManager.values[field.fieldID] = fieldValue.valueID;
+        } else {
+            self.formsManager.values[field.fieldID] = field.value;
+        }
 
-    if (field.value && [field.value isKindOfClass:[FORMFieldValue class]]) {
-        FORMFieldValue *fieldValue = field.value;
-        [self processTargets:fieldValue.targets];
-    } else if (field.targets.count > 0) {
-        [self processTargets:field.targets];
+        if (field.value && [field.value isKindOfClass:[FORMFieldValue class]]) {
+            FORMFieldValue *fieldValue = field.value;
+            [self processTargets:fieldValue.targets];
+        } else if (field.targets.count > 0) {
+            [self processTargets:field.targets];
+        }
     }
 }
 
