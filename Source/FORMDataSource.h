@@ -65,6 +65,7 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (NSInteger)numberOfFields;
 - (NSArray *)forms;
 - (NSDictionary *)valuesDictionary;
+- (NSDictionary *)removedDynamicValues;
 
 - (void)sectionWithID:(NSString *)sectionID
            completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion;

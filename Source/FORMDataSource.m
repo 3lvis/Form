@@ -816,4 +816,9 @@ static const CGFloat FORMDispatchTime = 0.05f;
     return [self.formsManager.values copy];
 }
 
+- (NSDictionary *)removedDynamicValues
+{
+    return [self.formsManager.removedValues copy];
+}
+
 @end
