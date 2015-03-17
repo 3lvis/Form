@@ -314,7 +314,7 @@
     XCTAssertEqualObjects(field.value, @"4555666");
 }
 
-- (void)testAddingAndRemovingMultipleDynamicSections
+- (void)testAddingMultipleDynamicSections
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
