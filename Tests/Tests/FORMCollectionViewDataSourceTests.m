@@ -370,15 +370,26 @@
                                                                         @"companies[1].name" : @"Google",
                                                                         @"companies[1].phone_number" : @"4555666",
                                                                         @"companies[2].name" : @"Apple",
-                                                                        @"companies[2].phone_number" : @"7888999"}
+                                                                        @"companies[2].phone_number" : @"7888999",
+                                                                        @"companies[3].name" : @"Microsoft",
+                                                                        @"companies[3].phone_number" : @"11223344"
+                                                                        }
                                                              disabled:YES];
     XCTAssertFalse(dataSource.removedDynamicValues.count);
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
-    XCTAssertTrue(dataSource.removedDynamicValues.count);
+    XCTAssertTrue(dataSource.removedDynamicValues.count == 1);
     XCTAssertNil(dataSource.valuesDictionary[@"companies[0].name"]);
     XCTAssertNil(dataSource.valuesDictionary[@"companies[0].phone_number"]);
+    XCTAssertNotNil(dataSource.removedDynamicValues[@"companies[0]"]);
+
+    removeField = [dataSource fieldWithID:@"companies[2].remove" includingHiddenFields:YES];
+    [dataSource fieldCell:nil updatedWithField:removeField];
+    XCTAssertTrue(dataSource.removedDynamicValues.count == 2);
+    XCTAssertNil(dataSource.valuesDictionary[@"companies[2].name"]);
+    XCTAssertNil(dataSource.valuesDictionary[@"companies[2].phone_number"]);
+    XCTAssertNotNil(dataSource.removedDynamicValues[@"companies[1]"]);
 }
 
 - (void)testUpdatedSectionPositionWhenRemovingDynamicSections
