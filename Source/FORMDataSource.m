@@ -519,6 +519,8 @@ static const CGFloat FORMDispatchTime = 0.05f;
                     }
                 }
 
+                [self.formsManager.removedValues setValue:section forKey:section.sectionID];
+
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
                 if (indexPaths) {
