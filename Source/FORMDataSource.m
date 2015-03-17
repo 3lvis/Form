@@ -519,7 +519,6 @@ static const CGFloat FORMDispatchTime = 0.05f;
                     }
                 }
 
-                [self.formsManager.hiddenSections setObject:section forKey:sectionID];
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
                 if (indexPaths) {
