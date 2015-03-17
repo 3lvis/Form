@@ -357,6 +357,11 @@
     XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:14 inSection:0]);
 }
 
+- (void)testRemovingMultipleDynamicSections
+{
+
+}
+
 - (void)testUpdatedSectionPositionWhenRemovingDynamicSections
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
