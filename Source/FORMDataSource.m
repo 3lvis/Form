@@ -519,13 +519,15 @@ static const CGFloat FORMDispatchTime = 0.05f;
                     }
                 }
 
+                NSMutableArray *removedKeys = [NSMutableArray new];
                 [self.valuesDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     if ([key hasPrefix:section.sectionID]) {
                         [self.formsManager.values removeObjectForKey:key];
+                        [removedKeys addObject:key];
                     }
                 }];
 
-                [self.formsManager.removedValues setValue:section forKey:section.sectionID];
+                [self.formsManager.removedValues setValue:[removedKeys copy] forKey:section.sectionID];
 
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
