@@ -268,16 +268,16 @@
 
     [dataSource fieldCell:nil updatedWithField:field];
 
-    section = [dataSource sectionWithID:@"companies[1]"];
+    section = [dataSource sectionWithID:@"companies[0]"];
     XCTAssertNotNil(section);
 
-    nameField = [dataSource fieldWithID:@"companies[1].name" includingHiddenFields:NO];
+    nameField = [dataSource fieldWithID:@"companies[0].name" includingHiddenFields:NO];
     XCTAssertNotNil(nameField);
 
-    phoneNumberField = [dataSource fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
+    phoneNumberField = [dataSource fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
     XCTAssertNotNil(phoneNumberField);
 
-    removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:NO];
+    removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:NO];
     XCTAssertNotNil(removeField);
 }
 
