@@ -368,7 +368,9 @@
                                                                values:@{@"companies[0].name" : @"Facebook",
                                                                         @"companies[0].phone_number" : @"1222333",
                                                                         @"companies[1].name" : @"Google",
-                                                                        @"companies[1].phone_number" : @"4555666"}
+                                                                        @"companies[1].phone_number" : @"4555666",
+                                                                        @"companies[2].name" : @"Apple",
+                                                                        @"companies[2].phone_number" : @"7888999"}
                                                              disabled:YES];
     XCTAssertFalse(dataSource.removedDynamicValues.count);
 
