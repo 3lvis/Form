@@ -527,7 +527,10 @@ static const CGFloat FORMDispatchTime = 0.05f;
                     }
                 }];
 
-                [self.formsManager.removedValues setValue:[removedKeys copy] forKey:section.sectionID];
+                NSDictionary *parsed = [[section.sectionID stringByAppendingString:@".name"] hyp_parseRelationship];
+                NSString *removedSectionID = [NSString stringWithFormat:@"%@[%@]", [parsed objectForKey:@"relationship"], @(self.formsManager.removedValues.count)];
+                [self.formsManager.removedValues setValue:[removedKeys copy] forKey:removedSectionID];
+
 
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
