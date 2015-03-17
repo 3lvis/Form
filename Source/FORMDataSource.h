@@ -20,7 +20,7 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 
 @interface FORMDataSource : NSObject <UICollectionViewDataSource, FORMLayoutDataSource>
 
-- (instancetype)initWithJSON:(NSArray *)JSON
+- (instancetype)initWithJSON:(id)JSON
               collectionView:(UICollectionView *)collectionView
                       layout:(FORMLayout *)layout
                       values:(NSDictionary *)values

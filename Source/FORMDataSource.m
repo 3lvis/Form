@@ -46,7 +46,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
 #pragma mark - Initializers
 
-- (instancetype)initWithJSON:(NSArray *)JSON
+- (instancetype)initWithJSON:(id)JSON
               collectionView:(UICollectionView *)collectionView
                       layout:(FORMLayout *)layout
                       values:(NSDictionary *)values
