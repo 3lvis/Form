@@ -390,6 +390,13 @@
     XCTAssertNotNil(dataSource.removedDynamicValues[@"companies[1]"]);
     XCTAssertNil(dataSource.valuesDictionary[@"companies[2].name"]);
     XCTAssertNil(dataSource.valuesDictionary[@"companies[2].phone_number"]);
+
+    NSDictionary *expectedRemovedDynamicValues = @{@"companies[0]":@[@"companies[0].phone_number",
+                                                                     @"companies[0].name"],
+                                                   @"companies[1]" : @[@"companies[1].phone_number",
+                                                                       @"companies[1].name"]
+                                                   };
+    XCTAssertEqual(dataSource.removedDynamicValues, expectedRemovedDynamicValues);
 }
 
 - (void)testUpdatedSectionPositionWhenRemovingDynamicSections
