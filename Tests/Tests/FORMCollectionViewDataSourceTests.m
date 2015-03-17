@@ -373,10 +373,10 @@
     XCTAssertFalse(dataSource.removedDynamicValues.count);
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
-
     [dataSource fieldCell:nil updatedWithField:removeField];
-
     XCTAssertTrue(dataSource.removedDynamicValues.count);
+    XCTAssertNil(dataSource.valuesDictionary[@"companies[0].name"]);
+    XCTAssertNil(dataSource.valuesDictionary[@"companies[0].phone_number"]);
 }
 
 - (void)testUpdatedSectionPositionWhenRemovingDynamicSections
