@@ -520,14 +520,17 @@ static const CGFloat FORMDispatchTime = 0.05f;
                 }
 
                 NSMutableArray *removedKeys = [NSMutableArray new];
+                __block NSDictionary *parsed;
                 [self.valuesDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     if ([key hasPrefix:section.sectionID]) {
-                        [self.formsManager.values removeObjectForKey:key];
-                        [removedKeys addObject:key];
+                        parsed = [key hyp_parseRelationship];
+                        NSString *newKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], @(self.formsManager.removedValues.count), [parsed objectForKey:@"attribute"]];
+                        [self.formsManager.values removeObjectForKey:newKey];
+                        [removedKeys addObject:newKey];
                     }
                 }];
 
-                NSDictionary *parsed = [[section.sectionID stringByAppendingString:@".name"] hyp_parseRelationship];
+                parsed = [[section.sectionID stringByAppendingString:@".name"] hyp_parseRelationship];
                 NSString *removedSectionID = [NSString stringWithFormat:@"%@[%@]", [parsed objectForKey:@"relationship"], @(self.formsManager.removedValues.count)];
                 [self.formsManager.removedValues setValue:[removedKeys copy] forKey:removedSectionID];
 
