@@ -400,8 +400,8 @@
 
     NSDictionary *expectedValuesDictionary = @{@"companies[0].name":@"Apple",
                                                @"companies[0].phone_numer":@"7888999",
-                                               @"companies[0].name":@"Microsoft",
-                                               @"companies[0].phone_numer":@"11223344",
+                                               @"companies[1].name":@"Microsoft",
+                                               @"companies[1].phone_numer":@"11223344",
                                                };
     XCTAssertEqualObjects(dataSource.valuesDictionary, expectedValuesDictionary);
 }
