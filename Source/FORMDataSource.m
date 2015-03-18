@@ -538,8 +538,6 @@ static const CGFloat FORMDispatchTime = 0.05f;
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                 }
 
-                [group updateSectionPositions];
-
                 NSDictionary *updatedValueKeys = [self updateValueKeys:[self.valuesDictionary allKeys]];
                 NSDictionary *currentValues = self.valuesDictionary;
 
