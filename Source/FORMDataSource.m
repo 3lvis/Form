@@ -566,7 +566,9 @@ static const CGFloat FORMDispatchTime = 0.05f;
                 NSDictionary *currentValues = self.valuesDictionary;
                 self.formsManager.values = nil;
                 [currentValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
-                    [self.formsManager.values setObject:obj forKey:newKeys[key]];
+                    if (newKeys[key]) {
+                        [self.formsManager.values setObject:obj forKey:newKeys[key]];
+                    }
                 }];
 
             }];
