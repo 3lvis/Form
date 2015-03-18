@@ -513,11 +513,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
             NSDictionary *parsed = [field.fieldID hyp_parseRelationship];
             NSString *sectionID = [NSString stringWithFormat:@"%@[%@]", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"]];
             [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
-                for (FORMSection *currentSection in section.form.sections) {
-                    if ([currentSection.position integerValue] > [section.position integerValue]) {
-                        currentSection.position = @([currentSection.position integerValue] - 1);
-                    }
-                }
+                [self updateSectionPosition:section];
 
                 NSMutableArray *removedKeys = [NSMutableArray new];
                 __block NSDictionary *parsed;
@@ -537,44 +533,21 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
+
                 if (indexPaths) {
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                 }
+
                 [group updateSectionPositions];
 
-                NSArray *keys = [[self.valuesDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-                NSMutableDictionary *newKeys = [NSMutableDictionary new];
-                __block NSNumber *currentIndex;
-                __block NSInteger newIndex = 0;
-
-                [keys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
-                    NSDictionary *parsed = [key hyp_parseRelationship];
-
-                    if (currentIndex &&
-                        [parsed[@"index"] integerValue] > [currentIndex integerValue]) {
-                        newIndex++;
-                    }
-
-                    NSString *oldKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"], [parsed objectForKey:@"attribute"]];
-                    NSString *newKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], @(newIndex), [parsed objectForKey:@"attribute"]];
-
-                    newKeys[oldKey] = newKey;
-
-                    currentIndex = parsed[@"index"];
-                }];
-
+                NSDictionary *updatedValueKeys = [self updateValueKeys:[self.valuesDictionary allKeys]];
                 NSDictionary *currentValues = self.valuesDictionary;
 
-                __block NSString *sectionID = [section.sectionID substringToIndex:[section.sectionID rangeOfString:@"["].location];
-                [currentValues enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-                    if ([key hasPrefix:sectionID]) {
-                        [self.formsManager.values removeObjectForKey:key];
-                    }
-                }];
+                [self removeDynamicKeysForSection:section];
 
                 [currentValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
-                    if (newKeys[key]) {
-                        [self.formsManager.values setObject:obj forKey:newKeys[key]];
+                    if (updatedValueKeys[key]) {
+                        [self.formsManager.values setObject:obj forKey:updatedValueKeys[key]];
                     }
                 }];
 
@@ -872,6 +845,53 @@ static const CGFloat FORMDispatchTime = 0.05f;
 - (NSDictionary *)removedDynamicValues
 {
     return [self.formsManager.removedValues copy];
+}
+
+#pragma mark - Private methods
+
+- (void)updateSectionPosition:(FORMSection *)section
+{
+    for (FORMSection *currentSection in section.form.sections) {
+        if ([currentSection.position integerValue] > [section.position integerValue]) {
+            currentSection.position = @([currentSection.position integerValue] - 1);
+        }
+    }
+}
+
+- (NSDictionary *)updateValueKeys:(NSArray *)currentKeys
+{
+    NSArray *keys = [currentKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
+    __block NSNumber *currentIndex;
+    __block NSInteger newIndex = 0;
+
+    [keys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
+        NSDictionary *parsed = [key hyp_parseRelationship];
+
+        if (currentIndex &&
+            [parsed[@"index"] integerValue] > [currentIndex integerValue]) {
+            newIndex++;
+        }
+
+        NSString *oldKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"], [parsed objectForKey:@"attribute"]];
+        NSString *newKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], @(newIndex), [parsed objectForKey:@"attribute"]];
+
+        mutableDictionary[oldKey] = newKey;
+
+        currentIndex = parsed[@"index"];
+    }];
+
+    return [mutableDictionary copy];
+}
+
+- (void)removeDynamicKeysForSection:(FORMSection *)section
+{
+    __block NSString *sectionID = [section.sectionID substringToIndex:[section.sectionID rangeOfString:@"["].location];
+    [self.valuesDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([key hasPrefix:sectionID]) {
+            [self.formsManager.values removeObjectForKey:key];
+        }
+    }];
 }
 
 @end
