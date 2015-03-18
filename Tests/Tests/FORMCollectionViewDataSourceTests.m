@@ -383,6 +383,7 @@
     XCTAssertNotNil(dataSource.removedDynamicValues[@"companies[0]"]);
     XCTAssertNotNil(dataSource.valuesDictionary[@"companies[0].name"]);
     XCTAssertNotNil(dataSource.valuesDictionary[@"companies[0].phone_number"]);
+    XCTAssertEqualObjects(dataSource.valuesDictionary[@"companies[0].name"], @"Google");
 
     removeField = [dataSource fieldWithID:@"companies[2].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
@@ -390,6 +391,7 @@
     XCTAssertNotNil(dataSource.removedDynamicValues[@"companies[1]"]);
     XCTAssertNotNil(dataSource.valuesDictionary[@"companies[1].name"]);
     XCTAssertNotNil(dataSource.valuesDictionary[@"companies[1].phone_number"]);
+    XCTAssertEqualObjects(dataSource.valuesDictionary[@"companies[1].name"], @"Apple");
 
     NSDictionary *expectedRemovedDynamicValues = @{@"companies[0]":@[@"companies[0].phone_number",
                                                                      @"companies[0].name"],
