@@ -3,8 +3,6 @@
 #import "FORMGroup.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "FORMTarget.h"
-#import "NSString+HYPContainsString.h"
-#import "NSString+HYPRelationshipParser.h"
 
 @implementation FORMSection
 
@@ -68,8 +66,6 @@
 
     return self;
 }
-
-#pragma mark - Getters
 
 - (FORMSectionType)typeFromTypeString:(NSString *)typeString
 {
