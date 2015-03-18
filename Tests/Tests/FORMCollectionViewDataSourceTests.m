@@ -398,11 +398,12 @@
                                                    };
     XCTAssertEqualObjects(dataSource.removedDynamicValues, expectedRemovedDynamicValues);
 
-    NSDictionary *expectedValuesDictionary = @{@"companies[0].name":@"Apple",
-                                               @"companies[0].phone_numer":@"7888999",
-                                               @"companies[1].name":@"Microsoft",
-                                               @"companies[1].phone_numer":@"11223344",
+    NSDictionary *expectedValuesDictionary = @{@"companies[0].name":@"Google",
+                                               @"companies[0].phone_number":@"4555666",
+                                               @"companies[1].name":@"Apple",
+                                               @"companies[1].phone_number":@"7888999",
                                                };
+
     XCTAssertEqualObjects(dataSource.valuesDictionary, expectedValuesDictionary);
 }
 
