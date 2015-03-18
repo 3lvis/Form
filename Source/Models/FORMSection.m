@@ -3,6 +3,8 @@
 #import "FORMGroup.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "FORMTarget.h"
+#import "NSString+HYPContainsString.h"
+#import "NSString+HYPRelationshipParser.h"
 
 @implementation FORMSection
 
@@ -67,12 +69,31 @@
     return self;
 }
 
+#pragma mark - Getters
+
 - (FORMSectionType)typeFromTypeString:(NSString *)typeString
 {
     if ([typeString isEqualToString:@"dynamic"]) {
         return FORMSectionTypeDynamic;
     } else {
         return FORMSectionTypeDefault;
+    }
+}
+
+- (void)setPosition:(NSNumber *)position
+{
+    _position = position;
+
+    for (FORMField *field in self.fields) {
+        BOOL isDynamic = ([field.fieldID hyp_containsString:@"["] &&
+                          [field.fieldID hyp_containsString:@"]"]);
+        if (isDynamic) {
+            NSDictionary *parsed = [field.fieldID hyp_parseRelationship];
+            NSInteger newPosition = [position integerValue] - 1;
+            NSString *newKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], @(newPosition), [parsed objectForKey:@"attribute"]];
+
+            field.fieldID = newKey;
+        }
     }
 }
 
