@@ -388,8 +388,8 @@
     [dataSource fieldCell:nil updatedWithField:removeField];
     XCTAssertTrue(dataSource.removedDynamicValues.count == 2);
     XCTAssertNotNil(dataSource.removedDynamicValues[@"companies[1]"]);
-    XCTAssertNotNil(dataSource.valuesDictionary[@"companies[2].name"]);
-    XCTAssertNotNil(dataSource.valuesDictionary[@"companies[2].phone_number"]);
+    XCTAssertNotNil(dataSource.valuesDictionary[@"companies[1].name"]);
+    XCTAssertNotNil(dataSource.valuesDictionary[@"companies[1].phone_number"]);
 
     NSDictionary *expectedRemovedDynamicValues = @{@"companies[0]":@[@"companies[0].phone_number",
                                                                      @"companies[0].name"],
