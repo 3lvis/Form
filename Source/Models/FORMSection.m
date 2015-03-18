@@ -80,22 +80,6 @@
     }
 }
 
-- (void)setPosition:(NSNumber *)position
-{
-    _position = position;
-
-    for (FORMField *field in self.fields) {
-        BOOL isDynamic = ([field.fieldID hyp_containsString:@"["] &&
-                          [field.fieldID hyp_containsString:@"]"]);
-        if (isDynamic) {
-            NSDictionary *parsed = [field.fieldID hyp_parseRelationship];
-            NSInteger newPosition = [position integerValue] - 1;
-            NSString *newKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], @(newPosition), [parsed objectForKey:@"attribute"]];
-
-            field.fieldID = newKey;
-        }
-    }
-}
 
 #pragma mark - Public Methods
 
