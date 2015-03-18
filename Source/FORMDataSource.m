@@ -564,7 +564,14 @@ static const CGFloat FORMDispatchTime = 0.05f;
                 }];
 
                 NSDictionary *currentValues = self.valuesDictionary;
-                self.formsManager.values = nil;
+
+                __block NSString *sectionID = [section.sectionID substringToIndex:[section.sectionID rangeOfString:@"["].location];
+                [currentValues enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                    if ([key hasPrefix:sectionID]) {
+                        [self.formsManager.values removeObjectForKey:key];
+                    }
+                }];
+
                 [currentValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     if (newKeys[key]) {
                         [self.formsManager.values setObject:obj forKey:newKeys[key]];
