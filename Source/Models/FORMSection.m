@@ -76,7 +76,6 @@
     }
 }
 
-
 #pragma mark - Public Methods
 
 #pragma mark Class
