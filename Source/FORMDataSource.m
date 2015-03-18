@@ -536,10 +536,41 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
 
                 FORMGroup *group = section.form;
+                [group updateSectionPositions];
                 [group.sections removeObject:section];
                 if (indexPaths) {
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                 }
+
+                NSArray *keys = [[self.valuesDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+                NSMutableDictionary *newKeys = [NSMutableDictionary new];
+                __block NSNumber *currentIndex;
+                __block NSInteger newIndex = 0;
+
+
+
+                [keys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
+                    NSDictionary *parsed = [key hyp_parseRelationship];
+
+                    if (currentIndex &&
+                        [parsed[@"index"] integerValue] > [currentIndex integerValue]) {
+                        newIndex++;
+                    }
+
+                    NSString *oldKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], [parsed objectForKey:@"index"], [parsed objectForKey:@"attribute"]];
+                    NSString *newKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], @(newIndex), [parsed objectForKey:@"attribute"]];
+
+                    newKeys[oldKey] = newKey;
+
+                    currentIndex = parsed[@"index"];
+                }];
+
+                NSDictionary *currentValues = self.valuesDictionary;
+                self.formsManager.values = nil;
+                [currentValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+                    [self.formsManager.values setObject:obj forKey:newKeys[key]];
+                }];
+
             }];
         }
     } else {
