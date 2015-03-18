@@ -31,7 +31,7 @@ DEPENDENCIES:
   - NSObject-HYPTesting
   - NSString-HYPContainsString
   - NSString-HYPFormula
-  - NSString-HYPRelationshipParser (from `https://github.com/hyperoslo/NSString-HYPRelationshipParser.git`, branch `feature/helper-methods`)
+  - NSString-HYPRelationshipParser (from `https://github.com/hyperoslo/NSString-HYPRelationshipParser.git`)
   - NSString-HYPWordExtractor
   - NSString-ZENInflections
   - UIButton-ANDYHighlighted
@@ -39,12 +39,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   NSString-HYPRelationshipParser:
-    :branch: feature/helper-methods
     :git: https://github.com/hyperoslo/NSString-HYPRelationshipParser.git
 
 CHECKOUT OPTIONS:
   NSString-HYPRelationshipParser:
-    :commit: 403eb8bcac64cce687a292a6351fd86efe520dbd
+    :commit: 1613d6e36f6a90a6d4307185700db9ae7d5fa0af
     :git: https://github.com/hyperoslo/NSString-HYPRelationshipParser.git
 
 SPEC CHECKSUMS:
