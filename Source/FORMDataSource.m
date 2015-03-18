@@ -866,8 +866,9 @@ static const CGFloat FORMDispatchTime = 0.05f;
     [keys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
         NSDictionary *parsed = [key hyp_parseRelationship];
 
-        if (currentIndex &&
-            [parsed[@"index"] integerValue] > [currentIndex integerValue]) {
+        BOOL shouldIncrementIndex = (currentIndex &&
+                                     [parsed[@"index"] integerValue] > [currentIndex integerValue]);
+        if (currentIndex) {
             newIndex++;
         }
 
