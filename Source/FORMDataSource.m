@@ -519,7 +519,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
                 NSMutableArray *removedKeys = [NSMutableArray new];
                 __block HYPParsedRelationship *foundParsed;
-                [self.valuesDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+                [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     if ([key hasPrefix:section.sectionID]) {
                         foundParsed = [key hyp_parseRelationship];
                         foundParsed.index = @(self.formsManager.removedValues.count);
@@ -540,8 +540,8 @@ static const CGFloat FORMDispatchTime = 0.05f;
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                 }
 
-                NSDictionary *updatedValueKeys = [self updateValueKeys:[self.valuesDictionary allKeys]];
-                NSDictionary *currentValues = self.valuesDictionary;
+                NSDictionary *updatedValueKeys = [self updateValueKeys:[self.values allKeys]];
+                NSDictionary *currentValues = self.values;
 
                 [self removeDynamicKeysForSection:section];
 
@@ -837,12 +837,12 @@ static const CGFloat FORMDispatchTime = 0.05f;
     }];
 }
 
-- (NSDictionary *)valuesDictionary
+- (NSDictionary *)values
 {
     return [self.formsManager.values copy];
 }
 
-- (NSDictionary *)removedDynamicValues
+- (NSDictionary *)removedValues
 {
     return [self.formsManager.removedValues copy];
 }
@@ -886,7 +886,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
 - (void)removeDynamicKeysForSection:(FORMSection *)section
 {
     __block NSString *sectionID = [section.sectionID substringToIndex:[section.sectionID rangeOfString:@"["].location];
-    [self.valuesDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    [self.values enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([key hasPrefix:sectionID]) {
             [self.formsManager.values removeObjectForKey:key];
         }
