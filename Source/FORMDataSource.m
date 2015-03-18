@@ -868,7 +868,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
         BOOL shouldIncrementIndex = (currentIndex &&
                                      [parsed[@"index"] integerValue] > [currentIndex integerValue]);
-        if (currentIndex) {
+        if (shouldIncrementIndex) {
             newIndex++;
         }
 
