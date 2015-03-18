@@ -512,25 +512,26 @@ static const CGFloat FORMDispatchTime = 0.05f;
             [self.formsManager insertTemplateSectionWithID:sectionTemplateID intoCollectionView:self.collectionView usingForm:section.form];
         } else if ([components.lastObject isEqualToString:@"remove"]) {
             HYPParsedRelationship *parsed = [field.fieldID hyp_parseRelationship];
-            NSString *sectionID = [NSString stringWithFormat:@"%@[%@]", parsed.relationship, parsed.index];
+            parsed.attribute = nil;
+            NSString *sectionID = [parsed key];
             [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
                 [self updateSectionPosition:section];
 
                 NSMutableArray *removedKeys = [NSMutableArray new];
-                __block HYPParsedRelationship *parsed;
+                __block HYPParsedRelationship *foundParsed;
                 [self.valuesDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     if ([key hasPrefix:section.sectionID]) {
-                        parsed = [key hyp_parseRelationship];
-                        NSString *newKey = [NSString stringWithFormat:@"%@[%@].%@", parsed.relationship, @(self.formsManager.removedValues.count), parsed.attribute];
+                        foundParsed = [key hyp_parseRelationship];
+                        foundParsed.index = @(self.formsManager.removedValues.count);
                         [self.formsManager.values removeObjectForKey:key];
-                        [removedKeys addObject:newKey];
+                        [removedKeys addObject:[foundParsed key]];
                     }
                 }];
 
-                parsed = [[section.sectionID stringByAppendingString:@".placeholder"] hyp_parseRelationship];
-                NSString *removedSectionID = [NSString stringWithFormat:@"%@[%@]", parsed.relationship, @(self.formsManager.removedValues.count)];
-                [self.formsManager.removedValues setValue:[removedKeys copy] forKey:removedSectionID];
-
+                foundParsed = [section.sectionID hyp_parseRelationship];
+                foundParsed.attribute = nil;
+                foundParsed.index = @(self.formsManager.removedValues.count);
+                [self.formsManager.removedValues setValue:[removedKeys copy] forKey:[foundParsed key]];
 
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
@@ -873,12 +874,10 @@ static const CGFloat FORMDispatchTime = 0.05f;
             newIndex++;
         }
 
-        NSString *oldKey = [NSString stringWithFormat:@"%@[%@].%@", parsed.relationship, parsed.index, parsed.attribute];
-        NSString *newKey = [NSString stringWithFormat:@"%@[%@].%@", parsed.relationship, @(newIndex), parsed.attribute];
-
-        mutableDictionary[oldKey] = newKey;
-
         currentIndex = parsed.index;
+        NSString *oldKey = [parsed key];
+        parsed.index = @(newIndex);
+        mutableDictionary[oldKey] = [parsed key];
     }];
 
     return [mutableDictionary copy];
