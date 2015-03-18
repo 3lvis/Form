@@ -525,7 +525,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
                     if ([key hasPrefix:section.sectionID]) {
                         parsed = [key hyp_parseRelationship];
                         NSString *newKey = [NSString stringWithFormat:@"%@[%@].%@", [parsed objectForKey:@"relationship"], @(self.formsManager.removedValues.count), [parsed objectForKey:@"attribute"]];
-                        [self.formsManager.values removeObjectForKey:newKey];
+                        [self.formsManager.values removeObjectForKey:key];
                         [removedKeys addObject:newKey];
                     }
                 }];
@@ -536,18 +536,16 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
 
                 FORMGroup *group = section.form;
-                [group updateSectionPositions];
                 [group.sections removeObject:section];
                 if (indexPaths) {
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                 }
+                [group updateSectionPositions];
 
                 NSArray *keys = [[self.valuesDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
                 NSMutableDictionary *newKeys = [NSMutableDictionary new];
                 __block NSNumber *currentIndex;
                 __block NSInteger newIndex = 0;
-
-
 
                 [keys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
                     NSDictionary *parsed = [key hyp_parseRelationship];
