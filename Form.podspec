@@ -29,10 +29,9 @@ Pod::Spec.new do |s|
   s.dependency 'NSObject-HYPTesting', '~> 1.2'
   s.dependency 'NSString-HYPContainsString', '~> 0.1'
   s.dependency 'NSString-HYPFormula', '~> 1.6.1'
-  s.dependency 'NSString-HYPRelationshipParser', '~> 0.2'
+  s.dependency 'NSString-HYPRelationshipParser', '~> 0.4'
   s.dependency 'NSString-HYPWordExtractor', '~> 1.1'
   s.dependency 'NSString-ZENInflections', '~> 1.2'
   s.dependency 'UIButton-ANDYHighlighted', '~> 0.2.1'
   s.dependency 'UIScreen-HYPLiveBounds', '~> 1.3'
-  s.dependency 'NSString-HYPRelationshipParser', '~> 0.3'
 end

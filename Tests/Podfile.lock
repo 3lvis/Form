@@ -12,7 +12,7 @@ PODS:
   - NSString-HYPContainsString (0.1)
   - NSString-HYPFormula (1.6.1):
     - NSString-HYPWordExtractor
-  - NSString-HYPRelationshipParser (0.3)
+  - NSString-HYPRelationshipParser (0.4)
   - NSString-HYPWordExtractor (1.1)
   - NSString-ZENInflections (1.2)
   - UIButton-ANDYHighlighted (0.2.1)
@@ -31,20 +31,11 @@ DEPENDENCIES:
   - NSObject-HYPTesting
   - NSString-HYPContainsString
   - NSString-HYPFormula
-  - NSString-HYPRelationshipParser (from `https://github.com/hyperoslo/NSString-HYPRelationshipParser.git`)
+  - NSString-HYPRelationshipParser
   - NSString-HYPWordExtractor
   - NSString-ZENInflections
   - UIButton-ANDYHighlighted
   - UIScreen-HYPLiveBounds
-
-EXTERNAL SOURCES:
-  NSString-HYPRelationshipParser:
-    :git: https://github.com/hyperoslo/NSString-HYPRelationshipParser.git
-
-CHECKOUT OPTIONS:
-  NSString-HYPRelationshipParser:
-    :commit: 1613d6e36f6a90a6d4307185700db9ae7d5fa0af
-    :git: https://github.com/hyperoslo/NSString-HYPRelationshipParser.git
 
 SPEC CHECKSUMS:
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
@@ -59,7 +50,7 @@ SPEC CHECKSUMS:
   NSObject-HYPTesting: f54d8bf73f75e2f2f4e49f4baa985df6fa699c2a
   NSString-HYPContainsString: d5a89f8238b8267f892e1b139866e659ffc165ac
   NSString-HYPFormula: 4bf6fc5ef5053291638b9d2eae73bda9c1c88800
-  NSString-HYPRelationshipParser: 278f2163db625e8b21db0c488200f757ff56101e
+  NSString-HYPRelationshipParser: 9bae3192d0fe6d7bcd8279d7de1a9960a8138464
   NSString-HYPWordExtractor: b2961841c0cb658b3aa402e14f18a61bf02a0b48
   NSString-ZENInflections: 27e3623bae0758cd932c462dfae15420ec9867f9
   UIButton-ANDYHighlighted: d11522ea39a27f17f6cbf7af03f6447633999fef
