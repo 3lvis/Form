@@ -893,4 +893,11 @@ static const CGFloat FORMDispatchTime = 0.05f;
     }];
 }
 
+#pragma mark - Deprecated
+
+- (NSDictionary *)valuesDictionary
+{
+    return [self values];
+}
+
 @end
