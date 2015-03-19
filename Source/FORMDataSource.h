@@ -52,6 +52,7 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
+
 - (NSArray *)showTargets:(NSArray *)targets;
 - (NSArray *)hideTargets:(NSArray *)targets;
 - (NSArray *)updateTargets:(NSArray *)targets;
@@ -64,7 +65,8 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields;
 - (NSInteger)numberOfFields;
 - (NSArray *)forms;
-- (NSDictionary *)valuesDictionary;
+- (NSDictionary *)values;
+- (NSDictionary *)removedValues;
 
 - (void)sectionWithID:(NSString *)sectionID
            completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion;
@@ -75,5 +77,8 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
 - (void)updateValuesWithDictionary:(NSDictionary *)dictionary;
 
+// Deprecated
+
+- (NSDictionary *)valuesDictionary __attribute__((deprecated("Use values instead")));
 
 @end

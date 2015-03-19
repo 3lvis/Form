@@ -10,6 +10,7 @@
 @property (nonatomic) NSMutableDictionary *hiddenSections;
 @property (nonatomic) NSArray *disabledFieldsIDs;
 @property (nonatomic) NSMutableDictionary *values;
+@property (nonatomic) NSMutableDictionary *removedValues;
 @property (nonatomic) NSMutableDictionary *sectionTemplatesDictionary;
 @property (nonatomic) NSMutableDictionary *fieldTemplatesDictionary;
 

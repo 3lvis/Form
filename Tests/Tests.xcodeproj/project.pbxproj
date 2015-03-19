@@ -58,7 +58,7 @@
 		149C29211A9A23DD00F88B91 /* FORMFieldValueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29111A9A23DD00F88B91 /* FORMFieldValueTests.m */; };
 		149C29221A9A23DD00F88B91 /* FORMFieldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29121A9A23DD00F88B91 /* FORMFieldTests.m */; };
 		149C29231A9A23DD00F88B91 /* FORMCollectionViewDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29131A9A23DD00F88B91 /* FORMCollectionViewDataSourceTests.m */; };
-		149C29241A9A23DD00F88B91 /* FORMectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29141A9A23DD00F88B91 /* FORMectionTests.m */; };
+		149C29241A9A23DD00F88B91 /* FORMSectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29141A9A23DD00F88B91 /* FORMSectionTests.m */; };
 		149C29251A9A23DD00F88B91 /* FORMManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29151A9A23DD00F88B91 /* FORMManagerTests.m */; };
 		149C29261A9A23DD00F88B91 /* FORMTargetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29161A9A23DD00F88B91 /* FORMTargetTests.m */; };
 		149C29271A9A23DD00F88B91 /* FORMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29171A9A23DD00F88B91 /* FORMTests.m */; };
@@ -179,7 +179,7 @@
 		149C29111A9A23DD00F88B91 /* FORMFieldValueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValueTests.m; sourceTree = "<group>"; };
 		149C29121A9A23DD00F88B91 /* FORMFieldTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldTests.m; sourceTree = "<group>"; };
 		149C29131A9A23DD00F88B91 /* FORMCollectionViewDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMCollectionViewDataSourceTests.m; sourceTree = "<group>"; };
-		149C29141A9A23DD00F88B91 /* FORMectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMectionTests.m; sourceTree = "<group>"; };
+		149C29141A9A23DD00F88B91 /* FORMSectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSectionTests.m; sourceTree = "<group>"; };
 		149C29151A9A23DD00F88B91 /* FORMManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMManagerTests.m; sourceTree = "<group>"; };
 		149C29161A9A23DD00F88B91 /* FORMTargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTargetTests.m; sourceTree = "<group>"; };
 		149C29171A9A23DD00F88B91 /* FORMTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTests.m; sourceTree = "<group>"; };
@@ -435,7 +435,7 @@
 				149C29121A9A23DD00F88B91 /* FORMFieldTests.m */,
 				D5DFAA1A1AA87A9B0096FBFB /* FORMFieldValidationTests.m */,
 				149C29131A9A23DD00F88B91 /* FORMCollectionViewDataSourceTests.m */,
-				149C29141A9A23DD00F88B91 /* FORMectionTests.m */,
+				149C29141A9A23DD00F88B91 /* FORMSectionTests.m */,
 				149C29151A9A23DD00F88B91 /* FORMManagerTests.m */,
 				149C29161A9A23DD00F88B91 /* FORMTargetTests.m */,
 				149C29171A9A23DD00F88B91 /* FORMTests.m */,
@@ -671,7 +671,7 @@
 				144A28C71A99B2CF004A9086 /* FORMTextFieldTypeManager.m in Sources */,
 				144A28CD1A99B2CF004A9086 /* FORMBackgroundView.m in Sources */,
 				144A28D51A99B2CF004A9086 /* FORMInputValidator.m in Sources */,
-				149C29241A9A23DD00F88B91 /* FORMectionTests.m in Sources */,
+				149C29241A9A23DD00F88B91 /* FORMSectionTests.m in Sources */,
 				144A28EA1A99B2CF004A9086 /* FORMValidator.m in Sources */,
 				144A28DA1A99B2CF004A9086 /* FORMSocialSecurityNumberInputValidator.m in Sources */,
 				149C29251A9A23DD00F88B91 /* FORMManagerTests.m in Sources */,

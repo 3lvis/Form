@@ -92,6 +92,15 @@
     return _values;
 }
 
+- (NSMutableDictionary *)removedValues
+{
+    if (_removedValues) return _removedValues;
+
+    _removedValues = [NSMutableDictionary new];
+
+    return _removedValues;
+}
+
 - (NSMutableDictionary *)sectionTemplatesDictionary
 {
     if (_sectionTemplatesDictionary) return _sectionTemplatesDictionary;
