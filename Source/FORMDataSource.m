@@ -876,8 +876,8 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
         currentIndex = parsed.index;
         NSString *oldKey = [parsed key];
-        parsed.index = @(newIndex);
-        mutableDictionary[oldKey] = [parsed key];
+        NSString *newKey = [[parsed key] hyp_updateRelationshipIndex:newIndex];
+        mutableDictionary[oldKey] = newKey;
     }];
 
     return [mutableDictionary copy];
