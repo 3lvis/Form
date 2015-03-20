@@ -53,7 +53,7 @@
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"username"]];
     field = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:dataSource.forms];
-    XCTAssertEqual(index, 1);
+    XCTAssertEqual(index, 2);
     [dataSource processTargets:[FORMTarget showFieldTargetsWithIDs:@[@"first_name",
                                                                      @"address"]]];
 
@@ -62,7 +62,7 @@
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"address"]];
     field = [dataSource fieldWithID:@"address" includingHiddenFields:YES];
     index = [field indexInSectionUsingForms:dataSource.forms];
-    XCTAssertEqual(index, 0);
+    XCTAssertEqual(index, 2);
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"last_name"]];
 }
 
