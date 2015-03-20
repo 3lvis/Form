@@ -285,6 +285,7 @@
             if (field) {
                 FORMSection *section = [self sectionWithID:field.section.sectionID];
                 [section removeField:field inForms:self.forms];
+                [section resetFieldPositions];
             }
 
         } else if (target.type == FORMTargetTypeSection) {
@@ -565,6 +566,7 @@
                             foundSection = YES;
                             NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
                             [section.fields insertObject:field atIndex:fieldIndex];
+                            [section resetFieldPositions];
                         }
                     }
                 }
@@ -574,7 +576,7 @@
                     NSInteger sectionIndex = [section indexInForms:self.forms];
                     FORMGroup *form = self.forms[[section.form.position integerValue]];
                     [form.sections insertObject:section atIndex:sectionIndex];
-                    [form updateSectionPositions];
+                    [form resetSectionPositions];
                 }
             }
 
@@ -654,6 +656,7 @@
                        completion:^(FORMSection *section, NSInteger index) {
                            if (section) {
                                [section.fields removeObjectAtIndex:index];
+                               [section resetFieldPositions];
                            }
                        }];
     }

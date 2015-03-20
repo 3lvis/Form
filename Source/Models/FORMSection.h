@@ -36,5 +36,6 @@ typedef NS_ENUM(NSInteger, FORMSectionType) {
 
 - (NSInteger)indexInForms:(NSArray *)forms;
 - (void)removeField:(FORMField *)field inForms:(NSArray *)forms;
+- (void)resetFieldPositions;
 
 @end

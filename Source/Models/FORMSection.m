@@ -139,13 +139,16 @@
             index = idx;
             found = YES;
         }
-
-        if (found) {
-            currentField.position = @([currentField.position integerValue] - 1);
-        }
     }];
 
     [self.fields removeObjectAtIndex:index];
+}
+
+- (void)resetFieldPositions
+{
+    [self.fields enumerateObjectsUsingBlock:^(FORMField *field, NSUInteger idx, BOOL *stop) {
+        field.position = @(idx);
+    }];
 }
 
 - (NSString *)description
