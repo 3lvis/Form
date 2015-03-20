@@ -22,6 +22,9 @@
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
+static NSString * const FORMDynamicAddFieldID = @"add";
+static NSString * const FORMDynamicRemoveFieldID = @"remove";
+
 @interface FORMDataSource () <FORMBaseFieldCellDelegate, FORMHeaderViewDelegate>
 
 @property (nonatomic) UIEdgeInsets originalInset;
@@ -506,11 +509,11 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
     NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
     if (components.count == 2) {
-        if ([components.lastObject isEqualToString:@"add"]) {
+        if ([components.lastObject isEqualToString:FORMDynamicAddFieldID]) {
             NSString *sectionTemplateID = [components firstObject];
             FORMSection *section = [self sectionWithID:sectionTemplateID];
             [self.formsManager insertTemplateSectionWithID:sectionTemplateID intoCollectionView:self.collectionView usingForm:section.form];
-        } else if ([components.lastObject isEqualToString:@"remove"]) {
+        } else if ([components.lastObject isEqualToString:FORMDynamicRemoveFieldID]) {
             HYPParsedRelationship *parsed = [field.fieldID hyp_parseRelationship];
             parsed.attribute = nil;
             NSString *sectionID = [parsed key];
@@ -555,20 +558,24 @@ static const CGFloat FORMDispatchTime = 0.05f;
         }
     }
 
-    if (!field.value) {
-        [self.formsManager.values removeObjectForKey:field.fieldID];
-    } else if ([field.value isKindOfClass:[FORMFieldValue class]]) {
-        FORMFieldValue *fieldValue = field.value;
-        self.formsManager.values[field.fieldID] = fieldValue.valueID;
-    } else {
-        self.formsManager.values[field.fieldID] = field.value;
-    }
+    BOOL isValidField = !(components.count == 2 &&
+                          [components.lastObject isEqualToString:FORMDynamicRemoveFieldID]);
+    if (isValidField) {
+        if (!field.value) {
+            [self.formsManager.values removeObjectForKey:field.fieldID];
+        } else if ([field.value isKindOfClass:[FORMFieldValue class]]) {
+            FORMFieldValue *fieldValue = field.value;
+            self.formsManager.values[field.fieldID] = fieldValue.valueID;
+        } else {
+            self.formsManager.values[field.fieldID] = field.value;
+        }
 
-    if (field.value && [field.value isKindOfClass:[FORMFieldValue class]]) {
-        FORMFieldValue *fieldValue = field.value;
-        [self processTargets:fieldValue.targets];
-    } else if (field.targets.count > 0) {
-        [self processTargets:field.targets];
+        if (field.value && [field.value isKindOfClass:[FORMFieldValue class]]) {
+            FORMFieldValue *fieldValue = field.value;
+            [self processTargets:fieldValue.targets];
+        } else if (field.targets.count > 0) {
+            [self processTargets:field.targets];
+        }
     }
 }
 
