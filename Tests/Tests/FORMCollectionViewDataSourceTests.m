@@ -441,7 +441,7 @@
 
 - (void)testUpdatedFieldPositionWhenHidingAndShowingField
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
@@ -450,27 +450,27 @@
                                                                values:nil
                                                              disabled:YES];
 
-    FORMSection *section = [dataSource sectionWithID:@"personal-details-0"];
+    FORMSection *section = [dataSource sectionWithID:@"section-0"];
     NSMutableArray *fieldPositions = [NSMutableArray new];
 
     for (FORMField *field in section.fields) {
         [fieldPositions addObject:field.position];
     }
 
-    NSArray *expectedInitialPositions = @[@0,@1,@2,@3];
+    NSArray *expectedInitialPositions = @[@0,@1,@2,@3,@4,@5];
     XCTAssertEqualObjects(fieldPositions, expectedInitialPositions);
 
-    [dataSource hideTargets:@[[FORMTarget hideFieldTargetWithID:@"last_name"]]];
+    [dataSource hideTargets:@[[FORMTarget hideFieldTargetWithID:@"section-0-field-2"]]];
     [fieldPositions removeAllObjects];
 
     for (FORMField *field in section.fields) {
         [fieldPositions addObject:field.position];
     }
 
-    NSArray *expectedUpdatedPositions = @[@0,@1,@2];
+    NSArray *expectedUpdatedPositions = @[@0,@1,@2,@3,@4];
     XCTAssertEqualObjects(fieldPositions, expectedUpdatedPositions);
 
-    [dataSource showTargets:@[[FORMTarget showFieldTargetWithID:@"last_name"]]];
+    [dataSource showTargets:@[[FORMTarget showFieldTargetWithID:@"section-0-field-2"]]];
     [fieldPositions removeAllObjects];
 
     for (FORMField *field in section.fields) {
