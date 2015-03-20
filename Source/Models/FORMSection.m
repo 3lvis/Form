@@ -148,6 +148,13 @@
     [self.fields removeObjectAtIndex:index];
 }
 
+- (void)updateFieldPositions
+{
+    [self.fields enumerateObjectsUsingBlock:^(FORMField *field, NSUInteger idx, BOOL *stop) {
+        field.position = @(idx);
+    }];
+}
+
 - (NSString *)description
 {
     NSMutableArray *fields = [NSMutableArray new];
