@@ -285,6 +285,7 @@
             if (field) {
                 FORMSection *section = [self sectionWithID:field.section.sectionID];
                 [section removeField:field inForms:self.forms];
+                [section updateFieldPositions];
             }
 
         } else if (target.type == FORMTargetTypeSection) {
