@@ -144,7 +144,7 @@
     [self.fields removeObjectAtIndex:index];
 }
 
-- (void)updateFieldPositions
+- (void)resetFieldPositions
 {
     [self.fields enumerateObjectsUsingBlock:^(FORMField *field, NSUInteger idx, BOOL *stop) {
         field.position = @(idx);
