@@ -565,6 +565,7 @@
                             foundSection = YES;
                             NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
                             [section.fields insertObject:field atIndex:fieldIndex];
+                            [section updateFieldPositions];
                         }
                     }
                 }
