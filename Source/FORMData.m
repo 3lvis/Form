@@ -658,12 +658,7 @@
                                [section.fields removeObjectAtIndex:index];
                            }
 
-                           FORMField *field;
-                           for (NSInteger i = index; i < [section.fields count]; i++) {
-                               field = section.fields[i];
-                               field.position = @([field.position integerValue] - 1);
-                           }
-
+                           [section updateFieldPositions];
                        }];
     }
 
