@@ -656,9 +656,8 @@
                        completion:^(FORMSection *section, NSInteger index) {
                            if (section) {
                                [section.fields removeObjectAtIndex:index];
+                               [section updateFieldPositions];
                            }
-
-                           [section updateFieldPositions];
                        }];
     }
 
