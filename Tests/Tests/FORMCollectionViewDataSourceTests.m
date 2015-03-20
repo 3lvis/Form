@@ -439,7 +439,7 @@
     XCTAssertNotNil(section);
 }
 
-- (void)testUpdatedFieldPositionWhenHidingField
+- (void)testUpdatedFieldPositionWhenHidingAndShowingField
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
@@ -469,6 +469,15 @@
 
     NSArray *expectedUpdatedPositions = @[@0,@1,@2];
     XCTAssertEqualObjects(fieldPositions, expectedUpdatedPositions);
+
+    [dataSource showTargets:@[[FORMTarget showFieldTargetWithID:@"last_name"]]];
+    [fieldPositions removeAllObjects];
+
+    for (FORMField *field in section.fields) {
+        [fieldPositions addObject:field.position];
+    }
+
+    XCTAssertEqualObjects(fieldPositions, expectedInitialPositions);
 }
 
 - (void)testDynamicSectionsInvolvingHideTargets
