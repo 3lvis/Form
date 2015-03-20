@@ -139,10 +139,6 @@
             index = idx;
             found = YES;
         }
-
-        if (found) {
-            currentField.position = @([currentField.position integerValue] - 1);
-        }
     }];
 
     [self.fields removeObjectAtIndex:index];
