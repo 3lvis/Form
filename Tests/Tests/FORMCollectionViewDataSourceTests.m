@@ -439,6 +439,38 @@
     XCTAssertNotNil(section);
 }
 
+- (void)testUpdatedFieldPositionWhenHidingField
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    FORMSection *section = [dataSource sectionWithID:@"personal-details-0"];
+    NSMutableArray *fieldPositions = [NSMutableArray new];
+
+    for (FORMField *field in section.fields) {
+        [fieldPositions addObject:field.position];
+    }
+
+    NSArray *expectedInitialPositions = @[@0,@1,@2,@3];
+    XCTAssertEqualObjects(fieldPositions, expectedInitialPositions);
+
+    [dataSource hideTargets:@[[FORMTarget hideFieldTargetWithID:@"last_name"]]];
+    [fieldPositions removeAllObjects];
+
+    for (FORMField *field in section.fields) {
+        [fieldPositions addObject:field.position];
+    }
+
+    NSArray *expectedUpdatedPositions = @[@0,@1,@2];
+    XCTAssertEqualObjects(fieldPositions, expectedUpdatedPositions);
+}
+
 - (void)testDynamicSectionsInvolvingHideTargets
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
