@@ -357,7 +357,7 @@
     XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:14 inSection:0]);
 }
 
-- (void)testRemovingMultipleDynamicSections
+- (void)testRemovingMultipleDynamicSectionsA
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
@@ -374,39 +374,50 @@
                                                                         @"companies[3].name" : @"Microsoft",
                                                                         @"companies[3].phone_number" : @"11223344"
                                                                         }
-                                                             disabled:YES];
-    XCTAssertFalse(dataSource.removedValues.count);
+                                                             disabled:NO];
+
+    XCTAssertEqual(dataSource.values.count, 8);
+    XCTAssertEqual(dataSource.removedValues.count, 0);
+    XCTAssertEqualObjects(dataSource.values[@"companies[0].name"], @"Facebook");
+    XCTAssertEqualObjects(dataSource.values[@"companies[0].phone_number"], @"1222333");
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
-    XCTAssertTrue(dataSource.removedValues.count == 1);
-    XCTAssertNotNil(dataSource.removedValues[@"companies[0]"]);
-    XCTAssertNotNil(dataSource.values[@"companies[0].name"]);
-    XCTAssertNotNil(dataSource.values[@"companies[0].phone_number"]);
+    XCTAssertEqual(dataSource.removedValues.count, 2);
+    XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].name"], @"Facebook");
+    XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].phone_number"], @"1222333");
     XCTAssertEqualObjects(dataSource.values[@"companies[0].name"], @"Google");
+    XCTAssertEqualObjects(dataSource.values[@"companies[0].phone_number"], @"4555666");
+}
 
-    removeField = [dataSource fieldWithID:@"companies[2].remove" includingHiddenFields:YES];
+- (void)testRemovingMultipleDynamicSectionsB
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"companies[0].name" : @"Facebook",
+                                                                        @"companies[0].phone_number" : @"1222333",
+                                                                        @"companies[1].name" : @"Google",
+                                                                        @"companies[1].phone_number" : @"4555666",
+                                                                        @"companies[2].name" : @"Apple",
+                                                                        @"companies[2].phone_number" : @"7888999",
+                                                                        @"companies[3].name" : @"Microsoft",
+                                                                        @"companies[3].phone_number" : @"11223344"
+                                                                        }
+                                                             disabled:NO];
+
+    XCTAssertEqualObjects(dataSource.values[@"companies[2].name"], @"Apple");
+    XCTAssertEqualObjects(dataSource.values[@"companies[2].phone_number"], @"7888999");
+    FORMField *removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
     XCTAssertTrue(dataSource.removedValues.count == 2);
-    XCTAssertNotNil(dataSource.removedValues[@"companies[1]"]);
-    XCTAssertNotNil(dataSource.values[@"companies[1].name"]);
-    XCTAssertNotNil(dataSource.values[@"companies[1].phone_number"]);
-    XCTAssertEqualObjects(dataSource.values[@"companies[1].name"], @"Apple");
-
-    NSDictionary *expectedRemovedDynamicValues = @{@"companies[0]":@[@"companies[0].phone_number",
-                                                                     @"companies[0].name"],
-                                                   @"companies[1]" : @[@"companies[1].phone_number",
-                                                                       @"companies[1].name"]
-                                                   };
-    XCTAssertEqualObjects(dataSource.removedValues, expectedRemovedDynamicValues);
-
-    NSDictionary *expectedValuesDictionary = @{@"companies[0].name":@"Google",
-                                               @"companies[0].phone_number":@"4555666",
-                                               @"companies[1].name":@"Apple",
-                                               @"companies[1].phone_number":@"7888999",
-                                               };
-
-    XCTAssertEqualObjects(dataSource.values, expectedValuesDictionary);
+    XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].name"], @"Google");
+    XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].phone_number"], @"4555666");
+    XCTAssertEqualObjects(dataSource.values[@"companies[2].name"], @"Microsoft");
+    XCTAssertEqualObjects(dataSource.values[@"companies[2].phone_number"], @"11223344");
 }
 
 - (void)testUpdatedSectionPositionWhenRemovingDynamicSections
