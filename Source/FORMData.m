@@ -938,6 +938,9 @@
         NSInteger sectionPosition = [actionSection.position integerValue];
         for (FORMSection *currentSection in form.sections) {
             if ([currentSection.sectionID hyp_containsString:sectionTemplateID]) {
+                if (!sectionPosition) {
+                    sectionPosition = [currentSection.position integerValue];
+                }
                 sectionPosition++;
             }
         }
