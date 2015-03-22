@@ -525,7 +525,6 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                 [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     if ([key hasPrefix:section.sectionID]) {
                         foundParsed = [key hyp_parseRelationship];
-                        foundParsed.index = @(self.formsManager.removedValues.count);
                         [self.formsManager.values removeObjectForKey:key];
                         [removedKeys addObject:[foundParsed key]];
                     }
