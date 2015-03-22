@@ -155,7 +155,11 @@
 {
     NSMutableArray *fields = [NSMutableArray new];
     for (FORMField *field in self.fields) {
-        [fields addObject:field.fieldID];
+        if (field.fieldID) {
+            [fields addObject:field.fieldID];
+        } else if (field.sectionSeparator) {
+            [fields addObject:@"sectionSeparator"];
+        }
     }
 
     return [NSString stringWithFormat:@"\n — Section: %@ —\n position: %@\n formID: %@\n shouldValidate: %@\n containsSpecialField: %@\n isLast: %@\n fields: %@\n",
