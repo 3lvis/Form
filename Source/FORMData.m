@@ -944,7 +944,7 @@
 
         FORMSection *section = [[FORMSection alloc] initWithDictionary:templateSectionDictionary
                                                               position:sectionPosition
-                                                              disabled:NO
+                                                              disabled:self.disabledForm
                                                      disabledFieldsIDs:nil
                                                          isLastSection:YES];
         section.form = form;
