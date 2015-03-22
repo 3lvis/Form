@@ -874,17 +874,18 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     [keys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
         HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+        if (parsed.relationship) {
+            BOOL shouldIncrementIndex = (currentIndex &&
+                                         [parsed.index integerValue] > [currentIndex integerValue]);
+            if (shouldIncrementIndex) {
+                newIndex++;
+            }
 
-        BOOL shouldIncrementIndex = (currentIndex &&
-                                     [parsed.index integerValue] > [currentIndex integerValue]);
-        if (shouldIncrementIndex) {
-            newIndex++;
+            currentIndex = parsed.index;
+            NSString *oldKey = [parsed key];
+            NSString *newKey = [[parsed key] hyp_updateRelationshipIndex:newIndex];
+            mutableDictionary[oldKey] = newKey;
         }
-
-        currentIndex = parsed.index;
-        NSString *oldKey = [parsed key];
-        NSString *newKey = [[parsed key] hyp_updateRelationshipIndex:newIndex];
-        mutableDictionary[oldKey] = newKey;
     }];
 
     return [mutableDictionary copy];
