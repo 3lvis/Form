@@ -996,4 +996,9 @@
     return index;
 }
 
+- (void)resetRemovedValues
+{
+    self.removedValues = [NSMutableDictionary new];
+}
+
 @end
