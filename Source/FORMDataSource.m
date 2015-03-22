@@ -525,7 +525,6 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                 [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     if ([key hasPrefix:section.sectionID]) {
                         foundParsed = [key hyp_parseRelationship];
-                        [self.formsManager.values removeObjectForKey:key];
                         [removedKeys addObject:[foundParsed key]];
                     }
                 }];
@@ -533,7 +532,11 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                 foundParsed = [section.sectionID hyp_parseRelationship];
                 foundParsed.attribute = nil;
                 foundParsed.index = @(self.formsManager.removedValues.count);
-                [self.formsManager.removedValues setValue:[removedKeys copy] forKey:[foundParsed key]];
+
+                for (NSString *removedKey in removedKeys) {
+                    [self.formsManager.removedValues setValue:self.values[removedKey] forKey:removedKey];
+                    [self.formsManager.values removeObjectForKey:removedKey];
+                }
 
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
