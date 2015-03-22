@@ -15,5 +15,6 @@ static NSString * const FORMFieldValueCellIdentifer = @"FORMFieldValueCellIdenti
 - (void)setDetailTextLabelColor:(UIColor *)textColor UI_APPEARANCE_SELECTOR;
 - (void)setDetailTextLabelHighlightedTextColor:(UIColor *)highlightedTextColor UI_APPEARANCE_SELECTOR;
 - (void)setSelectedBackgroundViewColor:(UIColor *)backgroundColor UI_APPEARANCE_SELECTOR;
+- (void)setSelectedBackgroundFontColor:(UIColor *)fontColor UI_APPEARANCE_SELECTOR;
 
 @end

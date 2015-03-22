@@ -43,6 +43,7 @@
     [[FORMFieldValueCell appearance] setDetailTextLabelColor:[UIColor colorFromHex:@"455C73"]];
     [[FORMFieldValueCell appearance] setDetailTextLabelHighlightedTextColor:[UIColor whiteColor]];
     [[FORMFieldValueCell appearance] setSelectedBackgroundViewColor:[UIColor colorFromHex:@"008ED9"]];
+    [[FORMFieldValueCell appearance] setSelectedBackgroundFontColor:[UIColor whiteColor]];
 
     [[FORMTextField appearance] setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:15.0]];
     [[FORMTextField appearance] setTextColor:[UIColor colorFromHex:@"455C73"]];
