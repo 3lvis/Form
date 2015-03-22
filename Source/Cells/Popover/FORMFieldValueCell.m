@@ -83,4 +83,9 @@
     self.selectedBackgroundView.backgroundColor = backgroundColor;
 }
 
+- (void)setSelectedBackgroundFontColor:(UIColor *)fontColor
+{
+    self.textLabel.highlightedTextColor = fontColor;
+}
+
 @end
