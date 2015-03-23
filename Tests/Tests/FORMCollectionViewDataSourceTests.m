@@ -395,8 +395,8 @@
 
     NSDictionary *expectedRemovedDynamicValues = @{@"companies[0]":@[@"companies[0].phone_number",
                                                                      @"companies[0].name"],
-                                                   @"companies[1]" : @[@"companies[1].phone_number",
-                                                                       @"companies[1].name"]
+                                                   @"companies[1]" : @[@"companies[2].phone_number",
+                                                                       @"companies[2].name"]
                                                    };
     XCTAssertEqualObjects(dataSource.removedValues, expectedRemovedDynamicValues);
 
