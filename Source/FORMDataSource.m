@@ -533,7 +533,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                 NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
                 HYPParsedRelationship *parsed = [section.sectionID hyp_parseRelationship];
                 NSArray *removedElements = [removedAttributesJSON objectForKey:parsed.relationship];
-                NSInteger index = amount.count;
+                NSInteger index = removedElements.count;
                 for (NSString *removedKey in removedKeys) {
                     NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:index];
                     [self.formsManager.removedValues setValue:self.values[removedKey] forKey:newRemovedKey];
