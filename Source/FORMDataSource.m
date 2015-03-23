@@ -562,8 +562,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         }
     }
 
-    BOOL isValidField = !(components.count == 2 &&
-                          [components.lastObject isEqualToString:FORMDynamicRemoveFieldID]);
+    BOOL isValidField = (!(components.count == 2 &&
+                           [components.lastObject isEqualToString:FORMDynamicRemoveFieldID]) &&
+                         field != nil);
     if (isValidField) {
         if (!field.value) {
             [self.formsManager.values removeObjectForKey:field.fieldID];
