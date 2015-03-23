@@ -29,7 +29,7 @@ DEPENDENCIES:
   - ISO8601DateFormatter
   - NSDate-HYPString
   - NSDictionary-ANDYSafeValue
-  - NSDictionary-HYPNestedAttributes
+  - NSDictionary-HYPNestedAttributes (from `https://github.com/hyperoslo/NSDictionary-HYPNestedAttributes.git`, branch `fix/JSONNestedAttributes-starting-with-0-broken`)
   - NSJSONSerialization-ANDYJSONFile
   - NSObject-HYPTesting
   - NSString-HYPContainsString
@@ -39,6 +39,16 @@ DEPENDENCIES:
   - NSString-ZENInflections
   - UIButton-ANDYHighlighted
   - UIScreen-HYPLiveBounds
+
+EXTERNAL SOURCES:
+  NSDictionary-HYPNestedAttributes:
+    :branch: fix/JSONNestedAttributes-starting-with-0-broken
+    :git: https://github.com/hyperoslo/NSDictionary-HYPNestedAttributes.git
+
+CHECKOUT OPTIONS:
+  NSDictionary-HYPNestedAttributes:
+    :commit: d6c0d367cc908e74303c6ef84f7569845de55c48
+    :git: https://github.com/hyperoslo/NSDictionary-HYPNestedAttributes.git
 
 SPEC CHECKSUMS:
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
