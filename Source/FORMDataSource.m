@@ -868,11 +868,6 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     return [self.formsManager.removedValues copy];
 }
 
-- (void)resetRemovedValues
-{
-    [self.formsManager resetRemovedValues];
-}
-
 #pragma mark - Private methods
 
 - (void)updateSectionPosition:(FORMSection *)section
