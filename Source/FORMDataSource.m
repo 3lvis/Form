@@ -519,14 +519,10 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             parsed.attribute = nil;
             NSString *sectionID = [parsed key];
             [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
-                [self updateSectionPosition:section];
-
                 NSMutableArray *removedKeys = [NSMutableArray new];
-                __block HYPParsedRelationship *foundParsed;
                 [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     if ([key hasPrefix:section.sectionID]) {
-                        foundParsed = [key hyp_parseRelationship];
-                        [removedKeys addObject:[foundParsed key]];
+                        [removedKeys addObject:key];
                     }
                 }];
 
@@ -540,6 +536,21 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                     [self.formsManager.values removeObjectForKey:removedKey];
                 }
 
+                NSMutableArray *updatedKeys = [NSMutableArray new];
+                [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+                    if ([key hasPrefix:section.sectionID]) {
+                        [updatedKeys addObject:key];
+                    }
+                }];
+
+                for (NSString *updatedKey in updatedKeys) {
+                    [self.formsManager.values removeObjectForKey:updatedKey];
+                }
+
+                NSDictionary *attributesJSON = [self.values hyp_JSONNestedAttributes];
+                NSArray *elements = [attributesJSON objectForKey:parsed.relationship];
+#warning loop throught elements and re-create self.formsManager.values with proper indexes
+
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
 
@@ -547,17 +558,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                 }
 
-                NSDictionary *updatedValueKeys = [self updateValueKeys:[self.values allKeys]];
-                NSDictionary *currentValues = self.values;
-
-                [self removeDynamicKeysForSection:section];
-
-                [currentValues enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
-                    if (updatedValueKeys[key]) {
-                        self.formsManager.values[updatedValueKeys[key]] = obj;
-                    }
-                }];
-
+                [self updateSectionPosition:section];
             }];
         }
     }
@@ -873,9 +874,14 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             NSInteger newPosition = [currentSection.position integerValue] - 1;
             currentSection.position = @(newPosition);
 
-            HYPParsedRelationship *parsed = [currentSection.sectionID hyp_parseRelationship];
-            if (parsed.toMany) {
-                currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newPosition];
+            HYPParsedRelationship *parsedSection = [currentSection.sectionID hyp_parseRelationship];
+            if (parsedSection.toMany) {
+                NSInteger newRelationshipIndex = [parsedSection.index integerValue] - 1;
+                currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newRelationshipIndex];
+
+                for (FORMField *field in currentSection.fields) {
+                    field.fieldID = [field.fieldID hyp_updateRelationshipIndex:newRelationshipIndex];
+                }
             }
         }
     }
