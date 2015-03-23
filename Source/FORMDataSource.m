@@ -19,6 +19,7 @@
 #import "NSString+HYPRelationshipParser.h"
 #import "NSString+HYPContainsString.h"
 #import "NSDictionary+ANDYSafeValue.h"
+#import "NSDictionary+HYPNestedAttributes.h"
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
@@ -529,7 +530,10 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                     }
                 }];
 
-                NSInteger index = 0;
+                NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
+                HYPParsedRelationship *parsed = [section.sectionID hyp_parseRelationship];
+                NSArray *removedElements = [removedAttributesJSON objectForKey:parsed.relationship];
+                NSInteger index = amount.count;
                 for (NSString *removedKey in removedKeys) {
                     NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:index];
                     [self.formsManager.removedValues setValue:self.values[removedKey] forKey:newRemovedKey];
