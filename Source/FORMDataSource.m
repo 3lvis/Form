@@ -869,7 +869,13 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 {
     for (FORMSection *currentSection in section.form.sections) {
         if ([currentSection.position integerValue] > [section.position integerValue]) {
-            currentSection.position = @([currentSection.position integerValue] - 1);
+            NSInteger newPosition = [currentSection.position integerValue] - 1;
+            currentSection.position = @(newPosition);
+
+            HYPParsedRelationship *parsed = [currentSection.sectionID hyp_parseRelationship];
+            if (parsed.toMany) {
+                currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newPosition];
+            }
         }
     }
 }
