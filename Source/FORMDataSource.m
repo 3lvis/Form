@@ -553,7 +553,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                 NSInteger relationshipIndex = 0;
                 for (NSDictionary *element in elements) {
                     for (NSString *key in element) {
-                        NSString *relationshipKey = [NSString stringWithFormat:@"%@[%ld].%@", parsed.relationship, relationshipIndex, key];
+                        NSString *relationshipKey = [NSString stringWithFormat:@"%@[%ld].%@", parsed.relationship, (long)relationshipIndex, key];
                         self.formsManager.values[relationshipKey] = element[key];
                     }
                     relationshipIndex++;
