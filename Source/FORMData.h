@@ -57,4 +57,6 @@
 
 - (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form;
 
+- (void)resetRemovedValues;
+
 @end

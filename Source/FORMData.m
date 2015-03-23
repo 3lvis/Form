@@ -907,64 +907,77 @@
 
 - (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form valueID:(NSString *)valueID
 {
-    NSInteger index = [self indexForTemplateSectionWithID:sectionTemplateID inForm:form];
-
-    NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:sectionTemplateID];
-    NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
-    [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", sectionTemplateID, (long)index] forKey:@"id"];
-
-    NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
-    NSMutableArray *fields = [NSMutableArray new];
-    for (NSDictionary *fieldTemplateDictionary in templateFields) {
-        NSMutableDictionary *fieldDictionary = [NSMutableDictionary dictionaryWithDictionary:fieldTemplateDictionary];
-        NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
-        NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
-        [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
-        [fields addObject:[fieldDictionary copy]];
-    }
-
-    [templateSectionDictionary setValue:[fields copy] forKey:@"fields"];
-
-    FORMSection *actionSection = [self sectionWithID:sectionTemplateID];
-    NSInteger sectionPosition = [actionSection.position integerValue];
-    for (FORMSection *currentSection in form.sections) {
-        if ([currentSection.sectionID hyp_containsString:sectionTemplateID]) {
-            sectionPosition++;
+    FORMSection *foundSection;
+    for (FORMSection *aSection in form.sections) {
+        if ([aSection.sectionID isEqualToString:sectionTemplateID]) {
+            foundSection = aSection;
+            break;
         }
     }
 
-    FORMSection *section = [[FORMSection alloc] initWithDictionary:templateSectionDictionary
-                                                          position:sectionPosition
-                                                          disabled:NO
-                                                 disabledFieldsIDs:nil
-                                                     isLastSection:YES];
-    section.form = form;
+    if (foundSection) {
+        NSInteger index = [self indexForTemplateSectionWithID:sectionTemplateID inForm:form];
 
-    if (valueID) {
-        for (FORMField *field in section.fields) {
-            field.value = [self.values objectForKey:valueID];
+        NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:sectionTemplateID];
+        NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
+        [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", sectionTemplateID, (long)index] forKey:@"id"];
+
+        NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
+        NSMutableArray *fields = [NSMutableArray new];
+        for (NSDictionary *fieldTemplateDictionary in templateFields) {
+            NSMutableDictionary *fieldDictionary = [NSMutableDictionary dictionaryWithDictionary:fieldTemplateDictionary];
+            NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
+            NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+            [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
+            [fields addObject:[fieldDictionary copy]];
         }
-    }
 
-    NSInteger sectionIndex = [section.position integerValue];
-    [form.sections insertObject:section atIndex:sectionIndex];
+        [templateSectionDictionary setValue:[fields copy] forKey:@"fields"];
 
-    [form.sections enumerateObjectsUsingBlock:^(FORMSection *currentSection, NSUInteger idx, BOOL *stop) {
-        if (idx > sectionIndex) {
-            currentSection.position = @([currentSection.position integerValue] + 1);
+        FORMSection *actionSection = [self sectionWithID:sectionTemplateID];
+        NSInteger sectionPosition = [actionSection.position integerValue];
+        for (FORMSection *currentSection in form.sections) {
+            if ([currentSection.sectionID hyp_containsString:sectionTemplateID]) {
+                if (!sectionPosition) {
+                    sectionPosition = [currentSection.position integerValue];
+                }
+                sectionPosition++;
+            }
         }
-    }];
 
-    if (collectionView) {
-        [self sectionWithID:section.sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
-            if (indexPaths) {
-                [collectionView insertItemsAtIndexPaths:indexPaths];
+        FORMSection *section = [[FORMSection alloc] initWithDictionary:templateSectionDictionary
+                                                              position:sectionPosition
+                                                              disabled:self.disabledForm
+                                                     disabledFieldsIDs:nil
+                                                         isLastSection:YES];
+        section.form = form;
 
-                [collectionView scrollToItemAtIndexPath:indexPaths.lastObject
-                                       atScrollPosition:UICollectionViewScrollPositionTop
-                                               animated:YES];
+        if (valueID) {
+            for (FORMField *field in section.fields) {
+                field.value = [self.values objectForKey:valueID];
+            }
+        }
+
+        NSInteger sectionIndex = [section.position integerValue];
+        [form.sections insertObject:section atIndex:sectionIndex];
+
+        [form.sections enumerateObjectsUsingBlock:^(FORMSection *currentSection, NSUInteger idx, BOOL *stop) {
+            if (idx > sectionIndex) {
+                currentSection.position = @([currentSection.position integerValue] + 1);
             }
         }];
+
+        if (collectionView) {
+            [self sectionWithID:section.sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+                if (indexPaths) {
+                    [collectionView insertItemsAtIndexPaths:indexPaths];
+
+                    [collectionView scrollToItemAtIndexPath:indexPaths.lastObject
+                                           atScrollPosition:UICollectionViewScrollPositionTop
+                                                   animated:YES];
+                }
+            }];
+        }
     }
 }
 
@@ -984,6 +997,11 @@
     }
 
     return index;
+}
+
+- (void)resetRemovedValues
+{
+    self.removedValues = [NSMutableDictionary new];
 }
 
 @end
