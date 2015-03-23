@@ -529,12 +529,10 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                     }
                 }];
 
-                foundParsed = [section.sectionID hyp_parseRelationship];
-                foundParsed.attribute = nil;
-                foundParsed.index = @(self.formsManager.removedValues.count);
-
+                NSInteger index = 0;
                 for (NSString *removedKey in removedKeys) {
-                    [self.formsManager.removedValues setValue:self.values[removedKey] forKey:removedKey];
+                    NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:index];
+                    [self.formsManager.removedValues setValue:self.values[removedKey] forKey:newRemovedKey];
                     [self.formsManager.values removeObjectForKey:removedKey];
                 }
 
