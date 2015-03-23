@@ -7,8 +7,8 @@ PODS:
   - ISO8601DateFormatter (0.7)
   - NSDate-HYPString (0.2)
   - NSDictionary-ANDYSafeValue (0.3)
-  - NSDictionary-HYPNestedAttributes (0.3):
-    - NSString-HYPRelationshipParser (~> 0.4)
+  - NSDictionary-HYPNestedAttributes (0.4):
+    - NSString-HYPRelationshipParser (~> 0.4.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSObject-HYPTesting (1.2)
   - NSString-HYPContainsString (0.1)
@@ -29,7 +29,7 @@ DEPENDENCIES:
   - ISO8601DateFormatter
   - NSDate-HYPString
   - NSDictionary-ANDYSafeValue
-  - NSDictionary-HYPNestedAttributes (from `https://github.com/hyperoslo/NSDictionary-HYPNestedAttributes.git`)
+  - NSDictionary-HYPNestedAttributes
   - NSJSONSerialization-ANDYJSONFile
   - NSObject-HYPTesting
   - NSString-HYPContainsString
@@ -40,15 +40,6 @@ DEPENDENCIES:
   - UIButton-ANDYHighlighted
   - UIScreen-HYPLiveBounds
 
-EXTERNAL SOURCES:
-  NSDictionary-HYPNestedAttributes:
-    :git: https://github.com/hyperoslo/NSDictionary-HYPNestedAttributes.git
-
-CHECKOUT OPTIONS:
-  NSDictionary-HYPNestedAttributes:
-    :commit: ac4e1bf006569dedd4b41e5363b0d492d2127944
-    :git: https://github.com/hyperoslo/NSDictionary-HYPNestedAttributes.git
-
 SPEC CHECKSUMS:
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
   HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
@@ -58,7 +49,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
   NSDate-HYPString: b87cf854edd44ec1e186b32526c601502180846d
   NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
-  NSDictionary-HYPNestedAttributes: f112d57d242643f0696fc4ca661d540d5dc9d843
+  NSDictionary-HYPNestedAttributes: b652ab8d11d933b98c3bc666fd131e09aa7393a6
   NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
   NSObject-HYPTesting: f54d8bf73f75e2f2f4e49f4baa985df6fa699c2a
   NSString-HYPContainsString: d5a89f8238b8267f892e1b139866e659ffc165ac
