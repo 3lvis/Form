@@ -519,6 +519,47 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             parsed.attribute = nil;
             NSString *sectionID = [parsed key];
             [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+
+                /* 1.- App should modify the indexes of the sections and fields that
+                 are located after the removed section.
+
+                 2.- Move removed values to `removedValues`
+
+                 3.- Remove value from `values`
+
+                 ---------FORM---------
+                 company[0]
+                   company[0].name = "A"
+
+                 company[1]
+                   company[1].name = "B"
+                 ------------------
+
+                 ---------Values---------
+                 company[0].name = "A"
+                 company[1].name = "B"
+                 ------------------
+
+                 ---------Removed Values---------
+                 EMPTY
+                 ------------------
+
+                 *removed company[0]*
+
+                 ---------FORM---------
+                 company[0]
+                   company[0].name = "B"
+                 ------------------
+
+                 ---------Values---------
+                 company[0].name = "B"
+                 ------------------
+
+                 ---------Removed Values---------
+                 company[0].name = "A"
+                 ------------------
+                 */
+
                 NSMutableArray *removedKeys = [NSMutableArray new];
                 [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     if ([key hasPrefix:section.sectionID]) {
