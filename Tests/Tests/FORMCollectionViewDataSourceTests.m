@@ -390,7 +390,7 @@
     XCTAssertEqualObjects(dataSource.values[@"companies[0].phone_number"], @"4555666");
 }
 
-- (void)testRemovingSectionsAddedByInitialValuesC
+- (void)testRemovingSectionsAddedByInitialValuesB
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
