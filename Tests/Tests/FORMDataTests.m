@@ -12,11 +12,11 @@
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
-@interface FORMManagerTests : XCTestCase
+@interface FORMDataTests : XCTestCase
 
 @end
 
-@implementation FORMManagerTests
+@implementation FORMDataTests
 
 - (void)testFormsGeneration
 {
@@ -127,7 +127,7 @@
     [manager hideTargets:@[target]];
     section = [manager sectionWithID:@"section-2"];
     XCTAssertEqualObjects(section.position, @1);
-    
+
     target = [FORMTarget showSectionTargetWithID:@"section-1"];
     [manager showTargets:@[target]];
     section = [manager sectionWithID:@"section-2"];
@@ -338,6 +338,35 @@
     field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
 
     XCTAssertNil(field);
+}
+
+- (void)testDynamicWithInitialValues
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *data = [[FORMData alloc] initWithJSON:JSON
+                                      initialValues:@{@"companies[0].name" : @"Facebook",
+                                                      @"companies[0].phone_number" : @"1222333",
+                                                      @"companies[1].name" : @"Google"}
+                                   disabledFieldIDs:nil
+                                           disabled:NO];
+
+    FORMField *field = [data fieldWithID:@"companies[0].name" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.value, @"Facebook");
+
+    field = [data fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.value, @"1222333");
+
+    field = [data fieldWithID:@"companies[1].name" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.value, @"Google");
+
+    field = [data fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertNil(field.value);
 }
 
 @end
