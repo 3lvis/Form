@@ -108,6 +108,7 @@
     NSMutableArray *fields = [NSMutableArray new];
 
     for (FORMSection *section in self.sections) {
+        [fields addObject:[NSString stringWithFormat:@"--- Section: %@ ---", section.sectionID]];
         for (FORMField *field in section.fields) {
             [fields addObject:[NSString stringWithFormat:@"%@ --- %@ (section %@ : field %@)\n", field.fieldID, field.value, field.section.position, field.position]];
         }
