@@ -46,6 +46,10 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     if (validations && [validations count] > 0) {
         _validation = [[FORMFieldValidation alloc]
                        initWithDictionary:[dictionary andy_valueForKey:@"validations"]];
+
+        if (_validation.input) {
+            _typeString = _validation.input;
+        }
     }
 
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
