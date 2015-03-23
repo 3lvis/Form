@@ -18,11 +18,11 @@
 
 @end
 
-@interface FORMCollectionViewDataSourceTests : XCTestCase
+@interface FORMDataSourceTests : XCTestCase
 
 @end
 
-@implementation FORMCollectionViewDataSourceTests
+@implementation FORMDataSourceTests
 
 - (void)testIndexInForms
 {
