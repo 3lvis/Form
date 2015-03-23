@@ -11,6 +11,7 @@
 @property (nonatomic) NSNumber *maximumValue;
 @property (nonatomic) NSString *compareToFieldID;
 @property (nonatomic) NSString *compareRule;
+@property (nonatomic) NSString *input;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
