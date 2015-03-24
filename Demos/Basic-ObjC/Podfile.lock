@@ -1,5 +1,5 @@
 PODS:
-  - Form (2.1.3):
+  - Form (2.1.4):
     - Hex (~> 1.1.1)
     - HYPImagePicker (~> 0.3)
     - HYPMathParser (~> 0.3)
@@ -47,7 +47,7 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Form: cf579c79a5e367d7cf6df41e4cbfa12a0c6baf01
+  Form: 3d873631471a6e0d5e8f93d407be6feb286e2862
   Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
   HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
   HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16
