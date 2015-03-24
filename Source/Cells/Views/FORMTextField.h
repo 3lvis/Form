@@ -18,6 +18,19 @@ typedef NS_ENUM(NSInteger, FORMTextFieldType) {
     FORMTextFieldTypeUnknown
 };
 
+typedef NS_ENUM(NSInteger, FORMTextFieldInputType) {
+    FORMTextFieldInputTypeDefault = 0,
+    FORMTextFieldInputTypeName,
+    FORMTextFieldInputTypeUsername,
+    FORMTextFieldInputTypePhoneNumber,
+    FORMTextFieldInputTypeNumber,
+    FORMTextFieldInputTypeFloat,
+    FORMTextFieldInputTypeAddress,
+    FORMTextFieldInputTypeEmail,
+    FORMTextFieldInputTypePassword,
+    FORMTextFieldInputTypeUnknown
+};
+
 @protocol FORMTextFieldDelegate;
 
 @interface FORMTextField : UITextField
@@ -29,6 +42,8 @@ typedef NS_ENUM(NSInteger, FORMTextFieldType) {
 
 @property (nonatomic, copy) NSString *typeString;
 @property (nonatomic) FORMTextFieldType type;
+@property (nonatomic, copy) NSString *inputTypeString;
+@property (nonatomic) FORMTextFieldInputType inputType;
 
 @property (nonatomic, getter = isValid)    BOOL valid;
 @property (nonatomic, getter = isActive)   BOOL active;

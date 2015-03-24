@@ -66,12 +66,23 @@
               "subtitle":"bork\nbork\nbork",
               "type":"email",
               "size":{
-                "width":50,
+                "width":25,
                 "height":1
               },
               "validations":{
                 "format":"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}",
                 "required":true
+              }
+            },
+            {
+              "id":"phone",
+              "title":"Phone number",
+              "subtitle":"",
+              "type":"text",
+              "input_type":"number",
+              "size":{
+                "width":25,
+                "height":1
               }
             },
             {
