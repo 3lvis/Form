@@ -6,10 +6,12 @@
 #import "FORMTarget.h"
 #import "FORMClassFactory.h"
 #import "FORMValidator.h"
+#import "HYPParsedRelationship.h"
 
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
+#import "NSString+HYPRelationshipParser.h"
 
 @interface FORMGroup ()
 
@@ -146,6 +148,28 @@
     [self.sections enumerateObjectsUsingBlock:^(FORMSection *section, NSUInteger idx, BOOL *stop) {
         section.position = @(idx);
     }];
+}
+
+- (void)updateSectionsUsingRemovedSection:(FORMSection *)removedSection
+{
+    for (FORMSection *currentSection in removedSection.form.sections) {
+        if ([currentSection.position integerValue] > [removedSection.position integerValue]) {
+            NSInteger newPosition = [removedSection.position integerValue] - 1;
+            currentSection.position = @(newPosition);
+
+            HYPParsedRelationship *parsedSection = [removedSection.sectionID hyp_parseRelationship];
+            HYPParsedRelationship *parsedCurrentSection = [currentSection.sectionID hyp_parseRelationship];
+            if (parsedSection.toMany &&
+                [parsedSection.relationship isEqualToString:parsedCurrentSection.relationship]) {
+                NSInteger newRelationshipIndex = [parsedSection.index integerValue];
+                currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newRelationshipIndex];
+
+                for (FORMField *field in currentSection.fields) {
+                    field.fieldID = [field.fieldID hyp_updateRelationshipIndex:newRelationshipIndex];
+                }
+            }
+        }
+    }
 }
 
 @end

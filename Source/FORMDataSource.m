@@ -551,7 +551,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                     relationshipIndex++;
                 }
 
-                [self updateSectionPosition:section];
+                [section.form updateSectionsUsingRemovedSection:section];
 
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
@@ -861,28 +861,6 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 }
 
 #pragma mark - Private methods
-
-- (void)updateSectionPosition:(FORMSection *)section
-{
-    for (FORMSection *currentSection in section.form.sections) {
-        if ([currentSection.position integerValue] > [section.position integerValue]) {
-            NSInteger newPosition = [section.position integerValue] - 1;
-            currentSection.position = @(newPosition);
-
-            HYPParsedRelationship *parsedSection = [section.sectionID hyp_parseRelationship];
-            HYPParsedRelationship *parsedCurrentSection = [currentSection.sectionID hyp_parseRelationship];
-            if (parsedSection.toMany &&
-                [parsedSection.relationship isEqualToString:parsedCurrentSection.relationship]) {
-                NSInteger newRelationshipIndex = [parsedSection.index integerValue];
-                currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newRelationshipIndex];
-
-                for (FORMField *field in currentSection.fields) {
-                    field.fieldID = [field.fieldID hyp_updateRelationshipIndex:newRelationshipIndex];
-                }
-            }
-        }
-    }
-}
 
 - (NSDictionary *)updateValueKeys:(NSArray *)currentKeys
 {
