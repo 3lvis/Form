@@ -163,6 +163,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     self.textField.inputValidator  = [self.field inputValidator];
     self.textField.formatter       = [self.field formatter];
     self.textField.typeString      = field.typeString;
+    self.textField.inputTypeString = field.inputTypeString;
     self.textField.enabled         = !field.disabled;
     self.textField.valid           = field.valid;
     self.textField.rawText         = [self rawTextForField:field];

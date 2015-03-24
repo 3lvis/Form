@@ -19,7 +19,7 @@
     self.backgroundColor = [UIColor whiteColor];
     self.separatorInset = UIEdgeInsetsZero;
 
-    UIView *selectedBackgroundView = [[UIView alloc] init];
+    UIView *selectedBackgroundView = [UIView new];
     self.selectedBackgroundView = selectedBackgroundView;
     self.separatorInset = UIEdgeInsetsZero;
 

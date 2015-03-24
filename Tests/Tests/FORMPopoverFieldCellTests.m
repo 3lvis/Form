@@ -12,7 +12,7 @@
 
 - (void)testPopoverSelectionWithDisabledField
 {
-    FORMPopoverFieldCell *cell = [[FORMPopoverFieldCell alloc] init];
+    FORMPopoverFieldCell *cell = [FORMPopoverFieldCell new];
     FORMField *field = [FORMField contractTypeField];
 
     cell.field = field;
