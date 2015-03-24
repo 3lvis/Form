@@ -37,10 +37,6 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _type = [self typeFromTypeString:self.typeString];
     _inputType = [dictionary andy_valueForKey:@"input_type"];
 
-    if (_inputType) {
-        _typeString = _inputType;
-    }
-
     NSNumber *width = [dictionary andy_valueForKey:@"size.width"];
     NSNumber *height = [dictionary andy_valueForKey:@"size.height"];
     if (!height || !width) abort();
