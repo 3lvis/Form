@@ -117,7 +117,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
         case FORMFieldTypeDate: {
             if ([fieldValue isKindOfClass:[NSString class]]) {
-                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                NSDateFormatter *formatter = [NSDateFormatter new];
                 [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"];
                 resultValue = [formatter dateFromString:fieldValue];
             }
@@ -169,9 +169,9 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     SEL selector = NSSelectorFromString(FORMInputValidatorSelector);
 
     if (fieldValidator && [fieldValidator instanceMethodForSelector:selector]) {
-        inputValidator = [[fieldValidator alloc] init];
+        inputValidator = [fieldValidator new];
     } else if (typeValidator && [typeValidator instanceMethodForSelector:selector]) {
-        inputValidator = [[typeValidator alloc] init];
+        inputValidator = [typeValidator new];
     }
 
     if (inputValidator) {
@@ -195,9 +195,9 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     SEL selector = NSSelectorFromString(FORMFormatterSelector);
 
     if (fieldFormatter && [fieldFormatter instanceMethodForSelector:selector]) {
-        formatter = [[fieldFormatter alloc] init];
+        formatter = [fieldFormatter new];
     } else if (typeFormatter && [typeFormatter instanceMethodForSelector:selector]) {
-        formatter = [[typeFormatter alloc] init];
+        formatter = [typeFormatter new];
     }
 
     return formatter;
