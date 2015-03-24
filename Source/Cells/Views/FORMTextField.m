@@ -184,7 +184,7 @@ static BOOL enabledProperty;
 {
     _inputType = inputType;
 
-    FORMTextFieldTypeManager *typeManager = [[FORMTextFieldTypeManager alloc] init];
+    FORMTextFieldTypeManager *typeManager = [FORMTextFieldTypeManager new];
     [typeManager setUpType:inputType forTextField:self];
 }
 
