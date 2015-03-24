@@ -7,12 +7,15 @@
 #import "FORMTarget.h"
 #import "DDMathParser.h"
 #import "FORMFieldValidation.h"
+#import "HYPParsedRelationship.h"
 
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPContainsString.h"
 #import "DDMathEvaluator+FORM.h"
+#import "NSString+HYPRelationshipParser.h"
+#import "NSDictionary+HYPNestedAttributes.h"
 
 @interface FORMData ()
 
@@ -488,6 +491,52 @@
     }
 
     if (completion) completion(foundField, indexPath);
+}
+
+- (void)removeSection:(FORMSection *)removedSection
+           completion:(void (^)(NSArray *indexPaths))completion
+{
+    NSMutableArray *removedKeys = [NSMutableArray new];
+    [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+        if ([key hasPrefix:removedSection.sectionID]) {
+            [removedKeys addObject:key];
+        }
+    }];
+
+    NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
+    HYPParsedRelationship *parsed = [removedSection.sectionID hyp_parseRelationship];
+    NSArray *removedElements = [removedAttributesJSON objectForKey:parsed.relationship];
+    NSInteger index = removedElements.count;
+    for (NSString *removedKey in removedKeys) {
+        NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:index];
+        [self.removedValues setValue:self.values[removedKey] forKey:newRemovedKey];
+        [self.values removeObjectForKey:removedKey];
+    }
+
+    NSDictionary *attributesJSON = [self.values hyp_JSONNestedAttributes];
+    [self.values removeAllObjects];
+
+    NSArray *elements = [attributesJSON objectForKey:parsed.relationship];
+    NSInteger relationshipIndex = 0;
+
+    for (NSDictionary *element in elements) {
+        for (NSString *key in element) {
+            NSString *relationshipKey = [NSString stringWithFormat:@"%@[%ld].%@", parsed.relationship, (long)relationshipIndex, key];
+            self.values[relationshipKey] = element[key];
+        }
+        relationshipIndex++;
+    }
+
+    [removedSection.form updateSectionsUsingRemovedSection:removedSection];
+
+    FORMGroup *group = removedSection.form;
+    [group.sections removeObject:removedSection];
+
+    NSArray *removedIndexPaths = @[];
+
+    if (completion) {
+        completion(removedIndexPaths);
+    }
 }
 
 - (FORMField *)hiddenFieldWithFieldID:(NSString *)fieldID

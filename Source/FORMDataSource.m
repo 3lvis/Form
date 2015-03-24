@@ -518,44 +518,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             HYPParsedRelationship *parsed = [field.fieldID hyp_parseRelationship];
             parsed.attribute = nil;
             NSString *sectionID = [parsed key];
-            [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
-
-                NSMutableArray *removedKeys = [NSMutableArray new];
-                [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
-                    if ([key hasPrefix:section.sectionID]) {
-                        [removedKeys addObject:key];
-                    }
-                }];
-
-                NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
-                HYPParsedRelationship *parsed = [section.sectionID hyp_parseRelationship];
-                NSArray *removedElements = [removedAttributesJSON objectForKey:parsed.relationship];
-                NSInteger index = removedElements.count;
-                for (NSString *removedKey in removedKeys) {
-                    NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:index];
-                    [self.formsManager.removedValues setValue:self.values[removedKey] forKey:newRemovedKey];
-                    [self.formsManager.values removeObjectForKey:removedKey];
-                }
-
-                NSDictionary *attributesJSON = [self.values hyp_JSONNestedAttributes];
-                [self.formsManager.values removeAllObjects];
-
-                NSArray *elements = [attributesJSON objectForKey:parsed.relationship];
-                NSInteger relationshipIndex = 0;
-
-                for (NSDictionary *element in elements) {
-                    for (NSString *key in element) {
-                        NSString *relationshipKey = [NSString stringWithFormat:@"%@[%ld].%@", parsed.relationship, (long)relationshipIndex, key];
-                        self.formsManager.values[relationshipKey] = element[key];
-                    }
-                    relationshipIndex++;
-                }
-
-                [section.form updateSectionsUsingRemovedSection:section];
-
-                FORMGroup *group = section.form;
-                [group.sections removeObject:section];
-
+            FORMSection *section = [self.formsManager sectionWithID:sectionID];
+            [self.formsManager removeSection:section completion:^(NSArray *indexPaths) {
                 if (indexPaths) {
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                 }
