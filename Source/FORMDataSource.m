@@ -537,20 +537,12 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                     [self.formsManager.values removeObjectForKey:removedKey];
                 }
 
-                NSMutableArray *updatedKeys = [NSMutableArray new];
-                [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
-                    if ([key hasPrefix:section.sectionID]) {
-                        [updatedKeys addObject:key];
-                    }
-                }];
-
-                for (NSString *updatedKey in updatedKeys) {
-                    [self.formsManager.values removeObjectForKey:updatedKey];
-                }
-
                 NSDictionary *attributesJSON = [self.values hyp_JSONNestedAttributes];
+                [self.formsManager.values removeAllObjects];
+
                 NSArray *elements = [attributesJSON objectForKey:parsed.relationship];
                 NSInteger relationshipIndex = 0;
+
                 for (NSDictionary *element in elements) {
                     for (NSString *key in element) {
                         NSString *relationshipKey = [NSString stringWithFormat:@"%@[%ld].%@", parsed.relationship, (long)relationshipIndex, key];
@@ -559,14 +551,14 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                     relationshipIndex++;
                 }
 
+                [self updateSectionPosition:section];
+
                 FORMGroup *group = section.form;
                 [group.sections removeObject:section];
 
                 if (indexPaths) {
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                 }
-
-                [self updateSectionPosition:section];
             }];
         }
     }
@@ -874,12 +866,14 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 {
     for (FORMSection *currentSection in section.form.sections) {
         if ([currentSection.position integerValue] > [section.position integerValue]) {
-            NSInteger newPosition = [currentSection.position integerValue] - 1;
+            NSInteger newPosition = [section.position integerValue] - 1;
             currentSection.position = @(newPosition);
 
-            HYPParsedRelationship *parsedSection = [currentSection.sectionID hyp_parseRelationship];
-            if (parsedSection.toMany) {
-                NSInteger newRelationshipIndex = [parsedSection.index integerValue] - 1;
+            HYPParsedRelationship *parsedSection = [section.sectionID hyp_parseRelationship];
+            HYPParsedRelationship *parsedCurrentSection = [currentSection.sectionID hyp_parseRelationship];
+            if (parsedSection.toMany &&
+                [parsedSection.relationship isEqualToString:parsedCurrentSection.relationship]) {
+                NSInteger newRelationshipIndex = [parsedSection.index integerValue];
                 currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newRelationshipIndex];
 
                 for (FORMField *field in currentSection.fields) {
