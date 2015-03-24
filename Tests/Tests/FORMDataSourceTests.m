@@ -437,6 +437,11 @@
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
+
+    XCTAssertTrue(dataSource.values.count == 2);
+    XCTAssertEqualObjects(dataSource.values[@"companies[0].name"], @"Google");
+    XCTAssertEqualObjects(dataSource.values[@"companies[0].phone_number"], @"4555666");
+
     XCTAssertTrue(dataSource.removedValues.count == 2);
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].name"], @"Facebook");
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].phone_number"], @"1222333");
