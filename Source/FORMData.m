@@ -200,7 +200,7 @@
                             FORMField *field = [self fieldWithID:valueID includingHiddenFields:YES];
                             field.value = [self.values objectForKey:valueID];
                         } else {
-                            [self insertTemplateSectionWithID:sectionTemplateID intoCollectionView:nil usingForm:form valueID:valueID];
+                            [self insertTemplateSectionWithID:sectionTemplateID intoCollectionView:nil usingForm:form];
                         }
                     }
                 }
@@ -902,11 +902,6 @@
 
 - (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form
 {
-    [self insertTemplateSectionWithID:sectionTemplateID intoCollectionView:collectionView usingForm:form valueID:nil];
-}
-
-- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form valueID:(NSString *)valueID
-{
     FORMSection *foundSection;
     for (FORMSection *aSection in form.sections) {
         if ([aSection.sectionID isEqualToString:sectionTemplateID]) {
@@ -952,10 +947,8 @@
                                                          isLastSection:YES];
         section.form = form;
 
-        if (valueID) {
-            for (FORMField *field in section.fields) {
-                field.value = [self.values objectForKey:valueID];
-            }
+        for (FORMField *field in section.fields) {
+            field.value = [self.values andy_valueForKey:field.fieldID];
         }
 
         NSInteger sectionIndex = [section.position integerValue];
