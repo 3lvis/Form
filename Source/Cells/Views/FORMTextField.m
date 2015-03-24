@@ -148,12 +148,44 @@ static BOOL enabledProperty;
     self.type = type;
 }
 
-- (void)setType:(FORMTextFieldType)type
+- (void)setInputTypeString:(NSString *)inputTypeString
 {
-    _type = type;
+    _inputTypeString = inputTypeString;
+
+    FORMTextFieldInputType inputType;
+    if ([inputTypeString isEqualToString:@"name"]) {
+        inputType = FORMTextFieldInputTypeName;
+    } else if ([inputTypeString isEqualToString:@"username"]) {
+        inputType = FORMTextFieldInputTypeUsername;
+    } else if ([inputTypeString isEqualToString:@"phone"]) {
+        inputType = FORMTextFieldInputTypePhoneNumber;
+    } else if ([inputTypeString isEqualToString:@"number"]) {
+        inputType = FORMTextFieldInputTypeNumber;
+    } else if ([inputTypeString isEqualToString:@"float"]) {
+        inputType = FORMTextFieldInputTypeFloat;
+    } else if ([inputTypeString isEqualToString:@"address"]) {
+        inputType = FORMTextFieldInputTypeAddress;
+    } else if ([inputTypeString isEqualToString:@"email"]) {
+        inputType = FORMTextFieldInputTypeEmail;
+    } else if ([inputTypeString isEqualToString:@"text"]) {
+        inputType = FORMTextFieldInputTypeDefault;
+    } else if ([inputTypeString isEqualToString:@"password"]) {
+        inputType = FORMTextFieldInputTypePassword;
+    } else if (!inputTypeString.length) {
+        inputType = FORMTextFieldInputTypeDefault;
+    } else {
+        inputType = FORMTextFieldInputTypeUnknown;
+    }
+
+    self.inputType = inputType;
+}
+
+- (void)setInputType:(FORMTextFieldInputType)inputType
+{
+    _inputType = inputType;
 
     FORMTextFieldTypeManager *typeManager = [[FORMTextFieldTypeManager alloc] init];
-    [typeManager setUpType:type forTextField:self];
+    [typeManager setUpType:inputType forTextField:self];
 }
 
 #pragma mark - Getters

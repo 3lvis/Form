@@ -2,25 +2,20 @@
 
 @implementation FORMTextFieldTypeManager
 
-- (void)setUpType:(FORMTextFieldType)type forTextField:(UITextField *)textField
+- (void)setUpType:(FORMTextFieldInputType)type forTextField:(UITextField *)textField
 {
     switch (type) {
-        case FORMTextFieldTypeDefault     : [self setupDefaultTextField:textField]; break;
-        case FORMTextFieldTypeName        : [self setupNameTextField:textField]; break;
-        case FORMTextFieldTypeUsername    : [self setupUsernameTextField:textField]; break;
-        case FORMTextFieldTypePhoneNumber : [self setupPhoneNumberTextField:textField]; break;
-        case FORMTextFieldTypeNumber      : [self setupNumberTextField:textField]; break;
-        case FORMTextFieldTypeFloat       : [self setupNumberTextField:textField]; break;
-        case FORMTextFieldTypeAddress     : [self setupAddressTextField:textField]; break;
-        case FORMTextFieldTypeEmail       : [self setupEmailTextField:textField]; break;
-        case FORMTextFieldTypePassword    : [self setupPasswordTextField:textField]; break;
+        case FORMTextFieldInputTypeDefault     : [self setupDefaultTextField:textField]; break;
+        case FORMTextFieldInputTypeName        : [self setupNameTextField:textField]; break;
+        case FORMTextFieldInputTypeUsername    : [self setupUsernameTextField:textField]; break;
+        case FORMTextFieldInputTypePhoneNumber : [self setupPhoneNumberTextField:textField]; break;
+        case FORMTextFieldInputTypeNumber      : [self setupNumberTextField:textField]; break;
+        case FORMTextFieldInputTypeFloat       : [self setupNumberTextField:textField]; break;
+        case FORMTextFieldInputTypeAddress     : [self setupAddressTextField:textField]; break;
+        case FORMTextFieldInputTypeEmail       : [self setupEmailTextField:textField]; break;
+        case FORMTextFieldInputTypePassword    : [self setupPasswordTextField:textField]; break;
 
-        case FORMTextFieldTypeSelect:
-        case FORMTextFieldTypeDate:
-            [self setupDefaultTextField:textField];
-            break;
-
-        case FORMTextFieldTypeUnknown:
+        case FORMTextFieldInputTypeUnknown:
             abort();
     }
 }

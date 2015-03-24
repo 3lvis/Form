@@ -5,6 +5,6 @@
 
 @interface FORMTextFieldTypeManager : NSObject
 
-- (void)setUpType:(FORMTextFieldType)type forTextField:(UITextField *)textField;
+- (void)setUpType:(FORMTextFieldInputType)type forTextField:(UITextField *)textField;
 
 @end
