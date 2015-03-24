@@ -518,8 +518,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             HYPParsedRelationship *parsed = [field.fieldID hyp_parseRelationship];
             parsed.attribute = nil;
             NSString *sectionID = [parsed key];
-            FORMSection *section = [self.formsManager sectionWithID:sectionID];
-            [self.formsManager removeSection:section completion:^(NSArray *indexPaths) {
+            [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
+                [self.formsManager removeSection:section];
+
                 if (indexPaths) {
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                 }

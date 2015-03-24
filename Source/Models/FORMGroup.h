@@ -23,6 +23,5 @@
 - (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections;
 - (void)removeSection:(FORMSection *)section;
 - (void)resetSectionPositions;
-- (void)updateSectionsUsingRemovedSection:(FORMSection *)removedSection;
 
 @end

@@ -494,7 +494,6 @@
 }
 
 - (void)removeSection:(FORMSection *)removedSection
-           completion:(void (^)(NSArray *indexPaths))completion
 {
     NSMutableArray *removedKeys = [NSMutableArray new];
     [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
@@ -527,16 +526,27 @@
         relationshipIndex++;
     }
 
-    [removedSection.form updateSectionsUsingRemovedSection:removedSection];
+    for (FORMSection *currentSection in removedSection.form.sections) {
+        if ([currentSection.position integerValue] > [removedSection.position integerValue]) {
+            NSInteger newPosition = [removedSection.position integerValue] - 1;
+            currentSection.position = @(newPosition);
+
+            HYPParsedRelationship *parsedSection = [removedSection.sectionID hyp_parseRelationship];
+            HYPParsedRelationship *parsedCurrentSection = [currentSection.sectionID hyp_parseRelationship];
+            if (parsedSection.toMany &&
+                [parsedSection.relationship isEqualToString:parsedCurrentSection.relationship]) {
+                NSInteger newRelationshipIndex = [parsedSection.index integerValue];
+                currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newRelationshipIndex];
+
+                for (FORMField *field in currentSection.fields) {
+                    field.fieldID = [field.fieldID hyp_updateRelationshipIndex:newRelationshipIndex];
+                }
+            }
+        }
+    }
 
     FORMGroup *group = removedSection.form;
     [group.sections removeObject:removedSection];
-
-    NSArray *removedIndexPaths = @[];
-
-    if (completion) {
-        completion(removedIndexPaths);
-    }
 }
 
 - (FORMField *)hiddenFieldWithFieldID:(NSString *)fieldID
