@@ -466,22 +466,32 @@
                                                                values:nil
                                                              disabled:YES];
 
+    FORMSection *section = [dataSource sectionWithID:@"companies"];
+    XCTAssertEqualObjects(section.position, @0);
+
+    section = [dataSource sectionWithID:@"personal-details-0"];
+    XCTAssertEqualObjects(section.position, @1);
+
     FORMField *addField = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
     XCTAssertNotNil(addField);
 
     [dataSource fieldCell:nil updatedWithField:addField];
 
-    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:NO];
-    XCTAssertNotNil(removeField);
-
-    FORMSection *section = [dataSource sectionWithID:@"companies[0]"];
+    section = [dataSource sectionWithID:@"companies[0]"];
     XCTAssertNotNil(section);
     XCTAssertEqualObjects(section.position, @1);
 
+    section = [dataSource sectionWithID:@"personal-details-0"];
+    XCTAssertEqualObjects(section.position, @2);
+    XCTAssertNotNil(section);
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:NO];
+    XCTAssertNotNil(removeField);
+
     [dataSource fieldCell:nil updatedWithField:removeField];
 
-    section = [dataSource sectionWithID:@"personal-details-1"];
-    XCTAssertEqualObjects(section.position, @2);
+    section = [dataSource sectionWithID:@"personal-details-0"];
+    XCTAssertEqualObjects(section.position, @1);
     XCTAssertNotNil(section);
 }
 
