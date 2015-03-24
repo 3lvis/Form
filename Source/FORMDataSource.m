@@ -877,10 +877,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             NSInteger newPosition = [currentSection.position integerValue] - 1;
             currentSection.position = @(newPosition);
 
-            HYPParsedRelationship *parsedSection = [section.sectionID hyp_parseRelationship];
-            HYPParsedRelationship *parsedCurrentSection = [currentSection.sectionID hyp_parseRelationship];
-            if (parsedSection.toMany &&
-                [parsedSection.relationship isEqualToString:parsedCurrentSection.relationship]) {
+            HYPParsedRelationship *parsedSection = [currentSection.sectionID hyp_parseRelationship];
+            if (parsedSection.toMany) {
                 NSInteger newRelationshipIndex = [parsedSection.index integerValue] - 1;
                 currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newRelationshipIndex];
 
