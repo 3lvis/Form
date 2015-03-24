@@ -79,12 +79,10 @@
               "title":"Phone number",
               "subtitle":"",
               "type":"text",
+              "input_type":"number",
               "size":{
                 "width":25,
                 "height":1
-              },
-              "validations":{
-                "input" : "phone"
               }
             },
             {

@@ -35,6 +35,12 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _subtitle = [dictionary andy_valueForKey:@"subtitle"];
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _type = [self typeFromTypeString:self.typeString];
+    _inputType = [dictionary andy_valueForKey:@"input_type"];
+
+    if (_inputType) {
+        _typeString = _inputType;
+    }
+
     NSNumber *width = [dictionary andy_valueForKey:@"size.width"];
     NSNumber *height = [dictionary andy_valueForKey:@"size.height"];
     if (!height || !width) abort();
@@ -46,10 +52,6 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     if (validations && [validations count] > 0) {
         _validation = [[FORMFieldValidation alloc]
                        initWithDictionary:[dictionary andy_valueForKey:@"validations"]];
-
-        if (_validation.input) {
-            _typeString = _validation.input;
-        }
     }
 
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
