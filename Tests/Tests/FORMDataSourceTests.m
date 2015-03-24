@@ -448,6 +448,8 @@
 
     removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
+
+    XCTAssertTrue(dataSource.values.count == 0);
     XCTAssertTrue(dataSource.removedValues.count == 4);
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[1].name"], @"Google");
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[1].phone_number"], @"4555666");
