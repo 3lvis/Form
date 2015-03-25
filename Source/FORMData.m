@@ -513,7 +513,15 @@
     }
 
     NSDictionary *attributesJSON = [self.values hyp_JSONNestedAttributes];
-    [self.values removeAllObjects];
+
+    NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
+    [[self.values copy] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([key containsString:@"]."]) {
+            [removedRelationshipKeys addObject:key];
+        }
+    }];
+
+    [self.values removeObjectsForKeys:removedRelationshipKeys];
 
     NSArray *elements = [attributesJSON objectForKey:parsed.relationship];
     NSInteger relationshipIndex = 0;
@@ -547,8 +555,6 @@
                 field.fieldID = [field.fieldID hyp_updateRelationshipIndex:newRelationshipIndex];
             }
             relationshipIndex++;
-        } else {
-            relationshipIndex = 0;
         }
     }
 }
