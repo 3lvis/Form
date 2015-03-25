@@ -240,17 +240,13 @@
 
 - (void)readOnly:(UISwitch *)sender
 {
-    if (sender.isOn) {
-        [self.dataSource disable];
-    } else {
-        [self.dataSource enable];
-    }
-
     FORMTarget *target;
 
     if (sender.isOn) {
+        [self.dataSource disable];
         target = [FORMTarget disableFieldTargetWithID:@"image"];
     } else {
+        [self.dataSource enable];
         target = [FORMTarget enableFieldTargetWithID:@"image"];
     }
 
