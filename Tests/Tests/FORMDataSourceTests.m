@@ -11,6 +11,7 @@
 #import "FORMImageFormFieldCell.h"
 
 #import "NSJSONSerialization+ANDYJSONFile.h"
+#import "NSDictionary+HYPImmutable.h"
 
 @interface FORMDataSource ()
 
@@ -348,17 +349,7 @@
     section = form.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
-    NSMutableArray *keysForNullValues = [NSMutableArray new];
-    [dataSource.values enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if ([obj isKindOfClass:[NSNull class]]) {
-            [keysForNullValues addObject:key];
-        }
-    }];
-
-    NSMutableDictionary *values = [dataSource.values mutableCopy];
-    [values removeObjectsForKeys:keysForNullValues];
-
-    XCTAssertEqualObjects([values copy], initialValues);
+    XCTAssertEqualObjects([dataSource.values hyp_dictionaryByRemovingNullItems], initialValues);
 }
 
 #pragma mark - processTarget
