@@ -61,4 +61,6 @@
 
 - (void)resetRemovedValues;
 
+- (NSArray *)removedSectionsUsingInitialValues:(NSDictionary *)dictionary;
+
 @end

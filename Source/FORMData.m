@@ -506,6 +506,7 @@
             [removedKeys addObject:key];
         }
     }];
+
     for (NSString *removedKey in removedKeys) {
         NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:removedElementsCount];
         [self.removedValues setValue:self.values[removedKey] forKey:newRemovedKey];
@@ -516,7 +517,8 @@
 
     NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
     [[self.values copy] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if ([key hyp_containsString:@"]."]) {
+        HYPParsedRelationship *currentParsed = [key hyp_parseRelationship];
+        if ([parsed.relationship isEqualToString:currentParsed.relationship]) {
             [removedRelationshipKeys addObject:key];
         }
     }];
@@ -1069,6 +1071,33 @@
 - (void)resetRemovedValues
 {
     self.removedValues = [NSMutableDictionary new];
+}
+
+- (NSArray *)removedSectionsUsingInitialValues:(NSDictionary *)dictionary
+{
+    NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
+    NSDictionary *existingValues = [self.values copy];
+
+    for (NSString *key in existingValues) {
+        if (![dictionary andy_valueForKey:key]) {
+            HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+            if (parsed.toMany) {
+                [removedRelationshipKeys addObject:key];
+            }
+        }
+    }
+
+    NSMutableArray *removedSections = [NSMutableArray new];
+    for (NSString *key in removedRelationshipKeys) {
+        HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+        parsed.attribute = nil;
+        FORMSection *section = [self sectionWithID:[parsed key]];
+        if (section) {
+            [removedSections addObject:section];
+        }
+    }
+
+    return [removedSections copy];
 }
 
 @end
