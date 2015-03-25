@@ -398,6 +398,31 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
+    [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
+
+    NSMutableArray *updatedIndexPaths = [NSMutableArray new];
+    NSMutableArray *targets = [NSMutableArray new];
+
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
+        [self.formsManager fieldWithID:key includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
+            BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
+
+            if (field) {
+                field.value = (shouldBeNil) ? nil : value;
+                if (indexPath) [updatedIndexPaths addObject:indexPath];
+                [targets addObjectsFromArray:[field safeTargets]];
+            } else {
+                field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
+                if (field) field.value = (shouldBeNil) ? nil : value;
+            }
+        }];
+    }];
+
+    [self processTargets:targets];
+}
+
+- (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary
+{
     NSMutableDictionary *insertedValues = [NSMutableDictionary new];
 
     for (NSString *key in dictionary) {

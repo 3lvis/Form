@@ -195,7 +195,9 @@
     XCTAssertEqualObjects(field.value, @"Elvis Nunez");
 }
 
-- (void)testReloadWithDictionaryDynamicA
+#pragma mark - testResetDynamicSectionsWithDictionary
+
+- (void)testResetDynamicSectionsWithDictionaryA
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
@@ -229,7 +231,7 @@
     XCTAssertEqualObjects([dataSource.removedValues valueForKey:@"companies[0].name"], @"Facebook");
     XCTAssertEqualObjects([dataSource.removedValues valueForKey:@"companies[0].phone_number"], @"1222333");
 
-    [dataSource reloadWithDictionary:initialValues];
+    [dataSource resetDynamicSectionsWithDictionary:initialValues];
 
     form = dataSource.forms[0];
     XCTAssertEqual(form.sections.count, 5);
@@ -238,7 +240,7 @@
     XCTAssertEqualObjects(dataSource.values, initialValues);
 }
 
-- (void)testReloadWithDictionaryDynamicB
+- (void)testResetDynamicSectionsWithDictionaryB
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
@@ -264,7 +266,7 @@
     form = dataSource.forms[0];
     XCTAssertEqual(form.sections.count, 7);
 
-    [dataSource reloadWithDictionary:initialValues];
+    [dataSource resetDynamicSectionsWithDictionary:initialValues];
 
     form = dataSource.forms[0];
     XCTAssertEqual(form.sections.count, 5);

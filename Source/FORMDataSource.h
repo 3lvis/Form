@@ -47,6 +47,7 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (void)processTargets:(NSArray *)targets;
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary;
+- (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary;
 - (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
 
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths;
