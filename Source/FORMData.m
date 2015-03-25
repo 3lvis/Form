@@ -1075,23 +1075,30 @@
 
 - (NSArray *)removedSectionsUsingInitialValues:(NSDictionary *)dictionary
 {
-    NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
-    NSDictionary *existingValues = [self.values copy];
-
-    for (NSString *key in existingValues) {
-        if (![dictionary andy_valueForKey:key]) {
-            HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+    NSMutableSet *currentSectionIDs = [NSMutableSet new];
+    for (FORMGroup *group in self.forms) {
+        for (FORMSection *section in group.sections) {
+            HYPParsedRelationship *parsed = [section.sectionID hyp_parseRelationship];
             if (parsed.toMany) {
-                [removedRelationshipKeys addObject:key];
+                [currentSectionIDs addObject:[parsed key]];
             }
         }
     }
 
-    NSMutableArray *removedSections = [NSMutableArray new];
-    for (NSString *key in removedRelationshipKeys) {
+    NSMutableSet *existingSectionIDs = [NSMutableSet new];
+    for (NSString *key in dictionary) {
         HYPParsedRelationship *parsed = [key hyp_parseRelationship];
-        parsed.attribute = nil;
-        FORMSection *section = [self sectionWithID:[parsed key]];
+        if (parsed.toMany) {
+            parsed.attribute = nil;
+            [existingSectionIDs addObject:[parsed key]];
+        }
+    }
+
+    [currentSectionIDs intersectSet:existingSectionIDs];
+    NSArray *removedSectionIDs = [currentSectionIDs allObjects];
+    NSMutableArray *removedSections = [NSMutableArray new];
+    for (NSString *key in removedSectionIDs) {
+        FORMSection *section = [self sectionWithID:key];
         if (section) {
             [removedSections addObject:section];
         }
