@@ -949,7 +949,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         if ([obj isKindOfClass:[NSArray class]]) {
             FORMSection *section = [self sectionWithID:key];
             for (NSInteger numberOfSections = 0; numberOfSections < [obj count]; numberOfSections++) {
-                [self.formsManager insertTemplateSectionWithID:key intoCollectionView:self.collectionView usingForm:section.form];
+                [self.formsManager insertTemplateSectionWithID:key
+                                            intoCollectionView:self.collectionView
+                                                     usingForm:section.form];
             }
         }
     }];
