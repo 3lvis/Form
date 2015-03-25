@@ -1018,6 +1018,11 @@
 
         for (FORMField *field in section.fields) {
             field.value = [self.values andy_valueForKey:field.fieldID];
+            BOOL isValidField = (![field.fieldID hyp_containsString:@".remove"]);
+            if (isValidField) {
+                id value = (field.value) ?: [NSNull null];
+                self.values[field.fieldID] = value;
+            }
         }
 
         NSInteger sectionIndex = [section.position integerValue];
