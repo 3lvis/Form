@@ -175,6 +175,8 @@
     XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
 }
 
+#pragma mark - reloadWithDictionary
+
 - (void)testReloadWithDictionary
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
@@ -192,6 +194,51 @@
     FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.value, @"Elvis Nunez");
 }
+
+- (void)testReloadWithDictionaryDynamic
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    NSDictionary *initialValues = @{@"email" : @"hi@there.com",
+                                    @"companies[0].name" : @"Facebook",
+                                    @"companies[0].phone_number" : @"1222333"};
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:initialValues
+                                                             disabled:NO];
+
+    FORMGroup *form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 5);
+    FORMSection *section = form.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"companies[0]");
+    XCTAssertEqualObjects(dataSource.values, initialValues);
+    XCTAssertEqual(dataSource.removedValues.count, 0);
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 4);
+    section = form.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"personal-details-0");
+    XCTAssertNil([dataSource.values valueForKey:@"companies[0].name"]);
+    XCTAssertNil([dataSource.values valueForKey:@"companies[0].phone_number"]);
+    XCTAssertEqualObjects([dataSource.removedValues valueForKey:@"companies[0].name"], @"Facebook");
+    XCTAssertEqualObjects([dataSource.removedValues valueForKey:@"companies[0].phone_number"], @"1222333");
+
+    [dataSource reloadWithDictionary:initialValues];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 5);
+    section = form.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"companies[0]");
+    XCTAssertEqualObjects(dataSource.values, initialValues);
+}
+
+#pragma mark - processTarget
 
 - (void)testClearTarget
 {
