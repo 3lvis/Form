@@ -439,7 +439,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     for (NSString *key in dictionary) {
         if (![self.formsManager.values andy_valueForKey:key]) {
-            [insertedValues addEntriesFromDictionary:@{key : dictionary[key]}];
+            if (![dictionary[key] isKindOfClass:[NSNull class]]) {
+                [insertedValues addEntriesFromDictionary:@{key : dictionary[key]}];
+            }
         }
     }
 
