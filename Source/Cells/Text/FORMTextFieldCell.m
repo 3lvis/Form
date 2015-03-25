@@ -2,6 +2,7 @@
 
 #import "FORMSubtitleView.h"
 
+static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMSubtitleViewMinimumWidth = 90.0f;
 static const CGFloat FORMSubtitleViewHeight = 44.0f;
 static const NSInteger FORMSubtitleNumberOfLines = 4;
