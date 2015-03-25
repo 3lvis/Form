@@ -121,14 +121,15 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     return self.formsManager.forms.count;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
 {
     FORMGroup *form = self.formsManager.forms[section];
     if ([self.collapsedForms containsObject:@(section)]) {
         return 0;
+    } else {
+        return [form numberOfFields:self.formsManager.hiddenSections];
     }
-
-    return [form numberOfFields:self.formsManager.hiddenSections];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -140,7 +141,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     if (self.configureCellForIndexPath) {
         id configuredCell = self.configureCellForIndexPath(field, collectionView, indexPath);
-        if (configuredCell) return configuredCell;
+        if (configuredCell) {
+            return configuredCell;
+        }
     }
 
     NSString *identifier;
@@ -250,7 +253,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         [self.collectionView performBatchUpdates:^{
             [self.collectionView insertItemsAtIndexPaths:reloadedIndexPaths];
         } completion:^(BOOL finished) {
-            if (finished) [self.collectionView reloadData];
+            if (finished) {
+                [self.collectionView reloadData];
+            }
         }];
     }
 }
@@ -290,6 +295,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     if (indexPath.row < fields.count) {
         field = fields[indexPath.row];
     }
+
     if (field.sectionSeparator) {
         width = deviceWidth;
         height = FORMFieldCellItemSmallHeight;
@@ -419,7 +425,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
             if (field) {
                 field.value = (shouldBeNil) ? nil : value;
-                if (indexPath) [updatedIndexPaths addObject:indexPath];
+                if (indexPath) {
+                    [updatedIndexPaths addObject:indexPath];
+                }
                 [targets addObjectsFromArray:[field safeTargets]];
             } else {
                 field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
@@ -472,11 +480,15 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
             if (field) {
                 field.value = (shouldBeNil) ? nil : value;
-                if (indexPath) [updatedIndexPaths addObject:indexPath];
+                if (indexPath) {
+                    [updatedIndexPaths addObject:indexPath];
+                }
                 [targets addObjectsFromArray:[field safeTargets]];
             } else {
                 field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
-                if (field) field.value = (shouldBeNil) ? nil : value;
+                if (field) {
+                    field.value = (shouldBeNil) ? nil : value;
+                }
             }
         }];
     }];
@@ -605,7 +617,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             self.formsManager.values[field.fieldID] = field.value;
         }
 
-        if (field.value && [field.value isKindOfClass:[FORMFieldValue class]]) {
+        BOOL hasFieldValue = (field.value && [field.value isKindOfClass:[FORMFieldValue class]]);
+        if (hasFieldValue) {
             FORMFieldValue *fieldValue = field.value;
             [self processTargets:fieldValue.targets];
         } else if (field.targets.count > 0) {
@@ -617,7 +630,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 - (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets
 {
     NSTimeInterval delay = ([NSObject isUnitTesting]) ? FORMDispatchTime : 0.0f;
-    [self performSelector:@selector(processTargets:) withObject:targets afterDelay:delay];
+    [self performSelector:@selector(processTargets:)
+               withObject:targets
+               afterDelay:delay];
 }
 
 #pragma mark - Targets Procesing
@@ -654,7 +669,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (NSArray *)sortTargets:(NSArray *)targets
 {
-    NSSortDescriptor *sortByTypeString = [NSSortDescriptor sortDescriptorWithKey:@"typeString" ascending:YES];
+    NSSortDescriptor *sortByTypeString = [NSSortDescriptor sortDescriptorWithKey:@"typeString"
+                                                                       ascending:YES];
     NSArray *sortedTargets = [targets sortedArrayUsingDescriptors:@[sortByTypeString]];
 
     return sortedTargets;
