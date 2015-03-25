@@ -347,7 +347,18 @@
     XCTAssertEqual(form.sections.count, 8);
     section = form.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
-    XCTAssertEqualObjects(dataSource.values, initialValues);
+
+    NSMutableArray *keysForNullValues = [NSMutableArray new];
+    [dataSource.values enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([obj isKindOfClass:[NSNull class]]) {
+            [keysForNullValues addObject:key];
+        }
+    }];
+
+    NSMutableDictionary *values = [dataSource.values mutableCopy];
+    [values removeObjectsForKeys:keysForNullValues];
+
+    XCTAssertEqualObjects([values copy], initialValues);
 }
 
 #pragma mark - processTarget
