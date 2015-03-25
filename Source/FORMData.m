@@ -1094,7 +1094,7 @@
         }
     }
 
-    [currentSectionIDs intersectSet:existingSectionIDs];
+    [currentSectionIDs minusSet:existingSectionIDs];
     NSArray *removedSectionIDs = [currentSectionIDs allObjects];
     NSMutableArray *removedSections = [NSMutableArray new];
     for (NSString *key in removedSectionIDs) {
