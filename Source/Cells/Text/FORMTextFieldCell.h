@@ -3,7 +3,6 @@
 #import "FORMBaseFieldCell.h"
 
 static NSString * const FORMResignFirstResponderNotification = @"FORMResignFirstResponderNotification";
-static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static NSString * const FORMDismissTooltipNotification = @"FORMDismissTooltipNotification";
 static NSString * const FORMTextFieldCellIdentifier = @"FORMTextFieldCellIdentifier";
 
