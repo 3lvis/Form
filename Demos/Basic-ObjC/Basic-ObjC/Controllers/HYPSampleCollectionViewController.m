@@ -86,13 +86,15 @@
         BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
 
         if (shouldUpdateStartDate) {
-            [weakSelf.dataSource fieldWithID:@"start_date" includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
-                if (field) {
-                    field.value = [NSDate date];
-                    field.minimumDate = [NSDate date];
-                    [weakSelf.dataSource reloadItemsAtIndexPaths:@[indexPath]];
-                }
-            }];
+            [weakSelf.dataSource fieldWithID:@"start_date"
+                       includingHiddenFields:YES
+                                  completion:^(FORMField *field, NSIndexPath *indexPath) {
+                                      if (field) {
+                                          field.value = [NSDate date];
+                                          field.minimumDate = [NSDate date];
+                                          [weakSelf.dataSource reloadItemsAtIndexPaths:@[indexPath]];
+                                      }
+                                  }];
         }
     };
 
@@ -103,7 +105,8 @@
 {
     if (_imagePicker) return _imagePicker;
 
-    _imagePicker = [[HYPImagePicker alloc] initForViewController:self usingCaption:@"caption"];
+    _imagePicker = [[HYPImagePicker alloc] initForViewController:self
+                                                    usingCaption:@"caption"];
     _imagePicker.delegate = self;
 
     return _imagePicker;
@@ -181,7 +184,8 @@
     }
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.dataSource sizeForItemAtIndexPath:indexPath];
@@ -201,7 +205,8 @@
 
 #pragma mark - HYPImagePickerDelegate
 
-- (void)imagePicker:(HYPImagePicker *)imagePicker didPickedImage:(UIImage *)image
+- (void)imagePicker:(HYPImagePicker *)imagePicker
+     didPickedImage:(UIImage *)image
 {
     NSLog(@"picture gotten");
 }
