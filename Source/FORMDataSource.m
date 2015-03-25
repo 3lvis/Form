@@ -20,6 +20,7 @@
 #import "NSString+HYPContainsString.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSDictionary+HYPNestedAttributes.h"
+#import "NSString+HYPRelationshipParser.h"
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
@@ -397,7 +398,16 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
+    NSMutableDictionary *insertedValues = [NSMutableDictionary new];
+
+    for (NSString *key in dictionary) {
+        if (![self.formsManager.values andy_valueForKey:key]) {
+            [insertedValues addEntriesFromDictionary:@{key : dictionary[key]}];
+        }
+    }
+
     [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
+    [self insertDynamicSectionsForValues:[insertedValues copy]];
 
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
     NSMutableArray *targets = [NSMutableArray new];
@@ -859,6 +869,17 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     [self.values enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([key hasPrefix:sectionID]) {
             [self.formsManager.values removeObjectForKey:key];
+        }
+    }];
+}
+
+- (void)insertDynamicSectionsForValues:(NSDictionary *)values
+{
+    NSDictionary *JSONAttributes = [values hyp_JSONNestedAttributes];
+    [JSONAttributes enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+        if ([obj isKindOfClass:[NSArray class]]) {
+            FORMSection *section = [self sectionWithID:key];
+            [self.formsManager insertTemplateSectionWithID:key intoCollectionView:self.collectionView usingForm:section.form];
         }
     }];
 }
