@@ -12,6 +12,7 @@
               "title":"First name",
               "subtitle":"Fornavn",
               "type":"name",
+              "disabled": "YES",
               "size":{
                 "width":30,
                 "height":1
