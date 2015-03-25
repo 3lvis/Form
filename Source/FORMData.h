@@ -39,6 +39,8 @@
 - (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
 
+- (void)removeSection:(FORMSection *)removedSection;
+
 - (NSArray *)showTargets:(NSArray *)targets;
 - (NSArray *)hideTargets:(NSArray *)targets;
 - (NSArray *)updateTargets:(NSArray *)targets;

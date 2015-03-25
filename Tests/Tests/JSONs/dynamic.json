@@ -114,8 +114,8 @@
         "id":"contacts",
         "fields":[
           {
-            "id":"contacts[:index].name",
-            "title":"Contact name",
+            "id":"contacts[:index].first_name",
+            "title":"First name",
             "type":"name",
             "validations":{
               "required":true,
@@ -127,9 +127,9 @@
             }
           },
           {
-            "id":"contacts[:index].phone_number",
-            "title":"Phone number",
-            "type":"number",
+            "id":"contacts[:index].last_name",
+            "title":"Last name",
+            "type":"name",
             "size":{
               "width":30,
               "height":1

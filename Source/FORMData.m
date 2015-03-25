@@ -7,12 +7,15 @@
 #import "FORMTarget.h"
 #import "DDMathParser.h"
 #import "FORMFieldValidation.h"
+#import "HYPParsedRelationship.h"
 
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPContainsString.h"
 #import "DDMathEvaluator+FORM.h"
+#import "NSString+HYPRelationshipParser.h"
+#import "NSDictionary+HYPNestedAttributes.h"
 
 @interface FORMData ()
 
@@ -488,6 +491,72 @@
     }
 
     if (completion) completion(foundField, indexPath);
+}
+
+- (void)removeSection:(FORMSection *)removedSection
+{
+    NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
+    HYPParsedRelationship *parsed = [removedSection.sectionID hyp_parseRelationship];
+    NSArray *removedElements = [removedAttributesJSON objectForKey:parsed.relationship];
+    NSInteger removedElementsCount = removedElements.count;
+
+    NSMutableArray *removedKeys = [NSMutableArray new];
+    [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+        if ([key hasPrefix:removedSection.sectionID]) {
+            [removedKeys addObject:key];
+        }
+    }];
+    for (NSString *removedKey in removedKeys) {
+        NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:removedElementsCount];
+        [self.removedValues setValue:self.values[removedKey] forKey:newRemovedKey];
+        [self.values removeObjectForKey:removedKey];
+    }
+
+    NSDictionary *attributesJSON = [self.values hyp_JSONNestedAttributes];
+
+    NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
+    [[self.values copy] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([key hyp_containsString:@"]."]) {
+            [removedRelationshipKeys addObject:key];
+        }
+    }];
+
+    [self.values removeObjectsForKeys:removedRelationshipKeys];
+
+    NSArray *elements = [attributesJSON objectForKey:parsed.relationship];
+    NSInteger relationshipIndex = 0;
+
+    for (NSDictionary *element in elements) {
+        for (NSString *key in element) {
+            NSString *relationshipKey = [NSString stringWithFormat:@"%@[%ld].%@", parsed.relationship, (long)relationshipIndex, key];
+            self.values[relationshipKey] = element[key];
+        }
+        relationshipIndex++;
+    }
+
+    NSString *sectionID = removedSection.sectionID;
+    FORMGroup *form = removedSection.form;
+    [form.sections removeObject:removedSection];
+    relationshipIndex = 0;
+
+    NSInteger position = 0;
+    for (FORMSection *currentSection in form.sections) {
+        currentSection.position = @(position);
+        position++;
+
+        HYPParsedRelationship *parsedSection = [sectionID hyp_parseRelationship];
+        HYPParsedRelationship *parsedCurrentSection = [currentSection.sectionID hyp_parseRelationship];
+        if (parsedSection.toMany &&
+            [parsedSection.relationship isEqualToString:parsedCurrentSection.relationship]) {
+            NSInteger newRelationshipIndex = relationshipIndex;
+            currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newRelationshipIndex];
+
+            for (FORMField *field in currentSection.fields) {
+                field.fieldID = [field.fieldID hyp_updateRelationshipIndex:newRelationshipIndex];
+            }
+            relationshipIndex++;
+        }
+    }
 }
 
 - (FORMField *)hiddenFieldWithFieldID:(NSString *)fieldID
