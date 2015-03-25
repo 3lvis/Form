@@ -626,7 +626,7 @@
         if (target.type == FORMTargetTypeField) {
             [self fieldWithID:target.targetID includingHiddenFields:NO
                    completion:^(FORMField *field, NSIndexPath *indexPath) {
-                       shouldLookForField = (!field);
+                       shouldLookForField = (field == nil);
                    }];
         }
 
