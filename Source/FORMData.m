@@ -516,7 +516,7 @@
 
     NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
     [[self.values copy] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if ([key containsString:@"]."]) {
+        if ([key hyp_containsString:@"]."]) {
             [removedRelationshipKeys addObject:key];
         }
     }];
