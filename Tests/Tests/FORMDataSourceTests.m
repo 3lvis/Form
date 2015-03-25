@@ -195,7 +195,7 @@
     XCTAssertEqualObjects(field.value, @"Elvis Nunez");
 }
 
-- (void)testReloadWithDictionaryDynamic
+- (void)testReloadWithDictionaryDynamicA
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
@@ -234,6 +234,41 @@
     form = dataSource.forms[0];
     XCTAssertEqual(form.sections.count, 5);
     section = form.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"companies[0]");
+    XCTAssertEqualObjects(dataSource.values, initialValues);
+}
+
+- (void)testReloadWithDictionaryDynamicB
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    NSDictionary *initialValues = @{@"email" : @"hi@there.com",
+                                    @"companies[0].name" : @"Facebook",
+                                    @"companies[0].phone_number" : @"1222333"};
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:initialValues
+                                                             disabled:NO];
+
+    FORMGroup *form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 5);
+
+    FORMField *field = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    [dataSource fieldCell:nil updatedWithField:field];
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 7);
+
+    [dataSource reloadWithDictionary:initialValues];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 5);
+    FORMSection *section = form.sections[1];
     XCTAssertEqualObjects(section.sectionID, @"companies[0]");
     XCTAssertEqualObjects(dataSource.values, initialValues);
 }
