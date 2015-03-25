@@ -45,8 +45,6 @@
               disabledFieldsIDs:disabledFieldIDs
                        disabled:disabled];
 
-
-
     return self;
 }
 
