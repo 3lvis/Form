@@ -526,27 +526,31 @@
         relationshipIndex++;
     }
 
-    for (FORMSection *currentSection in removedSection.form.sections) {
-        if ([currentSection.position integerValue] > [removedSection.position integerValue]) {
-            NSInteger newPosition = [removedSection.position integerValue] - 1;
-            currentSection.position = @(newPosition);
+    NSString *sectionID = removedSection.sectionID;
+    FORMGroup *form = removedSection.form;
+    [form.sections removeObject:removedSection];
+    relationshipIndex = 0;
 
-            HYPParsedRelationship *parsedSection = [removedSection.sectionID hyp_parseRelationship];
-            HYPParsedRelationship *parsedCurrentSection = [currentSection.sectionID hyp_parseRelationship];
-            if (parsedSection.toMany &&
-                [parsedSection.relationship isEqualToString:parsedCurrentSection.relationship]) {
-                NSInteger newRelationshipIndex = [parsedSection.index integerValue];
-                currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newRelationshipIndex];
+    NSInteger position = 0;
+    for (FORMSection *currentSection in form.sections) {
+        currentSection.position = @(position);
+        position++;
 
-                for (FORMField *field in currentSection.fields) {
-                    field.fieldID = [field.fieldID hyp_updateRelationshipIndex:newRelationshipIndex];
-                }
+        HYPParsedRelationship *parsedSection = [sectionID hyp_parseRelationship];
+        HYPParsedRelationship *parsedCurrentSection = [currentSection.sectionID hyp_parseRelationship];
+        if (parsedSection.toMany &&
+            [parsedSection.relationship isEqualToString:parsedCurrentSection.relationship]) {
+            NSInteger newRelationshipIndex = relationshipIndex;
+            currentSection.sectionID = [currentSection.sectionID hyp_updateRelationshipIndex:newRelationshipIndex];
+
+            for (FORMField *field in currentSection.fields) {
+                field.fieldID = [field.fieldID hyp_updateRelationshipIndex:newRelationshipIndex];
             }
+            relationshipIndex++;
+        } else {
+            relationshipIndex = 0;
         }
     }
-
-    FORMGroup *group = removedSection.form;
-    [group.sections removeObject:removedSection];
 }
 
 - (FORMField *)hiddenFieldWithFieldID:(NSString *)fieldID

@@ -444,17 +444,22 @@
                                                disabled:NO];
 
     FORMGroup *group = formData.forms[0];
-    XCTAssertEqual(group.sections.count, 3);
-    NSArray *sectionPositions = @[@0, @1, @2];
+    XCTAssertEqual(group.sections.count, 5);
+    NSArray *sectionPositions = @[@0, @1, @2, @3, @4];
     NSArray *comparedSectionPositions = [group.sections valueForKey:@"position"];
     XCTAssertEqualObjects(sectionPositions, comparedSectionPositions);
 
     FORMSection *section = group.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"companies[0]");
+
     [formData removeSection:section];
 
-    sectionPositions = @[@0, @1, @1];
+    sectionPositions = @[@0, @1, @2, @3];
     comparedSectionPositions = [group.sections valueForKey:@"position"];
     XCTAssertEqualObjects(sectionPositions, comparedSectionPositions);
+
+    section = group.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"personal-details-0");
 }
 
 @end
