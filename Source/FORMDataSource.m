@@ -939,9 +939,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     [JSONAttributes enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
         if ([obj isKindOfClass:[NSArray class]]) {
             FORMSection *section = [self sectionWithID:key];
-            [self.formsManager insertTemplateSectionWithID:key
-                                        intoCollectionView:self.collectionView
-                                                 usingForm:section.form];
+            for (NSInteger numberOfSections = 0; numberOfSections < [obj count]; numberOfSections++) {
+                [self.formsManager insertTemplateSectionWithID:key intoCollectionView:self.collectionView usingForm:section.form];
+            }
         }
     }];
 }
