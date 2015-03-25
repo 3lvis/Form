@@ -431,7 +431,24 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         }
     }
 
+    NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
+    for (NSString *key in self.formsManager.values) {
+        if (![dictionary andy_valueForKey:key]) {
+            [removedRelationshipKeys addObject:key];
+        }
+    }
+
     [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
+
+    for (NSString *key in removedRelationshipKeys) {
+        HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+        parsed.attribute = nil;
+        FORMSection *section = [self sectionWithID:[parsed key]];
+        if (section) {
+            [self.formsManager removeSection:section];
+        }
+    }
+
     [self insertDynamicSectionsForValues:[insertedValues copy]];
 
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
