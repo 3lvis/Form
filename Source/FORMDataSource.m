@@ -472,11 +472,15 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
             if (field) {
                 field.value = (shouldBeNil) ? nil : value;
-                if (indexPath) [updatedIndexPaths addObject:indexPath];
+                if (indexPath) {
+                    [updatedIndexPaths addObject:indexPath];
+                }
                 [targets addObjectsFromArray:[field safeTargets]];
             } else {
                 field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
-                if (field) field.value = (shouldBeNil) ? nil : value;
+                if (field) {
+                    field.value = (shouldBeNil) ? nil : value;
+                }
             }
         }];
     }];
