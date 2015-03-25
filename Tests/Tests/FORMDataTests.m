@@ -580,4 +580,51 @@
     XCTAssertEqual(sectionIDs.count, 0);
 }
 
+- (void)testRemovedSectionsUsingInitialValuesC
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    NSDictionary *initialValues = @{@"companies[0].name" : @"Company1",
+                                    @"companies[1].name" : @"Company2",
+                                    @"contacts[0].first_name" : @"Contact1",
+                                    @"contacts[1].first_name" : @"Contact2"};
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:initialValues
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    FORMGroup *form = formData.forms[0];
+    XCTAssertEqual(form.sections.count, 8);
+    FORMSection *section = form.sections[2];
+    XCTAssertEqualObjects(section.sectionID, @"companies[1]");
+
+    [formData removeSection:section];
+
+    NSDictionary *sectionDictionary = @{@"id" : @"companies[1]",
+                                        @"fields":@[
+                                                @{@"id":@"companies[1].name",
+                                                  @"title":@"Name 1",
+                                                  @"type":@"name",
+                                                  @"size":@{
+                                                          @"width":@50,
+                                                          @"height":@1
+                                                          }}
+                                                ]};
+    section = [[FORMSection alloc] initWithDictionary:sectionDictionary
+                                             position:2
+                                             disabled:NO
+                                    disabledFieldsIDs:nil
+                                        isLastSection:NO];
+    [form.sections insertObject:section atIndex:2];
+
+    form = formData.forms[0];
+    XCTAssertEqual(form.sections.count, 8);
+
+    NSArray *removedSections = [formData removedSectionsUsingInitialValues:initialValues];
+    NSArray *sectionIDs = [removedSections valueForKey:@"sectionID"];
+    XCTAssertEqual(sectionIDs.count, 0);
+}
+
 @end
