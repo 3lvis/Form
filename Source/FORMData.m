@@ -495,19 +495,19 @@
 
 - (void)removeSection:(FORMSection *)removedSection
 {
+    NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
+    HYPParsedRelationship *parsed = [removedSection.sectionID hyp_parseRelationship];
+    NSArray *removedElements = [removedAttributesJSON objectForKey:parsed.relationship];
+    NSInteger removedElementsCount = removedElements.count;
+
     NSMutableArray *removedKeys = [NSMutableArray new];
     [self.values enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
         if ([key hasPrefix:removedSection.sectionID]) {
             [removedKeys addObject:key];
         }
     }];
-
-    NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
-    HYPParsedRelationship *parsed = [removedSection.sectionID hyp_parseRelationship];
-    NSArray *removedElements = [removedAttributesJSON objectForKey:parsed.relationship];
-    NSInteger index = removedElements.count;
     for (NSString *removedKey in removedKeys) {
-        NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:index];
+        NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:removedElementsCount];
         [self.removedValues setValue:self.values[removedKey] forKey:newRemovedKey];
         [self.values removeObjectForKey:removedKey];
     }
