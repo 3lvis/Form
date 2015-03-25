@@ -448,7 +448,10 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
     for (NSString *key in self.formsManager.values) {
         if (![dictionary andy_valueForKey:key]) {
-            [removedRelationshipKeys addObject:key];
+            HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+            if (parsed.toMany) {
+                [removedRelationshipKeys addObject:key];
+            }
         }
     }
 
