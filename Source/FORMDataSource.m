@@ -435,6 +435,12 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary
 {
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if (self.formsManager.values[key]) {
+            self.formsManager.values[key] = obj;
+        }
+    }];
+
     NSMutableDictionary *insertedValues = [NSMutableDictionary new];
 
     for (NSString *key in dictionary) {
