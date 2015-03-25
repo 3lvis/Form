@@ -38,7 +38,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showTooltip:)
-                                                 name:@"ShowTooltips"
+                                                 name:FORMHideTooltips
                                                object:nil];
 
     return self;
@@ -48,6 +48,10 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 {
     if ([self respondsToSelector:@selector(dismissTooltip)]) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMResignFirstResponderNotification object:nil];
+    }
+
+    if ([self respondsToSelector:@selector(showTooltip:)]) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMHideTooltips object:nil];
     }
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMDismissTooltipNotification object:nil];

@@ -863,13 +863,13 @@
 
 - (NSArray *)enableTargets:(NSArray *)targets
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowTooltips" object:[NSNumber numberWithBool:YES]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips object:[NSNumber numberWithBool:YES]];
     return [self updateTargets:targets withEnabled:YES];
 }
 
 - (NSArray *)disableTargets:(NSArray *)targets
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowTooltips" object:[NSNumber numberWithBool:NO]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips object:[NSNumber numberWithBool:NO]];
     return [self updateTargets:targets withEnabled:NO];
 }
 
