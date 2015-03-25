@@ -20,6 +20,7 @@
 #import "NSString+HYPContainsString.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSDictionary+HYPNestedAttributes.h"
+#import "NSString+HYPRelationshipParser.h"
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
@@ -338,7 +339,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     for (FORMGroup *form in self.formsManager.forms) {
         for (FORMField *field in form.fields) {
-            if (field.fieldID) [fields addEntriesFromDictionary:@{field.fieldID : field}];
+            if (field.fieldID) {
+                [fields addEntriesFromDictionary:@{field.fieldID : field}];
+            }
         }
     }
 
@@ -346,7 +349,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     for (FORMSection *section in [self.formsManager.hiddenSections allValues]) {
         for (FORMField *field in section.fields) {
-            if (field.fieldID) [fields addEntriesFromDictionary:@{field.fieldID : field}];
+            if (field.fieldID) {
+                [fields addEntriesFromDictionary:@{field.fieldID : field}];
+            }
         }
     }
 
@@ -357,7 +362,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         if (disabled) {
             field.disabled = YES;
         } else if (shouldChangeState) {
-            if (!field.initiallyDisabled) field.disabled = NO;
+            if (!field.initiallyDisabled) {
+                field.disabled = NO;
+            }
 
             if (field.targets.count > 0) {
                 [self processTargets:field.targets];
@@ -371,10 +378,14 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                     for (FORMTarget *target in fieldValue.targets) {
                         BOOL targetIsNotEnableOrDisable = (target.actionType != FORMTargetActionEnable &&
                                                            target.actionType != FORMTargetActionDisable);
-                        if (targetIsNotEnableOrDisable) [targets addObject:target];
+                        if (targetIsNotEnableOrDisable) {
+                            [targets addObject:target];
+                        }
                     }
 
-                    if (targets.count > 0) [self processTargets:targets];
+                    if (targets.count > 0) {
+                        [self processTargets:targets];
+                    }
                 }
             }
         }
@@ -398,6 +409,59 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
     [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
+
+    NSMutableArray *updatedIndexPaths = [NSMutableArray new];
+    NSMutableArray *targets = [NSMutableArray new];
+
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
+        [self.formsManager fieldWithID:key includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
+            BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
+
+            if (field) {
+                field.value = (shouldBeNil) ? nil : value;
+                if (indexPath) [updatedIndexPaths addObject:indexPath];
+                [targets addObjectsFromArray:[field safeTargets]];
+            } else {
+                field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
+                if (field) {
+                    field.value = (shouldBeNil) ? nil : value;
+                }
+            }
+        }];
+    }];
+
+    [self processTargets:targets];
+}
+
+- (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary
+{
+    NSMutableDictionary *insertedValues = [NSMutableDictionary new];
+
+    for (NSString *key in dictionary) {
+        if (![self.formsManager.values andy_valueForKey:key]) {
+            [insertedValues addEntriesFromDictionary:@{key : dictionary[key]}];
+        }
+    }
+
+    NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
+    for (NSString *key in self.formsManager.values) {
+        if (![dictionary andy_valueForKey:key]) {
+            [removedRelationshipKeys addObject:key];
+        }
+    }
+
+    [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
+
+    for (NSString *key in removedRelationshipKeys) {
+        HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+        parsed.attribute = nil;
+        FORMSection *section = [self sectionWithID:[parsed key]];
+        if (section) {
+            [self.formsManager removeSection:section];
+        }
+    }
+
+    [self insertDynamicSectionsForValues:[insertedValues copy]];
 
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
     NSMutableArray *targets = [NSMutableArray new];
@@ -722,7 +786,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (void)formHeaderViewWasPressed:(FORMGroupHeaderView *)headerView
 {
-    [self collapseFieldsInSection:headerView.section collectionView:self.collectionView];
+    [self collapseFieldsInSection:headerView.section
+                   collectionView:self.collectionView];
 }
 
 #pragma mark - FORMLayoutDataSource
@@ -757,25 +822,30 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 - (void)sectionWithID:(NSString *)sectionID
            completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion
 {
-    [self.formsManager sectionWithID:sectionID completion:completion];
+    [self.formsManager sectionWithID:sectionID
+                          completion:completion];
 }
 
 - (void)indexForFieldWithID:(NSString *)fieldID
             inSectionWithID:(NSString *)sectionID
                  completion:(void (^)(FORMSection *section, NSInteger index))completion
 {
-    [self.formsManager indexForFieldWithID:fieldID inSectionWithID:sectionID completion:completion];
+    [self.formsManager indexForFieldWithID:fieldID
+                           inSectionWithID:sectionID completion:completion];
 }
 
 - (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
 {
-    return [self.formsManager fieldWithID:fieldID includingHiddenFields:includingHiddenFields];
+    return [self.formsManager fieldWithID:fieldID
+                    includingHiddenFields:includingHiddenFields];
 }
 
 - (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion
 {
-    [self.formsManager fieldWithID:fieldID includingHiddenFields:includingHiddenFields completion:completion];
+    [self.formsManager fieldWithID:fieldID
+             includingHiddenFields:includingHiddenFields
+                        completion:completion];
 }
 
 - (NSArray *)showTargets:(NSArray *)targets
@@ -859,6 +929,19 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     [self.values enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([key hasPrefix:sectionID]) {
             [self.formsManager.values removeObjectForKey:key];
+        }
+    }];
+}
+
+- (void)insertDynamicSectionsForValues:(NSDictionary *)values
+{
+    NSDictionary *JSONAttributes = [values hyp_JSONNestedAttributes];
+    [JSONAttributes enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+        if ([obj isKindOfClass:[NSArray class]]) {
+            FORMSection *section = [self sectionWithID:key];
+            [self.formsManager insertTemplateSectionWithID:key
+                                        intoCollectionView:self.collectionView
+                                                 usingForm:section.form];
         }
     }];
 }
