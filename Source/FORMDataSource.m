@@ -441,12 +441,25 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         }
     }];
 
-    NSMutableDictionary *insertedValues = [NSMutableDictionary new];
+    NSMutableSet *currentSections = [NSMutableSet new];
+    for (NSString *key in self.formsManager.values) {
+        HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+        if (parsed.toMany) {
+            parsed.attribute = nil;
+            [currentSections addObject:[parsed key]];
+        }
+    }
 
+    NSMutableDictionary *insertedValues = [NSMutableDictionary new];
     for (NSString *key in dictionary) {
-        if (![self.formsManager.values andy_valueForKey:key]) {
-            if (![dictionary[key] isKindOfClass:[NSNull class]]) {
-                [insertedValues addEntriesFromDictionary:@{key : dictionary[key]}];
+        HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+        if (parsed.toMany) {
+            parsed.attribute = nil;
+
+            if (![currentSections containsObject:[parsed key]]) {
+                if (![dictionary[key] isKindOfClass:[NSNull class]]) {
+                    [insertedValues addEntriesFromDictionary:@{key : dictionary[key]}];
+                }
             }
         }
     }
