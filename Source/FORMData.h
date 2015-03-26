@@ -36,12 +36,14 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
             inSectionWithID:(NSString *)sectionID
                  completion:(void (^)(FORMSection *section, NSInteger index))completion;
 
-- (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields;
+- (FORMField *)fieldWithID:(NSString *)fieldID
+     includingHiddenFields:(BOOL)includingHiddenFields;
 
 - (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
 
-- (void)removeSection:(FORMSection *)removedSection;
+- (void)removeSection:(FORMSection *)removedSection
+     inCollectionView:(UICollectionView *)collectionView;
 
 - (NSArray *)showTargets:(NSArray *)targets;
 - (NSArray *)hideTargets:(NSArray *)targets;
@@ -59,8 +61,12 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 
 - (NSInteger)numberOfFields;
 
-- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form;
+- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID
+                 intoCollectionView:(UICollectionView *)collectionView
+                          usingForm:(FORMGroup *)form;
 
 - (void)resetRemovedValues;
+
+- (NSArray *)removedSectionsUsingInitialValues:(NSDictionary *)dictionary;
 
 @end

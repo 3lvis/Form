@@ -11,6 +11,7 @@
 #import "FORMImageFormFieldCell.h"
 
 #import "NSJSONSerialization+ANDYJSONFile.h"
+#import "NSDictionary+HYPImmutable.h"
 
 @interface FORMDataSource ()
 
@@ -273,6 +274,160 @@
     FORMSection *section = form.sections[1];
     XCTAssertEqualObjects(section.sectionID, @"companies[0]");
     XCTAssertEqualObjects(dataSource.values, initialValues);
+}
+
+- (void)testResetDynamicSectionsWithDictionaryC
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    NSDictionary *initialValues = @{@"email" : @"hi@there.com",
+                                    @"companies[0].name" : @"Facebook",
+                                    @"companies[0].phone_number" : @"1222333",
+                                    @"companies[1].name" : @"Facebook",
+                                    @"companies[1].phone_number" : @"1222333"};
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:initialValues
+                                                             disabled:NO];
+
+    FORMGroup *form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 6);
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
+    XCTAssertNotNil(removeField);
+    [dataSource fieldCell:nil updatedWithField:removeField];
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 4);
+
+    [dataSource resetDynamicSectionsWithDictionary:initialValues];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 6);
+    FORMSection *section = form.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"companies[0]");
+    XCTAssertEqualObjects(dataSource.values, initialValues);
+}
+
+- (void)testResetDynamicSectionsWithDictionaryD
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    NSDictionary *initialValues = @{@"email" : @"hi@there.com",
+                                    @"companies[0].name" : @"Company1",
+                                    @"companies[1].name" : @"Company2",
+                                    @"contacts[0].first_name" : @"Contact1",
+                                    @"contacts[1].first_name" : @"Contact2"};
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:initialValues
+                                                             disabled:NO];
+
+    FORMGroup *form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 8);
+    FORMSection *section = form.sections[2];
+    XCTAssertEqualObjects(section.sectionID, @"companies[1]");
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:YES];
+    XCTAssertNotNil(removeField);
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 7);
+
+    [dataSource resetDynamicSectionsWithDictionary:initialValues];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 8);
+    section = form.sections[2];
+    XCTAssertEqualObjects(section.sectionID, @"companies[1]");
+
+    XCTAssertEqualObjects([dataSource.values hyp_dictionaryByRemovingNullItems], initialValues);
+}
+
+- (void)testResetDynamicSectionsWithDictionaryE
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    NSDictionary *initialValues = @{@"companies[0].name" : @"Company1",
+                                    @"companies[1].name" : @"Company2",
+                                    @"contacts[0].first_name" : @"Contact1",
+                                    @"contacts[1].first_name" : @"Contact2"};
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:initialValues
+                                                             disabled:NO];
+
+    FORMGroup *form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 8);
+    FORMSection *section = form.sections[2];
+    XCTAssertEqualObjects(section.sectionID, @"companies[1]");
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:YES];
+    XCTAssertNotNil(removeField);
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    FORMField *field = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    [dataSource resetDynamicSectionsWithDictionary:initialValues];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 8);
+}
+
+- (void)testResetDynamicSectionsWithDictionaryF
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    NSDictionary *initialValues = @{@"companies[0].name" : @"Company1",
+                                    @"companies[0].phone_number" : @"1111111",
+                                    @"companies[0].external_person_id" : @0,
+                                    @"companies[1].name" : @"Company2",
+                                    @"companies[1].phone_number" : @"2222222",
+                                    @"companies[1].external_person_id" : @1,
+                                    @"contacts[0].first_name" : @"Contact1",
+                                    @"contacts[0].last_name" : @"Lastname",
+                                    @"contacts[0].external_person_id" : @2,
+                                    @"contacts[1].first_name" : @"Contact2",
+                                    @"contacts[1].last_name" : @"Lastname",
+                                    @"contacts[1].external_person_id" : @2};
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:initialValues
+                                                             disabled:NO];
+
+    FORMGroup *form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 8);
+    FORMSection *section = form.sections[2];
+    XCTAssertEqualObjects(section.sectionID, @"companies[1]");
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:YES];
+    XCTAssertNotNil(removeField);
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    FORMField *field = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    [dataSource resetDynamicSectionsWithDictionary:initialValues];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 8);
 }
 
 #pragma mark - processTarget

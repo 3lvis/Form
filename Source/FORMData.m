@@ -456,7 +456,8 @@
 
 #pragma mark - Field
 
-- (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+- (FORMField *)fieldWithID:(NSString *)fieldID
+     includingHiddenFields:(BOOL)includingHiddenFields
 {
     NSParameterAssert(fieldID);
 
@@ -486,7 +487,8 @@
     return foundField;
 }
 
-- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+- (void)fieldWithID:(NSString *)fieldID
+includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion
 {
     NSParameterAssert(fieldID);
@@ -521,6 +523,7 @@
 }
 
 - (void)removeSection:(FORMSection *)removedSection
+     inCollectionView:(UICollectionView *)collectionView
 {
     NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
     HYPParsedRelationship *parsed = [removedSection.sectionID hyp_parseRelationship];
@@ -533,6 +536,7 @@
             [removedKeys addObject:key];
         }
     }];
+
     for (NSString *removedKey in removedKeys) {
         NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:removedElementsCount];
         [self.removedValues setValue:self.values[removedKey]
@@ -544,7 +548,8 @@
 
     NSMutableArray *removedRelationshipKeys = [NSMutableArray new];
     [[self.values copy] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if ([key hyp_containsString:@"]."]) {
+        HYPParsedRelationship *currentParsed = [key hyp_parseRelationship];
+        if ([parsed.relationship isEqualToString:currentParsed.relationship]) {
             [removedRelationshipKeys addObject:key];
         }
     }];
@@ -564,9 +569,14 @@
 
     NSString *sectionID = removedSection.sectionID;
     FORMGroup *form = removedSection.form;
-    [form.sections removeObject:removedSection];
-    relationshipIndex = 0;
+    [self sectionWithID:sectionID
+             completion:^(FORMSection *foundSection, NSArray *indexPaths) {
+                 FORMGroup *foundForm = foundSection.form;
+                 [foundForm.sections removeObject:foundSection];
+                 [collectionView deleteItemsAtIndexPaths:indexPaths];
+             }];
 
+    relationshipIndex = 0;
     NSInteger position = 0;
     for (FORMSection *currentSection in form.sections) {
         currentSection.position = @(position);
@@ -912,7 +922,8 @@
                    withEnabled:NO];
 }
 
-- (NSArray *)updateTargets:(NSArray *)targets withEnabled:(BOOL)enabled
+- (NSArray *)updateTargets:(NSArray *)targets
+               withEnabled:(BOOL)enabled
 {
     NSMutableArray *indexPaths = [NSMutableArray new];
 
@@ -934,7 +945,9 @@
     return indexPaths;
 }
 
-- (void)indexForSection:(FORMSection *)section form:(FORMGroup *)form completion:(void (^)(BOOL found, NSInteger index))completion
+- (void)indexForSection:(FORMSection *)section
+                   form:(FORMGroup *)form
+             completion:(void (^)(BOOL found, NSInteger index))completion
 {
     __block NSInteger index = 0;
     __block BOOL found = NO;
@@ -1014,7 +1027,9 @@
 
 #pragma mark - Dynamic
 
-- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form
+- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID
+                 intoCollectionView:(UICollectionView *)collectionView
+                          usingForm:(FORMGroup *)form
 {
     FORMSection *foundSection;
     for (FORMSection *aSection in form.sections) {
@@ -1093,7 +1108,8 @@
     }
 }
 
-- (NSInteger)indexForTemplateSectionWithID:(NSString *)sectionID inForm:(FORMGroup *)form
+- (NSInteger)indexForTemplateSectionWithID:(NSString *)sectionID
+                                    inForm:(FORMGroup *)form
 {
     NSInteger index = -1;
     for (FORMSection *existingSection in form.sections) {
@@ -1114,6 +1130,40 @@
 - (void)resetRemovedValues
 {
     self.removedValues = [NSMutableDictionary new];
+}
+
+- (NSArray *)removedSectionsUsingInitialValues:(NSDictionary *)dictionary
+{
+    NSMutableSet *currentSectionIDs = [NSMutableSet new];
+    for (FORMGroup *group in self.forms) {
+        for (FORMSection *section in group.sections) {
+            HYPParsedRelationship *parsed = [section.sectionID hyp_parseRelationship];
+            if (parsed.toMany) {
+                [currentSectionIDs addObject:[parsed key]];
+            }
+        }
+    }
+
+    NSMutableSet *existingSectionIDs = [NSMutableSet new];
+    for (NSString *key in dictionary) {
+        HYPParsedRelationship *parsed = [key hyp_parseRelationship];
+        if (parsed.toMany) {
+            parsed.attribute = nil;
+            [existingSectionIDs addObject:[parsed key]];
+        }
+    }
+
+    [currentSectionIDs minusSet:existingSectionIDs];
+    NSArray *removedSectionIDs = [currentSectionIDs allObjects];
+    NSMutableArray *removedSections = [NSMutableArray new];
+    for (NSString *key in removedSectionIDs) {
+        FORMSection *section = [self sectionWithID:key];
+        if (section) {
+            [removedSections addObject:section];
+        }
+    }
+
+    return [removedSections copy];
 }
 
 @end

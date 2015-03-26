@@ -48,7 +48,8 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary;
 - (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary;
-- (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView;
+- (void)collapseFieldsInSection:(NSInteger)section
+                 collectionView:(UICollectionView *)collectionView;
 
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths;
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths;
@@ -63,7 +64,8 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (NSDictionary *)requiredFormFields;
 - (NSMutableDictionary *)valuesForFormula:(FORMField *)field;
 - (FORMSection *)sectionWithID:(NSString *)sectionID;
-- (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields;
+- (FORMField *)fieldWithID:(NSString *)fieldID
+     includingHiddenFields:(BOOL)includingHiddenFields;
 - (NSInteger)numberOfFields;
 - (NSArray *)forms;
 - (NSDictionary *)values;
