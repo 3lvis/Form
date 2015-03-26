@@ -220,7 +220,9 @@
                     for (FORMFieldValue *value in field.values) {
 
                         BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:field.fieldID]]);
-                        if (isInitialValue) field.value = value;
+                        if (isInitialValue) {
+                            field.value = value;
+                        }
                     }
                 } else {
                     field.value = [initialValues andy_valueForKey:field.fieldID];
@@ -282,38 +284,42 @@
     [self updateTargets:updateTargets];
 
     for (FORMTarget *target in hideTargets) {
-        if (![self evaluateCondition:target.condition]) continue;
+        if ([self evaluateCondition:target.condition]) {
 
-        if (target.type == FORMTargetTypeField) {
+            if (target.type == FORMTargetTypeField) {
 
-            FORMField *field = [self fieldWithID:target.targetID includingHiddenFields:YES];
-            [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
+                FORMField *field = [self fieldWithID:target.targetID
+                               includingHiddenFields:YES];
+                [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
 
-        } else if (target.type == FORMTargetTypeSection) {
+            } else if (target.type == FORMTargetTypeSection) {
 
-            FORMSection *section = [self sectionWithID:target.targetID];
-            [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
+                FORMSection *section = [self sectionWithID:target.targetID];
+                [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
+            }
         }
     }
 
     for (FORMTarget *target in hideTargets) {
-        if (![self evaluateCondition:target.condition]) continue;
+        if ([self evaluateCondition:target.condition]) {
+            if (target.type == FORMTargetTypeField) {
 
-        if (target.type == FORMTargetTypeField) {
+                FORMField *field = [self fieldWithID:target.targetID
+                               includingHiddenFields:NO];
+                if (field) {
+                    FORMSection *section = [self sectionWithID:field.section.sectionID];
+                    [section removeField:field
+                                 inForms:self.forms];
+                    [section resetFieldPositions];
+                }
 
-            FORMField *field = [self fieldWithID:target.targetID includingHiddenFields:NO];
-            if (field) {
-                FORMSection *section = [self sectionWithID:field.section.sectionID];
-                [section removeField:field inForms:self.forms];
-                [section resetFieldPositions];
-            }
+            } else if (target.type == FORMTargetTypeSection) {
 
-        } else if (target.type == FORMTargetTypeSection) {
-
-            FORMSection *section = [self sectionWithID:target.targetID];
-            if (section) {
-                FORMGroup *form = section.form;
-                [form removeSection:section];
+                FORMSection *section = [self sectionWithID:target.targetID];
+                if (section) {
+                    FORMGroup *form = section.form;
+                    [form removeSection:section];
+                }
             }
         }
     }
@@ -369,7 +375,8 @@
     NSArray *fieldIDs = [formula hyp_variables];
 
     for (NSString *fieldID in fieldIDs) {
-        FORMField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
+        FORMField *targetField = [self fieldWithID:fieldID
+                             includingHiddenFields:YES];
         id value = targetField.value;
         if (value) {
             if (targetField.type == FORMFieldTypeSelect) {
@@ -494,7 +501,8 @@
         for (FORMField *field in form.fields) {
 
             if ([field.fieldID isEqualToString:fieldID]) {
-                indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:formIndex];
+                indexPath = [NSIndexPath indexPathForItem:fieldIndex
+                                                inSection:formIndex];
                 foundField = field;
                 break;
             }
