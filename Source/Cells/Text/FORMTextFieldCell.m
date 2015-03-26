@@ -258,9 +258,9 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 - (void)showSubtitle
 {
-    if (self.field.subtitle && self.showTooltips) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
 
+    if (self.field.subtitle && self.showTooltips) {
         [self.contentView addSubview:self.subtitleView];
         self.subtitleView.frame = [self subtitleViewFrame];
         self.subtitleLabel.frame = [self subtitleLabelFrame];
