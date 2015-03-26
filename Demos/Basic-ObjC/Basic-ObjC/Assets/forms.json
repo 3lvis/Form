@@ -10,7 +10,7 @@
             {
               "id":"first_name",
               "title":"First name",
-              "tooltip":"Fornavn",
+              "message":"Fornavn",
               "type":"name",
               "disabled": true,
               "size":{
@@ -26,7 +26,7 @@
               "id":"last_name",
               "title":"Last name",
               "type":"name",
-              "tooltip":"Obs! Husk å kjøpe melk",
+              "message":"Obs! Husk å kjøpe melk",
               "size":{
                 "width":30,
                 "height":1
@@ -39,7 +39,7 @@
             {
               "id":"display_name",
               "title":"Display name",
-              "tooltip":"This is the name that is going to be used across the application.",
+              "message":"This is the name that is going to be used across the application.",
               "type":"text",
               "size":{
                 "width":40,
@@ -64,7 +64,7 @@
             {
               "id":"email",
               "title":"E-post",
-              "tooltip":"bork\nbork\nbork",
+              "message":"bork\nbork\nbork",
               "type":"email",
               "size":{
                 "width":25,
