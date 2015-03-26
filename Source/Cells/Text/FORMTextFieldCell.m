@@ -2,6 +2,7 @@
 
 #import "FORMSubtitleView.h"
 
+static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMSubtitleViewMinimumWidth = 90.0f;
 static const CGFloat FORMSubtitleViewHeight = 44.0f;
 static const NSInteger FORMSubtitleNumberOfLines = 4;
@@ -12,6 +13,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 @property (nonatomic) UIPopoverController *popoverController;
 @property (nonatomic) UILabel *subtitleLabel;
 @property (nonatomic) FORMSubtitleView *subtitleView;
+@property (nonatomic) BOOL showTooltips;
 
 @end
 
@@ -35,6 +37,11 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapAction)];
     [self addGestureRecognizer:tapGestureRecognizer];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showTooltip:)
+                                                 name:FORMHideTooltips
+                                               object:nil];
+
     return self;
 }
 
@@ -42,6 +49,10 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 {
     if ([self respondsToSelector:@selector(dismissTooltip)]) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMResignFirstResponderNotification object:nil];
+    }
+
+    if ([self respondsToSelector:@selector(showTooltip:)]) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMHideTooltips object:nil];
     }
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMDismissTooltipNotification object:nil];
@@ -247,7 +258,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 - (void)showSubtitle
 {
-    if (self.field.subtitle) {
+    if (self.field.subtitle && self.showTooltips) {
         [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
 
         [self.contentView addSubview:self.subtitleView];
@@ -337,6 +348,11 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     if (self.field.subtitle) {
         [self.subtitleView removeFromSuperview];
     }
+}
+
+- (void)showTooltip:(NSNotification *)notification
+{
+    self.showTooltips = [notification.object boolValue];
 }
 
 #pragma mark - Private headers

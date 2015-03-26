@@ -200,10 +200,13 @@
                         }
 
                         if (existingSection) {
-                            FORMField *field = [self fieldWithID:valueID includingHiddenFields:YES];
+                            FORMField *field = [self fieldWithID:valueID
+                                           includingHiddenFields:YES];
                             field.value = [self.values objectForKey:valueID];
                         } else {
-                            [self insertTemplateSectionWithID:sectionTemplateID intoCollectionView:nil usingForm:form];
+                            [self insertTemplateSectionWithID:sectionTemplateID
+                                           intoCollectionView:nil
+                                                    usingForm:form];
                         }
                     }
                 }
@@ -217,7 +220,9 @@
                     for (FORMFieldValue *value in field.values) {
 
                         BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:field.fieldID]]);
-                        if (isInitialValue) field.value = value;
+                        if (isInitialValue) {
+                            field.value = value;
+                        }
                     }
                 } else {
                     field.value = [initialValues andy_valueForKey:field.fieldID];
@@ -235,10 +240,17 @@
                     if (fieldValueMatchesInitialValue) {
 
                         for (FORMTarget *target in fieldValue.targets) {
-                            if (![self evaluateCondition:target.condition]) continue;
-                            if (target.actionType == FORMTargetActionHide) [hideTargets addObject:target];
-                            if (target.actionType == FORMTargetActionUpdate) [updateTargets addObject:target];
-                            if (target.actionType == FORMTargetActionDisable) [disabledFields addObject:target.targetID];
+                            if ([self evaluateCondition:target.condition]) {
+                                if (target.actionType == FORMTargetActionHide) {
+                                    [hideTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionUpdate) {
+                                    [updateTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionDisable) {
+                                    [disabledFields addObject:target.targetID];
+                                }
+                            }
                         }
                     }
                 } else {
@@ -248,10 +260,17 @@
                         self.values[field.fieldID] = fieldValue.valueID;
 
                         for (FORMTarget *target in fieldValue.targets) {
-                            if (![self evaluateCondition:target.condition]) continue;
-                            if (target.actionType == FORMTargetActionHide) [hideTargets addObject:target];
-                            if (target.actionType == FORMTargetActionUpdate) [updateTargets addObject:target];
-                            if (target.actionType == FORMTargetActionDisable) [disabledFields addObject:target.targetID];
+                            if ([self evaluateCondition:target.condition]) {
+                                if (target.actionType == FORMTargetActionHide) {
+                                    [hideTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionUpdate) {
+                                    [updateTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionDisable) {
+                                    [disabledFields addObject:target.targetID];
+                                }
+                            }
                         }
                     }
                 }
@@ -265,38 +284,42 @@
     [self updateTargets:updateTargets];
 
     for (FORMTarget *target in hideTargets) {
-        if (![self evaluateCondition:target.condition]) continue;
+        if ([self evaluateCondition:target.condition]) {
 
-        if (target.type == FORMTargetTypeField) {
+            if (target.type == FORMTargetTypeField) {
 
-            FORMField *field = [self fieldWithID:target.targetID includingHiddenFields:YES];
-            [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
+                FORMField *field = [self fieldWithID:target.targetID
+                               includingHiddenFields:YES];
+                [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
 
-        } else if (target.type == FORMTargetTypeSection) {
+            } else if (target.type == FORMTargetTypeSection) {
 
-            FORMSection *section = [self sectionWithID:target.targetID];
-            [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
+                FORMSection *section = [self sectionWithID:target.targetID];
+                [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
+            }
         }
     }
 
     for (FORMTarget *target in hideTargets) {
-        if (![self evaluateCondition:target.condition]) continue;
+        if ([self evaluateCondition:target.condition]) {
+            if (target.type == FORMTargetTypeField) {
 
-        if (target.type == FORMTargetTypeField) {
+                FORMField *field = [self fieldWithID:target.targetID
+                               includingHiddenFields:NO];
+                if (field) {
+                    FORMSection *section = [self sectionWithID:field.section.sectionID];
+                    [section removeField:field
+                                 inForms:self.forms];
+                    [section resetFieldPositions];
+                }
 
-            FORMField *field = [self fieldWithID:target.targetID includingHiddenFields:NO];
-            if (field) {
-                FORMSection *section = [self sectionWithID:field.section.sectionID];
-                [section removeField:field inForms:self.forms];
-                [section resetFieldPositions];
-            }
+            } else if (target.type == FORMTargetTypeSection) {
 
-        } else if (target.type == FORMTargetTypeSection) {
-
-            FORMSection *section = [self sectionWithID:target.targetID];
-            if (section) {
-                FORMGroup *form = section.form;
-                [form removeSection:section];
+                FORMSection *section = [self sectionWithID:target.targetID];
+                if (section) {
+                    FORMGroup *form = section.form;
+                    [form removeSection:section];
+                }
             }
         }
     }
@@ -310,7 +333,9 @@
         for (FORMSection *section in form.sections) {
             for (FORMField *field in section.fields) {
                 BOOL fieldIsValid = (field.validation && [field validate] != FORMValidationResultTypePassed);
-                if (fieldIsValid) [invalidFormFields addObject:field];
+                if (fieldIsValid) {
+                    [invalidFormFields addObject:field];
+                }
             }
         }
     }
@@ -350,7 +375,8 @@
     NSArray *fieldIDs = [formula hyp_variables];
 
     for (NSString *fieldID in fieldIDs) {
-        FORMField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
+        FORMField *targetField = [self fieldWithID:fieldID
+                             includingHiddenFields:YES];
         id value = targetField.value;
         if (value) {
             if (targetField.type == FORMFieldTypeSelect) {
@@ -475,7 +501,8 @@
         for (FORMField *field in form.fields) {
 
             if ([field.fieldID isEqualToString:fieldID]) {
-                indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:formIndex];
+                indexPath = [NSIndexPath indexPathForItem:fieldIndex
+                                                inSection:formIndex];
                 foundField = field;
                 break;
             }
@@ -509,7 +536,8 @@
 
     for (NSString *removedKey in removedKeys) {
         NSString *newRemovedKey = [removedKey hyp_updateRelationshipIndex:removedElementsCount];
-        [self.removedValues setValue:self.values[removedKey] forKey:newRemovedKey];
+        [self.removedValues setValue:self.values[removedKey]
+                              forKey:newRemovedKey];
         [self.values removeObjectForKey:removedKey];
     }
 
@@ -611,7 +639,9 @@
         idx++;
     }
 
-    if (completion) completion(section, index);
+    if (completion) {
+        completion(section, index);
+    }
 }
 
 - (NSArray *)showTargets:(NSArray *)targets
@@ -625,7 +655,7 @@
         if (target.type == FORMTargetTypeField) {
             [self fieldWithID:target.targetID includingHiddenFields:NO
                    completion:^(FORMField *field, NSIndexPath *indexPath) {
-                       if (field) shouldLookForField = NO;
+                       shouldLookForField = (field == nil);
                    }];
         }
 
@@ -711,19 +741,21 @@
     NSMutableSet *deletedIndexPaths = [NSMutableSet set];
 
     for (FORMField *field in deletedFields) {
-        [self fieldWithID:field.fieldID includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
-            if (field) {
-                [deletedIndexPaths addObject:indexPath];
-            }
-        }];
+        [self fieldWithID:field.fieldID includingHiddenFields:YES
+               completion:^(FORMField *field, NSIndexPath *indexPath) {
+                   if (field) {
+                       [deletedIndexPaths addObject:indexPath];
+                   }
+               }];
     }
 
     for (FORMSection *section in deletedSections) {
-        [self sectionWithID:section.sectionID completion:^(FORMSection *foundSection, NSArray *indexPaths) {
-            if (foundSection) {
-                [deletedIndexPaths addObjectsFromArray:indexPaths];
-            }
-        }];
+        [self sectionWithID:section.sectionID
+                 completion:^(FORMSection *foundSection, NSArray *indexPaths) {
+                     if (foundSection) {
+                         [deletedIndexPaths addObjectsFromArray:indexPaths];
+                     }
+                 }];
     }
 
     for (FORMField *field in deletedFields) {
@@ -776,89 +808,94 @@
         [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *foundField, NSIndexPath *indexPath) {
             if (foundField) {
                 field = foundField;
-                if (indexPath) [updatedIndexPaths addObject:indexPath];
+                if (indexPath) {
+                    [updatedIndexPaths addObject:indexPath];
+                }
             }
         }];
 
-        if (!field) continue;
+        if (field) {
+            if (target.targetValue) {
 
-        if (target.targetValue) {
+                if (field.type == FORMFieldTypeSelect) {
+                    FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.targetValue];
 
-            if (field.type == FORMFieldTypeSelect) {
-                FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.targetValue];
+                    if (selectedFieldValue) {
+                        [self.values setObject:selectedFieldValue.valueID forKey:field.fieldID];
+                        field.value = selectedFieldValue;
+                    }
 
-                if (selectedFieldValue) {
-                    [self.values setObject:selectedFieldValue.valueID forKey:field.fieldID];
-                    field.value = selectedFieldValue;
+                } else {
+                    field.value = target.targetValue;
+                    [self.values setObject:field.value forKey:field.fieldID];
                 }
 
-            } else {
-                field.value = target.targetValue;
-                [self.values setObject:field.value forKey:field.fieldID];
-            }
+            } else if (target.actionType == FORMTargetActionClear) {
+                field.value = nil;
+                [self.values setObject:[NSNull null] forKey:field.fieldID];
+            } else if (field.formula) {
+                NSArray *fieldIDs = [field.formula hyp_variables];
+                NSMutableDictionary *values = [NSMutableDictionary new];
 
-        } else if (target.actionType == FORMTargetActionClear) {
-            field.value = nil;
-            [self.values setObject:[NSNull null] forKey:field.fieldID];
-        } else if (field.formula) {
-            NSArray *fieldIDs = [field.formula hyp_variables];
-            NSMutableDictionary *values = [NSMutableDictionary new];
+                for (NSString *fieldID in fieldIDs) {
 
-            for (NSString *fieldID in fieldIDs) {
+                    id value = [self.values objectForKey:fieldID];
+                    BOOL isNumericField = (field.type == FORMFieldTypeFloat || field.type == FORMFieldTypeNumber);
+                    NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
 
-                id value = [self.values objectForKey:fieldID];
-                BOOL isNumericField = (field.type == FORMFieldTypeFloat || field.type == FORMFieldTypeNumber);
-                NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
+                    FORMField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
 
-                FORMField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
+                    if (targetField.type == FORMFieldTypeSelect) {
 
-                if (targetField.type == FORMFieldTypeSelect) {
+                        if ([targetField.value isKindOfClass:[FORMFieldValue class]]) {
 
-                    if ([targetField.value isKindOfClass:[FORMFieldValue class]]) {
+                            FORMFieldValue *fieldValue = targetField.value;
 
-                        FORMFieldValue *fieldValue = targetField.value;
-
-                        if (fieldValue.value) {
-                            [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
-                        }
-                    } else {
-                        FORMFieldValue *foundFieldValue = nil;
-                        for (FORMFieldValue *fieldValue in field.values) {
-                            if ([fieldValue identifierIsEqualTo:field.value]) {
-                                foundFieldValue = fieldValue;
+                            if (fieldValue.value) {
+                                [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
+                            }
+                        } else {
+                            FORMFieldValue *foundFieldValue = nil;
+                            for (FORMFieldValue *fieldValue in field.values) {
+                                if ([fieldValue identifierIsEqualTo:field.value]) {
+                                    foundFieldValue = fieldValue;
+                                }
+                            }
+                            if (foundFieldValue && foundFieldValue.value) {
+                                [values addEntriesFromDictionary:@{fieldID : foundFieldValue.value}];
                             }
                         }
-                        if (foundFieldValue && foundFieldValue.value) {
-                            [values addEntriesFromDictionary:@{fieldID : foundFieldValue.value}];
-                        }
-                    }
 
-                } else if (value) {
-                    if ([value isKindOfClass:[NSString class]]) {
-                        if ([value length] == 0) value = defaultEmptyValue;
-                        [values addEntriesFromDictionary:@{fieldID : value}];
-                    } else {
-                        if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
-                            [self.values setObject:[value stringValue] forKey:field.fieldID];
-                            [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                    } else if (value) {
+                        if ([value isKindOfClass:[NSString class]]) {
+                            if ([value length] == 0) {
+                                value = defaultEmptyValue;
+                            }
+                            [values addEntriesFromDictionary:@{fieldID : value}];
                         } else {
-                            [self.values setObject:@"" forKey:field.fieldID];
-                            [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
+                            if ([value respondsToSelector:NSSelectorFromString(@"stringValue")]) {
+                                [self.values setObject:[value stringValue] forKey:field.fieldID];
+                                [values addEntriesFromDictionary:@{fieldID : [value stringValue]}];
+                            } else {
+                                [self.values setObject:@"" forKey:field.fieldID];
+                                [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
+                            }
                         }
+                    } else {
+                        [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
                     }
-                } else {
-                    [values addEntriesFromDictionary:@{fieldID : defaultEmptyValue}];
                 }
-            }
 
-            field.formula = [field.formula stringByReplacingOccurrencesOfString:@"$" withString:@""];
-            id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
-            field.value = result;
+                field.formula = [field.formula stringByReplacingOccurrencesOfString:@"$" withString:@""];
+                id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
+                field.value = result;
 
-            if (result) {
-                [self.values setObject:result forKey:field.fieldID];
-            } else {
-                [self.values removeObjectForKey:field.fieldID];
+                if (result) {
+                    [self.values setObject:result
+                                    forKey:field.fieldID];
+                } else {
+                    [self.values removeObjectForKey:field.fieldID];
+                }
             }
         }
     }
@@ -868,12 +905,18 @@
 
 - (NSArray *)enableTargets:(NSArray *)targets
 {
-    return [self updateTargets:targets withEnabled:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@YES];
+    return [self updateTargets:targets
+                   withEnabled:YES];
 }
 
 - (NSArray *)disableTargets:(NSArray *)targets
 {
-    return [self updateTargets:targets withEnabled:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@YES];
+    return [self updateTargets:targets
+                   withEnabled:NO];
 }
 
 - (NSArray *)updateTargets:(NSArray *)targets withEnabled:(BOOL)enabled
@@ -888,7 +931,9 @@
         [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
             if (field) {
                 field.disabled = !enabled;
-                if (indexPath) [indexPaths addObject:indexPath];
+                if (indexPath) {
+                    [indexPaths addObject:indexPath];
+                }
             }
         }];
     }
