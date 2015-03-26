@@ -456,7 +456,8 @@
 
 #pragma mark - Field
 
-- (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+- (FORMField *)fieldWithID:(NSString *)fieldID
+     includingHiddenFields:(BOOL)includingHiddenFields
 {
     NSParameterAssert(fieldID);
 
@@ -486,7 +487,8 @@
     return foundField;
 }
 
-- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+- (void)fieldWithID:(NSString *)fieldID
+includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion
 {
     NSParameterAssert(fieldID);
@@ -520,7 +522,8 @@
     if (completion) completion(foundField, indexPath);
 }
 
-- (void)removeSection:(FORMSection *)removedSection inCollectionView:(UICollectionView *)collectionView
+- (void)removeSection:(FORMSection *)removedSection
+     inCollectionView:(UICollectionView *)collectionView
 {
     NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
     HYPParsedRelationship *parsed = [removedSection.sectionID hyp_parseRelationship];
@@ -919,7 +922,8 @@
                    withEnabled:NO];
 }
 
-- (NSArray *)updateTargets:(NSArray *)targets withEnabled:(BOOL)enabled
+- (NSArray *)updateTargets:(NSArray *)targets
+               withEnabled:(BOOL)enabled
 {
     NSMutableArray *indexPaths = [NSMutableArray new];
 
@@ -941,7 +945,9 @@
     return indexPaths;
 }
 
-- (void)indexForSection:(FORMSection *)section form:(FORMGroup *)form completion:(void (^)(BOOL found, NSInteger index))completion
+- (void)indexForSection:(FORMSection *)section
+                   form:(FORMGroup *)form
+             completion:(void (^)(BOOL found, NSInteger index))completion
 {
     __block NSInteger index = 0;
     __block BOOL found = NO;
@@ -1021,7 +1027,9 @@
 
 #pragma mark - Dynamic
 
-- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID intoCollectionView:(UICollectionView *)collectionView usingForm:(FORMGroup *)form
+- (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID
+                 intoCollectionView:(UICollectionView *)collectionView
+                          usingForm:(FORMGroup *)form
 {
     FORMSection *foundSection;
     for (FORMSection *aSection in form.sections) {
@@ -1100,7 +1108,8 @@
     }
 }
 
-- (NSInteger)indexForTemplateSectionWithID:(NSString *)sectionID inForm:(FORMGroup *)form
+- (NSInteger)indexForTemplateSectionWithID:(NSString *)sectionID
+                                    inForm:(FORMGroup *)form
 {
     NSInteger index = -1;
     for (FORMSection *existingSection in form.sections) {

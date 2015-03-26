@@ -209,7 +209,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 #pragma mark - Public methods
 
-- (void)collapseFieldsInSection:(NSInteger)section collectionView:(UICollectionView *)collectionView
+- (void)collapseFieldsInSection:(NSInteger)section
+                 collectionView:(UICollectionView *)collectionView
 {
     BOOL headerIsCollapsed = ([self.collapsedForms containsObject:@(section)]);
 
@@ -588,7 +589,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 #pragma mark - FORMBaseFieldCellDelegate
 
-- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(FORMField *)field
+- (void)fieldCell:(UICollectionViewCell *)fieldCell
+ updatedWithField:(FORMField *)field
 {
     if (self.configureFieldUpdatedBlock) {
         self.configureFieldUpdatedBlock(fieldCell, field);
@@ -632,7 +634,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     }
 }
 
-- (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets
+- (void)fieldCell:(UICollectionViewCell *)fieldCell
+   processTargets:(NSArray *)targets
 {
     NSTimeInterval delay = ([NSObject isUnitTesting]) ? FORMDispatchTime : 0.0f;
     [self performSelector:@selector(processTargets:)
@@ -855,13 +858,15 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                            inSectionWithID:sectionID completion:completion];
 }
 
-- (FORMField *)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+- (FORMField *)fieldWithID:(NSString *)fieldID
+     includingHiddenFields:(BOOL)includingHiddenFields
 {
     return [self.formsManager fieldWithID:fieldID
                     includingHiddenFields:includingHiddenFields];
 }
 
-- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
+- (void)fieldWithID:(NSString *)fieldID
+includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion
 {
     [self.formsManager fieldWithID:fieldID
