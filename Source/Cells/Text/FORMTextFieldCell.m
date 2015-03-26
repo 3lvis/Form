@@ -328,8 +328,8 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     }
 
     if (self.showTooltips) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification
-                                                        object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification
+                                                            object:nil];
     }
 }
 
