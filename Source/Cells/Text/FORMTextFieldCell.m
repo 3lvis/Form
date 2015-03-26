@@ -189,6 +189,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     self.textField.enabled         = !field.disabled;
     self.textField.valid           = field.valid;
     self.textField.rawText         = [self rawTextForField:field];
+    self.textField.tooltipString   = field.tooltip;
 }
 
 - (void)validate
@@ -226,13 +227,12 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)cellTapAction
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
+
     BOOL shouldDisplayTooltip = (self.field.type == FORMFieldTypeText &&
                                  self.field.tooltip);
     if (shouldDisplayTooltip) {
         [self showTooltip];
-    } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:FORMResignFirstResponderNotification
-                                                            object:nil];
     }
 }
 
@@ -271,10 +271,8 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)showTooltip
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification
-                                                        object:nil];
-
     if (self.field.tooltip && self.showTooltips) {
+        self.tooltipView.alpha = 0.0f;
         [self.contentView addSubview:self.tooltipView];
         self.tooltipView.frame = [self tooltipViewFrame];
         self.tooltipLabel.frame = [self tooltipLabelFrame];
@@ -299,15 +297,18 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
             self.tooltipView.arrowOffset -= 39.0f;
         }
 
-        self.tooltipView.frame = tooltipViewFrame;
-
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.tooltip];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
         paragrahStyle.alignment = NSTextAlignmentCenter;
         paragrahStyle.lineSpacing = 8;
-        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.tooltip.length)];
+        [attributedString addAttribute:NSParagraphStyleAttributeName
+                                 value:paragrahStyle
+                                 range:NSMakeRange(0, self.field.tooltip.length)];
 
         self.tooltipLabel.attributedText = attributedString;
+        [UIView animateWithDuration:0.3f animations:^{
+            self.tooltipView.alpha = 1.0f;
+        }];
     }
 }
 
@@ -315,7 +316,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)textFormFieldDidBeginEditing:(FORMTextField *)textField
 {
-    [self showTooltip];
+    [self performSelector:@selector(showTooltip) withObject:nil afterDelay:0.1f];
 }
 
 - (void)textFormFieldDidEndEditing:(FORMTextField *)textField
@@ -326,8 +327,10 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
         [self.textField setValid:[self.field validate]];
     }
 
+    if (self.showTooltips) {
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification
                                                         object:nil];
+    }
 }
 
 - (void)textFormField:(FORMTextField *)textField
@@ -341,7 +344,8 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     }
 
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
-        [self.delegate fieldCell:self updatedWithField:self.field];
+        [self.delegate fieldCell:self
+                updatedWithField:self.field];
     }
 }
 
