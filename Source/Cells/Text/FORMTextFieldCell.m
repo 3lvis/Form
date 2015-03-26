@@ -285,6 +285,16 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
             tooltipViewFrame.origin.x = 0;
         }
 
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.message];
+        NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
+        paragrahStyle.alignment = NSTextAlignmentCenter;
+        paragrahStyle.lineSpacing = 8;
+        [attributedString addAttribute:NSParagraphStyleAttributeName
+                                 value:paragrahStyle
+                                 range:NSMakeRange(0, self.field.message.length)];
+
+        self.tooltipLabel.attributedText = attributedString;
+
         CGFloat windowWidth = self.window.frame.size.width;
         BOOL isOutOfBounds = ((tooltipViewFrame.size.width + self.frame.origin.x) > windowWidth);
         if (isOutOfBounds) {
@@ -297,15 +307,8 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
             self.tooltipView.arrowOffset -= 39.0f;
         }
 
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.message];
-        NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
-        paragrahStyle.alignment = NSTextAlignmentCenter;
-        paragrahStyle.lineSpacing = 8;
-        [attributedString addAttribute:NSParagraphStyleAttributeName
-                                 value:paragrahStyle
-                                 range:NSMakeRange(0, self.field.message.length)];
+        self.tooltipView.frame = tooltipViewFrame;
 
-        self.tooltipLabel.attributedText = attributedString;
         [UIView animateWithDuration:0.3f animations:^{
             self.tooltipView.alpha = 1.0f;
         }];
