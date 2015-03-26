@@ -393,7 +393,7 @@
     XCTAssertEqualObjects(formData.values[@"email"], @"hi@there.com");
 
     FORMSection *section = [formData sectionWithID:@"companies[0]"];
-    [formData removeSection:section];
+    [formData removeSection:section inCollectionView:nil];
 
     XCTAssertEqual(formData.values.count, 1);
     XCTAssertEqual(formData.removedValues.count, 2);
@@ -427,7 +427,7 @@
     NSArray *comparedFieldIDs = @[@"companies[0].name", @"companies[0].phone_number", @"companies[0].remove"];
     XCTAssertEqualObjects(fieldIDs, comparedFieldIDs);
 
-    [formData removeSection:section];
+    [formData removeSection:section inCollectionView:nil];
 
     XCTAssertEqual(group.sections.count, 5);
     sectionPositions = @[@0, @1, @2, @3, @4];
@@ -461,7 +461,7 @@
     FORMSection *section = group.sections[1];
     XCTAssertEqualObjects(section.sectionID, @"companies[0]");
 
-    [formData removeSection:section];
+    [formData removeSection:section inCollectionView:nil];
 
     sectionPositions = @[@0, @1, @2, @3];
     comparedSectionPositions = [group.sections valueForKey:@"position"];
@@ -496,7 +496,7 @@
     NSArray *comparedFieldIDs = @[@"companies[0].name", @"companies[0].phone_number", @"companies[0].remove"];
     XCTAssertEqualObjects(fieldIDs, comparedFieldIDs);
 
-    [formData removeSection:section];
+    [formData removeSection:section inCollectionView:nil];
 
     XCTAssertEqual(group.sections.count, 5);
     sectionPositions = @[@0, @1, @2, @3, @4];
@@ -570,7 +570,7 @@
     FORMSection *section = form.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
-    [formData removeSection:section];
+    [formData removeSection:section inCollectionView:nil];
 
     form = formData.forms[0];
     XCTAssertEqual(form.sections.count, 7);
@@ -600,7 +600,7 @@
     FORMSection *section = form.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
-    [formData removeSection:section];
+    [formData removeSection:section inCollectionView:nil];
 
     NSDictionary *sectionDictionary = @{@"id" : @"companies[1]",
                                         @"fields":@[

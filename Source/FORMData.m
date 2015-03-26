@@ -493,7 +493,7 @@
     if (completion) completion(foundField, indexPath);
 }
 
-- (void)removeSection:(FORMSection *)removedSection
+- (void)removeSection:(FORMSection *)removedSection inCollectionView:(UICollectionView *)collectionView
 {
     NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
     HYPParsedRelationship *parsed = [removedSection.sectionID hyp_parseRelationship];
@@ -538,9 +538,14 @@
 
     NSString *sectionID = removedSection.sectionID;
     FORMGroup *form = removedSection.form;
-    [form.sections removeObject:removedSection];
-    relationshipIndex = 0;
+    [self sectionWithID:sectionID
+             completion:^(FORMSection *section, NSArray *indexPaths) {
+                 FORMGroup *f = section.form;
+                 [f.sections removeObject:section];
+                 [collectionView deleteItemsAtIndexPaths:indexPaths];
+             }];
 
+    relationshipIndex = 0;
     NSInteger position = 0;
     for (FORMSection *currentSection in form.sections) {
         currentSection.position = @(position);

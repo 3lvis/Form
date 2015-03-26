@@ -39,7 +39,7 @@
 - (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
 
-- (void)removeSection:(FORMSection *)removedSection;
+- (void)removeSection:(FORMSection *)removedSection inCollectionView:(UICollectionView *)collectionView;
 
 - (NSArray *)showTargets:(NSArray *)targets;
 - (NSArray *)hideTargets:(NSArray *)targets;

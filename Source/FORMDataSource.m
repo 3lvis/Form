@@ -466,7 +466,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     NSArray *removedSections = [self.formsManager removedSectionsUsingInitialValues:dictionary];
     for (FORMSection *section in removedSections) {
-        [self.formsManager removeSection:section];
+        [self.formsManager removeSection:section inCollectionView:self.collectionView];
     }
 
     [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
@@ -597,7 +597,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             parsed.attribute = nil;
             NSString *sectionID = [parsed key];
             [self.formsManager sectionWithID:sectionID completion:^(FORMSection *section, NSArray *indexPaths) {
-                [self.formsManager removeSection:section];
+                [self.formsManager removeSection:section inCollectionView:self.collectionView];
 
                 if (indexPaths) {
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
