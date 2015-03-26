@@ -10,5 +10,6 @@ static NSString * const FORMTextFieldCellIdentifier = @"FORMTextFieldCellIdentif
 
 - (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont UI_APPEARANCE_SELECTOR;
 - (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor UI_APPEARANCE_SELECTOR;
+- (void)setSubtitleBackgroundColor:(UIColor *)subtitleBackgroundColor;
 
 @end

@@ -95,6 +95,7 @@
 
     [[FORMTextFieldCell appearance] setSubtitleLabelFont:[UIFont fontWithName:@"AvenirNext-Medium" size:14.0]];
     [[FORMTextFieldCell appearance] setSubtitleLabelTextColor:[UIColor colorFromHex:@"97591D"]];
+    [[FORMTextFieldCell appearance] setSubtitleBackgroundColor:[UIColor colorFromHex:@"FDFD54"]];
 }
 
 @end

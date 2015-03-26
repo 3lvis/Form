@@ -128,7 +128,6 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 {
     if (_subtitleView) return _subtitleView;
 
-    [FORMSubtitleView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
     _subtitleView = [FORMSubtitleView new];
     [_subtitleView addSubview:self.subtitleLabel];
 
@@ -339,6 +338,11 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 - (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor
 {
     self.subtitleLabel.textColor = subtitleLabelTextColor;
+}
+
+- (void)setSubtitleBackgroundColor:(UIColor *)subtitleBackgroundColor
+{
+    [FORMSubtitleView setTintColor:subtitleBackgroundColor];
 }
 
 #pragma mark - Notifications
