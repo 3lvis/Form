@@ -3,9 +3,9 @@
 #import "FORMTooltipView.h"
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
-static const CGFloat FORMSubtitleViewMinimumWidth = 90.0f;
-static const CGFloat FORMSubtitleViewHeight = 44.0f;
-static const NSInteger FORMSubtitleNumberOfLines = 4;
+static const CGFloat FORMTooltipViewMinimumWidth = 90.0f;
+static const CGFloat FORMTooltipViewHeight = 44.0f;
+static const NSInteger FORMTooltipNumberOfLines = 4;
 
 @interface FORMTextFieldCell () <FORMTextFieldDelegate>
 
@@ -92,9 +92,9 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
         width = 8.0f * string.length;
     }
 
-    if (width < FORMSubtitleViewMinimumWidth) width = FORMSubtitleViewMinimumWidth;
+    if (width < FORMTooltipViewMinimumWidth) width = FORMTooltipViewMinimumWidth;
 
-    CGFloat height = FORMSubtitleViewHeight;
+    CGFloat height = FORMTooltipViewHeight;
     height += 11.0f * components.count;
 
     return CGRectMake(0, 0, width, height);
@@ -153,7 +153,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    _subtitleLabel.numberOfLines = FORMSubtitleNumberOfLines;
+    _subtitleLabel.numberOfLines = FORMTooltipNumberOfLines;
 
     return _subtitleLabel;
 }
@@ -265,26 +265,26 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
         self.subtitleLabel.frame = [self subtitleLabelFrame];
         [self.superview bringSubviewToFront:self];
 
-        CGRect subtitleViewFrame = self.tooltipView.frame;
+        CGRect tooltipViewFrame = self.tooltipView.frame;
 
         if (self.tooltipView.frame.origin.x < 0) {
-            self.tooltipView.arrowOffset = subtitleViewFrame.origin.x;
-            subtitleViewFrame.origin.x = 0;
+            self.tooltipView.arrowOffset = tooltipViewFrame.origin.x;
+            tooltipViewFrame.origin.x = 0;
         }
 
         CGFloat windowWidth = self.window.frame.size.width;
-        BOOL isOutOfBounds = ((subtitleViewFrame.size.width + self.frame.origin.x) > windowWidth);
+        BOOL isOutOfBounds = ((tooltipViewFrame.size.width + self.frame.origin.x) > windowWidth);
         if (isOutOfBounds) {
-            subtitleViewFrame.origin.x = windowWidth;
-            subtitleViewFrame.origin.x -= subtitleViewFrame.size.width;
-            subtitleViewFrame.origin.x -= self.frame.origin.x;
+            tooltipViewFrame.origin.x = windowWidth;
+            tooltipViewFrame.origin.x -= tooltipViewFrame.size.width;
+            tooltipViewFrame.origin.x -= self.frame.origin.x;
 
-            self.tooltipView.arrowOffset = subtitleViewFrame.size.width / 2;
+            self.tooltipView.arrowOffset = tooltipViewFrame.size.width / 2;
             self.tooltipView.arrowOffset -= self.textField.frame.size.width / 2;
             self.tooltipView.arrowOffset -= 39.0f;
         }
 
-        self.tooltipView.frame = subtitleViewFrame;
+        self.tooltipView.frame = tooltipViewFrame;
 
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
