@@ -112,9 +112,9 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return CGRectMake(0, 0, width, height);
 }
 
-- (CGRect)subtitleViewFrame
+- (CGRect)tooltipViewFrame
 {
-    CGRect frame = [self labelFrameUsingString:self.field.subtitle];
+    CGRect frame = [self labelFrameUsingString:self.field.tooltip];
 
     frame.size.height += [FORMTooltipView arrowHeight];
     frame.origin.x = self.textField.frame.origin.x;
@@ -146,9 +146,9 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return _tooltipView;
 }
 
-- (CGRect)subtitleLabelFrame
+- (CGRect)tooltipLabelFrame
 {
-    CGRect frame = [self labelFrameUsingString:self.field.subtitle];
+    CGRect frame = [self labelFrameUsingString:self.field.tooltip];
 
     if (self.tooltipView.arrowDirection == UIPopoverArrowDirectionUp) {
         frame.origin.y += [FORMTooltipView arrowHeight];
@@ -226,10 +226,10 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)cellTapAction
 {
-    BOOL shouldDisplaySubtitle = (self.field.type == FORMFieldTypeText &&
-                                  self.field.subtitle);
-    if (shouldDisplaySubtitle) {
-        [self showSubtitle];
+    BOOL shouldDisplayTooltip = (self.field.type == FORMFieldTypeText &&
+                                 self.field.tooltip);
+    if (shouldDisplayTooltip) {
+        [self showTooltip];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:FORMResignFirstResponderNotification
                                                             object:nil];
@@ -269,15 +269,15 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return frame;
 }
 
-- (void)showSubtitle
+- (void)showTooltip
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification
                                                         object:nil];
 
-    if (self.field.subtitle && self.showTooltips) {
+    if (self.field.tooltip && self.showTooltips) {
         [self.contentView addSubview:self.tooltipView];
-        self.tooltipView.frame = [self subtitleViewFrame];
-        self.tooltipLabel.frame = [self subtitleLabelFrame];
+        self.tooltipView.frame = [self tooltipViewFrame];
+        self.tooltipLabel.frame = [self tooltipLabelFrame];
         [self.superview bringSubviewToFront:self];
 
         CGRect tooltipViewFrame = self.tooltipView.frame;
@@ -301,11 +301,11 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
         self.tooltipView.frame = tooltipViewFrame;
 
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.tooltip];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
         paragrahStyle.alignment = NSTextAlignmentCenter;
         paragrahStyle.lineSpacing = 8;
-        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.subtitle.length)];
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.tooltip.length)];
 
         self.tooltipLabel.attributedText = attributedString;
     }
@@ -315,7 +315,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)textFormFieldDidBeginEditing:(FORMTextField *)textField
 {
-    [self showSubtitle];
+    [self showTooltip];
 }
 
 - (void)textFormFieldDidEndEditing:(FORMTextField *)textField
@@ -366,7 +366,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)dismissTooltip
 {
-    if (self.field.subtitle) {
+    if (self.field.tooltip) {
         [self.tooltipView removeFromSuperview];
     }
 }
