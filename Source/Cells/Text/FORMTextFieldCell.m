@@ -11,7 +11,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 @property (nonatomic) FORMTextField *textField;
 @property (nonatomic) UIPopoverController *popoverController;
-@property (nonatomic) UILabel *subtitleLabel;
+@property (nonatomic) UILabel *tooltipLabel;
 @property (nonatomic) FORMTooltipView *tooltipView;
 @property (nonatomic) BOOL showTooltips;
 
@@ -129,7 +129,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     if (_tooltipView) return _tooltipView;
 
     _tooltipView = [FORMTooltipView new];
-    [_tooltipView addSubview:self.subtitleLabel];
+    [_tooltipView addSubview:self.tooltipLabel];
 
     return _tooltipView;
 }
@@ -145,17 +145,17 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return frame;
 }
 
-- (UILabel *)subtitleLabel
+- (UILabel *)tooltipLabel
 {
-    if (_subtitleLabel) return _subtitleLabel;
+    if (_tooltipLabel) return _tooltipLabel;
 
-    _subtitleLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
+    _tooltipLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
 
-    _subtitleLabel.textAlignment = NSTextAlignmentCenter;
-    _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    _subtitleLabel.numberOfLines = FORMTooltipNumberOfLines;
+    _tooltipLabel.textAlignment = NSTextAlignmentCenter;
+    _tooltipLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _tooltipLabel.numberOfLines = FORMTooltipNumberOfLines;
 
-    return _subtitleLabel;
+    return _tooltipLabel;
 }
 
 #pragma mark - FORMBaseFormFieldCell
@@ -262,7 +262,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     if (self.field.subtitle && self.showTooltips) {
         [self.contentView addSubview:self.tooltipView];
         self.tooltipView.frame = [self subtitleViewFrame];
-        self.subtitleLabel.frame = [self subtitleLabelFrame];
+        self.tooltipLabel.frame = [self subtitleLabelFrame];
         [self.superview bringSubviewToFront:self];
 
         CGRect tooltipViewFrame = self.tooltipView.frame;
@@ -292,7 +292,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
         paragrahStyle.lineSpacing = 8;
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.subtitle.length)];
 
-        self.subtitleLabel.attributedText = attributedString;
+        self.tooltipLabel.attributedText = attributedString;
     }
 }
 
@@ -330,19 +330,19 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 #pragma mark - Styling
 
-- (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont
+- (void)setTooltipLabelFont:(UIFont *)subtitleLabelFont
 {
-    self.subtitleLabel.font = subtitleLabelFont;
+    self.tooltipLabel.font = subtitleLabelFont;
 }
 
-- (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor
+- (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor
 {
-    self.subtitleLabel.textColor = subtitleLabelTextColor;
+    self.tooltipLabel.textColor = tooltipLabelTextColor;
 }
 
-- (void)setSubtitleBackgroundColor:(UIColor *)subtitleBackgroundColor
+- (void)setTooltipBackgroundColor:(UIColor *)tooltipBackgroundColor
 {
-    [FORMTooltipView setTintColor:subtitleBackgroundColor];
+    [FORMTooltipView setTintColor:tooltipBackgroundColor];
 }
 
 #pragma mark - Notifications
