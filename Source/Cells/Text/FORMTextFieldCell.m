@@ -12,7 +12,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 @property (nonatomic) FORMTextField *textField;
 @property (nonatomic) UIPopoverController *popoverController;
 @property (nonatomic) UILabel *subtitleLabel;
-@property (nonatomic) FORMSubtitleView *subtitleView;
+@property (nonatomic) FORMSubtitleView *toolTipView;
 @property (nonatomic) BOOL showTooltips;
 
 @end
@@ -111,10 +111,10 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     frame.origin.x += self.textField.frame.size.width / 2 - frame.size.width / 2;
 
     if ([self.field.sectionPosition isEqualToNumber:@0]) {
-        self.subtitleView.arrowDirection = UIPopoverArrowDirectionUp;
+        self.toolTipView.arrowDirection = UIPopoverArrowDirectionUp;
         frame.origin.y += self.textField.frame.size.height / 2;
     } else {
-        self.subtitleView.arrowDirection = UIPopoverArrowDirectionDown;
+        self.toolTipView.arrowDirection = UIPopoverArrowDirectionDown;
         frame.origin.y -= self.textField.frame.size.height / 2;
         frame.origin.y -= frame.size.height;
     }
@@ -124,21 +124,21 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     return frame;
 }
 
-- (FORMSubtitleView *)subtitleView
+- (FORMSubtitleView *)toolTipView
 {
-    if (_subtitleView) return _subtitleView;
+    if (_toolTipView) return _toolTipView;
 
-    _subtitleView = [FORMSubtitleView new];
-    [_subtitleView addSubview:self.subtitleLabel];
+    _toolTipView = [FORMSubtitleView new];
+    [_toolTipView addSubview:self.subtitleLabel];
 
-    return _subtitleView;
+    return _toolTipView;
 }
 
 - (CGRect)subtitleLabelFrame
 {
     CGRect frame = [self labelFrameUsingString:self.field.subtitle];
 
-    if (self.subtitleView.arrowDirection == UIPopoverArrowDirectionUp) {
+    if (self.toolTipView.arrowDirection == UIPopoverArrowDirectionUp) {
         frame.origin.y += [FORMSubtitleView arrowHeight];
     }
 
@@ -260,15 +260,15 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
 
     if (self.field.subtitle && self.showTooltips) {
-        [self.contentView addSubview:self.subtitleView];
-        self.subtitleView.frame = [self subtitleViewFrame];
+        [self.contentView addSubview:self.toolTipView];
+        self.toolTipView.frame = [self subtitleViewFrame];
         self.subtitleLabel.frame = [self subtitleLabelFrame];
         [self.superview bringSubviewToFront:self];
 
-        CGRect subtitleViewFrame = self.subtitleView.frame;
+        CGRect subtitleViewFrame = self.toolTipView.frame;
 
-        if (self.subtitleView.frame.origin.x < 0) {
-            self.subtitleView.arrowOffset = subtitleViewFrame.origin.x;
+        if (self.toolTipView.frame.origin.x < 0) {
+            self.toolTipView.arrowOffset = subtitleViewFrame.origin.x;
             subtitleViewFrame.origin.x = 0;
         }
 
@@ -279,12 +279,12 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
             subtitleViewFrame.origin.x -= subtitleViewFrame.size.width;
             subtitleViewFrame.origin.x -= self.frame.origin.x;
 
-            self.subtitleView.arrowOffset = subtitleViewFrame.size.width / 2;
-            self.subtitleView.arrowOffset -= self.textField.frame.size.width / 2;
-            self.subtitleView.arrowOffset -= 39.0f;
+            self.toolTipView.arrowOffset = subtitleViewFrame.size.width / 2;
+            self.toolTipView.arrowOffset -= self.textField.frame.size.width / 2;
+            self.toolTipView.arrowOffset -= 39.0f;
         }
 
-        self.subtitleView.frame = subtitleViewFrame;
+        self.toolTipView.frame = subtitleViewFrame;
 
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
@@ -350,7 +350,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 - (void)dismissTooltip
 {
     if (self.field.subtitle) {
-        [self.subtitleView removeFromSuperview];
+        [self.toolTipView removeFromSuperview];
     }
 }
 
