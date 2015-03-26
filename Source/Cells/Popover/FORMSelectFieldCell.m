@@ -29,7 +29,7 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
 {
     if (_fieldValuesController) return _fieldValuesController;
 
-    _fieldValuesController = [[FORMFieldValuesTableViewController alloc] init];
+    _fieldValuesController = [FORMFieldValuesTableViewController new];
     _fieldValuesController.delegate = self;
 
     return _fieldValuesController;

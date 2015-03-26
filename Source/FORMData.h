@@ -3,6 +3,8 @@
 #import "FORMField.h"
 #import "FORMGroup.h"
 
+static NSString * const FORMHideTooltips = @"FORMHideTooltips";
+
 @interface FORMData : NSObject
 
 @property (nonatomic) NSMutableArray *forms;
@@ -38,6 +40,8 @@
 
 - (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
+
+- (void)removeSection:(FORMSection *)removedSection;
 
 - (NSArray *)showTargets:(NSArray *)targets;
 - (NSArray *)hideTargets:(NSArray *)targets;

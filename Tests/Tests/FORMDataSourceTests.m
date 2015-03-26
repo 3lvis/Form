@@ -18,11 +18,11 @@
 
 @end
 
-@interface FORMCollectionViewDataSourceTests : XCTestCase
+@interface FORMDataSourceTests : XCTestCase
 
 @end
 
-@implementation FORMCollectionViewDataSourceTests
+@implementation FORMDataSourceTests
 
 - (void)testIndexInForms
 {
@@ -175,6 +175,8 @@
     XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
 }
 
+#pragma mark - reloadWithDictionary
+
 - (void)testReloadWithDictionary
 {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
@@ -192,6 +194,88 @@
     FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.value, @"Elvis Nunez");
 }
+
+#pragma mark - testResetDynamicSectionsWithDictionary
+
+- (void)testResetDynamicSectionsWithDictionaryA
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    NSDictionary *initialValues = @{@"email" : @"hi@there.com",
+                                    @"companies[0].name" : @"Facebook",
+                                    @"companies[0].phone_number" : @"1222333"};
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:initialValues
+                                                             disabled:NO];
+
+    FORMGroup *form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 5);
+    FORMSection *section = form.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"companies[0]");
+    XCTAssertEqualObjects(dataSource.values, initialValues);
+    XCTAssertEqual(dataSource.removedValues.count, 0);
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 4);
+    section = form.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"personal-details-0");
+    XCTAssertNil([dataSource.values valueForKey:@"companies[0].name"]);
+    XCTAssertNil([dataSource.values valueForKey:@"companies[0].phone_number"]);
+    XCTAssertEqualObjects([dataSource.removedValues valueForKey:@"companies[0].name"], @"Facebook");
+    XCTAssertEqualObjects([dataSource.removedValues valueForKey:@"companies[0].phone_number"], @"1222333");
+
+    [dataSource resetDynamicSectionsWithDictionary:initialValues];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 5);
+    section = form.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"companies[0]");
+    XCTAssertEqualObjects(dataSource.values, initialValues);
+}
+
+- (void)testResetDynamicSectionsWithDictionaryB
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    NSDictionary *initialValues = @{@"email" : @"hi@there.com",
+                                    @"companies[0].name" : @"Facebook",
+                                    @"companies[0].phone_number" : @"1222333"};
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:initialValues
+                                                             disabled:NO];
+
+    FORMGroup *form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 5);
+
+    FORMField *field = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    [dataSource fieldCell:nil updatedWithField:field];
+    [dataSource fieldCell:nil updatedWithField:field];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 7);
+
+    [dataSource resetDynamicSectionsWithDictionary:initialValues];
+
+    form = dataSource.forms[0];
+    XCTAssertEqual(form.sections.count, 5);
+    FORMSection *section = form.sections[1];
+    XCTAssertEqualObjects(section.sectionID, @"companies[0]");
+    XCTAssertEqualObjects(dataSource.values, initialValues);
+}
+
+#pragma mark - processTarget
 
 - (void)testClearTarget
 {
@@ -289,7 +373,8 @@
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                        collectionView:nil
                                                                layout:nil
-                                                               values:@{@"companies[0].name" : @"Facebook",
+                                                               values:@{@"email":@"hi@there.com",
+                                                                        @"companies[0].name" : @"Facebook",
                                                                         @"companies[0].phone_number" : @"1222333",
                                                                         @"companies[1].name" : @"Google",
                                                                         @"companies[1].phone_number" : @"4555666"}
@@ -312,6 +397,9 @@
 
     field = [dataSource fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
     XCTAssertEqualObjects(field.value, @"4555666");
+
+    field = [dataSource fieldWithID:@"email" includingHiddenFields:NO];
+    XCTAssertEqualObjects(field.value, @"hi@there.com");
 }
 
 - (void)testAddingMultipleDynamicSections
@@ -350,7 +438,7 @@
 
     [dataSource fieldCell:nil updatedWithField:field];
 
-    [dataSource fieldWithID:@"contacts[0].name" includingHiddenFields:NO completion:^(FORMField *field, NSIndexPath *indexPath) {
+    [dataSource fieldWithID:@"contacts[0].first_name" includingHiddenFields:NO completion:^(FORMField *field, NSIndexPath *indexPath) {
         fieldIndexPath = indexPath;
     }];
 
@@ -365,7 +453,8 @@
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                        collectionView:nil
                                                                layout:nil
-                                                               values:@{@"companies[0].name" : @"Facebook",
+                                                               values:@{@"email" : @"hi@there.com",
+                                                                        @"companies[0].name" : @"Facebook",
                                                                         @"companies[0].phone_number" : @"1222333",
                                                                         @"companies[1].name" : @"Google",
                                                                         @"companies[1].phone_number" : @"4555666",
@@ -376,18 +465,21 @@
                                                                         }
                                                              disabled:NO];
 
-    XCTAssertEqual(dataSource.values.count, 8);
+    XCTAssertEqual(dataSource.values.count, 9);
     XCTAssertEqual(dataSource.removedValues.count, 0);
     XCTAssertEqualObjects(dataSource.values[@"companies[0].name"], @"Facebook");
     XCTAssertEqualObjects(dataSource.values[@"companies[0].phone_number"], @"1222333");
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
+
+    XCTAssertEqual(dataSource.values.count, 7);
     XCTAssertEqual(dataSource.removedValues.count, 2);
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].name"], @"Facebook");
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].phone_number"], @"1222333");
     XCTAssertEqualObjects(dataSource.values[@"companies[0].name"], @"Google");
     XCTAssertEqualObjects(dataSource.values[@"companies[0].phone_number"], @"4555666");
+    XCTAssertEqualObjects(dataSource.values[@"email"], @"hi@there.com");
 }
 
 - (void)testRemovingSectionsAddedByInitialValuesB
@@ -398,7 +490,8 @@
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                        collectionView:nil
                                                                layout:nil
-                                                               values:@{@"companies[0].name" : @"Facebook",
+                                                               values:@{@"email" : @"hi@there.com",
+                                                                        @"companies[0].name" : @"Facebook",
                                                                         @"companies[0].phone_number" : @"1222333",
                                                                         @"companies[1].name" : @"Google",
                                                                         @"companies[1].phone_number" : @"4555666",
@@ -409,15 +502,21 @@
                                                                         }
                                                              disabled:NO];
 
+    XCTAssertEqual(dataSource.values.count, 9);
+    XCTAssertEqual(dataSource.removedValues.count, 0);
     XCTAssertEqualObjects(dataSource.values[@"companies[2].name"], @"Apple");
     XCTAssertEqualObjects(dataSource.values[@"companies[2].phone_number"], @"7888999");
+
     FORMField *removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
+
+    XCTAssertEqual(dataSource.values.count, 7);
     XCTAssertTrue(dataSource.removedValues.count == 2);
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].name"], @"Google");
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].phone_number"], @"4555666");
     XCTAssertEqualObjects(dataSource.values[@"companies[2].name"], @"Microsoft");
     XCTAssertEqualObjects(dataSource.values[@"companies[2].phone_number"], @"11223344");
+    XCTAssertEqualObjects(dataSource.values[@"email"], @"hi@there.com");
 }
 
 - (void)testRemovingMultipleDynamicSectionsAddedByInitialValues
@@ -437,12 +536,19 @@
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
+
+    XCTAssertTrue(dataSource.values.count == 2);
+    XCTAssertEqualObjects(dataSource.values[@"companies[0].name"], @"Google");
+    XCTAssertEqualObjects(dataSource.values[@"companies[0].phone_number"], @"4555666");
+
     XCTAssertTrue(dataSource.removedValues.count == 2);
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].name"], @"Facebook");
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[0].phone_number"], @"1222333");
 
     removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
+
+    XCTAssertTrue(dataSource.values.count == 0);
     XCTAssertTrue(dataSource.removedValues.count == 4);
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[1].name"], @"Google");
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[1].phone_number"], @"4555666");
@@ -459,22 +565,32 @@
                                                                values:nil
                                                              disabled:YES];
 
+    FORMSection *section = [dataSource sectionWithID:@"companies"];
+    XCTAssertEqualObjects(section.position, @0);
+
+    section = [dataSource sectionWithID:@"personal-details-0"];
+    XCTAssertEqualObjects(section.position, @1);
+
     FORMField *addField = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
     XCTAssertNotNil(addField);
 
     [dataSource fieldCell:nil updatedWithField:addField];
 
-    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:NO];
-    XCTAssertNotNil(removeField);
-
-    FORMSection *section = [dataSource sectionWithID:@"companies[0]"];
+    section = [dataSource sectionWithID:@"companies[0]"];
     XCTAssertNotNil(section);
     XCTAssertEqualObjects(section.position, @1);
 
+    section = [dataSource sectionWithID:@"personal-details-0"];
+    XCTAssertEqualObjects(section.position, @2);
+    XCTAssertNotNil(section);
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:NO];
+    XCTAssertNotNil(removeField);
+
     [dataSource fieldCell:nil updatedWithField:removeField];
 
-    section = [dataSource sectionWithID:@"personal-details-1"];
-    XCTAssertEqualObjects(section.position, @2);
+    section = [dataSource sectionWithID:@"personal-details-0"];
+    XCTAssertEqualObjects(section.position, @1);
     XCTAssertNotNil(section);
 }
 
@@ -496,7 +612,7 @@
         [fieldPositions addObject:field.position];
     }
 
-    NSArray *expectedInitialPositions = @[@0,@1,@2,@3,@4,@5];
+    NSArray *expectedInitialPositions = @[@0, @1, @2, @3, @4, @5];
     XCTAssertEqualObjects(fieldPositions, expectedInitialPositions);
 
     [dataSource hideTargets:@[[FORMTarget hideFieldTargetWithID:@"section-0-field-2"]]];
@@ -506,7 +622,7 @@
         [fieldPositions addObject:field.position];
     }
 
-    NSArray *expectedUpdatedPositions = @[@0,@1,@2,@3,@4];
+    NSArray *expectedUpdatedPositions = @[@0, @1, @2, @3, @4];
     XCTAssertEqualObjects(fieldPositions, expectedUpdatedPositions);
 
     [dataSource showTargets:@[[FORMTarget showFieldTargetWithID:@"section-0-field-2"]]];

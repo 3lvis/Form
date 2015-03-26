@@ -6,10 +6,12 @@
 #import "FORMTarget.h"
 #import "FORMClassFactory.h"
 #import "FORMValidator.h"
+#import "HYPParsedRelationship.h"
 
 #import "NSString+HYPFormula.h"
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
+#import "NSString+HYPRelationshipParser.h"
 
 @interface FORMGroup ()
 

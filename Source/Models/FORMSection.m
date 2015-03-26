@@ -59,6 +59,7 @@
         field.sectionSeparator = YES;
         field.position = @(fields.count);
         field.section = self;
+        field.fieldID = [NSString stringWithFormat:@"separator-%@", _sectionID];
         [fields addObject:field];
     }
 

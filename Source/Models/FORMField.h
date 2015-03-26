@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) NSNumber *position;
 @property (nonatomic) id value;
 @property (nonatomic) NSString *typeString;
+@property (nonatomic) NSString *inputTypeString;
 @property (nonatomic) FORMFieldType type;
 @property (nonatomic) NSArray *values;
 @property (nonatomic, getter=isDisabled) BOOL disabled;
