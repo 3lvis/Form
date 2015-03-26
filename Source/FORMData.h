@@ -3,6 +3,8 @@
 #import "FORMField.h"
 #import "FORMGroup.h"
 
+static NSString * const FORMHideTooltips = @"FORMHideTooltips";
+
 @interface FORMData : NSObject
 
 @property (nonatomic) NSMutableArray *forms;

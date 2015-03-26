@@ -220,7 +220,9 @@
                     for (FORMFieldValue *value in field.values) {
 
                         BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:field.fieldID]]);
-                        if (isInitialValue) field.value = value;
+                        if (isInitialValue) {
+                            field.value = value;
+                        }
                     }
                 } else {
                     field.value = [initialValues andy_valueForKey:field.fieldID];
@@ -238,10 +240,17 @@
                     if (fieldValueMatchesInitialValue) {
 
                         for (FORMTarget *target in fieldValue.targets) {
-                            if (![self evaluateCondition:target.condition]) continue;
-                            if (target.actionType == FORMTargetActionHide) [hideTargets addObject:target];
-                            if (target.actionType == FORMTargetActionUpdate) [updateTargets addObject:target];
-                            if (target.actionType == FORMTargetActionDisable) [disabledFields addObject:target.targetID];
+                            if ([self evaluateCondition:target.condition]) {
+                                if (target.actionType == FORMTargetActionHide) {
+                                    [hideTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionUpdate) {
+                                    [updateTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionDisable) {
+                                    [disabledFields addObject:target.targetID];
+                                }
+                            }
                         }
                     }
                 } else {
@@ -251,10 +260,17 @@
                         self.values[field.fieldID] = fieldValue.valueID;
 
                         for (FORMTarget *target in fieldValue.targets) {
-                            if (![self evaluateCondition:target.condition]) continue;
-                            if (target.actionType == FORMTargetActionHide) [hideTargets addObject:target];
-                            if (target.actionType == FORMTargetActionUpdate) [updateTargets addObject:target];
-                            if (target.actionType == FORMTargetActionDisable) [disabledFields addObject:target.targetID];
+                            if ([self evaluateCondition:target.condition]) {
+                                if (target.actionType == FORMTargetActionHide) {
+                                    [hideTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionUpdate) {
+                                    [updateTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionDisable) {
+                                    [disabledFields addObject:target.targetID];
+                                }
+                            }
                         }
                     }
                 }
@@ -268,38 +284,42 @@
     [self updateTargets:updateTargets];
 
     for (FORMTarget *target in hideTargets) {
-        if (![self evaluateCondition:target.condition]) continue;
+        if ([self evaluateCondition:target.condition]) {
 
-        if (target.type == FORMTargetTypeField) {
+            if (target.type == FORMTargetTypeField) {
 
-            FORMField *field = [self fieldWithID:target.targetID includingHiddenFields:YES];
-            [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
+                FORMField *field = [self fieldWithID:target.targetID
+                               includingHiddenFields:YES];
+                [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
 
-        } else if (target.type == FORMTargetTypeSection) {
+            } else if (target.type == FORMTargetTypeSection) {
 
-            FORMSection *section = [self sectionWithID:target.targetID];
-            [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
+                FORMSection *section = [self sectionWithID:target.targetID];
+                [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
+            }
         }
     }
 
     for (FORMTarget *target in hideTargets) {
-        if (![self evaluateCondition:target.condition]) continue;
+        if ([self evaluateCondition:target.condition]) {
+            if (target.type == FORMTargetTypeField) {
 
-        if (target.type == FORMTargetTypeField) {
+                FORMField *field = [self fieldWithID:target.targetID
+                               includingHiddenFields:NO];
+                if (field) {
+                    FORMSection *section = [self sectionWithID:field.section.sectionID];
+                    [section removeField:field
+                                 inForms:self.forms];
+                    [section resetFieldPositions];
+                }
 
-            FORMField *field = [self fieldWithID:target.targetID includingHiddenFields:NO];
-            if (field) {
-                FORMSection *section = [self sectionWithID:field.section.sectionID];
-                [section removeField:field inForms:self.forms];
-                [section resetFieldPositions];
-            }
+            } else if (target.type == FORMTargetTypeSection) {
 
-        } else if (target.type == FORMTargetTypeSection) {
-
-            FORMSection *section = [self sectionWithID:target.targetID];
-            if (section) {
-                FORMGroup *form = section.form;
-                [form removeSection:section];
+                FORMSection *section = [self sectionWithID:target.targetID];
+                if (section) {
+                    FORMGroup *form = section.form;
+                    [form removeSection:section];
+                }
             }
         }
     }
@@ -355,7 +375,8 @@
     NSArray *fieldIDs = [formula hyp_variables];
 
     for (NSString *fieldID in fieldIDs) {
-        FORMField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
+        FORMField *targetField = [self fieldWithID:fieldID
+                             includingHiddenFields:YES];
         id value = targetField.value;
         if (value) {
             if (targetField.type == FORMFieldTypeSelect) {
@@ -480,7 +501,8 @@
         for (FORMField *field in form.fields) {
 
             if ([field.fieldID isEqualToString:fieldID]) {
-                indexPath = [NSIndexPath indexPathForItem:fieldIndex inSection:formIndex];
+                indexPath = [NSIndexPath indexPathForItem:fieldIndex
+                                                inSection:formIndex];
                 foundField = field;
                 break;
             }
@@ -862,7 +884,8 @@
                 field.value = result;
 
                 if (result) {
-                    [self.values setObject:result forKey:field.fieldID];
+                    [self.values setObject:result
+                                    forKey:field.fieldID];
                 } else {
                     [self.values removeObjectForKey:field.fieldID];
                 }
@@ -875,12 +898,18 @@
 
 - (NSArray *)enableTargets:(NSArray *)targets
 {
-    return [self updateTargets:targets withEnabled:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@YES];
+    return [self updateTargets:targets
+                   withEnabled:YES];
 }
 
 - (NSArray *)disableTargets:(NSArray *)targets
 {
-    return [self updateTargets:targets withEnabled:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@YES];
+    return [self updateTargets:targets
+                   withEnabled:NO];
 }
 
 - (NSArray *)updateTargets:(NSArray *)targets withEnabled:(BOOL)enabled
