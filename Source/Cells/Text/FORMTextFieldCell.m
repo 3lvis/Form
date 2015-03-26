@@ -1,6 +1,6 @@
 #import "FORMTextFieldCell.h"
 
-#import "FORMSubtitleView.h"
+#import "FORMTooltipView.h"
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMSubtitleViewMinimumWidth = 90.0f;
@@ -12,7 +12,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 @property (nonatomic) FORMTextField *textField;
 @property (nonatomic) UIPopoverController *popoverController;
 @property (nonatomic) UILabel *subtitleLabel;
-@property (nonatomic) FORMSubtitleView *toolTipView;
+@property (nonatomic) FORMTooltipView *tooltipView;
 @property (nonatomic) BOOL showTooltips;
 
 @end
@@ -104,42 +104,42 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 {
     CGRect frame = [self labelFrameUsingString:self.field.subtitle];
 
-    frame.size.height += [FORMSubtitleView arrowHeight];
+    frame.size.height += [FORMTooltipView arrowHeight];
     frame.origin.x = self.textField.frame.origin.x;
     frame.origin.y = self.textField.frame.origin.y;
 
     frame.origin.x += self.textField.frame.size.width / 2 - frame.size.width / 2;
 
     if ([self.field.sectionPosition isEqualToNumber:@0]) {
-        self.toolTipView.arrowDirection = UIPopoverArrowDirectionUp;
+        self.tooltipView.arrowDirection = UIPopoverArrowDirectionUp;
         frame.origin.y += self.textField.frame.size.height / 2;
     } else {
-        self.toolTipView.arrowDirection = UIPopoverArrowDirectionDown;
+        self.tooltipView.arrowDirection = UIPopoverArrowDirectionDown;
         frame.origin.y -= self.textField.frame.size.height / 2;
         frame.origin.y -= frame.size.height;
     }
 
-    frame.origin.y += [FORMSubtitleView arrowHeight];
+    frame.origin.y += [FORMTooltipView arrowHeight];
 
     return frame;
 }
 
-- (FORMSubtitleView *)toolTipView
+- (FORMTooltipView *)tooltipView
 {
-    if (_toolTipView) return _toolTipView;
+    if (_tooltipView) return _tooltipView;
 
-    _toolTipView = [FORMSubtitleView new];
-    [_toolTipView addSubview:self.subtitleLabel];
+    _tooltipView = [FORMTooltipView new];
+    [_tooltipView addSubview:self.subtitleLabel];
 
-    return _toolTipView;
+    return _tooltipView;
 }
 
 - (CGRect)subtitleLabelFrame
 {
     CGRect frame = [self labelFrameUsingString:self.field.subtitle];
 
-    if (self.toolTipView.arrowDirection == UIPopoverArrowDirectionUp) {
-        frame.origin.y += [FORMSubtitleView arrowHeight];
+    if (self.tooltipView.arrowDirection == UIPopoverArrowDirectionUp) {
+        frame.origin.y += [FORMTooltipView arrowHeight];
     }
 
     return frame;
@@ -260,15 +260,15 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
 
     if (self.field.subtitle && self.showTooltips) {
-        [self.contentView addSubview:self.toolTipView];
-        self.toolTipView.frame = [self subtitleViewFrame];
+        [self.contentView addSubview:self.tooltipView];
+        self.tooltipView.frame = [self subtitleViewFrame];
         self.subtitleLabel.frame = [self subtitleLabelFrame];
         [self.superview bringSubviewToFront:self];
 
-        CGRect subtitleViewFrame = self.toolTipView.frame;
+        CGRect subtitleViewFrame = self.tooltipView.frame;
 
-        if (self.toolTipView.frame.origin.x < 0) {
-            self.toolTipView.arrowOffset = subtitleViewFrame.origin.x;
+        if (self.tooltipView.frame.origin.x < 0) {
+            self.tooltipView.arrowOffset = subtitleViewFrame.origin.x;
             subtitleViewFrame.origin.x = 0;
         }
 
@@ -279,12 +279,12 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
             subtitleViewFrame.origin.x -= subtitleViewFrame.size.width;
             subtitleViewFrame.origin.x -= self.frame.origin.x;
 
-            self.toolTipView.arrowOffset = subtitleViewFrame.size.width / 2;
-            self.toolTipView.arrowOffset -= self.textField.frame.size.width / 2;
-            self.toolTipView.arrowOffset -= 39.0f;
+            self.tooltipView.arrowOffset = subtitleViewFrame.size.width / 2;
+            self.tooltipView.arrowOffset -= self.textField.frame.size.width / 2;
+            self.tooltipView.arrowOffset -= 39.0f;
         }
 
-        self.toolTipView.frame = subtitleViewFrame;
+        self.tooltipView.frame = subtitleViewFrame;
 
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
@@ -342,7 +342,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 - (void)setSubtitleBackgroundColor:(UIColor *)subtitleBackgroundColor
 {
-    [FORMSubtitleView setTintColor:subtitleBackgroundColor];
+    [FORMTooltipView setTintColor:subtitleBackgroundColor];
 }
 
 #pragma mark - Notifications
@@ -350,7 +350,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 - (void)dismissTooltip
 {
     if (self.field.subtitle) {
-        [self.toolTipView removeFromSuperview];
+        [self.tooltipView removeFromSuperview];
     }
 }
 

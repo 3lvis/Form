@@ -1,4 +1,4 @@
-#import "FORMSubtitleView.h"
+#import "FORMTooltipView.h"
 
 static BOOL FORMPopoverBackgroundShadowEnabled = YES;
 static CGFloat FORMPopoverBackgroundArrowBase = 35.0f;
@@ -17,14 +17,14 @@ static UIImage *FORMPopoverBackgroundLeftArrowImage = nil;
 static UIImage *FORMPopoverBackgroundRightArrowImage = nil;
 static UIImage *FORMPopoverBackgroundTopArrowImage = nil;
 
-@interface FORMSubtitleView ()
+@interface FORMTooltipView ()
 
 @property (nonatomic, retain) UIImageView *arrowImageView;
 @property (nonatomic, retain) UIImageView *popoverBackgroundImageView;
 
 @end
 
-@implementation FORMSubtitleView
+@implementation FORMTooltipView
 
 @synthesize arrowOffset, arrowDirection;
 
@@ -104,7 +104,7 @@ static UIImage *FORMPopoverBackgroundTopArrowImage = nil;
 
 + (void)rebuildArrowImages
 {
-    [FORMSubtitleView buildArrows:FORMPopoverBackgroundTintColor];
+    [FORMTooltipView buildArrows:FORMPopoverBackgroundTintColor];
 }
 
 + (void)buildArrows:(UIColor *)tintColor
@@ -200,7 +200,7 @@ static UIImage *FORMPopoverBackgroundTopArrowImage = nil;
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    [FORMSubtitleView buildArrows:FORMPopoverBackgroundTintColor];
+    [FORMTooltipView buildArrows:FORMPopoverBackgroundTintColor];
 
     _popoverBackgroundImageView = [[UIImageView alloc] initWithImage:FORMPopoverBackgroundBackgroundImage];
     [self addSubview:_popoverBackgroundImageView];

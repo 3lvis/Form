@@ -1,6 +1,6 @@
 @import UIKit;
 
-@interface FORMSubtitleView : UIView
+@interface FORMTooltipView : UIView
 
 @property (nonatomic) CGFloat arrowOffset;
 @property (nonatomic) UIPopoverArrowDirection arrowDirection;
