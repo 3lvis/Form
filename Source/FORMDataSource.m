@@ -465,17 +465,18 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         if (parsed.toMany) {
             parsed.attribute = nil;
 
-            if (![currentSections containsObject:[parsed key]]) {
-                if (![dictionary[key] isKindOfClass:[NSNull class]]) {
-                    [insertedValues addEntriesFromDictionary:@{key : dictionary[key]}];
-                }
+            BOOL valueBelongsToInsertedSection = (![currentSections containsObject:[parsed key]] &&
+                                                  ![dictionary[key] isKindOfClass:[NSNull class]]);
+            if (valueBelongsToInsertedSection) {
+                [insertedValues addEntriesFromDictionary:@{key : dictionary[key]}];
             }
         }
     }
 
     NSArray *removedSections = [self.formsManager removedSectionsUsingInitialValues:dictionary];
     for (FORMSection *section in removedSections) {
-        [self.formsManager removeSection:section inCollectionView:self.collectionView];
+        [self.formsManager removeSection:section
+                        inCollectionView:self.collectionView];
     }
 
     [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
@@ -486,22 +487,24 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     NSMutableArray *targets = [NSMutableArray new];
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
-        [self.formsManager fieldWithID:key includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
-            BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
+        [self.formsManager fieldWithID:key
+                 includingHiddenFields:YES
+                            completion:^(FORMField *field, NSIndexPath *indexPath) {
+                                BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
-            if (field) {
-                field.value = (shouldBeNil) ? nil : value;
-                if (indexPath) {
-                    [updatedIndexPaths addObject:indexPath];
-                }
-                [targets addObjectsFromArray:[field safeTargets]];
-            } else {
-                field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
-                if (field) {
-                    field.value = (shouldBeNil) ? nil : value;
-                }
-            }
-        }];
+                                if (field) {
+                                    field.value = (shouldBeNil) ? nil : value;
+                                    if (indexPath) {
+                                        [updatedIndexPaths addObject:indexPath];
+                                    }
+                                    [targets addObjectsFromArray:[field safeTargets]];
+                                } else {
+                                    field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
+                                    if (field) {
+                                        field.value = (shouldBeNil) ? nil : value;
+                                    }
+                                }
+                            }];
     }];
 
     [self processTargets:targets];
