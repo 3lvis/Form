@@ -114,7 +114,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (CGRect)tooltipViewFrame
 {
-    CGRect frame = [self labelFrameUsingString:self.field.tooltip];
+    CGRect frame = [self labelFrameUsingString:self.field.message];
 
     frame.size.height += [FORMTooltipView arrowHeight];
     frame.origin.x = self.textField.frame.origin.x;
@@ -148,7 +148,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (CGRect)tooltipLabelFrame
 {
-    CGRect frame = [self labelFrameUsingString:self.field.tooltip];
+    CGRect frame = [self labelFrameUsingString:self.field.message];
 
     if (self.tooltipView.arrowDirection == UIPopoverArrowDirectionUp) {
         frame.origin.y += [FORMTooltipView arrowHeight];
@@ -189,7 +189,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     self.textField.enabled         = !field.disabled;
     self.textField.valid           = field.valid;
     self.textField.rawText         = [self rawTextForField:field];
-    self.textField.tooltipString   = field.tooltip;
+    self.textField.messageString   = field.message;
 }
 
 - (void)validate
@@ -230,7 +230,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
 
     BOOL shouldDisplayTooltip = (self.field.type == FORMFieldTypeText &&
-                                 self.field.tooltip);
+                                 self.field.message);
     if (shouldDisplayTooltip) {
         [self showTooltip];
     }
@@ -271,7 +271,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)showTooltip
 {
-    if (self.field.tooltip && self.showTooltips) {
+    if (self.field.message && self.showTooltips) {
         self.tooltipView.alpha = 0.0f;
         [self.contentView addSubview:self.tooltipView];
         self.tooltipView.frame = [self tooltipViewFrame];
@@ -297,13 +297,13 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
             self.tooltipView.arrowOffset -= 39.0f;
         }
 
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.tooltip];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.message];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
         paragrahStyle.alignment = NSTextAlignmentCenter;
         paragrahStyle.lineSpacing = 8;
         [attributedString addAttribute:NSParagraphStyleAttributeName
                                  value:paragrahStyle
-                                 range:NSMakeRange(0, self.field.tooltip.length)];
+                                 range:NSMakeRange(0, self.field.message.length)];
 
         self.tooltipLabel.attributedText = attributedString;
         [UIView animateWithDuration:0.3f animations:^{
@@ -370,7 +370,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)dismissTooltip
 {
-    if (self.field.tooltip) {
+    if (self.field.message) {
         [self.tooltipView removeFromSuperview];
     }
 }
