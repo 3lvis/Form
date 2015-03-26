@@ -29,10 +29,16 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     [self.contentView addSubview:self.textField];
 
     if ([self respondsToSelector:@selector(resignFirstResponder)]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignFirstResponder) name:FORMResignFirstResponderNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(resignFirstResponder)
+                                                     name:FORMResignFirstResponderNotification
+                                                   object:nil];
     }
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissTooltip) name:FORMDismissTooltipNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(dismissTooltip)
+                                                 name:FORMDismissTooltipNotification
+                                               object:nil];
 
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapAction)];
     [self addGestureRecognizer:tapGestureRecognizer];
@@ -48,14 +54,20 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 - (void)dealloc
 {
     if ([self respondsToSelector:@selector(dismissTooltip)]) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMResignFirstResponderNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:FORMResignFirstResponderNotification
+                                                      object:nil];
     }
 
     if ([self respondsToSelector:@selector(showTooltip:)]) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMHideTooltips object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:FORMHideTooltips
+                                                      object:nil];
     }
 
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMDismissTooltipNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:FORMDismissTooltipNotification
+                                                  object:nil];
 }
 
 #pragma mark - Getters
@@ -214,11 +226,13 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)cellTapAction
 {
-    BOOL shouldDisplaySubtitle = (self.field.type == FORMFieldTypeText && self.field.subtitle);
+    BOOL shouldDisplaySubtitle = (self.field.type == FORMFieldTypeText &&
+                                  self.field.subtitle);
     if (shouldDisplaySubtitle) {
         [self showSubtitle];
     } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:FORMResignFirstResponderNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:FORMResignFirstResponderNotification
+                                                            object:nil];
     }
 }
 
@@ -257,7 +271,8 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)showSubtitle
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification
+                                                        object:nil];
 
     if (self.field.subtitle && self.showTooltips) {
         [self.contentView addSubview:self.tooltipView];
@@ -311,10 +326,12 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
         [self.textField setValid:[self.field validate]];
     }
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification
+                                                        object:nil];
 }
 
-- (void)textFormField:(FORMTextField *)textField didUpdateWithText:(NSString *)text
+- (void)textFormField:(FORMTextField *)textField
+    didUpdateWithText:(NSString *)text
 {
     self.field.value = text;
     [self validate];
@@ -330,9 +347,9 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 #pragma mark - Styling
 
-- (void)setTooltipLabelFont:(UIFont *)subtitleLabelFont
+- (void)setTooltipLabelFont:(UIFont *)tooltipLabelFont
 {
-    self.tooltipLabel.font = subtitleLabelFont;
+    self.tooltipLabel.font = tooltipLabelFont;
 }
 
 - (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor
