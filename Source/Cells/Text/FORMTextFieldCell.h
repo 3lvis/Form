@@ -8,7 +8,8 @@ static NSString * const FORMTextFieldCellIdentifier = @"FORMTextFieldCellIdentif
 
 @interface FORMTextFieldCell : FORMBaseFieldCell
 
-- (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont UI_APPEARANCE_SELECTOR;
-- (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor UI_APPEARANCE_SELECTOR;
+- (void)setTooltipLabelFont:(UIFont *)tooltipLabelFont UI_APPEARANCE_SELECTOR;
+- (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor UI_APPEARANCE_SELECTOR;
+- (void)setTooltipBackgroundColor:(UIColor *)tooltipBackgroundColor UI_APPEARANCE_SELECTOR;
 
 @end

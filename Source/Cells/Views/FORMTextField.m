@@ -1,6 +1,6 @@
 #import "FORMTextField.h"
 
-#import "FORMBaseFieldCell.h"
+#import "FORMTextFieldCell.h"
 
 #import "FORMTextFieldTypeManager.h"
 
@@ -82,7 +82,8 @@ static BOOL enabledProperty;
 - (void)setText:(NSString *)text
 {
     UITextRange *textRange = self.selectedTextRange;
-    NSString *newRawText = [self.formatter formatString:text reverse:YES];
+    NSString *newRawText = [self.formatter formatString:text
+                                                reverse:YES];
     NSRange range = [self currentRange];
 
     BOOL didAddText  = (newRawText.length > self.rawText.length);
@@ -206,7 +207,8 @@ static BOOL enabledProperty;
     BOOL selectable = (textField.type == FORMTextFieldTypeSelect ||
                        textField.type == FORMTextFieldTypeDate);
 
-    if (selectable && [self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
+    if (selectable &&
+        [self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
         [self.textFieldDelegate textFormFieldDidBeginEditing:self];
     }
 
@@ -231,9 +233,11 @@ static BOOL enabledProperty;
 {
     if (!string || [string isEqualToString:@"\n"]) return YES;
 
-    BOOL validator = (self.inputValidator && [self.inputValidator respondsToSelector:@selector(validateReplacementString:withText:withRange:)]);
+    BOOL validator = (self.inputValidator &&
+                      [self.inputValidator respondsToSelector:@selector(validateReplacementString:withText:withRange:)]);
 
-    if (validator) return [self.inputValidator validateReplacementString:string withText:self.rawText withRange:range];
+    if (validator) return [self.inputValidator validateReplacementString:string
+                                                                withText:self.rawText withRange:range];
 
     return YES;
 }
@@ -269,7 +273,8 @@ static BOOL enabledProperty;
     self.rawText = self.text;
 
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
-        [self.textFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+        [self.textFieldDelegate textFormField:self
+                            didUpdateWithText:self.rawText];
     }
 }
 
@@ -287,7 +292,8 @@ static BOOL enabledProperty;
     self.rawText = nil;
 
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
-        [self.textFieldDelegate textFormField:self didUpdateWithText:self.rawText];
+        [self.textFieldDelegate textFormField:self
+                            didUpdateWithText:self.rawText];
     }
 }
 

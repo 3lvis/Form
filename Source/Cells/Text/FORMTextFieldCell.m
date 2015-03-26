@@ -1,18 +1,18 @@
 #import "FORMTextFieldCell.h"
 
-#import "FORMSubtitleView.h"
+#import "FORMTooltipView.h"
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
-static const CGFloat FORMSubtitleViewMinimumWidth = 90.0f;
-static const CGFloat FORMSubtitleViewHeight = 44.0f;
-static const NSInteger FORMSubtitleNumberOfLines = 4;
+static const CGFloat FORMTooltipViewMinimumWidth = 90.0f;
+static const CGFloat FORMTooltipViewHeight = 44.0f;
+static const NSInteger FORMTooltipNumberOfLines = 4;
 
 @interface FORMTextFieldCell () <FORMTextFieldDelegate>
 
 @property (nonatomic) FORMTextField *textField;
 @property (nonatomic) UIPopoverController *popoverController;
-@property (nonatomic) UILabel *subtitleLabel;
-@property (nonatomic) FORMSubtitleView *subtitleView;
+@property (nonatomic) UILabel *tooltipLabel;
+@property (nonatomic) FORMTooltipView *tooltipView;
 @property (nonatomic) BOOL showTooltips;
 
 @end
@@ -29,10 +29,16 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     [self.contentView addSubview:self.textField];
 
     if ([self respondsToSelector:@selector(resignFirstResponder)]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignFirstResponder) name:FORMResignFirstResponderNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(resignFirstResponder)
+                                                     name:FORMResignFirstResponderNotification
+                                                   object:nil];
     }
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissTooltip) name:FORMDismissTooltipNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(dismissTooltip)
+                                                 name:FORMDismissTooltipNotification
+                                               object:nil];
 
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapAction)];
     [self addGestureRecognizer:tapGestureRecognizer];
@@ -48,14 +54,20 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 - (void)dealloc
 {
     if ([self respondsToSelector:@selector(dismissTooltip)]) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMResignFirstResponderNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:FORMResignFirstResponderNotification
+                                                      object:nil];
     }
 
     if ([self respondsToSelector:@selector(showTooltip:)]) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMHideTooltips object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:FORMHideTooltips
+                                                      object:nil];
     }
 
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:FORMDismissTooltipNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:FORMDismissTooltipNotification
+                                                  object:nil];
 }
 
 #pragma mark - Getters
@@ -92,71 +104,70 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
         width = 8.0f * string.length;
     }
 
-    if (width < FORMSubtitleViewMinimumWidth) width = FORMSubtitleViewMinimumWidth;
+    if (width < FORMTooltipViewMinimumWidth) width = FORMTooltipViewMinimumWidth;
 
-    CGFloat height = FORMSubtitleViewHeight;
+    CGFloat height = FORMTooltipViewHeight;
     height += 11.0f * components.count;
 
     return CGRectMake(0, 0, width, height);
 }
 
-- (CGRect)subtitleViewFrame
+- (CGRect)tooltipViewFrame
 {
-    CGRect frame = [self labelFrameUsingString:self.field.subtitle];
+    CGRect frame = [self labelFrameUsingString:self.field.message];
 
-    frame.size.height += [FORMSubtitleView arrowHeight];
+    frame.size.height += [FORMTooltipView arrowHeight];
     frame.origin.x = self.textField.frame.origin.x;
     frame.origin.y = self.textField.frame.origin.y;
 
     frame.origin.x += self.textField.frame.size.width / 2 - frame.size.width / 2;
 
     if ([self.field.sectionPosition isEqualToNumber:@0]) {
-        self.subtitleView.arrowDirection = UIPopoverArrowDirectionUp;
+        self.tooltipView.arrowDirection = UIPopoverArrowDirectionUp;
         frame.origin.y += self.textField.frame.size.height / 2;
     } else {
-        self.subtitleView.arrowDirection = UIPopoverArrowDirectionDown;
+        self.tooltipView.arrowDirection = UIPopoverArrowDirectionDown;
         frame.origin.y -= self.textField.frame.size.height / 2;
         frame.origin.y -= frame.size.height;
     }
 
-    frame.origin.y += [FORMSubtitleView arrowHeight];
+    frame.origin.y += [FORMTooltipView arrowHeight];
 
     return frame;
 }
 
-- (FORMSubtitleView *)subtitleView
+- (FORMTooltipView *)tooltipView
 {
-    if (_subtitleView) return _subtitleView;
+    if (_tooltipView) return _tooltipView;
 
-    [FORMSubtitleView setTintColor:[UIColor colorWithRed:0.992 green:0.918 blue:0.329 alpha:1]];
-    _subtitleView = [FORMSubtitleView new];
-    [_subtitleView addSubview:self.subtitleLabel];
+    _tooltipView = [FORMTooltipView new];
+    [_tooltipView addSubview:self.tooltipLabel];
 
-    return _subtitleView;
+    return _tooltipView;
 }
 
-- (CGRect)subtitleLabelFrame
+- (CGRect)tooltipLabelFrame
 {
-    CGRect frame = [self labelFrameUsingString:self.field.subtitle];
+    CGRect frame = [self labelFrameUsingString:self.field.message];
 
-    if (self.subtitleView.arrowDirection == UIPopoverArrowDirectionUp) {
-        frame.origin.y += [FORMSubtitleView arrowHeight];
+    if (self.tooltipView.arrowDirection == UIPopoverArrowDirectionUp) {
+        frame.origin.y += [FORMTooltipView arrowHeight];
     }
 
     return frame;
 }
 
-- (UILabel *)subtitleLabel
+- (UILabel *)tooltipLabel
 {
-    if (_subtitleLabel) return _subtitleLabel;
+    if (_tooltipLabel) return _tooltipLabel;
 
-    _subtitleLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
+    _tooltipLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
 
-    _subtitleLabel.textAlignment = NSTextAlignmentCenter;
-    _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    _subtitleLabel.numberOfLines = FORMSubtitleNumberOfLines;
+    _tooltipLabel.textAlignment = NSTextAlignmentCenter;
+    _tooltipLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _tooltipLabel.numberOfLines = FORMTooltipNumberOfLines;
 
-    return _subtitleLabel;
+    return _tooltipLabel;
 }
 
 #pragma mark - FORMBaseFormFieldCell
@@ -178,6 +189,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     self.textField.enabled         = !field.disabled;
     self.textField.valid           = field.valid;
     self.textField.rawText         = [self rawTextForField:field];
+    self.textField.messageString   = field.message;
 }
 
 - (void)validate
@@ -215,11 +227,12 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 - (void)cellTapAction
 {
-    BOOL shouldDisplaySubtitle = (self.field.type == FORMFieldTypeText && self.field.subtitle);
-    if (shouldDisplaySubtitle) {
-        [self showSubtitle];
-    } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:FORMResignFirstResponderNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
+
+    BOOL shouldDisplayTooltip = (self.field.type == FORMFieldTypeText &&
+                                 self.field.message);
+    if (shouldDisplayTooltip) {
+        [self showTooltip];
     }
 }
 
@@ -256,44 +269,46 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     return frame;
 }
 
-- (void)showSubtitle
+- (void)showTooltip
 {
-    if (self.field.subtitle && self.showTooltips) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
-
-        [self.contentView addSubview:self.subtitleView];
-        self.subtitleView.frame = [self subtitleViewFrame];
-        self.subtitleLabel.frame = [self subtitleLabelFrame];
+    if (self.field.message && self.showTooltips) {
+        self.tooltipView.alpha = 0.0f;
+        [self.contentView addSubview:self.tooltipView];
+        self.tooltipView.frame = [self tooltipViewFrame];
+        self.tooltipLabel.frame = [self tooltipLabelFrame];
         [self.superview bringSubviewToFront:self];
 
-        CGRect subtitleViewFrame = self.subtitleView.frame;
+        CGRect tooltipViewFrame = self.tooltipView.frame;
 
-        if (self.subtitleView.frame.origin.x < 0) {
-            self.subtitleView.arrowOffset = subtitleViewFrame.origin.x;
-            subtitleViewFrame.origin.x = 0;
+        if (self.tooltipView.frame.origin.x < 0) {
+            self.tooltipView.arrowOffset = tooltipViewFrame.origin.x;
+            tooltipViewFrame.origin.x = 0;
         }
 
         CGFloat windowWidth = self.window.frame.size.width;
-        BOOL isOutOfBounds = ((subtitleViewFrame.size.width + self.frame.origin.x) > windowWidth);
+        BOOL isOutOfBounds = ((tooltipViewFrame.size.width + self.frame.origin.x) > windowWidth);
         if (isOutOfBounds) {
-            subtitleViewFrame.origin.x = windowWidth;
-            subtitleViewFrame.origin.x -= subtitleViewFrame.size.width;
-            subtitleViewFrame.origin.x -= self.frame.origin.x;
+            tooltipViewFrame.origin.x = windowWidth;
+            tooltipViewFrame.origin.x -= tooltipViewFrame.size.width;
+            tooltipViewFrame.origin.x -= self.frame.origin.x;
 
-            self.subtitleView.arrowOffset = subtitleViewFrame.size.width / 2;
-            self.subtitleView.arrowOffset -= self.textField.frame.size.width / 2;
-            self.subtitleView.arrowOffset -= 39.0f;
+            self.tooltipView.arrowOffset = tooltipViewFrame.size.width / 2;
+            self.tooltipView.arrowOffset -= self.textField.frame.size.width / 2;
+            self.tooltipView.arrowOffset -= 39.0f;
         }
 
-        self.subtitleView.frame = subtitleViewFrame;
-
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.subtitle];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.field.message];
         NSMutableParagraphStyle *paragrahStyle = [NSMutableParagraphStyle new];
         paragrahStyle.alignment = NSTextAlignmentCenter;
         paragrahStyle.lineSpacing = 8;
-        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, self.field.subtitle.length)];
+        [attributedString addAttribute:NSParagraphStyleAttributeName
+                                 value:paragrahStyle
+                                 range:NSMakeRange(0, self.field.message.length)];
 
-        self.subtitleLabel.attributedText = attributedString;
+        self.tooltipLabel.attributedText = attributedString;
+        [UIView animateWithDuration:0.3f animations:^{
+            self.tooltipView.alpha = 1.0f;
+        }];
     }
 }
 
@@ -301,7 +316,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
 
 - (void)textFormFieldDidBeginEditing:(FORMTextField *)textField
 {
-    [self showSubtitle];
+    [self performSelector:@selector(showTooltip) withObject:nil afterDelay:0.1f];
 }
 
 - (void)textFormFieldDidEndEditing:(FORMTextField *)textField
@@ -312,10 +327,14 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
         [self.textField setValid:[self.field validate]];
     }
 
-    [self.subtitleView removeFromSuperview];
+    if (self.showTooltips) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification
+                                                            object:nil];
+    }
 }
 
-- (void)textFormField:(FORMTextField *)textField didUpdateWithText:(NSString *)text
+- (void)textFormField:(FORMTextField *)textField
+    didUpdateWithText:(NSString *)text
 {
     self.field.value = text;
     [self validate];
@@ -325,28 +344,34 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
     }
 
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
-        [self.delegate fieldCell:self updatedWithField:self.field];
+        [self.delegate fieldCell:self
+                updatedWithField:self.field];
     }
 }
 
 #pragma mark - Styling
 
-- (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont
+- (void)setTooltipLabelFont:(UIFont *)tooltipLabelFont
 {
-    self.subtitleLabel.font = subtitleLabelFont;
+    self.tooltipLabel.font = tooltipLabelFont;
 }
 
-- (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor
+- (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor
 {
-    self.subtitleLabel.textColor = subtitleLabelTextColor;
+    self.tooltipLabel.textColor = tooltipLabelTextColor;
+}
+
+- (void)setTooltipBackgroundColor:(UIColor *)tooltipBackgroundColor
+{
+    [FORMTooltipView setTintColor:tooltipBackgroundColor];
 }
 
 #pragma mark - Notifications
 
 - (void)dismissTooltip
 {
-    if (self.field.subtitle) {
-        [self.subtitleView removeFromSuperview];
+    if (self.field.message) {
+        [self.tooltipView removeFromSuperview];
     }
 }
 

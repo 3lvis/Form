@@ -93,8 +93,9 @@
     [[FORMFieldValuesTableViewHeader appearance] setSubtitleLabelFont:[UIFont fontWithName:@"AvenirNext-UltraLight" size:17.0]];
     [[FORMFieldValuesTableViewHeader appearance] setSubtitleLabelTextColor:[UIColor colorFromHex:@"28649C"]];
 
-    [[FORMTextFieldCell appearance] setSubtitleLabelFont:[UIFont fontWithName:@"AvenirNext-Medium" size:14.0]];
-    [[FORMTextFieldCell appearance] setSubtitleLabelTextColor:[UIColor colorFromHex:@"97591D"]];
+    [[FORMTextFieldCell appearance] setTooltipLabelFont:[UIFont fontWithName:@"AvenirNext-Medium" size:14.0]];
+    [[FORMTextFieldCell appearance] setTooltipLabelTextColor:[UIColor colorFromHex:@"97591D"]];
+    [[FORMTextFieldCell appearance] setTooltipBackgroundColor:[UIColor colorFromHex:@"FDFD54"]];
 }
 
 @end
