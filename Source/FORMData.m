@@ -238,10 +238,17 @@
                     if (fieldValueMatchesInitialValue) {
 
                         for (FORMTarget *target in fieldValue.targets) {
-                            if (![self evaluateCondition:target.condition]) continue;
-                            if (target.actionType == FORMTargetActionHide) [hideTargets addObject:target];
-                            if (target.actionType == FORMTargetActionUpdate) [updateTargets addObject:target];
-                            if (target.actionType == FORMTargetActionDisable) [disabledFields addObject:target.targetID];
+                            if ([self evaluateCondition:target.condition]) {
+                                if (target.actionType == FORMTargetActionHide) {
+                                    [hideTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionUpdate) {
+                                    [updateTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionDisable) {
+                                    [disabledFields addObject:target.targetID];
+                                }
+                            }
                         }
                     }
                 } else {
@@ -251,10 +258,17 @@
                         self.values[field.fieldID] = fieldValue.valueID;
 
                         for (FORMTarget *target in fieldValue.targets) {
-                            if (![self evaluateCondition:target.condition]) continue;
-                            if (target.actionType == FORMTargetActionHide) [hideTargets addObject:target];
-                            if (target.actionType == FORMTargetActionUpdate) [updateTargets addObject:target];
-                            if (target.actionType == FORMTargetActionDisable) [disabledFields addObject:target.targetID];
+                            if ([self evaluateCondition:target.condition]) {
+                                if (target.actionType == FORMTargetActionHide) {
+                                    [hideTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionUpdate) {
+                                    [updateTargets addObject:target];
+                                }
+                                if (target.actionType == FORMTargetActionDisable) {
+                                    [disabledFields addObject:target.targetID];
+                                }
+                            }
                         }
                     }
                 }
@@ -862,7 +876,8 @@
                 field.value = result;
 
                 if (result) {
-                    [self.values setObject:result forKey:field.fieldID];
+                    [self.values setObject:result
+                                    forKey:field.fieldID];
                 } else {
                     [self.values removeObjectForKey:field.fieldID];
                 }
@@ -875,14 +890,18 @@
 
 - (NSArray *)enableTargets:(NSArray *)targets
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips object:[NSNumber numberWithBool:YES]];
-    return [self updateTargets:targets withEnabled:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@YES];
+    return [self updateTargets:targets
+                   withEnabled:YES];
 }
 
 - (NSArray *)disableTargets:(NSArray *)targets
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips object:[NSNumber numberWithBool:NO]];
-    return [self updateTargets:targets withEnabled:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@YES];
+    return [self updateTargets:targets
+                   withEnabled:NO];
 }
 
 - (NSArray *)updateTargets:(NSArray *)targets withEnabled:(BOOL)enabled
