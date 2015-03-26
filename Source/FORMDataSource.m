@@ -604,13 +604,16 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         if ([components.lastObject isEqualToString:FORMDynamicAddFieldID]) {
             NSString *sectionTemplateID = [components firstObject];
             FORMSection *section = [self sectionWithID:sectionTemplateID];
-            [self.formsManager insertTemplateSectionWithID:sectionTemplateID intoCollectionView:self.collectionView usingForm:section.form];
+            [self.formsManager insertTemplateSectionWithID:sectionTemplateID
+                                        intoCollectionView:self.collectionView
+                                                 usingForm:section.form];
         } else if ([components.lastObject isEqualToString:FORMDynamicRemoveFieldID]) {
             HYPParsedRelationship *parsed = [field.fieldID hyp_parseRelationship];
             parsed.attribute = nil;
             NSString *sectionID = [parsed key];
             FORMSection *section = [self.formsManager sectionWithID:sectionID];
-            [self.formsManager removeSection:section inCollectionView:self.collectionView];
+            [self.formsManager removeSection:section
+                            inCollectionView:self.collectionView];
         }
     }
 
