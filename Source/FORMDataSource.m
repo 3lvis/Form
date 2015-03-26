@@ -401,6 +401,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     [UIView performWithoutAnimation:^{
         [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
     }];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@(!disabled)];
 }
 
 - (BOOL)isDisabled

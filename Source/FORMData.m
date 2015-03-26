@@ -908,16 +908,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
 - (NSArray *)enableTargets:(NSArray *)targets
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
-                                                        object:@YES];
     return [self updateTargets:targets
                    withEnabled:YES];
 }
 
 - (NSArray *)disableTargets:(NSArray *)targets
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
-                                                        object:@YES];
     return [self updateTargets:targets
                    withEnabled:NO];
 }
