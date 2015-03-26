@@ -312,7 +312,7 @@ static const NSInteger FORMSubtitleNumberOfLines = 4;
         [self.textField setValid:[self.field validate]];
     }
 
-    [self.subtitleView removeFromSuperview];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
 }
 
 - (void)textFormField:(FORMTextField *)textField didUpdateWithText:(NSString *)text
