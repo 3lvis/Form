@@ -570,9 +570,9 @@ includingHiddenFields:(BOOL)includingHiddenFields
     NSString *sectionID = removedSection.sectionID;
     FORMGroup *form = removedSection.form;
     [self sectionWithID:sectionID
-             completion:^(FORMSection *section, NSArray *indexPaths) {
-                 FORMGroup *f = section.form;
-                 [f.sections removeObject:section];
+             completion:^(FORMSection *foundSection, NSArray *indexPaths) {
+                 FORMGroup *foundForm = foundSection.form;
+                 [foundForm.sections removeObject:foundSection];
                  [collectionView deleteItemsAtIndexPaths:indexPaths];
              }];
 
