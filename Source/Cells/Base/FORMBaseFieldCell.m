@@ -2,6 +2,7 @@
 
 #import "FORMSeparatorView.h"
 
+static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMTextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat FORMTextFormFieldCellLabelHeight = 20.0f;
 static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
@@ -52,6 +53,9 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 - (void)setDisabled:(BOOL)disabled
 {
     _disabled = disabled;
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@(!disabled)];
 
     [self updateFieldWithDisabled:disabled];
 }
