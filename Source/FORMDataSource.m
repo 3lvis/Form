@@ -584,6 +584,21 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     return YES;
 }
 
+- (void)invalidateFields
+{
+
+    for (FORMGroup *form in self.formsManager.forms) {
+        for (FORMField *field in form.fields) {
+
+            field.value = nil;
+
+        }
+    }
+
+
+    [self.collectionView reloadData];
+}
+
 - (void)resetForms
 {
     self.formsManager = nil;

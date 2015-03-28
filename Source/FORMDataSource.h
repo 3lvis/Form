@@ -36,6 +36,7 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (FORMField *)formFieldAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)resetForms;
+- (void)invalidateFields;
 - (void)validateForms;
 
 - (void)enable;
