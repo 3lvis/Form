@@ -595,6 +595,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         }
     }
 
+    self.formsManager.values = nil;
 
     [self.collectionView reloadData];
 }
