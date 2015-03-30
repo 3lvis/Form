@@ -559,13 +559,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         }
     }
 
-<<<<<<< HEAD
-    for (FORMGroup *group in self.formsManager.groups) {
+    for (FORMGroup *group in self.formData.groups) {
         for (FORMField *field in group.fields) {
-=======
-    for (FORMGroup *form in self.formData.forms) {
-        for (FORMField *field in form.fields) {
->>>>>>> master
             if (![validatedFields containsObject:field.fieldID]) {
                 [field validate];
             }
@@ -575,13 +570,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (BOOL)formFieldsAreValid
 {
-<<<<<<< HEAD
-    for (FORMGroup *group in self.formsManager.groups) {
+    for (FORMGroup *group in self.formData.groups) {
         for (FORMField *field in group.fields) {
-=======
-    for (FORMGroup *form in self.formData.forms) {
-        for (FORMField *field in form.fields) {
->>>>>>> master
             FORMValidationResultType fieldValidation = [field validate];
             BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypePassed);
             if (requiredFieldFailedValidation) {

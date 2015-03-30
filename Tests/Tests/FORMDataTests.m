@@ -215,7 +215,7 @@
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfFields = [[[normalformData.groups firstObject] fields] count];
+    NSUInteger numberOfFields = [[[normalFormData.groups firstObject] fields] count];
     XCTAssertEqual(numberOfFields, 2);
 
     FORMData *evaluatedFormData = [[FORMData alloc] initWithJSON:JSON
@@ -224,7 +224,7 @@
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedformData.groups firstObject] fields] count];
+    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedFormData.groups firstObject] fields] count];
     XCTAssertEqual(numberOfFieldsWithHiddenTargets, 3);
 }
 
@@ -262,7 +262,7 @@
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfSections = [[[normalformData.groups firstObject] sections] count];
+    NSUInteger numberOfSections = [[[normalFormData.groups firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 2);
 
     FORMData *evaluatedFormData = [[FORMData alloc] initWithJSON:JSON
@@ -271,7 +271,7 @@
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedformData.groups firstObject] sections] count];
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedFormData.groups firstObject] sections] count];
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 3);
 }
 
@@ -285,7 +285,7 @@
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfSections = [[[normalformData.groups firstObject] sections] count];
+    NSUInteger numberOfSections = [[[normalFormData.groups firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 3);
 
     FORMData *evaluatedFormData = [[FORMData alloc] initWithJSON:JSON
@@ -294,7 +294,7 @@
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedformData.groups firstObject] sections] count];
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedFormData.groups firstObject] sections] count];
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 2);
 }
 
