@@ -100,6 +100,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@(!disabled)];
+
     return self;
 }
 
