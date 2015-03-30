@@ -142,8 +142,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     NSArray *fields = group.fields;
     FORMField *field = fields[indexPath.row];
 
-    if (self.cellForIndexPathBlock) {
-        id configuredCell = self.cellForIndexPathBlock(field, collectionView, indexPath);
+    if (self.configureCellForItemAtIndexPathBlock) {
+        id configuredCell = self.configureCellForItemAtIndexPathBlock(field, collectionView, indexPath);
         if (configuredCell) {
             return configuredCell;
         }

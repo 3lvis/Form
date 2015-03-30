@@ -13,27 +13,72 @@
 #import "FORMTarget.h"
 #import "FORMData.h"
 
-typedef void (^FORMFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, FORMField *field);
-typedef void (^FORMFieldConfigureHeaderViewBlock)(FORMGroupHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, FORMGroup *form);
+typedef void (^FORMConfigureCellBlock)(id cell, NSIndexPath *indexPath, FORMField *field);
+typedef void (^FORMConfigureHeaderViewBlock)(FORMGroupHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, FORMGroup *form);
+typedef UICollectionViewCell * (^FORMConfigureCellForItemAtIndexPathBlock)(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath);
+
 typedef void (^FORMFieldFieldUpdatedBlock)(id cell, FORMField *field);
-typedef UICollectionViewCell * (^FORMFieldCellForItemAtIndexPathBlock)(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath);
 
 @interface FORMDataSource : NSObject <UICollectionViewDataSource, FORMLayoutDataSource>
 
+/*!
+ * @discussion Creates an instance of @c FORMDataSource.
+ * @param JSON A serialized @c JSON that contains a collection of fields.
+ * @param collectionView The used collectionView, usually from a @c UICollectionViewController.
+ * @param layout An instance of @c FORMLayout.
+ * @param values The initial values to be used when generating the fields.
+ * @param disabled A flag to set whether the Form will be enabled or not.
+ * @return An instance of @c FORMDataSource.
+ */
 - (instancetype)initWithJSON:(id)JSON
               collectionView:(UICollectionView *)collectionView
                       layout:(FORMLayout *)layout
                       values:(NSDictionary *)values
                     disabled:(BOOL)disabled;
 
-@property (nonatomic, copy) FORMFieldConfigureCellBlock configureCellBlock;
-@property (nonatomic, copy) FORMFieldConfigureHeaderViewBlock configureHeaderViewBlock;
-@property (nonatomic, copy) FORMFieldFieldUpdatedBlock fieldUpdatedBlock;
-@property (nonatomic, copy) FORMFieldCellForItemAtIndexPathBlock cellForIndexPathBlock;
+/*!
+ * Provides a configuration block to optionally set up subclasses of @c FORMBaseFieldCell
+ * the default behaviour just sets the field property to the cell.
+ */
+@property (nonatomic, copy) FORMConfigureCellBlock configureCellBlock;
 
+/*!
+ * Provides a configuration block to optionally modify the group header view an instance of @c FORMGroupHeaderView
+ * the default behaviour just sets the title and the delegate.
+ */
+@property (nonatomic, copy) FORMConfigureHeaderViewBlock configureHeaderViewBlock;
+
+/*!
+ * Provides a configuration block to optionally return a cell for a specific @c NSIndexPath
+ * very useful when providing custom cells.
+ */
+@property (nonatomic, copy) FORMConfigureCellForItemAtIndexPathBlock configureCellForItemAtIndexPathBlock;
+
+/*!
+ * Provides a block that gets called every time a field gets updated
+ */
+@property (nonatomic, copy) FORMFieldFieldUpdatedBlock fieldUpdatedBlock;
+
+/*!
+ * Sets the Form into an editable mode.
+ */
 - (void)enable;
+
+/*!
+ * Sets the Form into a read-only mode.
+ */
 - (void)disable;
+
+/*!
+ * @discussion A method to check if the Form is disabled.
+ * @return @c YES if the Form is disabled.
+ */
 - (BOOL)isDisabled;
+
+/*!
+ * @discussion A method to check if the Form is enabled.
+ * @return @c YES if the Form is enabled.
+ */
 - (BOOL)isEnabled;
 
 - (void)processTargets:(NSArray *)targets;
