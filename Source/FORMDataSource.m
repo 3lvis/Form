@@ -279,7 +279,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     if (reloadedIndexPaths.count > 0) {
         [UIView performWithoutAnimation:^{
-            [self.collectionView reloadFieldsAtIndexPaths:reloadedIndexPaths];
+            [self.collectionView reloadItemsAtIndexPaths:reloadedIndexPaths];
         }];
     }
 }
@@ -401,7 +401,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     }
 
     [UIView performWithoutAnimation:^{
-        [self.collectionView reloadFieldsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
+        [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
     }];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
