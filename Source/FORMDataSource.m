@@ -549,57 +549,17 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (void)validateForms
 {
-    NSMutableSet *validatedFields = [NSMutableSet set];
-
-    NSArray *cells = [self.collectionView visibleCells];
-    for (FORMBaseFieldCell *cell in cells) {
-        if ([cell respondsToSelector:@selector(validate)]) {
-            [cell validate];
-
-            if (cell.field.fieldID) {
-                [validatedFields addObject:cell.field.fieldID];
-            }
-        }
-    }
-
-    for (FORMGroup *group in self.formData.groups) {
-        for (FORMField *field in group.fields) {
-            if (![validatedFields containsObject:field.fieldID]) {
-                [field validate];
-            }
-        }
-    }
+    [self validate];
 }
 
 - (BOOL)formFieldsAreValid
 {
-    for (FORMGroup *group in self.formData.groups) {
-        for (FORMField *field in group.fields) {
-            FORMValidationResultType fieldValidation = [field validate];
-            BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypePassed);
-            if (requiredFieldFailedValidation) {
-                return NO;
-            }
-        }
-    }
-
-    return YES;
+    return [self isValid];
 }
 
 - (void)resetForms
 {
-    for (FORMGroup *group in self.formData.groups) {
-        for (FORMField *field in group.fields) {
-            field.value = nil;
-        }
-    }
-
-    self.formData.values = nil;
-
-    [self.collapsedGroups removeAllObjects];
-    [self.formData.hiddenFieldsAndFieldIDsDictionary removeAllObjects];
-    [self.formData.hiddenSections removeAllObjects];
-    [self.collectionView reloadData];
+    [self reset];
 }
 
 #pragma mark - FORMBaseFieldCellDelegate
@@ -840,6 +800,71 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 }
 
 #pragma mark - FORMData bridge
+
+- (NSArray *)invalidFields
+{
+    return [self.formData invalidFormFields];
+}
+
+- (NSDictionary *)requiredFields
+{
+    return [self.formData requiredFormFields];
+}
+
+- (BOOL)isValid
+{
+    for (FORMGroup *group in self.formData.groups) {
+        for (FORMField *field in group.fields) {
+            FORMValidationResultType fieldValidation = [field validate];
+            BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypePassed);
+            if (requiredFieldFailedValidation) {
+                return NO;
+            }
+        }
+    }
+
+    return YES;
+}
+
+- (void)reset
+{
+    for (FORMGroup *group in self.formData.groups) {
+        for (FORMField *field in group.fields) {
+            field.value = nil;
+        }
+    }
+
+    self.formData.values = nil;
+
+    [self.collapsedGroups removeAllObjects];
+    [self.formData.hiddenFieldsAndFieldIDsDictionary removeAllObjects];
+    [self.formData.hiddenSections removeAllObjects];
+    [self.collectionView reloadData];
+}
+
+- (void)validate
+{
+    NSMutableSet *validatedFields = [NSMutableSet set];
+
+    NSArray *cells = [self.collectionView visibleCells];
+    for (FORMBaseFieldCell *cell in cells) {
+        if ([cell respondsToSelector:@selector(validate)]) {
+            [cell validate];
+
+            if (cell.field.fieldID) {
+                [validatedFields addObject:cell.field.fieldID];
+            }
+        }
+    }
+
+    for (FORMGroup *group in self.formData.groups) {
+        for (FORMField *field in group.fields) {
+            if (![validatedFields containsObject:field.fieldID]) {
+                [field validate];
+            }
+        }
+    }
+}
 
 - (NSArray *)invalidFormFields
 {

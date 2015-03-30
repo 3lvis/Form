@@ -36,14 +36,13 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (BOOL)isDisabled;
 - (BOOL)isEnabled;
 
-- (void)processTarget:(FORMTarget *)target;
 - (void)processTargets:(NSArray *)targets;
 
-- (NSArray *)invalidFormFields;
-- (NSDictionary *)requiredFormFields;
-- (BOOL)formFieldsAreValid;
-- (void)resetForms;
-- (void)validateForms;
+- (NSArray *)invalidFields;
+- (NSDictionary *)requiredFields;
+- (BOOL)isValid;
+- (void)reset;
+- (void)validate;
 
 - (NSDictionary *)values;
 - (NSDictionary *)removedValues;
@@ -62,8 +61,18 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
                  completion:(void (^)(FORMSection *section, NSInteger index))completion;
 - (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
-- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 - (FORMField *)formFieldAtIndexPath:(NSIndexPath *)indexPath;
+
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
+
+// Deprecated
+
+- (NSArray *)invalidFormFields __attribute__((deprecated("Use invalidFields instead")));;
+- (NSDictionary *)requiredFormFields __attribute__((deprecated("Use requiredFields instead")));;
+- (BOOL)formFieldsAreValid __attribute__((deprecated("Use isValid instead")));;
+- (void)resetForms __attribute__((deprecated("Use reset instead")));;
+- (void)validateForms __attribute__((deprecated("Use validate instead")));;
+- (void)processTarget:(FORMTarget *)target __attribute__((deprecated("Use processTargets instead")));;;
 
 @end

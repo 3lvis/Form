@@ -36,14 +36,14 @@
                                                                values:nil
                                                              disabled:YES];
 
-    [dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"display_name"]];
-    [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"display_name"]];
+    [dataSource processTargets:@[[FORMTarget hideFieldTargetWithID:@"display_name"]]];
+    [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"display_name"]]];
     FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     NSUInteger index = [field indexInSectionUsingGroups:dataSource.groups];
     XCTAssertEqual(index, 2);
 
-    [dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"username"]];
-    [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"username"]];
+    [dataSource processTargets:@[[FORMTarget hideFieldTargetWithID:@"username"]]];
+    [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"username"]]];
     field = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingGroups:dataSource.groups];
     XCTAssertEqual(index, 2);
@@ -51,7 +51,7 @@
     [dataSource processTargets:[FORMTarget hideFieldTargetsWithIDs:@[@"first_name",
                                                                      @"address",
                                                                      @"username"]]];
-    [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"username"]];
+    [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"username"]]];
     field = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingGroups:dataSource.groups];
     XCTAssertEqual(index, 1);
@@ -60,11 +60,11 @@
 
     [dataSource processTargets:[FORMTarget hideFieldTargetsWithIDs:@[@"last_name",
                                                                      @"address"]]];
-    [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"address"]];
+    [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"address"]]];
     field = [dataSource fieldWithID:@"address" includingHiddenFields:YES];
     index = [field indexInSectionUsingGroups:dataSource.groups];
     XCTAssertEqual(index, 0);
-    [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"last_name"]];
+    [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"last_name"]]];
 }
 
 - (void)testEnableAndDisableTargets
@@ -83,7 +83,7 @@
     XCTAssertFalse(targetField.isDisabled);
 
     FORMTarget *disableTarget = [FORMTarget disableFieldTargetWithID:@"base_salary"];
-    [dataSource processTarget:disableTarget];
+    [dataSource processTargets:@[disableTarget]];
     XCTAssertTrue(targetField.isDisabled);
 
     FORMTarget *enableTarget = [FORMTarget enableFieldTargetWithID:@"base_salary"];
@@ -129,7 +129,7 @@
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
     updateTarget.targetValue = @"John Hyperseed";
 
-    [dataSource processTarget:updateTarget];
+    [dataSource processTargets:@[updateTarget]];
     XCTAssertEqualObjects(targetField.value, @"John Hyperseed");
 }
 
@@ -168,11 +168,11 @@
     updateTarget.targetValue = @"Mr.Melk";
 
     updateTarget.condition = @"$username == 2";
-    [dataSource processTarget:updateTarget];
+    [dataSource processTargets:@[updateTarget]];
     XCTAssertNil(displayNameField.value);
 
     updateTarget.condition = @"$username == 0";
-    [dataSource processTarget:updateTarget];
+    [dataSource processTargets:@[updateTarget]];
     XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
 }
 
@@ -450,7 +450,7 @@
     XCTAssertNotNil(firstNameField.value);
 
     FORMTarget *clearTarget = [FORMTarget clearFieldTargetWithID:@"first_name"];
-    [dataSource processTarget:clearTarget];
+    [dataSource processTargets:@[clearTarget]];
     XCTAssertNil(firstNameField.value);
 }
 
@@ -464,11 +464,11 @@
                                                                layout:nil
                                                                values:nil
                                                              disabled:YES];
-    XCTAssertFalse([dataSource formFieldsAreValid]);
+    XCTAssertFalse([dataSource isValid]);
 
     [dataSource reloadWithDictionary:@{@"first_name" : @"Supermancito"}];
 
-    XCTAssertTrue([dataSource formFieldsAreValid]);
+    XCTAssertTrue([dataSource isValid]);
 }
 
 - (void)testAddingAndRemovingDynamicFields
