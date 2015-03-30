@@ -23,18 +23,18 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                          initialValues:nil
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    XCTAssertNotNil(manager.forms);
+    XCTAssertNotNil(formData.forms);
 
-    XCTAssertTrue(manager.forms.count > 0);
+    XCTAssertTrue(formData.forms.count > 0);
 
-    XCTAssertTrue(manager.hiddenFieldsAndFieldIDsDictionary.count == 0);
+    XCTAssertTrue(formData.hiddenFieldsAndFieldIDsDictionary.count == 0);
 
-    XCTAssertTrue(manager.hiddenSections.count == 0);
+    XCTAssertTrue(formData.hiddenSections.count == 0);
 }
 
 - (void)testDefaultValues
@@ -44,16 +44,16 @@
 
     NSDate *date = [NSDate date];
 
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                          initialValues:@{@"contract_type" : [NSNull null],
                                                          @"start_date" : date,
                                                          @"base_salary": @2}
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    XCTAssertEqualObjects([manager.values objectForKey:@"contract_type"], @0);
-    XCTAssertEqualObjects([manager.values objectForKey:@"start_date"], date);
-    XCTAssertEqualObjects([manager.values objectForKey:@"base_salary"], @2);
+    XCTAssertEqualObjects([formData.values objectForKey:@"contract_type"], @0);
+    XCTAssertEqualObjects([formData.values objectForKey:@"start_date"], date);
+    XCTAssertEqualObjects([formData.values objectForKey:@"base_salary"], @2);
 }
 
 - (void)testCalculatedValues
@@ -61,15 +61,15 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"number-formula.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                          initialValues:@{@"base_salary" : @1,
                                                          @"bonus" : @100}
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    XCTAssertEqualObjects([manager.values objectForKey:@"base_salary"], @1);
-    XCTAssertEqualObjects([manager.values objectForKey:@"bonus"], @100);
-    XCTAssertEqualObjects([manager.values objectForKey:@"total"], @300);
+    XCTAssertEqualObjects([formData.values objectForKey:@"base_salary"], @1);
+    XCTAssertEqualObjects([formData.values objectForKey:@"bonus"], @100);
+    XCTAssertEqualObjects([formData.values objectForKey:@"total"], @300);
 }
 
 - (void)testFormGenerationSectionPositions
@@ -77,16 +77,16 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                          initialValues:nil
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    FORMSection *section = [manager sectionWithID:@"section-2"];
+    FORMSection *section = [formData sectionWithID:@"section-2"];
     XCTAssertNotNil(section);
     XCTAssertEqualObjects(section.position, @2);
 
-    FORMField *field = [manager fieldWithID:@"section-0-field-3" includingHiddenFields:NO];
+    FORMField *field = [formData fieldWithID:@"section-0-field-3" includingHiddenFields:NO];
     XCTAssertNotNil(field);
     XCTAssertEqualObjects(field.position, @3);
 }
@@ -96,16 +96,16 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                          initialValues:@{@"section-0-field-0" : @0}
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    XCTAssertTrue(manager.hiddenFieldsAndFieldIDsDictionary.count > 0);
-    XCTAssertTrue(manager.hiddenSections.count > 0);
+    XCTAssertTrue(formData.hiddenFieldsAndFieldIDsDictionary.count > 0);
+    XCTAssertTrue(formData.hiddenSections.count > 0);
 
-    FORMSection *section = [manager sectionWithID:@"section-2"];
-    FORMField *field = [manager fieldWithID:@"section-0-field-3" includingHiddenFields:NO];
+    FORMSection *section = [formData sectionWithID:@"section-2"];
+    FORMField *field = [formData fieldWithID:@"section-0-field-3" includingHiddenFields:NO];
     XCTAssertEqualObjects(section.position, @1);
     XCTAssertEqualObjects(field.position, @2);
 }
@@ -115,22 +115,22 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                          initialValues:nil
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    FORMSection *section = [manager sectionWithID:@"section-2"];
+    FORMSection *section = [formData sectionWithID:@"section-2"];
     XCTAssertEqualObjects(section.position, @2);
 
     FORMTarget *target = [FORMTarget hideSectionTargetWithID:@"section-1"];
-    [manager hideTargets:@[target]];
-    section = [manager sectionWithID:@"section-2"];
+    [formData hideTargets:@[target]];
+    section = [formData sectionWithID:@"section-2"];
     XCTAssertEqualObjects(section.position, @1);
 
     target = [FORMTarget showSectionTargetWithID:@"section-1"];
-    [manager showTargets:@[target]];
-    section = [manager sectionWithID:@"section-2"];
+    [formData showTargets:@[target]];
+    section = [formData sectionWithID:@"section-2"];
     XCTAssertEqualObjects(section.position, @2);
 }
 
@@ -139,12 +139,12 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                          initialValues:nil
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    NSDictionary *requiredFormFields = [manager requiredFormFields];
+    NSDictionary *requiredFormFields = [formData requiredFormFields];
 
     XCTAssertTrue([requiredFormFields andy_valueForKey:@"first_name"]);
 
@@ -158,12 +158,12 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"field-validations.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                          initialValues:nil
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    NSArray *fields = [manager invalidFormFields];
+    NSArray *fields = [formData invalidFormFields];
 
     XCTAssertTrue(fields.count == 1);
 
@@ -209,22 +209,22 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-field-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *normalFormData = [[FORMData alloc] initWithJSON:JSON
                                                initialValues:@{@"contract_type" : @1,
                                                                @"salary_type": @1}
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfFields = [[[normalManager.forms firstObject] fields] count];
+    NSUInteger numberOfFields = [[[normalFormData.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFields, 2);
 
-    FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *evaluatedFormData = [[FORMData alloc] initWithJSON:JSON
                                                   initialValues:@{@"contract_type" : @0,
                                                                   @"salary_type": @0}
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedManager.forms firstObject] fields] count];
+    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedFormData.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFieldsWithHiddenTargets, 3);
 }
 
@@ -233,21 +233,21 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-field-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *normalformData = [[FORMData alloc] initWithJSON:JSON
                                                initialValues:nil
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfFields = [[[normalManager.forms firstObject] fields] count];
+    NSUInteger numberOfFields = [[[normalformData.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFields, 3);
 
-    FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *evaluatedformData = [[FORMData alloc] initWithJSON:JSON
                                                   initialValues:@{@"contract_type" : @1,
                                                                   @"salary_type": @1}
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedManager.forms firstObject] fields] count];
+    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedformData.forms firstObject] fields] count];
     XCTAssertEqual(numberOfFieldsWithHiddenTargets, 2);
 }
 
@@ -256,22 +256,22 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-section-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *normalFormData = [[FORMData alloc] initWithJSON:JSON
                                                initialValues:@{@"contract_type" : @1,
                                                                @"salary_type": @1}
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
+    NSUInteger numberOfSections = [[[normalFormData.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 2);
 
-    FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *evaluatedFormData = [[FORMData alloc] initWithJSON:JSON
                                                   initialValues:@{@"contract_type" : @0,
                                                                   @"salary_type": @0}
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedManager.forms firstObject] sections] count];
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedFormData.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 3);
 }
 
@@ -280,21 +280,21 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"multiple-show-hide-section-targets.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *normalManager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *normalFormData = [[FORMData alloc] initWithJSON:JSON
                                                initialValues:nil
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfSections = [[[normalManager.forms firstObject] sections] count];
+    NSUInteger numberOfSections = [[[normalFormData.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 3);
 
-    FORMData *evaluatedManager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *evaluatedFormData = [[FORMData alloc] initWithJSON:JSON
                                                   initialValues:@{@"contract_type" : @1,
                                                                   @"salary_type": @1}
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedManager.forms firstObject] sections] count];
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedFormData.forms firstObject] sections] count];
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 2);
 }
 
@@ -320,22 +320,22 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *manager = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                          initialValues:@{@"first_name" : @"Elvis",
                                                          @"last_name" : @"Nunez"}
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    FORMField *field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
+    FORMField *field = [formData fieldWithID:@"first_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.fieldID, @"first_name");
 
-    [manager indexForFieldWithID:field.fieldID
+    [formData indexForFieldWithID:field.fieldID
                  inSectionWithID:field.section.sectionID
                       completion:^(FORMSection *section, NSInteger index) {
                           if (section) [section.fields removeObjectAtIndex:index];
                       }];
 
-    field = [manager fieldWithID:@"first_name" includingHiddenFields:YES];
+    field = [formData fieldWithID:@"first_name" includingHiddenFields:YES];
 
     XCTAssertNil(field);
 }
@@ -345,7 +345,7 @@
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
-    FORMData *data = [[FORMData alloc] initWithJSON:JSON
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                       initialValues:@{@"email" : @"hi@there.com",
                                                       @"companies[0].name" : @"Facebook",
                                                       @"companies[0].phone_number" : @"1222333",
@@ -353,23 +353,23 @@
                                    disabledFieldIDs:nil
                                            disabled:NO];
 
-    FORMField *field = [data fieldWithID:@"companies[0].name" includingHiddenFields:NO];
+    FORMField *field = [formData fieldWithID:@"companies[0].name" includingHiddenFields:NO];
     XCTAssertNotNil(field);
     XCTAssertEqualObjects(field.value, @"Facebook");
 
-    field = [data fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
+    field = [formData fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
     XCTAssertNotNil(field);
     XCTAssertEqualObjects(field.value, @"1222333");
 
-    field = [data fieldWithID:@"companies[1].name" includingHiddenFields:NO];
+    field = [formData fieldWithID:@"companies[1].name" includingHiddenFields:NO];
     XCTAssertNotNil(field);
     XCTAssertEqualObjects(field.value, @"Google");
 
-    field = [data fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
+    field = [formData fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
     XCTAssertNotNil(field);
     XCTAssertNil(field.value);
 
-    field = [data fieldWithID:@"email" includingHiddenFields:NO];
+    field = [formData fieldWithID:@"email" includingHiddenFields:NO];
     XCTAssertNotNil(field);
     XCTAssertEqualObjects(field.value, @"hi@there.com");
 }

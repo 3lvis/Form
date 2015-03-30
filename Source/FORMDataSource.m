@@ -31,7 +31,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 @property (nonatomic) UIEdgeInsets originalInset;
 @property (nonatomic) BOOL disabled;
-@property (nonatomic) FORMData *formsManager;
+@property (nonatomic) FORMData *formData;
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) FORMLayout *layout;
 @property (nonatomic, copy) NSArray *JSON;
@@ -69,7 +69,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     layout.dataSource = self;
 
-    _formsManager = [[FORMData alloc] initWithJSON:JSON
+    _formData = [[FORMData alloc] initWithJSON:JSON
                                      initialValues:values
                                   disabledFieldIDs:@[]
                                           disabled:disabled];
@@ -118,24 +118,24 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.formsManager.forms.count;
+    return self.formData.forms.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    FORMGroup *form = self.formsManager.forms[section];
+    FORMGroup *form = self.formData.forms[section];
     if ([self.collapsedForms containsObject:@(section)]) {
         return 0;
     } else {
-        return [form numberOfFields:self.formsManager.hiddenSections];
+        return [form numberOfFields:self.formData.hiddenSections];
     }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FORMGroup *form = self.formsManager.forms[indexPath.section];
+    FORMGroup *form = self.formData.forms[indexPath.section];
     NSArray *fields = form.fields;
     FORMField *field = fields[indexPath.row];
 
@@ -191,7 +191,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                                                                              withReuseIdentifier:FORMHeaderReuseIdentifier
                                                                                     forIndexPath:indexPath];
 
-        FORMGroup *form = self.formsManager.forms[indexPath.section];
+        FORMGroup *form = self.formData.forms[indexPath.section];
         headerView.section = indexPath.section;
 
         if (self.configureHeaderViewBlock) {
@@ -215,7 +215,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     BOOL headerIsCollapsed = ([self.collapsedForms containsObject:@(section)]);
 
     NSMutableArray *indexPaths = [NSMutableArray new];
-    FORMGroup *form = self.formsManager.forms[section];
+    FORMGroup *form = self.formData.forms[section];
 
     for (NSInteger i = 0; i < form.fields.count; i++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:section];
@@ -283,7 +283,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FORMGroup *form = self.formsManager.forms[indexPath.section];
+    FORMGroup *form = self.formData.forms[indexPath.section];
 
     NSArray *fields = form.fields;
 
@@ -315,7 +315,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (FORMField *)formFieldAtIndexPath:(NSIndexPath *)indexPath
 {
-    FORMGroup *form = self.formsManager.forms[indexPath.section];
+    FORMGroup *form = self.formData.forms[indexPath.section];
     NSArray *fields = form.fields;
     FORMField *field = fields[indexPath.row];
 
@@ -337,14 +337,14 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     self.disabled = disabled;
 
     if (disabled) {
-        [self.formsManager disable];
+        [self.formData disable];
     } else {
-        [self.formsManager enable];
+        [self.formData enable];
     }
 
     NSMutableDictionary *fields = [NSMutableDictionary new];
 
-    for (FORMGroup *form in self.formsManager.forms) {
+    for (FORMGroup *form in self.formData.forms) {
         for (FORMField *field in form.fields) {
             if (field.fieldID) {
                 [fields addEntriesFromDictionary:@{field.fieldID : field}];
@@ -352,9 +352,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         }
     }
 
-    [fields addEntriesFromDictionary:self.formsManager.hiddenFieldsAndFieldIDsDictionary];
+    [fields addEntriesFromDictionary:self.formData.hiddenFieldsAndFieldIDsDictionary];
 
-    for (FORMSection *section in [self.formsManager.hiddenSections allValues]) {
+    for (FORMSection *section in [self.formData.hiddenSections allValues]) {
         for (FORMField *field in section.fields) {
             if (field.fieldID) {
                 [fields addEntriesFromDictionary:@{field.fieldID : field}];
@@ -364,7 +364,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     for (NSString *fieldID in fields) {
         FORMField *field = [fields valueForKey:fieldID];
-        BOOL shouldChangeState = (![self.formsManager.disabledFieldsIDs containsObject:fieldID]);
+        BOOL shouldChangeState = (![self.formData.disabledFieldsIDs containsObject:fieldID]);
 
         if (disabled) {
             field.disabled = YES;
@@ -418,13 +418,13 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary
 {
-    [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
+    [self.formData.values setValuesForKeysWithDictionary:dictionary];
 
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
     NSMutableArray *targets = [NSMutableArray new];
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
-        [self.formsManager fieldWithID:key includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
+        [self.formData fieldWithID:key includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
             BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
             if (field) {
@@ -448,13 +448,13 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 - (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary
 {
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if (self.formsManager.values[key]) {
-            self.formsManager.values[key] = obj;
+        if (self.formData.values[key]) {
+            self.formData.values[key] = obj;
         }
     }];
 
     NSMutableSet *currentSections = [NSMutableSet new];
-    for (NSString *key in self.formsManager.values) {
+    for (NSString *key in self.formData.values) {
         HYPParsedRelationship *parsed = [key hyp_parseRelationship];
         if (parsed.toMany) {
             parsed.attribute = nil;
@@ -476,13 +476,13 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         }
     }
 
-    NSArray *removedSections = [self.formsManager removedSectionsUsingInitialValues:dictionary];
+    NSArray *removedSections = [self.formData removedSectionsUsingInitialValues:dictionary];
     for (FORMSection *section in removedSections) {
-        [self.formsManager removeSection:section
+        [self.formData removeSection:section
                         inCollectionView:self.collectionView];
     }
 
-    [self.formsManager.values setValuesForKeysWithDictionary:dictionary];
+    [self.formData.values setValuesForKeysWithDictionary:dictionary];
 
     [self insertDynamicSectionsForValues:[insertedValues copy]];
 
@@ -490,7 +490,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     NSMutableArray *targets = [NSMutableArray new];
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
-        [self.formsManager fieldWithID:key
+        [self.formData fieldWithID:key
                  includingHiddenFields:YES
                             completion:^(FORMField *field, NSIndexPath *indexPath) {
                                 BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
@@ -517,7 +517,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 {
     __block FORMField *foundField = nil;
 
-    [self.formsManager.hiddenFieldsAndFieldIDsDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, FORMField *field, BOOL *stop) {
+    [self.formData.hiddenFieldsAndFieldIDsDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, FORMField *field, BOOL *stop) {
         if ([field.fieldID isEqualToString:fieldID]) {
             foundField = field;
             *stop = YES;
@@ -531,7 +531,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 {
     __block FORMField *foundField = nil;
 
-    [self.formsManager.hiddenSections enumerateKeysAndObjectsUsingBlock:^(NSString *key, FORMSection *section, BOOL *stop) {
+    [self.formData.hiddenSections enumerateKeysAndObjectsUsingBlock:^(NSString *key, FORMSection *section, BOOL *stop) {
         [section.fields enumerateObjectsUsingBlock:^(FORMField *field, NSUInteger idx, BOOL *stop) {
             if ([field.fieldID isEqualToString:fieldID]) {
                 foundField = field;
@@ -560,7 +560,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         }
     }
 
-    for (FORMGroup *form in self.formsManager.forms) {
+    for (FORMGroup *form in self.formData.forms) {
         for (FORMField *field in form.fields) {
             if (![validatedFields containsObject:field.fieldID]) {
                 [field validate];
@@ -571,7 +571,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (BOOL)formFieldsAreValid
 {
-    for (FORMGroup *form in self.formsManager.forms) {
+    for (FORMGroup *form in self.formData.forms) {
         for (FORMField *field in form.fields) {
             FORMValidationResultType fieldValidation = [field validate];
             BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypePassed);
@@ -586,17 +586,17 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (void)resetForms
 {
-    for (FORMGroup *form in self.formsManager.forms) {
+    for (FORMGroup *form in self.formData.forms) {
         for (FORMField *field in form.fields) {
             field.value = nil;
         }
     }
 
-    self.formsManager.values = nil;
+    self.formData.values = nil;
 
     [self.collapsedForms removeAllObjects];
-    [self.formsManager.hiddenFieldsAndFieldIDsDictionary removeAllObjects];
-    [self.formsManager.hiddenSections removeAllObjects];
+    [self.formData.hiddenFieldsAndFieldIDsDictionary removeAllObjects];
+    [self.formData.hiddenSections removeAllObjects];
     [self.collectionView reloadData];
 }
 
@@ -614,15 +614,15 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         if ([components.lastObject isEqualToString:FORMDynamicAddFieldID]) {
             NSString *sectionTemplateID = [components firstObject];
             FORMSection *section = [self sectionWithID:sectionTemplateID];
-            [self.formsManager insertTemplateSectionWithID:sectionTemplateID
+            [self.formData insertTemplateSectionWithID:sectionTemplateID
                                         intoCollectionView:self.collectionView
                                                  usingForm:section.form];
         } else if ([components.lastObject isEqualToString:FORMDynamicRemoveFieldID]) {
             HYPParsedRelationship *parsed = [field.fieldID hyp_parseRelationship];
             parsed.attribute = nil;
             NSString *sectionID = [parsed key];
-            FORMSection *section = [self.formsManager sectionWithID:sectionID];
-            [self.formsManager removeSection:section
+            FORMSection *section = [self.formData sectionWithID:sectionID];
+            [self.formData removeSection:section
                             inCollectionView:self.collectionView];
         }
     }
@@ -632,12 +632,12 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                          field != nil);
     if (isValidField) {
         if (!field.value) {
-            [self.formsManager.values removeObjectForKey:field.fieldID];
+            [self.formData.values removeObjectForKey:field.fieldID];
         } else if ([field.value isKindOfClass:[FORMFieldValue class]]) {
             FORMFieldValue *fieldValue = field.value;
-            self.formsManager.values[field.fieldID] = fieldValue.valueID;
+            self.formData.values[field.fieldID] = fieldValue.valueID;
         } else {
-            self.formsManager.values[field.fieldID] = field.value;
+            self.formData.values[field.fieldID] = field.value;
         }
 
         BOOL hasFieldValue = (field.value && [field.value isKindOfClass:[FORMFieldValue class]]);
@@ -665,26 +665,26 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 {
     switch (target.actionType) {
         case FORMTargetActionShow: {
-            NSArray *insertedIndexPaths = [self.formsManager showTargets:@[target]];
+            NSArray *insertedIndexPaths = [self.formData showTargets:@[target]];
             [self insertItemsAtIndexPaths:insertedIndexPaths];
         } break;
         case FORMTargetActionHide: {
-            NSArray *deletedIndexPaths = [self.formsManager hideTargets:@[target]];
+            NSArray *deletedIndexPaths = [self.formData hideTargets:@[target]];
             [self deleteItemsAtIndexPaths:deletedIndexPaths];
         } break;
         case FORMTargetActionClear:
         case FORMTargetActionUpdate: {
-            NSArray *updatedIndexPaths = [self.formsManager updateTargets:@[target]];
+            NSArray *updatedIndexPaths = [self.formData updateTargets:@[target]];
             [self reloadItemsAtIndexPaths:updatedIndexPaths];
         } break;
         case FORMTargetActionEnable: {
-            if ([self.formsManager isEnabled]) {
-                NSArray *enabledIndexPaths = [self.formsManager enableTargets:@[target]];
+            if ([self.formData isEnabled]) {
+                NSArray *enabledIndexPaths = [self.formData enableTargets:@[target]];
                 [self reloadItemsAtIndexPaths:enabledIndexPaths];
             }
         } break;
         case FORMTargetActionDisable: {
-            NSArray *disabledIndexPaths = [self.formsManager disableTargets:@[target]];
+            NSArray *disabledIndexPaths = [self.formData disableTargets:@[target]];
             [self reloadItemsAtIndexPaths:disabledIndexPaths];
         } break;
         case FORMTargetActionNone: break;
@@ -718,17 +718,17 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                            NSArray *disabledIndexPaths;
 
                            if (shownTargets.count > 0) {
-                               insertedIndexPaths = [self.formsManager showTargets:shownTargets];
+                               insertedIndexPaths = [self.formData showTargets:shownTargets];
                                [self insertItemsAtIndexPaths:insertedIndexPaths];
                            }
 
                            if (hiddenTargets.count > 0) {
-                               deletedIndexPaths = [self.formsManager hideTargets:hiddenTargets];
+                               deletedIndexPaths = [self.formData hideTargets:hiddenTargets];
                                [self deleteItemsAtIndexPaths:deletedIndexPaths];
                            }
 
                            if (updatedTargets.count > 0) {
-                               updatedIndexPaths = [self.formsManager updateTargets:updatedTargets];
+                               updatedIndexPaths = [self.formData updateTargets:updatedTargets];
 
                                if (deletedIndexPaths) {
                                    NSMutableArray *filteredIndexPaths = [updatedIndexPaths mutableCopy];
@@ -744,15 +744,15 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                                }
                            }
 
-                           BOOL shouldRunEnableTargets = (enabledTargets.count > 0 && [self.formsManager isEnabled]);
+                           BOOL shouldRunEnableTargets = (enabledTargets.count > 0 && [self.formData isEnabled]);
                            if (shouldRunEnableTargets) {
-                               enabledIndexPaths = [self.formsManager enableTargets:enabledTargets];
+                               enabledIndexPaths = [self.formData enableTargets:enabledTargets];
 
                                [self reloadItemsAtIndexPaths:enabledIndexPaths];
                            }
 
                            if (disabledTargets.count > 0) {
-                               disabledIndexPaths = [self.formsManager disableTargets:disabledTargets];
+                               disabledIndexPaths = [self.formData disableTargets:disabledTargets];
 
                                [self reloadItemsAtIndexPaths:disabledIndexPaths];
                            }
@@ -769,7 +769,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     NSMutableArray *indexPaths = [NSMutableArray new];
 
     NSInteger formIndex = [section.form.position integerValue];
-    FORMGroup *form = self.formsManager.forms[formIndex];
+    FORMGroup *form = self.formData.forms[formIndex];
 
     NSInteger fieldsIndex = 0;
     NSInteger sectionIndex = 0;
@@ -834,35 +834,35 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (NSArray *)forms
 {
-    return self.formsManager.forms;
+    return self.formData.forms;
 }
 
 #pragma mark - FORMData bridge
 
 - (NSArray *)invalidFormFields
 {
-    return [self.formsManager invalidFormFields];
+    return [self.formData invalidFormFields];
 }
 
 - (NSDictionary *)requiredFormFields
 {
-    return [self.formsManager requiredFormFields];
+    return [self.formData requiredFormFields];
 }
 
 - (NSMutableDictionary *)valuesForFormula:(FORMField *)field
 {
-    return [self.formsManager valuesForFormula:field];
+    return [self.formData valuesForFormula:field];
 }
 
 - (FORMSection *)sectionWithID:(NSString *)sectionID
 {
-    return [self.formsManager sectionWithID:sectionID];
+    return [self.formData sectionWithID:sectionID];
 }
 
 - (void)sectionWithID:(NSString *)sectionID
            completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion
 {
-    [self.formsManager sectionWithID:sectionID
+    [self.formData sectionWithID:sectionID
                           completion:completion];
 }
 
@@ -870,14 +870,14 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             inSectionWithID:(NSString *)sectionID
                  completion:(void (^)(FORMSection *section, NSInteger index))completion
 {
-    [self.formsManager indexForFieldWithID:fieldID
+    [self.formData indexForFieldWithID:fieldID
                            inSectionWithID:sectionID completion:completion];
 }
 
 - (FORMField *)fieldWithID:(NSString *)fieldID
      includingHiddenFields:(BOOL)includingHiddenFields
 {
-    return [self.formsManager fieldWithID:fieldID
+    return [self.formData fieldWithID:fieldID
                     includingHiddenFields:includingHiddenFields];
 }
 
@@ -885,56 +885,56 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion
 {
-    [self.formsManager fieldWithID:fieldID
+    [self.formData fieldWithID:fieldID
              includingHiddenFields:includingHiddenFields
                         completion:completion];
 }
 
 - (NSArray *)showTargets:(NSArray *)targets
 {
-    return [self.formsManager showTargets:targets];
+    return [self.formData showTargets:targets];
 }
 
 - (NSArray *)hideTargets:(NSArray *)targets
 {
-    return [self.formsManager hideTargets:targets];
+    return [self.formData hideTargets:targets];
 }
 
 - (NSArray *)updateTargets:(NSArray *)targets
 {
-    return [self.formsManager updateTargets:targets];
+    return [self.formData updateTargets:targets];
 }
 
 - (NSArray *)enableTargets:(NSArray *)targets
 {
-    return [self.formsManager enableTargets:targets];
+    return [self.formData enableTargets:targets];
 }
 
 - (NSArray *)disableTargets:(NSArray *)targets
 {
-    return [self.formsManager disableTargets:targets];
+    return [self.formData disableTargets:targets];
 }
 
 - (NSInteger)numberOfFields
 {
-    return [self.formsManager numberOfFields];
+    return [self.formData numberOfFields];
 }
 
 - (void)updateValuesWithDictionary:(NSDictionary *)dictionary
 {
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        self.formsManager.values[key] = obj;
+        self.formData.values[key] = obj;
     }];
 }
 
 - (NSDictionary *)values
 {
-    return [self.formsManager.values copy];
+    return [self.formData.values copy];
 }
 
 - (NSDictionary *)removedValues
 {
-    return [self.formsManager.removedValues copy];
+    return [self.formData.removedValues copy];
 }
 
 #pragma mark - Private methods
@@ -970,7 +970,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     __block NSString *sectionID = [section.sectionID substringToIndex:[section.sectionID rangeOfString:@"["].location];
     [self.values enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([key hasPrefix:sectionID]) {
-            [self.formsManager.values removeObjectForKey:key];
+            [self.formData.values removeObjectForKey:key];
         }
     }];
 }
@@ -982,7 +982,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
         if ([obj isKindOfClass:[NSArray class]]) {
             FORMSection *section = [self sectionWithID:key];
             for (NSInteger numberOfSections = 0; numberOfSections < [obj count]; numberOfSections++) {
-                [self.formsManager insertTemplateSectionWithID:key
+                [self.formData insertTemplateSectionWithID:key
                                             intoCollectionView:self.collectionView
                                                      usingForm:section.form];
             }
