@@ -40,10 +40,10 @@
         BOOL isLastSection = (lastObject == sectionDict);
 
         FORMSection *section = [[FORMSection alloc] initWithDictionary:sectionDict
-                                                                    position:sectionIndex
-                                                                    disabled:disabled
-                                                           disabledFieldsIDs:disabledFieldsIDs
-                                                               isLastSection:isLastSection];
+                                                              position:sectionIndex
+                                                              disabled:disabled
+                                                     disabledFieldsIDs:disabledFieldsIDs
+                                                         isLastSection:isLastSection];
 
         section.group = self;
 

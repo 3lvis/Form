@@ -70,9 +70,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     layout.dataSource = self;
 
     _formData = [[FORMData alloc] initWithJSON:JSON
-                                     initialValues:values
-                                  disabledFieldIDs:@[]
-                                          disabled:disabled];
+                                 initialValues:values
+                              disabledFieldIDs:@[]
+                                      disabled:disabled];
 
     [collectionView registerClass:[FORMTextFieldCell class]
        forCellWithReuseIdentifier:FORMTextFieldCellIdentifier];
@@ -478,7 +478,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     NSArray *removedSections = [self.formData removedSectionsUsingInitialValues:dictionary];
     for (FORMSection *section in removedSections) {
         [self.formData removeSection:section
-                        inCollectionView:self.collectionView];
+                    inCollectionView:self.collectionView];
     }
 
     [self.formData.values setValuesForKeysWithDictionary:dictionary];
@@ -490,23 +490,23 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
         [self.formData fieldWithID:key
-                 includingHiddenFields:YES
-                            completion:^(FORMField *field, NSIndexPath *indexPath) {
-                                BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
+             includingHiddenFields:YES
+                        completion:^(FORMField *field, NSIndexPath *indexPath) {
+                            BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
+                            if (field) {
+                                field.value = (shouldBeNil) ? nil : value;
+                                if (indexPath) {
+                                    [updatedIndexPaths addObject:indexPath];
+                                }
+                                [targets addObjectsFromArray:[field safeTargets]];
+                            } else {
+                                field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
                                 if (field) {
                                     field.value = (shouldBeNil) ? nil : value;
-                                    if (indexPath) {
-                                        [updatedIndexPaths addObject:indexPath];
-                                    }
-                                    [targets addObjectsFromArray:[field safeTargets]];
-                                } else {
-                                    field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
-                                    if (field) {
-                                        field.value = (shouldBeNil) ? nil : value;
-                                    }
                                 }
-                            }];
+                            }
+                        }];
     }];
 
     [self processTargets:targets];
@@ -614,15 +614,15 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
             NSString *sectionTemplateID = [components firstObject];
             FORMSection *section = [self sectionWithID:sectionTemplateID];
             [self.formData insertTemplateSectionWithID:sectionTemplateID
-                                        intoCollectionView:self.collectionView
-                                                 usingGroup:section.group];
+                                    intoCollectionView:self.collectionView
+                                            usingGroup:section.group];
         } else if ([components.lastObject isEqualToString:FORMDynamicRemoveFieldID]) {
             HYPParsedRelationship *parsed = [field.fieldID hyp_parseRelationship];
             parsed.attribute = nil;
             NSString *sectionID = [parsed key];
             FORMSection *section = [self.formData sectionWithID:sectionID];
             [self.formData removeSection:section
-                            inCollectionView:self.collectionView];
+                        inCollectionView:self.collectionView];
         }
     }
 
@@ -862,7 +862,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
            completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion
 {
     [self.formData sectionWithID:sectionID
-                          completion:completion];
+                      completion:completion];
 }
 
 - (void)indexForFieldWithID:(NSString *)fieldID
@@ -870,14 +870,14 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                  completion:(void (^)(FORMSection *section, NSInteger index))completion
 {
     [self.formData indexForFieldWithID:fieldID
-                           inSectionWithID:sectionID completion:completion];
+                       inSectionWithID:sectionID completion:completion];
 }
 
 - (FORMField *)fieldWithID:(NSString *)fieldID
      includingHiddenFields:(BOOL)includingHiddenFields
 {
     return [self.formData fieldWithID:fieldID
-                    includingHiddenFields:includingHiddenFields];
+                includingHiddenFields:includingHiddenFields];
 }
 
 - (void)fieldWithID:(NSString *)fieldID
@@ -885,8 +885,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion
 {
     [self.formData fieldWithID:fieldID
-             includingHiddenFields:includingHiddenFields
-                        completion:completion];
+         includingHiddenFields:includingHiddenFields
+                    completion:completion];
 }
 
 - (NSArray *)showTargets:(NSArray *)targets
@@ -982,8 +982,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
             FORMSection *section = [self sectionWithID:key];
             for (NSInteger numberOfSections = 0; numberOfSections < [obj count]; numberOfSections++) {
                 [self.formData insertTemplateSectionWithID:key
-                                            intoCollectionView:self.collectionView
-                                                     usingGroup:section.group];
+                                        intoCollectionView:self.collectionView
+                                                usingGroup:section.group];
             }
         }
     }];

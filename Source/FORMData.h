@@ -63,7 +63,7 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 
 - (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID
                  intoCollectionView:(UICollectionView *)collectionView
-                          usingGroup:(FORMGroup *)group;
+                         usingGroup:(FORMGroup *)group;
 
 - (void)resetRemovedValues;
 
