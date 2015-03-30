@@ -68,7 +68,7 @@
                                                 values:self.initialValues
                                               disabled:YES];
 
-    _dataSource.configureCellForIndexPath = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
+    _dataSource.configureCellForItemAtIndexPathBlock = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
         id cell;
         BOOL isImageCell = (field.type == FORMFieldTypeCustom && [field.typeString isEqual:@"image"]);
         if (isImageCell) {
@@ -80,7 +80,7 @@
 
     __weak typeof(self)weakSelf = self;
 
-    _dataSource.configureFieldUpdatedBlock = ^(id cell, FORMField *field) {
+    _dataSource.fieldUpdatedBlock = ^(id cell, FORMField *field) {
         NSLog(@"field updated: %@ --- %@", field.fieldID, field.value);
 
         BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
@@ -92,7 +92,7 @@
                                       if (field) {
                                           field.value = [NSDate date];
                                           field.minimumDate = [NSDate date];
-                                          [weakSelf.dataSource reloadItemsAtIndexPaths:@[indexPath]];
+                                          [weakSelf.dataSource reloadFieldsAtIndexPaths:@[indexPath]];
                                       }
                                   }];
         }
@@ -171,13 +171,13 @@
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FORMField *field = [self.dataSource formFieldAtIndexPath:indexPath];
+    FORMField *field = [self.dataSource fieldAtIndexPath:indexPath];
     return (field.type == FORMFieldTypeCustom && [field.typeString isEqual:@"image"]);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FORMField *field = [self.dataSource formFieldAtIndexPath:indexPath];
+    FORMField *field = [self.dataSource fieldAtIndexPath:indexPath];
 
     if (field.type == FORMFieldTypeCustom && [field.typeString isEqual:@"image"]) {
         [self.imagePicker invokeCamera];
@@ -188,7 +188,7 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.dataSource sizeForItemAtIndexPath:indexPath];
+    return [self.dataSource sizeForFieldAtIndexPath:indexPath];
 }
 
 #pragma mark - Rotation Handling
@@ -227,14 +227,14 @@
 
 - (void)validateButtonAction
 {
-    if ([self.dataSource formFieldsAreValid]) {
+    if ([self.dataSource isValid]) {
         [[[UIAlertView alloc] initWithTitle:@"Everything is valid, you get a candy!"
                                     message:nil
                                    delegate:nil
                           cancelButtonTitle:@"No, thanks"
                           otherButtonTitles:nil, nil] show];
     } else {
-        [self.dataSource validateForms];
+        [self.dataSource validate];
     }
 }
 
