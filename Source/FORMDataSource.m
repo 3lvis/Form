@@ -273,18 +273,18 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     }
 }
 
-- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths
+- (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths
 {
     NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
 
     if (reloadedIndexPaths.count > 0) {
         [UIView performWithoutAnimation:^{
-            [self.collectionView reloadItemsAtIndexPaths:reloadedIndexPaths];
+            [self.collectionView reloadFieldsAtIndexPaths:reloadedIndexPaths];
         }];
     }
 }
 
-- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)sizeForFieldAtIndexPath:(NSIndexPath *)indexPath
 {
     FORMGroup *group = self.formData.groups[indexPath.section];
     NSArray *fields = group.fields;
@@ -315,7 +315,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     return CGSizeMake(width, height);
 }
 
-- (FORMField *)formFieldAtIndexPath:(NSIndexPath *)indexPath
+- (FORMField *)fieldAtIndexPath:(NSIndexPath *)indexPath
 {
     FORMGroup *group = self.formData.groups[indexPath.section];
     NSArray *fields = group.fields;
@@ -401,7 +401,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     }
 
     [UIView performWithoutAnimation:^{
-        [self.collectionView reloadItemsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
+        [self.collectionView reloadFieldsAtIndexPaths:[self.collectionView indexPathsForVisibleItems]];
     }];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
@@ -637,17 +637,17 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         case FORMTargetActionClear:
         case FORMTargetActionUpdate: {
             NSArray *updatedIndexPaths = [self.formData updateTargets:@[target]];
-            [self reloadItemsAtIndexPaths:updatedIndexPaths];
+            [self reloadFieldsAtIndexPaths:updatedIndexPaths];
         } break;
         case FORMTargetActionEnable: {
             if ([self.formData isEnabled]) {
                 NSArray *enabledIndexPaths = [self.formData enableTargets:@[target]];
-                [self reloadItemsAtIndexPaths:enabledIndexPaths];
+                [self reloadFieldsAtIndexPaths:enabledIndexPaths];
             }
         } break;
         case FORMTargetActionDisable: {
             NSArray *disabledIndexPaths = [self.formData disableTargets:@[target]];
-            [self reloadItemsAtIndexPaths:disabledIndexPaths];
+            [self reloadFieldsAtIndexPaths:disabledIndexPaths];
         } break;
         case FORMTargetActionNone: break;
     }
@@ -700,9 +700,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                                        }
                                    }
 
-                                   [self reloadItemsAtIndexPaths:filteredIndexPaths];
+                                   [self reloadFieldsAtIndexPaths:filteredIndexPaths];
                                } else {
-                                   [self reloadItemsAtIndexPaths:updatedIndexPaths];
+                                   [self reloadFieldsAtIndexPaths:updatedIndexPaths];
                                }
                            }
 
@@ -710,13 +710,13 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                            if (shouldRunEnableTargets) {
                                enabledIndexPaths = [self.formData enableTargets:enabledTargets];
 
-                               [self reloadItemsAtIndexPaths:enabledIndexPaths];
+                               [self reloadFieldsAtIndexPaths:enabledIndexPaths];
                            }
 
                            if (disabledTargets.count > 0) {
                                disabledIndexPaths = [self.formData disableTargets:disabledTargets];
 
-                               [self reloadItemsAtIndexPaths:disabledIndexPaths];
+                               [self reloadFieldsAtIndexPaths:disabledIndexPaths];
                            }
                        }];
 }

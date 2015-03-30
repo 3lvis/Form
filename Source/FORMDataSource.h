@@ -1,23 +1,28 @@
 @import Foundation;
 @import UIKit;
 
-#import "FORMLayout.h"
-
 #import "FORMBaseFieldCell.h"
-#import "FORMGroupHeaderView.h"
-
-#import "FORMField.h"
-#import "FORMGroup.h"
-#import "FORMSection.h"
-#import "FORMFieldValue.h"
-#import "FORMTarget.h"
 #import "FORMData.h"
+#import "FORMField.h"
+#import "FORMFieldValue.h"
+#import "FORMGroup.h"
+#import "FORMGroupHeaderView.h"
+#import "FORMLayout.h"
+#import "FORMSection.h"
+#import "FORMTarget.h"
 
-typedef void (^FORMConfigureCellBlock)(id cell, NSIndexPath *indexPath, FORMField *field);
-typedef void (^FORMConfigureHeaderViewBlock)(FORMGroupHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, FORMGroup *form);
-typedef UICollectionViewCell * (^FORMConfigureCellForItemAtIndexPathBlock)(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath);
-
-typedef void (^FORMFieldFieldUpdatedBlock)(id cell, FORMField *field);
+typedef void (^FORMConfigureCellBlock)(id cell,
+                                       NSIndexPath *indexPath,
+                                       FORMField *field);
+typedef void (^FORMConfigureHeaderViewBlock)(FORMGroupHeaderView *headerView,
+                                             NSString *kind,
+                                             NSIndexPath *indexPath,
+                                             FORMGroup *form);
+typedef UICollectionViewCell * (^FORMConfigureCellForItemAtIndexPathBlock)(FORMField *field,
+                                                                           UICollectionView *collectionView,
+                                                                           NSIndexPath *indexPath);
+typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
+                                           FORMField *field);
 
 @interface FORMDataSource : NSObject <UICollectionViewDataSource, FORMLayoutDataSource>
 
@@ -99,39 +104,117 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell, FORMField *field);
  */
 - (NSDictionary *)requiredFields;
 
+/*!
+ * @return @YES if all the fields are valid
+ */
 - (BOOL)isValid;
+
+/*!
+ * Resets the values of all the fields
+ */
 - (void)reset;
+
+/*!
+ * Runs @c validate in all the fields, if the field is invalid it will show as red
+ */
 - (void)validate;
 
+/*!
+ * @discussion The values for all the fields
+ * @return A dictionary of field values where @c key is the @c fieldID and the @c value is the field value
+ */
 - (NSDictionary *)values;
+
+/*!
+ * @discussion Returns values for the removed fields (doesn't contain collapsed fields, just removed ones)
+ * @return A dictionary of removed values where @c key is the @c fieldID and the @c value is the field value
+ */
 - (NSDictionary *)removedValues;
+
+/*!
+ * @discussion Replaces the field values
+ * @param dictionary A dictionary of field value where @c key is the @c fieldID and the @c value is the field value
+ */
 - (void)updateValuesWithDictionary:(NSDictionary *)dictionary;
+
+/*!
+ * @discussion Reloads the form using the values from the @c dictionary, triggering targets and reloading
+ * the updated cells
+ * @param dictionary A dictionary of field value where @c key is the @c fieldID and the @c value is the field value
+ */
 - (void)reloadWithDictionary:(NSDictionary *)dictionary;
+
+/*!
+ * @discussion Reloads the form using the values from the @c dictionary, triggering targets and reloading
+ * the updated cells, it also adds, updates and removes the provided values for dynamic sections
+ * @param dictionary A dictionary of field value where @c key is the @c fieldID and the @c value is the field value
+ */
 - (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary;
 
+/*!
+ * @return  Returns the number of fields in Form
+ */
 - (NSInteger)numberOfFields;
-- (FORMSection *)sectionWithID:(NSString *)sectionID;
+
+/*!
+ * @param fieldID The identifier for the field
+ * @param includingHiddenFields A flag for whether look for hidden or collapsed fields or not
+ * @return The found @ FORMField, will return @c nil if the field is not found
+ */
 - (FORMField *)fieldWithID:(NSString *)fieldID
      includingHiddenFields:(BOOL)includingHiddenFields;
-- (void)sectionWithID:(NSString *)sectionID
-           completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion;
+
+/*!
+ * @param indexPath The @c indexPath for the @c FORMField
+ * @throw It will throw an exception if the indexPath is out of bounds
+ * @return The found @ FORMField at the specific @c indexPath
+ */
+- (FORMField *)fieldAtIndexPath:(NSIndexPath *)indexPath;
+
+/*!
+ * @discussion A method to find a @c field with its specific @c indexPath
+ * @param fieldID The identifier for the field
+ * @param includingHiddenFields A flag for whether look for hidden or collapsed fields or not
+ */
+- (void)fieldWithID:(NSString *)fieldID
+includingHiddenFields:(BOOL)includingHiddenFields
+         completion:(void (^)(FORMField *field,
+                              NSIndexPath *indexPath))completion;
+
+/*!
+ * @discussion A method to find an @c index for a @c field in a specific @c section
+ * @param fieldID The identifier for the field
+ * @param sectionID The identifier for the section
+ */
 - (void)indexForFieldWithID:(NSString *)fieldID
             inSectionWithID:(NSString *)sectionID
-                 completion:(void (^)(FORMSection *section, NSInteger index))completion;
-- (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
-         completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
-- (FORMField *)formFieldAtIndexPath:(NSIndexPath *)indexPath;
+                 completion:(void (^)(FORMSection *section,
+                                      NSInteger index))completion;
 
-- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
-- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
+/*!
+ * @param sectionID The identifier for the section.
+ * @return The found @c section, returns @c nil if the section is not found
+ */
+- (FORMSection *)sectionWithID:(NSString *)sectionID;
 
-// Deprecated
+/*!
+ * @discussion A method to find a @c section with and an array of @c indexPaths
+ * for all the fields in the section
+ * @param sectionID The identifier for the section.
+ */
+- (void)sectionWithID:(NSString *)sectionID
+           completion:(void (^)(FORMSection *section,
+                                NSArray *indexPaths))completion;
 
-- (NSDictionary *)invalidFormFields __attribute__((deprecated("Use invalidFields instead")));;
-- (NSDictionary *)requiredFormFields __attribute__((deprecated("Use requiredFields instead")));;
-- (BOOL)formFieldsAreValid __attribute__((deprecated("Use isValid instead")));;
-- (void)resetForms __attribute__((deprecated("Use reset instead")));;
-- (void)validateForms __attribute__((deprecated("Use validate instead")));;
-- (void)processTarget:(FORMTarget *)target __attribute__((deprecated("Use processTargets instead")));;;
+/*!
+ * @return The size for the @c field at the given @c indexPath
+ */
+- (CGSize)sizeForFieldAtIndexPath:(NSIndexPath *)indexPath;
+
+/*!
+ * @discussion Safely reloads the fields at the given indexPaths
+ * @param indexPaths A collection of indexPaths to reload
+ */
+- (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths;
 
 @end
