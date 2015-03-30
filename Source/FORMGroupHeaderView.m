@@ -72,4 +72,9 @@
     self.headerLabel.textColor = headerLabelTextColor;
 }
 
+- (void)setHeaderBackgroundColor:(UIColor *)backgroundColor
+{
+    self.backgroundColor = backgroundColor;
+}
+
 @end

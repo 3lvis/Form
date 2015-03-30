@@ -17,6 +17,7 @@ static NSString * const FORMHeaderReuseIdentifier = @"FORMHeaderReuseIdentifier"
 
 - (void)setHeaderLabelFont:(UIFont *)headerLabelFont UI_APPEARANCE_SELECTOR;
 - (void)setHeaderLabelTextColor:(UIColor *)headerLabelTextColor UI_APPEARANCE_SELECTOR;
+- (void)setHeaderBackgroundColor:(UIColor *)backgroundColor UI_APPEARANCE_SELECTOR;
 
 @end
 
