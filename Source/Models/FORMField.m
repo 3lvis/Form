@@ -259,8 +259,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     if (self.validation.compareToFieldID.length) {
         FORMField *field = [self.class fieldForFieldID:self.validation.compareToFieldID inSection:self.section];
-      id dependantFieldValue = field.value;
-      self.validationType = [validator validateFieldValue:self.value withDependentValue:dependantFieldValue withComparator:self.validation.compareRule];
+        id dependantFieldValue = field.value;
+        self.validationType = [validator validateFieldValue:self.value withDependentValue:dependantFieldValue withComparator:self.validation.compareRule];
     }
     self.valid = (self.validationType == FORMValidationResultTypePassed);
     return self.validationType;
@@ -276,19 +276,19 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
 + (FORMField *)fieldForFieldID:(NSString *)fieldID inSection:(FORMSection *)section
 {
-  __block FORMField *formField;
-  [section.fields enumerateObjectsUsingBlock:^(FORMField *field, NSUInteger idx, BOOL *stop) {
-    if ([field.fieldID isEqualToString:fieldID]) {
-      formField = field;
-    }
-  }];
-  return formField;
+    __block FORMField *formField;
+    [section.fields enumerateObjectsUsingBlock:^(FORMField *field, NSUInteger idx, BOOL *stop) {
+        if ([field.fieldID isEqualToString:fieldID]) {
+            formField = field;
+        }
+    }];
+    return formField;
 }
 
-- (NSUInteger)indexInSectionUsingForms:(NSArray *)forms
+- (NSUInteger)indexInSectionUsingGroups:(NSArray *)groups
 {
-    FORMGroup *form = forms[[self.section.form.position integerValue]];
-    FORMSection *section = form.sections[[self.section.position integerValue]];
+    FORMGroup *group = groups[[self.section.group.position integerValue]];
+    FORMSection *section = group.sections[[self.section.position integerValue]];
 
     NSUInteger index = 0;
     BOOL found = NO;

@@ -23,6 +23,6 @@ static NSString * const FORMHeaderReuseIdentifier = @"FORMHeaderReuseIdentifier"
 
 @protocol FORMHeaderViewDelegate <NSObject>
 
-- (void)formHeaderViewWasPressed:(FORMGroupHeaderView *)headerView;
+- (void)groupHeaderViewWasPressed:(FORMGroupHeaderView *)headerView;
 
 @end

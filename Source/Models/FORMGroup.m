@@ -40,12 +40,12 @@
         BOOL isLastSection = (lastObject == sectionDict);
 
         FORMSection *section = [[FORMSection alloc] initWithDictionary:sectionDict
-                                                                    position:sectionIndex
-                                                                    disabled:disabled
-                                                           disabledFieldsIDs:disabledFieldsIDs
-                                                               isLastSection:isLastSection];
+                                                              position:sectionIndex
+                                                              disabled:disabled
+                                                     disabledFieldsIDs:disabledFieldsIDs
+                                                         isLastSection:isLastSection];
 
-        section.form = self;
+        section.group = self;
 
         [sections addObject:section];
     }];

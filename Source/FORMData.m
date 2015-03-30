@@ -50,13 +50,13 @@
 
 #pragma mark - Getters
 
-- (NSMutableArray *)forms
+- (NSMutableArray *)groups
 {
-    if (_forms) return _forms;
+    if (_groups) return _groups;
 
-    _forms = [NSMutableArray new];
+    _groups = [NSMutableArray new];
 
-    return _forms;
+    return _groups;
 }
 
 - (NSMutableDictionary *)hiddenFieldsAndFieldIDsDictionary
@@ -177,12 +177,12 @@
         abort();
     }
 
-    [groups enumerateObjectsUsingBlock:^(NSDictionary *formDict, NSUInteger formIndex, BOOL *stop) {
+    [groups enumerateObjectsUsingBlock:^(NSDictionary *groupDictionary, NSUInteger groupIndex, BOOL *stop) {
 
-        FORMGroup *form = [[FORMGroup alloc] initWithDictionary:formDict
-                                                       position:formIndex
-                                                       disabled:disabled
-                                              disabledFieldsIDs:disabledFieldsIDs];
+        FORMGroup *group = [[FORMGroup alloc] initWithDictionary:groupDictionary
+                                                        position:groupIndex
+                                                        disabled:disabled
+                                               disabledFieldsIDs:disabledFieldsIDs];
 
         for (NSString *sectionTemplateID in self.sectionTemplatesDictionary) {
             NSArray *valueIDs = [[self.values allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
@@ -193,7 +193,7 @@
                         NSString *sectionID = [components firstObject];
 
                         FORMSection *existingSection;
-                        for (FORMSection *section in form.sections) {
+                        for (FORMSection *section in group.sections) {
                             if ([section.sectionID isEqualToString:sectionID]) {
                                 existingSection = section;
                             }
@@ -206,14 +206,14 @@
                         } else {
                             [self insertTemplateSectionWithID:sectionTemplateID
                                            intoCollectionView:nil
-                                                    usingForm:form];
+                                                   usingGroup:group];
                         }
                     }
                 }
             }
         }
 
-        for (FORMField *field in form.fields) {
+        for (FORMField *field in group.fields) {
 
             if ([initialValues andy_valueForKey:field.fieldID]) {
                 if (field.type == FORMFieldTypeSelect) {
@@ -277,7 +277,7 @@
             }
         }
 
-        [self.forms addObject:form];
+        [self.groups addObject:group];
     }];
 
     self.disabledFieldsIDs = disabledFields;
@@ -309,7 +309,7 @@
                 if (field) {
                     FORMSection *section = [self sectionWithID:field.section.sectionID];
                     [section removeField:field
-                                 inForms:self.forms];
+                                inGroups:self.groups];
                     [section resetFieldPositions];
                 }
 
@@ -317,8 +317,8 @@
 
                 FORMSection *section = [self sectionWithID:target.targetID];
                 if (section) {
-                    FORMGroup *form = section.form;
-                    [form removeSection:section];
+                    FORMGroup *group = section.group;
+                    [group removeSection:section];
                 }
             }
         }
@@ -329,8 +329,8 @@
 {
     NSMutableArray *invalidFormFields = [NSMutableArray new];
 
-    for (FORMGroup *form in self.forms) {
-        for (FORMSection *section in form.sections) {
+    for (FORMGroup *group in self.groups) {
+        for (FORMSection *section in group.sections) {
             for (FORMField *field in section.fields) {
                 BOOL fieldIsValid = (field.validation && [field validate] != FORMValidationResultTypePassed);
                 if (fieldIsValid) {
@@ -349,8 +349,8 @@
 
     _requiredFields = [NSMutableDictionary new];
 
-    for (FORMGroup *form in self.forms) {
-        for (FORMSection *section in form.sections) {
+    for (FORMGroup *group in self.groups) {
+        for (FORMSection *section in group.sections) {
             for (FORMField *field in section.fields) {
                 if (field.validation && field.validation.isRequired) {
                     [_requiredFields setObject:field forKey:field.fieldID];
@@ -413,8 +413,8 @@
 {
     FORMSection *foundSection = nil;
 
-    for (FORMGroup *form in self.forms) {
-        for (FORMSection *aSection in form.sections) {
+    for (FORMGroup *group in self.groups) {
+        for (FORMSection *aSection in group.sections) {
             if ([aSection.sectionID isEqualToString:sectionID]) {
                 foundSection = aSection;
                 break;
@@ -430,25 +430,25 @@
 {
     FORMSection *foundSection = nil;
     NSMutableArray *indexPaths = [NSMutableArray new];
-    NSUInteger formIndex = 0;
+    NSUInteger groupIndex = 0;
 
-    for (FORMGroup *form in self.forms) {
+    for (FORMGroup *group in self.groups) {
 
         NSInteger fieldsIndex = 0;
 
-        for (FORMSection *aSection in form.sections) {
+        for (FORMSection *aSection in group.sections) {
 
             for (__unused FORMField *aField in aSection.fields) {
                 if ([aSection.sectionID isEqualToString:sectionID]) {
                     foundSection = aSection;
-                    [indexPaths addObject:[NSIndexPath indexPathForRow:fieldsIndex inSection:formIndex]];
+                    [indexPaths addObject:[NSIndexPath indexPathForRow:fieldsIndex inSection:groupIndex]];
                 }
 
                 fieldsIndex++;
             }
         }
 
-        formIndex++;
+        groupIndex++;
     }
 
     if (completion) completion(foundSection, indexPaths);
@@ -463,11 +463,11 @@
 
     FORMField *foundField = nil;
 
-    NSInteger formIndex = 0;
-    for (FORMGroup *form in self.forms) {
+    NSInteger groupIndex = 0;
+    for (FORMGroup *group in self.groups) {
 
         NSUInteger fieldIndex = 0;
-        for (FORMField *field in form.fields) {
+        for (FORMField *field in group.fields) {
 
             if ([field.fieldID isEqualToString:fieldID]) {
                 foundField = field;
@@ -477,7 +477,7 @@
             ++fieldIndex;
         }
 
-        ++formIndex;
+        ++groupIndex;
     }
 
     if (!foundField && includingHiddenFields) {
@@ -496,15 +496,15 @@ includingHiddenFields:(BOOL)includingHiddenFields
     __block FORMField *foundField = nil;
     __block NSIndexPath *indexPath = nil;
 
-    NSInteger formIndex = 0;
-    for (FORMGroup *form in self.forms) {
+    NSInteger groupIndex = 0;
+    for (FORMGroup *group in self.groups) {
 
         NSUInteger fieldIndex = 0;
-        for (FORMField *field in form.fields) {
+        for (FORMField *field in group.fields) {
 
             if ([field.fieldID isEqualToString:fieldID]) {
                 indexPath = [NSIndexPath indexPathForItem:fieldIndex
-                                                inSection:formIndex];
+                                                inSection:groupIndex];
                 foundField = field;
                 break;
             }
@@ -512,7 +512,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
             ++fieldIndex;
         }
 
-        ++formIndex;
+        ++groupIndex;
     }
 
     if (!foundField && includingHiddenFields) {
@@ -568,17 +568,17 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 
     NSString *sectionID = removedSection.sectionID;
-    FORMGroup *form = removedSection.form;
+    FORMGroup *group = removedSection.group;
     [self sectionWithID:sectionID
              completion:^(FORMSection *foundSection, NSArray *indexPaths) {
-                 FORMGroup *foundForm = foundSection.form;
+                 FORMGroup *foundForm = foundSection.group;
                  [foundForm.sections removeObject:foundSection];
                  [collectionView deleteItemsAtIndexPaths:indexPaths];
              }];
 
     relationshipIndex = 0;
     NSInteger position = 0;
-    for (FORMSection *currentSection in form.sections) {
+    for (FORMSection *currentSection in group.sections) {
         currentSection.position = @(position);
         position++;
 
@@ -668,12 +668,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
             if (target.type == FORMTargetTypeField) {
                 FORMField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
                 if (field) {
-                    FORMGroup *form = self.forms[[field.section.form.position integerValue]];
+                    FORMGroup *group = self.groups[[field.section.group.position integerValue]];
 
-                    for (FORMSection *section in form.sections) {
+                    for (FORMSection *section in group.sections) {
                         if ([section.sectionID isEqualToString:field.section.sectionID]) {
                             foundSection = YES;
-                            NSInteger fieldIndex = [field indexInSectionUsingForms:self.forms];
+                            NSInteger fieldIndex = [field indexInSectionUsingGroups:self.groups];
                             [section.fields insertObject:field atIndex:fieldIndex];
                             [section resetFieldPositions];
                         }
@@ -682,10 +682,10 @@ includingHiddenFields:(BOOL)includingHiddenFields
             } else if (target.type == FORMTargetTypeSection) {
                 FORMSection *section = [self.hiddenSections objectForKey:target.targetID];
                 if (section) {
-                    NSInteger sectionIndex = [section indexInForms:self.forms];
-                    FORMGroup *form = self.forms[[section.form.position integerValue]];
-                    [form.sections insertObject:section atIndex:sectionIndex];
-                    [form resetSectionPositions];
+                    NSInteger sectionIndex = [section indexInGroups:self.groups];
+                    FORMGroup *group = self.groups[[section.group.position integerValue]];
+                    [group.sections insertObject:section atIndex:sectionIndex];
+                    [group resetSectionPositions];
                 }
             }
 
@@ -773,11 +773,11 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 
     for (FORMSection *section in deletedSections) {
-        FORMGroup *form = self.forms[[section.form.position integerValue]];
+        FORMGroup *group = self.groups[[section.group.position integerValue]];
 
         __block NSInteger index = 0;
         __block BOOL found = NO;
-        [form.sections enumerateObjectsUsingBlock:^(FORMSection *aSection, NSUInteger idx, BOOL *stop) {
+        [group.sections enumerateObjectsUsingBlock:^(FORMSection *aSection, NSUInteger idx, BOOL *stop) {
             if (found) {
                 aSection.position = @([aSection.position integerValue] - 1);
             }
@@ -789,7 +789,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
         }];
 
         if (found) {
-            [form.sections removeObjectAtIndex:index];
+            [group.sections removeObjectAtIndex:index];
         }
     }
 
@@ -942,12 +942,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
 }
 
 - (void)indexForSection:(FORMSection *)section
-                   form:(FORMGroup *)form
+                  group:(FORMGroup *)group
              completion:(void (^)(BOOL found, NSInteger index))completion
 {
     __block NSInteger index = 0;
     __block BOOL found = NO;
-    [form.sections enumerateObjectsUsingBlock:^(FORMSection *aSection, NSUInteger idx, BOOL *stop) {
+    [group.sections enumerateObjectsUsingBlock:^(FORMSection *aSection, NSUInteger idx, BOOL *stop) {
         if ([aSection.sectionID isEqualToString:section.sectionID]) {
             index = idx;
             found = YES;
@@ -1014,8 +1014,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
 {
     NSInteger numberOfFields = 0;
 
-    for (FORMGroup *form in self.forms) {
-        numberOfFields += [form numberOfFields];
+    for (FORMGroup *group in self.groups) {
+        numberOfFields += [group numberOfFields];
     }
 
     return numberOfFields;
@@ -1025,10 +1025,10 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
 - (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID
                  intoCollectionView:(UICollectionView *)collectionView
-                          usingForm:(FORMGroup *)form
+                         usingGroup:(FORMGroup *)group
 {
     FORMSection *foundSection;
-    for (FORMSection *aSection in form.sections) {
+    for (FORMSection *aSection in group.sections) {
         if ([aSection.sectionID isEqualToString:sectionTemplateID]) {
             foundSection = aSection;
             break;
@@ -1036,7 +1036,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 
     if (foundSection) {
-        NSInteger index = [self indexForTemplateSectionWithID:sectionTemplateID inForm:form];
+        NSInteger index = [self indexForTemplateSectionWithID:sectionTemplateID inForm:group];
 
         NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:sectionTemplateID];
         NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
@@ -1056,7 +1056,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
         FORMSection *actionSection = [self sectionWithID:sectionTemplateID];
         NSInteger sectionPosition = [actionSection.position integerValue];
-        for (FORMSection *currentSection in form.sections) {
+        for (FORMSection *currentSection in group.sections) {
             if ([currentSection.sectionID hyp_containsString:sectionTemplateID]) {
                 if (!sectionPosition) {
                     sectionPosition = [currentSection.position integerValue];
@@ -1070,7 +1070,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
                                                               disabled:self.disabledForm
                                                      disabledFieldsIDs:nil
                                                          isLastSection:YES];
-        section.form = form;
+        section.group = group;
 
         for (FORMField *field in section.fields) {
             field.value = [self.values andy_valueForKey:field.fieldID];
@@ -1082,9 +1082,9 @@ includingHiddenFields:(BOOL)includingHiddenFields
         }
 
         NSInteger sectionIndex = [section.position integerValue];
-        [form.sections insertObject:section atIndex:sectionIndex];
+        [group.sections insertObject:section atIndex:sectionIndex];
 
-        [form.sections enumerateObjectsUsingBlock:^(FORMSection *currentSection, NSUInteger idx, BOOL *stop) {
+        [group.sections enumerateObjectsUsingBlock:^(FORMSection *currentSection, NSUInteger idx, BOOL *stop) {
             if (idx > sectionIndex) {
                 currentSection.position = @([currentSection.position integerValue] + 1);
             }
@@ -1105,10 +1105,10 @@ includingHiddenFields:(BOOL)includingHiddenFields
 }
 
 - (NSInteger)indexForTemplateSectionWithID:(NSString *)sectionID
-                                    inForm:(FORMGroup *)form
+                                    inForm:(FORMGroup *)group
 {
     NSInteger index = -1;
-    for (FORMSection *existingSection in form.sections) {
+    for (FORMSection *existingSection in group.sections) {
         if ([existingSection.sectionID hyp_containsString:sectionID]) {
             index++;
         }
@@ -1131,7 +1131,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 - (NSArray *)removedSectionsUsingInitialValues:(NSDictionary *)dictionary
 {
     NSMutableSet *currentSectionIDs = [NSMutableSet new];
-    for (FORMGroup *group in self.forms) {
+    for (FORMGroup *group in self.groups) {
         for (FORMSection *section in group.sections) {
             HYPParsedRelationship *parsed = [section.sectionID hyp_parseRelationship];
             if (parsed.toMany) {

@@ -67,7 +67,7 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (FORMField *)fieldWithID:(NSString *)fieldID
      includingHiddenFields:(BOOL)includingHiddenFields;
 - (NSInteger)numberOfFields;
-- (NSArray *)forms;
+- (NSArray *)groups;
 - (NSDictionary *)values;
 - (NSDictionary *)removedValues;
 

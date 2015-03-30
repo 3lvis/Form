@@ -14,7 +14,7 @@ static const NSInteger FORMMarginBottom = 30.0f;
 
 @protocol FORMLayoutDataSource <NSObject>
 
-- (NSArray *)forms;
-- (NSArray *)collapsedForms;
+- (NSArray *)groups;
+- (NSArray *)collapsedGroups;
 
 @end

@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 
 - (FORMFieldValue *)selectFieldValueWithValueID:(id)fieldValueID;
 
-- (NSUInteger)indexInSectionUsingForms:(NSArray *)forms;
+- (NSUInteger)indexInSectionUsingGroups:(NSArray *)groups;
 
 - (NSArray *)safeTargets;
 

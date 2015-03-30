@@ -28,9 +28,9 @@
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    XCTAssertNotNil(formData.forms);
+    XCTAssertNotNil(formData.groups);
 
-    XCTAssertTrue(formData.forms.count > 0);
+    XCTAssertTrue(formData.groups.count > 0);
 
     XCTAssertTrue(formData.hiddenFieldsAndFieldIDsDictionary.count == 0);
 
@@ -215,7 +215,7 @@
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfFields = [[[normalFormData.forms firstObject] fields] count];
+    NSUInteger numberOfFields = [[[normalFormData.groups firstObject] fields] count];
     XCTAssertEqual(numberOfFields, 2);
 
     FORMData *evaluatedFormData = [[FORMData alloc] initWithJSON:JSON
@@ -224,7 +224,7 @@
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedFormData.forms firstObject] fields] count];
+    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedFormData.groups firstObject] fields] count];
     XCTAssertEqual(numberOfFieldsWithHiddenTargets, 3);
 }
 
@@ -238,7 +238,7 @@
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfFields = [[[normalformData.forms firstObject] fields] count];
+    NSUInteger numberOfFields = [[[normalformData.groups firstObject] fields] count];
     XCTAssertEqual(numberOfFields, 3);
 
     FORMData *evaluatedformData = [[FORMData alloc] initWithJSON:JSON
@@ -247,7 +247,7 @@
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedformData.forms firstObject] fields] count];
+    NSUInteger numberOfFieldsWithHiddenTargets = [[[evaluatedformData.groups firstObject] fields] count];
     XCTAssertEqual(numberOfFieldsWithHiddenTargets, 2);
 }
 
@@ -262,7 +262,7 @@
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfSections = [[[normalFormData.forms firstObject] sections] count];
+    NSUInteger numberOfSections = [[[normalFormData.groups firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 2);
 
     FORMData *evaluatedFormData = [[FORMData alloc] initWithJSON:JSON
@@ -271,7 +271,7 @@
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedFormData.forms firstObject] sections] count];
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedFormData.groups firstObject] sections] count];
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 3);
 }
 
@@ -285,7 +285,7 @@
                                             disabledFieldIDs:nil
                                                     disabled:NO];
 
-    NSUInteger numberOfSections = [[[normalFormData.forms firstObject] sections] count];
+    NSUInteger numberOfSections = [[[normalFormData.groups firstObject] sections] count];
     XCTAssertEqual(numberOfSections, 3);
 
     FORMData *evaluatedFormData = [[FORMData alloc] initWithJSON:JSON
@@ -294,7 +294,7 @@
                                                disabledFieldIDs:nil
                                                        disabled:NO];
 
-    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedFormData.forms firstObject] sections] count];
+    NSUInteger numberOfSectionsWithHiddenTargets = [[[evaluatedFormData.groups firstObject] sections] count];
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 2);
 }
 
@@ -415,7 +415,7 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    FORMGroup *group = formData.forms[0];
+    FORMGroup *group = formData.groups[0];
     XCTAssertEqual(group.sections.count, 6);
     NSArray *sectionPositions = @[@0, @1, @2, @3, @4, @5];
     NSArray *comparedSectionPositions = [group.sections valueForKey:@"position"];
@@ -452,7 +452,7 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    FORMGroup *group = formData.forms[0];
+    FORMGroup *group = formData.groups[0];
     XCTAssertEqual(group.sections.count, 5);
     NSArray *sectionPositions = @[@0, @1, @2, @3, @4];
     NSArray *comparedSectionPositions = [group.sections valueForKey:@"position"];
@@ -484,7 +484,7 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    FORMGroup *group = formData.forms[0];
+    FORMGroup *group = formData.groups[0];
     XCTAssertEqual(group.sections.count, 6);
     NSArray *sectionPositions = @[@0, @1, @2, @3, @4, @5];
     NSArray *comparedSectionPositions = [group.sections valueForKey:@"position"];
@@ -524,8 +524,8 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    FORMGroup *form = formData.forms[0];
-    XCTAssertEqual(form.sections.count, 5);
+    FORMGroup *group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 5);
 
     NSDictionary *sectionDictionary = @{@"id" : @"companies[1]",
                                         @"fields":@[
@@ -542,7 +542,7 @@
                                                           disabled:NO
                                                  disabledFieldsIDs:nil
                                                      isLastSection:NO];
-    [form.sections insertObject:section atIndex:2];
+    [group.sections insertObject:section atIndex:2];
 
     NSArray *removedSections = [formData removedSectionsUsingInitialValues:initialValues];
     NSArray *sectionIDs = [removedSections valueForKey:@"sectionID"];
@@ -565,15 +565,15 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    FORMGroup *form = formData.forms[0];
-    XCTAssertEqual(form.sections.count, 8);
-    FORMSection *section = form.sections[2];
+    FORMGroup *group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
+    FORMSection *section = group.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
     [formData removeSection:section inCollectionView:nil];
 
-    form = formData.forms[0];
-    XCTAssertEqual(form.sections.count, 7);
+    group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 7);
 
     NSArray *removedSections = [formData removedSectionsUsingInitialValues:initialValues];
     NSArray *sectionIDs = [removedSections valueForKey:@"sectionID"];
@@ -595,9 +595,9 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    FORMGroup *form = formData.forms[0];
-    XCTAssertEqual(form.sections.count, 8);
-    FORMSection *section = form.sections[2];
+    FORMGroup *group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
+    FORMSection *section = group.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
     [formData removeSection:section inCollectionView:nil];
@@ -617,10 +617,10 @@
                                              disabled:NO
                                     disabledFieldsIDs:nil
                                         isLastSection:NO];
-    [form.sections insertObject:section atIndex:2];
+    [group.sections insertObject:section atIndex:2];
 
-    form = formData.forms[0];
-    XCTAssertEqual(form.sections.count, 8);
+    group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
 
     NSArray *removedSections = [formData removedSectionsUsingInitialValues:initialValues];
     NSArray *sectionIDs = [removedSections valueForKey:@"sectionID"];
