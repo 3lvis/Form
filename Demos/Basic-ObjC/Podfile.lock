@@ -1,5 +1,5 @@
 PODS:
-  - Form (2.2):
+  - Form (3.0.0):
     - Hex (~> 1.1.1)
     - HYPImagePicker (~> 0.3)
     - HYPMathParser (~> 0.3)
@@ -47,24 +47,24 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Form: d956cf49a85c614ae98e060fe8ae614094551769
-  Hex: 26fa055654eb713e45bb9771046a2d26c0c086f6
-  HYPImagePicker: 501c6cbd2c758215fc85fffca1d834b69f5eef3c
-  HYPMathParser: d5542b17ea598bfedfa7d990c6e78a84bfddae16
-  HYPNorwegianAccountNumber: 968aae589cb886a583b1900a918e6aefc0d9372f
-  HYPNorwegianSSN: d28618a7b4fe3d281115180251679aaec69129f2
-  ISO8601DateFormatter: 59731cd880cf87e71b4fa95f0d6b713dcbc4cbce
-  NSDictionary-ANDYSafeValue: ddd983e316a52201a40c70f4ab9ead8a63c569b6
+  Form: 6cd027caf379fa3c2ddeafe4dc2267c3d197990a
+  Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
+  HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
+  HYPMathParser: c10c542e7f8b391568d12cde536e13c9c70ec034
+  HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
+  HYPNorwegianSSN: ffef3b2110b627dbb2273f912b439146493d49dd
+  ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
+  NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
   NSDictionary-HYPNestedAttributes: b652ab8d11d933b98c3bc666fd131e09aa7393a6
-  NSJSONSerialization-ANDYJSONFile: 238ae79c050f8ed5a735448db8b0e1c9e9b0f587
-  NSObject-HYPTesting: f54d8bf73f75e2f2f4e49f4baa985df6fa699c2a
-  NSString-HYPContainsString: d5a89f8238b8267f892e1b139866e659ffc165ac
-  NSString-HYPFormula: 4bf6fc5ef5053291638b9d2eae73bda9c1c88800
+  NSJSONSerialization-ANDYJSONFile: 4a92ca174d5ccde13015e853e9eb62440459b478
+  NSObject-HYPTesting: fadde70c75061b731b313c390e20777aed0a914d
+  NSString-HYPContainsString: a8147bbb90b9aca02f69d12546b4d2938a5d01dc
+  NSString-HYPFormula: 0d0ecc4725efdcfc74e079364aa5c2014c18f9ec
   NSString-HYPRelationshipParser: 7fa231131e408f26b3b72a41157aa6620a195b4d
-  NSString-HYPWordExtractor: b2961841c0cb658b3aa402e14f18a61bf02a0b48
-  NSString-ZENInflections: 27e3623bae0758cd932c462dfae15420ec9867f9
-  UIButton-ANDYHighlighted: d11522ea39a27f17f6cbf7af03f6447633999fef
-  UIScreen-HYPLiveBounds: b9910aa6f80f12638aec07463e960b5528a99e45
+  NSString-HYPWordExtractor: 36d4911755fe5de480ad51406c0ce0d299967bf5
+  NSString-ZENInflections: 35ae6d02981b1def07bd6dc8e6455e827453bc29
+  UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
+  UIScreen-HYPLiveBounds: a2ed968b8d2455c050e3ec1cb29181ad3e505927
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
 COCOAPODS: 0.36.0
