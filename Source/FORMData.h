@@ -7,7 +7,7 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 
 @interface FORMData : NSObject
 
-@property (nonatomic) NSMutableArray *forms;
+@property (nonatomic) NSMutableArray *groups;
 @property (nonatomic) NSMutableDictionary *hiddenFieldsAndFieldIDsDictionary;
 @property (nonatomic) NSMutableDictionary *hiddenSections;
 @property (nonatomic) NSArray *disabledFieldsIDs;
@@ -63,7 +63,7 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 
 - (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID
                  intoCollectionView:(UICollectionView *)collectionView
-                          usingForm:(FORMGroup *)form;
+                          usingGroup:(FORMGroup *)group;
 
 - (void)resetRemovedValues;
 

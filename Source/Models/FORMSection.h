@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, FORMSectionType) {
 @property (nonatomic) NSMutableArray *fields;
 @property (nonatomic) NSString *sectionID;
 @property (nonatomic) NSNumber *position;
-@property (nonatomic) FORMGroup *form;
+@property (nonatomic) FORMGroup *group;
 @property (nonatomic) NSString *typeString;
 @property (nonatomic) FORMSectionType type;
 

@@ -45,7 +45,7 @@
                                                            disabledFieldsIDs:disabledFieldsIDs
                                                                isLastSection:isLastSection];
 
-        section.form = self;
+        section.group = self;
 
         [sections addObject:section];
     }];

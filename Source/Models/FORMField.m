@@ -287,7 +287,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
 - (NSUInteger)indexInSectionUsingForms:(NSArray *)forms
 {
-    FORMGroup *form = forms[[self.section.form.position integerValue]];
+    FORMGroup *form = forms[[self.section.group.position integerValue]];
     FORMSection *section = form.sections[[self.section.position integerValue]];
 
     NSUInteger index = 0;
