@@ -81,10 +81,24 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell, FORMField *field);
  */
 - (BOOL)isEnabled;
 
+/*!
+ * @discussion Processes a collection of targets, they could be show, hide, update, enable or disable.
+ * @param targets A collection of targets
+ */
 - (void)processTargets:(NSArray *)targets;
 
+/*!
+ * @discussion A method to retrieve invalid fields
+ * @return An array of invalid fields
+ */
 - (NSArray *)invalidFields;
+
+/*!
+ * @discussion A method to retrieve required fields.
+ * @return A dictionary of required fields where the key is the @c fieldID and the value the @c FORMField
+ */
 - (NSDictionary *)requiredFields;
+
 - (BOOL)isValid;
 - (void)reset;
 - (void)validate;
