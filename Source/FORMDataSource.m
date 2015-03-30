@@ -142,8 +142,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     NSArray *fields = group.fields;
     FORMField *field = fields[indexPath.row];
 
-    if (self.configureCellForIndexPath) {
-        id configuredCell = self.configureCellForIndexPath(field, collectionView, indexPath);
+    if (self.configureCellForItemAtIndexPathBlock) {
+        id configuredCell = self.configureCellForItemAtIndexPathBlock(field, collectionView, indexPath);
         if (configuredCell) {
             return configuredCell;
         }
@@ -273,7 +273,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     }
 }
 
-- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths
+- (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths
 {
     NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
 
@@ -284,7 +284,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     }
 }
 
-- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)sizeForFieldAtIndexPath:(NSIndexPath *)indexPath
 {
     FORMGroup *group = self.formData.groups[indexPath.section];
     NSArray *fields = group.fields;
@@ -315,7 +315,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     return CGSizeMake(width, height);
 }
 
-- (FORMField *)formFieldAtIndexPath:(NSIndexPath *)indexPath
+- (FORMField *)fieldAtIndexPath:(NSIndexPath *)indexPath
 {
     FORMGroup *group = self.formData.groups[indexPath.section];
     NSArray *fields = group.fields;
@@ -549,57 +549,17 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 - (void)validateForms
 {
-    NSMutableSet *validatedFields = [NSMutableSet set];
-
-    NSArray *cells = [self.collectionView visibleCells];
-    for (FORMBaseFieldCell *cell in cells) {
-        if ([cell respondsToSelector:@selector(validate)]) {
-            [cell validate];
-
-            if (cell.field.fieldID) {
-                [validatedFields addObject:cell.field.fieldID];
-            }
-        }
-    }
-
-    for (FORMGroup *group in self.formData.groups) {
-        for (FORMField *field in group.fields) {
-            if (![validatedFields containsObject:field.fieldID]) {
-                [field validate];
-            }
-        }
-    }
+    [self validate];
 }
 
 - (BOOL)formFieldsAreValid
 {
-    for (FORMGroup *group in self.formData.groups) {
-        for (FORMField *field in group.fields) {
-            FORMValidationResultType fieldValidation = [field validate];
-            BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypePassed);
-            if (requiredFieldFailedValidation) {
-                return NO;
-            }
-        }
-    }
-
-    return YES;
+    return [self isValid];
 }
 
 - (void)resetForms
 {
-    for (FORMGroup *group in self.formData.groups) {
-        for (FORMField *field in group.fields) {
-            field.value = nil;
-        }
-    }
-
-    self.formData.values = nil;
-
-    [self.collapsedGroups removeAllObjects];
-    [self.formData.hiddenFieldsAndFieldIDsDictionary removeAllObjects];
-    [self.formData.hiddenSections removeAllObjects];
-    [self.collectionView reloadData];
+    [self reset];
 }
 
 #pragma mark - FORMBaseFieldCellDelegate
@@ -607,8 +567,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 - (void)fieldCell:(UICollectionViewCell *)fieldCell
  updatedWithField:(FORMField *)field
 {
-    if (self.configureFieldUpdatedBlock) {
-        self.configureFieldUpdatedBlock(fieldCell, field);
+    if (self.fieldUpdatedBlock) {
+        self.fieldUpdatedBlock(fieldCell, field);
     }
 
     NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
@@ -677,17 +637,17 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
         case FORMTargetActionClear:
         case FORMTargetActionUpdate: {
             NSArray *updatedIndexPaths = [self.formData updateTargets:@[target]];
-            [self reloadItemsAtIndexPaths:updatedIndexPaths];
+            [self reloadFieldsAtIndexPaths:updatedIndexPaths];
         } break;
         case FORMTargetActionEnable: {
             if ([self.formData isEnabled]) {
                 NSArray *enabledIndexPaths = [self.formData enableTargets:@[target]];
-                [self reloadItemsAtIndexPaths:enabledIndexPaths];
+                [self reloadFieldsAtIndexPaths:enabledIndexPaths];
             }
         } break;
         case FORMTargetActionDisable: {
             NSArray *disabledIndexPaths = [self.formData disableTargets:@[target]];
-            [self reloadItemsAtIndexPaths:disabledIndexPaths];
+            [self reloadFieldsAtIndexPaths:disabledIndexPaths];
         } break;
         case FORMTargetActionNone: break;
     }
@@ -740,9 +700,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                                        }
                                    }
 
-                                   [self reloadItemsAtIndexPaths:filteredIndexPaths];
+                                   [self reloadFieldsAtIndexPaths:filteredIndexPaths];
                                } else {
-                                   [self reloadItemsAtIndexPaths:updatedIndexPaths];
+                                   [self reloadFieldsAtIndexPaths:updatedIndexPaths];
                                }
                            }
 
@@ -750,13 +710,13 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                            if (shouldRunEnableTargets) {
                                enabledIndexPaths = [self.formData enableTargets:enabledTargets];
 
-                               [self reloadItemsAtIndexPaths:enabledIndexPaths];
+                               [self reloadFieldsAtIndexPaths:enabledIndexPaths];
                            }
 
                            if (disabledTargets.count > 0) {
                                disabledIndexPaths = [self.formData disableTargets:disabledTargets];
 
-                               [self reloadItemsAtIndexPaths:disabledIndexPaths];
+                               [self reloadFieldsAtIndexPaths:disabledIndexPaths];
                            }
                        }];
 }
@@ -841,7 +801,72 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 #pragma mark - FORMData bridge
 
-- (NSArray *)invalidFormFields
+- (NSDictionary *)invalidFields
+{
+    return [self.formData invalidFormFields];
+}
+
+- (NSDictionary *)requiredFields
+{
+    return [self.formData requiredFormFields];
+}
+
+- (BOOL)isValid
+{
+    for (FORMGroup *group in self.formData.groups) {
+        for (FORMField *field in group.fields) {
+            FORMValidationResultType fieldValidation = [field validate];
+            BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypePassed);
+            if (requiredFieldFailedValidation) {
+                return NO;
+            }
+        }
+    }
+
+    return YES;
+}
+
+- (void)reset
+{
+    for (FORMGroup *group in self.formData.groups) {
+        for (FORMField *field in group.fields) {
+            field.value = nil;
+        }
+    }
+
+    self.formData.values = nil;
+
+    [self.collapsedGroups removeAllObjects];
+    [self.formData.hiddenFieldsAndFieldIDsDictionary removeAllObjects];
+    [self.formData.hiddenSections removeAllObjects];
+    [self.collectionView reloadData];
+}
+
+- (void)validate
+{
+    NSMutableSet *validatedFields = [NSMutableSet set];
+
+    NSArray *cells = [self.collectionView visibleCells];
+    for (FORMBaseFieldCell *cell in cells) {
+        if ([cell respondsToSelector:@selector(validate)]) {
+            [cell validate];
+
+            if (cell.field.fieldID) {
+                [validatedFields addObject:cell.field.fieldID];
+            }
+        }
+    }
+
+    for (FORMGroup *group in self.formData.groups) {
+        for (FORMField *field in group.fields) {
+            if (![validatedFields containsObject:field.fieldID]) {
+                [field validate];
+            }
+        }
+    }
+}
+
+- (NSDictionary *)invalidFormFields
 {
     return [self.formData invalidFormFields];
 }

@@ -163,11 +163,11 @@
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    NSArray *fields = [formData invalidFormFields];
+    NSDictionary *fields = [formData invalidFormFields];
 
     XCTAssertTrue(fields.count == 1);
 
-    XCTAssertEqualObjects([[fields firstObject] fieldID], @"first_name");
+    XCTAssertNotNil([fields valueForKey:@"first_name"]);
 }
 
 - (void)testFieldWithIDWithIndexPath
@@ -190,18 +190,18 @@
     FORMField *startDateField = [dataSource fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
     XCTAssertEqualObjects(startDateField.fieldID, @"start_date");
-    [dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"start_date"]];
+    [dataSource processTargets:@[[FORMTarget hideFieldTargetWithID:@"start_date"]]];
     startDateField = [dataSource fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNil(startDateField);
-    [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"start_date"]];
+    [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"start_date"]]];
     startDateField = [dataSource fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
 
-    [dataSource processTarget:[FORMTarget hideSectionTargetWithID:@"employment-1"]];
+    [dataSource processTargets:@[[FORMTarget hideSectionTargetWithID:@"employment-1"]]];
     FORMField *contractTypeField = [dataSource fieldWithID:@"contract_type" includingHiddenFields:NO];
     XCTAssertNotNil(contractTypeField);
     XCTAssertEqualObjects(contractTypeField.fieldID, @"contract_type");
-    [dataSource processTarget:[FORMTarget showSectionTargetWithID:@"employment-1"]];
+    [dataSource processTargets:@[[FORMTarget showSectionTargetWithID:@"employment-1"]]];
 }
 
 - (void)testShowingFieldMultipleTimes

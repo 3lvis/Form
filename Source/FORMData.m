@@ -19,7 +19,6 @@
 
 @interface FORMData ()
 
-@property (nonatomic) NSMutableDictionary *requiredFields;
 @property (nonatomic) DDMathEvaluator *evaluator;
 @property (nonatomic) BOOL disabledForm;
 
@@ -325,41 +324,39 @@
     }
 }
 
-- (NSArray *)invalidFormFields
+- (NSDictionary *)invalidFormFields
 {
-    NSMutableArray *invalidFormFields = [NSMutableArray new];
+    NSMutableDictionary *invalidFormFields = [NSMutableDictionary new];
 
     for (FORMGroup *group in self.groups) {
         for (FORMSection *section in group.sections) {
             for (FORMField *field in section.fields) {
                 BOOL fieldIsValid = (field.validation && [field validate] != FORMValidationResultTypePassed);
                 if (fieldIsValid) {
-                    [invalidFormFields addObject:field];
+                    [invalidFormFields setObject:field forKey:field.fieldID];
                 }
             }
         }
     }
 
-    return invalidFormFields;
+    return [invalidFormFields copy];
 }
 
-- (NSMutableDictionary *)requiredFields
+- (NSDictionary *)requiredFields
 {
-    if (_requiredFields) return _requiredFields;
-
-    _requiredFields = [NSMutableDictionary new];
+    NSMutableDictionary *requiredFields = [NSMutableDictionary new];
 
     for (FORMGroup *group in self.groups) {
         for (FORMSection *section in group.sections) {
             for (FORMField *field in section.fields) {
                 if (field.validation && field.validation.isRequired) {
-                    [_requiredFields setObject:field forKey:field.fieldID];
+                    [requiredFields setObject:field forKey:field.fieldID];
                 }
             }
         }
     }
 
-    return _requiredFields;
+    return [requiredFields copy];
 }
 
 - (NSDictionary *)requiredFormFields
