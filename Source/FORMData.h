@@ -21,7 +21,7 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
             disabledFieldIDs:(NSArray *)disabledFieldIDs
                     disabled:(BOOL)disabled NS_DESIGNATED_INITIALIZER;
 
-- (NSArray *)invalidFormFields;
+- (NSDictionary *)invalidFormFields;
 
 - (NSDictionary *)requiredFormFields;
 

@@ -163,11 +163,11 @@
                                       disabledFieldIDs:nil
                                               disabled:NO];
 
-    NSArray *fields = [formData invalidFormFields];
+    NSDictionary *fields = [formData invalidFormFields];
 
     XCTAssertTrue(fields.count == 1);
 
-    XCTAssertEqualObjects([[fields firstObject] fieldID], @"first_name");
+    XCTAssertNotNil([fields valueForKey:@"first_name"]);
 }
 
 - (void)testFieldWithIDWithIndexPath

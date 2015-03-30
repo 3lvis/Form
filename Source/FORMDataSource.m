@@ -801,7 +801,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 #pragma mark - FORMData bridge
 
-- (NSArray *)invalidFields
+- (NSDictionary *)invalidFields
 {
     return [self.formData invalidFormFields];
 }
@@ -866,7 +866,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     }
 }
 
-- (NSArray *)invalidFormFields
+- (NSDictionary *)invalidFormFields
 {
     return [self.formData invalidFormFields];
 }

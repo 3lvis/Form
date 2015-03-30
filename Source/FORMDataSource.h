@@ -88,14 +88,14 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell, FORMField *field);
 - (void)processTargets:(NSArray *)targets;
 
 /*!
- * @discussion A method to retrieve invalid fields
- * @return An array of invalid fields
+ * @discussion A method to retrieve invalid fields.
+ * @return A dictionary of invalid fields where the key is the @c fieldID and the value the @c FORMField.
  */
-- (NSArray *)invalidFields;
+- (NSDictionary *)invalidFields;
 
 /*!
  * @discussion A method to retrieve required fields.
- * @return A dictionary of required fields where the key is the @c fieldID and the value the @c FORMField
+ * @return A dictionary of required fields where the key is the @c fieldID and the value the @c FORMField.
  */
 - (NSDictionary *)requiredFields;
 
@@ -127,7 +127,7 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell, FORMField *field);
 
 // Deprecated
 
-- (NSArray *)invalidFormFields __attribute__((deprecated("Use invalidFields instead")));;
+- (NSDictionary *)invalidFormFields __attribute__((deprecated("Use invalidFields instead")));;
 - (NSDictionary *)requiredFormFields __attribute__((deprecated("Use requiredFields instead")));;
 - (BOOL)formFieldsAreValid __attribute__((deprecated("Use isValid instead")));;
 - (void)resetForms __attribute__((deprecated("Use reset instead")));;
