@@ -770,7 +770,7 @@
     NSArray *expectedInitialPositions = @[@0, @1, @2, @3, @4, @5];
     XCTAssertEqualObjects(fieldPositions, expectedInitialPositions);
 
-    [dataSource processTargets:@[[FORMTarget hideFieldTargetWithID:@"section-0-field-2"]]];
+    [dataSource hideTargets:@[[FORMTarget hideFieldTargetWithID:@"section-0-field-2"]]];
     [fieldPositions removeAllObjects];
 
     for (FORMField *field in section.fields) {
@@ -780,7 +780,7 @@
     NSArray *expectedUpdatedPositions = @[@0, @1, @2, @3, @4];
     XCTAssertEqualObjects(fieldPositions, expectedUpdatedPositions);
 
-    [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"section-0-field-2"]]];
+    [dataSource showTargets:@[[FORMTarget showFieldTargetWithID:@"section-0-field-2"]]];
     [fieldPositions removeAllObjects];
 
     for (FORMField *field in section.fields) {
