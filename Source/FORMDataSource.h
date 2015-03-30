@@ -80,8 +80,4 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
 - (void)updateValuesWithDictionary:(NSDictionary *)dictionary;
 
-// Deprecated
-
-- (NSDictionary *)valuesDictionary __attribute__((deprecated("Use values instead")));
-
 @end

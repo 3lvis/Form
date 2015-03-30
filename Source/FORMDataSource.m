@@ -992,11 +992,4 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }];
 }
 
-#pragma mark - Deprecated
-
-- (NSDictionary *)valuesDictionary
-{
-    return [self values];
-}
-
 @end
