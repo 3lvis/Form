@@ -524,8 +524,8 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    FORMGroup *form = formData.groups[0];
-    XCTAssertEqual(form.sections.count, 5);
+    FORMGroup *group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 5);
 
     NSDictionary *sectionDictionary = @{@"id" : @"companies[1]",
                                         @"fields":@[
@@ -542,7 +542,7 @@
                                                           disabled:NO
                                                  disabledFieldsIDs:nil
                                                      isLastSection:NO];
-    [form.sections insertObject:section atIndex:2];
+    [group.sections insertObject:section atIndex:2];
 
     NSArray *removedSections = [formData removedSectionsUsingInitialValues:initialValues];
     NSArray *sectionIDs = [removedSections valueForKey:@"sectionID"];
@@ -565,15 +565,15 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    FORMGroup *form = formData.groups[0];
-    XCTAssertEqual(form.sections.count, 8);
-    FORMSection *section = form.sections[2];
+    FORMGroup *group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
+    FORMSection *section = group.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
     [formData removeSection:section inCollectionView:nil];
 
-    form = formData.groups[0];
-    XCTAssertEqual(form.sections.count, 7);
+    group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 7);
 
     NSArray *removedSections = [formData removedSectionsUsingInitialValues:initialValues];
     NSArray *sectionIDs = [removedSections valueForKey:@"sectionID"];
@@ -595,9 +595,9 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    FORMGroup *form = formData.groups[0];
-    XCTAssertEqual(form.sections.count, 8);
-    FORMSection *section = form.sections[2];
+    FORMGroup *group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
+    FORMSection *section = group.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
     [formData removeSection:section inCollectionView:nil];
@@ -617,10 +617,10 @@
                                              disabled:NO
                                     disabledFieldsIDs:nil
                                         isLastSection:NO];
-    [form.sections insertObject:section atIndex:2];
+    [group.sections insertObject:section atIndex:2];
 
-    form = formData.groups[0];
-    XCTAssertEqual(form.sections.count, 8);
+    group = formData.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
 
     NSArray *removedSections = [formData removedSectionsUsingInitialValues:initialValues];
     NSArray *sectionIDs = [removedSections valueForKey:@"sectionID"];

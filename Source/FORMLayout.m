@@ -168,10 +168,10 @@
 
 - (NSMutableArray *)fieldsAtSection:(NSInteger)section
 {
-    NSArray *forms = nil;
+    NSArray *groups = nil;
 
     if ([self.dataSource respondsToSelector:@selector(groups)]) {
-        forms = [self.dataSource groups];
+        groups = [self.dataSource groups];
     } else {
         abort();
     }
@@ -184,13 +184,13 @@
         abort();
     }
 
-    FORMGroup *form = forms[section];
+    FORMGroup *group = groups[section];
     NSMutableArray *fields = nil;
 
     if ([collapsedGroups containsObject:@(section)]) {
         fields = [NSMutableArray new];
     } else {
-        fields = [NSMutableArray arrayWithArray:form.fields];
+        fields = [NSMutableArray arrayWithArray:group.fields];
     }
 
     return fields;

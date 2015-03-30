@@ -55,8 +55,8 @@
 
 - (void)headerTappedAction
 {
-    if ([self.delegate respondsToSelector:@selector(formHeaderViewWasPressed:)]) {
-        [self.delegate formHeaderViewWasPressed:self];
+    if ([self.delegate respondsToSelector:@selector(groupHeaderViewWasPressed:)]) {
+        [self.delegate groupHeaderViewWasPressed:self];
     }
 }
 

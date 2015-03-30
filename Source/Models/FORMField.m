@@ -285,10 +285,10 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
   return formField;
 }
 
-- (NSUInteger)indexInSectionUsingForms:(NSArray *)forms
+- (NSUInteger)indexInSectionUsingGroups:(NSArray *)groups
 {
-    FORMGroup *form = forms[[self.section.group.position integerValue]];
-    FORMSection *section = form.sections[[self.section.position integerValue]];
+    FORMGroup *group = groups[[self.section.group.position integerValue]];
+    FORMSection *section = group.sections[[self.section.position integerValue]];
 
     NSUInteger index = 0;
     BOOL found = NO;

@@ -82,13 +82,13 @@
 #pragma mark Class
 
 + (void)sectionAndIndexForField:(FORMField *)field
-                        inForms:(NSArray *)forms
+                       inGroups:(NSArray *)groups
                      completion:(void (^)(BOOL found,
                                           FORMSection *section,
                                           NSInteger index))completion
 {
-    FORMGroup *form = forms[[field.section.group.position integerValue]];
-    FORMSection *section = form.sections[[field.section.position integerValue]];
+    FORMGroup *group = groups[[field.section.group.position integerValue]];
+    FORMSection *section = group.sections[[field.section.position integerValue]];
 
     __block NSInteger index = 0;
     __block BOOL found = NO;
@@ -107,15 +107,15 @@
 
 #pragma mark Instance
 
-- (NSInteger)indexInForms:(NSArray *)forms
+- (NSInteger)indexInGroups:(NSArray *)groups
 {
-    FORMGroup *form = forms[[self.group.position integerValue]];
+    FORMGroup *group = groups[[self.group.position integerValue]];
 
     BOOL found = NO;
     NSInteger index = 0;
     NSUInteger idx = 0;
 
-    for (FORMSection *aSection in form.sections) {
+    for (FORMSection *aSection in group.sections) {
         if ([aSection.position integerValue] >= [self.position integerValue]) {
             index = idx;
             found = YES;
@@ -125,12 +125,12 @@
         idx++;
     }
 
-    if (!found) index = [form.sections count];
+    if (!found) index = [group.sections count];
 
     return index;
 }
 
-- (void)removeField:(FORMField *)field inForms:(NSArray *)forms
+- (void)removeField:(FORMField *)field inGroups:(NSArray *)groups
 {
     __block NSInteger index = 0;
     __block BOOL found = NO;

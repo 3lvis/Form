@@ -191,13 +191,13 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
                                                                              withReuseIdentifier:FORMHeaderReuseIdentifier
                                                                                     forIndexPath:indexPath];
 
-        FORMGroup *form = self.formData.groups[indexPath.section];
+        FORMGroup *group = self.formData.groups[indexPath.section];
         headerView.section = indexPath.section;
 
         if (self.configureHeaderViewBlock) {
-            self.configureHeaderViewBlock(headerView, kind, indexPath, form);
+            self.configureHeaderViewBlock(headerView, kind, indexPath, group);
         } else {
-            headerView.headerLabel.text = form.title;
+            headerView.headerLabel.text = group.title;
             headerView.delegate = self;
         }
 
@@ -767,12 +767,12 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 {
     NSMutableArray *indexPaths = [NSMutableArray new];
 
-    NSInteger formIndex = [section.group.position integerValue];
-    FORMGroup *form = self.formData.groups[formIndex];
+    NSInteger groupIndex = [section.group.position integerValue];
+    FORMGroup *group = self.formData.groups[groupIndex];
 
     NSInteger fieldsIndex = 0;
     NSInteger sectionIndex = 0;
-    for (FORMSection *aSection in form.sections) {
+    for (FORMSection *aSection in group.sections) {
         if ([aSection.position integerValue] < [section.position integerValue]) {
             fieldsIndex += aSection.fields.count;
             sectionIndex++;
@@ -781,7 +781,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
     NSInteger fieldsInSectionCount = fieldsIndex + section.fields.count;
     for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:formIndex]];
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:groupIndex]];
     }
 
     if (completion) {
@@ -823,7 +823,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 
 #pragma mark - FORMHeaderViewDelegate
 
-- (void)formHeaderViewWasPressed:(FORMGroupHeaderView *)headerView
+- (void)groupHeaderViewWasPressed:(FORMGroupHeaderView *)headerView
 {
     [self collapseFieldsInSection:headerView.section
                    collectionView:self.collectionView];

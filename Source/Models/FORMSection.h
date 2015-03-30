@@ -29,13 +29,13 @@ typedef NS_ENUM(NSInteger, FORMSectionType) {
                      isLastSection:(BOOL)isLastSection NS_DESIGNATED_INITIALIZER;
 
 + (void)sectionAndIndexForField:(FORMField *)field
-                        inForms:(NSArray *)forms
+                       inGroups:(NSArray *)groups
                      completion:(void (^)(BOOL found,
                                           FORMSection *section,
                                           NSInteger index))completion;
 
-- (NSInteger)indexInForms:(NSArray *)forms;
-- (void)removeField:(FORMField *)field inForms:(NSArray *)forms;
+- (NSInteger)indexInGroups:(NSArray *)groups;
+- (void)removeField:(FORMField *)field inGroups:(NSArray *)groups;
 - (void)resetFieldPositions;
 
 @end

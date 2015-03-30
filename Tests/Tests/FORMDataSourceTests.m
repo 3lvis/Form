@@ -39,13 +39,13 @@
     [dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"display_name"]];
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"display_name"]];
     FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
-    NSUInteger index = [field indexInSectionUsingForms:dataSource.groups];
+    NSUInteger index = [field indexInSectionUsingGroups:dataSource.groups];
     XCTAssertEqual(index, 2);
 
     [dataSource processTarget:[FORMTarget hideFieldTargetWithID:@"username"]];
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"username"]];
     field = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
-    index = [field indexInSectionUsingForms:dataSource.groups];
+    index = [field indexInSectionUsingGroups:dataSource.groups];
     XCTAssertEqual(index, 2);
 
     [dataSource processTargets:[FORMTarget hideFieldTargetsWithIDs:@[@"first_name",
@@ -53,7 +53,7 @@
                                                                      @"username"]]];
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"username"]];
     field = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
-    index = [field indexInSectionUsingForms:dataSource.groups];
+    index = [field indexInSectionUsingGroups:dataSource.groups];
     XCTAssertEqual(index, 1);
     [dataSource processTargets:[FORMTarget showFieldTargetsWithIDs:@[@"first_name",
                                                                      @"address"]]];
@@ -62,7 +62,7 @@
                                                                      @"address"]]];
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"address"]];
     field = [dataSource fieldWithID:@"address" includingHiddenFields:YES];
-    index = [field indexInSectionUsingForms:dataSource.groups];
+    index = [field indexInSectionUsingGroups:dataSource.groups];
     XCTAssertEqual(index, 0);
     [dataSource processTarget:[FORMTarget showFieldTargetWithID:@"last_name"]];
 }
@@ -213,9 +213,9 @@
                                                                values:initialValues
                                                              disabled:NO];
 
-    FORMGroup *form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 5);
-    FORMSection *section = form.sections[1];
+    FORMGroup *group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 5);
+    FORMSection *section = group.sections[1];
     XCTAssertEqualObjects(section.sectionID, @"companies[0]");
     XCTAssertEqualObjects(dataSource.values, initialValues);
     XCTAssertEqual(dataSource.removedValues.count, 0);
@@ -223,9 +223,9 @@
     FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
     [dataSource fieldCell:nil updatedWithField:removeField];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 4);
-    section = form.sections[1];
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 4);
+    section = group.sections[1];
     XCTAssertEqualObjects(section.sectionID, @"personal-details-0");
     XCTAssertNil([dataSource.values valueForKey:@"companies[0].name"]);
     XCTAssertNil([dataSource.values valueForKey:@"companies[0].phone_number"]);
@@ -234,9 +234,9 @@
 
     [dataSource resetDynamicSectionsWithDictionary:initialValues];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 5);
-    section = form.sections[1];
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 5);
+    section = group.sections[1];
     XCTAssertEqualObjects(section.sectionID, @"companies[0]");
     XCTAssertEqualObjects(dataSource.values, initialValues);
 }
@@ -256,22 +256,22 @@
                                                                values:initialValues
                                                              disabled:NO];
 
-    FORMGroup *form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 5);
+    FORMGroup *group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 5);
 
     FORMField *field = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
     XCTAssertNotNil(field);
     [dataSource fieldCell:nil updatedWithField:field];
     [dataSource fieldCell:nil updatedWithField:field];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 7);
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 7);
 
     [dataSource resetDynamicSectionsWithDictionary:initialValues];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 5);
-    FORMSection *section = form.sections[1];
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 5);
+    FORMSection *section = group.sections[1];
     XCTAssertEqualObjects(section.sectionID, @"companies[0]");
     XCTAssertEqualObjects(dataSource.values, initialValues);
 }
@@ -293,22 +293,22 @@
                                                                values:initialValues
                                                              disabled:NO];
 
-    FORMGroup *form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 6);
+    FORMGroup *group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 6);
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:YES];
     XCTAssertNotNil(removeField);
     [dataSource fieldCell:nil updatedWithField:removeField];
     [dataSource fieldCell:nil updatedWithField:removeField];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 4);
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 4);
 
     [dataSource resetDynamicSectionsWithDictionary:initialValues];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 6);
-    FORMSection *section = form.sections[1];
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 6);
+    FORMSection *section = group.sections[1];
     XCTAssertEqualObjects(section.sectionID, @"companies[0]");
     XCTAssertEqualObjects(dataSource.values, initialValues);
 }
@@ -330,23 +330,23 @@
                                                                values:initialValues
                                                              disabled:NO];
 
-    FORMGroup *form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 8);
-    FORMSection *section = form.sections[2];
+    FORMGroup *group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
+    FORMSection *section = group.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:YES];
     XCTAssertNotNil(removeField);
     [dataSource fieldCell:nil updatedWithField:removeField];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 7);
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 7);
 
     [dataSource resetDynamicSectionsWithDictionary:initialValues];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 8);
-    section = form.sections[2];
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
+    section = group.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
     XCTAssertEqualObjects([dataSource.values hyp_dictionaryByRemovingNullItems], initialValues);
@@ -368,9 +368,9 @@
                                                                values:initialValues
                                                              disabled:NO];
 
-    FORMGroup *form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 8);
-    FORMSection *section = form.sections[2];
+    FORMGroup *group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
+    FORMSection *section = group.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:YES];
@@ -383,8 +383,8 @@
 
     [dataSource resetDynamicSectionsWithDictionary:initialValues];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 8);
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
 }
 
 - (void)testResetDynamicSectionsWithDictionaryF
@@ -411,9 +411,9 @@
                                                                values:initialValues
                                                              disabled:NO];
 
-    FORMGroup *form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 8);
-    FORMSection *section = form.sections[2];
+    FORMGroup *group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
+    FORMSection *section = group.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
     FORMField *removeField = [dataSource fieldWithID:@"companies[1].remove" includingHiddenFields:YES];
@@ -426,8 +426,8 @@
 
     [dataSource resetDynamicSectionsWithDictionary:initialValues];
 
-    form = dataSource.groups[0];
-    XCTAssertEqual(form.sections.count, 8);
+    group = dataSource.groups[0];
+    XCTAssertEqual(group.sections.count, 8);
 }
 
 #pragma mark - processTarget
