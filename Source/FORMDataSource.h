@@ -15,8 +15,8 @@
 
 typedef void (^FORMFieldConfigureCellBlock)(id cell, NSIndexPath *indexPath, FORMField *field);
 typedef void (^FORMFieldConfigureHeaderViewBlock)(FORMGroupHeaderView *headerView, NSString *kind, NSIndexPath *indexPath, FORMGroup *form);
-typedef void (^FORMFieldConfigureFieldUpdatedBlock)(id cell, FORMField *field);
-typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath);
+typedef void (^FORMFieldFieldUpdatedBlock)(id cell, FORMField *field);
+typedef UICollectionViewCell * (^FORMFieldCellForItemAtIndexPathBlock)(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath);
 
 @interface FORMDataSource : NSObject <UICollectionViewDataSource, FORMLayoutDataSource>
 
@@ -28,8 +28,8 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 
 @property (nonatomic, copy) FORMFieldConfigureCellBlock configureCellBlock;
 @property (nonatomic, copy) FORMFieldConfigureHeaderViewBlock configureHeaderViewBlock;
-@property (nonatomic, copy) FORMFieldConfigureFieldUpdatedBlock configureFieldUpdatedBlock;
-@property (nonatomic, copy) FORMFieldConfigureCellForItemAtIndexPath configureCellForIndexPath;
+@property (nonatomic, copy) FORMFieldFieldUpdatedBlock fieldUpdatedBlock;
+@property (nonatomic, copy) FORMFieldCellForItemAtIndexPathBlock cellForIndexPathBlock;
 
 - (void)enable;
 - (void)disable;

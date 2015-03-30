@@ -142,8 +142,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     NSArray *fields = group.fields;
     FORMField *field = fields[indexPath.row];
 
-    if (self.configureCellForIndexPath) {
-        id configuredCell = self.configureCellForIndexPath(field, collectionView, indexPath);
+    if (self.cellForIndexPathBlock) {
+        id configuredCell = self.cellForIndexPathBlock(field, collectionView, indexPath);
         if (configuredCell) {
             return configuredCell;
         }
@@ -567,8 +567,8 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
 - (void)fieldCell:(UICollectionViewCell *)fieldCell
  updatedWithField:(FORMField *)field
 {
-    if (self.configureFieldUpdatedBlock) {
-        self.configureFieldUpdatedBlock(fieldCell, field);
+    if (self.fieldUpdatedBlock) {
+        self.fieldUpdatedBlock(fieldCell, field);
     }
 
     NSArray *components = [field.fieldID componentsSeparatedByString:@"."];
