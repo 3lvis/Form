@@ -34,7 +34,7 @@
 
     __weak typeof(self)weakSelf = self;
 
-    _dataSource.configureCellForIndexPath = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
+    _dataSource.configureCellForItemAtIndexPathBlock = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
         FORMBaseFieldCell *cell;
         if ([field.typeString isEqualToString:@"button"]) {
             weakSelf.indexPathButton = indexPath;
@@ -42,7 +42,7 @@
         return cell;
     };
 
-    _dataSource.configureFieldUpdatedBlock = ^(FORMBaseFieldCell *cell, FORMField *field) {
+    _dataSource.fieldUpdatedBlock = ^(FORMBaseFieldCell *cell, FORMField *field) {
         cell.delegate = weakSelf;
         if ([field.title isEqualToString:@"Email"]) {
             weakSelf.emailTextField = field;
@@ -77,7 +77,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.dataSource sizeForItemAtIndexPath:indexPath];
+    return [self.dataSource sizeForFieldAtIndexPath:indexPath];
 }
 
 #pragma mark - FORMBaseFieldCellDelegate
