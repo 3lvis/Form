@@ -87,6 +87,7 @@
 
     [[FORMGroupHeaderView appearance] setHeaderLabelFont:[UIFont fontWithName:@"AvenirNext-Medium" size:17.0]];
     [[FORMGroupHeaderView appearance] setHeaderLabelTextColor:[UIColor colorFromHex:@"455C73"]];
+    [[FORMGroupHeaderView appearance] setHeaderBackgroundColor:[UIColor whiteColor]];
 
     [[FORMFieldValuesTableViewHeader appearance] setTitleLabelFont:[UIFont fontWithName:@"AvenirNext-Medium" size:17.0]];
     [[FORMFieldValuesTableViewHeader appearance] setTitleLabelTextColor:[UIColor colorFromHex:@"455C73"]];
