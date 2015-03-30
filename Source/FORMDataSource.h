@@ -31,13 +31,6 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 @property (nonatomic, copy) FORMFieldConfigureFieldUpdatedBlock configureFieldUpdatedBlock;
 @property (nonatomic, copy) FORMFieldConfigureCellForItemAtIndexPath configureCellForIndexPath;
 
-- (BOOL)formFieldsAreValid;
-- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
-- (FORMField *)formFieldAtIndexPath:(NSIndexPath *)indexPath;
-
-- (void)resetForms;
-- (void)validateForms;
-
 - (void)enable;
 - (void)disable;
 - (BOOL)isDisabled;
@@ -46,31 +39,22 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
 - (void)processTarget:(FORMTarget *)target;
 - (void)processTargets:(NSArray *)targets;
 
-- (void)reloadWithDictionary:(NSDictionary *)dictionary;
-- (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary;
-- (void)collapseFieldsInSection:(NSInteger)section
-                 collectionView:(UICollectionView *)collectionView;
-
-- (void)insertItemsAtIndexPaths:(NSArray *)indexPaths;
-- (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths;
-- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
-
-- (NSArray *)showTargets:(NSArray *)targets;
-- (NSArray *)hideTargets:(NSArray *)targets;
-- (NSArray *)updateTargets:(NSArray *)targets;
-- (NSArray *)enableTargets:(NSArray *)targets;
-- (NSArray *)disableTargets:(NSArray *)targets;
 - (NSArray *)invalidFormFields;
 - (NSDictionary *)requiredFormFields;
-- (NSMutableDictionary *)valuesForFormula:(FORMField *)field;
+- (BOOL)formFieldsAreValid;
+- (void)resetForms;
+- (void)validateForms;
+
+- (NSDictionary *)values;
+- (NSDictionary *)removedValues;
+- (void)updateValuesWithDictionary:(NSDictionary *)dictionary;
+- (void)reloadWithDictionary:(NSDictionary *)dictionary;
+- (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary;
+
+- (NSInteger)numberOfFields;
 - (FORMSection *)sectionWithID:(NSString *)sectionID;
 - (FORMField *)fieldWithID:(NSString *)fieldID
      includingHiddenFields:(BOOL)includingHiddenFields;
-- (NSInteger)numberOfFields;
-- (NSArray *)groups;
-- (NSDictionary *)values;
-- (NSDictionary *)removedValues;
-
 - (void)sectionWithID:(NSString *)sectionID
            completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion;
 - (void)indexForFieldWithID:(NSString *)fieldID
@@ -78,6 +62,8 @@ typedef UICollectionViewCell * (^FORMFieldConfigureCellForItemAtIndexPath)(FORMF
                  completion:(void (^)(FORMSection *section, NSInteger index))completion;
 - (void)fieldWithID:(NSString *)fieldID includingHiddenFields:(BOOL)includingHiddenFields
          completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion;
-- (void)updateValuesWithDictionary:(NSDictionary *)dictionary;
+- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
+- (FORMField *)formFieldAtIndexPath:(NSIndexPath *)indexPath;
+- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
