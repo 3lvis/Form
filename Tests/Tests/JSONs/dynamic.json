@@ -83,7 +83,7 @@
           {
             "id":"companies[:index].name",
             "title":"Name 1",
-            "subtitle":"Hyper",
+            "info":"Hyper",
             "type":"name",
             "size":{
               "width":50,
