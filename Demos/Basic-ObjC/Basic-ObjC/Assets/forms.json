@@ -129,6 +129,7 @@
             {
               "id":"contract_type",
               "title":"Contract type",
+              "info":"Type of contract",
               "type":"select",
               "size":{
                 "width":50,

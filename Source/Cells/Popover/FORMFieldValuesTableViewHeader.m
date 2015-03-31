@@ -7,7 +7,7 @@ static const CGFloat FORMLabelHeight = 25.0f;
 @interface FORMFieldValuesTableViewHeader ()
 
 @property (nonatomic) UILabel *titleLabel;
-@property (nonatomic) UILabel *subtitleLabel;
+@property (nonatomic) UILabel *infoLabel;
 
 @end
 
@@ -21,7 +21,7 @@ static const CGFloat FORMLabelHeight = 25.0f;
     if (!self) return nil;
 
     [self addSubview:self.titleLabel];
-    [self addSubview:self.subtitleLabel];
+    [self addSubview:self.infoLabel];
 
     return self;
 }
@@ -40,17 +40,17 @@ static const CGFloat FORMLabelHeight = 25.0f;
     return _titleLabel;
 }
 
-- (UILabel *)subtitleLabel
+- (UILabel *)infoLabel
 {
-    if (_subtitleLabel) return _subtitleLabel;
+    if (_infoLabel) return _infoLabel;
 
     CGFloat y = CGRectGetMaxY(self.titleLabel.frame);
     CGRect rect = CGRectMake(0.0f, y, FORMFieldValuesHeaderWidth, FORMLabelHeight);
 
-    _subtitleLabel = [[UILabel alloc] initWithFrame:rect];
-    _subtitleLabel.textAlignment = NSTextAlignmentCenter;
+    _infoLabel = [[UILabel alloc] initWithFrame:rect];
+    _infoLabel.textAlignment = NSTextAlignmentCenter;
 
-    return _subtitleLabel;
+    return _infoLabel;
 }
 
 #pragma mark - Setters
@@ -60,7 +60,7 @@ static const CGFloat FORMLabelHeight = 25.0f;
     _field = field;
 
     self.titleLabel.text = field.title;
-    self.subtitleLabel.text = field.subtitle;
+    self.infoLabel.text = field.info;
 }
 
 - (void)setTitleLabelFont:(UIFont *)titleLabelFont
@@ -75,12 +75,12 @@ static const CGFloat FORMLabelHeight = 25.0f;
 
 - (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont
 {
-    self.subtitleLabel.font = subtitleLabelFont;
+    self.infoLabel.font = subtitleLabelFont;
 }
 
 - (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor
 {
-    self.subtitleLabel.textColor = subtitleLabelTextColor;
+    self.infoLabel.textColor = subtitleLabelTextColor;
 }
 
 @end

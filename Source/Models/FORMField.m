@@ -32,7 +32,6 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _fieldID = remoteID;
     _validationType = FORMValidationResultTypeNone;
     _title = [dictionary andy_valueForKey:@"title"];
-    _subtitle = [dictionary andy_valueForKey:@"subtitle"];
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _type = [self typeFromTypeString:self.typeString];
     _inputTypeString = [dictionary andy_valueForKey:@"input_type"];
@@ -337,7 +336,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"\n — Field: %@ —\n title: %@\n subtitle: %@\n size: %@\n position: %@\n fieldValue: %@\n type: %@\n values: %@\n disabled: %@\n initiallyDisabled: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n valid: %@\n sectionSeparator: %@\n",
-            self.fieldID, self.title, self.subtitle, NSStringFromCGSize(self.size), self.position,
+            self.fieldID, self.title, self.info, NSStringFromCGSize(self.size), self.position,
             self.value, self.typeString, self.values, (self.disabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
             self.maximumDate, self.validation, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
 }
