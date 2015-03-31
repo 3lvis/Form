@@ -129,6 +129,7 @@
             {
               "id":"contract_type",
               "title":"Contract type",
+              "info":"Type of contract",
               "type":"select",
               "size":{
                 "width":50,
@@ -138,6 +139,7 @@
                 {
                   "id":0,
                   "title":"Permanent",
+                  "info":"Regular employee",
                   "default":true,
                   "targets":[
                     {

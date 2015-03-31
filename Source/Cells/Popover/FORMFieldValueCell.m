@@ -34,8 +34,8 @@
 
     self.textLabel.text = fieldValue.title;
 
-    if (fieldValue.subtitle) {
-        self.detailTextLabel.text = fieldValue.subtitle;
+    if (fieldValue.info) {
+        self.detailTextLabel.text = fieldValue.info;
     }
 }
 

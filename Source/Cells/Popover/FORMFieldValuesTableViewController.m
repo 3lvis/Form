@@ -65,7 +65,7 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
     if (self.customHeight) {
         return self.customHeight;
     } else {
-        return (self.field.subtitle) ? FORMFieldValuesHeaderHeight : FORMFieldValuesCellHeight;
+        return (self.field.info) ? FORMFieldValuesHeaderHeight : FORMFieldValuesCellHeight;
     }
 }
 

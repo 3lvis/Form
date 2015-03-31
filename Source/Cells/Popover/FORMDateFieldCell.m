@@ -114,7 +114,7 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 {
     self.fieldValuesController.field = self.field;
 
-    if (self.field.subtitle) {
+    if (self.field.info) {
         CGRect frame = self.datePicker.frame;
         frame.origin.y = 50.0f;
         frame.size.height -= 25.0f;

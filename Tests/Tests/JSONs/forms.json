@@ -9,7 +9,7 @@
           {
             "id":"first_name",
             "title":"First name",
-            "subtitle":"Fornavn",
+            "info":"Fornavn",
             "type":"name",
             "size":{
               "width":30,
@@ -32,7 +32,7 @@
             "id":"last_name",
             "title":"Last name",
             "type":"name",
-            "subtitle":"Obs! Husk å kjøpe melk",
+            "info":"Obs! Husk å kjøpe melk",
             "size":{
               "width":30,
               "height":1
@@ -53,7 +53,7 @@
           {
             "id":"display_name",
             "title":"Display name",
-            "subtitle":"This is the name that is going to be used across the application.",
+            "info":"This is the name that is going to be used across the application.",
             "type":"text",
             "size":{
               "width":40,
@@ -78,7 +78,7 @@
           {
             "id":"email",
             "title":"E-post",
-            "subtitle":"bork\nbork\nbork",
+            "info":"bork\nbork\nbork",
             "type":"email",
             "size":{
               "width":25,
@@ -101,7 +101,7 @@
               {
                 "id":0,
                 "title":"Generated",
-                "subtitle":"Generate using firstname & lastname",
+                "info":"Generate using firstname & lastname",
                 "default":true,
                 "targets":[
                   {
@@ -124,7 +124,7 @@
               {
                 "id":1,
                 "title":"Override",
-                "subtitle":"Enable manual editing for the display name",
+                "info":"Enable manual editing for the display name",
                 "targets":[
                   {
                     "id":"first_name",
@@ -151,7 +151,7 @@
               {
                 "id":2,
                 "title":"Mr.Melk",
-                "subtitle":"Bork!",
+                "info":"Bork!",
                 "targets":[
                   {
                     "id":"first_name",
@@ -196,7 +196,7 @@
               {
                 "id":3,
                 "title":"John Hyperseed",
-                "subtitle":"Other subtitle",
+                "info":"Other info",
                 "targets":[
                   {
                     "id":"first_name",
@@ -428,7 +428,7 @@
           {
             "id":"companies[0].name",
             "title":"Name 1",
-            "subtitle":"Hyper",
+            "info":"Hyper",
             "type":"name",
             "validations":{
               "required":true,
