@@ -139,6 +139,7 @@
                 {
                   "id":0,
                   "title":"Permanent",
+                  "info":"Regular employee",
                   "default":true,
                   "targets":[
                     {

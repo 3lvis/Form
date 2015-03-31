@@ -73,14 +73,14 @@ static const CGFloat FORMLabelHeight = 25.0f;
     self.titleLabel.textColor = titleLabelTextColor;
 }
 
-- (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont
+- (void)setInfoLabelFont:(UIFont *)infoLabelFont
 {
-    self.infoLabel.font = subtitleLabelFont;
+    self.infoLabel.font = infoLabelFont;
 }
 
-- (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor
+- (void)setInfoLabelTextColor:(UIColor *)infoLabelTextColor
 {
-    self.infoLabel.textColor = subtitleLabelTextColor;
+    self.infoLabel.textColor = infoLabelTextColor;
 }
 
 @end

@@ -13,7 +13,7 @@ static NSString * const FORMFieldValuesTableViewHeaderIdentifier = @"FORMFieldVa
 
 - (void)setTitleLabelFont:(UIFont *)titleLabelFont UI_APPEARANCE_SELECTOR;
 - (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor UI_APPEARANCE_SELECTOR;
-- (void)setSubtitleLabelFont:(UIFont *)subtitleLabelFont UI_APPEARANCE_SELECTOR;
-- (void)setSubtitleLabelTextColor:(UIColor *)subtitleLabelTextColor UI_APPEARANCE_SELECTOR;
+- (void)setInfoLabelFont:(UIFont *)infoLabelFont UI_APPEARANCE_SELECTOR;
+- (void)setInfoLabelTextColor:(UIColor *)infoLabelTextColor UI_APPEARANCE_SELECTOR;
 
 @end

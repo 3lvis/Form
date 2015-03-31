@@ -13,7 +13,7 @@
 
     _valueID = [dictionary andy_valueForKey:@"id"];
     _title = [dictionary andy_valueForKey:@"title"];
-    _subtitle = [dictionary andy_valueForKey:@"subtitle"];
+    _info = [dictionary andy_valueForKey:@"info"];
     _value = [dictionary andy_valueForKey:@"value"];
     _defaultValue = [[dictionary andy_valueForKey:@"default"] boolValue];
 
