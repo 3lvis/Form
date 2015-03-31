@@ -70,34 +70,35 @@
         [attributes leftAlignFrameWithSectionInset:self.sectionInset];
 
         return attributes;
-    }
-
-    NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
-    CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
-    CGRect stretchedCurrentFrame = CGRectMake(self.sectionInset.left,
-                                              attributes.frame.origin.y,
-                                              layoutWidth,
-                                              attributes.frame.size.height);
-
-    BOOL isFirstItemInRow = !CGRectIntersectsRect(previousFrame, stretchedCurrentFrame);
-
-    if (isFirstItemInRow) {
-        [attributes leftAlignFrameWithSectionInset:self.sectionInset];
-        return attributes;
     } else {
-        CGRect frame = attributes.frame;
-        CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width;
+        NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
+        CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
+        CGRect stretchedCurrentFrame = CGRectMake(self.sectionInset.left,
+                                                  attributes.frame.origin.y,
+                                                  layoutWidth,
+                                                  attributes.frame.size.height);
 
-        frame.origin.x = previousFrameRightPoint + self.minimumInteritemSpacing;
+        BOOL isFirstItemInRow = !CGRectIntersectsRect(previousFrame, stretchedCurrentFrame);
 
-        BOOL isOutOfBounds = ((frame.origin.x + frame.size.width) > bounds.size.width);
-        if (isOutOfBounds) {
-            frame.origin.x = self.sectionInset.left + self.minimumInteritemSpacing;
+        if (isFirstItemInRow) {
+            [attributes leftAlignFrameWithSectionInset:self.sectionInset];
+
+            return attributes;
+        } else {
+            CGRect frame = attributes.frame;
+            CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width;
+
+            frame.origin.x = previousFrameRightPoint + self.minimumInteritemSpacing;
+
+            BOOL isOutOfBounds = ((frame.origin.x + frame.size.width) > bounds.size.width);
+            if (isOutOfBounds) {
+                frame.origin.x = self.sectionInset.left + self.minimumInteritemSpacing;
+            }
+
+            attributes.frame = frame;
+
+            return attributes;
         }
-
-        attributes.frame = frame;
-
-        return attributes;
     }
 }
 
@@ -106,19 +107,19 @@
 {
     if (![elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
         return [super layoutAttributesForDecorationViewOfKind:elementKind atIndexPath:indexPath];
+    } else {
+        UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForSupplementaryViewOfKind:elementKind
+                                                                                             atIndexPath:indexPath];
+
+        CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+        CGRect frame = attributes.frame;
+
+        frame.origin.x = FORMHeaderContentMargin;
+        frame.size.width = CGRectGetWidth(bounds) - (2 * FORMHeaderContentMargin);
+        attributes.frame = frame;
+
+        return attributes;
     }
-
-    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForSupplementaryViewOfKind:elementKind
-                                                                                         atIndexPath:indexPath];
-
-    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-    CGRect frame = attributes.frame;
-
-    frame.origin.x = FORMHeaderContentMargin;
-    frame.size.width = CGRectGetWidth(bounds) - (2 * FORMHeaderContentMargin);
-    attributes.frame = frame;
-
-    return attributes;
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind
