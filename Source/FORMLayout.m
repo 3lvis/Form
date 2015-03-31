@@ -213,42 +213,4 @@
     return fields;
 }
 
-- (CGFloat)heightForFields:(NSArray *)fields
-{
-    CGFloat height = FORMMarginTop + FORMMarginBottom;
-    CGFloat width = 0.0f;
-    FORMField *lastField = [fields lastObject];
-
-    for (FORMField *field in fields) {
-        if (field.sectionSeparator) {
-            height += FORMFieldCellItemSmallHeight;
-
-            BOOL previousSectionIsNotFullWidth = (width > 0.0f && width < 100.0f);
-
-            if (previousSectionIsNotFullWidth) height += FORMFieldCellItemHeight;
-
-            width = 0.0f;
-        } else {
-            width += field.size.width;
-
-            if (width >= 100.0f) {
-                if (field.type == FORMFieldTypeCustom) {
-                    height += field.size.height * FORMFieldCellItemHeight;
-                } else {
-                    height += FORMFieldCellItemHeight;
-                }
-                width = 0.0f;
-            }
-        }
-
-        BOOL isLastFieldAndNotFullWidth = (width > 0.0f &&
-                                           width < 100.0f &&
-                                           [field isEqual:lastField]);
-
-        if (isLastFieldAndNotFullWidth) height += FORMFieldCellItemHeight;
-    }
-
-    return height;
-}
-
 @end
