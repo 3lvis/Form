@@ -60,6 +60,7 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
     UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
 
     BOOL isFirstItemInSection = (indexPath.item == 0);
@@ -73,26 +74,31 @@
 
     NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
     CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
-    CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width;
-    CGRect currentFrame = attributes.frame;
-
-    CGRect strecthedCurrentFrame = CGRectMake(self.sectionInset.left,
-                                              currentFrame.origin.y,
+    CGRect stretchedCurrentFrame = CGRectMake(self.sectionInset.left,
+                                              attributes.frame.origin.y,
                                               layoutWidth,
-                                              currentFrame.size.height);
+                                              attributes.frame.size.height);
 
-    BOOL isFirstItemInRow = !CGRectIntersectsRect(previousFrame, strecthedCurrentFrame);
+    BOOL isFirstItemInRow = !CGRectIntersectsRect(previousFrame, stretchedCurrentFrame);
 
     if (isFirstItemInRow) {
         [attributes leftAlignFrameWithSectionInset:self.sectionInset];
         return attributes;
+    } else {
+        CGRect frame = attributes.frame;
+        CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width;
+
+        frame.origin.x = previousFrameRightPoint + self.minimumInteritemSpacing;
+
+        BOOL isOutOfBounds = ((frame.origin.x + frame.size.width) > bounds.size.width);
+        if (isOutOfBounds) {
+            frame.origin.x = self.sectionInset.left + self.minimumInteritemSpacing;
+        }
+
+        attributes.frame = frame;
+
+        return attributes;
     }
-
-    CGRect frame = attributes.frame;
-    frame.origin.x = previousFrameRightPoint + self.minimumInteritemSpacing;
-    attributes.frame = frame;
-
-    return attributes;
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind
