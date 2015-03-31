@@ -106,7 +106,8 @@
                                                                      atIndexPath:(NSIndexPath *)indexPath
 {
     if (![elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
-        return [super layoutAttributesForDecorationViewOfKind:elementKind atIndexPath:indexPath];
+        return [super layoutAttributesForDecorationViewOfKind:elementKind
+                                                  atIndexPath:indexPath];
     } else {
         UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForSupplementaryViewOfKind:elementKind
                                                                                              atIndexPath:indexPath];
@@ -126,7 +127,8 @@
                                                                   atIndexPath:(NSIndexPath *)indexPath
 {
     if (![elementKind isEqualToString:FORMBackgroundKind]) {
-        return [super layoutAttributesForDecorationViewOfKind:elementKind atIndexPath:indexPath];
+        return [super layoutAttributesForDecorationViewOfKind:elementKind
+                                                  atIndexPath:indexPath];
     } else {
         NSMutableArray *fields = [self fieldsAtSection:indexPath.section];
         CGFloat height = 0.0f;
@@ -167,7 +169,8 @@
     for (UICollectionViewLayoutAttributes *element in originalAttributes) {
         if (element.representedElementKind) {
             NSIndexPath *indexPath = element.indexPath;
-            [attributes addObject:[self layoutAttributesForSupplementaryViewOfKind:element.representedElementKind atIndexPath:indexPath]];
+            [attributes addObject:[self layoutAttributesForSupplementaryViewOfKind:element.representedElementKind
+                                                                       atIndexPath:indexPath]];
         } else {
             NSIndexPath *indexPath = element.indexPath;
             [attributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
