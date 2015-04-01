@@ -130,6 +130,11 @@
         return [super layoutAttributesForDecorationViewOfKind:elementKind
                                                   atIndexPath:indexPath];
     } else {
+        UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
+                                                                                                                   withIndexPath:indexPath];
+        UICollectionViewLayoutAttributes *headerAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                                                  atIndexPath:indexPath];
+
         NSMutableArray *fields = [self fieldsAtSection:indexPath.section];
         CGFloat height = 0.0f;
 
@@ -139,18 +144,22 @@
             height = attributes.frame.origin.y + attributes.frame.size.height - (self.sectionInset.bottom);
         }
 
-        if (indexPath.section > 0) {
+        if (indexPath.section > 0 && height > 0) {
             NSArray *previousFields = [self fieldsAtSection:indexPath.section - 1];
-            NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:previousFields.count - 1 inSection:indexPath.section - 1];
-            UICollectionViewLayoutAttributes *previousAttribute = [super layoutAttributesForItemAtIndexPath:previousIndexPath];
-            height -= previousAttribute.frame.origin.y + previousAttribute.frame.size.height + self.sectionInset.bottom;
+            if (previousFields.count > 0) {
+                NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:previousFields.count - 1 inSection:indexPath.section - 1];
+                UICollectionViewLayoutAttributes *previousAttribute = [super layoutAttributesForItemAtIndexPath:previousIndexPath];
+                height -= previousAttribute.frame.origin.y + previousAttribute.frame.size.height + self.sectionInset.bottom;
+            } else {
+                NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:previousFields.count - 1 inSection:indexPath.section - 1];
+                UICollectionViewLayoutAttributes *previousHeaderAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                                                          atIndexPath:previousIndexPath];
+                height -= previousHeaderAttributes.frame.origin.y + previousHeaderAttributes.frame.size.height + self.sectionInset.bottom + self.sectionInset.top;
+            }
         }
 
         CGFloat width = self.collectionViewContentSize.width - (FORMBackgroundViewMargin * 2);
-        UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
-                                                                                                                   withIndexPath:indexPath];
-        UICollectionViewLayoutAttributes *headerAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                                                  atIndexPath:indexPath];
+
         attributes.frame = CGRectMake(FORMBackgroundViewMargin,
                                       CGRectGetMaxY(headerAttributes.frame),
                                       width, height -
