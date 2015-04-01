@@ -217,4 +217,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
  */
 - (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths;
 
+- (void)collapseFieldsInSection:(NSInteger)section
+                 collectionView:(UICollectionView *)collectionView;
+
 @end
