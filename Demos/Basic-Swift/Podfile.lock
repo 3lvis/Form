@@ -42,7 +42,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Form:
-    :path: "../../"
+    :path: ../../
 
 SPEC CHECKSUMS:
   Form: 40fe35873657b4b0de734d78f990852048fa40e2
@@ -64,4 +64,4 @@ SPEC CHECKSUMS:
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIScreen-HYPLiveBounds: a2ed968b8d2455c050e3ec1cb29181ad3e505927
 
-COCOAPODS: 0.36.1
+COCOAPODS: 0.36.3

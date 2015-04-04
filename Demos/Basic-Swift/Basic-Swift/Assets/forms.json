@@ -84,14 +84,6 @@
                 "width":25,
                 "height":1
               }
-            },
-            {
-              "id":"image",
-              "type":"image",
-              "size":{
-                "width":100,
-                "height":1.7
-              }
             }
           ]
         }

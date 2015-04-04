@@ -13,9 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var JSON: AnyObject? = self.getJSON("forms.json")
 
         if (JSON != nil) {
-            let sampleController = SampleCollectionViewController()
+            let sampleController = SampleCollectionViewController(initialValues: initialValues, JSON: JSON)
             let controller = UINavigationController(rootViewController: sampleController)
-            controller.view.tintColor = UIColor.blueColor()
+
+            controller.view.tintColor = UIColor(fromHex: "5182AF")
             controller.navigationBarHidden = true
 
             self.window?.rootViewController = controller

@@ -11,6 +11,7 @@
 		BD2089FE1ACFBD2F00896C42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2089FD1ACFBD2F00896C42 /* AppDelegate.swift */; };
 		BD208A001ACFBD2F00896C42 /* SampleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2089FF1ACFBD2F00896C42 /* SampleCollectionViewController.swift */; };
 		BD208A051ACFBD2F00896C42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD208A041ACFBD2F00896C42 /* Images.xcassets */; };
+		BD99F3AC1ACFFCD1004B3638 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD99F3AB1ACFFCD1004B3638 /* Default-568h@2x.png */; };
 		BDFC88E81ACFC17A00A0F17A /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = BDFC88E21ACFC17A00A0F17A /* forms.json */; };
 		BDFC88E91ACFC17A00A0F17A /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFC88E41ACFC17A00A0F17A /* camera-icon@2x.png */; };
 		BDFC88EA1ACFC17A00A0F17A /* ic_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFC88E51ACFC17A00A0F17A /* ic_calendar@2x.png */; };
@@ -25,6 +26,7 @@
 		BD2089FD1ACFBD2F00896C42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD2089FF1ACFBD2F00896C42 /* SampleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCollectionViewController.swift; sourceTree = "<group>"; };
 		BD208A041ACFBD2F00896C42 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BD99F3AB1ACFFCD1004B3638 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BDFC88E21ACFC17A00A0F17A /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
 		BDFC88E41ACFC17A00A0F17A /* camera-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon@2x.png"; sourceTree = "<group>"; };
 		BDFC88E51ACFC17A00A0F17A /* ic_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_calendar@2x.png"; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 		BD2089ED1ACFBCAA00896C42 = {
 			isa = PBXGroup;
 			children = (
+				BD99F3AB1ACFFCD1004B3638 /* Default-568h@2x.png */,
 				BD2089FA1ACFBD2F00896C42 /* Basic-Swift */,
 				BD2089F91ACFBD2F00896C42 /* Products */,
 				F5CDFC2C4D75211649294F29 /* Pods */,
@@ -186,6 +189,7 @@
 				BD208A051ACFBD2F00896C42 /* Images.xcassets in Resources */,
 				BDFC88E91ACFC17A00A0F17A /* camera-icon@2x.png in Resources */,
 				BDFC88EB1ACFC17A00A0F17A /* ic_mini_arrow_down@2x.png in Resources */,
+				BD99F3AC1ACFFCD1004B3638 /* Default-568h@2x.png in Resources */,
 				BDFC88E81ACFC17A00A0F17A /* forms.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
