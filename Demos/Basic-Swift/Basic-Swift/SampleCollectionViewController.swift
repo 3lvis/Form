@@ -12,6 +12,7 @@ class SampleCollectionViewController: UICollectionViewController {
         self.initialValues = initialValues
         self.JSON = JSON
         self.layout = FORMLayout()
+
         super.init(collectionViewLayout: self.layout)
     }
 
