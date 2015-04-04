@@ -10,7 +10,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        let initialValues: Dictionary<NSObject, AnyObject> = ["address" : "Burger Park 667"]
+        let initialValues: Dictionary<NSObject, AnyObject> = [
+            "address"    : "Burger Park 667",
+            "end_date"   : "2017-10-31 23:00:00 +00:00",
+            "first_name" : "Ola",
+            "last_name"  : "Nordman",
+            "start_date" : "2014-10-31 23:00:00 +00:00"]
         var JSON: AnyObject? = self.getJSON("forms.json")
 
         if (JSON != nil) {
