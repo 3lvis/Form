@@ -79,6 +79,14 @@ class SampleCollectionViewController: UICollectionViewController {
                 layout: self.layout,
                 values: self.initialValues,
                 disabled: true)
+    func validateButtonAction() {
+        if (self.dataSource().isValid()) {
+            UIAlertView(title: "Everything is valid, you get a 🍬!",
+                message: nil,
+                delegate: nil,
+                cancelButtonTitle: "No thanks!").show()
+        } else {
+            self.dataSource().validate()
         }
 
         return self.formDataSource!
