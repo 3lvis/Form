@@ -2,19 +2,8 @@ import UIKit
 
 class SampleCollectionViewController: UICollectionViewController {
 
-    var dataSource: FORMDataSource {
-        let dataSource =  FORMDataSource(JSON: self.JSON,
-            collectionView: self.collectionView,
-            layout: self.layout,
-            values: self.initialValues,
-            disabled: true)
-
-        return dataSource
-    }
-
-    var layout: FORMLayout? {
-        return FORMLayout()
-    }
+    var formDataSource: FORMDataSource?
+    var layout: FORMLayout
 
     var initialValues :Dictionary<NSObject, AnyObject>?
     var JSON: AnyObject?
@@ -22,10 +11,14 @@ class SampleCollectionViewController: UICollectionViewController {
     init(initialValues: Dictionary<NSObject, AnyObject>, JSON: AnyObject?) {
         self.initialValues = initialValues
         self.JSON = JSON
-        super.init(collectionViewLayout: FORMLayout())
+        self.layout = FORMLayout()
+        super.init(collectionViewLayout: self.layout)
     }
 
     required init(coder aDecoder: NSCoder) {
+
+        self.layout = FORMLayout()
+
         super.init(coder: aDecoder)
     }
 
@@ -36,7 +29,8 @@ class SampleCollectionViewController: UICollectionViewController {
 
         self.collectionView?.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
         self.collectionView?.backgroundColor = UIColor(fromHex: "DAE2EA")
-        self.collectionView?.dataSource = self.dataSource
+        self.collectionView?.dataSource = self.dataSource()
+
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -75,10 +69,22 @@ class SampleCollectionViewController: UICollectionViewController {
 
     func readOnly(sender: UISwitch) {
         if (sender.on) {
-            self.dataSource.disable()
+            self.dataSource().disable()
         } else {
-            self.dataSource.enable()
+            self.dataSource().enable()
         }
+    }
+
+    func dataSource() -> FORMDataSource {
+        if self.formDataSource == nil {
+            self.formDataSource = FORMDataSource(JSON: self.JSON,
+                collectionView: self.collectionView,
+                layout: self.layout,
+                values: self.initialValues,
+                disabled: true)
+        }
+
+        return self.formDataSource!
     }
 
 }

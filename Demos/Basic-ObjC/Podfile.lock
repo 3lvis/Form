@@ -1,5 +1,5 @@
 PODS:
-  - Form (3.0.0):
+  - Form (3.0.1):
     - Hex (~> 1.1.1)
     - HYPImagePicker (~> 0.3)
     - HYPMathParser (~> 0.3)
@@ -47,7 +47,7 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Form: 6cd027caf379fa3c2ddeafe4dc2267c3d197990a
+  Form: 40fe35873657b4b0de734d78f990852048fa40e2
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
   HYPMathParser: c10c542e7f8b391568d12cde536e13c9c70ec034
@@ -67,4 +67,4 @@ SPEC CHECKSUMS:
   UIScreen-HYPLiveBounds: a2ed968b8d2455c050e3ec1cb29181ad3e505927
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.36.3
