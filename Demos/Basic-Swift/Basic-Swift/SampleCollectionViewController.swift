@@ -22,6 +22,22 @@ class SampleCollectionViewController: UICollectionViewController {
         super.init(coder: aDecoder)
     }
 
+    // MARK: Getters
+
+    func dataSource() -> FORMDataSource {
+        if self.formDataSource == nil {
+            self.formDataSource = FORMDataSource(JSON: self.JSON,
+                collectionView: self.collectionView,
+                layout: self.layout,
+                values: self.initialValues,
+                disabled: true)
+        }
+
+        return self.formDataSource!
+    }
+
+    // MARK: View life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,6 +80,8 @@ class SampleCollectionViewController: UICollectionViewController {
         self.navigationController?.setToolbarHidden(false, animated: true)
     }
 
+    // MARK: Actions
+
     func readOnly(sender: UISwitch) {
         if (sender.on) {
             self.dataSource().disable()
@@ -72,13 +90,6 @@ class SampleCollectionViewController: UICollectionViewController {
         }
     }
 
-    func dataSource() -> FORMDataSource {
-        if self.formDataSource == nil {
-            self.formDataSource = FORMDataSource(JSON: self.JSON,
-                collectionView: self.collectionView,
-                layout: self.layout,
-                values: self.initialValues,
-                disabled: true)
     func validateButtonAction() {
         if (self.dataSource().isValid()) {
             UIAlertView(title: "Everything is valid, you get a 🍬!",
@@ -88,9 +99,9 @@ class SampleCollectionViewController: UICollectionViewController {
         } else {
             self.dataSource().validate()
         }
-
-        return self.formDataSource!
     }
+
+    // MARK: UICollectionViewDelegate
 
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
         return self.dataSource().sizeForFieldAtIndexPath(indexPath)
