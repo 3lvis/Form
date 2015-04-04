@@ -111,7 +111,7 @@
               "type":"date",
               "validations":{
                     "compare_to":"start_date",
-                    "compare_rule":">",
+                    "compare_rule":">"
                     },
               "size":{
                 "width":25,
