@@ -16,7 +16,6 @@ class SampleCollectionViewController: UICollectionViewController {
     }
 
     required init(coder aDecoder: NSCoder) {
-
         self.layout = FORMLayout()
 
         super.init(coder: aDecoder)
