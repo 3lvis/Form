@@ -101,6 +101,18 @@ class SampleCollectionViewController: UICollectionViewController {
         }
     }
 
+    func updateButtonAction() {
+        self.dataSource().reloadWithDictionary(["first_name" : "Hodo",
+            "salary_type" : 1,
+            "hourly_pay_level" : 1,
+            "hourly_pay_premium_percent" : 10,
+            "hourly_pay_premium_currency" : 10,
+            "start_date" : NSNull(),
+            "username": 1
+        ])
+        self.collectionView?.reloadData()
+    }
+
     // MARK: UICollectionViewDelegate
 
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
