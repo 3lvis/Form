@@ -245,6 +245,7 @@
 		BD2089F21ACFBCAA00896C42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};

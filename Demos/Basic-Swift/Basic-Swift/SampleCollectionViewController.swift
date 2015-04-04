@@ -26,11 +26,8 @@ class SampleCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         self.edgesForExtendedLayout = .None;
-
-        self.collectionView?.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
         self.collectionView?.backgroundColor = UIColor(fromHex: "DAE2EA")
         self.collectionView?.dataSource = self.dataSource()
-
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -85,6 +82,10 @@ class SampleCollectionViewController: UICollectionViewController {
         }
 
         return self.formDataSource!
+    }
+
+    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+        return self.dataSource().sizeForFieldAtIndexPath(indexPath)
     }
 
 }
