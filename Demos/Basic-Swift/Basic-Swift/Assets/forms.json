@@ -12,7 +12,6 @@
               "title":"First name",
               "info":"Fornavn",
               "type":"name",
-              "disabled": true,
               "size":{
                 "width":30,
                 "height":1
