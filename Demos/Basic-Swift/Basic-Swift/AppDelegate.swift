@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "first_name" : "Ola",
             "last_name"  : "Nordman",
             "start_date" : "2014-10-31 23:00:00 +00:00"]
-        var JSON: AnyObject? = self.getJSON("forms.json")
+        var JSON: AnyObject? = NSJSONSerialization.JSONObjectWithContentsOfFile("forms.json")
 
         if (JSON != nil) {
             let sampleController = SampleCollectionViewController(initialValues: initialValues, JSON: JSON)
@@ -30,22 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         return true
-    }
-
-    func getJSON(fileName: String) -> AnyObject? {
-        let bundle = NSBundle.mainBundle()
-        let filePath: String? = bundle.pathForResource(fileName.stringByDeletingPathExtension,
-            ofType: fileName.pathExtension)
-        let data: NSData? = NSData(contentsOfFile: filePath!)
-        var error: NSError?
-
-        let result: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: &error)
-
-        if (error == nil) {
-            return result
-        } else {
-            return nil
-        }
     }
 
 }
