@@ -41,7 +41,7 @@ class SampleCollectionViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.edgesForExtendedLayout = .None;
+    self.edgesForExtendedLayout = .None
     self.collectionView?.backgroundColor = UIColor(fromHex: "DAE2EA")
     self.collectionView?.dataSource = self.dataSource()
   }
@@ -90,7 +90,7 @@ class SampleCollectionViewController: UICollectionViewController {
   // MARK: Actions
 
   func readOnly(sender: UISwitch) {
-    if (sender.on) {
+    if sender.on {
       self.dataSource().disable()
     } else {
       self.dataSource().enable()
@@ -98,7 +98,7 @@ class SampleCollectionViewController: UICollectionViewController {
   }
 
   func validateButtonAction() {
-    if (self.dataSource().isValid()) {
+    if self.dataSource().isValid() {
       UIAlertView(title: "Everything is valid, you get a 🍬!",
         message: nil,
         delegate: nil,
