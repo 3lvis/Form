@@ -54,9 +54,14 @@ class SampleCollectionViewController: UICollectionViewController {
             target: self,
             action: NSSelectorFromString("validateButtonAction"))
 
-        let updateButtonItem = UIBarButtonItem(title: "Update", style: .Done, target: self, action: NSSelectorFromString("updateButtonAction"))
+        let updateButtonItem = UIBarButtonItem(title: "Update",
+            style: .Done,
+            target: self,
+            action: NSSelectorFromString("updateButtonAction"))
 
-        let flexibleBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let flexibleBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace,
+            target: nil,
+            action: nil)
 
         let readOnlyView = UIView(frame: CGRectMake(0.0, 0.0, 150.0, 40.0))
         let readOnlyLabel = UILabel(frame: CGRectMake(0.0, 0.0, 90.0, 40.0))
@@ -69,7 +74,9 @@ class SampleCollectionViewController: UICollectionViewController {
         let readOnlySwitch = UISwitch(frame: CGRectMake(90.0, 5.0, 40.0, 40.0))
         readOnlySwitch.tintColor = UIColor(fromHex: "5182AF")
         readOnlySwitch.on = true
-        readOnlySwitch.addTarget(self, action: NSSelectorFromString("readOnly:"), forControlEvents: .ValueChanged)
+        readOnlySwitch.addTarget(self,
+            action: NSSelectorFromString("readOnly:"),
+            forControlEvents: .ValueChanged)
 
         readOnlyView.addSubview(readOnlySwitch)
 
