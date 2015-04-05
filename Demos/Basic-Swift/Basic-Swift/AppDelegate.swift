@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if (JSON != nil) {
             let sampleController = SampleCollectionViewController(initialValues: initialValues, JSON: JSON)
-            let controller = UINavigationController(rootViewController: sampleController)
+            let rootViewController = UINavigationController(rootViewController: sampleController)
 
-            controller.view.tintColor = UIColor(fromHex: "5182AF")
-            controller.navigationBarHidden = true
+            rootViewController.view.tintColor = UIColor(fromHex: "5182AF")
+            rootViewController.navigationBarHidden = true
 
-            self.window?.rootViewController = controller
+            self.window?.rootViewController = rootViewController
             self.window?.makeKeyAndVisible()
         }
 
