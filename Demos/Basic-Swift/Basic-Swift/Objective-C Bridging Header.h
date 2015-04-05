@@ -19,5 +19,6 @@
 
 #import "NSObject+HYPTesting.h"
 #import "UIColor+Hex.h"
+#import "NSJSONSerialization+ANDYJSONFile.h"
 
 #endif
