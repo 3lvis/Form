@@ -207,6 +207,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
                                 NSArray *indexPaths))completion;
 
 /*!
+ * @return @c YES if the Section is collapsed.
+ * @param sectionID The section index for the section.
+ */
+- (BOOL)sectionIsCollapsed:(NSInteger)sectionID;
+
+/*!
  * @return The size for the @c field at the given @c indexPath
  */
 - (CGSize)sizeForFieldAtIndexPath:(NSIndexPath *)indexPath;

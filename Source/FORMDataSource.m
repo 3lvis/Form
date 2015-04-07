@@ -752,6 +752,15 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     }
 }
 
+- (BOOL)sectionIsCollapsed:(NSInteger)sectionID
+{
+    if ([self.collapsedGroups containsObject:@(sectionID)]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 #pragma mark - Keyboard Support
 
 - (void)keyboardDidShow:(NSNotification *)notification
