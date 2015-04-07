@@ -224,7 +224,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 - (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths;
 
 /*!
- * @param section A section ID for the current section
+ * @param section A section index for the current section
  * @param collectionView The used collectionView, usually from a @c UICollectionViewController.
  */
 - (void)collapseFieldsInSection:(NSInteger)section
