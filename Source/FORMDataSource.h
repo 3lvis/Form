@@ -207,8 +207,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
                                 NSArray *indexPaths))completion;
 
 /*!
- * @return @c YES if the Section is collapsed.
- * @param sectionID The section index for the section.
+ * @return @c YES if the Group is collapsed.
+ * @param group The group index for the group.
  */
 - (BOOL)groupIsCollapsed:(NSInteger)group;
 
