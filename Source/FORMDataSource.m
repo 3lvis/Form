@@ -191,11 +191,20 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                                  atIndexPath:(NSIndexPath *)indexPath
 {
     if (kind == UICollectionElementKindSectionHeader) {
-        FORMGroupHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+        FORMGroup *group = self.formData.groups[indexPath.section];
+        FORMGroupHeaderView *headerView;
+
+        if (self.configureHeaderViewBlock) {
+            id configuredGroupHeaderView = self.configureGroupHeaderAtIndexPathBlock(group, collectionView, indexPath);
+            if (configuredGroupHeaderView) {
+                return configuredGroupHeaderView;
+            }
+        }
+
+        headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                                                              withReuseIdentifier:FORMHeaderReuseIdentifier
                                                                                     forIndexPath:indexPath];
 
-        FORMGroup *group = self.formData.groups[indexPath.section];
         headerView.section = indexPath.section;
 
         if (self.configureHeaderViewBlock) {
