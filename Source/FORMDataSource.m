@@ -747,7 +747,8 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
     NSInteger fieldsInSectionCount = fieldsIndex + section.fields.count;
     for (NSInteger i = fieldsIndex; i < fieldsInSectionCount; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:groupIndex]];
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i
+                                                 inSection:groupIndex]];
     }
 
     if (completion) {
@@ -825,17 +826,18 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (BOOL)isValid
 {
+    BOOL formIsValid = YES;
     for (FORMGroup *group in self.formData.groups) {
         for (FORMField *field in group.fields) {
             FORMValidationResultType fieldValidation = [field validate];
             BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypePassed);
             if (requiredFieldFailedValidation) {
-                return NO;
+                formIsValid = NO;
             }
         }
     }
 
-    return YES;
+    return formIsValid;
 }
 
 - (void)reset
@@ -910,7 +912,8 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                  completion:(void (^)(FORMSection *section, NSInteger index))completion
 {
     [self.formData indexForFieldWithID:fieldID
-                       inSectionWithID:sectionID completion:completion];
+                       inSectionWithID:sectionID
+                            completion:completion];
 }
 
 - (FORMField *)fieldWithID:(NSString *)fieldID
