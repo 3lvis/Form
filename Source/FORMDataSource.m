@@ -197,13 +197,16 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
         if (self.configureGroupHeaderAtIndexPathBlock) {
             id configuredGroupHeaderView = self.configureGroupHeaderAtIndexPathBlock(group, collectionView, indexPath);
             if (configuredGroupHeaderView) {
-                return configuredGroupHeaderView;
+                headerView = configuredGroupHeaderView;
             }
         }
 
-        headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                             withReuseIdentifier:FORMHeaderReuseIdentifier
-                                                                                    forIndexPath:indexPath];
+        if (!headerView) {
+            headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                            withReuseIdentifier:FORMHeaderReuseIdentifier
+                                                                   forIndexPath:indexPath];
+        }
+
 
         headerView.group = indexPath.section;
 
