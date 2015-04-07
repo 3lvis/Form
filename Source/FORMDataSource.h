@@ -210,7 +210,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
  * @return @c YES if the Section is collapsed.
  * @param sectionID The section index for the section.
  */
-- (BOOL)sectionIsCollapsed:(NSInteger)section;
+- (BOOL)groupIsCollapsed:(NSInteger)group;
 
 /*!
  * @return The size for the @c field at the given @c indexPath

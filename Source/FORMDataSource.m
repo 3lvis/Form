@@ -756,13 +756,9 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }
 }
 
-- (BOOL)sectionIsCollapsed:(NSInteger)section
+- (BOOL)groupIsCollapsed:(NSInteger)group
 {
-    if ([self.collapsedGroups containsObject:@(section)]) {
-        return YES;
-    } else {
-        return NO;
-    }
+    return [self.collapsedGroups containsObject:@(group)];
 }
 
 #pragma mark - Keyboard Support
