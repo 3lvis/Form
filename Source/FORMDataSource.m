@@ -752,9 +752,9 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     }
 }
 
-- (BOOL)sectionIsCollapsed:(NSInteger)sectionID
+- (BOOL)sectionIsCollapsed:(NSInteger)section
 {
-    if ([self.collapsedGroups containsObject:@(sectionID)]) {
+    if ([self.collapsedGroups containsObject:@(section)]) {
         return YES;
     } else {
         return NO;
