@@ -205,7 +205,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                                                                              withReuseIdentifier:FORMHeaderReuseIdentifier
                                                                                     forIndexPath:indexPath];
 
-        headerView.section = indexPath.section;
+        headerView.group = indexPath.section;
 
         if (self.configureHeaderViewBlock) {
             self.configureHeaderViewBlock(headerView, kind, indexPath, group);
@@ -806,7 +806,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (void)groupHeaderViewWasPressed:(FORMGroupHeaderView *)headerView
 {
-    [self collapseFieldsInSection:headerView.section
+    [self collapseFieldsInSection:headerView.group
                    collectionView:self.collectionView];
 }
 
