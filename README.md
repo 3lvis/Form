@@ -160,6 +160,14 @@ In the following example we show how to hide or show a field based on a dropdown
 ]
 ```
 
+## Installation
+
+**Form** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+
+```ruby
+pod 'Form'
+```
+
 ## Contributing
 
 Please check our [playbook](https://github.com/hyperoslo/playbook/blob/master/GIT_AND_GITHUB.md) for guidelines on contributing.
