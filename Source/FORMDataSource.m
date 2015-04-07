@@ -26,6 +26,7 @@ static const CGFloat FORMDispatchTime = 0.05f;
 
 static NSString * const FORMDynamicAddFieldID = @"add";
 static NSString * const FORMDynamicRemoveFieldID = @"remove";
+static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 @interface FORMDataSource () <FORMBaseFieldCellDelegate, FORMHeaderViewDelegate>
 
@@ -780,7 +781,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     UIEdgeInsets inset = self.originalInset;
     inset.bottom += height;
 
-    [UIView animateWithDuration:0.3f animations:^{
+    [UIView animateWithDuration:FORMKeyboardAnimationDuration animations:^{
         self.collectionView.contentInset = inset;
     }];
 }
@@ -790,7 +791,7 @@ static NSString * const FORMDynamicRemoveFieldID = @"remove";
     CGRect keyboardEndFrame;
     [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
 
-    [UIView animateWithDuration:0.3f animations:^{
+    [UIView animateWithDuration:FORMKeyboardAnimationDuration animations:^{
         self.collectionView.contentInset = self.originalInset;
     }];
 }
