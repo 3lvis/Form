@@ -194,7 +194,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
         FORMGroup *group = self.formData.groups[indexPath.section];
         FORMGroupHeaderView *headerView;
 
-        if (self.configureHeaderViewBlock) {
+        if (self.configureGroupHeaderAtIndexPathBlock) {
             id configuredGroupHeaderView = self.configureGroupHeaderAtIndexPathBlock(group, collectionView, indexPath);
             if (configuredGroupHeaderView) {
                 return configuredGroupHeaderView;
