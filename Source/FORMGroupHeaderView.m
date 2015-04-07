@@ -37,14 +37,19 @@
 
 #pragma mark - Getters
 
+- (CGRect)headerLabelFrame
+{
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    CGFloat width = CGRectGetWidth(bounds) - (FORMTitleMargin * 2);
+
+    return CGRectMake(FORMTitleMargin, 0.0f, width, FORMHeaderHeight);
+}
+
 - (UILabel *)headerLabel
 {
     if (_headerLabel) return _headerLabel;
 
-    CGRect bounds = [[UIScreen mainScreen] bounds];
-    CGFloat width = CGRectGetWidth(bounds) - (FORMTitleMargin * 2);
-
-    _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(FORMTitleMargin, 0.0f, width, FORMHeaderHeight)];
+    _headerLabel = [[UILabel alloc] initWithFrame:[self headerLabelFrame]];
     _headerLabel.backgroundColor = [UIColor clearColor];
     _headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
