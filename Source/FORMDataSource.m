@@ -207,7 +207,6 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                                                                    forIndexPath:indexPath];
         }
 
-
         headerView.group = indexPath.section;
 
         if (self.configureHeaderViewBlock) {
