@@ -227,7 +227,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 - (void)collapseFieldsInSection:(NSInteger)section
                  collectionView:(UICollectionView *)collectionView
 {
-    BOOL headerIsCollapsed = ([self.collapsedGroups containsObject:@(section)]);
+    BOOL headerIsCollapsed = ([self groupIsCollapsed:section]);
 
     NSMutableArray *indexPaths = [NSMutableArray new];
     FORMGroup *group = self.formData.groups[section];
