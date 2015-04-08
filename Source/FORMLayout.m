@@ -71,7 +71,8 @@
 
         return attributes;
     } else {
-        NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
+        NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item - 1
+                                                             inSection:indexPath.section];
         CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
         CGRect stretchedCurrentFrame = CGRectMake(self.sectionInset.left,
                                                   attributes.frame.origin.y,
@@ -235,7 +236,7 @@
 - (CGSize)collectionViewContentSize
 {
     CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-    
+
     return bounds.size;
 }
 
