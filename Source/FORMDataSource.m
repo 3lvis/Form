@@ -224,30 +224,6 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 #pragma mark - Public methods
 
-- (void)collapseFieldsInGroup:(NSInteger)group
-               collectionView:(UICollectionView *)collectionView
-{
-    BOOL headerIsCollapsed = ([self groupIsCollapsed:group]);
-
-    NSMutableArray *indexPaths = [NSMutableArray new];
-    FORMGroup *formGroup = self.formData.groups[group];
-
-    for (NSInteger i = 0; i < formGroup.fields.count; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:group];
-        [indexPaths addObject:indexPath];
-    }
-
-    if (headerIsCollapsed) {
-        [self.collapsedGroups removeObject:@(group)];
-        [collectionView insertItemsAtIndexPaths:indexPaths];
-        [collectionView.collectionViewLayout invalidateLayout];
-    } else {
-        [self.collapsedGroups addObject:@(group)];
-        [collectionView deleteItemsAtIndexPaths:indexPaths];
-        [collectionView.collectionViewLayout invalidateLayout];
-    }
-}
-
 - (NSArray *)safeIndexPaths:(NSArray *)indexPaths
 {
     NSMutableArray *safeIndexPaths = [NSMutableArray new];
@@ -992,6 +968,30 @@ includingHiddenFields:(BOOL)includingHiddenFields
 }
 
 #pragma mark - Private methods
+
+- (void)collapseFieldsInGroup:(NSInteger)group
+               collectionView:(UICollectionView *)collectionView
+{
+    BOOL headerIsCollapsed = ([self groupIsCollapsed:group]);
+
+    NSMutableArray *indexPaths = [NSMutableArray new];
+    FORMGroup *formGroup = self.formData.groups[group];
+
+    for (NSInteger i = 0; i < formGroup.fields.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:group];
+        [indexPaths addObject:indexPath];
+    }
+
+    if (headerIsCollapsed) {
+        [self.collapsedGroups removeObject:@(group)];
+        [collectionView insertItemsAtIndexPaths:indexPaths];
+        [collectionView.collectionViewLayout invalidateLayout];
+    } else {
+        [self.collapsedGroups addObject:@(group)];
+        [collectionView deleteItemsAtIndexPaths:indexPaths];
+        [collectionView.collectionViewLayout invalidateLayout];
+    }
+}
 
 - (NSDictionary *)updateValueKeys:(NSArray *)currentKeys
 {

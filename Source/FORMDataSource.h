@@ -234,11 +234,4 @@ includingHiddenFields:(BOOL)includingHiddenFields
  */
 - (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths;
 
-/*!
- * @param group index
- * @param collectionView The used collectionView, usually from a @c UICollectionViewController.
- */
-- (void)collapseFieldsInGroup:(NSInteger)group
-               collectionView:(UICollectionView *)collectionView;
-
 @end
