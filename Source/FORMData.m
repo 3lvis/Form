@@ -448,7 +448,9 @@
         groupIndex++;
     }
 
-    if (completion) completion(foundSection, indexPaths);
+    if (completion) {
+        completion(foundSection, indexPaths);
+    }
 }
 
 #pragma mark - Field
