@@ -168,6 +168,12 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
 - (NSInteger)numberOfFields;
 
 /*!
+ * @param groupID The identifier for the group
+ * @return The found @ FORMGroup, will return @c nil if the group is not found
+ */
+- (FORMGroup *)groupWithID:(NSString *)groupID;
+
+/*!
  * @param fieldID The identifier for the field
  * @param includingHiddenFields A flag for whether look for hidden or collapsed fields or not
  * @return The found @ FORMField, will return @c nil if the field is not found
@@ -218,12 +224,6 @@ includingHiddenFields:(BOOL)includingHiddenFields
                                 NSArray *indexPaths))completion;
 
 /*!
- * @return @c YES if the Group is collapsed.
- * @param group The group index for the group.
- */
-- (BOOL)groupIsCollapsed:(NSInteger)group;
-
-/*!
  * @return The size for the @c field at the given @c indexPath
  */
 - (CGSize)sizeForFieldAtIndexPath:(NSIndexPath *)indexPath;
@@ -233,12 +233,5 @@ includingHiddenFields:(BOOL)includingHiddenFields
  * @param indexPaths A collection of indexPaths to reload
  */
 - (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths;
-
-/*!
- * @param section A section index for the current section
- * @param collectionView The used collectionView, usually from a @c UICollectionViewController.
- */
-- (void)collapseFieldsInSection:(NSInteger)section
-                 collectionView:(UICollectionView *)collectionView;
 
 @end

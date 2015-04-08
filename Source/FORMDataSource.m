@@ -902,6 +902,11 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return [self.formData valuesForFormula:field];
 }
 
+- (FORMGroup *)groupWithID:(NSString *)groupID
+{
+    return [self.formData groupWithID:groupID];
+}
+
 - (FORMSection *)sectionWithID:(NSString *)sectionID
 {
     return [self.formData sectionWithID:sectionID];
