@@ -14,6 +14,7 @@
 typedef void (^FORMConfigureCellBlock)(id cell,
                                        NSIndexPath *indexPath,
                                        FORMField *field);
+
 typedef void (^FORMConfigureHeaderViewBlock)(FORMGroupHeaderView *headerView,
                                              NSString *kind,
                                              NSIndexPath *indexPath,
@@ -26,6 +27,7 @@ typedef UICollectionReusableView * (^FORMConfigureGroupHeaderForItemAtIndexPathB
 typedef UICollectionViewCell * (^FORMConfigureCellForItemAtIndexPathBlock)(FORMField *field,
                                                                            UICollectionView *collectionView,
                                                                            NSIndexPath *indexPath);
+
 typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
                                            FORMField *field);
 
