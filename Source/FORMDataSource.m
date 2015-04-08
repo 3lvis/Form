@@ -808,7 +808,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (void)groupHeaderViewWasPressed:(FORMGroupHeaderView *)headerView
 {
-    [self collapseFieldsInSection:headerView.group
+    [self collapseFieldsInGroup:headerView.group
                    collectionView:self.collectionView];
 }
 
