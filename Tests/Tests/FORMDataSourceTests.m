@@ -349,7 +349,7 @@
     section = group.sections[2];
     XCTAssertEqualObjects(section.sectionID, @"companies[1]");
 
-    XCTAssertEqualObjects([dataSource.values hyp_dictionaryByRemovingNullItems], initialValues);
+    XCTAssertEqualObjects([dataSource.values hyp_removingNulls], initialValues);
 }
 
 - (void)testResetDynamicSectionsWithDictionaryE
