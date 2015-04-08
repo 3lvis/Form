@@ -27,6 +27,8 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 
 - (NSMutableDictionary *)valuesForFormula:(FORMField *)field;
 
+- (FORMGroup *)groupWithID:(NSString *)groupID;
+
 - (FORMSection *)sectionWithID:(NSString *)sectionID;
 
 - (void)sectionWithID:(NSString *)sectionID

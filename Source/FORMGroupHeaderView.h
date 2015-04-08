@@ -11,7 +11,7 @@ static NSString * const FORMHeaderReuseIdentifier = @"FORMHeaderReuseIdentifier"
 @interface FORMGroupHeaderView : UICollectionReusableView
 
 @property (nonatomic) UILabel *headerLabel;
-@property (nonatomic) NSInteger section;
+@property (nonatomic) NSInteger group;
 
 @property (nonatomic, weak) id <FORMHeaderViewDelegate> delegate;
 

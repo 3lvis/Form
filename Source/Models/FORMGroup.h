@@ -5,7 +5,7 @@
 
 @interface FORMGroup : NSObject
 
-@property (nonatomic) NSString *formID;
+@property (nonatomic) NSString *groupID;
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSMutableArray *sections;
 @property (nonatomic) NSNumber *position;

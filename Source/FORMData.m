@@ -404,6 +404,21 @@
     return values;
 }
 
+#pragma mark - Group
+
+- (FORMGroup *)groupWithID:(NSString *)groupID
+{
+    FORMGroup *foundGroup;
+    for (FORMGroup *group in self.groups) {
+        if ([group.groupID isEqualToString:groupID]) {
+            foundGroup = group;
+            break;
+        }
+    }
+
+    return foundGroup;
+}
+
 #pragma mark - Sections
 
 - (FORMSection *)sectionWithID:(NSString *)sectionID
@@ -448,7 +463,9 @@
         groupIndex++;
     }
 
-    if (completion) completion(foundSection, indexPaths);
+    if (completion) {
+        completion(foundSection, indexPaths);
+    }
 }
 
 #pragma mark - Field

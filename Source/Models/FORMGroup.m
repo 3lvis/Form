@@ -27,7 +27,7 @@
     self = [super init];
     if (!self) return nil;
 
-    self.formID = [dictionary andy_valueForKey:@"id"];
+    self.groupID = [dictionary andy_valueForKey:@"id"];
     self.title = [dictionary andy_valueForKey:@"title"];
     self.position = @(position);
 
@@ -118,7 +118,7 @@
     }
 
     return [NSString stringWithFormat:@"\n — Group: %@ —\n title: %@\n position: %@\n shouldValidate: %@\n sections: %@\n",
-            self.formID, self.title, self.position, self.shouldValidate ? @"YES" : @"NO", fields];
+            self.groupID, self.title, self.position, self.shouldValidate ? @"YES" : @"NO", fields];
 }
 
 - (void)removeSection:(FORMSection *)section
