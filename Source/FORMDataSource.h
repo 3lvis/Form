@@ -168,12 +168,6 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
 - (NSInteger)numberOfFields;
 
 /*!
- * @param groupID The identifier for the group
- * @return The found @ FORMGroup, will return @c nil if the group is not found
- */
-- (FORMGroup *)groupWithID:(NSString *)groupID;
-
-/*!
  * @param fieldID The identifier for the field
  * @param includingHiddenFields A flag for whether look for hidden or collapsed fields or not
  * @return The found @ FORMField, will return @c nil if the field is not found
