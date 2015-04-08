@@ -139,7 +139,8 @@
         CGFloat height = 0.0f;
 
         if (fields.count > 0) {
-            NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:fields.count - 1 inSection:indexPath.section];
+            NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:fields.count - 1
+                                                             inSection:indexPath.section];
             UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:lastIndexPath];
             height = attributes.frame.origin.y + attributes.frame.size.height - (self.sectionInset.bottom);
         }
@@ -147,11 +148,13 @@
         if (indexPath.section > 0 && height > 0) {
             NSArray *previousFields = [self fieldsAtSection:indexPath.section - 1];
             if (previousFields.count > 0) {
-                NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:previousFields.count - 1 inSection:indexPath.section - 1];
+                NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:previousFields.count - 1
+                                                                     inSection:indexPath.section - 1];
                 UICollectionViewLayoutAttributes *previousAttribute = [super layoutAttributesForItemAtIndexPath:previousIndexPath];
                 height -= previousAttribute.frame.origin.y + previousAttribute.frame.size.height + self.sectionInset.bottom;
             } else {
-                NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:previousFields.count - 1 inSection:indexPath.section - 1];
+                NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:previousFields.count - 1
+                                                                     inSection:indexPath.section - 1];
                 UICollectionViewLayoutAttributes *previousHeaderAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                                                                                           atIndexPath:previousIndexPath];
                 height -= previousHeaderAttributes.frame.origin.y + previousHeaderAttributes.frame.size.height + self.sectionInset.bottom + self.sectionInset.top;
