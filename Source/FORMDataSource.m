@@ -224,8 +224,8 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 #pragma mark - Public methods
 
-- (void)collapseFieldsInSection:(NSInteger)section
-                 collectionView:(UICollectionView *)collectionView
+- (void)collapseFieldsInGroup:(NSInteger)group
+               collectionView:(UICollectionView *)collectionView
 {
     BOOL headerIsCollapsed = ([self groupIsCollapsed:section]);
 
