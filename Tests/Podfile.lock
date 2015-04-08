@@ -7,7 +7,7 @@ PODS:
   - ISO8601DateFormatter (0.7)
   - NSDate-HYPString (0.2)
   - NSDictionary-ANDYSafeValue (0.3)
-  - NSDictionary-HYPImmutable (0.1)
+  - NSDictionary-HYPImmutable (0.2)
   - NSDictionary-HYPNestedAttributes (0.4):
     - NSString-HYPRelationshipParser (~> 0.4.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
@@ -51,7 +51,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   NSDate-HYPString: b87cf854edd44ec1e186b32526c601502180846d
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
-  NSDictionary-HYPImmutable: d954fc5c886a30c3a1134f56a2f38dd0ae65aa18
+  NSDictionary-HYPImmutable: 5ab45ed9d8127636467736b51700d886bfcc48db
   NSDictionary-HYPNestedAttributes: b652ab8d11d933b98c3bc666fd131e09aa7393a6
   NSJSONSerialization-ANDYJSONFile: 4a92ca174d5ccde13015e853e9eb62440459b478
   NSObject-HYPTesting: fadde70c75061b731b313c390e20777aed0a914d
@@ -63,4 +63,4 @@ SPEC CHECKSUMS:
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIScreen-HYPLiveBounds: a2ed968b8d2455c050e3ec1cb29181ad3e505927
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.36.3
