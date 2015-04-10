@@ -33,6 +33,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _validationType = FORMValidationResultTypeNone;
     _title = [dictionary andy_valueForKey:@"title"];
     _typeString  = [dictionary andy_valueForKey:@"type"];
+    _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
     _type = [self typeFromTypeString:self.typeString];
     _inputTypeString = [dictionary andy_valueForKey:@"input_type"];
     _info = [dictionary andy_valueForKey:@"info"];
