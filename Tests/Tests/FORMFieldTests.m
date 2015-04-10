@@ -22,6 +22,7 @@
                                                                @"type": @"name",
                                                                @"size": @{@"width": @30,
                                                                           @"height": @1},
+                                                               @"hidden": @YES,
                                                                @"validations": @{@"required": @YES,
                                                                                  @"min_length": @2}
                                                                }
@@ -37,6 +38,7 @@
     XCTAssertTrue(field.type == FORMFieldTypeText);
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
     XCTAssertFalse(field.disabled);
+    XCTAssertTrue(field.hidden);
     XCTAssertNotNil(field.validation);
 
     field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_date",
@@ -62,6 +64,7 @@
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
     XCTAssertTrue(field.disabled);
     XCTAssertNil(field.validation);
+    XCTAssertFalse(field.hidden);
 }
 
 @end
