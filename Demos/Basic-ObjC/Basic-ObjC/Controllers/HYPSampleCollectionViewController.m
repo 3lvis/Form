@@ -244,10 +244,10 @@
 
     if (sender.isOn) {
         [self.dataSource disable];
-        target = [FORMTarget disableFieldTargetWithID:@"image"];
+        target = [FORMTarget hideFieldTargetWithID:@"image"];
     } else {
         [self.dataSource enable];
-        target = [FORMTarget enableFieldTargetWithID:@"image"];
+        target = [FORMTarget showFieldTargetWithID:@"image"];
     }
 
     [self.dataSource processTargets:@[target]];
