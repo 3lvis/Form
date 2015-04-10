@@ -6,7 +6,6 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
 @interface FORMDateFieldCell () <FORMTextFieldDelegate,
 UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 
-@property (nonatomic) UIPopoverController *popoverController;
 @property (nonatomic) UIDatePicker *datePicker;
 
 @end
