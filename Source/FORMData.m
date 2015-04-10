@@ -212,7 +212,15 @@
             }
         }
 
+
         for (FORMField *field in group.fields) {
+
+          if(field.hidden){
+            [hideTargets addObject:[FORMTarget hideFieldTargetWithID:field.fieldID]];
+
+            //NSLog(@"id: %@", field.fieldID);
+          }
+
 
             if ([initialValues andy_valueForKey:field.fieldID]) {
                 if (field.type == FORMFieldTypeSelect) {
