@@ -1,4 +1,4 @@
-# Examples
+# Demos
 
 ## Building
 
