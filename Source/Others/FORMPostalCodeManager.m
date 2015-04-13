@@ -1,3 +1,5 @@
+@import UIKit;
+
 #import "FORMPostalCodeManager.h"
 
 #import "NSJSONSerialization+ANDYJSONFile.h"
@@ -26,8 +28,11 @@
     self = [super init];
     if (!self) return nil;
 
+    id appDelegate = [[UIApplication sharedApplication] delegate];
+    Class bundleClass = (appDelegate) ? [appDelegate class] : [self class];
+
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"postal_codes.json"
-                                                             inBundle:[NSBundle bundleForClass:[FORMPostalCodeManager class]]];
+                                                             inBundle:[NSBundle bundleForClass:bundleClass]];
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
 
     for (NSDictionary *entry in JSON) {
