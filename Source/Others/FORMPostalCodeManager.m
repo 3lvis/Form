@@ -27,7 +27,7 @@
     if (!self) return nil;
 
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"postal_codes.json"
-                                                             inBundle:[NSBundle bundleForClass:[FORMPostalCodeManager class]]];
+                                                             inBundle:[NSBundle mainBundle]];
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
 
     for (NSDictionary *entry in JSON) {
