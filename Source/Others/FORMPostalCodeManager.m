@@ -1,5 +1,3 @@
-@import UIKit;
-
 #import "FORMPostalCodeManager.h"
 
 #import "NSJSONSerialization+ANDYJSONFile.h"
