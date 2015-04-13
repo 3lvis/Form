@@ -28,11 +28,8 @@
     self = [super init];
     if (!self) return nil;
 
-    id appDelegate = [[UIApplication sharedApplication] delegate];
-    Class bundleClass = (appDelegate) ? [appDelegate class] : [self class];
-
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"postal_codes.json"
-                                                             inBundle:[NSBundle bundleForClass:bundleClass]];
+                                                             inBundle:[NSBundle mainBundle]];
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
 
     for (NSDictionary *entry in JSON) {
