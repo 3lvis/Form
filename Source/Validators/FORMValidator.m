@@ -44,6 +44,25 @@
         if (fieldValueIsLonger) return FORMValidationResultTypeInvalidTooLong;
     }
 
+    if (self.validation.minimumValue || self.validation.maximumValue) {
+        CGFloat value = 0.0f;
+        if ([fieldValue isKindOfClass:[NSNumber class]]) {
+            value = [fieldValue floatValue];
+        } else if ([fieldValue isKindOfClass:[NSString class]]) {
+            value = [fieldValue floatValue];
+        }
+
+        if (self.validation.minimumValue) {
+            BOOL valueIsLessThanMinimum = (value < [self.validation.minimumValue floatValue]);
+            if (valueIsLessThanMinimum) return FORMValidationResultTypeInvalidValue;
+        }
+
+        if (self.validation.maximumValue) {
+            BOOL valueIsMoreThanMaximum = (value > [self.validation.maximumValue floatValue]);
+            if (valueIsMoreThanMaximum) return FORMValidationResultTypeInvalidValue;
+        }
+    }
+
     if ([fieldValue isKindOfClass:[NSString class]] && self.validation.format) {
         if (![self validateString:fieldValue withFormat:self.validation.format]) {
             return FORMValidationResultTypeInvalidFormat;
