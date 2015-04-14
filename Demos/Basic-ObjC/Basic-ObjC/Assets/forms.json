@@ -258,7 +258,11 @@
                   "type":"field",
                   "action":"update"
                 }
-              ]
+              ],
+              "validations":{
+                "max_value": 100,
+                "min_value": 10
+              }
             },
             {
               "id":"total",
