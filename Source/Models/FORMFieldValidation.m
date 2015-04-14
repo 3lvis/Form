@@ -8,22 +8,14 @@
     self = [super init];
     if (!self) return nil;
 
-    self.required = [[dictionary andy_valueForKey:@"required"] boolValue];
-
-    self.minimumLength = 0;
-    if ([dictionary andy_valueForKey:@"min_length"]) {
-        self.minimumLength = [dictionary andy_valueForKey:@"min_length"];
-    }
-
-    self.maximumLength = [dictionary andy_valueForKey:@"max_length"];
-
-    self.format = [dictionary andy_valueForKey:@"format"];
-
-    self.minimumValue = [dictionary andy_valueForKey:@"min_value"];
-
-    self.maximumValue = [dictionary andy_valueForKey:@"max_value"];
     self.compareRule = [dictionary andy_valueForKey:@"compare_rule"];
     self.compareToFieldID = [dictionary andy_valueForKey:@"compare_to"];
+    self.format = [dictionary andy_valueForKey:@"format"];
+    self.maximumLength = [dictionary andy_valueForKey:@"max_length"];
+    self.minimumLength = [dictionary andy_valueForKey:@"min_length"];
+    self.maximumValue = [dictionary andy_valueForKey:@"max_value"];
+    self.minimumValue = [dictionary andy_valueForKey:@"min_value"];
+    self.required = [[dictionary andy_valueForKey:@"required"] boolValue];
 
     return self;
 }

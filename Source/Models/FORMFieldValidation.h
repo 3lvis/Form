@@ -3,14 +3,14 @@
 
 @interface FORMFieldValidation : NSObject
 
-@property (nonatomic, getter = isRequired) BOOL required;
-@property (nonatomic) NSNumber *minimumLength;
-@property (nonatomic) NSNumber *maximumLength;
+@property (nonatomic, copy) NSString *compareRule;
+@property (nonatomic, copy) NSString *compareToFieldID;
 @property (nonatomic, copy) NSString *format;
-@property (nonatomic) NSNumber *minimumValue;
+@property (nonatomic) NSNumber *maximumLength;
+@property (nonatomic) NSNumber *minimumLength;
 @property (nonatomic) NSNumber *maximumValue;
-@property (nonatomic) NSString *compareToFieldID;
-@property (nonatomic) NSString *compareRule;
+@property (nonatomic) NSNumber *minimumValue;
+@property (nonatomic, getter = isRequired) BOOL required;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
