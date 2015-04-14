@@ -3,17 +3,17 @@
 #import "FORMFieldValidation.h"
 
 typedef NS_ENUM(NSInteger, FORMValidationResultType) {
-    FORMValidationResultTypeNone = 0,
-    FORMValidationResultTypePassed,
-    FORMValidationResultTypeTooShort,
-    FORMValidationResultTypeTooLong,
-    FORMValidationResultTypeValueMissing,
-    FORMValidationResultTypeInvalidFormat,
-    FORMValidationResultTypeInvalidEmail,
-    FORMValidationResultTypeInvalidSSN,
-    FORMValidationResultTypeInvalidPostalCode,
+    FORMValidationResultTypeValid = 0,
+    FORMValidationResultTypeInvalid,
+    FORMValidationResultTypeInvalidValue,
     FORMValidationResultTypeInvalidBankAccount,
-    FORMValidationResultTypeOther
+    FORMValidationResultTypeInvalidEmail,
+    FORMValidationResultTypeInvalidFormat,
+    FORMValidationResultTypeInvalidPostalCode,
+    FORMValidationResultTypeInvalidSSN,
+    FORMValidationResultTypeInvalidTooLong,
+    FORMValidationResultTypeInvalidTooShort,
+    FORMValidationResultTypeInvalidValueMissing
 };
 
 @interface FORMValidator : NSObject

@@ -30,7 +30,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _valid = YES;
     _fieldID = remoteID;
-    _validationType = FORMValidationResultTypeNone;
+    _validationResultType = FORMValidationResultTypeValid;
     _title = [dictionary andy_valueForKey:@"title"];
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
@@ -255,15 +255,15 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     validatorClass = ([FORMClassFactory classFromString:self.fieldID withSuffix:@"Validator"]) ?: [FORMValidator class];
     validator = [[validatorClass alloc] initWithValidation:self.validation];
 
-    self.validationType = [validator validateFieldValue:self.value];
+    self.validationResultType = [validator validateFieldValue:self.value];
 
     if (self.validation.compareToFieldID.length) {
         FORMField *field = [self.class fieldForFieldID:self.validation.compareToFieldID inSection:self.section];
         id dependantFieldValue = field.value;
-        self.validationType = [validator validateFieldValue:self.value withDependentValue:dependantFieldValue withComparator:self.validation.compareRule];
+        self.validationResultType = [validator validateFieldValue:self.value withDependentValue:dependantFieldValue withComparator:self.validation.compareRule];
     }
-    self.valid = (self.validationType == FORMValidationResultTypePassed);
-    return self.validationType;
+    self.valid = (self.validationResultType == FORMValidationResultTypeValid);
+    return self.validationResultType;
 }
 
 #pragma mark - Public Methods

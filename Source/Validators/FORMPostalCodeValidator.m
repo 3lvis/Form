@@ -10,7 +10,7 @@
     if (!postalCodeIsValid) {
         return FORMValidationResultTypeInvalidPostalCode;
     } else {
-        return FORMValidationResultTypePassed;
+        return FORMValidationResultTypeValid;
     }
 }
 

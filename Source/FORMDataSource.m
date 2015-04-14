@@ -813,7 +813,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     for (FORMGroup *group in self.formData.groups) {
         for (FORMField *field in group.fields) {
             FORMValidationResultType fieldValidation = [field validate];
-            BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypePassed);
+            BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypeValid);
             if (requiredFieldFailedValidation) {
                 formIsValid = NO;
             }

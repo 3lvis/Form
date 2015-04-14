@@ -7,13 +7,13 @@
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue
 {
     FORMValidationResultType superValidation = [super validateFieldValue:fieldValue];
-    if (superValidation != FORMValidationResultTypePassed) return superValidation;
+    if (superValidation != FORMValidationResultTypeValid) return superValidation;
 
     NSString *SSNString = (NSString *)fieldValue;
     if (![HYPNorwegianSSN validateWithString:SSNString]) {
         return FORMValidationResultTypeInvalidSSN;
     } else {
-        return FORMValidationResultTypePassed;
+        return FORMValidationResultTypeValid;
     }
 }
 
