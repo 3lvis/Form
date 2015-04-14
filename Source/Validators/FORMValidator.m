@@ -32,16 +32,16 @@
 
     if (self.validation.minimumLength > 0) {
         if (!fieldValue) {
-            return FORMValidationResultTypeValueMissing;
+            return FORMValidationResultTypeInvalidValueMissing;
         } else if ([fieldValue isKindOfClass:[NSString class]]) {
             BOOL fieldValueIsShorter = ([fieldValue length] < [self.validation.minimumLength unsignedIntegerValue]);
-            if (fieldValueIsShorter) return FORMValidationResultTypeTooShort;
+            if (fieldValueIsShorter) return FORMValidationResultTypeInvalidTooShort;
         }
     }
 
     if ([fieldValue isKindOfClass:[NSString class]] && self.validation.maximumLength) {
         BOOL fieldValueIsLonger = ([fieldValue length] > [self.validation.maximumLength unsignedIntegerValue]);
-        if (fieldValueIsLonger) return FORMValidationResultTypeTooLong;
+        if (fieldValueIsLonger) return FORMValidationResultTypeInvalidTooLong;
     }
 
     if ([fieldValue isKindOfClass:[NSString class]] && self.validation.format) {
@@ -63,7 +63,7 @@
       return FORMValidationResultTypeValid;
     }
   }
-  
+
   if ([comparator isEqualToString:@">"] && fieldValue > dependentValue) {
     return FORMValidationResultTypeValid;
   }
@@ -79,7 +79,7 @@
   if ([comparator isEqualToString:@"=="] && fieldValue == dependentValue) {
     return FORMValidationResultTypeValid;
   }
-  return FORMValidationResultTypeTooShort;
+  return FORMValidationResultTypeInvalidTooShort;
 }
 
 

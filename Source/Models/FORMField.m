@@ -30,7 +30,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _valid = YES;
     _fieldID = remoteID;
-    _validationResultType = FORMValidationResultTypeNone;
+    _validationResultType = FORMValidationResultTypeValid;
     _title = [dictionary andy_valueForKey:@"title"];
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
