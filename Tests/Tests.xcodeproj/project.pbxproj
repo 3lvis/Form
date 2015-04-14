@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14298D6E1ADDA78F00607A49 /* FORMValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14298D6D1ADDA78F00607A49 /* FORMValidatorTests.m */; };
 		1440AF0D1AC1D76500F15D15 /* FORMGroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1440AF0C1AC1D76500F15D15 /* FORMGroupTests.m */; };
 		1449AE741AA07E0700BCC40E /* FORMField+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1449AE731AA07E0700BCC40E /* FORMField+Tests.m */; };
 		144A28BB1A99B2CF004A9086 /* FORMBaseFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28521A99B2CF004A9086 /* FORMBaseFieldCell.m */; };
@@ -83,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		0F976971F56B077A5DA2E58E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		14298D6D1ADDA78F00607A49 /* FORMValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMValidatorTests.m; sourceTree = "<group>"; };
 		1440AF0C1AC1D76500F15D15 /* FORMGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMGroupTests.m; sourceTree = "<group>"; };
 		1449AE721AA07E0700BCC40E /* FORMField+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FORMField+Tests.h"; sourceTree = "<group>"; };
 		1449AE731AA07E0700BCC40E /* FORMField+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FORMField+Tests.m"; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				149C29161A9A23DD00F88B91 /* FORMTargetTests.m */,
 				149C29171A9A23DD00F88B91 /* FORMTests.m */,
 				149C29191A9A23DD00F88B91 /* FORMTextFieldCellTests.m */,
+				14298D6D1ADDA78F00607A49 /* FORMValidatorTests.m */,
 				149C290E1A9A23DD00F88B91 /* Helpers */,
 				149C291A1A9A23DD00F88B91 /* JSONs */,
 				14C4182B1A01919C00636FD6 /* Supporting Files */,
@@ -645,6 +648,7 @@
 				144A28CC1A99B2CF004A9086 /* FORMSocialSecurityNumberFormatter.m in Sources */,
 				144A28D31A99B2CF004A9086 /* FORMBankAccountNumberInputValidator.m in Sources */,
 				144A28BD1A99B2CF004A9086 /* FORMDateFieldCell.m in Sources */,
+				14298D6E1ADDA78F00607A49 /* FORMValidatorTests.m in Sources */,
 				149C29261A9A23DD00F88B91 /* FORMTargetTests.m in Sources */,
 				144A28DE1A99B2CF004A9086 /* FORMFieldValue.m in Sources */,
 				144A28CA1A99B2CF004A9086 /* FORMFormatter.m in Sources */,
