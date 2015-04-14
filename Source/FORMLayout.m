@@ -233,11 +233,4 @@
     return fields;
 }
 
-- (CGSize)collectionViewContentSize
-{
-    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
-
-    return bounds.size;
-}
-
 @end
