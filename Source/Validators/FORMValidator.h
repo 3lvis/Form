@@ -5,6 +5,7 @@
 typedef NS_ENUM(NSInteger, FORMValidationResultType) {
     FORMValidationResultTypeValid = 0,
     FORMValidationResultTypeInvalid,
+    FORMValidationResultTypeInvalidValue,
     FORMValidationResultTypeInvalidBankAccount,
     FORMValidationResultTypeInvalidEmail,
     FORMValidationResultTypeInvalidFormat,

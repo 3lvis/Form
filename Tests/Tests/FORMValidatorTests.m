@@ -11,11 +11,13 @@
 
 - (void)testValidateFieldValue
 {
-    FORMFieldValidation *validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"min_value" : @1,
+    FORMFieldValidation *validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"min_value" : @10,
                                                                                         @"max_value" : @100}];
     FORMValidator *validator = [[FORMValidator alloc] initWithValidation:validation];
 
     XCTAssertEqual(FORMValidationResultTypeValid, [validator validateFieldValue:@"100"]);
+    XCTAssertEqual(FORMValidationResultTypeInvalidValue, [validator validateFieldValue:@"1"]);
+    XCTAssertEqual(FORMValidationResultTypeInvalidValue, [validator validateFieldValue:@"101"]);
 }
 
 @end
