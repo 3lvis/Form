@@ -194,7 +194,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)validate
 {
-    BOOL validation = ([self.field validate] == FORMValidationResultTypePassed);
+    BOOL validation = ([self.field validate] == FORMValidationResultTypeValid);
     [self.textField setValid:validation];
 }
 

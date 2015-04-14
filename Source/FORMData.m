@@ -336,7 +336,7 @@
     for (FORMGroup *group in self.groups) {
         for (FORMSection *section in group.sections) {
             for (FORMField *field in section.fields) {
-                BOOL fieldIsValid = (field.validation && [field validate] != FORMValidationResultTypePassed);
+                BOOL fieldIsValid = (field.validation && [field validate] != FORMValidationResultTypeValid);
                 if (fieldIsValid) {
                     [invalidFormFields setObject:field forKey:field.fieldID];
                 }

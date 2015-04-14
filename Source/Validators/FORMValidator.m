@@ -22,12 +22,12 @@
 
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue
 {
-    if (!self.validation) return FORMValidationResultTypePassed;
+    if (!self.validation) return FORMValidationResultTypeValid;
 
     if (!fieldValue && !self.validation.isRequired) return YES;
 
     if ([fieldValue isKindOfClass:[FORMFieldValue class]]) {
-        return FORMValidationResultTypePassed;
+        return FORMValidationResultTypeValid;
     }
 
     if (self.validation.minimumLength > 0) {
@@ -50,34 +50,34 @@
         }
     }
 
-    return FORMValidationResultTypePassed;
+    return FORMValidationResultTypeValid;
 }
 
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue withDependentValue:(id)dependentValue withComparator:(NSString *)comparator
 {
   if ([fieldValue isKindOfClass:[NSDate class]]) {
     if ([comparator isEqualToString:@">"] && [fieldValue laterDate:dependentValue] == fieldValue) {
-      return FORMValidationResultTypePassed;
+      return FORMValidationResultTypeValid;
     }
     else if ([comparator isEqualToString:@"<"] && [fieldValue earlierDate:dependentValue] == fieldValue) {
-      return FORMValidationResultTypePassed;
+      return FORMValidationResultTypeValid;
     }
   }
   
   if ([comparator isEqualToString:@">"] && fieldValue > dependentValue) {
-    return FORMValidationResultTypePassed;
+    return FORMValidationResultTypeValid;
   }
   if ([comparator isEqualToString:@">="] && fieldValue >= dependentValue) {
-    return FORMValidationResultTypePassed;
+    return FORMValidationResultTypeValid;
   }
   if ([comparator isEqualToString:@"<"] && fieldValue < dependentValue) {
-    return FORMValidationResultTypePassed;
+    return FORMValidationResultTypeValid;
   }
   if ([comparator isEqualToString:@"<="] && fieldValue <= dependentValue) {
-    return FORMValidationResultTypePassed;
+    return FORMValidationResultTypeValid;
   }
   if ([comparator isEqualToString:@"=="] && fieldValue == dependentValue) {
-    return FORMValidationResultTypePassed;
+    return FORMValidationResultTypeValid;
   }
   return FORMValidationResultTypeTooShort;
 }

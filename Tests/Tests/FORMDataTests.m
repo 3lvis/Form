@@ -312,7 +312,7 @@
     XCTAssertEqual(FORMValidationResultTypeInvalidFormat, [emailField validate]);
 
     [dataSource reloadWithDictionary:@{@"email" : @"teknologi@hyper.no"}];
-    XCTAssertEqual(FORMValidationResultTypePassed, [emailField validate]);
+    XCTAssertEqual(FORMValidationResultTypeValid, [emailField validate]);
 }
 
 - (void)testFieldWithIDIncludingHiddenFields

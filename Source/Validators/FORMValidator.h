@@ -4,15 +4,16 @@
 
 typedef NS_ENUM(NSInteger, FORMValidationResultType) {
     FORMValidationResultTypeNone = 0,
-    FORMValidationResultTypePassed,
-    FORMValidationResultTypeTooShort,
-    FORMValidationResultTypeTooLong,
-    FORMValidationResultTypeValueMissing,
-    FORMValidationResultTypeInvalidFormat,
-    FORMValidationResultTypeInvalidEmail,
-    FORMValidationResultTypeInvalidSSN,
-    FORMValidationResultTypeInvalidPostalCode,
+    FORMValidationResultTypeInvalid,
     FORMValidationResultTypeInvalidBankAccount,
+    FORMValidationResultTypeInvalidEmail,
+    FORMValidationResultTypeInvalidFormat,
+    FORMValidationResultTypeInvalidPostalCode,
+    FORMValidationResultTypeInvalidSSN,
+    FORMValidationResultTypeTooLong,
+    FORMValidationResultTypeTooShort,
+    FORMValidationResultTypeValid,
+    FORMValidationResultTypeValueMissing,
     FORMValidationResultTypeOther
 };
 
