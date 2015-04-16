@@ -76,6 +76,7 @@
 		14B564731A06D87B00342CDA /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 14B564721A06D87B00342CDA /* .travis.yml */; };
 		14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 14C418391A019A1500636FD6 /* LICENSE.md */; };
 		14C4183E1A019A1500636FD6 /* FORM.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 14C4183A1A019A1500636FD6 /* FORM.podspec */; };
+		14F5AF6D1AE0522400FF71AD /* postal_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 14F5AF6C1AE0522400FF71AD /* postal_codes.json */; };
 		82AB828048DF535A1FFE4CC3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F9DD801EDC647B835EB2CF /* libPods.a */; };
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
 		BDB7E31F1AA7016D00AF00BC /* FORMPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB7E31E1AA7016D00AF00BC /* FORMPostalCodeManager.m */; };
@@ -204,6 +205,7 @@
 		14C418391A019A1500636FD6 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
 		14C4183A1A019A1500636FD6 /* FORM.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; name = FORM.podspec; path = ../FORM.podspec; sourceTree = "<group>"; };
 		14C4183B1A019A1500636FD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		14F5AF6C1AE0522400FF71AD /* postal_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postal_codes.json; sourceTree = "<group>"; };
 		653AC6BBDF66E205BA44BA17 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B3F9DD801EDC647B835EB2CF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5845731AC4074600596C62 /* FORMTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTooltipView.h; sourceTree = "<group>"; };
@@ -399,14 +401,15 @@
 		149C291A1A9A23DD00F88B91 /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
-				144B80281AA882DB009C69DC /* section-field-position.json */,
-				149C29321A9A251800F88B91 /* forms.json */,
-				1492C0591A9F740900D80D91 /* dynamic.json */,
 				149C291B1A9A23DD00F88B91 /* default-values.json */,
+				1492C0591A9F740900D80D91 /* dynamic.json */,
 				149C291C1A9A23DD00F88B91 /* field-validations.json */,
+				149C29321A9A251800F88B91 /* forms.json */,
 				149C291D1A9A23DD00F88B91 /* multiple-show-hide-field-targets.json */,
 				149C291E1A9A23DD00F88B91 /* multiple-show-hide-section-targets.json */,
 				149C291F1A9A23DD00F88B91 /* number-formula.json */,
+				14F5AF6C1AE0522400FF71AD /* postal_codes.json */,
+				144B80281AA882DB009C69DC /* section-field-position.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				149C29331A9A251800F88B91 /* forms.json in Resources */,
 				14C4183E1A019A1500636FD6 /* FORM.podspec in Resources */,
 				149C292D1A9A23DD00F88B91 /* multiple-show-hide-section-targets.json in Resources */,
+				14F5AF6D1AE0522400FF71AD /* postal_codes.json in Resources */,
 				144B80291AA882DB009C69DC /* section-field-position.json in Resources */,
 				149C292E1A9A23DD00F88B91 /* number-formula.json in Resources */,
 			);
