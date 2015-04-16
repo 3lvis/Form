@@ -29,7 +29,7 @@
                                  @"first_name" : @"Ola",
                                  @"last_name" : @"Nordman",
                                  @"start_date" : @"2014-10-31 23:00:00 +00:00",
-								 @"start_time" : @"2014-10-31 23:00:00 +00:00",
+								 @"start_time" : @"2014-10-31 23:00:00 +00:00"
                                  };
 
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
