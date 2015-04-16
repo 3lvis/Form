@@ -95,55 +95,55 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
     } else {
         self.fieldValueLabel.text = nil;
     }
-	
-	self.iconImageView.image = [self fieldIcon];
+
+    self.iconImageView.image = [self fieldIcon];
 }
 
 - (NSDateFormatterStyle)dateStyleForField:(FORMField *)field {
-	
-	switch (field.type) {
-		case FORMFieldTypeDate:
-			return NSDateFormatterMediumStyle;
-			break;
-		case FORMFieldTypeDateTime:
-			return NSDateFormatterMediumStyle;
-			break;
-		default:
-			return NSDateFormatterNoStyle;
-			break;
-	}
+
+    switch (field.type) {
+        case FORMFieldTypeDate:
+            return NSDateFormatterMediumStyle;
+            break;
+        case FORMFieldTypeDateTime:
+            return NSDateFormatterMediumStyle;
+            break;
+        default:
+            return NSDateFormatterNoStyle;
+            break;
+    }
 }
 
 - (NSDateFormatterStyle)timeStyleForField:(FORMField *)field {
-	
-	switch (field.type) {
-		case FORMFieldTypeDate:
-			return NSDateFormatterNoStyle;
-			break;
-		case FORMFieldTypeDateTime:
-			return NSDateFormatterShortStyle;
-			break;
-		default:
-			return NSDateFormatterShortStyle;
-			break;
-	}
+
+    switch (field.type) {
+        case FORMFieldTypeDate:
+            return NSDateFormatterNoStyle;
+            break;
+        case FORMFieldTypeDateTime:
+            return NSDateFormatterShortStyle;
+            break;
+        default:
+            return NSDateFormatterShortStyle;
+            break;
+    }
 }
 
 - (UIImage *)fieldIcon {
-	
-	switch (self.field.type) {
-			
-		case FORMFieldTypeDate:
-		case FORMFieldTypeDateTime:
-			return [UIImage imageNamed:@"ic_calendar"];
-			break;
-		case FORMFieldTypeTime:
-			return [UIImage imageNamed:@"ic_clock"];
-			break;
-		default:
-			return nil;
-			break;
-	}
+
+    switch (self.field.type) {
+
+        case FORMFieldTypeDate:
+        case FORMFieldTypeDateTime:
+            return [UIImage imageNamed:@"ic_calendar"];
+            break;
+        case FORMFieldTypeTime:
+            return [UIImage imageNamed:@"ic_clock"];
+            break;
+        default:
+            return nil;
+            break;
+    }
 }
 
 #pragma mark - FORMPopoverFormFieldCell
@@ -169,20 +169,20 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
     if (self.field.maximumDate) {
         self.datePicker.maximumDate = self.field.maximumDate;
     }
-	
-	switch (self.field.type) {
-		case FORMFieldTypeDate:
-			self.datePicker.datePickerMode = UIDatePickerModeDate;
-			break;
-		case FORMFieldTypeDateTime:
-			self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
-			break;
-		case FORMFieldTypeTime:
-			self.datePicker.datePickerMode = UIDatePickerModeTime;
-			break;
-		default:
-			break;
-	}
+
+    switch (self.field.type) {
+        case FORMFieldTypeDate:
+            self.datePicker.datePickerMode = UIDatePickerModeDate;
+            break;
+        case FORMFieldTypeDateTime:
+            self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+            break;
+        case FORMFieldTypeTime:
+            self.datePicker.datePickerMode = UIDatePickerModeTime;
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - FORMFieldValuesTableViewControllerDelegate
