@@ -38,8 +38,7 @@ static BOOL enabledProperty;
 
 #pragma mark - Initializers
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
@@ -68,8 +67,7 @@ static BOOL enabledProperty;
 
 #pragma mark - Setters
 
-- (NSRange)currentRange
-{
+- (NSRange)currentRange {
     NSInteger startOffset = [self offsetFromPosition:self.beginningOfDocument
                                           toPosition:self.selectedTextRange.start];
     NSInteger endOffset = [self offsetFromPosition:self.beginningOfDocument
@@ -79,8 +77,7 @@ static BOOL enabledProperty;
     return range;
 }
 
-- (void)setText:(NSString *)text
-{
+- (void)setText:(NSString *)text {
     UITextRange *textRange = self.selectedTextRange;
     NSString *newRawText = [self.formatter formatString:text
                                                 reverse:YES];
@@ -99,8 +96,7 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)setRawText:(NSString *)rawText
-{
+- (void)setRawText:(NSString *)rawText {
     BOOL shouldFormat = (self.formatter && (rawText.length >= _rawText.length ||
                                             ![rawText isEqualToString:_rawText]));
 
@@ -113,8 +109,7 @@ static BOOL enabledProperty;
     _rawText = rawText;
 }
 
-- (void)setTypeString:(NSString *)typeString
-{
+- (void)setTypeString:(NSString *)typeString {
     _typeString = typeString;
 
     FORMTextFieldType type;
@@ -149,8 +144,7 @@ static BOOL enabledProperty;
     self.type = type;
 }
 
-- (void)setInputTypeString:(NSString *)inputTypeString
-{
+- (void)setInputTypeString:(NSString *)inputTypeString {
     _inputTypeString = inputTypeString;
 
     FORMTextFieldInputType inputType;
@@ -181,8 +175,7 @@ static BOOL enabledProperty;
     self.inputType = inputType;
 }
 
-- (void)setInputType:(FORMTextFieldInputType)inputType
-{
+- (void)setInputType:(FORMTextFieldInputType)inputType {
     _inputType = inputType;
 
     FORMTextFieldTypeManager *typeManager = [FORMTextFieldTypeManager new];
@@ -191,8 +184,7 @@ static BOOL enabledProperty;
 
 #pragma mark - Getters
 
-- (NSString *)rawText
-{
+- (NSString *)rawText {
     if (self.formatter) {
         return [self.formatter formatString:_rawText reverse:YES];
     }
@@ -202,8 +194,7 @@ static BOOL enabledProperty;
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(FORMTextField *)textField
-{
+- (BOOL)textFieldShouldBeginEditing:(FORMTextField *)textField {
     BOOL selectable = (textField.type == FORMTextFieldTypeSelect ||
                        textField.type == FORMTextFieldTypeDate);
 
@@ -215,22 +206,19 @@ static BOOL enabledProperty;
     return !selectable;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.active = YES;
     self.modified = NO;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     self.active = NO;
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidEndEditing:)]) {
         [self.textFieldDelegate textFormFieldDidEndEditing:self];
     }
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if (!string || [string isEqualToString:@"\n"]) return YES;
 
     BOOL validator = (self.inputValidator &&
@@ -244,8 +232,7 @@ static BOOL enabledProperty;
 
 #pragma mark - UIResponder Overwritables
 
-- (BOOL)becomeFirstResponder
-{
+- (BOOL)becomeFirstResponder {
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
         [self.textFieldDelegate textFormFieldDidBeginEditing:self];
     }
@@ -253,8 +240,7 @@ static BOOL enabledProperty;
     return [super becomeFirstResponder];
 }
 
-- (BOOL)canBecomeFirstResponder
-{
+- (BOOL)canBecomeFirstResponder {
     BOOL isTextField = (self.type != FORMTextFieldTypeSelect &&
                         self.type != FORMTextFieldTypeDate);
 
@@ -263,8 +249,7 @@ static BOOL enabledProperty;
 
 #pragma mark - Notifications
 
-- (void)textFieldDidUpdate:(UITextField *)textField
-{
+- (void)textFieldDidUpdate:(UITextField *)textField {
     if (!self.isValid) {
         self.valid = YES;
     }
@@ -278,8 +263,7 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)textFieldDidReturn:(UITextField *)textField
-{
+- (void)textFieldDidReturn:(UITextField *)textField {
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidReturn:)]) {
         [self.textFieldDelegate textFormFieldDidReturn:self];
     }
@@ -287,8 +271,7 @@ static BOOL enabledProperty;
 
 #pragma mark - Actions
 
-- (void)clearButtonAction
-{
+- (void)clearButtonAction {
     self.rawText = nil;
 
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
@@ -299,8 +282,7 @@ static BOOL enabledProperty;
 
 #pragma mark - Appearance
 
-- (void)setActive:(BOOL)active
-{
+- (void)setActive:(BOOL)active {
     _active = active;
 
     if (active) {
@@ -312,8 +294,7 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)setEnabled:(BOOL)enabled
-{
+- (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
 
     enabledProperty = enabled;
@@ -329,8 +310,7 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)setValid:(BOOL)valid
-{
+- (void)setValid:(BOOL)valid {
     _valid = valid;
 
     if (!self.isEnabled) return;
@@ -344,94 +324,76 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)setCustomFont:(UIFont *)font
-{
+- (void)setCustomFont:(UIFont *)font {
     self.font = font;
 }
 
-- (void)setBorderWidth:(CGFloat)borderWidth
-{
+- (void)setBorderWidth:(CGFloat)borderWidth {
     self.layer.borderWidth = borderWidth;
 }
 
-- (void)setBorderColor:(UIColor *)borderColor
-{
+- (void)setBorderColor:(UIColor *)borderColor {
     self.layer.borderColor = borderColor.CGColor;
 }
 
-- (void)setCornerRadius:(CGFloat)cornerRadius
-{
+- (void)setCornerRadius:(CGFloat)cornerRadius {
     self.layer.cornerRadius = cornerRadius;
 }
 
-- (void)setActiveBackgroundColor:(UIColor *)color
-{
+- (void)setActiveBackgroundColor:(UIColor *)color {
     activeBackgroundColor = color;
 }
 
-- (void)setActiveBorderColor:(UIColor *)color
-{
+- (void)setActiveBorderColor:(UIColor *)color {
     activeBorderColor = color;
 }
 
-- (void)setInactiveBackgroundColor:(UIColor *)color
-{
+- (void)setInactiveBackgroundColor:(UIColor *)color {
     inactiveBackgroundColor = color;
 }
 
-- (void)setInactiveBorderColor:(UIColor *)color
-{
+- (void)setInactiveBorderColor:(UIColor *)color {
     inactiveBorderColor = color;
 }
 
-- (void)setEnabledBackgroundColor:(UIColor *)color
-{
+- (void)setEnabledBackgroundColor:(UIColor *)color {
     enabledBackgroundColor = color;
 }
 
-- (void)setEnabledBorderColor:(UIColor *)color
-{
+- (void)setEnabledBorderColor:(UIColor *)color {
     enabledBorderColor = color;
 }
 
-- (void)setEnabledTextColor:(UIColor *)color
-{
+- (void)setEnabledTextColor:(UIColor *)color {
     enabledTextColor = color;
 }
 
-- (void)setDisabledBackgroundColor:(UIColor *)color
-{
+- (void)setDisabledBackgroundColor:(UIColor *)color {
     disabledBackgroundColor = color;
 }
 
-- (void)setDisabledBorderColor:(UIColor *)color
-{
+- (void)setDisabledBorderColor:(UIColor *)color {
     disabledBorderColor = color;
 }
 
-- (void)setDisabledTextColor:(UIColor *)color
-{
+- (void)setDisabledTextColor:(UIColor *)color {
     disabledTextColor = color;
     self.enabled = enabledProperty;
 }
 
-- (void)setValidBackgroundColor:(UIColor *)color
-{
+- (void)setValidBackgroundColor:(UIColor *)color {
     validBackgroundColor = color;
 }
 
-- (void)setValidBorderColor:(UIColor *)color
-{
+- (void)setValidBorderColor:(UIColor *)color {
     validBorderColor = color;
 }
 
-- (void)setInvalidBackgroundColor:(UIColor *)color
-{
+- (void)setInvalidBackgroundColor:(UIColor *)color {
     invalidBackgroundColor = color;
 }
 
-- (void)setInvalidBorderColor:(UIColor *)color
-{
+- (void)setInvalidBorderColor:(UIColor *)color {
     invalidBorderColor = color;
     self.enabled = enabledProperty;
 }

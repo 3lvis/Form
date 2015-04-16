@@ -14,8 +14,7 @@
 
 @implementation FORMFieldTests
 
-- (void)testInitWithDictionary
-{
+- (void)testInitWithDictionary {
     FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id": @"first_name",
                                                                @"title": @"First name",
                                                                @"value": @"John Malkobitch",

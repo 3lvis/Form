@@ -2,8 +2,7 @@
 
 @implementation FORMPhoneNumberFormatter
 
-- (NSString *)formatString:(NSString *)string reverse:(BOOL)reverse
-{
+- (NSString *)formatString:(NSString *)string reverse:(BOOL)reverse {
     string = [super formatString:string reverse:reverse];
     if (!string) return nil;
 

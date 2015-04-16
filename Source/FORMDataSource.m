@@ -44,8 +44,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 #pragma mark - Dealloc
 
-- (void)dealloc
-{
+- (void)dealloc {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [center removeObserver:self name:UIKeyboardDidHideNotification object:nil];
@@ -57,8 +56,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
               collectionView:(UICollectionView *)collectionView
                       layout:(FORMLayout *)layout
                       values:(NSDictionary *)values
-                    disabled:(BOOL)disabled
-{
+                    disabled:(BOOL)disabled {
     self = [super init];
     if (!self) return nil;
 
@@ -109,8 +107,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 #pragma mark - Getters
 
-- (NSMutableArray *)collapsedGroups
-{
+- (NSMutableArray *)collapsedGroups {
     if (_collapsedGroups) return _collapsedGroups;
 
     _collapsedGroups = [NSMutableArray new];
@@ -120,14 +117,12 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return self.formData.groups.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
-     numberOfItemsInSection:(NSInteger)section
-{
+     numberOfItemsInSection:(NSInteger)section {
     FORMGroup *group = self.formData.groups[section];
     if ([self.collapsedGroups containsObject:@(section)]) {
         return 0;
@@ -137,8 +132,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FORMGroup *group = self.formData.groups[indexPath.section];
     NSArray *fields = group.fields;
     FORMField *field = fields[indexPath.row];
@@ -188,8 +182,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind
-                                 atIndexPath:(NSIndexPath *)indexPath
-{
+                                 atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
         FORMGroup *group = self.formData.groups[indexPath.section];
         FORMGroupHeaderView *headerView;
@@ -224,8 +217,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 #pragma mark - Public methods
 
-- (NSArray *)safeIndexPaths:(NSArray *)indexPaths
-{
+- (NSArray *)safeIndexPaths:(NSArray *)indexPaths {
     NSMutableArray *safeIndexPaths = [NSMutableArray new];
 
     for (NSIndexPath *indexPath in indexPaths) {
@@ -237,8 +229,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return safeIndexPaths;
 }
 
-- (void)insertItemsAtIndexPaths:(NSArray *)indexPaths
-{
+- (void)insertItemsAtIndexPaths:(NSArray *)indexPaths {
     NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
 
     if (reloadedIndexPaths.count > 0) {
@@ -252,8 +243,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }
 }
 
-- (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths
-{
+- (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths {
     NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
 
     if (reloadedIndexPaths.count > 0) {
@@ -261,8 +251,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }
 }
 
-- (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths
-{
+- (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths {
     NSArray *reloadedIndexPaths = [self safeIndexPaths:indexPaths];
 
     if (reloadedIndexPaths.count > 0) {
@@ -272,8 +261,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }
 }
 
-- (CGSize)sizeForFieldAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGSize)sizeForFieldAtIndexPath:(NSIndexPath *)indexPath {
     FORMGroup *group = self.formData.groups[indexPath.section];
     NSArray *fields = group.fields;
 
@@ -303,8 +291,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return CGSizeMake(width, height);
 }
 
-- (FORMField *)fieldAtIndexPath:(NSIndexPath *)indexPath
-{
+- (FORMField *)fieldAtIndexPath:(NSIndexPath *)indexPath {
     FORMGroup *group = self.formData.groups[indexPath.section];
     NSArray *fields = group.fields;
     FORMField *field = fields[indexPath.row];
@@ -312,18 +299,15 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return field;
 }
 
-- (void)enable
-{
+- (void)enable {
     [self disable:NO];
 }
 
-- (void)disable
-{
+- (void)disable {
     [self disable:YES];
 }
 
-- (void)disable:(BOOL)disabled
-{
+- (void)disable:(BOOL)disabled {
     self.disabled = disabled;
 
     if (disabled) {
@@ -396,18 +380,15 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                                                         object:@(!disabled)];
 }
 
-- (BOOL)isDisabled
-{
+- (BOOL)isDisabled {
     return self.disabled;
 }
 
-- (BOOL)isEnabled
-{
+- (BOOL)isEnabled {
     return !self.disabled;
 }
 
-- (void)reloadWithDictionary:(NSDictionary *)dictionary
-{
+- (void)reloadWithDictionary:(NSDictionary *)dictionary {
     [self.formData.values setValuesForKeysWithDictionary:dictionary];
 
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
@@ -437,8 +418,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     [self processTargets:targets];
 }
 
-- (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary
-{
+- (void)resetDynamicSectionsWithDictionary:(NSDictionary *)dictionary {
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if (self.formData.values[key]) {
             self.formData.values[key] = obj;
@@ -505,8 +485,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     [self processTargets:targets];
 }
 
-- (FORMField *)fieldInDeletedFields:(NSString *)fieldID
-{
+- (FORMField *)fieldInDeletedFields:(NSString *)fieldID {
     __block FORMField *foundField = nil;
 
     [self.formData.hiddenFieldsAndFieldIDsDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, FORMField *field, BOOL *stop) {
@@ -519,8 +498,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return foundField;
 }
 
-- (FORMField *)fieldInDeletedSections:(NSString *)fieldID
-{
+- (FORMField *)fieldInDeletedSections:(NSString *)fieldID {
     __block FORMField *foundField = nil;
 
     [self.formData.hiddenSections enumerateKeysAndObjectsUsingBlock:^(NSString *key, FORMSection *section, BOOL *stop) {
@@ -537,26 +515,22 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 #pragma mark Validations
 
-- (void)validateForms
-{
+- (void)validateForms {
     [self validate];
 }
 
-- (BOOL)formFieldsAreValid
-{
+- (BOOL)formFieldsAreValid {
     return [self isValid];
 }
 
-- (void)resetForms
-{
+- (void)resetForms {
     [self reset];
 }
 
 #pragma mark - FORMBaseFieldCellDelegate
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell
- updatedWithField:(FORMField *)field
-{
+ updatedWithField:(FORMField *)field {
     if (self.fieldUpdatedBlock) {
         self.fieldUpdatedBlock(fieldCell, field);
     }
@@ -603,8 +577,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 }
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell
-   processTargets:(NSArray *)targets
-{
+   processTargets:(NSArray *)targets {
     NSTimeInterval delay = ([NSObject isUnitTesting]) ? FORMDispatchTime : 0.0f;
     [self performSelector:@selector(processTargets:)
                withObject:targets
@@ -613,8 +586,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 #pragma mark - Targets Procesing
 
-- (void)processTarget:(FORMTarget *)target
-{
+- (void)processTarget:(FORMTarget *)target {
     switch (target.actionType) {
         case FORMTargetActionShow: {
             NSArray *insertedIndexPaths = [self.formData showTargets:@[target]];
@@ -643,8 +615,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }
 }
 
-- (NSArray *)sortTargets:(NSArray *)targets
-{
+- (NSArray *)sortTargets:(NSArray *)targets {
     NSSortDescriptor *sortByTypeString = [NSSortDescriptor sortDescriptorWithKey:@"typeString"
                                                                        ascending:YES];
     NSArray *sortedTargets = [targets sortedArrayUsingDescriptors:@[sortByTypeString]];
@@ -652,8 +623,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return sortedTargets;
 }
 
-- (void)processTargets:(NSArray *)targets
-{
+- (void)processTargets:(NSArray *)targets {
     [FORMTarget filteredTargets:targets
                        filtered:^(NSArray *shownTargets,
                                   NSArray *hiddenTargets,
@@ -716,8 +686,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 #pragma mark Sections
 
 - (void)insertedIndexPathsAndSectionIndexForSection:(FORMSection *)section
-                                         completion:(void (^)(NSArray *indexPaths, NSInteger index))completion
-{
+                                         completion:(void (^)(NSArray *indexPaths, NSInteger index))completion {
     NSMutableArray *indexPaths = [NSMutableArray new];
 
     NSInteger groupIndex = [section.group.position integerValue];
@@ -743,15 +712,13 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }
 }
 
-- (BOOL)groupIsCollapsed:(NSInteger)group
-{
+- (BOOL)groupIsCollapsed:(NSInteger)group {
     return [self.collapsedGroups containsObject:@(group)];
 }
 
 #pragma mark - Keyboard Support
 
-- (void)keyboardDidShow:(NSNotification *)notification
-{
+- (void)keyboardDidShow:(NSNotification *)notification {
     CGRect keyboardEndFrame;
     [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
 
@@ -770,8 +737,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }];
 }
 
-- (void)keyboardDidHide:(NSNotification *)notification
-{
+- (void)keyboardDidHide:(NSNotification *)notification {
     CGRect keyboardEndFrame;
     [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
 
@@ -782,33 +748,28 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 #pragma mark - FORMHeaderViewDelegate
 
-- (void)groupHeaderViewWasPressed:(FORMGroupHeaderView *)headerView
-{
+- (void)groupHeaderViewWasPressed:(FORMGroupHeaderView *)headerView {
     [self collapseFieldsInGroup:headerView.group
                    collectionView:self.collectionView];
 }
 
 #pragma mark - FORMLayoutDataSource
 
-- (NSArray *)groups
-{
+- (NSArray *)groups {
     return self.formData.groups;
 }
 
 #pragma mark - FORMData bridge
 
-- (NSDictionary *)invalidFields
-{
+- (NSDictionary *)invalidFields {
     return [self.formData invalidFormFields];
 }
 
-- (NSDictionary *)requiredFields
-{
+- (NSDictionary *)requiredFields {
     return [self.formData requiredFormFields];
 }
 
-- (BOOL)isValid
-{
+- (BOOL)isValid {
     BOOL formIsValid = YES;
     for (FORMGroup *group in self.formData.groups) {
         for (FORMField *field in group.fields) {
@@ -823,8 +784,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return formIsValid;
 }
 
-- (void)reset
-{
+- (void)reset {
     for (FORMGroup *group in self.formData.groups) {
         for (FORMField *field in group.fields) {
             field.value = nil;
@@ -839,8 +799,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     [self.collectionView reloadData];
 }
 
-- (void)validate
-{
+- (void)validate {
     NSMutableSet *validatedFields = [NSMutableSet set];
 
     NSArray *cells = [self.collectionView visibleCells];
@@ -863,115 +822,96 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }
 }
 
-- (NSDictionary *)invalidFormFields
-{
+- (NSDictionary *)invalidFormFields {
     return [self.formData invalidFormFields];
 }
 
-- (NSDictionary *)requiredFormFields
-{
+- (NSDictionary *)requiredFormFields {
     return [self.formData requiredFormFields];
 }
 
-- (NSMutableDictionary *)valuesForFormula:(FORMField *)field
-{
+- (NSMutableDictionary *)valuesForFormula:(FORMField *)field {
     return [self.formData valuesForFormula:field];
 }
 
-- (FORMGroup *)groupWithID:(NSString *)groupID
-{
+- (FORMGroup *)groupWithID:(NSString *)groupID {
     return [self.formData groupWithID:groupID];
 }
 
-- (FORMSection *)sectionWithID:(NSString *)sectionID
-{
+- (FORMSection *)sectionWithID:(NSString *)sectionID {
     return [self.formData sectionWithID:sectionID];
 }
 
 - (void)sectionWithID:(NSString *)sectionID
-           completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion
-{
+           completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion {
     [self.formData sectionWithID:sectionID
                       completion:completion];
 }
 
 - (void)indexForFieldWithID:(NSString *)fieldID
             inSectionWithID:(NSString *)sectionID
-                 completion:(void (^)(FORMSection *section, NSInteger index))completion
-{
+                 completion:(void (^)(FORMSection *section, NSInteger index))completion {
     [self.formData indexForFieldWithID:fieldID
                        inSectionWithID:sectionID
                             completion:completion];
 }
 
 - (FORMField *)fieldWithID:(NSString *)fieldID
-     includingHiddenFields:(BOOL)includingHiddenFields
-{
+     includingHiddenFields:(BOOL)includingHiddenFields {
     return [self.formData fieldWithID:fieldID
                 includingHiddenFields:includingHiddenFields];
 }
 
 - (void)fieldWithID:(NSString *)fieldID
 includingHiddenFields:(BOOL)includingHiddenFields
-         completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion
-{
+         completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion {
     [self.formData fieldWithID:fieldID
          includingHiddenFields:includingHiddenFields
                     completion:completion];
 }
 
-- (NSArray *)showTargets:(NSArray *)targets
-{
+- (NSArray *)showTargets:(NSArray *)targets {
     return [self.formData showTargets:targets];
 }
 
-- (NSArray *)hideTargets:(NSArray *)targets
-{
+- (NSArray *)hideTargets:(NSArray *)targets {
     return [self.formData hideTargets:targets];
 }
 
-- (NSArray *)updateTargets:(NSArray *)targets
-{
+- (NSArray *)updateTargets:(NSArray *)targets {
     return [self.formData updateTargets:targets];
 }
 
-- (NSArray *)enableTargets:(NSArray *)targets
-{
+- (NSArray *)enableTargets:(NSArray *)targets {
     return [self.formData enableTargets:targets];
 }
 
-- (NSArray *)disableTargets:(NSArray *)targets
-{
+- (NSArray *)disableTargets:(NSArray *)targets {
     return [self.formData disableTargets:targets];
 }
 
-- (NSInteger)numberOfFields
-{
+- (NSInteger)numberOfFields {
     return [self.formData numberOfFields];
 }
 
-- (void)updateValuesWithDictionary:(NSDictionary *)dictionary
-{
+- (void)updateValuesWithDictionary:(NSDictionary *)dictionary {
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         self.formData.values[key] = obj;
     }];
 }
 
-- (NSDictionary *)values
-{
+- (NSDictionary *)values {
     return [self.formData.values copy];
 }
 
-- (NSDictionary *)removedValues
-{
+- (NSDictionary *)removedValues {
     return [self.formData.removedValues copy];
 }
 
 #pragma mark - Private methods
 
 - (void)collapseFieldsInGroup:(NSInteger)group
-               collectionView:(UICollectionView *)collectionView
-{
+               collectionView:(UICollectionView *)collectionView {
     BOOL headerIsCollapsed = ([self groupIsCollapsed:group]);
 
     NSMutableArray *indexPaths = [NSMutableArray new];
@@ -993,8 +933,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 }
 
-- (NSDictionary *)updateValueKeys:(NSArray *)currentKeys
-{
+- (NSDictionary *)updateValueKeys:(NSArray *)currentKeys {
     NSArray *keys = [currentKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
     __block NSNumber *currentIndex;
@@ -1019,8 +958,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     return [mutableDictionary copy];
 }
 
-- (void)removeDynamicKeysForSection:(FORMSection *)section
-{
+- (void)removeDynamicKeysForSection:(FORMSection *)section {
     __block NSString *sectionID = [section.sectionID substringToIndex:[section.sectionID rangeOfString:@"["].location];
     [self.values enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([key hasPrefix:sectionID]) {
@@ -1029,8 +967,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }];
 }
 
-- (void)insertDynamicSectionsForValues:(NSDictionary *)values
-{
+- (void)insertDynamicSectionsForValues:(NSDictionary *)values {
     NSDictionary *JSONAttributes = [values hyp_JSONNestedAttributes];
     [JSONAttributes enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
         if ([obj isKindOfClass:[NSArray class]]) {

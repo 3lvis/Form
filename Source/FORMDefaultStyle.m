@@ -15,8 +15,7 @@
 
 @implementation FORMDefaultStyle
 
-+ (void)applyStyle
-{
++ (void)applyStyle {
     [[FORMTextField appearance] setTextColor:[UIColor redColor]];
     [[FORMTextField appearance] setBackgroundColor:[UIColor yellowColor]];
 

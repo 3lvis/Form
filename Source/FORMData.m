@@ -29,8 +29,7 @@
 - (instancetype)initWithJSON:(id)JSON
                initialValues:(NSDictionary *)initialValues
             disabledFieldIDs:(NSArray *)disabledFieldIDs
-                    disabled:(BOOL)disabled
-{
+                    disabled:(BOOL)disabled {
     self = [super init];
     if (!self) return nil;
 
@@ -49,8 +48,7 @@
 
 #pragma mark - Getters
 
-- (NSMutableArray *)groups
-{
+- (NSMutableArray *)groups {
     if (_groups) return _groups;
 
     _groups = [NSMutableArray new];
@@ -58,8 +56,7 @@
     return _groups;
 }
 
-- (NSMutableDictionary *)hiddenFieldsAndFieldIDsDictionary
-{
+- (NSMutableDictionary *)hiddenFieldsAndFieldIDsDictionary {
     if (_hiddenFieldsAndFieldIDsDictionary) return _hiddenFieldsAndFieldIDsDictionary;
 
     _hiddenFieldsAndFieldIDsDictionary = [NSMutableDictionary new];
@@ -67,8 +64,7 @@
     return _hiddenFieldsAndFieldIDsDictionary;
 }
 
-- (NSMutableDictionary *)hiddenSections
-{
+- (NSMutableDictionary *)hiddenSections {
     if (_hiddenSections) return _hiddenSections;
 
     _hiddenSections = [NSMutableDictionary new];
@@ -76,8 +72,7 @@
     return _hiddenSections;
 }
 
-- (NSArray *)disabledFieldsIDs
-{
+- (NSArray *)disabledFieldsIDs {
     if (_disabledFieldsIDs) return _disabledFieldsIDs;
 
     _disabledFieldsIDs = [NSArray new];
@@ -85,8 +80,7 @@
     return _disabledFieldsIDs;
 }
 
-- (NSMutableDictionary *)values
-{
+- (NSMutableDictionary *)values {
     if (_values) return _values;
 
     _values = [NSMutableDictionary new];
@@ -94,8 +88,7 @@
     return _values;
 }
 
-- (NSMutableDictionary *)removedValues
-{
+- (NSMutableDictionary *)removedValues {
     if (_removedValues) return _removedValues;
 
     _removedValues = [NSMutableDictionary new];
@@ -103,8 +96,7 @@
     return _removedValues;
 }
 
-- (NSMutableDictionary *)sectionTemplatesDictionary
-{
+- (NSMutableDictionary *)sectionTemplatesDictionary {
     if (_sectionTemplatesDictionary) return _sectionTemplatesDictionary;
 
     _sectionTemplatesDictionary = [NSMutableDictionary new];
@@ -112,8 +104,7 @@
     return _sectionTemplatesDictionary;
 }
 
-- (NSMutableDictionary *)fieldTemplatesDictionary
-{
+- (NSMutableDictionary *)fieldTemplatesDictionary {
     if (_fieldTemplatesDictionary) return _fieldTemplatesDictionary;
 
     _fieldTemplatesDictionary = [NSMutableDictionary new];
@@ -121,8 +112,7 @@
     return _fieldTemplatesDictionary;
 }
 
-- (DDMathEvaluator *)evaluator
-{
+- (DDMathEvaluator *)evaluator {
     if (_evaluator) return _evaluator;
 
     _evaluator = [DDMathEvaluator defaultMathEvaluator];
@@ -140,8 +130,7 @@
 - (void)generateFormsWithJSON:(id)JSON
                 initialValues:(NSDictionary *)initialValues
             disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                     disabled:(BOOL)disabled
-{
+                     disabled:(BOOL)disabled {
     NSMutableArray *hideTargets = [NSMutableArray new];
     NSMutableArray *updateTargets = [NSMutableArray new];
     NSMutableArray *disabledFields = [NSMutableArray new];
@@ -329,8 +318,7 @@
     }
 }
 
-- (NSDictionary *)invalidFormFields
-{
+- (NSDictionary *)invalidFormFields {
     NSMutableDictionary *invalidFormFields = [NSMutableDictionary new];
 
     for (FORMGroup *group in self.groups) {
@@ -347,8 +335,7 @@
     return [invalidFormFields copy];
 }
 
-- (NSDictionary *)requiredFields
-{
+- (NSDictionary *)requiredFields {
     NSMutableDictionary *requiredFields = [NSMutableDictionary new];
 
     for (FORMGroup *group in self.groups) {
@@ -364,13 +351,11 @@
     return [requiredFields copy];
 }
 
-- (NSDictionary *)requiredFormFields
-{
+- (NSDictionary *)requiredFormFields {
     return self.requiredFields;
 }
 
-- (NSMutableDictionary *)valuesForFormula:(FORMField *)field
-{
+- (NSMutableDictionary *)valuesForFormula:(FORMField *)field {
     NSMutableDictionary *values = [NSMutableDictionary new];
 
     NSString *formula = field.formula;
@@ -411,8 +396,7 @@
 
 #pragma mark - Group
 
-- (FORMGroup *)groupWithID:(NSString *)groupID
-{
+- (FORMGroup *)groupWithID:(NSString *)groupID {
     FORMGroup *foundGroup;
     for (FORMGroup *group in self.groups) {
         if ([group.groupID isEqualToString:groupID]) {
@@ -426,8 +410,7 @@
 
 #pragma mark - Sections
 
-- (FORMSection *)sectionWithID:(NSString *)sectionID
-{
+- (FORMSection *)sectionWithID:(NSString *)sectionID {
     FORMSection *foundSection = nil;
 
     for (FORMGroup *group in self.groups) {
@@ -443,8 +426,7 @@
 }
 
 - (void)sectionWithID:(NSString *)sectionID
-           completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion
-{
+           completion:(void (^)(FORMSection *section, NSArray *indexPaths))completion {
     FORMSection *foundSection = nil;
     NSMutableArray *indexPaths = [NSMutableArray new];
     NSUInteger groupIndex = 0;
@@ -476,8 +458,7 @@
 #pragma mark - Field
 
 - (FORMField *)fieldWithID:(NSString *)fieldID
-     includingHiddenFields:(BOOL)includingHiddenFields
-{
+     includingHiddenFields:(BOOL)includingHiddenFields {
     NSParameterAssert(fieldID);
 
     FORMField *foundField = nil;
@@ -508,8 +489,7 @@
 
 - (void)fieldWithID:(NSString *)fieldID
 includingHiddenFields:(BOOL)includingHiddenFields
-         completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion
-{
+         completion:(void (^)(FORMField *field, NSIndexPath *indexPath))completion {
     NSParameterAssert(fieldID);
 
     __block FORMField *foundField = nil;
@@ -542,8 +522,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 }
 
 - (void)removeSection:(FORMSection *)removedSection
-     inCollectionView:(UICollectionView *)collectionView
-{
+     inCollectionView:(UICollectionView *)collectionView {
     NSDictionary *removedAttributesJSON = [self.removedValues hyp_JSONNestedAttributes];
     HYPParsedRelationship *parsed = [removedSection.sectionID hyp_parseRelationship];
     NSArray *removedElements = [removedAttributesJSON objectForKey:parsed.relationship];
@@ -616,8 +595,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 }
 
-- (FORMField *)hiddenFieldWithFieldID:(NSString *)fieldID
-{
+- (FORMField *)hiddenFieldWithFieldID:(NSString *)fieldID {
     NSArray *hiddenFields = [self.hiddenFieldsAndFieldIDsDictionary allValues];
     FORMField *foundField;
 
@@ -645,8 +623,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
 - (void)indexForFieldWithID:(NSString *)fieldID
             inSectionWithID:(NSString *)sectionID
-                 completion:(void (^)(FORMSection *section, NSInteger index))completion
-{
+                 completion:(void (^)(FORMSection *section, NSInteger index))completion {
     FORMSection *section = [self sectionWithID:sectionID];
 
     __block NSInteger index = 0;
@@ -666,8 +643,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 }
 
-- (NSArray *)showTargets:(NSArray *)targets
-{
+- (NSArray *)showTargets:(NSArray *)targets {
     NSMutableArray *insertedIndexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
@@ -737,8 +713,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     return insertedIndexPaths;
 }
 
-- (NSArray *)hideTargets:(NSArray *)targets
-{
+- (NSArray *)hideTargets:(NSArray *)targets {
     NSMutableArray *deletedFields = [NSMutableArray new];
     NSMutableArray *deletedSections = [NSMutableArray new];
 
@@ -815,8 +790,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     return [deletedIndexPaths allObjects];
 }
 
-- (NSArray *)updateTargets:(NSArray *)targets
-{
+- (NSArray *)updateTargets:(NSArray *)targets {
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
@@ -925,21 +899,18 @@ includingHiddenFields:(BOOL)includingHiddenFields
     return updatedIndexPaths;
 }
 
-- (NSArray *)enableTargets:(NSArray *)targets
-{
+- (NSArray *)enableTargets:(NSArray *)targets {
     return [self updateTargets:targets
                    withEnabled:YES];
 }
 
-- (NSArray *)disableTargets:(NSArray *)targets
-{
+- (NSArray *)disableTargets:(NSArray *)targets {
     return [self updateTargets:targets
                    withEnabled:NO];
 }
 
 - (NSArray *)updateTargets:(NSArray *)targets
-               withEnabled:(BOOL)enabled
-{
+               withEnabled:(BOOL)enabled {
     NSMutableArray *indexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
@@ -962,8 +933,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
 - (void)indexForSection:(FORMSection *)section
                   group:(FORMGroup *)group
-             completion:(void (^)(BOOL found, NSInteger index))completion
-{
+             completion:(void (^)(BOOL found, NSInteger index))completion {
     __block NSInteger index = 0;
     __block BOOL found = NO;
     [group.sections enumerateObjectsUsingBlock:^(FORMSection *aSection, NSUInteger idx, BOOL *stop) {
@@ -979,8 +949,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 }
 
-- (BOOL)evaluateCondition:(NSString *)condition
-{
+- (BOOL)evaluateCondition:(NSString *)condition {
     BOOL evaluatedResult = NO;
 
     if (condition) {
@@ -1009,28 +978,23 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
 #pragma mark - Enable/Disable
 
-- (void)disable
-{
+- (void)disable {
     self.disabledForm = YES;
 }
 
-- (void)enable
-{
+- (void)enable {
     self.disabledForm = NO;
 }
 
-- (BOOL)isDisabled
-{
+- (BOOL)isDisabled {
     return self.disabledForm;
 }
 
-- (BOOL)isEnabled
-{
+- (BOOL)isEnabled {
     return !self.disabledForm;
 }
 
-- (NSInteger)numberOfFields
-{
+- (NSInteger)numberOfFields {
     NSInteger numberOfFields = 0;
 
     for (FORMGroup *group in self.groups) {
@@ -1044,8 +1008,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
 - (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID
                  intoCollectionView:(UICollectionView *)collectionView
-                         usingGroup:(FORMGroup *)group
-{
+                         usingGroup:(FORMGroup *)group {
     FORMSection *foundSection;
     for (FORMSection *aSection in group.sections) {
         if ([aSection.sectionID isEqualToString:sectionTemplateID]) {
@@ -1124,8 +1087,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 }
 
 - (NSInteger)indexForTemplateSectionWithID:(NSString *)sectionID
-                                    inForm:(FORMGroup *)group
-{
+                                    inForm:(FORMGroup *)group {
     NSInteger index = -1;
     for (FORMSection *existingSection in group.sections) {
         if ([existingSection.sectionID hyp_containsString:sectionID]) {
@@ -1142,13 +1104,11 @@ includingHiddenFields:(BOOL)includingHiddenFields
     return index;
 }
 
-- (void)resetRemovedValues
-{
+- (void)resetRemovedValues {
     self.removedValues = [NSMutableDictionary new];
 }
 
-- (NSArray *)removedSectionsUsingInitialValues:(NSDictionary *)dictionary
-{
+- (NSArray *)removedSectionsUsingInitialValues:(NSDictionary *)dictionary {
     NSMutableSet *currentSectionIDs = [NSMutableSet new];
     for (FORMGroup *group in self.groups) {
         for (FORMSection *section in group.sections) {

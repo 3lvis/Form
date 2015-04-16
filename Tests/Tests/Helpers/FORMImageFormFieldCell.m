@@ -21,8 +21,7 @@ static const CGFloat FORMImageFormFieldContainerWidth = 360.0f;
 
 #pragma mark - Initializers
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
@@ -34,8 +33,7 @@ static const CGFloat FORMImageFormFieldContainerWidth = 360.0f;
     return self;
 }
 
-- (UIImageView *)cameraImageView
-{
+- (UIImageView *)cameraImageView {
     UIImage *image = [UIImage imageNamed:@"camera-icon"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f,
                                                                            FORMImageFormFieldCameraY,
@@ -46,8 +44,7 @@ static const CGFloat FORMImageFormFieldContainerWidth = 360.0f;
     return imageView;
 }
 
-- (UILabel *)label
-{
+- (UILabel *)label {
     CGRect labelFrame = CGRectMake(FORMImageFormFieldLabelsX, FORMImageFormFieldLabelY,
                                    FORMImageFormFieldLabelsWidth, FORMImageFormFieldLabelHeight);
     UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
@@ -56,8 +53,7 @@ static const CGFloat FORMImageFormFieldContainerWidth = 360.0f;
     return label;
 }
 
-- (UILabel *)info
-{
+- (UILabel *)info {
     CGRect infoFrame = CGRectMake(FORMImageFormFieldLabelsX, FORMImageFormFieldInfoY,
                                   FORMImageFormFieldLabelsWidth, FORMImageFormFieldInfoHeight);
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
@@ -68,8 +64,7 @@ static const CGFloat FORMImageFormFieldContainerWidth = 360.0f;
     return infoLabel;
 }
 
-- (UIView *)container
-{
+- (UIView *)container {
     CGFloat height = CGRectGetHeight(self.frame) - FORMImageFormFieldTopMargin;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, FORMImageFormFieldContainerWidth, height)];
     [view addSubview:[self cameraImageView]];
@@ -86,15 +81,13 @@ static const CGFloat FORMImageFormFieldContainerWidth = 360.0f;
 
 #pragma mark - Layout
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     self.contentView.frame = [self contentViewFrame];
 }
 
-- (CGRect)contentViewFrame
-{
+- (CGRect)contentViewFrame {
     CGFloat horizontalMargin = FORMImageFormFieldHorizontalMargin;
     CGFloat verticalMargin = FORMImageFormFieldTopMargin;
 

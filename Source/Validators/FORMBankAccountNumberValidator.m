@@ -4,8 +4,7 @@
 
 @implementation FORMBankAccountNumberValidator
 
-- (FORMValidationResultType)validateFieldValue:(id)fieldValue
-{
+- (FORMValidationResultType)validateFieldValue:(id)fieldValue {
     FORMValidationResultType superValidation = [super validateFieldValue:fieldValue];
     if (superValidation != FORMValidationResultTypeValid) return superValidation;
 

@@ -3,8 +3,7 @@
 
 @implementation FORMFloatInputValidator
 
-- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text withRange:(NSRange)range
-{
+- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text withRange:(NSRange)range {
     BOOL valid = [super validateReplacementString:string withText:text withRange:range];
 
     if (!valid) return valid;

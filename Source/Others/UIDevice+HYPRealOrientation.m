@@ -2,8 +2,7 @@
 
 @implementation UIDevice (HYPRealOrientation)
 
-- (BOOL)hyp_isPortrait
-{
+- (BOOL)hyp_isPortrait {
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
@@ -16,8 +15,7 @@
     return UIDeviceOrientationIsPortrait(orientation);
 }
 
-- (BOOL)hyp_isLandscape
-{
+- (BOOL)hyp_isLandscape {
     return ![self hyp_isPortrait];
 }
 

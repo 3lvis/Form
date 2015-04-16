@@ -25,8 +25,7 @@
 
 @implementation FORMGroupTests
 
-- (void)testCollapsedGroups
-{
+- (void)testCollapsedGroups {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 

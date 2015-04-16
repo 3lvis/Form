@@ -21,8 +21,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 #pragma mark - Initializers
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
@@ -51,8 +50,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     if ([self respondsToSelector:@selector(dismissTooltip)]) {
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:FORMResignFirstResponderNotification
@@ -72,8 +70,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 #pragma mark - Getters
 
-- (FORMTextField *)textField
-{
+- (FORMTextField *)textField {
     if (_textField) return _textField;
 
     _textField = [[FORMTextField alloc] initWithFrame:[self textFieldFrame]];
@@ -82,8 +79,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return _textField;
 }
 
-- (CGRect)labelFrameUsingString:(NSString *)string
-{
+- (CGRect)labelFrameUsingString:(NSString *)string {
     NSArray *components = [string componentsSeparatedByString:@"\n"];
 
     CGFloat width;
@@ -112,8 +108,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return CGRectMake(0, 0, width, height);
 }
 
-- (CGRect)tooltipViewFrame
-{
+- (CGRect)tooltipViewFrame {
     CGRect frame = [self labelFrameUsingString:self.field.info];
 
     frame.size.height += [FORMTooltipView arrowHeight];
@@ -136,8 +131,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return frame;
 }
 
-- (FORMTooltipView *)tooltipView
-{
+- (FORMTooltipView *)tooltipView {
     if (_tooltipView) return _tooltipView;
 
     _tooltipView = [FORMTooltipView new];
@@ -146,8 +140,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return _tooltipView;
 }
 
-- (CGRect)tooltipLabelFrame
-{
+- (CGRect)tooltipLabelFrame {
     CGRect frame = [self labelFrameUsingString:self.field.info];
 
     if (self.tooltipView.arrowDirection == UIPopoverArrowDirectionUp) {
@@ -157,8 +150,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return frame;
 }
 
-- (UILabel *)tooltipLabel
-{
+- (UILabel *)tooltipLabel {
     if (_tooltipLabel) return _tooltipLabel;
 
     _tooltipLabel = [[UILabel alloc] initWithFrame:[self labelFrameUsingString:@""]];
@@ -172,13 +164,11 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 #pragma mark - FORMBaseFormFieldCell
 
-- (void)updateFieldWithDisabled:(BOOL)disabled
-{
+- (void)updateFieldWithDisabled:(BOOL)disabled {
     self.textField.enabled = !disabled;
 }
 
-- (void)updateWithField:(FORMField *)field
-{
+- (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
 
     self.textField.hidden          = (field.sectionSeparator);
@@ -192,16 +182,14 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     self.textField.info   = field.info;
 }
 
-- (void)validate
-{
+- (void)validate {
     BOOL validation = ([self.field validate] == FORMValidationResultTypeValid);
     [self.textField setValid:validation];
 }
 
 #pragma mark - Private methods
 
-- (NSString *)rawTextForField:(FORMField *)field
-{
+- (NSString *)rawTextForField:(FORMField *)field {
     if (field.value && field.type == FORMFieldTypeFloat) {
 
         NSNumber *value = field.value;
@@ -225,8 +213,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 #pragma mark - Actions
 
-- (void)cellTapAction
-{
+- (void)cellTapAction {
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification object:nil];
 
     BOOL shouldDisplayTooltip = (self.field.type == FORMFieldTypeText &&
@@ -236,28 +223,24 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     }
 }
 
-- (void)focusAction
-{
+- (void)focusAction {
     [self.textField becomeFirstResponder];
 }
 
-- (void)clearAction
-{
+- (void)clearAction {
     self.field.value = nil;
     [self updateWithField:self.field];
 }
 
 #pragma mark - Layout
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     self.textField.frame = [self textFieldFrame];
 }
 
-- (CGRect)textFieldFrame
-{
+- (CGRect)textFieldFrame {
     CGFloat marginX = FORMTextFieldCellMarginX;
     CGFloat marginTop = FORMFieldCellMarginTop;
     CGFloat marginBotton = FORMFieldCellMarginBottom;
@@ -269,8 +252,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     return frame;
 }
 
-- (void)showTooltip
-{
+- (void)showTooltip {
     if (self.field.info && self.showTooltips) {
         self.tooltipView.alpha = 0.0f;
         [self.contentView addSubview:self.tooltipView];
@@ -317,13 +299,11 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 #pragma mark - FORMTextFieldDelegate
 
-- (void)textFormFieldDidBeginEditing:(FORMTextField *)textField
-{
+- (void)textFormFieldDidBeginEditing:(FORMTextField *)textField {
     [self performSelector:@selector(showTooltip) withObject:nil afterDelay:0.1f];
 }
 
-- (void)textFormFieldDidEndEditing:(FORMTextField *)textField
-{
+- (void)textFormFieldDidEndEditing:(FORMTextField *)textField {
     [self validate];
 
     if (!self.textField.valid) {
@@ -337,8 +317,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 }
 
 - (void)textFormField:(FORMTextField *)textField
-    didUpdateWithText:(NSString *)text
-{
+    didUpdateWithText:(NSString *)text {
     self.field.value = text;
     [self validate];
 
@@ -354,46 +333,39 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 #pragma mark - Styling
 
-- (void)setTooltipLabelFont:(UIFont *)tooltipLabelFont
-{
+- (void)setTooltipLabelFont:(UIFont *)tooltipLabelFont {
     self.tooltipLabel.font = tooltipLabelFont;
 }
 
-- (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor
-{
+- (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor {
     self.tooltipLabel.textColor = tooltipLabelTextColor;
 }
 
-- (void)setTooltipBackgroundColor:(UIColor *)tooltipBackgroundColor
-{
+- (void)setTooltipBackgroundColor:(UIColor *)tooltipBackgroundColor {
     [FORMTooltipView setTintColor:tooltipBackgroundColor];
 }
 
 #pragma mark - Notifications
 
-- (void)dismissTooltip
-{
+- (void)dismissTooltip {
     if (self.field.info) {
         [self.tooltipView removeFromSuperview];
     }
 }
 
-- (void)showTooltip:(NSNotification *)notification
-{
+- (void)showTooltip:(NSNotification *)notification {
     self.showTooltips = [notification.object boolValue];
 }
 
 #pragma mark - Private headers
 
-- (BOOL)resignFirstResponder
-{
+- (BOOL)resignFirstResponder {
     [self.textField resignFirstResponder];
 
     return [super resignFirstResponder];
 }
 
-- (BOOL)becomeFirstResponder
-{
+- (BOOL)becomeFirstResponder {
     [self.textField becomeFirstResponder];
 
     return [super becomeFirstResponder];

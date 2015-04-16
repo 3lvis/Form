@@ -8,8 +8,7 @@
 
 #pragma mark - Convenience
 
-+ (FORMField *)formFieldWithID:(NSString *)fieldID typeString:(NSString *)typeString
-{
++ (FORMField *)formFieldWithID:(NSString *)fieldID typeString:(NSString *)typeString {
     FORMField *textFormField = [FORMField new];
     textFormField.fieldID = fieldID;
     textFormField.title = fieldID;
@@ -20,23 +19,19 @@
     return textFormField;
 }
 
-+ (FORMField *)textFormFieldWithID:(NSString *)fieldID
-{
++ (FORMField *)textFormFieldWithID:(NSString *)fieldID {
     return [self formFieldWithID:fieldID typeString:@"text"];
 }
 
-+ (FORMField *)floatFormFieldWithID:(NSString *)fieldID
-{
++ (FORMField *)floatFormFieldWithID:(NSString *)fieldID {
     return [self formFieldWithID:fieldID typeString:@"float"];
 }
 
-+ (FORMField *)selectFormFieldWithID:(NSString *)fieldID
-{
++ (FORMField *)selectFormFieldWithID:(NSString *)fieldID {
     return [self formFieldWithID:fieldID typeString:@"select"];
 }
 
-+ (FORMField *)dateFormFieldWithID:(NSString *)fieldID
-{
++ (FORMField *)dateFormFieldWithID:(NSString *)fieldID {
     return [self formFieldWithID:fieldID typeString:@"date"];
 }
 
@@ -44,8 +39,7 @@
 
 #pragma mark Section 0
 
-+ (FORMField *)firstNameField
-{
++ (FORMField *)firstNameField {
     FORMField *formField = [FORMField textFormFieldWithID:@"first_name"];
     formField.position = @0;
     formField.validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"required" : @YES}];
@@ -53,8 +47,7 @@
     return formField;
 }
 
-+ (FORMField *)lastNameField
-{
++ (FORMField *)lastNameField {
     FORMField *formField = [FORMField textFormFieldWithID:@"last_name"];
     formField.position = @1;
     formField.validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"required" : @YES}];
@@ -62,8 +55,7 @@
     return formField;
 }
 
-+ (FORMField *)displayNameField
-{
++ (FORMField *)displayNameField {
     FORMField *formField = [FORMField textFormFieldWithID:@"display_name"];
     formField.position = @2;
     formField.formula = @"first_name last_name";
@@ -73,16 +65,14 @@
 
 #pragma mark Section 1
 
-+ (FORMField *)addressField
-{
++ (FORMField *)addressField {
     FORMField *field = [FORMField textFormFieldWithID:@"address"];
     field.position = @0;
 
     return field;
 }
 
-+ (FORMField *)emailField
-{
++ (FORMField *)emailField {
     FORMField *field = [FORMField textFormFieldWithID:@"email"];
     field.position = @1;
     field.validation = [[FORMFieldValidation alloc]
@@ -92,8 +82,7 @@
     return field;
 }
 
-+ (FORMField *)usernameField
-{
++ (FORMField *)usernameField {
     FORMField *field = [FORMField textFormFieldWithID:@"username"];
     field.position = @2;
 
@@ -104,8 +93,7 @@
 
 #pragma mark Section 0
 
-+ (FORMField *)workHoursField
-{
++ (FORMField *)workHoursField {
     FORMField *field = [FORMField floatFormFieldWithID:@"work_hours"];
     field.position = @0;
 
@@ -114,24 +102,21 @@
 
 #pragma mark Section 1
 
-+ (FORMField *)startDateField
-{
++ (FORMField *)startDateField {
     FORMField *field = [self dateFormFieldWithID:@"start_date"];
     field.position = @0;
 
     return field;
 }
 
-+ (FORMField *)endDateField
-{
++ (FORMField *)endDateField {
     FORMField *field = [self dateFormFieldWithID:@"end_date"];
     field.position = @1;
 
     return field;
 }
 
-+ (FORMField *)contractTypeField
-{
++ (FORMField *)contractTypeField {
     FORMField *field = [self selectFormFieldWithID:@"contract_type"];
     field.position = @2;
 
@@ -156,8 +141,7 @@
 
 #pragma mark Section 2
 
-+ (FORMField *)baseSalaryTypeField
-{
++ (FORMField *)baseSalaryTypeField {
     FORMField *field = [self selectFormFieldWithID:@"base_salary"];
     field.position = @0;
 
@@ -187,8 +171,7 @@
     return field;
 }
 
-+ (FORMField *)bonusEnabledField
-{
++ (FORMField *)bonusEnabledField {
     FORMField *field = [self selectFormFieldWithID:@"bonus_enabled"];
     field.position = @1;
 
@@ -209,16 +192,14 @@
     return field;
 }
 
-+ (FORMField *)bonusField
-{
++ (FORMField *)bonusField {
     FORMField *field = [FORMField floatFormFieldWithID:@"bonus"];
     field.position = @2;
 
     return field;
 }
 
-+ (FORMField *)totalField
-{
++ (FORMField *)totalField {
     FORMField *field = [FORMField floatFormFieldWithID:@"total"];
     field.position = @3;
     field.formula = @"base_salary + bonus";

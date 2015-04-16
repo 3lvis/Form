@@ -2,8 +2,7 @@
 
 @implementation FORMTextFieldTypeManager
 
-- (void)setUpType:(FORMTextFieldInputType)type forTextField:(UITextField *)textField
-{
+- (void)setUpType:(FORMTextFieldInputType)type forTextField:(UITextField *)textField {
     switch (type) {
         case FORMTextFieldInputTypeDefault     : [self setupDefaultTextField:textField]; break;
         case FORMTextFieldInputTypeName        : [self setupNameTextField:textField]; break;
@@ -22,64 +21,56 @@
 
 #pragma mark - FORMTextFieldType
 
-- (void)setupDefaultTextField:(UITextField *)textField
-{
+- (void)setupDefaultTextField:(UITextField *)textField {
     textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
     textField.autocorrectionType = UITextAutocorrectionTypeDefault;
     textField.keyboardType = UIKeyboardTypeDefault;
     textField.secureTextEntry = NO;
 }
 
-- (void)setupNameTextField:(UITextField *)textField
-{
+- (void)setupNameTextField:(UITextField *)textField {
     textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.keyboardType = UIKeyboardTypeDefault;
     textField.secureTextEntry = NO;
 }
 
-- (void)setupUsernameTextField:(UITextField *)textField
-{
+- (void)setupUsernameTextField:(UITextField *)textField {
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.keyboardType = UIKeyboardTypeNamePhonePad;
     textField.secureTextEntry = NO;
 }
 
-- (void)setupPhoneNumberTextField:(UITextField *)textField
-{
+- (void)setupPhoneNumberTextField:(UITextField *)textField {
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.keyboardType = UIKeyboardTypePhonePad;
     textField.secureTextEntry = NO;
 }
 
-- (void)setupNumberTextField:(UITextField *)textField
-{
+- (void)setupNumberTextField:(UITextField *)textField {
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.keyboardType = UIKeyboardTypeNumberPad;
     textField.secureTextEntry = NO;
 }
 
-- (void)setupAddressTextField:(UITextField *)textField
-{
+- (void)setupAddressTextField:(UITextField *)textField {
     textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     textField.autocorrectionType = UITextAutocorrectionTypeDefault;
     textField.keyboardType = UIKeyboardTypeASCIICapable;
     textField.secureTextEntry = NO;
 }
 
-- (void)setupEmailTextField:(UITextField *)textField
-{
+- (void)setupEmailTextField:(UITextField *)textField {
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.keyboardType = UIKeyboardTypeEmailAddress;
     textField.secureTextEntry = NO;
 }
 
-- (void)setupPasswordTextField:(UITextField *)textField
-{
+- (void)setupPasswordTextField:(UITextField *)textField {
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.keyboardType = UIKeyboardTypeASCIICapable;

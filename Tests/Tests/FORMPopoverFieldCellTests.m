@@ -10,8 +10,7 @@
 
 @implementation FORMPopoverFieldCellTests
 
-- (void)testPopoverSelectionWithDisabledField
-{
+- (void)testPopoverSelectionWithDisabledField {
     FORMPopoverFieldCell *cell = [FORMPopoverFieldCell new];
     FORMField *field = [FORMField contractTypeField];
 

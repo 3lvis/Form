@@ -8,8 +8,7 @@
 
 @implementation FORMTests
 
-- (void)testInitWithDictionary
-{
+- (void)testInitWithDictionary {
     FORMGroup *group = [[FORMGroup alloc] initWithDictionary:@{@"id": @"some_form",
                                                               @"title": @"Some form"}
                                                    position:0

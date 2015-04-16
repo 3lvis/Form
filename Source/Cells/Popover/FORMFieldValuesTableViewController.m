@@ -17,8 +17,7 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 
 #pragma mark - Getters
 
-- (FORMFieldValuesTableViewHeader *)headerView
-{
+- (FORMFieldValuesTableViewHeader *)headerView {
 	if (_headerView) return _headerView;
 
     _headerView = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:FORMFieldValuesTableViewHeaderIdentifier];
@@ -28,8 +27,7 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 
 #pragma mark - Setters
 
-- (void)setField:(FORMField *)field
-{
+- (void)setField:(FORMField *)field {
     _field = field;
 
     self.values = [NSArray arrayWithArray:field.values];
@@ -39,8 +37,7 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 
 #pragma mark - View Lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     self.clearsSelectionOnViewWillAppear = NO;
@@ -53,15 +50,13 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 
 #pragma mark - TableViewDelegate
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     self.headerView.field = self.field;
 
     return self.headerView;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (self.customHeight) {
         return self.customHeight;
     } else {
@@ -71,13 +66,11 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 
 #pragma mark - Table View Data Source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.values.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FORMFieldValueCell *cell = [tableView dequeueReusableCellWithIdentifier:FORMFieldValueCellIdentifer];
 
     FORMFieldValue *fieldValue = self.values[indexPath.row];
@@ -98,8 +91,7 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FORMFieldValue *fieldValue = self.values[indexPath.row];
 
     if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {

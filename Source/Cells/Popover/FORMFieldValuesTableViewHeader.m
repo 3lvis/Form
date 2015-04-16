@@ -15,8 +15,7 @@ static const CGFloat FORMLabelHeight = 25.0f;
 
 #pragma mark - Initializers
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
@@ -28,8 +27,7 @@ static const CGFloat FORMLabelHeight = 25.0f;
 
 #pragma mark - Getters
 
-- (UILabel *)titleLabel
-{
+- (UILabel *)titleLabel {
     if (_titleLabel) return _titleLabel;
 
     CGRect rect = CGRectMake(0.0f, 8.0f, FORMFieldValuesHeaderWidth, FORMLabelHeight);
@@ -40,8 +38,7 @@ static const CGFloat FORMLabelHeight = 25.0f;
     return _titleLabel;
 }
 
-- (UILabel *)infoLabel
-{
+- (UILabel *)infoLabel {
     if (_infoLabel) return _infoLabel;
 
     CGFloat y = CGRectGetMaxY(self.titleLabel.frame);
@@ -55,31 +52,26 @@ static const CGFloat FORMLabelHeight = 25.0f;
 
 #pragma mark - Setters
 
-- (void)setField:(FORMField *)field
-{
+- (void)setField:(FORMField *)field {
     _field = field;
 
     self.titleLabel.text = field.title;
     self.infoLabel.text = field.info;
 }
 
-- (void)setTitleLabelFont:(UIFont *)titleLabelFont
-{
+- (void)setTitleLabelFont:(UIFont *)titleLabelFont {
     self.titleLabel.font = titleLabelFont;
 }
 
-- (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor
-{
+- (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor {
     self.titleLabel.textColor = titleLabelTextColor;
 }
 
-- (void)setInfoLabelFont:(UIFont *)infoLabelFont
-{
+- (void)setInfoLabelFont:(UIFont *)infoLabelFont {
     self.infoLabel.font = infoLabelFont;
 }
 
-- (void)setInfoLabelTextColor:(UIColor *)infoLabelTextColor
-{
+- (void)setInfoLabelTextColor:(UIColor *)infoLabelTextColor {
     self.infoLabel.textColor = infoLabelTextColor;
 }
 

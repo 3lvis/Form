@@ -27,8 +27,7 @@ static BOOL enabledProperty;
 
 @implementation FORMFieldValueLabel
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
@@ -43,15 +42,13 @@ static BOOL enabledProperty;
     return self;
 }
 
-- (void)drawTextInRect:(CGRect)rect
-{
+- (void)drawTextInRect:(CGRect)rect {
     UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, FORMFieldCellLeftMargin, 0.0f, 0.0f);
 
     return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
 }
 
-- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines
-{
+- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines {
     UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, FORMFieldCellLeftMargin, 0.0f, 0.0f);
 
     CGRect frame = UIEdgeInsetsInsetRect(bounds, insets);
@@ -61,8 +58,7 @@ static BOOL enabledProperty;
 
 #pragma mark - Actions
 
-- (void)titleLabelTapAction
-{
+- (void)titleLabelTapAction {
     if ([self.delegate respondsToSelector:@selector(titleLabelPressed:)]) {
         [self.delegate titleLabelPressed:self];
     }
@@ -70,8 +66,7 @@ static BOOL enabledProperty;
 
 #pragma mark - Appearance
 
-- (void)setActive:(BOOL)active
-{
+- (void)setActive:(BOOL)active {
     _active = active;
 
     if (active) {
@@ -83,8 +78,7 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)setEnabled:(BOOL)enabled
-{
+- (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
 
     enabledProperty = enabled;
@@ -100,8 +94,7 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)setValid:(BOOL)valid
-{
+- (void)setValid:(BOOL)valid {
     _valid = valid;
 
     if (!self.isEnabled) return;
@@ -115,94 +108,76 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)setCustomFont:(UIFont *)font
-{
+- (void)setCustomFont:(UIFont *)font {
     self.font = font;
 }
 
-- (void)setBorderWidth:(CGFloat)borderWidth
-{
+- (void)setBorderWidth:(CGFloat)borderWidth {
     self.layer.borderWidth = borderWidth;
 }
 
-- (void)setBorderColor:(UIColor *)borderColor
-{
+- (void)setBorderColor:(UIColor *)borderColor {
     self.layer.borderColor = borderColor.CGColor;
 }
 
-- (void)setCornerRadius:(CGFloat)cornerRadius
-{
+- (void)setCornerRadius:(CGFloat)cornerRadius {
     self.layer.cornerRadius = cornerRadius;
 }
 
-- (void)setActiveBackgroundColor:(UIColor *)color
-{
+- (void)setActiveBackgroundColor:(UIColor *)color {
     activeBackgroundColor = color;
 }
 
-- (void)setActiveBorderColor:(UIColor *)color
-{
+- (void)setActiveBorderColor:(UIColor *)color {
     activeBorderColor = color;
 }
 
-- (void)setInactiveBackgroundColor:(UIColor *)color
-{
+- (void)setInactiveBackgroundColor:(UIColor *)color {
     inactiveBackgroundColor = color;
 }
 
-- (void)setInactiveBorderColor:(UIColor *)color
-{
+- (void)setInactiveBorderColor:(UIColor *)color {
     inactiveBorderColor = color;
 }
 
-- (void)setEnabledBackgroundColor:(UIColor *)color
-{
+- (void)setEnabledBackgroundColor:(UIColor *)color {
     enabledBackgroundColor = color;
 }
 
-- (void)setEnabledBorderColor:(UIColor *)color
-{
+- (void)setEnabledBorderColor:(UIColor *)color {
     enabledBorderColor = color;
 }
 
-- (void)setEnabledTextColor:(UIColor *)color
-{
+- (void)setEnabledTextColor:(UIColor *)color {
     enabledTextColor = color;
 }
 
-- (void)setDisabledBackgroundColor:(UIColor *)color
-{
+- (void)setDisabledBackgroundColor:(UIColor *)color {
     disabledBackgroundColor = color;
 }
 
-- (void)setDisabledBorderColor:(UIColor *)color
-{
+- (void)setDisabledBorderColor:(UIColor *)color {
     disabledBorderColor = color;
 }
 
-- (void)setDisabledTextColor:(UIColor *)color
-{
+- (void)setDisabledTextColor:(UIColor *)color {
     disabledTextColor = color;
     self.enabled = enabledProperty;
 }
 
-- (void)setValidBackgroundColor:(UIColor *)color
-{
+- (void)setValidBackgroundColor:(UIColor *)color {
     validBackgroundColor = color;
 }
 
-- (void)setValidBorderColor:(UIColor *)color
-{
+- (void)setValidBorderColor:(UIColor *)color {
     validBorderColor = color;
 }
 
-- (void)setInvalidBackgroundColor:(UIColor *)color
-{
+- (void)setInvalidBackgroundColor:(UIColor *)color {
     invalidBackgroundColor = color;
 }
 
-- (void)setInvalidBorderColor:(UIColor *)color
-{
+- (void)setInvalidBorderColor:(UIColor *)color {
     invalidBorderColor = color;
     self.enabled = enabledProperty;
 }

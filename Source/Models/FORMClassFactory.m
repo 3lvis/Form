@@ -3,8 +3,7 @@
 
 @implementation FORMClassFactory
 
-+ (Class)classFromString:(NSString *)string withSuffix:(NSString *)suffix
-{
++ (Class)classFromString:(NSString *)string withSuffix:(NSString *)suffix {
     if (!string || string.length == 0) {
         return nil;
     }

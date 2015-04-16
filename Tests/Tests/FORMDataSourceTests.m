@@ -25,8 +25,7 @@
 
 @implementation FORMDataSourceTests
 
-- (void)testIndexInForms
-{
+- (void)testIndexInForms {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -67,8 +66,7 @@
     [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"last_name"]]];
 }
 
-- (void)testEnableAndDisableTargets
-{
+- (void)testEnableAndDisableTargets {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -97,8 +95,7 @@
     XCTAssertFalse(targetField.isDisabled);
 }
 
-- (void)testInitiallyDisabled
-{
+- (void)testInitiallyDisabled {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -112,8 +109,7 @@
     XCTAssertTrue(totalField.disabled);
 }
 
-- (void)testUpdatingTargetValue
-{
+- (void)testUpdatingTargetValue {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -133,8 +129,7 @@
     XCTAssertEqualObjects(targetField.value, @"John Hyperseed");
 }
 
-- (void)testDefaultValue
-{
+- (void)testDefaultValue {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -148,8 +143,7 @@
     XCTAssertNotNil(usernameField.value);
 }
 
-- (void)testCondition
-{
+- (void)testCondition {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -178,8 +172,7 @@
 
 #pragma mark - reloadWithDictionary
 
-- (void)testReloadWithDictionary
-{
+- (void)testReloadWithDictionary {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -198,8 +191,7 @@
 
 #pragma mark - testResetDynamicSectionsWithDictionary
 
-- (void)testResetDynamicSectionsWithDictionaryA
-{
+- (void)testResetDynamicSectionsWithDictionaryA {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -241,8 +233,7 @@
     XCTAssertEqualObjects(dataSource.values, initialValues);
 }
 
-- (void)testResetDynamicSectionsWithDictionaryB
-{
+- (void)testResetDynamicSectionsWithDictionaryB {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -276,8 +267,7 @@
     XCTAssertEqualObjects(dataSource.values, initialValues);
 }
 
-- (void)testResetDynamicSectionsWithDictionaryC
-{
+- (void)testResetDynamicSectionsWithDictionaryC {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -313,8 +303,7 @@
     XCTAssertEqualObjects(dataSource.values, initialValues);
 }
 
-- (void)testResetDynamicSectionsWithDictionaryD
-{
+- (void)testResetDynamicSectionsWithDictionaryD {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -352,8 +341,7 @@
     XCTAssertEqualObjects([dataSource.values hyp_removingNulls], initialValues);
 }
 
-- (void)testResetDynamicSectionsWithDictionaryE
-{
+- (void)testResetDynamicSectionsWithDictionaryE {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -387,8 +375,7 @@
     XCTAssertEqual(group.sections.count, 8);
 }
 
-- (void)testResetDynamicSectionsWithDictionaryF
-{
+- (void)testResetDynamicSectionsWithDictionaryF {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -432,8 +419,7 @@
 
 #pragma mark - processTarget
 
-- (void)testClearTarget
-{
+- (void)testClearTarget {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -454,8 +440,7 @@
     XCTAssertNil(firstNameField.value);
 }
 
-- (void)testFormFieldsAreValid
-{
+- (void)testFormFieldsAreValid {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"field-validations.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -471,8 +456,7 @@
     XCTAssertTrue([dataSource isValid]);
 }
 
-- (void)testAddingAndRemovingDynamicFields
-{
+- (void)testAddingAndRemovingDynamicFields {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -520,8 +504,7 @@
     XCTAssertNotNil(removeField);
 }
 
-- (void)testDynamicWithInitialValues
-{
+- (void)testDynamicWithInitialValues {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -557,8 +540,7 @@
     XCTAssertEqualObjects(field.value, @"hi@there.com");
 }
 
-- (void)testAddingMultipleDynamicSections
-{
+- (void)testAddingMultipleDynamicSections {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -600,8 +582,7 @@
     XCTAssertEqualObjects(fieldIndexPath, [NSIndexPath indexPathForRow:14 inSection:0]);
 }
 
-- (void)testRemovingSectionsAddedByInitialValuesA
-{
+- (void)testRemovingSectionsAddedByInitialValuesA {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -637,8 +618,7 @@
     XCTAssertEqualObjects(dataSource.values[@"email"], @"hi@there.com");
 }
 
-- (void)testRemovingSectionsAddedByInitialValuesB
-{
+- (void)testRemovingSectionsAddedByInitialValuesB {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -674,8 +654,7 @@
     XCTAssertEqualObjects(dataSource.values[@"email"], @"hi@there.com");
 }
 
-- (void)testRemovingMultipleDynamicSectionsAddedByInitialValues
-{
+- (void)testRemovingMultipleDynamicSectionsAddedByInitialValues {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -709,8 +688,7 @@
     XCTAssertEqualObjects(dataSource.removedValues[@"companies[1].phone_number"], @"4555666");
 }
 
-- (void)testUpdatedSectionPositionWhenRemovingDynamicSections
-{
+- (void)testUpdatedSectionPositionWhenRemovingDynamicSections {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -749,8 +727,7 @@
     XCTAssertNotNil(section);
 }
 
-- (void)testUpdatedFieldPositionWhenHidingAndShowingField
-{
+- (void)testUpdatedFieldPositionWhenHidingAndShowingField {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -790,8 +767,7 @@
     XCTAssertEqualObjects(fieldPositions, expectedInitialPositions);
 }
 
-- (void)testDynamicSectionsInvolvingHideTargets
-{
+- (void)testDynamicSectionsInvolvingHideTargets {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 

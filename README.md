@@ -57,8 +57,7 @@ This are the required steps to create a basic form with a first name field.
 ##### AppDelegate
 
 ```objc
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Don't forget to set your style, or use the default one if you want
     [FORMDefaultStyle applyStyle];
 
@@ -68,8 +67,7 @@ This are the required steps to create a basic form with a first name field.
 
 ##### UICollectionViewController
 ```objc
-- (FORMDataSource *)dataSource
-{
+- (FORMDataSource *)dataSource {
     if (_dataSource) return _dataSource;
 
     _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
@@ -81,8 +79,7 @@ This are the required steps to create a basic form with a first name field.
     return _dataSource;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     self.collectionView.dataSource = self.dataSource;

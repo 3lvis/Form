@@ -15,8 +15,7 @@
 
 @implementation FORMTextFormFieldCellTests
 
-- (void)testWidthCalculation
-{
+- (void)testWidthCalculation {
     FORMTextFieldCell *cell = [FORMTextFieldCell new];
     CGRect rect = [cell labelFrameUsingString:@"bork"];
     XCTAssertEqual(rect.size.width, 90.0f);

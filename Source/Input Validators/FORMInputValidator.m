@@ -3,8 +3,7 @@
 
 @implementation FORMInputValidator
 
-- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text withRange:(NSRange)range
-{
+- (BOOL)validateReplacementString:(NSString *)string withText:(NSString *)text withRange:(NSRange)range {
     BOOL shouldSkipValidations = (text.length == 0 || string.length == 0 || !self.validation);
     if (shouldSkipValidations) return YES;
 
@@ -35,8 +34,7 @@
     return valid;
 }
 
-- (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format
-{
+- (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format {
     NSError *error = NULL;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:format options:NSRegularExpressionCaseInsensitive error:&error];
     NSUInteger numberOfMatches = [regex numberOfMatchesInString:fieldValue options:NSMatchingReportProgress range:NSMakeRange(0, fieldValue.length)];

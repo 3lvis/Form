@@ -8,8 +8,7 @@
 
 #pragma mark - Drawing
 
-- (void)drawRect:(CGRect)rect
-{
+- (void)drawRect:(CGRect)rect {
     UIRectCorner corners = UIRectCornerBottomLeft | UIRectCornerBottomRight;
 
     UIBezierPath *rectanglePath = [UIBezierPath bezierPathWithRoundedRect:rect

@@ -10,8 +10,7 @@
                           position:(NSInteger)position
                           disabled:(BOOL)disabled
                  disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                     isLastSection:(BOOL)isLastSection
-{
+                     isLastSection:(BOOL)isLastSection {
     self = [super init];
     if (!self) return nil;
 
@@ -68,8 +67,7 @@
     return self;
 }
 
-- (FORMSectionType)typeFromTypeString:(NSString *)typeString
-{
+- (FORMSectionType)typeFromTypeString:(NSString *)typeString {
     if ([typeString isEqualToString:@"dynamic"]) {
         return FORMSectionTypeDynamic;
     } else {
@@ -85,8 +83,7 @@
                        inGroups:(NSArray *)groups
                      completion:(void (^)(BOOL found,
                                           FORMSection *section,
-                                          NSInteger index))completion
-{
+                                          NSInteger index))completion {
     FORMGroup *group = groups[[field.section.group.position integerValue]];
     FORMSection *section = group.sections[[field.section.position integerValue]];
 
@@ -107,8 +104,7 @@
 
 #pragma mark Instance
 
-- (NSInteger)indexInGroups:(NSArray *)groups
-{
+- (NSInteger)indexInGroups:(NSArray *)groups {
     FORMGroup *group = groups[[self.group.position integerValue]];
 
     BOOL found = NO;
@@ -130,8 +126,7 @@
     return index;
 }
 
-- (void)removeField:(FORMField *)field inGroups:(NSArray *)groups
-{
+- (void)removeField:(FORMField *)field inGroups:(NSArray *)groups {
     __block NSInteger index = 0;
     __block BOOL found = NO;
 
@@ -145,15 +140,13 @@
     [self.fields removeObjectAtIndex:index];
 }
 
-- (void)resetFieldPositions
-{
+- (void)resetFieldPositions {
     [self.fields enumerateObjectsUsingBlock:^(FORMField *field, NSUInteger idx, BOOL *stop) {
         field.position = @(idx);
     }];
 }
 
-- (NSString *)description
-{
+- (NSString *)description {
     NSMutableArray *fields = [NSMutableArray new];
     for (FORMField *field in self.fields) {
         if (field.fieldID) {

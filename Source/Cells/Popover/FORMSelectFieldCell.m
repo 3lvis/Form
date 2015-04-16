@@ -12,8 +12,7 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
 
 #pragma mark - Initializers
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame contentViewController:self.fieldValuesController
                  andContentSize:FORMSelectPopoverSize];
     if (!self) return nil;
@@ -25,8 +24,7 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
 
 #pragma mark - Getters
 
-- (FORMFieldValuesTableViewController *)fieldValuesController
-{
+- (FORMFieldValuesTableViewController *)fieldValuesController {
     if (_fieldValuesController) return _fieldValuesController;
 
     _fieldValuesController = [FORMFieldValuesTableViewController new];
@@ -37,8 +35,7 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
 
 #pragma mark - FORMBaseFormFieldCell
 
-- (void)updateWithField:(FORMField *)field
-{
+- (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
 
     if (field.value) {
@@ -62,16 +59,14 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
 
 #pragma mark - FORMPopoverFormFieldCell
 
-- (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field
-{
+- (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field {
     self.fieldValuesController.field = self.field;
 }
 
 #pragma mark - FORMFieldValuesTableViewControllerDelegate
 
 - (void)fieldValuesTableViewController:(FORMFieldValuesTableViewController *)fieldValuesTableViewController
-                      didSelectedValue:(FORMFieldValue *)selectedValue
-{
+                      didSelectedValue:(FORMFieldValue *)selectedValue {
     self.field.value = selectedValue;
 
     [self updateWithField:self.field];

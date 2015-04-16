@@ -8,8 +8,7 @@
 
 @implementation FORMFieldValueTests
 
-- (void)testInitWithDictionary
-{
+- (void)testInitWithDictionary {
     FORMFieldValue *fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": @"contract_type",
                                                                               @"title": @"Contract Type",
                                                                               @"info": @"This is ma' contract",

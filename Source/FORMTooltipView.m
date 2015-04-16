@@ -29,63 +29,52 @@ static UIImage *FORMPopoverBackgroundTopArrowImage = nil;
 @synthesize arrowOffset, arrowDirection;
 
 
-+ (CGFloat)arrowBase
-{
++ (CGFloat)arrowBase {
     return FORMPopoverBackgroundArrowBase;
 }
 
-+ (CGFloat)arrowHeight
-{
++ (CGFloat)arrowHeight {
     return FORMPopoverBackgroundArrowHeight;
 }
 
-+ (UIEdgeInsets)contentViewInsets
-{
++ (UIEdgeInsets)contentViewInsets {
     return UIEdgeInsetsMake(FORMPopoverBackgroundTopContentInset,
                             FORMPopoverBackgroundLeftContentInset,
                             FORMPopoverBackgroundBottomContentInset,
                             FORMPopoverBackgroundRightContentInset);
 }
 
-- (void)setArrowOffset:(CGFloat)_arrowOffset
-{
+- (void)setArrowOffset:(CGFloat)_arrowOffset {
     arrowOffset = _arrowOffset;
     [self setNeedsLayout];
 }
 
-- (void)setArrowDirection:(UIPopoverArrowDirection)_arrowDirection
-{
+- (void)setArrowDirection:(UIPopoverArrowDirection)_arrowDirection {
     arrowDirection = _arrowDirection;
     [self setNeedsLayout];
 }
 
-+ (void)setBackgroundImageCornerRadius:(CGFloat)cornerRadius
-{
++ (void)setBackgroundImageCornerRadius:(CGFloat)cornerRadius {
     FORMPopoverBackgroundCornerRadius = cornerRadius;
 }
 
-+ (void)setContentInset:(CGFloat)contentInset
-{
++ (void)setContentInset:(CGFloat)contentInset {
     FORMPopoverBackgroundContentInset = contentInset;
 }
 
-+ (void)setTintColor:(UIColor *)tintColor
-{
++ (void)setTintColor:(UIColor *)tintColor {
     FORMPopoverBackgroundTintColor = tintColor;
 }
 
-+ (void)setShadowEnabled:(BOOL)shadowEnabled
-{
++ (void)setShadowEnabled:(BOOL)shadowEnabled {
     FORMPopoverBackgroundShadowEnabled = shadowEnabled;
 }
 
-+ (void)setArrowBase:(CGFloat)arrowBase
-{
++ (void)setArrowBase:(CGFloat)arrowBase {
     FORMPopoverBackgroundArrowBase = arrowBase;
 }
 
-+ (void)setArrowHeight:(CGFloat)arrowHeight
-{
++ (void)setArrowHeight:(CGFloat)arrowHeight {
     FORMPopoverBackgroundArrowHeight = arrowHeight;
 }
 
@@ -93,8 +82,7 @@ static UIImage *FORMPopoverBackgroundTopArrowImage = nil;
                        top:(UIImage *)top
                      right:(UIImage *)right
                     bottom:(UIImage *)bottom
-                      left:(UIImage *)left
-{
+                      left:(UIImage *)left {
     FORMPopoverBackgroundBackgroundImage = background;
     FORMPopoverBackgroundTopArrowImage = top;
     FORMPopoverBackgroundRightArrowImage = right;
@@ -102,13 +90,11 @@ static UIImage *FORMPopoverBackgroundTopArrowImage = nil;
     FORMPopoverBackgroundLeftArrowImage = left;
 }
 
-+ (void)rebuildArrowImages
-{
++ (void)rebuildArrowImages {
     [FORMTooltipView buildArrows:FORMPopoverBackgroundTintColor];
 }
 
-+ (void)buildArrows:(UIColor *)tintColor
-{
++ (void)buildArrows:(UIColor *)tintColor {
     UIBezierPath *arrowPath;
 
     CGSize arrowSize = CGSizeMake(FORMPopoverBackgroundArrowBase,
@@ -195,8 +181,7 @@ static UIImage *FORMPopoverBackgroundTopArrowImage = nil;
     UIGraphicsEndImageContext();
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
@@ -226,8 +211,7 @@ static UIImage *FORMPopoverBackgroundTopArrowImage = nil;
 
 #pragma mark - Layout
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     CGFloat popoverImageOriginX = 0.0f;
     CGFloat popoverImageOriginY = 0.0f;
     CGFloat popoverImageWidth = self.bounds.size.width;

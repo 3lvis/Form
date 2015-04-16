@@ -8,8 +8,7 @@
 
 @implementation FORMTargetTests
 
-- (void)testInitWithDictionary
-{
+- (void)testInitWithDictionary {
     FORMTarget *target = [FORMTarget showFieldTargetWithID:@"start_date"];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"start_date");
@@ -43,8 +42,7 @@
     XCTAssertEqual(target.actionType, FORMTargetActionEnable);
 }
 
-- (void)testFilteredTargets
-{
+- (void)testFilteredTargets {
     NSMutableArray *targets = [NSMutableArray new];
 
     [targets addObject:[FORMTarget showFieldTargetWithID:@"first_name"]];

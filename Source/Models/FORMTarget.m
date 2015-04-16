@@ -10,8 +10,7 @@
 
 #pragma mark - Initializers
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (!self) return nil;
 
@@ -25,16 +24,14 @@
 }
 
 + (FORMTarget *)fieldTargetWithID:(NSString *)targetID
-                 actionTypeString:(NSString *)actionTypeString
-{
+                 actionTypeString:(NSString *)actionTypeString {
     return [self targetWithID:targetID
                    typeString:@"field"
              actionTypeString:actionTypeString];
 }
 
 + (FORMTarget *)sectionTargetWithID:(NSString *)targetID
-                   actionTypeString:(NSString *)actionTypeString
-{
+                   actionTypeString:(NSString *)actionTypeString {
     return [self targetWithID:targetID
                    typeString:@"section"
              actionTypeString:actionTypeString];
@@ -42,8 +39,7 @@
 
 + (FORMTarget *)targetWithID:(NSString *)targetID
                   typeString:(NSString *)typeString
-            actionTypeString:(NSString *)actionTypeString
-{
+            actionTypeString:(NSString *)actionTypeString {
     FORMTarget *target = [FORMTarget new];
     target.targetID = targetID;
     target.typeString = typeString;
@@ -54,8 +50,7 @@
 
 #pragma mark - Setters
 
-- (void)setTypeString:(NSString *)typeString
-{
+- (void)setTypeString:(NSString *)typeString {
     _typeString = typeString;
 
     if ([typeString isEqualToString:@"field"]) {
@@ -67,8 +62,7 @@
     }
 }
 
-- (void)setActionTypeString:(NSString *)actionTypeString
-{
+- (void)setActionTypeString:(NSString *)actionTypeString {
     _actionTypeString = actionTypeString;
 
     if ([actionTypeString isEqualToString:@"show"]) {
@@ -90,46 +84,39 @@
 
 #pragma mark - Field target
 
-+ (FORMTarget *)showFieldTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)showFieldTargetWithID:(NSString *)targetID {
     return [self fieldTargetWithID:targetID
                   actionTypeString:@"show"];
 }
 
-+ (FORMTarget *)hideFieldTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)hideFieldTargetWithID:(NSString *)targetID {
     return [self fieldTargetWithID:targetID
                   actionTypeString:@"hide"];
 }
 
-+ (FORMTarget *)enableFieldTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)enableFieldTargetWithID:(NSString *)targetID {
     return [self fieldTargetWithID:targetID
                   actionTypeString:@"enable"];
 }
 
-+ (FORMTarget *)disableFieldTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)disableFieldTargetWithID:(NSString *)targetID {
     return [self fieldTargetWithID:targetID
                   actionTypeString:@"disable"];
 }
 
-+ (FORMTarget *)updateFieldTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)updateFieldTargetWithID:(NSString *)targetID {
     return [self fieldTargetWithID:targetID
                   actionTypeString:@"update"];
 }
 
-+ (FORMTarget *)clearFieldTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)clearFieldTargetWithID:(NSString *)targetID {
     return [self fieldTargetWithID:targetID
                   actionTypeString:@"clear"];
 }
 
 #pragma mark - Field targets
 
-+ (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)showFieldTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self showFieldTargetWithID:targetID]];
@@ -138,8 +125,7 @@
     return targets;
 }
 
-+ (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)hideFieldTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self hideFieldTargetWithID:targetID]];
@@ -148,8 +134,7 @@
     return targets;
 }
 
-+ (NSArray *)enableFieldTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)enableFieldTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self enableFieldTargetWithID:targetID]];
@@ -158,8 +143,7 @@
     return targets;
 }
 
-+ (NSArray *)disableFieldTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)disableFieldTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self disableFieldTargetWithID:targetID]];
@@ -168,8 +152,7 @@
     return targets;
 }
 
-+ (NSArray *)updateFieldTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)updateFieldTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self updateFieldTargetWithID:targetID]];
@@ -178,8 +161,7 @@
     return targets;
 }
 
-+ (NSArray *)clearFieldTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)clearFieldTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self clearFieldTargetWithID:targetID]];
@@ -190,40 +172,34 @@
 
 #pragma mark - Section target
 
-+ (FORMTarget *)showSectionTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)showSectionTargetWithID:(NSString *)targetID {
     return [self sectionTargetWithID:targetID
                     actionTypeString:@"show"];
 }
 
-+ (FORMTarget *)hideSectionTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)hideSectionTargetWithID:(NSString *)targetID {
     return [self sectionTargetWithID:targetID
                     actionTypeString:@"hide"];
 }
 
-+ (FORMTarget *)enableSectionTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)enableSectionTargetWithID:(NSString *)targetID {
     return [self sectionTargetWithID:targetID
                     actionTypeString:@"enable"];
 }
 
-+ (FORMTarget *)disableSectionTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)disableSectionTargetWithID:(NSString *)targetID {
     return [self sectionTargetWithID:targetID
                     actionTypeString:@"disable"];
 }
 
-+ (FORMTarget *)updateSectionTargetWithID:(NSString *)targetID
-{
++ (FORMTarget *)updateSectionTargetWithID:(NSString *)targetID {
     return [self sectionTargetWithID:targetID
                     actionTypeString:@"update"];
 }
 
 #pragma mark - Section targets
 
-+ (NSArray *)showSectionTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)showSectionTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self showSectionTargetWithID:targetID]];
@@ -232,8 +208,7 @@
     return targets;
 }
 
-+ (NSArray *)hideSectionTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)hideSectionTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self hideSectionTargetWithID:targetID]];
@@ -242,8 +217,7 @@
     return targets;
 }
 
-+ (NSArray *)enableSectionTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)enableSectionTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self enableSectionTargetWithID:targetID]];
@@ -252,8 +226,7 @@
     return targets;
 }
 
-+ (NSArray *)disableSectionTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)disableSectionTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self disableSectionTargetWithID:targetID]];
@@ -262,8 +235,7 @@
     return targets;
 }
 
-+ (NSArray *)updateSectionTargetsWithIDs:(NSArray *)targetIDs
-{
++ (NSArray *)updateSectionTargetsWithIDs:(NSArray *)targetIDs {
     NSMutableArray *targets = [NSMutableArray new];
     for (NSString *targetID in targetIDs) {
         [targets addObject:[self updateSectionTargetWithID:targetID]];
@@ -277,8 +249,7 @@
                                   NSArray *hiddenTargets,
                                   NSArray *updatedTargets,
                                   NSArray *enabledTargets,
-                                  NSArray *disabledTargets))filtered
-{
+                                  NSArray *disabledTargets))filtered {
     NSMutableArray *shown = [NSMutableArray new];
     NSMutableArray *hidden = [NSMutableArray new];
     NSMutableArray *updated = [NSMutableArray new];
@@ -317,8 +288,7 @@
     }
 }
 
-- (BOOL)isEqual:(FORMTarget *)object
-{
+- (BOOL)isEqual:(FORMTarget *)object {
     BOOL sameTargetID = (object.targetID == nil ||
                          [object.targetID isEqualToString:self.targetID]);
 
@@ -341,8 +311,7 @@
     return equal;
 }
 
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat:@"\n — Target: %@ —\n value: %@\n type: %@\n action type: %@\n condition: %@\n",
             self.targetID, self.targetValue, self.typeString, self.actionTypeString, self.condition];
 }

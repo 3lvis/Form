@@ -12,8 +12,7 @@
 
 @implementation DDMathEvaluator (FORM)
 
-+ (NSDictionary *)hyp_directoryFunctions
-{
++ (NSDictionary *)hyp_directoryFunctions {
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
 
     mutableDictionary[@"equals"] = ^ DDExpression* (NSArray *args, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {

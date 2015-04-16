@@ -6,8 +6,7 @@
 
 @implementation FORMFieldValue
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (!self) return nil;
 
@@ -33,8 +32,7 @@
     return self;
 }
 
-- (BOOL)identifierIsEqualTo:(id)identifier
-{
+- (BOOL)identifierIsEqualTo:(id)identifier {
     if (!identifier) return NO;
 
     if ([self.valueID isKindOfClass:[NSString class]]) {

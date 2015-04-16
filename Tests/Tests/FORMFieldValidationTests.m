@@ -8,8 +8,7 @@
 
 @implementation FORMFieldValidationTests
 
-- (void)testInitWithDictionary
-{
+- (void)testInitWithDictionary {
     FORMFieldValidation *fieldValidation = [[FORMFieldValidation alloc]
                                             initWithDictionary:@{@"required": @YES,
                                                                  @"min_length": @1,

@@ -6,8 +6,7 @@
 
 #pragma mark - Initializers
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (!self) return nil;
 
@@ -28,8 +27,7 @@
 
 #pragma mark - Setters
 
-- (void)setFieldValue:(FORMFieldValue *)fieldValue
-{
+- (void)setFieldValue:(FORMFieldValue *)fieldValue {
     _fieldValue = fieldValue;
 
     self.textLabel.text = fieldValue.title;
@@ -41,50 +39,41 @@
 
 #pragma mark - Overwritables
 
-- (UIEdgeInsets)layoutMargins
-{
+- (UIEdgeInsets)layoutMargins {
     return UIEdgeInsetsZero;
 }
 
 #pragma mark - Styling
 
-- (void)setTextLabelFont:(UIFont *)font
-{
+- (void)setTextLabelFont:(UIFont *)font {
     self.textLabel.font = font;
 }
 
-- (void)setTextLabelColor:(UIColor *)textColor
-{
+- (void)setTextLabelColor:(UIColor *)textColor {
     self.textLabel.textColor = textColor;
 }
 
-- (void)setHighlightedTextColor:(UIColor *)highlightedTextColor
-{
+- (void)setHighlightedTextColor:(UIColor *)highlightedTextColor {
     self.textLabel.highlightedTextColor = highlightedTextColor;
 }
 
-- (void)setDetailTextLabelFont:(UIFont *)font
-{
+- (void)setDetailTextLabelFont:(UIFont *)font {
     self.detailTextLabel.font = font;
 }
 
-- (void)setDetailTextLabelColor:(UIColor *)textColor
-{
+- (void)setDetailTextLabelColor:(UIColor *)textColor {
     self.detailTextLabel.textColor = textColor;
 }
 
-- (void)setDetailTextLabelHighlightedTextColor:(UIColor *)highlightedTextColor
-{
+- (void)setDetailTextLabelHighlightedTextColor:(UIColor *)highlightedTextColor {
     self.detailTextLabel.highlightedTextColor = highlightedTextColor;
 }
 
-- (void)setSelectedBackgroundViewColor:(UIColor *)backgroundColor
-{
+- (void)setSelectedBackgroundViewColor:(UIColor *)backgroundColor {
     self.selectedBackgroundView.backgroundColor = backgroundColor;
 }
 
-- (void)setSelectedBackgroundFontColor:(UIColor *)fontColor
-{
+- (void)setSelectedBackgroundFontColor:(UIColor *)fontColor {
     self.textLabel.highlightedTextColor = fontColor;
 }
 

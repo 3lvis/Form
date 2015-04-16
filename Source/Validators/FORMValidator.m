@@ -10,8 +10,7 @@
 
 @implementation FORMValidator
 
-- (instancetype)initWithValidation:(FORMFieldValidation *)validation
-{
+- (instancetype)initWithValidation:(FORMFieldValidation *)validation {
     self = [super init];
     if (!self) return nil;
 
@@ -20,8 +19,7 @@
     return self;
 }
 
-- (FORMValidationResultType)validateFieldValue:(id)fieldValue
-{
+- (FORMValidationResultType)validateFieldValue:(id)fieldValue {
     if (!self.validation) return FORMValidationResultTypeValid;
 
     if (!fieldValue && !self.validation.isRequired) return YES;
@@ -72,8 +70,7 @@
     return FORMValidationResultTypeValid;
 }
 
-- (FORMValidationResultType)validateFieldValue:(id)fieldValue withDependentValue:(id)dependentValue withComparator:(NSString *)comparator
-{
+- (FORMValidationResultType)validateFieldValue:(id)fieldValue withDependentValue:(id)dependentValue withComparator:(NSString *)comparator {
   if ([fieldValue isKindOfClass:[NSDate class]]) {
     if ([comparator isEqualToString:@">"] && [fieldValue laterDate:dependentValue] == fieldValue) {
       return FORMValidationResultTypeValid;
@@ -102,8 +99,7 @@
 }
 
 
-- (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format
-{
+- (BOOL)validateString:(NSString *)fieldValue withFormat:(NSString *)format {
     if (!fieldValue) return YES;
 
     NSError *error = NULL;
@@ -112,8 +108,7 @@
     return (numberOfMatches > 0);
 }
 
-+ (Class)classForKey:(NSString *)key andType:(NSString *)type
-{
++ (Class)classForKey:(NSString *)key andType:(NSString *)type {
     Class validatorClass = ([FORMClassFactory classFromString:key withSuffix:@"Validator"]);
     if (!validatorClass) {
         validatorClass = ([FORMClassFactory classFromString:type withSuffix:@"Validator"]);

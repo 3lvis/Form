@@ -18,8 +18,7 @@
 
 @implementation UICollectionViewLayoutAttributes (HYPLeftAligned)
 
-- (void)leftAlignFrameWithSectionInset:(UIEdgeInsets)sectionInset
-{
+- (void)leftAlignFrameWithSectionInset:(UIEdgeInsets)sectionInset {
     CGRect frame = self.frame;
     frame.origin.x = sectionInset.left;
     self.frame = frame;
@@ -39,8 +38,7 @@
 
 #pragma mark - Initializers
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (!self) return nil;
 
@@ -58,8 +56,7 @@
 
 #pragma mark - Overwrited Methods
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
     UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
 
@@ -104,8 +101,7 @@
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind
-                                                                     atIndexPath:(NSIndexPath *)indexPath
-{
+                                                                     atIndexPath:(NSIndexPath *)indexPath {
     if (![elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
         return [super layoutAttributesForDecorationViewOfKind:elementKind
                                                   atIndexPath:indexPath];
@@ -125,8 +121,7 @@
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind
-                                                                  atIndexPath:(NSIndexPath *)indexPath
-{
+                                                                  atIndexPath:(NSIndexPath *)indexPath {
     if (![elementKind isEqualToString:FORMBackgroundKind]) {
         return [super layoutAttributesForDecorationViewOfKind:elementKind
                                                   atIndexPath:indexPath];
@@ -174,8 +169,7 @@
     }
 }
 
-- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
-{
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSArray *originalAttributes = [super layoutAttributesForElementsInRect:rect];
     NSMutableArray *attributes = [NSMutableArray new];
 
@@ -203,8 +197,7 @@
 
 #pragma mark - Private Methods
 
-- (NSMutableArray *)fieldsAtSection:(NSInteger)section
-{
+- (NSMutableArray *)fieldsAtSection:(NSInteger)section {
     NSArray *groups = nil;
 
     if ([self.dataSource respondsToSelector:@selector(groups)]) {

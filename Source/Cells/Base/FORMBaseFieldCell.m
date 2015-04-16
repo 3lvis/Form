@@ -17,8 +17,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 #pragma mark - Initializers
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
@@ -30,8 +29,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 #pragma mark - Getters
 
-- (UILabel *)headingLabel
-{
+- (UILabel *)headingLabel {
     if (_headingLabel) return _headingLabel;
 
     _headingLabel = [[UILabel alloc] initWithFrame:[self headingLabelFrame]];
@@ -39,8 +37,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
     return _headingLabel;
 }
 
-- (FORMSeparatorView *)separatorView
-{
+- (FORMSeparatorView *)separatorView {
     if (_separatorView) return _separatorView;
 
     _separatorView = [[FORMSeparatorView alloc] initWithFrame:[self separatorViewFrame]];
@@ -50,8 +47,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 #pragma mark - Setters
 
-- (void)setDisabled:(BOOL)disabled
-{
+- (void)setDisabled:(BOOL)disabled {
     _disabled = disabled;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
@@ -60,8 +56,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
     [self updateFieldWithDisabled:disabled];
 }
 
-- (void)setField:(FORMField *)field
-{
+- (void)setField:(FORMField *)field {
     _field = field;
 
     [self updateWithField:field];
@@ -69,13 +64,11 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 #pragma mark - Overwritables
 
-- (void)updateFieldWithDisabled:(BOOL)disabled
-{
+- (void)updateFieldWithDisabled:(BOOL)disabled {
     abort();
 }
 
-- (void)updateWithField:(FORMField *)field
-{
+- (void)updateWithField:(FORMField *)field {
     self.headingLabel.hidden = (field.sectionSeparator);
     self.headingLabel.text = field.title;
 
@@ -88,15 +81,13 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
     }
 }
 
-- (void)validate
-{
+- (void)validate {
     NSLog(@"validation in progress");
 }
 
 #pragma mark - Layout
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     self.headingLabel.frame = [self headingLabelFrame];
@@ -104,8 +95,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
     self.separatorView.frame = [self separatorViewFrame];
 }
 
-- (CGRect)headingLabelFrame
-{
+- (CGRect)headingLabelFrame {
     CGFloat marginX = FORMTextFieldCellMarginX + FORMTextFormFieldCellLabelMarginX;
     CGFloat marginTop = FORMTextFormFieldCellLabelMarginTop;
 
@@ -116,8 +106,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
     return frame;
 }
 
-- (CGRect)separatorViewFrame
-{
+- (CGRect)separatorViewFrame {
     CGRect frame = self.frame;
     frame.origin.x = 0.0f;
     frame.origin.y = CGRectGetHeight(frame) - 1.0f;
@@ -128,13 +117,11 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 
 #pragma mark - Styling
 
-- (void)setHeadingLabelFont:(UIFont *)font
-{
+- (void)setHeadingLabelFont:(UIFont *)font {
     self.headingLabel.font = font;
 }
 
-- (void)setHeadingLabelTextColor:(UIColor *)color
-{
+- (void)setHeadingLabelTextColor:(UIColor *)color {
     self.headingLabel.textColor = color;
 }
 

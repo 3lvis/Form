@@ -8,8 +8,7 @@
 
 @implementation FORMSectionTests
 
-- (void)testInitWithDictionary
-{
+- (void)testInitWithDictionary {
     FORMSection *section = [[FORMSection alloc] initWithDictionary:@{@"id": @"section"}
                                                           position:0
                                                           disabled:YES

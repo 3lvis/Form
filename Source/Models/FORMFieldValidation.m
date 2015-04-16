@@ -3,8 +3,7 @@
 
 @implementation FORMFieldValidation
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (!self) return nil;
 
@@ -20,8 +19,7 @@
     return self;
 }
 
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat:@"{required: %@\n, minimumLength: %@\n, maximumLength: %@\n, format: %@\n, minimumValue: %@\n, maximumValue: %@\n",
             (self.required) ? @"YES" : @"NO", self.minimumLength, self.maximumLength,
             self.format, self.minimumValue, self.maximumValue];

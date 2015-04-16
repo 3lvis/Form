@@ -9,8 +9,7 @@
 
 @implementation FORMValidatorTests
 
-- (void)testValidateFieldValue
-{
+- (void)testValidateFieldValue {
     FORMFieldValidation *validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"min_value" : @10,
                                                                                         @"max_value" : @100}];
     FORMValidator *validator = [[FORMValidator alloc] initWithValidation:validation];
