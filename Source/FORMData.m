@@ -949,23 +949,17 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 }
 
-- (BOOL)evaluateCondition:(NSString *)condition {
+- (BOOL)evaluateCondition:(NSString *)condition
+{
     BOOL evaluatedResult = NO;
 
     if (condition) {
         NSError *error;
 
-        NSSet *set = [self.values keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
-            return [obj isEqual:[NSNull null]];
-        }];
-
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:self.values];
-        [dictionary removeObjectsForKeys:[set allObjects]];
-
         DDExpression *expression = [DDExpression expressionFromString:condition error:&error];
         if (error == nil && self.values) {
             NSNumber *result = [self.evaluator evaluateExpression:expression
-                                                withSubstitutions:dictionary
+                                                withSubstitutions:self.values
                                                             error:&error];
             return [result boolValue];
         }
