@@ -78,7 +78,8 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
 
 - (void)validate
 {
-    [self.fieldValueLabel setValid:[self.field validate]];
+    BOOL validation = ([self.field validate] == FORMValidationResultTypeValid);
+    [self.fieldValueLabel setValid:validation];
 }
 
 #pragma mark - FORMPopoverFormFieldCell
