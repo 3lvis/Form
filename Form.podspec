@@ -14,6 +14,9 @@ Pod::Spec.new do |s|
     :git => 'https://github.com/hyperoslo/Form.git',
     :tag => s.version.to_s
   }
+  s.resource_bundles = {
+      'Form' => ['Assets/*.{png}']
+  }
   s.source_files = 'Source/**/*.{h,m}'
   s.frameworks = 'Foundation'
   s.requires_arc = true

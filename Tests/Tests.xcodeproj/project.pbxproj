@@ -103,13 +103,13 @@
 		144A285F1A99B2CF004A9086 /* FORMPopoverFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMPopoverFieldCell.h; sourceTree = "<group>"; };
 		144A28601A99B2CF004A9086 /* FORMPopoverFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPopoverFieldCell.m; sourceTree = "<group>"; };
 		144A28611A99B2CF004A9086 /* FORMSelectFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMSelectFieldCell.h; sourceTree = "<group>"; };
-		144A28621A99B2CF004A9086 /* FORMSelectFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FORMSelectFieldCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		144A28621A99B2CF004A9086 /* FORMSelectFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FORMSelectFieldCell.m; sourceTree = "<group>"; };
 		144A28641A99B2CF004A9086 /* FORMTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTextFieldCell.h; sourceTree = "<group>"; };
 		144A28651A99B2CF004A9086 /* FORMTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTextFieldCell.m; sourceTree = "<group>"; };
 		144A28691A99B2CF004A9086 /* FORMFieldValueLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMFieldValueLabel.h; sourceTree = "<group>"; };
 		144A286A1A99B2CF004A9086 /* FORMFieldValueLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValueLabel.m; sourceTree = "<group>"; };
 		144A286B1A99B2CF004A9086 /* FORMTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTextField.h; sourceTree = "<group>"; };
-		144A286C1A99B2CF004A9086 /* FORMTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FORMTextField.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		144A286C1A99B2CF004A9086 /* FORMTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FORMTextField.m; sourceTree = "<group>"; };
 		144A286D1A99B2CF004A9086 /* FORMTextFieldTypeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTextFieldTypeManager.h; sourceTree = "<group>"; };
 		144A286E1A99B2CF004A9086 /* FORMTextFieldTypeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTextFieldTypeManager.m; sourceTree = "<group>"; };
 		144A28701A99B2CF004A9086 /* FORMBankAccountNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMBankAccountNumberFormatter.h; sourceTree = "<group>"; };
