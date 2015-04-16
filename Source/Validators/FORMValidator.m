@@ -22,7 +22,13 @@
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue {
     if (!self.validation) return FORMValidationResultTypeValid;
 
-    if (!fieldValue && self.validation.isRequired) return FORMValidationResultTypeInvalidValueMissing;
+    if (!fieldValue) {
+        if (self.validation.isRequired) {
+            return FORMValidationResultTypeInvalidValueMissing;
+        } else {
+            return FORMValidationResultTypeValid;
+        }
+    }
 
     if ([fieldValue isKindOfClass:[FORMFieldValue class]]) {
         return FORMValidationResultTypeValid;
