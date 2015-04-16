@@ -262,7 +262,9 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         id dependantFieldValue = field.value;
         self.validationResultType = [validator validateFieldValue:self.value withDependentValue:dependantFieldValue withComparator:self.validation.compareRule];
     }
+
     self.valid = (self.validationResultType == FORMValidationResultTypeValid);
+
     return self.validationResultType;
 }
 
