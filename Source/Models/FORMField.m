@@ -94,15 +94,11 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _value = [dictionary andy_valueForKey:@"value"];
 
-    if (_value && _type == FORMFieldTypeDate) {
-        _value = [dateFormatter dateFromString:_value];
-    }
+	BOOL isDateType = (_type == FORMFieldTypeDate ||
+					   _type == FORMFieldTypeDateTime ||
+					   _type == FORMFieldTypeTime);
 	
-	if (_value && _type == FORMFieldTypeDateTime) {
-		_value = [dateFormatter dateFromString:_value];
-	}
-	
-	if (_value && _type == FORMFieldTypeTime) {
+	if (_value && isDateType) {
 		_value = [dateFormatter dateFromString:_value];
 	}
 
