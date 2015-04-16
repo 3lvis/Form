@@ -50,6 +50,12 @@
         field.section = self;
         field.size = CGSizeMake(100.0f, 2.0f);
         field.disabled = disabled;
+
+        NSArray *targets = [dictionary andy_valueForKey:@"targets"];
+        if (targets) {
+            field.targets = targets;
+        }
+
         [fields addObject:field];
     }
 
