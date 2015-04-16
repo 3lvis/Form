@@ -9,7 +9,14 @@
 
 @implementation FORMValidatorTests
 
-- (void)testValidateFieldValue {
+- (void)testValidateFieldRequired {
+    FORMFieldValidation *validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"required" : @YES}];
+    FORMValidator *validator = [[FORMValidator alloc] initWithValidation:validation];
+
+    XCTAssertEqual(FORMValidationResultTypeInvalid, [validator validateFieldValue:@"100"]);
+}
+
+- (void)testValidateFieldValueMinAndMaxValue {
     FORMFieldValidation *validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"min_value" : @10,
                                                                                         @"max_value" : @100}];
     FORMValidator *validator = [[FORMValidator alloc] initWithValidation:validation];
