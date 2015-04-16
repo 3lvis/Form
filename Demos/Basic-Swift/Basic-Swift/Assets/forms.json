@@ -12,6 +12,7 @@
               "title":"First name",
               "info":"Fornavn",
               "type":"name",
+              "disabled": true,
               "size":{
                 "width":30,
                 "height":1
@@ -83,6 +84,15 @@
                 "width":25,
                 "height":1
               }
+            },
+            {
+              "id":"image",
+              "type":"image",
+              "size":{
+                "width":100,
+                "height":1.7
+              },
+              "hidden":true
             }
           ]
         }
@@ -110,7 +120,7 @@
               "type":"date",
               "validations":{
                     "compare_to":"start_date",
-                    "compare_rule":">"
+                    "compare_rule":">",
                     },
               "size":{
                 "width":25,
@@ -248,7 +258,11 @@
                   "type":"field",
                   "action":"update"
                 }
-              ]
+              ],
+              "validations":{
+                "max_value": 100,
+                "min_value": 10
+              }
             },
             {
               "id":"total",
