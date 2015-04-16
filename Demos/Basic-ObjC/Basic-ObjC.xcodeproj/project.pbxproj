@@ -18,6 +18,7 @@
 		14E49C401A99B7D600F19988 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C311A99B7D600F19988 /* HYPSampleCollectionViewController.m */; };
 		14E49C411A99B7D600F19988 /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C341A99B7D600F19988 /* HYPImageFormFieldCell.m */; };
 		1E1A35C89938DD4BA1A656D3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29491F317417C0D1E29829A7 /* libPods.a */; };
+		5B3B8E231ADFE3E500E6101E /* ic_clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B3B8E221ADFE3E500E6101E /* ic_clock@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		14E49C341A99B7D600F19988 /* HYPImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPImageFormFieldCell.m; sourceTree = "<group>"; };
 		24255EE596DCD2C0FE5C4CFB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		29491F317417C0D1E29829A7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B3B8E221ADFE3E500E6101E /* ic_clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_clock@2x.png"; sourceTree = "<group>"; };
 		5C74849DF53D9C3C7FE00770 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 		14E49C2A1A99B7D600F19988 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5B3B8E221ADFE3E500E6101E /* ic_clock@2x.png */,
 				14E49C2B1A99B7D600F19988 /* camera-icon@2x.png */,
 				14E49C2C1A99B7D600F19988 /* ic_calendar@2x.png */,
 				14E49C2D1A99B7D600F19988 /* ic_mini_arrow_down@2x.png */,
@@ -221,6 +224,7 @@
 				14E49C3F1A99B7D600F19988 /* ic_mini_clear@2x.png in Resources */,
 				14E49C071A99B75500F19988 /* Images.xcassets in Resources */,
 				14E49C3C1A99B7D600F19988 /* camera-icon@2x.png in Resources */,
+				5B3B8E231ADFE3E500E6101E /* ic_clock@2x.png in Resources */,
 				14E49C3E1A99B7D600F19988 /* ic_mini_arrow_down@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

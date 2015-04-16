@@ -147,9 +147,13 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     NSString *identifier;
 
     switch (field.type) {
+			
         case FORMFieldTypeDate:
+		case FORMFieldTypeDateTime:
+		case FORMFieldTypeTime:
             identifier = FORMDateFormFieldCellIdentifier;
             break;
+			
         case FORMFieldTypeSelect:
             identifier = FORMSelectFormFieldCellIdentifier;
             break;

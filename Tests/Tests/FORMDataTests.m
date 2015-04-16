@@ -157,7 +157,7 @@
 
     NSDictionary *fields = [formData invalidFormFields];
 
-    XCTAssertTrue(fields.count == 1);
+    XCTAssertTrue(fields.count == 2);
 
     XCTAssertNotNil([fields valueForKey:@"first_name"]);
 }

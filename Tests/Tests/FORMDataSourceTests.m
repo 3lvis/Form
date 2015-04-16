@@ -451,7 +451,8 @@
                                                              disabled:YES];
     XCTAssertFalse([dataSource isValid]);
 
-    [dataSource reloadWithDictionary:@{@"first_name" : @"Supermancito"}];
+    [dataSource reloadWithDictionary:@{@"first_name" : @"Supermancito",
+									   @"birth_day" : @"2014-10-31 23:00:00 +00:00" }];
 
     XCTAssertTrue([dataSource isValid]);
 }
