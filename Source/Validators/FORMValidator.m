@@ -22,7 +22,7 @@
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue {
     if (!self.validation) return FORMValidationResultTypeValid;
 
-    if (!fieldValue && !self.validation.isRequired) return YES;
+    if (!fieldValue && self.validation.isRequired) return FORMValidationResultTypeInvalid;
 
     if ([fieldValue isKindOfClass:[FORMFieldValue class]]) {
         return FORMValidationResultTypeValid;
