@@ -147,9 +147,13 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     NSString *identifier;
 
     switch (field.type) {
+
         case FORMFieldTypeDate:
+        case FORMFieldTypeDateTime:
+        case FORMFieldTypeTime:
             identifier = FORMDateFormFieldCellIdentifier;
             break;
+
         case FORMFieldTypeSelect:
             identifier = FORMSelectFormFieldCellIdentifier;
             break;
@@ -750,7 +754,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (void)groupHeaderViewWasPressed:(FORMGroupHeaderView *)headerView {
     [self collapseFieldsInGroup:headerView.group
-                   collectionView:self.collectionView];
+                 collectionView:self.collectionView];
 }
 
 #pragma mark - FORMLayoutDataSource

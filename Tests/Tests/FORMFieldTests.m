@@ -64,6 +64,57 @@
     XCTAssertTrue(field.disabled);
     XCTAssertNil(field.validation);
     XCTAssertFalse(field.hidden);
+
+    field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_time",
+                                                    @"title": @"Start time",
+                                                    @"type": @"time",
+                                                    @"minimum_date":@"2000-01-01T00:00:00.002Z",
+                                                    @"maximum_date":@"2015-01-01T00:00:00.002Z",
+                                                    @"value":@"2014-01-01T00:00:00.002Z",
+                                                    @"size": @{@"width": @10,
+                                                               @"height": @4}
+                                                    }
+                                         position:1
+                                         disabled:NO
+                                disabledFieldsIDs:@[@"start_time"]];
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.typeString, @"time");
+    XCTAssertTrue(field.type == FORMFieldTypeTime);
+
+    XCTAssertEqualObjects([field.minimumDate hyp_dateString], @"2000-01-01");
+    XCTAssertEqualObjects([field.maximumDate hyp_dateString], @"2015-01-01");
+    XCTAssertEqualObjects([field.value hyp_dateString], @"2014-01-01");
+
+    XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
+    XCTAssertTrue(field.disabled);
+    XCTAssertNil(field.validation);
+    XCTAssertFalse(field.hidden);
+
+
+    field = [[FORMField alloc] initWithDictionary:@{@"id": @"dateAndTime",
+                                                    @"title": @"Date and Time",
+                                                    @"type": @"date_time",
+                                                    @"minimum_date":@"2002-01-01T00:00:00.002Z",
+                                                    @"maximum_date":@"2013-01-01T00:00:00.002Z",
+                                                    @"value":@"2011-01-01T00:00:00.002Z",
+                                                    @"size": @{@"width": @15,
+                                                               @"height": @2}
+                                                    }
+                                         position:1
+                                         disabled:NO
+                                disabledFieldsIDs:@[@"other_field"]];
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.typeString, @"date_time");
+    XCTAssertTrue(field.type == FORMFieldTypeDateTime);
+
+    XCTAssertEqualObjects([field.minimumDate hyp_dateString], @"2002-01-01");
+    XCTAssertEqualObjects([field.maximumDate hyp_dateString], @"2013-01-01");
+    XCTAssertEqualObjects([field.value hyp_dateString], @"2011-01-01");
+
+    XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(15, 2)));
+    XCTAssertFalse(field.disabled);
+    XCTAssertNil(field.validation);
+    XCTAssertFalse(field.hidden);
 }
 
 @end

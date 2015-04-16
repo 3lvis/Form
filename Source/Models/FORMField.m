@@ -94,7 +94,11 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _value = [dictionary andy_valueForKey:@"value"];
 
-    if (_value && _type == FORMFieldTypeDate) {
+    BOOL isDateType = (_type == FORMFieldTypeDate ||
+                       _type == FORMFieldTypeDateTime ||
+                       _type == FORMFieldTypeTime);
+
+    if (_value && isDateType) {
         _value = [dateFormatter dateFromString:_value];
     }
 
@@ -114,6 +118,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
             }
         } break;
 
+        case FORMFieldTypeDateTime:
+        case FORMFieldTypeTime:
         case FORMFieldTypeDate: {
             if ([fieldValue isKindOfClass:[NSString class]]) {
                 NSDateFormatter *formatter = [NSDateFormatter new];
@@ -151,6 +157,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         case FORMFieldTypeText:
         case FORMFieldTypeSelect:
         case FORMFieldTypeDate:
+        case FORMFieldTypeDateTime:
+        case FORMFieldTypeTime:
             return self.value;
 
         case FORMFieldTypeButton:
@@ -209,6 +217,10 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         return FORMFieldTypeSelect;
     } else if ([typeString isEqualToString:@"date"]) {
         return FORMFieldTypeDate;
+    } else if ([typeString isEqualToString:@"date_time"]) {
+        return FORMFieldTypeDateTime;
+    } else if ([typeString isEqualToString:@"time"]) {
+        return FORMFieldTypeTime;
     } else if ([typeString isEqualToString:@"float"]) {
         return FORMFieldTypeFloat;
     } else if ([typeString isEqualToString:@"number"]) {

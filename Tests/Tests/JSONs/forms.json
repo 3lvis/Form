@@ -333,7 +333,7 @@
               {
                 "title":"Salary 1",
                 "id":0,
-                "value":100.0,
+                "value":100,
                 "targets":[
                   {
                     "id":"total",
@@ -345,7 +345,7 @@
               {
                 "title":"Salary 2",
                 "id":1,
-                "value":200.0,
+                "value":200,
                 "targets":[
                   {
                     "id":"total",
@@ -357,7 +357,7 @@
               {
                 "title":"Salary 3",
                 "id":2,
-                "value":10.0,
+                "value":10,
                 "targets":[
                   {
                     "id":"total",

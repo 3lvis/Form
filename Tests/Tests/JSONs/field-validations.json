@@ -1,22 +1,44 @@
 [
   {
-    "id":"personal-details",
-    "title":"Personal Details",
-    "sections":[
+    "id": "personal-details",
+    "title": "Personal Details",
+    "sections": [
       {
-        "id":"personal-details-0",
-        "fields":[
+        "id": "personal-details-0",
+        "fields": [
           {
-            "id":"first_name",
-            "title":"First name",
-            "type":"name",
-            "size":{
+            "id": "first_name",
+            "title": "First name",
+            "type": "name",
+            "size": {
               "width": 30,
               "height": 1
             },
-            "validations":{
-              "required":true,
-              "min_length":2
+            "validations": {
+              "required": true,
+              "min_length": 2
+            }
+          },
+          {
+            "id": "last_name",
+            "title": "Last name",
+            "type": "name",
+            "size": {
+              "width": 30,
+              "height": 1
+            }
+          },
+          {
+            "id": "birthday",
+            "title": "Birthday",
+            "type": "date",
+            "size": {
+              "width": 30,
+              "height": 1
+            },
+            "validations": {
+              "required": true,
+              "min_length": 2
             }
           }
         ]
