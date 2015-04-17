@@ -8,7 +8,16 @@
           "id":"companies",
           "type":"dynamic",
           "action_title":"ADD COMPANY ✛",
-          "fields":null
+          "fields":null,
+          "targets": [
+            {
+              "id":"email",
+              "type":"field",
+              "action":"update",
+              "condition": "equals($email, \"john.hyperseed\")",
+              "target_value": "john.hyperseed@hyper.no"
+            }
+          ]
         },
         {
           "id":"personal-details-0",

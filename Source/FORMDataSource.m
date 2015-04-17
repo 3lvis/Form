@@ -555,6 +555,10 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
             [self.formData removeSection:section
                         inCollectionView:self.collectionView];
         }
+
+        if (field.targets) {
+            [self processTargets:field.targets];
+        }
     }
 
     BOOL isValidField = (!(components.count == 2 &&

@@ -787,4 +787,27 @@
     XCTAssertEqualObjects(section.position, @3);
 }
 
+- (void)testDynamicTargetCondition {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"email" : @"john.hyperseed"}
+                                                             disabled:YES];
+
+    FORMField *emailField = [dataSource fieldWithID:@"email" includingHiddenFields:YES];
+    NSString *expectedEmail = @"john.hyperseed@hyper.no";
+
+    FORMField *addField = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    XCTAssertEqualObjects(emailField.value, expectedEmail);
+
+
+}
+
 @end
