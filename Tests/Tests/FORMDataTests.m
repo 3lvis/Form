@@ -618,7 +618,11 @@
     FORMData *formData = [[FORMData alloc] initWithJSON:JSON
                                           initialValues:@{@"first_name":@"Frank",
                                                           @"last_name":@"Underwood",
-                                                          @"display_name":@""}
+                                                          @"display_name":@"",
+                                                          @"username": [NSNull null],
+                                                          @"base_salary" : @150,
+                                                          @"bonus_enabled" : @YES,
+                                                          }
                                        disabledFieldIDs:nil
                                                disabled:nil];
 
@@ -633,6 +637,9 @@
     XCTAssertFalse([formData evaluateCondition:@"equals($first_name, \"Claire\")"]);
     XCTAssertTrue([formData evaluateCondition:@"equals($last_name, \"Underwood\")"]);
 
+    XCTAssertFalse([formData evaluateCondition:@"equals($username, \"Francis\")"]);
+    XCTAssertFalse([formData evaluateCondition:@"equals($base_salary, 150)"]);
+    XCTAssertFalse([formData evaluateCondition:@"equals($bonus_enabled, 1)"]);
 }
 
 @end
