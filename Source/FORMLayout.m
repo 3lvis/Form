@@ -1,14 +1,10 @@
 #import "FORMLayout.h"
-
 #import "FORMBackgroundView.h"
 #import "FORMBaseFieldCell.h"
 #import "FORMGroupHeaderView.h"
-
 #import "FORMGroup.h"
 #import "FORMField.h"
 #import "FORMSection.h"
-
-#import "UIScreen+HYPLiveBounds.h"
 
 @interface UICollectionViewLayoutAttributes (HYPLeftAligned)
 

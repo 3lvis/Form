@@ -11,7 +11,6 @@
 #import "HYPParsedRelationship.h"
 
 #import "UIColor+Hex.h"
-#import "UIScreen+HYPLiveBounds.h"
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
