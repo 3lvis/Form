@@ -14,19 +14,38 @@ Form includes the following features:
 - [Targets](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L127): `hide`, `show`, `update`, `enable`, `disable` or `clear` a field using a target. It's pretty powerful, and you can even set a condition for your target to run
 - [Dropdowns](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L122): Generating dropdowns is as easy as adding values to your field, values support `default` flags, targets (in case you want to trigger hiding a field based on a selection), string and numeric values or showing additional info (in case you want to hint the consequences of your selection).
 
-Don't forget to check our [Basic Demo](https://github.com/hyperoslo/Form/tree/master/Demos/Basic-ObjC) for a basic example on how to use Form.
+Don't forget to check our [Basic Demo (Objective-C)](https://github.com/hyperoslo/Form/tree/master/Demos/Basic-ObjC) for a basic example on how to use Form. We also have a [Swift version](https://github.com/hyperoslo/Form/tree/master/Demos/Basic-Swift).
 
 Form works both on the iPhone and the iPad.
 
-## Usage
+## Table of Contents
 
-### Basic Form
+- Usage
+  - JSON
+  - AppDelegate
+  - UICollectionViewController
+
+
+- Features
+  - Validators
+  - Formatters
+  - Formulas
+  - Targets
+  - Templates
+  - Customization
+- Installation
+- Contributing
+- Credits
+- License
+
+
+## Usage
 
 This are the required steps to create a basic form with a first name field.
 
 ![Form](https://github.com/hyperoslo/Form/blob/master/Images/basic-form.png)
 
-#### JSON
+### JSON
 ```json
 [
   {
@@ -52,9 +71,7 @@ This are the required steps to create a basic form with a first name field.
 ]
 ```
 
-#### In your iPad app
-
-##### AppDelegate
+### AppDelegate
 
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -65,7 +82,7 @@ This are the required steps to create a basic form with a first name field.
 }
 ```
 
-##### UICollectionViewController
+### UICollectionViewController
 ```objc
 - (FORMDataSource *)dataSource {
     if (_dataSource) return _dataSource;
@@ -86,7 +103,20 @@ This are the required steps to create a basic form with a first name field.
 }
 
 ```
-<hr>
+
+## Features
+
+### Validators
+
+Missing
+
+### Formatters
+
+Missing
+
+### Formulas
+
+Missing
 
 ### Targets
 
@@ -156,6 +186,14 @@ In the following example we show how to hide or show a field based on a dropdown
   }
 ]
 ```
+
+### Templates
+
+Missing
+
+### Customization
+
+Missing
 
 ## Installation
 
