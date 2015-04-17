@@ -800,6 +800,11 @@
     FORMField *emailField = [dataSource fieldWithID:@"email" includingHiddenFields:YES];
     NSString *expectedEmail = @"john.hyperseed@hyper.no";
 
+    FORMField *addField = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
     XCTAssertEqualObjects(emailField.value, expectedEmail);
 
 
