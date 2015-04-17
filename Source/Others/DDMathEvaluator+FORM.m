@@ -38,7 +38,9 @@
 
             otherValue = (variables[expression.variable]) ?: expression.variable;
 
-            if ([baseValue isKindOfClass:[NSString class]] && ![baseValue isEqualToString:otherValue]) {
+            BOOL baseValueIsEqual = ([baseValue isKindOfClass:[NSString class]] &&
+                                     ![baseValue isEqualToString:otherValue]);
+            if (baseValueIsEqual) {
                 isEqual = @NO;
                 break;
             }
