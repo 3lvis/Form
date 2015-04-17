@@ -1,10 +1,11 @@
 #import "HYPDemoLoginCollectionViewController.h"
-#import "FORMDataSource.h"
-#import "NSJSONSerialization+ANDYJSONFile.h"
-#import "FORMTextField.h"
-#import "FORMLayout.h"
-#import "FORMButtonFieldCell.h"
 
+#import "FORMButtonFieldCell.h"
+#import "FORMDataSource.h"
+#import "FORMLayout.h"
+#import "FORMTextField.h"
+
+#import "NSJSONSerialization+ANDYJSONFile.h"
 #import "UIColor+Hex.h"
 
 @interface HYPDemoLoginCollectionViewController ()
@@ -12,8 +13,6 @@
 @property (nonatomic) NSArray *JSON;
 @property (nonatomic) FORMDataSource *dataSource;
 @property (nonatomic) FORMLayout *layout;
-@property (nonatomic) FORMField *emailTextField;
-@property (nonatomic) FORMField *passwordTextField;
 @property NSIndexPath *indexPathButton;
 
 @end
@@ -22,8 +21,7 @@
 
 #pragma mark - Getters
 
-- (FORMDataSource *)dataSource
-{
+- (FORMDataSource *)dataSource {
     if (_dataSource) return _dataSource;
 
     _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
@@ -43,12 +41,8 @@
     };
 
     _dataSource.fieldUpdatedBlock = ^(FORMBaseFieldCell *cell, FORMField *field) {
-        if ([field.fieldID isEqualToString:@"email"]) {
-            weakSelf.emailTextField = field;
-            [weakSelf updateLoginButtonState];
-
-        } else if ([field.fieldID isEqualToString:@"password"]) {
-            weakSelf.passwordTextField = field;
+        if ([field.fieldID isEqualToString:@"email"] ||
+            [field.fieldID isEqualToString:@"password"]) {
             [weakSelf updateLoginButtonState];
 
         } else if ([field.fieldID isEqualToString:@"login"]) {
@@ -61,8 +55,7 @@
 
 #pragma mark - View Lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     FORMLayout *layout = [FORMLayout new];
@@ -78,21 +71,18 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return [self.dataSource sizeForFieldAtIndexPath:indexPath];
 }
 
 #pragma mark - Private methods
 
-- (void)updateLoginButtonState
-{
+- (void)updateLoginButtonState {
     FORMButtonFieldCell *loginButtonCell = (FORMButtonFieldCell *)[self.collectionView cellForItemAtIndexPath:self.indexPathButton];
     loginButtonCell.disabled = ![self.dataSource isValid];
 }
 
-- (void)showLoginSuccessAlert
-{
+- (void)showLoginSuccessAlert {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hey"
                                                                              message:@"You just logged in! Congratulations"
                                                                       preferredStyle:UIAlertControllerStyleAlert];
