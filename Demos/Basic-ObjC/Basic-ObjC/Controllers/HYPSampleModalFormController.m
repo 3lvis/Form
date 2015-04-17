@@ -29,7 +29,7 @@
 {
     [super viewDidAppear:animated];
     [self hideModalFormButton];
-    [self configureCancelButton];
+    [self configureCloseButton];
 }
 
 - (void)hideModalFormButton
@@ -37,7 +37,7 @@
     self.navigationItem.rightBarButtonItem = nil;
 }
 
-- (void)configureCancelButton
+- (void)configureCloseButton
 {
     UIBarButtonItem *closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close"
                                                                         style:UIBarButtonItemStylePlain
