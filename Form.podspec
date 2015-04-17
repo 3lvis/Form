@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Form"
-  s.version = "3.2.2"
+  s.version = "3.3.0"
   s.summary = "JSON driven form"
   s.homepage = "https://github.com/hyperoslo/Form"
   s.license = {
@@ -13,6 +13,9 @@ Pod::Spec.new do |s|
   s.source = {
     :git => 'https://github.com/hyperoslo/Form.git',
     :tag => s.version.to_s
+  }
+  s.resource_bundles = {
+      'Form' => ['Assets/*.{png}']
   }
   s.source_files = 'Source/**/*.{h,m}'
   s.frameworks = 'Foundation'

@@ -14,9 +14,6 @@
 		BD99F3AC1ACFFCD1004B3638 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD99F3AB1ACFFCD1004B3638 /* Default-568h@2x.png */; };
 		BDFC88E81ACFC17A00A0F17A /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = BDFC88E21ACFC17A00A0F17A /* forms.json */; };
 		BDFC88E91ACFC17A00A0F17A /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFC88E41ACFC17A00A0F17A /* camera-icon@2x.png */; };
-		BDFC88EA1ACFC17A00A0F17A /* ic_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFC88E51ACFC17A00A0F17A /* ic_calendar@2x.png */; };
-		BDFC88EB1ACFC17A00A0F17A /* ic_mini_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFC88E61ACFC17A00A0F17A /* ic_mini_arrow_down@2x.png */; };
-		BDFC88EC1ACFC17A00A0F17A /* ic_mini_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFC88E71ACFC17A00A0F17A /* ic_mini_clear@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +26,6 @@
 		BD99F3AB1ACFFCD1004B3638 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BDFC88E21ACFC17A00A0F17A /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
 		BDFC88E41ACFC17A00A0F17A /* camera-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon@2x.png"; sourceTree = "<group>"; };
-		BDFC88E51ACFC17A00A0F17A /* ic_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_calendar@2x.png"; sourceTree = "<group>"; };
-		BDFC88E61ACFC17A00A0F17A /* ic_mini_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_arrow_down@2x.png"; sourceTree = "<group>"; };
-		BDFC88E71ACFC17A00A0F17A /* ic_mini_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_mini_clear@2x.png"; sourceTree = "<group>"; };
 		BDFC88ED1ACFCEEF00A0F17A /* Objective-C Bridging Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Objective-C Bridging Header.h"; sourceTree = "<group>"; };
 		D0EB343D4E6510EFA857C2CA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6AB99C1DBAD0E3226F9CC6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,9 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				BDFC88E41ACFC17A00A0F17A /* camera-icon@2x.png */,
-				BDFC88E51ACFC17A00A0F17A /* ic_calendar@2x.png */,
-				BDFC88E61ACFC17A00A0F17A /* ic_mini_arrow_down@2x.png */,
-				BDFC88E71ACFC17A00A0F17A /* ic_mini_clear@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -186,11 +177,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDFC88EA1ACFC17A00A0F17A /* ic_calendar@2x.png in Resources */,
-				BDFC88EC1ACFC17A00A0F17A /* ic_mini_clear@2x.png in Resources */,
 				BD208A051ACFBD2F00896C42 /* Images.xcassets in Resources */,
 				BDFC88E91ACFC17A00A0F17A /* camera-icon@2x.png in Resources */,
-				BDFC88EB1ACFC17A00A0F17A /* ic_mini_arrow_down@2x.png in Resources */,
 				BD99F3AC1ACFFCD1004B3638 /* Default-568h@2x.png in Resources */,
 				BDFC88E81ACFC17A00A0F17A /* forms.json in Resources */,
 			);

@@ -135,10 +135,10 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 
         case FORMFieldTypeDate:
         case FORMFieldTypeDateTime:
-            return [UIImage imageNamed:@"ic_calendar"];
+            return [UIImage imageNamed:@"Form.bundle/calendar"];
             break;
         case FORMFieldTypeTime:
-            return [UIImage imageNamed:@"ic_clock"];
+            return [UIImage imageNamed:@"Form.bundle/clock"];
             break;
         default:
             return nil;

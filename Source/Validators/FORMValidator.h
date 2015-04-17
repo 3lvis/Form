@@ -7,7 +7,6 @@ typedef NS_ENUM(NSInteger, FORMValidationResultType) {
     FORMValidationResultTypeInvalid,
     FORMValidationResultTypeInvalidValue,
     FORMValidationResultTypeInvalidBankAccount,
-    FORMValidationResultTypeInvalidEmail,
     FORMValidationResultTypeInvalidFormat,
     FORMValidationResultTypeInvalidPostalCode,
     FORMValidationResultTypeInvalidSSN,
@@ -19,8 +18,13 @@ typedef NS_ENUM(NSInteger, FORMValidationResultType) {
 @interface FORMValidator : NSObject
 
 - (instancetype)initWithValidation:(FORMFieldValidation *)validation;
+
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue;
-- (FORMValidationResultType)validateFieldValue:(id)fieldValue withDependentValue:(id)dependentValue withComparator:(NSString *)comparator;
+
+- (FORMValidationResultType)validateFieldValue:(id)fieldValue
+                            withDependentValue:(id)dependentValue
+                                withComparator:(NSString *)comparator;
+
 + (Class)classForKey:(NSString *)key andType:(NSString *)type;
 
 @end
