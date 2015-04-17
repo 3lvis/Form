@@ -38,9 +38,7 @@
 
             otherValue = (variables[expression.variable]) ?: expression.variable;
 
-            BOOL baseValueIsEqual = (![baseValue isEqual:otherValue]);
-
-            if (baseValueIsEqual) {
+            if ([baseValue isEqual:otherValue]) {
                 isEqual = @NO;
                 break;
             }
