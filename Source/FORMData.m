@@ -949,8 +949,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 }
 
-- (BOOL)evaluateCondition:(NSString *)condition
-{
+- (BOOL)evaluateCondition:(NSString *)condition {
     BOOL evaluatedResult = NO;
 
     if (condition) {
