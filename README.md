@@ -85,8 +85,17 @@ This are the required steps to create a basic form with a first name field.
     self.collectionView.dataSource = self.dataSource;
 }
 
+
+#pragma mark - UICollectionViewDelegate
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.dataSource sizeForFieldAtIndexPath:indexPath];
+}
 ```
-<hr>
+
+---------------------------
 
 ### Targets
 
