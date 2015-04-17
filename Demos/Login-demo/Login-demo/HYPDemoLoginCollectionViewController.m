@@ -7,7 +7,7 @@
 
 #import "UIColor+Hex.h"
 
-@interface HYPDemoLoginCollectionViewController () <FORMBaseFieldCellDelegate>
+@interface HYPDemoLoginCollectionViewController ()
 
 @property (nonatomic) NSArray *JSON;
 @property (nonatomic) FORMDataSource *dataSource;
@@ -34,22 +34,25 @@
 
     __weak typeof(self)weakSelf = self;
 
-    _dataSource.configureCellForItemAtIndexPathBlock = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
-        FORMBaseFieldCell *cell;
-        if ([field.typeString isEqualToString:@"button"]) {
+    _dataSource.configureCellBlock = ^(FORMBaseFieldCell *cell, NSIndexPath *indexPath, FORMField *field) {
+        cell.field = field;
+
+        if (field.type == FORMFieldTypeButton) {
             weakSelf.indexPathButton = indexPath;
         }
-        return cell;
     };
 
     _dataSource.fieldUpdatedBlock = ^(FORMBaseFieldCell *cell, FORMField *field) {
-        cell.delegate = weakSelf;
-        if ([field.title isEqualToString:@"Email"]) {
+        if ([field.fieldID isEqualToString:@"email"]) {
             weakSelf.emailTextField = field;
-        } else if ([field.title isEqualToString:@"Password"]) {
+            [weakSelf updateLoginButtonState];
+
+        } else if ([field.fieldID isEqualToString:@"password"]) {
             weakSelf.passwordTextField = field;
-        } else {
-            [weakSelf checkButtonPressedWithField:field];
+            [weakSelf updateLoginButtonState];
+
+        } else if ([field.fieldID isEqualToString:@"login"]) {
+            [weakSelf showLoginSuccessAlert];
         }
     };
 
@@ -58,13 +61,11 @@
 
 #pragma mark - View Lifecycle
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     FORMLayout *layout = [FORMLayout new];
-
     self.JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"JSON.json"];
     self.layout = layout;
 
@@ -75,20 +76,12 @@
 
 #pragma mark - UICollectionViewDelegate
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.dataSource sizeForFieldAtIndexPath:indexPath];
 }
-
-#pragma mark - FORMBaseFieldCellDelegate
-
-- (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(FORMField *)field
-{
-    [self updateLoginButtonState];
-    [self checkButtonPressedWithField:field];
-}
-
-- (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets { }
 
 #pragma mark - Private methods
 
@@ -98,28 +91,24 @@
     loginButtonCell.disabled = ![self.dataSource isValid];
 }
 
-- (void)checkButtonPressedWithField:(FORMField *)field
-{
-    if (![field.typeString isEqualToString:@"button"]) {
-        return;
-    }
-    
-    if (![self.dataSource isValid]) {
-        return;
-    }
-    
-    [self showLoginSuccessAlert];
-}
-
 - (void)showLoginSuccessAlert
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hey" message:@"You just logged in! Congratulations" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *alertActionNice = [UIAlertAction actionWithTitle:@"NICE" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-        [alertController dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
-    [alertController addAction:alertActionNice];
-    [self presentViewController:alertController animated:YES completion:nil];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hey"
+                                                                             message:@"You just logged in! Congratulations"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *niceAction = [UIAlertAction actionWithTitle:@"Nice!"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction *action) {
+                                                           [alertController dismissViewControllerAnimated:YES
+                                                                                               completion:nil];
+                                                       }];
+
+    [alertController addAction:niceAction];
+
+    [self presentViewController:alertController
+                       animated:YES
+                     completion:nil];
 }
 
 @end
