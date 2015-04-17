@@ -84,32 +84,42 @@
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell updatedWithField:(FORMField *)field
 {
-    if (self.emailTextField.valid && self.passwordTextField.valid) {
-        FORMButtonFieldCell *cell = (FORMButtonFieldCell *)[self.collectionView cellForItemAtIndexPath:self.indexPathButton];
-        cell.disabled = NO;
-    }
-
-    if ([field.typeString isEqualToString:@"button"]) {
-        [self checkButtonPressedWithField:field];
-    }
+    [self updateLoginButtonState];
+    [self checkButtonPressedWithField:field];
 }
 
 - (void)fieldCell:(UICollectionViewCell *)fieldCell processTargets:(NSArray *)targets { }
 
 #pragma mark - Private methods
 
-- (void)checkButtonPressedWithField:(FORMField *)field
+- (void)updateLoginButtonState
 {
-    if ([field.typeString isEqualToString:@"button"] && self.emailTextField.valid && self.passwordTextField.valid) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hey" message:@"You just logged in! Congratulations" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *alertActionNice = [UIAlertAction actionWithTitle:@"NICE" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-            [alertController dismissViewControllerAnimated:YES completion:nil];
-        }];
-
-        [alertController addAction:alertActionNice];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
+    FORMButtonFieldCell *loginButtonCell = (FORMButtonFieldCell *)[self.collectionView cellForItemAtIndexPath:self.indexPathButton];
+    loginButtonCell.disabled = ![self.dataSource isValid];
 }
 
+- (void)checkButtonPressedWithField:(FORMField *)field
+{
+    if (![field.typeString isEqualToString:@"button"]) {
+        return;
+    }
+    
+    if (![self.dataSource isValid]) {
+        return;
+    }
+    
+    [self showLoginSuccessAlert];
+}
+
+- (void)showLoginSuccessAlert
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Hey" message:@"You just logged in! Congratulations" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertActionNice = [UIAlertAction actionWithTitle:@"NICE" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [alertController addAction:alertActionNice];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 @end

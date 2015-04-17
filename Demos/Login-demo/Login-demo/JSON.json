@@ -23,6 +23,7 @@
                         "id":"password",
                         "title":"Password",
                         "type":"password",
+                        "input_type":"password",
                         "size":{
                           "width":60,
                           "height":1
