@@ -51,7 +51,13 @@
         field.size = CGSizeMake(100.0f, 2.0f);
         field.disabled = disabled;
 
-        NSArray *targets = [dictionary andy_valueForKey:@"targets"];
+        NSMutableArray *targets = [NSMutableArray new];
+
+        for (NSDictionary *targetDictionary in [dictionary andy_valueForKey:@"targets"]) {
+            FORMTarget *target = [[FORMTarget alloc] initWithDictionary:targetDictionary];
+            [targets addObject:target];
+        }
+
         if (targets) {
             field.targets = targets;
         }
