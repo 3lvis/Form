@@ -12,6 +12,8 @@
 #import "NSObject+HYPTesting.h"
 #import "UIColor+Hex.h"
 #import "UIViewController+HYPKeyboardToolbar.h"
+#import "NSJSONSerialization+ANDYJSONFile.h"
+#import "HYPSampleModalFormController.h"
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
@@ -118,6 +120,8 @@
 {
     [super viewDidLoad];
 
+    self.navigationItem.title = @"FORM";
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
@@ -130,41 +134,55 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self configureBottomToolbar];
+    [self configureModalFormButton];
+}
 
+- (void)configureBottomToolbar
+{
     UIBarButtonItem *validateButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Validate"
                                                                            style:UIBarButtonItemStyleDone
                                                                           target:self
                                                                           action:@selector(validateButtonAction)];
-
+    
     UIBarButtonItem *updateButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Update"
                                                                          style:UIBarButtonItemStyleDone
                                                                         target:self
                                                                         action:@selector(updateButtonAction)];
-
+    
     UIBarButtonItem *flexibleBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                            target:nil
                                                                                            action:nil];
-
+    
     UIView *readOnlyView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 150.0f, 40.0f)];
-
+    
     UILabel *readOnlyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 90.0f, 40.0f)];
     readOnlyLabel.text = @"Read-only";
     readOnlyLabel.textColor = [UIColor colorFromHex:@"5182AF"];
     readOnlyLabel.font = [UIFont boldSystemFontOfSize:17.0f];
     [readOnlyView addSubview:readOnlyLabel];
-
+    
     UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(90.0f, 5.0f, 40.0f, 40.0f)];
     readOnlySwitch.tintColor = [UIColor colorFromHex:@"5182AF"];
     readOnlySwitch.onTintColor = [UIColor colorFromHex:@"5182AF"];
     readOnlySwitch.on = YES;
     [readOnlySwitch addTarget:self action:@selector(readOnly:) forControlEvents:UIControlEventValueChanged];
     [readOnlyView addSubview:readOnlySwitch];
-
+    
     UIBarButtonItem *readOnlyBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:readOnlyView];
-
+    
     [self setToolbarItems:@[validateButtonItem, flexibleBarButtonItem, updateButtonItem, flexibleBarButtonItem, readOnlyBarButtonItem]];
-
+    
     [self.navigationController setToolbarHidden:NO animated:YES];
+}
+
+- (void)configureModalFormButton
+{
+    UIBarButtonItem *modalFormButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Modal Form"
+                                                                            style:UIBarButtonItemStylePlain
+                                                                           target:self
+                                                                           action:@selector(modalFormButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = modalFormButtonItem;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -251,6 +269,31 @@
     }
 
     [self.dataSource processTargets:@[target]];
+}
+
+- (void)modalFormButtonTapped:(id)sender
+{
+    [self presentModalFormSheet];
+}
+
+- (void)presentModalFormSheet
+{
+    NSDictionary *dictionary = @{@"address" : @"Burger Park 667",
+                                 @"end_date" : @"2017-10-31 23:00:00 +00:00",
+                                 @"first_name" : @"Ola",
+                                 @"last_name" : @"Nordman",
+                                 @"start_date" : @"2014-10-31 23:00:00 +00:00",
+                                 @"start_time" : @"2014-10-31 23:00:00 +00:00"};
+    
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"modal_form.json"];
+    
+    HYPSampleModalFormController *sampleController = [[HYPSampleModalFormController alloc] initWithJSON:JSON andInitialValues:dictionary];
+    
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
+    controller.view.tintColor = [UIColor colorFromHex:@"5182AF"];
+    controller.navigationBar.translucent = NO;
+    controller.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end

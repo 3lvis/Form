@@ -38,8 +38,8 @@
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
 
     controller.view.tintColor = [UIColor colorFromHex:@"5182AF"];
-    controller.navigationBarHidden = YES;
-
+    controller.navigationBar.translucent = NO;
+    
     self.window.rootViewController = controller;
 
     [self.window makeKeyAndVisible];

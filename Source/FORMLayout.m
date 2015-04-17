@@ -42,7 +42,7 @@
     self = [super init];
     if (!self) return nil;
 
-    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+    CGRect bounds = self.collectionView.bounds;
 
     self.sectionInset = UIEdgeInsetsMake(FORMMarginTop, FORMMarginHorizontal, FORMMarginBottom, FORMMarginHorizontal);
     self.minimumLineSpacing = 0.0f;
@@ -57,7 +57,7 @@
 #pragma mark - Overwrited Methods
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+    CGRect bounds = self.collectionView.bounds;
     UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
 
     BOOL isFirstItemInSection = (indexPath.item == 0);
@@ -109,7 +109,7 @@
         UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForSupplementaryViewOfKind:elementKind
                                                                                              atIndexPath:indexPath];
 
-        CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+        CGRect bounds = self.collectionView.bounds;
         CGRect frame = attributes.frame;
 
         frame.origin.x = FORMHeaderContentMargin;
