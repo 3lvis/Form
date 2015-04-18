@@ -11,7 +11,6 @@
 #import "HYPParsedRelationship.h"
 
 #import "UIColor+Hex.h"
-#import "UIScreen+HYPLiveBounds.h"
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
@@ -269,7 +268,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     FORMGroup *group = self.formData.groups[indexPath.section];
     NSArray *fields = group.fields;
 
-    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+    CGRect bounds = self.collectionView.bounds;
     CGFloat deviceWidth = CGRectGetWidth(bounds) - (FORMMarginHorizontal * 2);
     CGFloat width = 0.0f;
     CGFloat height = 0.0f;

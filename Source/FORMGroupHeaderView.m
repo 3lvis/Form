@@ -1,7 +1,5 @@
 #import "FORMGroupHeaderView.h"
 
-#import "UIScreen+HYPLiveBounds.h"
-
 @interface FORMGroupHeaderView ()
 
 @property (nonatomic) UIView *contentView;
@@ -37,9 +35,8 @@
 #pragma mark - Getters
 
 - (CGRect)headerLabelFrame {
-    CGRect bounds = [[UIScreen mainScreen] bounds];
-    CGFloat width = CGRectGetWidth(bounds) - (FORMTitleMargin * 2);
-
+    CGFloat width = CGRectGetWidth(self.bounds) - (FORMTitleMargin * 2);
+    
     return CGRectMake(FORMTitleMargin, 0.0f, width, FORMHeaderHeight);
 }
 

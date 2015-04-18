@@ -15,6 +15,8 @@
 		14E49C401A99B7D600F19988 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C311A99B7D600F19988 /* HYPSampleCollectionViewController.m */; };
 		14E49C411A99B7D600F19988 /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E49C341A99B7D600F19988 /* HYPImageFormFieldCell.m */; };
 		1E1A35C89938DD4BA1A656D3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29491F317417C0D1E29829A7 /* libPods.a */; };
+		5B7F04881AE147F1006AB544 /* HYPSampleModalFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F04871AE147F1006AB544 /* HYPSampleModalFormController.m */; };
+		5B7F048A1AE14AFD006AB544 /* modal_form.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B7F04891AE14AFD006AB544 /* modal_form.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,9 @@
 		14E49C341A99B7D600F19988 /* HYPImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPImageFormFieldCell.m; sourceTree = "<group>"; };
 		24255EE596DCD2C0FE5C4CFB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		29491F317417C0D1E29829A7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B7F04861AE147F1006AB544 /* HYPSampleModalFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSampleModalFormController.h; sourceTree = "<group>"; };
+		5B7F04871AE147F1006AB544 /* HYPSampleModalFormController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPSampleModalFormController.m; sourceTree = "<group>"; };
+		5B7F04891AE14AFD006AB544 /* modal_form.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = modal_form.json; sourceTree = "<group>"; };
 		5C74849DF53D9C3C7FE00770 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +104,7 @@
 		14E49C221A99B7D600F19988 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				14E49C291A99B7D600F19988 /* forms.json */,
+				5B7F048B1AE14B07006AB544 /* Form JSON */,
 				14E49C2A1A99B7D600F19988 /* Images */,
 			);
 			path = Assets;
@@ -118,6 +123,8 @@
 			children = (
 				14E49C301A99B7D600F19988 /* HYPSampleCollectionViewController.h */,
 				14E49C311A99B7D600F19988 /* HYPSampleCollectionViewController.m */,
+				5B7F04861AE147F1006AB544 /* HYPSampleModalFormController.h */,
+				5B7F04871AE147F1006AB544 /* HYPSampleModalFormController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -129,6 +136,15 @@
 				14E49C341A99B7D600F19988 /* HYPImageFormFieldCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5B7F048B1AE14B07006AB544 /* Form JSON */ = {
+			isa = PBXGroup;
+			children = (
+				14E49C291A99B7D600F19988 /* forms.json */,
+				5B7F04891AE14AFD006AB544 /* modal_form.json */,
+			);
+			name = "Form JSON";
 			sourceTree = "<group>";
 		};
 		9661221E81F7A73DE1DDD54C /* Frameworks */ = {
@@ -210,6 +226,7 @@
 				14E49C3B1A99B7D600F19988 /* forms.json in Resources */,
 				14E49C071A99B75500F19988 /* Images.xcassets in Resources */,
 				14E49C3C1A99B7D600F19988 /* camera-icon@2x.png in Resources */,
+				5B7F048A1AE14AFD006AB544 /* modal_form.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +273,7 @@
 				14E49C351A99B7D600F19988 /* AppDelegate.m in Sources */,
 				14E49C401A99B7D600F19988 /* HYPSampleCollectionViewController.m in Sources */,
 				14E49C411A99B7D600F19988 /* HYPImageFormFieldCell.m in Sources */,
+				5B7F04881AE147F1006AB544 /* HYPSampleModalFormController.m in Sources */,
 				14E49BFC1A99B75500F19988 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
