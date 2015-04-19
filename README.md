@@ -1,5 +1,10 @@
 ![Form logo](https://raw.githubusercontent.com/hyperoslo/Form/master/Images/logo-v6.png)
 
+[![Version](https://img.shields.io/cocoapods/v/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
+[![License](https://img.shields.io/cocoapods/l/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
+[![Platform](https://img.shields.io/cocoapods/p/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
+[![Join the chat at https://gitter.im/hyperoslo/Form](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hyperoslo/Form?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The most flexible and powerful way to build a form on iOS.
 
 Form came out from our need to have a form that could share logic between our iOS apps and our web clients. We found that JSON was the best way to achieve this.
@@ -23,8 +28,6 @@ pod try Form
 ```
 
 ## Usage
-
-[![Join the chat at https://gitter.im/hyperoslo/Form](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hyperoslo/Form?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### Basic Form
 
