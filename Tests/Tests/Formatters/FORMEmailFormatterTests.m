@@ -1,11 +1,3 @@
-//
-//  FORMEmailFormatterTests.m
-//  Tests
-//
-//  Created by Vadym Markov on 20/04/15.
-//  Copyright (c) 2015 Hyper. All rights reserved.
-//
-
 @import XCTest;
 #import "FORMEmailFormatter.h"
 
