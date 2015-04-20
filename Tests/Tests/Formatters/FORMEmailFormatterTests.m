@@ -1,4 +1,5 @@
 @import XCTest;
+
 #import "FORMEmailFormatter.h"
 
 @interface FORMEmailFormatterTests : XCTestCase
