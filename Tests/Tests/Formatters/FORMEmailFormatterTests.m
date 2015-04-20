@@ -10,8 +10,7 @@
 
 - (void)testFormatString {
     FORMEmailFormatter *formatter = [FORMEmailFormatter new];
-    NSString *inputString = @"t,e,st@example.com";
-    XCTAssertTrue([@"test@example.com" isEqualToString:[formatter formatString:inputString reverse:NO]]);
+    XCTAssertEqualObjects(@"test@example.com", [formatter formatString:@"t,e,st@example.com" reverse:NO]);
 }
 
 @end
