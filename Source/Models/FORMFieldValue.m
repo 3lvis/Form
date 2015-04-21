@@ -24,7 +24,7 @@
     }
 
     for (FORMTarget *target in targets) {
-        target.value = self;
+        target.fieldValue = self;
     }
 
     _targets = targets;

@@ -330,8 +330,8 @@
                   sameCondition &&
                   sameTargetValue);
 
-    if (equal && self.value && object.value) {
-        equal = ([self.value identifierIsEqualTo:object.value.valueID]);
+    if (equal && self.fieldValue && object.fieldValue) {
+        equal = ([self.fieldValue identifierIsEqualTo:object.fieldValue.valueID]);
     }
 
     return equal;
