@@ -15,8 +15,7 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 #ifdef DEBUG
     if ([NSObject isUnitTesting]) return YES;
 #endif
@@ -39,7 +38,7 @@
 
     controller.view.tintColor = [UIColor colorFromHex:@"5182AF"];
     controller.navigationBar.translucent = NO;
-    
+
     self.window.rootViewController = controller;
 
     [self.window makeKeyAndVisible];

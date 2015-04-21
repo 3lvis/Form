@@ -7,7 +7,7 @@ PODS:
     - HYPNorwegianSSN (~> 1.10)
     - ISO8601DateFormatter (~> 0.7)
     - NSDictionary-ANDYSafeValue (~> 0.3)
-    - NSDictionary-HYPNestedAttributes (~> 0.4)
+    - NSDictionary-HYPNestedAttributes (~> 0.4.1)
     - NSJSONSerialization-ANDYJSONFile (~> 1.1)
     - NSObject-HYPTesting (~> 1.2)
     - NSString-HYPContainsString (~> 0.1)
@@ -23,7 +23,7 @@ PODS:
   - HYPNorwegianSSN (1.10)
   - ISO8601DateFormatter (0.7)
   - NSDictionary-ANDYSafeValue (0.3)
-  - NSDictionary-HYPNestedAttributes (0.4):
+  - NSDictionary-HYPNestedAttributes (0.4.1):
     - NSString-HYPRelationshipParser (~> 0.4.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSObject-HYPTesting (1.2)
@@ -45,7 +45,7 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  Form: c20abfee4c60c38ca2bf65f7e4dea33c5c1404f9
+  Form: a8660fb0453bc0b48c2238bb826edeacec4c21ee
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
   HYPMathParser: c10c542e7f8b391568d12cde536e13c9c70ec034
@@ -53,7 +53,7 @@ SPEC CHECKSUMS:
   HYPNorwegianSSN: ffef3b2110b627dbb2273f912b439146493d49dd
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
-  NSDictionary-HYPNestedAttributes: b652ab8d11d933b98c3bc666fd131e09aa7393a6
+  NSDictionary-HYPNestedAttributes: 783d3adcf9f8e9a554004ee225f1bc0cdf0cfdfe
   NSJSONSerialization-ANDYJSONFile: 4a92ca174d5ccde13015e853e9eb62440459b478
   NSObject-HYPTesting: fadde70c75061b731b313c390e20777aed0a914d
   NSString-HYPContainsString: a8147bbb90b9aca02f69d12546b4d2938a5d01dc

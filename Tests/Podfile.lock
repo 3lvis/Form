@@ -8,7 +8,7 @@ PODS:
   - NSDate-HYPString (0.2)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSDictionary-HYPImmutable (0.2)
-  - NSDictionary-HYPNestedAttributes (0.4):
+  - NSDictionary-HYPNestedAttributes (0.4.1):
     - NSString-HYPRelationshipParser (~> 0.4.1)
   - NSJSONSerialization-ANDYJSONFile (1.1)
   - NSObject-HYPTesting (1.2)
@@ -50,7 +50,7 @@ SPEC CHECKSUMS:
   NSDate-HYPString: b87cf854edd44ec1e186b32526c601502180846d
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
   NSDictionary-HYPImmutable: 5ab45ed9d8127636467736b51700d886bfcc48db
-  NSDictionary-HYPNestedAttributes: b652ab8d11d933b98c3bc666fd131e09aa7393a6
+  NSDictionary-HYPNestedAttributes: 783d3adcf9f8e9a554004ee225f1bc0cdf0cfdfe
   NSJSONSerialization-ANDYJSONFile: 4a92ca174d5ccde13015e853e9eb62440459b478
   NSObject-HYPTesting: fadde70c75061b731b313c390e20777aed0a914d
   NSString-HYPContainsString: a8147bbb90b9aca02f69d12546b4d2938a5d01dc
