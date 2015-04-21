@@ -66,14 +66,17 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-        if (self.field.info) {
-            [self.headerView setField:self.field];
-            return [self.headerView labelHeight];
-        } else if (self.customHeight > 0.0f) {
-            return self.customHeight;
-        } else {
-            return FORMFieldValuesCellHeight;
-        }
+    NSInteger headerHeight;
+    if (self.field.info) {
+        [self.headerView setField:self.field];
+        headerHeight = [self.headerView labelHeight];
+    } else if (self.customHeight > 0.0f) {
+        headerHeight = self.customHeight;
+    } else {
+        headerHeight = FORMFieldValuesCellHeight;
+    }
+
+    return headerHeight;
 }
 
 #pragma mark - Table View Data Source
