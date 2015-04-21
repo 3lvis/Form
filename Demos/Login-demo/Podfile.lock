@@ -1,5 +1,5 @@
 PODS:
-  - Form (3.3.0):
+  - Form (3.3.1):
     - Hex (~> 1.1.1)
     - HYPImagePicker (~> 0.3)
     - HYPMathParser (~> 0.3)
@@ -31,7 +31,7 @@ PODS:
   - NSString-HYPFormula (1.6.1):
     - NSString-HYPWordExtractor
   - NSString-HYPRelationshipParser (0.4.1)
-  - NSString-HYPWordExtractor (1.1)
+  - NSString-HYPWordExtractor (1.2)
   - NSString-ZENInflections (1.2)
   - UIButton-ANDYHighlighted (0.2.1)
 
@@ -40,10 +40,10 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Form:
-    :path: ../../
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  Form: e3196b957c3306d3ce5815cc9efee86047d27181
+  Form: c20abfee4c60c38ca2bf65f7e4dea33c5c1404f9
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
   HYPMathParser: c10c542e7f8b391568d12cde536e13c9c70ec034
@@ -57,8 +57,8 @@ SPEC CHECKSUMS:
   NSString-HYPContainsString: a8147bbb90b9aca02f69d12546b4d2938a5d01dc
   NSString-HYPFormula: 0d0ecc4725efdcfc74e079364aa5c2014c18f9ec
   NSString-HYPRelationshipParser: 7fa231131e408f26b3b72a41157aa6620a195b4d
-  NSString-HYPWordExtractor: 36d4911755fe5de480ad51406c0ce0d299967bf5
+  NSString-HYPWordExtractor: 7484da8d2d23e41b24b0bdb218293ab349f9f650
   NSString-ZENInflections: 35ae6d02981b1def07bd6dc8e6455e827453bc29
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.36.4
