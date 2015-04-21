@@ -29,6 +29,26 @@
     return self;
 }
 
+#pragma mark - Public Methods
+
+- (NSDictionary *)fieldPropertiesToUpdate {
+    NSMutableDictionary *values = [NSMutableDictionary new];
+
+    if (self.actionType == FORMTargetActionUpdate &&
+        self.type == FORMTargetTypeField) {
+        NSArray *properties = @[@"targetValue", @"validation"];
+
+        for (NSString * property in properties) {
+            id value = [self valueForKey:property];
+            if (value != nil) {
+                values[property] = value;
+            }
+        }
+    }
+
+    return [NSDictionary dictionaryWithDictionary:values];
+}
+
 + (FORMTarget *)fieldTargetWithID:(NSString *)targetID
                  actionTypeString:(NSString *)actionTypeString {
     return [self targetWithID:targetID
