@@ -1052,6 +1052,14 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 fieldDictionary[@"targets"] = targets;
             }
 
+            NSArray *values = [fieldDictionary andy_valueForKey:@"values"];
+            for (NSDictionary *dictionary in values) {
+                if ([dictionary andy_valueForKey:@"default"]) {
+                    self.values[tranformedFieldID] = [dictionary andy_valueForKey:@"id"];
+                    break;
+                }
+            }
+
             [fields addObject:[fieldDictionary copy]];
         }
 

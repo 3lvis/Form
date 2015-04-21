@@ -82,6 +82,7 @@
 		14F594A61AE0618300772756 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F594A21AE0618300772756 /* clear@2x.png */; };
 		14F5AF6D1AE0522400FF71AD /* postal_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 14F5AF6C1AE0522400FF71AD /* postal_codes.json */; };
 		82AB828048DF535A1FFE4CC3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F9DD801EDC647B835EB2CF /* libPods.a */; };
+		BD2405701AE6B38D00592E19 /* default-values-in-template.json in Resources */ = {isa = PBXBuildFile; fileRef = BD24056F1AE6B38D00592E19 /* default-values-in-template.json */; };
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
 		BD7339B41AE66DA50004DF8F /* FORMFieldValuesTableViewHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7339B31AE66DA50004DF8F /* FORMFieldValuesTableViewHeaderTests.swift */; };
 		BD92FBDA1AE61FF000D45BD4 /* dynamic-formulas.json in Resources */ = {isa = PBXBuildFile; fileRef = BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */; };
@@ -220,6 +221,7 @@
 		14F5AF6C1AE0522400FF71AD /* postal_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postal_codes.json; sourceTree = "<group>"; };
 		653AC6BBDF66E205BA44BA17 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B3F9DD801EDC647B835EB2CF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD24056F1AE6B38D00592E19 /* default-values-in-template.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-values-in-template.json"; sourceTree = "<group>"; };
 		BD5845731AC4074600596C62 /* FORMTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTooltipView.h; sourceTree = "<group>"; };
 		BD5845741AC4074600596C62 /* FORMTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTooltipView.m; sourceTree = "<group>"; };
 		BD7339B21AE66DA50004DF8F /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 		149C291A1A9A23DD00F88B91 /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
+				BD24056F1AE6B38D00592E19 /* default-values-in-template.json */,
 				BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */,
 				149C291B1A9A23DD00F88B91 /* default-values.json */,
 				1492C0591A9F740900D80D91 /* dynamic.json */,
@@ -638,6 +641,7 @@
 				14C4183E1A019A1500636FD6 /* FORM.podspec in Resources */,
 				149C292D1A9A23DD00F88B91 /* multiple-show-hide-section-targets.json in Resources */,
 				14F5AF6D1AE0522400FF71AD /* postal_codes.json in Resources */,
+				BD2405701AE6B38D00592E19 /* default-values-in-template.json in Resources */,
 				144B80291AA882DB009C69DC /* section-field-position.json in Resources */,
 				149C292E1A9A23DD00F88B91 /* number-formula.json in Resources */,
 				14F594A51AE0618300772756 /* arrow_down@2x.png in Resources */,
