@@ -461,10 +461,10 @@
 			children = (
 				D5B56C081AE5221C00DD8816 /* Formatters */,
 				149C29131A9A23DD00F88B91 /* FORMDataSourceTests.m */,
-				BD7339B31AE66DA50004DF8F /* FORMFieldValuesTableViewHeaderTests.swift */,
 				149C29151A9A23DD00F88B91 /* FORMDataTests.m */,
 				149C29121A9A23DD00F88B91 /* FORMFieldTests.m */,
 				D5DFAA1A1AA87A9B0096FBFB /* FORMFieldValidationTests.m */,
+				BD7339B31AE66DA50004DF8F /* FORMFieldValuesTableViewHeaderTests.swift */,
 				149C29111A9A23DD00F88B91 /* FORMFieldValueTests.m */,
 				1440AF0C1AC1D76500F15D15 /* FORMGroupTests.m */,
 				149C29181A9A23DD00F88B91 /* FORMPopoverFieldCellTests.m */,
