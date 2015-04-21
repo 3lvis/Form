@@ -794,10 +794,15 @@ includingHiddenFields:(BOOL)includingHiddenFields
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
-        if (![self evaluateCondition:target.condition]) continue;
 
-        if (target.type == FORMTargetTypeSection) continue;
-        if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
+        BOOL shouldContinue = (![self evaluateCondition:target.condition] ||
+                               target.type == FORMTargetTypeSection ||
+                               [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]);
+
+        if (shouldContinue) {
+            continue;
+        }
+
 
         __block FORMField *field = nil;
 
@@ -882,7 +887,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
                     }
                 }
 
-                field.formula = [field.formula stringByReplacingOccurrencesOfString:@"$" withString:@""];
+                field.formula = [field.formula stringByReplacingOccurrencesOfString:@"$"
+                                                                         withString:@""];
                 id result = [field.formula hyp_runFormulaWithValuesDictionary:values];
                 field.value = result;
 
@@ -1022,8 +1028,30 @@ includingHiddenFields:(BOOL)includingHiddenFields
         for (NSDictionary *fieldTemplateDictionary in templateFields) {
             NSMutableDictionary *fieldDictionary = [NSMutableDictionary dictionaryWithDictionary:fieldTemplateDictionary];
             NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
-            NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+            NSString *tranformedFieldID = [self transformDynamicIndexString:fieldID
+                                                                  withIndex:(long)index];
             [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
+
+            NSString *fieldFormula = [fieldDictionary andy_valueForKey:@"formula"];
+            if (fieldFormula) {
+                NSString *tranformedFieldFormula = [self transformDynamicIndexString:fieldFormula
+                                                                           withIndex:(long)index];
+                [fieldDictionary setValue:tranformedFieldFormula
+                                   forKey:@"formula"];
+            }
+
+            NSMutableArray *targets = [fieldDictionary andy_valueForKey:@"targets"];
+            for (NSMutableDictionary *targetDictionary in targets) {
+                NSString *targetID = [targetDictionary andy_valueForKey:@"id"];
+                NSString *tranformedTargetIDFormula = [self transformDynamicIndexString:targetID
+                                                                              withIndex:(long)index];
+                targetDictionary[@"id"] = tranformedTargetIDFormula;
+            }
+
+            if (targets) {
+                fieldDictionary[@"targets"] = targets;
+            }
+
             [fields addObject:[fieldDictionary copy]];
         }
 
@@ -1132,6 +1160,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 
     return [removedSections copy];
+}
+
+- (NSString *)transformDynamicIndexString:(NSString *)string
+                                withIndex:(long)index {
+    return [string stringByReplacingOccurrencesOfString:@":index"
+                                               withString:[NSString stringWithFormat:@"%ld", (long)index]];
 }
 
 @end
