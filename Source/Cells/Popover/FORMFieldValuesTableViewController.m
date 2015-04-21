@@ -80,11 +80,15 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
         FORMFieldValue *currentFieldValue = self.field.value;
 
         if ([currentFieldValue identifierIsEqualTo:fieldValue.valueID]) {
-            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [tableView selectRowAtIndexPath:indexPath
+                                   animated:NO
+                             scrollPosition:UITableViewScrollPositionNone];
         }
     } else {
         if ([fieldValue identifierIsEqualTo:self.field.value]) {
-            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [tableView selectRowAtIndexPath:indexPath
+                                   animated:NO
+                             scrollPosition:UITableViewScrollPositionNone];
         }
     }
 
@@ -95,7 +99,8 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
     FORMFieldValue *fieldValue = self.values[indexPath.row];
 
     if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
-        [self.delegate fieldValuesTableViewController:self didSelectedValue:fieldValue];
+        [self.delegate fieldValuesTableViewController:self
+                                     didSelectedValue:fieldValue];
     }
 }
 
