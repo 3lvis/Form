@@ -806,8 +806,35 @@
     [dataSource fieldCell:nil updatedWithField:addField];
 
     XCTAssertEqualObjects(emailField.value, expectedEmail);
+}
 
+- (void)testDynamicFormulas {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic-formulas.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
 
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:NO];
+
+	FORMField *addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
+	XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    FORMField *priceField = [dataSource fieldWithID:@"tickets[0].price" includingHiddenFields:NO];
+    XCTAssertNotNil(priceField);
+    FORMField *quantityField = [dataSource fieldWithID:@"tickets[0].quantity" includingHiddenFields:NO];
+    XCTAssertNotNil(quantityField);
+    FORMField *totalField = [dataSource fieldWithID:@"tickets[0].total" includingHiddenFields:NO];
+    XCTAssertNotNil(totalField);
+
+    [dataSource reloadWithDictionary:@{@"tickets[0].price" : @100,
+                                       @"tickets[0].quantity" : @3}];
+
+    XCTAssertEqualObjects(totalField.formula, @"$tickets[0].quantity * $tickets[0].price");
+    XCTAssertEqualObjects(totalField.value, @"300");
 }
 
 @end

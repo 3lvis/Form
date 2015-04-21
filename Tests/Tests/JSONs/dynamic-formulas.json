@@ -62,7 +62,7 @@
             }
           },
           {
-            "id":"total",
+            "id":"tickets[:index].total",
             "title":"Total",
             "type":"float",
             "size":{
