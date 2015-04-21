@@ -13,11 +13,11 @@ class FORMFieldValuesTableViewHeaderTests: XCTestCase {
         XCTAssertEqual(headerView.labelHeight(), CGFloat(68.5))
 
         headerView.field = formField
-        XCTAssertEqual(headerView.labelHeight(), CGFloat(78.0))
+        XCTAssertEqual(headerView.labelHeight(), CGFloat(77.5))
 
         formField.info = "Multi-line\nMulti-line\nMulti-line"
         headerView.field = formField
-        XCTAssertEqual(headerView.labelHeight(), CGFloat(98.0))
+        XCTAssertEqual(headerView.labelHeight(), CGFloat(97.5))
     }
 
 }
