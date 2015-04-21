@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.dependency 'Hex', '~> 1.1.1'
   s.dependency 'ISO8601DateFormatter', '~> 0.7'
   s.dependency 'NSDictionary-ANDYSafeValue', '~> 0.3'
-  s.dependency 'NSDictionary-HYPNestedAttributes', '~> 0.4'
+  s.dependency 'NSDictionary-HYPNestedAttributes', '~> 0.4.1'
   s.dependency 'NSJSONSerialization-ANDYJSONFile', '~> 1.1'
   s.dependency 'NSObject-HYPTesting', '~> 1.2'
   s.dependency 'NSString-HYPContainsString', '~> 0.1'
