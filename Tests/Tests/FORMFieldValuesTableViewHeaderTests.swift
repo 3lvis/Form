@@ -1,11 +1,3 @@
-//
-//  FORMFieldValuesTableViewHeaderTests.swift
-//  Tests
-//
-//  Created by Christoffer Winterkvist on 4/21/15.
-//  Copyright (c) 2015 Hyper. All rights reserved.
-//
-
 import UIKit
 import XCTest
 
