@@ -825,6 +825,7 @@
 
     FORMField *priceField = [dataSource fieldWithID:@"tickets[0].price" includingHiddenFields:NO];
     XCTAssertNotNil(priceField);
+    FORMTarget *priceTarget = [[priceField targets] firstObject];
     FORMField *quantityField = [dataSource fieldWithID:@"tickets[0].quantity" includingHiddenFields:NO];
     XCTAssertNotNil(quantityField);
     FORMField *totalField = [dataSource fieldWithID:@"tickets[0].total" includingHiddenFields:NO];
@@ -833,6 +834,7 @@
     [dataSource reloadWithDictionary:@{@"tickets[0].price" : @100,
                                        @"tickets[0].quantity" : @3}];
 
+    XCTAssertEqualObjects(priceTarget.targetID, @"tickets[0].total");
     XCTAssertEqualObjects(totalField.formula, @"$tickets[0].quantity * $tickets[0].price");
     XCTAssertEqualObjects(totalField.value, @"300");
 }
