@@ -16,7 +16,7 @@ PODS:
   - NSString-HYPFormula (1.6.1):
     - NSString-HYPWordExtractor
   - NSString-HYPRelationshipParser (0.4.1)
-  - NSString-HYPWordExtractor (1.1)
+  - NSString-HYPWordExtractor (1.2)
   - NSString-ZENInflections (1.2)
   - UIButton-ANDYHighlighted (0.2.1)
 
@@ -56,7 +56,7 @@ SPEC CHECKSUMS:
   NSString-HYPContainsString: a8147bbb90b9aca02f69d12546b4d2938a5d01dc
   NSString-HYPFormula: 0d0ecc4725efdcfc74e079364aa5c2014c18f9ec
   NSString-HYPRelationshipParser: 7fa231131e408f26b3b72a41157aa6620a195b4d
-  NSString-HYPWordExtractor: 36d4911755fe5de480ad51406c0ce0d299967bf5
+  NSString-HYPWordExtractor: 7484da8d2d23e41b24b0bdb218293ab349f9f650
   NSString-ZENInflections: 35ae6d02981b1def07bd6dc8e6455e827453bc29
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
 
