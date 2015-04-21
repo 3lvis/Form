@@ -1022,13 +1022,14 @@ includingHiddenFields:(BOOL)includingHiddenFields
         for (NSDictionary *fieldTemplateDictionary in templateFields) {
             NSMutableDictionary *fieldDictionary = [NSMutableDictionary dictionaryWithDictionary:fieldTemplateDictionary];
             NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
-            NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+            NSString *tranformedFieldID = [self transformDynamicIndexString:fieldID
+                                                                  withIndex:(long)index];
             [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
 
             NSString *fieldFormula = [fieldDictionary andy_valueForKey:@"formula"];
             if (fieldFormula) {
-                NSString *tranformedFieldFormula = [fieldFormula stringByReplacingOccurrencesOfString:@":index"
-                                                                                           withString:[NSString stringWithFormat:@"%ld", (long)index]];
+                NSString *tranformedFieldFormula = [self transformDynamicIndexString:fieldFormula
+                                                                           withIndex:(long)index];
                 [fieldDictionary setValue:tranformedFieldFormula
                                    forKey:@"formula"];
             }
@@ -1036,8 +1037,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
             NSMutableArray *targets = [fieldDictionary andy_valueForKey:@"targets"];
             for (NSMutableDictionary *targetDictionary in targets) {
                 NSString *targetID = [targetDictionary andy_valueForKey:@"id"];
-                NSString *tranformedTargetIDFormula = [targetID stringByReplacingOccurrencesOfString:@":index"
-                                                                                          withString:[NSString stringWithFormat:@"%ld", (long)index]];
+                NSString *tranformedTargetIDFormula = [self transformDynamicIndexString:targetID
+                                                                              withIndex:(long)index];
                 targetDictionary[@"id"] = tranformedTargetIDFormula;
             }
 
@@ -1153,6 +1154,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
     }
 
     return [removedSections copy];
+}
+
+- (NSString *)transformDynamicIndexString:(NSString *)string
+                                withIndex:(long)index {
+    return [string stringByReplacingOccurrencesOfString:@":index"
+                                               withString:[NSString stringWithFormat:@"%ld", (long)index]];
 }
 
 @end
