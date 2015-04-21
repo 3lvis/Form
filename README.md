@@ -102,6 +102,17 @@ This are the required steps to create a basic form with a first name field.
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return [self.dataSource sizeForFieldAtIndexPath:indexPath];
 }
+
+#pragma mark - Rotation Handling
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+
+    [self.view endEditing:YES];
+
+    [self.collectionViewLayout invalidateLayout];
+}
 ```
 
 ---------------------------
