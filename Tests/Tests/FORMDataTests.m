@@ -624,7 +624,7 @@
                                                           @"bonus_enabled" : @YES,
                                                           }
                                        disabledFieldIDs:nil
-                                               disabled:nil];
+                                               disabled:NO];
 
     XCTAssertTrue([formData evaluateCondition:@"present($first_name)"]);
     XCTAssertTrue([formData evaluateCondition:@"present($last_name)"]);
