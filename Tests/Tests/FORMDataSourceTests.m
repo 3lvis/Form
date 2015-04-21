@@ -835,7 +835,7 @@
                                        @"tickets[0].quantity" : @3}];
 
     XCTAssertEqualObjects(priceTarget.targetID, @"tickets[0].total");
-    XCTAssertEqualObjects(totalField.formula, @"$tickets[0].quantity * $tickets[0].price");
+    XCTAssertEqualObjects(totalField.formula, @"tickets[0].quantity * tickets[0].price");
     XCTAssertEqualObjects(totalField.value, @"300");
 }
 
