@@ -1024,6 +1024,13 @@ includingHiddenFields:(BOOL)includingHiddenFields
             NSString *fieldID = [fieldDictionary andy_valueForKey:@"id"];
             NSString *tranformedFieldID = [fieldID stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
             [fieldDictionary setValue:tranformedFieldID forKey:@"id"];
+
+            NSString *fieldFormula = [fieldDictionary andy_valueForKey:@"formula"];
+            if (fieldFormula) {
+                NSString *tranformedFieldFormula = [fieldFormula stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
+                [fieldDictionary setValue:tranformedFieldFormula forKey:@"formula"];
+            }
+
             [fields addObject:[fieldDictionary copy]];
         }
 
