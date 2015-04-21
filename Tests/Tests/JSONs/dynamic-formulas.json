@@ -30,7 +30,7 @@
             },
             "targets":[
               {
-                "id":"total",
+                "id":"tickets[:index].total",
                 "type":"field",
                 "action":"update"
               }
@@ -51,7 +51,7 @@
             },
             "targets":[
               {
-                "id":"total",
+                "id":"tickets[:index].total",
                 "type":"field",
                 "action":"update"
               }
