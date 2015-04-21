@@ -107,7 +107,8 @@ This are the required steps to create a basic form with a first name field.
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration {
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation
+                                   duration:duration];
 
     [self.view endEditing:YES];
 
