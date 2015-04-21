@@ -20,7 +20,6 @@
     self.targetValue = [dictionary andy_valueForKey:@"target_value"];
     self.condition = [dictionary andy_valueForKey:@"condition"];
 
-    // TargetNew
     NSDictionary *validations = [dictionary andy_valueForKey:@"validations"];
     if (validations && [validations count] > 0) {
         _validation = [[FORMFieldValidation alloc]
