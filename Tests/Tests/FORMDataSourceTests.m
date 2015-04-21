@@ -143,6 +143,26 @@
     XCTAssertNotNil(usernameField.value);
 }
 
+- (void)testDefaultValueInTemplate {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"default-values-in-template.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    FORMField *addField = [dataSource fieldWithID:@"moretickets.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    FORMField *ticketTypeField = [dataSource fieldWithID:@"moretickets[0].tickettype" includingHiddenFields:NO];
+    XCTAssertNotNil(ticketTypeField);
+    XCTAssertEqualObjects(ticketTypeField.value, @0);
+}
+
 - (void)testCondition {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
