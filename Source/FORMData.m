@@ -1027,8 +1027,22 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
             NSString *fieldFormula = [fieldDictionary andy_valueForKey:@"formula"];
             if (fieldFormula) {
-                NSString *tranformedFieldFormula = [fieldFormula stringByReplacingOccurrencesOfString:@":index" withString:[NSString stringWithFormat:@"%ld", (long)index]];
-                [fieldDictionary setValue:tranformedFieldFormula forKey:@"formula"];
+                NSString *tranformedFieldFormula = [fieldFormula stringByReplacingOccurrencesOfString:@":index"
+                                                                                           withString:[NSString stringWithFormat:@"%ld", (long)index]];
+                [fieldDictionary setValue:tranformedFieldFormula
+                                   forKey:@"formula"];
+            }
+
+            NSMutableArray *targets = [fieldDictionary andy_valueForKey:@"targets"];
+            for (NSMutableDictionary *targetDictionary in targets) {
+                NSString *targetID = [targetDictionary andy_valueForKey:@"id"];
+                NSString *tranformedTargetIDFormula = [targetID stringByReplacingOccurrencesOfString:@":index"
+                                                                                          withString:[NSString stringWithFormat:@"%ld", (long)index]];
+                targetDictionary[@"id"] = tranformedTargetIDFormula;
+            }
+
+            if (targets) {
+                fieldDictionary[@"targets"] = targets;
             }
 
             [fields addObject:[fieldDictionary copy]];
