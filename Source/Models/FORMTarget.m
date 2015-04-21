@@ -38,7 +38,7 @@
         self.type == FORMTargetTypeField) {
         NSArray *properties = @[@"targetValue", @"validation"];
 
-        for (NSString * property in properties) {
+        for (NSString *property in properties) {
             id value = [self valueForKey:property];
             if (value != nil) {
                 values[property] = value;

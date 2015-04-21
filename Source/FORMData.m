@@ -816,19 +816,32 @@ includingHiddenFields:(BOOL)includingHiddenFields
         }];
 
         if (field) {
-            if (target.targetValue) {
+            NSDictionary *fieldProperties = [target fieldPropertiesToUpdate];
+            if (fieldProperties.count > 0) {
+                for (NSString *fieldPropertyKey in fieldProperties) {
+                    id fieldPropertyValue = fieldProperties[fieldPropertyKey];
 
-                if (field.type == FORMFieldTypeSelect) {
-                    FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.targetValue];
+                    if ([fieldPropertyKey isEqualToString:@"targetValue"]) {
+                        if (field.type == FORMFieldTypeSelect) {
+                            FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:fieldPropertyValue];
 
-                    if (selectedFieldValue) {
-                        [self.values setObject:selectedFieldValue.valueID forKey:field.fieldID];
-                        field.value = selectedFieldValue;
+                            if (selectedFieldValue) {
+                                [self.values setObject:selectedFieldValue.valueID forKey:field.fieldID];
+                                field.value = selectedFieldValue;
+                            }
+
+                        } else {
+                            field.value = fieldPropertyValue;
+                            [self.values setObject:field.value forKey:field.fieldID];
+                        }
+                    } else {
+                        @try {
+                            [field setValue:fieldPropertyValue forKey:fieldPropertyKey];
+                        }
+                        @catch (NSException * e) {
+                            NSLog(@"Error: tried to set value for key that doesn't exist:%@", fieldPropertyKey);
+                        }
                     }
-
-                } else {
-                    field.value = target.targetValue;
-                    [self.values setObject:field.value forKey:field.fieldID];
                 }
 
             } else if (target.actionType == FORMTargetActionClear) {

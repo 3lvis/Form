@@ -170,6 +170,32 @@
     XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
 }
 
+- (void)testValidation {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
+
+    FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
+    updateTarget.targetValue = @"Mr.Melk";
+    [dataSource processTargets:@[updateTarget]];
+    XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
+
+    updateTarget.validation = [[FORMFieldValidation alloc]
+                                            initWithDictionary:@{@"required": @YES,
+                                                                 @"min_length": @1,
+                                                                 @"max_length": @4}];
+    [dataSource processTargets:@[updateTarget]];
+    [displayNameField validate];
+    XCTAssertFalse([displayNameField valid]);
+}
+
 #pragma mark - reloadWithDictionary
 
 - (void)testReloadWithDictionary {
