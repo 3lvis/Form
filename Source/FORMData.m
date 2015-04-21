@@ -794,10 +794,15 @@ includingHiddenFields:(BOOL)includingHiddenFields
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
-        if (![self evaluateCondition:target.condition]) continue;
 
-        if (target.type == FORMTargetTypeSection) continue;
-        if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
+        BOOL shouldContinue = (![self evaluateCondition:target.condition] ||
+                               target.type == FORMTargetTypeSection ||
+                               [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]);
+
+        if (shouldContinue) {
+            continue;
+        }
+
 
         __block FORMField *field = nil;
 
