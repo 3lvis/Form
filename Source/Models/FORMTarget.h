@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, FORMTargetActionType) {
 @interface FORMTarget : NSObject
 
 @property (nonatomic, copy) NSString *targetID;
-@property (nonatomic, copy) id targetValue;
+@property (nonatomic, copy) id value;
 @property (nonatomic, copy) NSString *typeString;
 @property (nonatomic, copy) NSString *actionTypeString;
 @property (nonatomic, copy) NSString *condition;

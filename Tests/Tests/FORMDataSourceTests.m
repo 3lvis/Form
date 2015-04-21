@@ -123,7 +123,7 @@
     XCTAssertNil(targetField.value);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.targetValue = @"John Hyperseed";
+    updateTarget.value = @"John Hyperseed";
 
     [dataSource processTargets:@[updateTarget]];
     XCTAssertEqualObjects(targetField.value, @"John Hyperseed");
@@ -159,7 +159,7 @@
     XCTAssertEqualObjects(fieldValue.valueID, @0);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.targetValue = @"Mr.Melk";
+    updateTarget.value = @"Mr.Melk";
 
     updateTarget.condition = @"$username == 2";
     [dataSource processTargets:@[updateTarget]];
@@ -183,7 +183,7 @@
     FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.targetValue = @"Mr.Melk";
+    updateTarget.value = @"Mr.Melk";
     [dataSource processTargets:@[updateTarget]];
     XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
 
