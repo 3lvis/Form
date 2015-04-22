@@ -15,7 +15,7 @@
               "type":"field",
               "action":"update",
               "condition": "equals($email, \"john.hyperseed\")",
-              "target_value": "john.hyperseed@hyper.no"
+              "value": "john.hyperseed@hyper.no"
             }
           ]
         },
