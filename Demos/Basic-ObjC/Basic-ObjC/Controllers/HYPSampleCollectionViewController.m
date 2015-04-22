@@ -123,6 +123,12 @@
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
 
     self.collectionView.dataSource = self.dataSource;
+
+    UIBarButtonItem *printValuesButton = [[UIBarButtonItem alloc] initWithTitle:@"Values"
+                                                                          style:UIBarButtonItemStyleDone
+                                                                         target:self
+                                                                         action:@selector(printValuesAction)];
+    self.navigationItem.rightBarButtonItem = printValuesButton;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -212,6 +218,19 @@
     } else {
         [self.dataSource validate];
     }
+}
+
+- (void)printValuesAction {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Values"
+                                                                             message:[self.dataSource.values description]
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *doneAction = [UIAlertAction actionWithTitle:@"OK"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction *action) {
+                                                           [self dismissViewControllerAnimated:YES completion:nil];
+                                                       }];
+    [alertController addAction:doneAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)readOnly:(UISwitch *)sender {
