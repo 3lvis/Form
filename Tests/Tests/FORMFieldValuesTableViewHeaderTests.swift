@@ -19,5 +19,4 @@ class FORMFieldValuesTableViewHeaderTests: XCTestCase {
         headerView.field = formField
         XCTAssertEqual(headerView.labelHeight(), CGFloat(97.5))
     }
-
 }
