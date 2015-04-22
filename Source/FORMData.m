@@ -725,12 +725,16 @@ includingHiddenFields:(BOOL)includingHiddenFields
             if (field && ![self.hiddenFieldsAndFieldIDsDictionary objectForKey:field.fieldID]) {
                 [deletedFields addObject:field];
                 [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{field.fieldID : field}];
+                [self.values removeObjectForKey:field.fieldID];
             }
         } else if (target.type == FORMTargetTypeSection) {
             FORMSection *section = [self sectionWithID:target.targetID];
             if (section && ![self.hiddenSections objectForKey:section.sectionID]) {
                 [deletedSections addObject:section];
                 [self.hiddenSections addEntriesFromDictionary:@{section.sectionID : section}];
+                for (FORMField *field in section.fields) {
+                    [self.values removeObjectForKey:field.fieldID];
+                }
             }
         }
     }
