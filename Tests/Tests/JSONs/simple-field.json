@@ -1,0 +1,22 @@
+[
+  {
+    "id": "group",
+    "title": "Group",
+    "sections": [
+      {
+        "id": "section",
+        "fields": [
+          {
+            "id": "textie",
+            "title": "Some text",
+            "type": "text",
+            "size": {
+              "width": 25,
+              "height": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

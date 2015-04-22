@@ -663,6 +663,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
             if (target.type == FORMTargetTypeField) {
                 FORMField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
                 if (field) {
+                    [self updateValuesFromFields:@[field]];
+
                     FORMGroup *group = self.groups[[field.section.group.position integerValue]];
 
                     for (FORMSection *section in group.sections) {
@@ -677,6 +679,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
             } else if (target.type == FORMTargetTypeSection) {
                 FORMSection *section = [self.hiddenSections objectForKey:target.targetID];
                 if (section) {
+                    [self updateValuesFromFields:section.fields];
+
                     NSInteger sectionIndex = [section indexInGroups:self.groups];
                     FORMGroup *group = self.groups[[section.group.position integerValue]];
                     [group.sections insertObject:section atIndex:sectionIndex];
@@ -689,6 +693,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 if (field) {
                     [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
                         if (field) {
+                            [self updateValuesFromFields:@[field]];
                             [insertedIndexPaths addObject:indexPath];
                         }
 
@@ -700,8 +705,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 if (section) {
                     [self sectionWithID:target.targetID completion:^(FORMSection *section, NSArray *indexPaths) {
                         if (section) {
+                            [self updateValuesFromFields:section.fields];
                             [insertedIndexPaths addObjectsFromArray:indexPaths];
-
                             [self.hiddenSections removeObjectForKey:section.sectionID];
                         }
                     }];
@@ -725,12 +730,16 @@ includingHiddenFields:(BOOL)includingHiddenFields
             if (field && ![self.hiddenFieldsAndFieldIDsDictionary objectForKey:field.fieldID]) {
                 [deletedFields addObject:field];
                 [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{field.fieldID : field}];
+                [self.values removeObjectForKey:field.fieldID];
             }
         } else if (target.type == FORMTargetTypeSection) {
             FORMSection *section = [self sectionWithID:target.targetID];
             if (section && ![self.hiddenSections objectForKey:section.sectionID]) {
                 [deletedSections addObject:section];
                 [self.hiddenSections addEntriesFromDictionary:@{section.sectionID : section}];
+                for (FORMField *field in section.fields) {
+                    [self.values removeObjectForKey:field.fieldID];
+                }
             }
         }
     }
@@ -1174,6 +1183,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
                                 withIndex:(long)index {
     return [string stringByReplacingOccurrencesOfString:@":index"
                                                withString:[NSString stringWithFormat:@"%ld", (long)index]];
+}
+
+- (void)updateValuesFromFields:(NSArray *)fields {
+    for (FORMField *field in fields) {
+        [self.values andy_setValue:field.value forKey:field.fieldID];
+    }
 }
 
 @end

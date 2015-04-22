@@ -4,19 +4,18 @@ import XCTest
 class FORMFieldValuesTableViewHeaderTests: XCTestCase {
 
     func testLabelHeight() {
-        let formField = FORMField()
+        let field = FORMField()
+
         let headerView = FORMFieldValuesTableViewHeader()
+        XCTAssertEqualWithAccuracy(headerView.labelHeight(), CGFloat(68.5), 0.5, "")
 
-        formField.title = "Test"
-        formField.info = "Multi-line\nMulti-line"
+        field.title = "Test"
+        field.info = "Multi-line\nMulti-line"
+        headerView.field = field
+        XCTAssertEqualWithAccuracy(headerView.labelHeight(), CGFloat(77.5), 0.5, "")
 
-        XCTAssertEqual(headerView.labelHeight(), CGFloat(68.5))
-
-        headerView.field = formField
-        XCTAssertEqual(headerView.labelHeight(), CGFloat(77.5))
-
-        formField.info = "Multi-line\nMulti-line\nMulti-line"
-        headerView.field = formField
-        XCTAssertEqual(headerView.labelHeight(), CGFloat(97.5))
+        field.info = "Multi-line\nMulti-line\nMulti-line"
+        headerView.field = field
+        XCTAssertEqualWithAccuracy(headerView.labelHeight(), CGFloat(97.5), 0.5, "")
     }
 }
