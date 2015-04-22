@@ -41,7 +41,6 @@
         for (NSUInteger i = 0; i < numberOfProperties; i++) {
             objc_property_t property = propertyArray[i];
             NSString *propertyName = [[NSString alloc] initWithUTF8String:property_getName(property)];
-            NSLog(@"Prop: %@", propertyName);
             id value = [self valueForKey:propertyName];
             if (value != nil) {
                 values[propertyName] = value;
