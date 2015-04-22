@@ -623,7 +623,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 }
 
 - (NSArray *)sortTargets:(NSArray *)targets {
-    NSSortDescriptor *sortByTypeString = [NSSortDescriptor sortDescriptorWithKey:@"targetTypeString"
+    NSSortDescriptor *sortByTypeString = [NSSortDescriptor sortDescriptorWithKey:@"typeString"
                                                                        ascending:YES];
     NSArray *sortedTargets = [targets sortedArrayUsingDescriptors:@[sortByTypeString]];
 

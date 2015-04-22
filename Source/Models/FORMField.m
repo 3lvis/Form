@@ -30,7 +30,10 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _valid = YES;
     _fieldID = remoteID;
     _validationResultType = FORMValidationResultTypeValid;
-
+    _typeString  = [dictionary andy_valueForKey:@"type"];
+    _type = [self typeFromTypeString:self.typeString];
+    _inputTypeString = [dictionary andy_valueForKey:@"input_type"];
+    _value = [dictionary andy_valueForKey:@"value"];
 
     NSNumber *width = [dictionary andy_valueForKey:@"size.width"];
     NSNumber *height = [dictionary andy_valueForKey:@"size.height"];
@@ -67,7 +70,49 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _values = values;
 
+    BOOL isDateType = (_type == FORMFieldTypeDate ||
+                       _type == FORMFieldTypeDateTime ||
+                       _type == FORMFieldTypeTime);
+
+    if (_value && isDateType) {
+        ISO8601DateFormatter *dateFormatter = [ISO8601DateFormatter new];
+        _value = [dateFormatter dateFromString:_value];
+    }
+
     return self;
+}
+
+#pragma mark - Setters
+
+- (void)setValue:(id)fieldValue {
+    id resultValue = fieldValue;
+
+    switch (self.type) {
+        case FORMFieldTypeNumber:
+        case FORMFieldTypeFloat: {
+            if (![fieldValue isKindOfClass:[NSString class]]) {
+                resultValue = [fieldValue stringValue];
+            }
+        } break;
+
+        case FORMFieldTypeDateTime:
+        case FORMFieldTypeTime:
+        case FORMFieldTypeDate: {
+            if ([fieldValue isKindOfClass:[NSString class]]) {
+                NSDateFormatter *formatter = [NSDateFormatter new];
+                [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"];
+                resultValue = [formatter dateFromString:fieldValue];
+            }
+        } break;
+
+        case FORMFieldTypeText:
+        case FORMFieldTypeSelect:
+        case FORMFieldTypeButton:
+        case FORMFieldTypeCustom:
+            break;
+    }
+
+    _value = resultValue;
 }
 
 #pragma mark - Getters
@@ -137,6 +182,31 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     }
 
     return formatter;
+}
+
+- (FORMFieldType)typeFromTypeString:(NSString *)typeString {
+    if ([typeString isEqualToString:@"text"] ||
+        [typeString isEqualToString:@"name"] ||
+        [typeString isEqualToString:@"email"] ||
+        [typeString isEqualToString:@"password"]) {
+        return FORMFieldTypeText;
+    } else if ([typeString isEqualToString:@"select"]) {
+        return FORMFieldTypeSelect;
+    } else if ([typeString isEqualToString:@"date"]) {
+        return FORMFieldTypeDate;
+    } else if ([typeString isEqualToString:@"date_time"]) {
+        return FORMFieldTypeDateTime;
+    } else if ([typeString isEqualToString:@"time"]) {
+        return FORMFieldTypeTime;
+    } else if ([typeString isEqualToString:@"float"]) {
+        return FORMFieldTypeFloat;
+    } else if ([typeString isEqualToString:@"number"]) {
+        return FORMFieldTypeNumber;
+    } else if ([typeString isEqualToString:@"button"]) {
+        return FORMFieldTypeButton;
+    } else {
+        return FORMFieldTypeCustom;
+    }
 }
 
 - (FORMFieldValue *)fieldValueWithID:(id)fieldValueID {

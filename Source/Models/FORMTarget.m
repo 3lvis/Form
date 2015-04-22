@@ -15,7 +15,7 @@
     if (!self) return nil;
 
     _targetID = [dictionary andy_valueForKey:@"id"];
-    self.targetTypeString = [dictionary andy_valueForKey:@"type"];
+    self.typeString = [dictionary andy_valueForKey:@"type"];
     self.actionTypeString = [dictionary andy_valueForKey:@"action"];
     self.value = [dictionary andy_valueForKey:@"target_value"];
     self.condition = [dictionary andy_valueForKey:@"condition"];
@@ -35,7 +35,7 @@
     NSMutableDictionary *values = [NSMutableDictionary new];
 
     if (self.actionType == FORMTargetActionUpdate &&
-        self.targetType == FORMTargetTypeField) {
+        self.type == FORMTargetTypeField) {
 
         NSArray *properties = @[@"value", @"validation"];
 
@@ -69,7 +69,7 @@
             actionTypeString:(NSString *)actionTypeString {
     FORMTarget *target = [FORMTarget new];
     target.targetID = targetID;
-    target.targetTypeString = typeString;
+    target.typeString = typeString;
     target.actionTypeString = actionTypeString;
 
     return target;
@@ -77,15 +77,15 @@
 
 #pragma mark - Setters
 
-- (void)setTargetTypeString:(NSString *)targetTypeString {
-    _targetTypeString = targetTypeString;
+- (void)setTypeString:(NSString *)typeString {
+    _typeString = typeString;
 
-    if ([targetTypeString isEqualToString:@"field"]) {
-        self.targetType = FORMTargetTypeField;
-    } else if ([targetTypeString isEqualToString:@"section"]) {
-        self.targetType = FORMTargetTypeSection;
+    if ([typeString isEqualToString:@"field"]) {
+        self.type = FORMTargetTypeField;
+    } else if ([typeString isEqualToString:@"section"]) {
+        self.type = FORMTargetTypeSection;
     } else {
-        self.targetType = FORMTargetTypeNone;
+        self.type = FORMTargetTypeNone;
     }
 }
 
@@ -327,7 +327,7 @@
 
     BOOL equal = (sameTargetID &&
                   object.actionType == self.actionType &&
-                  object.targetType == self.targetType &&
+                  object.type == self.type &&
                   sameCondition &&
                   sameTargetValue);
 
@@ -340,7 +340,7 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"\n — Target: %@ —\n value: %@\n type: %@\n action type: %@\n condition: %@\n",
-            self.targetID, self.value, self.targetTypeString, self.actionTypeString, self.condition];
+            self.targetID, self.value, self.typeString, self.actionTypeString, self.condition];
 }
 
 @end

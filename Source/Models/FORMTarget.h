@@ -1,6 +1,5 @@
 @import Foundation;
 
-#import "FORMFieldElement.h"
 #import "FORMFieldValue.h"
 
 typedef NS_ENUM(NSInteger, FORMTargetType) {
@@ -23,12 +22,12 @@ typedef NS_ENUM(NSInteger, FORMTargetActionType) {
 
 @property (nonatomic, copy) NSString *targetID;
 @property (nonatomic, copy) id value;
-@property (nonatomic, copy) NSString *targetTypeString;
+@property (nonatomic, copy) NSString *typeString;
 @property (nonatomic, copy) NSString *actionTypeString;
 @property (nonatomic, copy) NSString *condition;
 
 @property (nonatomic) FORMFieldValue *fieldValue;
-@property (nonatomic) FORMTargetType targetType;
+@property (nonatomic) FORMTargetType type;
 @property (nonatomic) FORMTargetActionType actionType;
 
 @property (nonatomic) FORMFieldValidation *validation;

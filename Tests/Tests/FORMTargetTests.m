@@ -12,33 +12,33 @@
     FORMTarget *target = [FORMTarget showFieldTargetWithID:@"start_date"];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"start_date");
-    XCTAssertEqualObjects(target.targetTypeString, @"field");
+    XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"show");
-    XCTAssertEqual(target.targetType, FORMTargetTypeField);
+    XCTAssertEqual(target.type, FORMTargetTypeField);
     XCTAssertEqual(target.actionType, FORMTargetActionShow);
 
     target = [FORMTarget hideSectionTargetWithID:@"section_id"];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"section_id");
-    XCTAssertEqualObjects(target.targetTypeString, @"section");
+    XCTAssertEqualObjects(target.typeString, @"section");
     XCTAssertEqualObjects(target.actionTypeString, @"hide");
-    XCTAssertEqual(target.targetType, FORMTargetTypeSection);
+    XCTAssertEqual(target.type, FORMTargetTypeSection);
     XCTAssertEqual(target.actionType, FORMTargetActionHide);
 
     target = [FORMTarget disableFieldTargetWithID:@"first_name"];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"first_name");
-    XCTAssertEqualObjects(target.targetTypeString, @"field");
+    XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"disable");
-    XCTAssertEqual(target.targetType, FORMTargetTypeField);
+    XCTAssertEqual(target.type, FORMTargetTypeField);
     XCTAssertEqual(target.actionType, FORMTargetActionDisable);
 
     target = [FORMTarget enableFieldTargetWithID:@"last_name"];
     XCTAssertNotNil(target);
     XCTAssertEqualObjects(target.targetID, @"last_name");
-    XCTAssertEqualObjects(target.targetTypeString, @"field");
+    XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"enable");
-    XCTAssertEqual(target.targetType, FORMTargetTypeField);
+    XCTAssertEqual(target.type, FORMTargetTypeField);
     XCTAssertEqual(target.actionType, FORMTargetActionEnable);
 }
 
