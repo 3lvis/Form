@@ -663,6 +663,10 @@ includingHiddenFields:(BOOL)includingHiddenFields
             if (target.type == FORMTargetTypeField) {
                 FORMField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
                 if (field) {
+                    if (field.value) {
+                        [self.values setValue:field.value forKey:field.fieldID];
+                    }
+
                     FORMGroup *group = self.groups[[field.section.group.position integerValue]];
 
                     for (FORMSection *section in group.sections) {
@@ -689,6 +693,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 if (field) {
                     [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
                         if (field) {
+                            [self.values setValue:field.value forKey:field.fieldID];
                             [insertedIndexPaths addObject:indexPath];
                         }
 
