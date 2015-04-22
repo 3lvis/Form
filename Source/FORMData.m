@@ -821,7 +821,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 for (NSString *fieldPropertyKey in fieldProperties) {
                     id fieldPropertyValue = fieldProperties[fieldPropertyKey];
 
-                    if ([fieldPropertyKey isEqualToString:@"value"]) {
+                    if ([fieldPropertyKey isEqualToString:@"targetValue"]) {
                         if (field.type == FORMFieldTypeSelect) {
                             FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:fieldPropertyValue];
 
