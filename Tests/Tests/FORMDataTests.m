@@ -644,7 +644,7 @@
 
 - (void)testCleaningUpHiddenValues
 {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"targets.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-field.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *formData = [[FORMData alloc] initWithJSON:JSON
@@ -652,13 +652,12 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    XCTAssertEqual(formData.values.count, 2);
-
-    FORMTarget *target = [FORMTarget updateFieldTargetWithID:@"contract_type"];
-    target.targetValue = @1;
-    [formData updateTargets:@[target]];
-
     XCTAssertEqual(formData.values.count, 1);
+
+    FORMTarget *target = [FORMTarget hideFieldTargetWithID:@"textie"];
+    [formData hideTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 0);
 }
 
 @end
