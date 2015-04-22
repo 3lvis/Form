@@ -642,8 +642,7 @@
     XCTAssertFalse([formData evaluateCondition:@"equals($bonus_enabled, 1)"]);
 }
 
-- (void)testCleaningUpHiddenValues
-{
+- (void)testCleaningUpFieldValueWhenHiddingAndShowing {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-field.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -663,6 +662,29 @@
     [formData showTargets:@[target]];
 
     XCTAssertEqual(formData.values.count, 1);
+}
+
+- (void)testCleaningUpSectionValueWhenHiddingAndShowing {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-section.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:@{@"first_name" : @"John",
+                                                          @"last_name" : @"Minion"}
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    XCTAssertEqual(formData.values.count, 2);
+
+    FORMTarget *target = [FORMTarget hideSectionTargetWithID:@"section"];
+    [formData hideTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 0);
+
+    target = [FORMTarget showSectionTargetWithID:@"section"];
+    [formData showTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 2);
 }
 
 @end

@@ -1,0 +1,31 @@
+[
+  {
+    "id": "group",
+    "title": "Group",
+    "sections": [
+      {
+        "id": "section",
+        "fields": [
+          {
+            "id": "first_name",
+            "title": "First name",
+            "type": "text",
+            "size": {
+              "width": 25,
+              "height": 1
+            }
+          },
+          {
+            "id": "last_name",
+            "title": "Last name",
+            "type": "text",
+            "size": {
+              "width": 25,
+              "height": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
