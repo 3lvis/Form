@@ -681,6 +681,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
             } else if (target.type == FORMTargetTypeSection) {
                 FORMSection *section = [self.hiddenSections objectForKey:target.targetID];
                 if (section) {
+                    for (FORMField *field in section.fields) {
+                        if (field.value) {
+                            [self.values setValue:field.value forKey:field.fieldID];
+                        }
+                    }
+
                     NSInteger sectionIndex = [section indexInGroups:self.groups];
                     FORMGroup *group = self.groups[[section.group.position integerValue]];
                     [group.sections insertObject:section atIndex:sectionIndex];
@@ -705,6 +711,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 if (section) {
                     [self sectionWithID:target.targetID completion:^(FORMSection *section, NSArray *indexPaths) {
                         if (section) {
+                            for (FORMField *field in section.fields) {
+                                if (field.value) {
+                                    [self.values setValue:field.value forKey:field.fieldID];
+                                }
+                            }
+
                             [insertedIndexPaths addObjectsFromArray:indexPaths];
 
                             [self.hiddenSections removeObjectForKey:section.sectionID];
