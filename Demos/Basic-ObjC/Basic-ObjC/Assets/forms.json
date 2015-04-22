@@ -26,7 +26,7 @@
               "id":"last_name",
               "title":"Last name",
               "type":"name",
-              "info":"Obs! Husk å kjøpe melk",
+              "info":"Family name",
               "size":{
                 "width":30,
                 "height":1
