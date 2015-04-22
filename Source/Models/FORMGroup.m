@@ -60,7 +60,7 @@
     for (NSDictionary *targetDict in array) {
         FORMTarget *target = [FORMTarget new];
         target.targetID = [targetDict andy_valueForKey:@"id"];
-        target.typeString = [targetDict andy_valueForKey:@"type"];
+        target.targetTypeString = [targetDict andy_valueForKey:@"type"];
         target.actionTypeString = [targetDict andy_valueForKey:@"action"];
         [targets addObject:target];
     }

@@ -15,7 +15,7 @@
     if (!self) return nil;
 
     _targetID = [dictionary andy_valueForKey:@"id"];
-    self.typeString = [dictionary andy_valueForKey:@"type"];
+    self.targetTypeString = [dictionary andy_valueForKey:@"type"];
     self.actionTypeString = [dictionary andy_valueForKey:@"action"];
     self.value = [dictionary andy_valueForKey:@"target_value"];
     self.condition = [dictionary andy_valueForKey:@"condition"];
@@ -69,7 +69,7 @@
             actionTypeString:(NSString *)actionTypeString {
     FORMTarget *target = [FORMTarget new];
     target.targetID = targetID;
-    target.typeString = typeString;
+    target.targetTypeString = typeString;
     target.actionTypeString = actionTypeString;
 
     return target;
@@ -77,12 +77,12 @@
 
 #pragma mark - Setters
 
-- (void)setTypeString:(NSString *)typeString {
-    _typeString = typeString;
+- (void)setTargetTypeString:(NSString *)targetTypeString {
+    _targetTypeString = targetTypeString;
 
-    if ([typeString isEqualToString:@"field"]) {
+    if ([targetTypeString isEqualToString:@"field"]) {
         self.targetType = FORMTargetTypeField;
-    } else if ([typeString isEqualToString:@"section"]) {
+    } else if ([targetTypeString isEqualToString:@"section"]) {
         self.targetType = FORMTargetTypeSection;
     } else {
         self.targetType = FORMTargetTypeNone;
@@ -340,7 +340,7 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"\n — Target: %@ —\n value: %@\n type: %@\n action type: %@\n condition: %@\n",
-            self.targetID, self.value, self.typeString, self.actionTypeString, self.condition];
+            self.targetID, self.value, self.targetTypeString, self.actionTypeString, self.condition];
 }
 
 @end
