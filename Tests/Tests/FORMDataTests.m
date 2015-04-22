@@ -642,4 +642,23 @@
     XCTAssertFalse([formData evaluateCondition:@"equals($bonus_enabled, 1)"]);
 }
 
+- (void)testCleaningUpHiddenValues
+{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"targets.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:@{@"textie" : @"some text"}
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    XCTAssertEqual(formData.values.count, 2);
+
+    FORMTarget *target = [FORMTarget updateFieldTargetWithID:@"contract_type"];
+    target.targetValue = @1;
+    [formData updateTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 1);
+}
+
 @end

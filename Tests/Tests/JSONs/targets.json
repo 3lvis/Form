@@ -18,9 +18,10 @@
               {
                 "id": 0,
                 "title": "Permanent",
+                "default": true,
                 "targets": [
                   {
-                    "id": "start_date",
+                    "id": "textie",
                     "type": "field",
                     "action": "show"
                   }
@@ -31,7 +32,7 @@
                 "title": "Temporary",
                 "targets": [
                   {
-                    "id": "start_date",
+                    "id": "textie",
                     "type": "field",
                     "action": "hide"
                   }
@@ -40,9 +41,9 @@
             ]
           },
           {
-            "id": "start_date",
-            "title": "Start date",
-            "type": "date",
+            "id": "textie",
+            "title": "Some text",
+            "type": "text",
             "size": {
               "width": 25,
               "height": 1
