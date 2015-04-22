@@ -1,16 +1,16 @@
 @import XCTest;
 
-#import "FORMFieldElement.h"
+#import "FORMFieldBase.h"
 #import "NSDate+HYPString.h"
 
-@interface FORMFieldElementTests : XCTestCase
+@interface FORMFieldBaseTests : XCTestCase
 
 @end
 
-@implementation FORMFieldElementTests
+@implementation FORMFieldBaseTests
 
 - (void)testInitWithDictionary {
-    FORMFieldElement *fieldElement = [[FORMFieldElement alloc] initWithDictionary:@{@"title": @"First name",
+    FORMFieldBase *fieldBase = [[FORMFieldBase alloc] initWithDictionary:@{@"title": @"First name",
                                                                                     @"info": @"Display name",
                                                                                     @"minimum_date":@"2000-01-01T00:00:00.002Z",
                                                                                     @"maximum_date":@"2015-01-01T00:00:00.002Z",
@@ -18,13 +18,13 @@
                                                                                                       @"min_length": @2},
                                                                                     @"formula": @"first_name last_name"
                                                                                     }];
-    XCTAssertNotNil(fieldElement);
-    XCTAssertEqualObjects(fieldElement.title, @"First name");
-    XCTAssertEqualObjects(fieldElement.info, @"Display name");
-    XCTAssertEqualObjects([fieldElement.minimumDate hyp_dateString], @"2000-01-01");
-    XCTAssertEqualObjects([fieldElement.maximumDate hyp_dateString], @"2015-01-01");
-    XCTAssertNotNil(fieldElement.validation);
-    XCTAssertEqualObjects(fieldElement.formula, @"first_name last_name");
+    XCTAssertNotNil(fieldBase);
+    XCTAssertEqualObjects(fieldBase.title, @"First name");
+    XCTAssertEqualObjects(fieldBase.info, @"Display name");
+    XCTAssertEqualObjects([fieldBase.minimumDate hyp_dateString], @"2000-01-01");
+    XCTAssertEqualObjects([fieldBase.maximumDate hyp_dateString], @"2015-01-01");
+    XCTAssertNotNil(fieldBase.validation);
+    XCTAssertEqualObjects(fieldBase.formula, @"first_name last_name");
 }
 
 @end

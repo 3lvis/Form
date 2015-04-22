@@ -6,7 +6,7 @@
 @class FORMFieldValidation;
 
 #import "FORMValidator.h"
-#import "FORMFieldElement.h"
+#import "FORMFieldBase.h"
 
 typedef NS_ENUM(NSInteger, FORMFieldType) {
     FORMFieldTypeText = 0,
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
     FORMFieldTypeCustom
 };
 
-@interface FORMField : FORMFieldElement
+@interface FORMField : FORMFieldBase
 
 @property (nonatomic) NSString *fieldID;
 @property (nonatomic) NSString *typeString;

@@ -1,10 +1,10 @@
-#import "FORMFieldElement.h"
+#import "FORMFieldBase.h"
 
 #import "NSDictionary+ANDYSafeValue.h"
 #import "ISO8601DateFormatter.h"
 #import "FORMFieldValidation.h"
 
-@implementation FORMFieldElement
+@implementation FORMFieldBase
 
 #pragma mark - Initializers
 

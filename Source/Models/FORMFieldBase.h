@@ -3,7 +3,7 @@
 
 @class FORMFieldValidation;
 
-@interface FORMFieldElement : NSObject
+@interface FORMFieldBase : NSObject
 
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *info;

@@ -36,7 +36,7 @@
         }
 
         unsigned int numberOfProperties = 0;
-        objc_property_t *propertyArray = class_copyPropertyList([FORMFieldElement class], &numberOfProperties);
+        objc_property_t *propertyArray = class_copyPropertyList([FORMFieldBase class], &numberOfProperties);
 
         for (NSUInteger i = 0; i < numberOfProperties; i++) {
             objc_property_t property = propertyArray[i];
