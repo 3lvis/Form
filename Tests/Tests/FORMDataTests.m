@@ -658,6 +658,11 @@
     [formData hideTargets:@[target]];
 
     XCTAssertEqual(formData.values.count, 0);
+
+    target = [FORMTarget showFieldTargetWithID:@"textie"];
+    [formData showTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 1);
 }
 
 @end
