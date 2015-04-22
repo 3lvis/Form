@@ -38,4 +38,9 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"\n — Field Element: \n title: %@\n info: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n",
+            self.title, self.info, self.minimumDate, self.maximumDate, self.validation, self.formula];
+}
+
 @end
