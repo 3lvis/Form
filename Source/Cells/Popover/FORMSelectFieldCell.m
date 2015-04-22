@@ -59,7 +59,8 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
 
 #pragma mark - FORMPopoverFormFieldCell
 
-- (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field {
+- (void)updateContentViewController:(UIViewController *)contentViewController
+                          withField:(FORMField *)field {
     self.fieldValuesController.field = self.field;
 }
 
