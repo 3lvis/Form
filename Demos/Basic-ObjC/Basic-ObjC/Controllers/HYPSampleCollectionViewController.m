@@ -125,7 +125,7 @@
 
     self.collectionView.dataSource = self.dataSource;
 
-    UIBarButtonItem *printValuesButton = [[UIBarButtonItem alloc] initWithTitle:@"Values"
+    UIBarButtonItem *printValuesButton = [[UIBarButtonItem alloc] initWithTitle:@"Show Values"
                                                                           style:UIBarButtonItemStyleDone
                                                                          target:self
                                                                          action:@selector(printValuesAction)];
