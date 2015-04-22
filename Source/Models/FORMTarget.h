@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, FORMTargetActionType) {
 @property (nonatomic, copy) NSString *condition;
 
 @property (nonatomic) FORMFieldValue *fieldValue;
-@property (nonatomic) FORMTargetType type;
+@property (nonatomic) FORMTargetType targetType;
 @property (nonatomic) FORMTargetActionType actionType;
 
 @property (nonatomic) FORMFieldValidation *validation;

@@ -35,7 +35,7 @@
     NSMutableDictionary *values = [NSMutableDictionary new];
 
     if (self.actionType == FORMTargetActionUpdate &&
-        self.type == FORMTargetTypeField) {
+        self.targetType == FORMTargetTypeField) {
 
         NSArray *properties = @[@"value", @"validation"];
 
@@ -81,11 +81,11 @@
     _typeString = typeString;
 
     if ([typeString isEqualToString:@"field"]) {
-        self.type = FORMTargetTypeField;
+        self.targetType = FORMTargetTypeField;
     } else if ([typeString isEqualToString:@"section"]) {
-        self.type = FORMTargetTypeSection;
+        self.targetType = FORMTargetTypeSection;
     } else {
-        self.type = FORMTargetTypeNone;
+        self.targetType = FORMTargetTypeNone;
     }
 }
 
@@ -327,7 +327,7 @@
 
     BOOL equal = (sameTargetID &&
                   object.actionType == self.actionType &&
-                  object.type == self.type &&
+                  object.targetType == self.targetType &&
                   sameCondition &&
                   sameTargetValue);
 

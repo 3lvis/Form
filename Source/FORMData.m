@@ -279,13 +279,13 @@
     for (FORMTarget *target in hideTargets) {
         if ([self evaluateCondition:target.condition]) {
 
-            if (target.type == FORMTargetTypeField) {
+            if (target.targetType == FORMTargetTypeField) {
 
                 FORMField *field = [self fieldWithID:target.targetID
                                includingHiddenFields:YES];
                 [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
 
-            } else if (target.type == FORMTargetTypeSection) {
+            } else if (target.targetType == FORMTargetTypeSection) {
 
                 FORMSection *section = [self sectionWithID:target.targetID];
                 [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
@@ -295,7 +295,7 @@
 
     for (FORMTarget *target in hideTargets) {
         if ([self evaluateCondition:target.condition]) {
-            if (target.type == FORMTargetTypeField) {
+            if (target.targetType == FORMTargetTypeField) {
 
                 FORMField *field = [self fieldWithID:target.targetID
                                includingHiddenFields:NO];
@@ -306,7 +306,7 @@
                     [section resetFieldPositions];
                 }
 
-            } else if (target.type == FORMTargetTypeSection) {
+            } else if (target.targetType == FORMTargetTypeSection) {
 
                 FORMSection *section = [self sectionWithID:target.targetID];
                 if (section) {
@@ -650,7 +650,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
         if (![self evaluateCondition:target.condition]) continue;
 
         __block BOOL shouldLookForField = YES;
-        if (target.type == FORMTargetTypeField) {
+        if (target.targetType == FORMTargetTypeField) {
             [self fieldWithID:target.targetID includingHiddenFields:NO
                    completion:^(FORMField *field, NSIndexPath *indexPath) {
                        shouldLookForField = (field == nil);
@@ -660,7 +660,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
         if (shouldLookForField) {
             BOOL foundSection = NO;
 
-            if (target.type == FORMTargetTypeField) {
+            if (target.targetType == FORMTargetTypeField) {
                 FORMField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
                 if (field) {
                     FORMGroup *group = self.groups[[field.section.group.position integerValue]];
@@ -674,7 +674,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
                         }
                     }
                 }
-            } else if (target.type == FORMTargetTypeSection) {
+            } else if (target.targetType == FORMTargetTypeSection) {
                 FORMSection *section = [self.hiddenSections objectForKey:target.targetID];
                 if (section) {
                     NSInteger sectionIndex = [section indexInGroups:self.groups];
@@ -684,7 +684,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 }
             }
 
-            if (target.type == FORMTargetTypeField && foundSection) {
+            if (target.targetType == FORMTargetTypeField && foundSection) {
                 FORMField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
                 if (field) {
                     [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
@@ -695,7 +695,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
                         [self.hiddenFieldsAndFieldIDsDictionary removeObjectForKey:target.targetID];
                     }];
                 }
-            } else if (target.type == FORMTargetTypeSection) {
+            } else if (target.targetType == FORMTargetTypeSection) {
                 FORMSection *section = [self.hiddenSections objectForKey:target.targetID];
                 if (section) {
                     [self sectionWithID:target.targetID completion:^(FORMSection *section, NSArray *indexPaths) {
@@ -720,13 +720,13 @@ includingHiddenFields:(BOOL)includingHiddenFields
     for (FORMTarget *target in targets) {
         if (![self evaluateCondition:target.condition]) continue;
 
-        if (target.type == FORMTargetTypeField) {
+        if (target.targetType == FORMTargetTypeField) {
             FORMField *field = [self fieldWithID:target.targetID includingHiddenFields:NO];
             if (field && ![self.hiddenFieldsAndFieldIDsDictionary objectForKey:field.fieldID]) {
                 [deletedFields addObject:field];
                 [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{field.fieldID : field}];
             }
-        } else if (target.type == FORMTargetTypeSection) {
+        } else if (target.targetType == FORMTargetTypeSection) {
             FORMSection *section = [self sectionWithID:target.targetID];
             if (section && ![self.hiddenSections objectForKey:section.sectionID]) {
                 [deletedSections addObject:section];
@@ -796,7 +796,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
     for (FORMTarget *target in targets) {
 
         BOOL shouldContinue = (![self evaluateCondition:target.condition] ||
-                               target.type == FORMTargetTypeSection ||
+                               target.targetType == FORMTargetTypeSection ||
                                [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]);
 
         if (shouldContinue) {
@@ -934,7 +934,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
     for (FORMTarget *target in targets) {
         if (![self evaluateCondition:target.condition]) continue;
-        if (target.type == FORMTargetTypeSection) continue;
+        if (target.targetType == FORMTargetTypeSection) continue;
         if ([self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID]) continue;
 
         [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
