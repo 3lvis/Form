@@ -1187,7 +1187,15 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
 - (void)updateValuesFromFields:(NSArray *)fields {
     for (FORMField *field in fields) {
-        [self.values andy_setValue:field.value forKey:field.fieldID];
+        id value;
+
+        if ([field.value isKindOfClass:[FORMFieldValue class]]) {
+            value = [field.value valueID];
+        } else {
+            value = field.value;
+        }
+
+        [self.values andy_setValue:value forKey:field.fieldID];
     }
 }
 
