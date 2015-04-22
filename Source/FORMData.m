@@ -663,9 +663,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
             if (target.type == FORMTargetTypeField) {
                 FORMField *field = [self.hiddenFieldsAndFieldIDsDictionary objectForKey:target.targetID];
                 if (field) {
-                    if (field.value) {
-                        [self.values setValue:field.value forKey:field.fieldID];
-                    }
+                    [self updateValuesFromFields:@[field]];
 
                     FORMGroup *group = self.groups[[field.section.group.position integerValue]];
 
@@ -681,11 +679,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
             } else if (target.type == FORMTargetTypeSection) {
                 FORMSection *section = [self.hiddenSections objectForKey:target.targetID];
                 if (section) {
-                    for (FORMField *field in section.fields) {
-                        if (field.value) {
-                            [self.values setValue:field.value forKey:field.fieldID];
-                        }
-                    }
+                    [self updateValuesFromFields:section.fields];
 
                     NSInteger sectionIndex = [section indexInGroups:self.groups];
                     FORMGroup *group = self.groups[[section.group.position integerValue]];
@@ -699,7 +693,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 if (field) {
                     [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
                         if (field) {
-                            [self.values setValue:field.value forKey:field.fieldID];
+                            [self updateValuesFromFields:@[field]];
                             [insertedIndexPaths addObject:indexPath];
                         }
 
@@ -711,14 +705,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 if (section) {
                     [self sectionWithID:target.targetID completion:^(FORMSection *section, NSArray *indexPaths) {
                         if (section) {
-                            for (FORMField *field in section.fields) {
-                                if (field.value) {
-                                    [self.values setValue:field.value forKey:field.fieldID];
-                                }
-                            }
-
+                            [self updateValuesFromFields:section.fields];
                             [insertedIndexPaths addObjectsFromArray:indexPaths];
-
                             [self.hiddenSections removeObjectForKey:section.sectionID];
                         }
                     }];
@@ -1195,6 +1183,12 @@ includingHiddenFields:(BOOL)includingHiddenFields
                                 withIndex:(long)index {
     return [string stringByReplacingOccurrencesOfString:@":index"
                                                withString:[NSString stringWithFormat:@"%ld", (long)index]];
+}
+
+- (void)updateValuesFromFields:(NSArray *)fields {
+    for (FORMField *field in fields) {
+        [self.values andy_setValue:field.value forKey:field.fieldID];
+    }
 }
 
 @end
