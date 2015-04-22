@@ -7,8 +7,6 @@
 
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *info;
-@property (nonatomic) BOOL hidden;
-@property (nonatomic) CGSize size;
 @property (nonatomic) NSDate *minimumDate;
 @property (nonatomic) NSDate *maximumDate;
 

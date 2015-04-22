@@ -1,6 +1,6 @@
 #import "FORMTarget.h"
 
-
+#import <objc/runtime.h>
 #import "NSDictionary+ANDYSafeValue.h"
 
 @interface FORMTarget ()
@@ -11,7 +11,7 @@
 #pragma mark - Initializers
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    self = [super init];
+    self = [super initWithDictionary:dictionary];
     if (!self) return nil;
 
     _targetID = [dictionary andy_valueForKey:@"id"];
@@ -19,12 +19,6 @@
     self.actionTypeString = [dictionary andy_valueForKey:@"action"];
     self.value = [dictionary andy_valueForKey:@"target_value"];
     self.condition = [dictionary andy_valueForKey:@"condition"];
-
-    NSDictionary *validations = [dictionary andy_valueForKey:@"validations"];
-    if (validations && [validations count] > 0) {
-        _validation = [[FORMFieldValidation alloc]
-                       initWithDictionary:[dictionary andy_valueForKey:@"validations"]];
-    }
 
     return self;
 }
@@ -37,12 +31,20 @@
     if (self.actionType == FORMTargetActionUpdate &&
         self.type == FORMTargetTypeField) {
 
-        NSArray *properties = @[@"value", @"validation"];
+        if (self.value != nil) {
+            values[@"value"] = self.value;
+        }
 
-        for (NSString *property in properties) {
-            id value = [self valueForKey:property];
+        unsigned int numberOfProperties = 0;
+        objc_property_t *propertyArray = class_copyPropertyList([FORMFieldElement class], &numberOfProperties);
+
+        for (NSUInteger i = 0; i < numberOfProperties; i++) {
+            objc_property_t property = propertyArray[i];
+            NSString *propertyName = [[NSString alloc] initWithUTF8String:property_getName(property)];
+            NSLog(@"Prop: %@", propertyName);
+            id value = [self valueForKey:propertyName];
             if (value != nil) {
-                values[property] = value;
+                values[propertyName] = value;
             }
         }
     }

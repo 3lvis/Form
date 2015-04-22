@@ -95,6 +95,7 @@
 
     FORMTarget *target = [[FORMTarget alloc] initWithDictionary:targetJSON];
     NSDictionary *fieldProperties = [target fieldPropertiesToUpdate];
+    NSLog(@"Props: %@", fieldProperties);
     XCTAssertEqual(fieldProperties.count, 1);
     XCTAssertTrue([fieldProperties[@"validation"] isKindOfClass:[FORMFieldValidation class]]);
 

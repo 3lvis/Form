@@ -34,11 +34,14 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _type = [self typeFromTypeString:self.typeString];
     _inputTypeString = [dictionary andy_valueForKey:@"input_type"];
     _value = [dictionary andy_valueForKey:@"value"];
+    _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
 
     NSNumber *width = [dictionary andy_valueForKey:@"size.width"];
     NSNumber *height = [dictionary andy_valueForKey:@"size.height"];
     if (!height || !width) abort();
 
+    _size = CGSizeMake([width floatValue], [height floatValue]);
+    
     self.position = @(position);
 
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];

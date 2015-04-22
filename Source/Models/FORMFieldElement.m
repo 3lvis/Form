@@ -14,13 +14,6 @@
 
     _title = [dictionary andy_valueForKey:@"title"];
     _info = [dictionary andy_valueForKey:@"info"];
-    _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
-
-    NSNumber *width = [dictionary andy_valueForKey:@"size.width"];
-    NSNumber *height = [dictionary andy_valueForKey:@"size.height"];
-    if (height && width) {
-        _size = CGSizeMake([width floatValue], [height floatValue]);
-    }
 
     ISO8601DateFormatter *dateFormatter = [ISO8601DateFormatter new];
 

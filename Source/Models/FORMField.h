@@ -30,7 +30,9 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) NSArray *values;
 @property (nonatomic, getter=isDisabled) BOOL disabled;
 @property (nonatomic) BOOL initiallyDisabled;
+@property (nonatomic) BOOL hidden;
 @property (nonatomic) NSNumber *position;
+@property (nonatomic) CGSize size;
 
 @property (nonatomic) NSArray *targets;
 
