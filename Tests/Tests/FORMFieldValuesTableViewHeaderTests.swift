@@ -10,14 +10,21 @@ class FORMFieldValuesTableViewHeaderTests: XCTestCase {
         formField.title = "Test"
         formField.info = "Multi-line\nMulti-line"
 
-        XCTAssertEqual(headerView.labelHeight(), CGFloat(68.5))
+        let a = headerView.labelHeight()
+        let b = CGFloat (68.5)
+        XCTAssertEqual(a, b)
 
         headerView.field = formField
-        XCTAssertEqual(headerView.labelHeight(), CGFloat(77.5))
+
+        let c = headerView.labelHeight()
+        let d = CGFloat (78.0)
+        XCTAssertEqual(c, d)
 
         formField.info = "Multi-line\nMulti-line\nMulti-line"
         headerView.field = formField
-        XCTAssertEqual(headerView.labelHeight(), CGFloat(97.5))
-    }
 
+        let f = headerView.labelHeight()
+        let g = CGFloat (98.0)
+        XCTAssertEqual(f, g)
+    }
 }
