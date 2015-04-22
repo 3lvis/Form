@@ -85,6 +85,8 @@
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
 		BD92FBDA1AE61FF000D45BD4 /* dynamic-formulas.json in Resources */ = {isa = PBXBuildFile; fileRef = BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */; };
 		BDB7E31F1AA7016D00AF00BC /* FORMPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB7E31E1AA7016D00AF00BC /* FORMPostalCodeManager.m */; };
+		D581C23F1AE78D4B00E985A9 /* FORMFieldElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D581C23E1AE78D4B00E985A9 /* FORMFieldElement.m */; };
+		D581C2411AE793E700E985A9 /* FORMFieldElementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D581C2401AE793E700E985A9 /* FORMFieldElementTests.m */; };
 		D5B56C071AE51C7800DD8816 /* FORMEmailFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B56C061AE51C7800DD8816 /* FORMEmailFormatter.m */; };
 		D5B56C0A1AE52F8500DD8816 /* FORMEmailFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B56C091AE52F8500DD8816 /* FORMEmailFormatterTests.m */; };
 		D5DFAA1B1AA87A9B0096FBFB /* FORMFieldValidationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DFAA1A1AA87A9B0096FBFB /* FORMFieldValidationTests.m */; };
@@ -224,6 +226,9 @@
 		BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dynamic-formulas.json"; sourceTree = "<group>"; };
 		BDB7E31D1AA7016D00AF00BC /* FORMPostalCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMPostalCodeManager.h; sourceTree = "<group>"; };
 		BDB7E31E1AA7016D00AF00BC /* FORMPostalCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPostalCodeManager.m; sourceTree = "<group>"; };
+		D581C23D1AE78D4B00E985A9 /* FORMFieldElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMFieldElement.h; sourceTree = "<group>"; };
+		D581C23E1AE78D4B00E985A9 /* FORMFieldElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldElement.m; sourceTree = "<group>"; };
+		D581C2401AE793E700E985A9 /* FORMFieldElementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldElementTests.m; sourceTree = "<group>"; };
 		D5B56C051AE51C7800DD8816 /* FORMEmailFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMEmailFormatter.h; sourceTree = "<group>"; };
 		D5B56C061AE51C7800DD8816 /* FORMEmailFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMEmailFormatter.m; sourceTree = "<group>"; };
 		D5B56C091AE52F8500DD8816 /* FORMEmailFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMEmailFormatterTests.m; sourceTree = "<group>"; };
@@ -360,6 +365,8 @@
 			children = (
 				144A28981A99B2CF004A9086 /* FORMClassFactory.h */,
 				144A28991A99B2CF004A9086 /* FORMClassFactory.m */,
+				D581C23D1AE78D4B00E985A9 /* FORMFieldElement.h */,
+				D581C23E1AE78D4B00E985A9 /* FORMFieldElement.m */,
 				144A289A1A99B2CF004A9086 /* FORMField.h */,
 				144A289B1A99B2CF004A9086 /* FORMField.m */,
 				144A289C1A99B2CF004A9086 /* FORMFieldValidation.h */,
@@ -459,6 +466,7 @@
 				D5B56C081AE5221C00DD8816 /* Formatters */,
 				149C29131A9A23DD00F88B91 /* FORMDataSourceTests.m */,
 				149C29151A9A23DD00F88B91 /* FORMDataTests.m */,
+				D581C2401AE793E700E985A9 /* FORMFieldElementTests.m */,
 				149C29121A9A23DD00F88B91 /* FORMFieldTests.m */,
 				D5DFAA1A1AA87A9B0096FBFB /* FORMFieldValidationTests.m */,
 				149C29111A9A23DD00F88B91 /* FORMFieldValueTests.m */,
@@ -696,6 +704,7 @@
 				144A28E51A99B2CF004A9086 /* UIDevice+HYPRealOrientation.m in Sources */,
 				144A28CC1A99B2CF004A9086 /* FORMSocialSecurityNumberFormatter.m in Sources */,
 				144A28D31A99B2CF004A9086 /* FORMBankAccountNumberInputValidator.m in Sources */,
+				D581C23F1AE78D4B00E985A9 /* FORMFieldElement.m in Sources */,
 				144A28BD1A99B2CF004A9086 /* FORMDateFieldCell.m in Sources */,
 				14298D6E1ADDA78F00607A49 /* FORMValidatorTests.m in Sources */,
 				149C29261A9A23DD00F88B91 /* FORMTargetTests.m in Sources */,
@@ -703,6 +712,7 @@
 				144A28CA1A99B2CF004A9086 /* FORMFormatter.m in Sources */,
 				144A28C11A99B2CF004A9086 /* FORMPopoverFieldCell.m in Sources */,
 				149C29311A9A241D00F88B91 /* FORMImageFormFieldCell.m in Sources */,
+				D581C2411AE793E700E985A9 /* FORMFieldElementTests.m in Sources */,
 				144A28D41A99B2CF004A9086 /* FORMFloatInputValidator.m in Sources */,
 				144A28C31A99B2CF004A9086 /* FORMTextFieldCell.m in Sources */,
 				144A28CF1A99B2CF004A9086 /* FORMLayout.m in Sources */,
