@@ -90,6 +90,7 @@
                                       if (field) {
                                           field.value = [NSDate date];
                                           field.minimumDate = [NSDate date];
+                                          [weakSelf.dataSource updateValuesWithDictionary:@{@"start_date" : [NSDate date]}];
                                           [weakSelf.dataSource reloadFieldsAtIndexPaths:@[indexPath]];
                                       }
                                   }];
