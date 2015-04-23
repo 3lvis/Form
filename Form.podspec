@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency 'HYPImagePicker', '~> 0.3'
-  s.dependency 'HYPMathParser', '~> 0.3'
+  s.dependency 'HYPMathParser', '~> 0.4.0'
   s.dependency 'HYPNorwegianAccountNumber', '~> 1.2.1'
   s.dependency 'HYPNorwegianSSN', '~> 1.10'
   s.dependency 'Hex', '~> 1.1.1'
