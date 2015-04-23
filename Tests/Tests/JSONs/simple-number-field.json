@@ -1,0 +1,23 @@
+[
+  {
+    "id": "group",
+    "title": "Group",
+    "sections": [
+      {
+        "id": "section",
+        "fields": [
+          {
+            "id": "amount",
+            "title": "Amount",
+            "type": "number",
+            "value": 12,
+            "size": {
+              "width": 25,
+              "height": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

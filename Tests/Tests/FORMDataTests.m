@@ -643,7 +643,7 @@
 }
 
 - (void)testCleaningUpFieldValueWhenHiddingAndShowing {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-field.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-text-field.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *formData = [[FORMData alloc] initWithJSON:JSON
@@ -710,7 +710,7 @@
 }
 
 - (void)testInitializatingAFieldWithAValueInTheJSON {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-field.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-text-field.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *formData = [[FORMData alloc] initWithJSON:JSON

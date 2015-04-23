@@ -81,8 +81,9 @@
 		14F594A51AE0618300772756 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F594A11AE0618300772756 /* arrow_down@2x.png */; };
 		14F594A61AE0618300772756 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F594A21AE0618300772756 /* clear@2x.png */; };
 		14F5AF6D1AE0522400FF71AD /* postal_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 14F5AF6C1AE0522400FF71AD /* postal_codes.json */; };
+		44713C611AE8E9DC00AA97DA /* simple-number-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 44713C601AE8E9DC00AA97DA /* simple-number-field.json */; };
 		44932E771AE79BBD00A159BE /* simple-section.json in Resources */ = {isa = PBXBuildFile; fileRef = 44932E761AE79BBD00A159BE /* simple-section.json */; };
-		4496E4961AE7913400F731C9 /* simple-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 4496E4951AE7913400F731C9 /* simple-field.json */; };
+		4496E4961AE7913400F731C9 /* simple-text-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 4496E4951AE7913400F731C9 /* simple-text-field.json */; };
 		82AB828048DF535A1FFE4CC3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F9DD801EDC647B835EB2CF /* libPods.a */; };
 		BD2405701AE6B38D00592E19 /* default-values-in-template.json in Resources */ = {isa = PBXBuildFile; fileRef = BD24056F1AE6B38D00592E19 /* default-values-in-template.json */; };
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
@@ -221,8 +222,9 @@
 		14F594A11AE0618300772756 /* arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
 		14F594A21AE0618300772756 /* clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear@2x.png"; sourceTree = "<group>"; };
 		14F5AF6C1AE0522400FF71AD /* postal_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postal_codes.json; sourceTree = "<group>"; };
+		44713C601AE8E9DC00AA97DA /* simple-number-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-number-field.json"; sourceTree = "<group>"; };
 		44932E761AE79BBD00A159BE /* simple-section.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-section.json"; sourceTree = "<group>"; };
-		4496E4951AE7913400F731C9 /* simple-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-field.json"; sourceTree = "<group>"; };
+		4496E4951AE7913400F731C9 /* simple-text-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-text-field.json"; sourceTree = "<group>"; };
 		653AC6BBDF66E205BA44BA17 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B3F9DD801EDC647B835EB2CF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD24056F1AE6B38D00592E19 /* default-values-in-template.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-values-in-template.json"; sourceTree = "<group>"; };
@@ -438,8 +440,9 @@
 				149C291F1A9A23DD00F88B91 /* number-formula.json */,
 				14F5AF6C1AE0522400FF71AD /* postal_codes.json */,
 				144B80281AA882DB009C69DC /* section-field-position.json */,
-				4496E4951AE7913400F731C9 /* simple-field.json */,
+				44713C601AE8E9DC00AA97DA /* simple-number-field.json */,
 				44932E761AE79BBD00A159BE /* simple-section.json */,
+				4496E4951AE7913400F731C9 /* simple-text-field.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -639,9 +642,10 @@
 				14B564731A06D87B00342CDA /* .travis.yml in Resources */,
 				BD92FBDA1AE61FF000D45BD4 /* dynamic-formulas.json in Resources */,
 				149C292A1A9A23DD00F88B91 /* default-values.json in Resources */,
+				44713C611AE8E9DC00AA97DA /* simple-number-field.json in Resources */,
 				14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */,
 				149C292B1A9A23DD00F88B91 /* field-validations.json in Resources */,
-				4496E4961AE7913400F731C9 /* simple-field.json in Resources */,
+				4496E4961AE7913400F731C9 /* simple-text-field.json in Resources */,
 				14F594A41AE0618300772756 /* clock@2x.png in Resources */,
 				1492C05A1A9F740900D80D91 /* dynamic.json in Resources */,
 				149C29331A9A251800F88B91 /* forms.json in Resources */,
