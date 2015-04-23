@@ -220,6 +220,8 @@
                 } else {
                     field.value = [initialValues andy_valueForKey:field.fieldID];
                 }
+            } else if (field.value) {
+                self.values[field.fieldID] = field.value;
             }
 
             for (FORMFieldValue *fieldValue in field.values) {
@@ -1182,7 +1184,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 - (NSString *)transformDynamicIndexString:(NSString *)string
                                 withIndex:(long)index {
     return [string stringByReplacingOccurrencesOfString:@":index"
-                                               withString:[NSString stringWithFormat:@"%ld", (long)index]];
+                                             withString:[NSString stringWithFormat:@"%ld", (long)index]];
 }
 
 - (void)updateValuesFromFields:(NSArray *)fields {

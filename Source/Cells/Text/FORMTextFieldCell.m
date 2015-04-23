@@ -179,7 +179,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     self.textField.enabled         = !field.disabled;
     self.textField.valid           = field.valid;
     self.textField.rawText         = [self rawTextForField:field];
-    self.textField.info   = field.info;
+    self.textField.info            = field.info;
 }
 
 - (void)validate {
@@ -190,25 +190,37 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 #pragma mark - Private methods
 
 - (NSString *)rawTextForField:(FORMField *)field {
-    if (field.value && field.type == FORMFieldTypeFloat) {
+    NSString *rawText = field.value;
 
-        NSNumber *value = field.value;
+    if (field.value) {
+        switch (field.type) {
+            case FORMFieldTypeNumber: {
+                if ([field.value isKindOfClass:[NSNumber class]]) {
+                    NSNumber *value = field.value;
+                    rawText = [value stringValue];
+                }
+            } break;
+            case FORMFieldTypeFloat: {
+                NSNumber *value = field.value;
 
-        if ([field.value isKindOfClass:[NSString class]]) {
-            NSMutableString *fieldValue = [field.value mutableCopy];
-            [fieldValue replaceOccurrencesOfString:@","
-                                        withString:@"."
-                                           options:NSCaseInsensitiveSearch
-                                             range:NSMakeRange(0, [fieldValue length])];
-            NSNumberFormatter *formatter = [NSNumberFormatter new];
-            formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
-            value = [formatter numberFromString:fieldValue];
+                if ([field.value isKindOfClass:[NSString class]]) {
+                    NSMutableString *fieldValue = [field.value mutableCopy];
+                    [fieldValue replaceOccurrencesOfString:@","
+                                                withString:@"."
+                                                   options:NSCaseInsensitiveSearch
+                                                     range:NSMakeRange(0, [fieldValue length])];
+                    NSNumberFormatter *formatter = [NSNumberFormatter new];
+                    formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+                    value = [formatter numberFromString:fieldValue];
+                }
+
+                rawText = [NSString stringWithFormat:@"%.2f", [value doubleValue]];
+            } break;
+            default: break;
         }
-
-        return [NSString stringWithFormat:@"%.2f", [value doubleValue]];
     }
 
-    return field.value;
+    return rawText;
 }
 
 #pragma mark - Actions

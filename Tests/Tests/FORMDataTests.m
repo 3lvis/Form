@@ -643,7 +643,7 @@
 }
 
 - (void)testCleaningUpFieldValueWhenHiddingAndShowing {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-field.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-text-field.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *formData = [[FORMData alloc] initWithJSON:JSON
@@ -707,6 +707,18 @@
     [formData showTargets:@[target]];
 
     XCTAssertEqualObjects(formData.values[@"contract_type"], @0);
+}
+
+- (void)testInitializatingAFieldWithAValueInTheJSON {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-text-field.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    XCTAssertEqualObjects(formData.values[@"textie"], @"1");
 }
 
 @end
