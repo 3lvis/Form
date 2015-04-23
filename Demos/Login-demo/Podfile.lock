@@ -1,8 +1,8 @@
 PODS:
-  - Form (3.3.4):
+  - Form (3.3.5):
     - Hex (~> 1.1.1)
     - HYPImagePicker (~> 0.3)
-    - HYPMathParser (~> 0.3)
+    - HYPMathParser (~> 0.4.0)
     - HYPNorwegianAccountNumber (~> 1.2.1)
     - HYPNorwegianSSN (~> 1.10)
     - ISO8601DateFormatter (~> 0.7)
@@ -18,7 +18,7 @@ PODS:
     - UIButton-ANDYHighlighted (~> 0.2.1)
   - Hex (1.1.1)
   - HYPImagePicker (0.3)
-  - HYPMathParser (0.3)
+  - HYPMathParser (0.4.0)
   - HYPNorwegianAccountNumber (1.2.1)
   - HYPNorwegianSSN (1.10)
   - ISO8601DateFormatter (0.7)
@@ -43,10 +43,10 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Form: 88ba70d348328eaef74d22525f1f57b8e7f60925
+  Form: 85bb6d82a5b9219a3cee30cbaa145b0a84feb71b
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
-  HYPMathParser: c10c542e7f8b391568d12cde536e13c9c70ec034
+  HYPMathParser: 234475b2d424fc9cc5a17bd2fef7b73e1c03dfd3
   HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
   HYPNorwegianSSN: ffef3b2110b627dbb2273f912b439146493d49dd
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
