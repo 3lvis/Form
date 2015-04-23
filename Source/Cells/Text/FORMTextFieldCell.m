@@ -179,7 +179,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     self.textField.enabled         = !field.disabled;
     self.textField.valid           = field.valid;
     self.textField.rawText         = [self rawTextForField:field];
-    self.textField.info   = field.info;
+    self.textField.info            = field.info;
 }
 
 - (void)validate {
