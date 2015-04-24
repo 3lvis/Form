@@ -1,9 +1,9 @@
 PODS:
   - Hex (1.1.1)
   - HYPImagePicker (0.3)
-  - HYPMathParser (0.3)
+  - HYPMathParser (0.4.0)
   - HYPNorwegianAccountNumber (1.2.1)
-  - HYPNorwegianSSN (1.10)
+  - HYPNorwegianSSN (1.10.1)
   - ISO8601DateFormatter (0.7)
   - NSDate-HYPString (0.2)
   - NSDictionary-ANDYSafeValue (0.3)
@@ -43,9 +43,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
-  HYPMathParser: c10c542e7f8b391568d12cde536e13c9c70ec034
+  HYPMathParser: 234475b2d424fc9cc5a17bd2fef7b73e1c03dfd3
   HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
-  HYPNorwegianSSN: ffef3b2110b627dbb2273f912b439146493d49dd
+  HYPNorwegianSSN: 75e8b512f5a7be80dad61c3ba26494a5459a5b7a
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   NSDate-HYPString: b87cf854edd44ec1e186b32526c601502180846d
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
