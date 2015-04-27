@@ -727,7 +727,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (void)keyboardDidShow:(NSNotification *)notification {
     CGRect keyboardEndFrame;
-    [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    [(notification.userInfo)[UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
 
     NSInteger height = CGRectGetHeight(keyboardEndFrame);
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
@@ -746,7 +746,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (void)keyboardDidHide:(NSNotification *)notification {
     CGRect keyboardEndFrame;
-    [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    [(notification.userInfo)[UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
 
     [UIView animateWithDuration:FORMKeyboardAnimationDuration animations:^{
         self.collectionView.contentInset = self.originalInset;
