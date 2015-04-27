@@ -60,12 +60,12 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 
 - (NSUInteger)indexInSectionUsingGroups:(NSArray *)groups;
 
-- (NSArray *)safeTargets;
+@property (nonatomic, readonly, copy) NSArray *safeTargets;
 
-- (FORMValidationResultType)validate;
-- (id)rawFieldValue;
-- (id)inputValidator;
-- (id)formatter;
-- (NSNumber *)sectionPosition;
+@property (nonatomic, readonly) FORMValidationResultType validate;
+@property (nonatomic, readonly, strong) id rawFieldValue;
+@property (nonatomic, readonly, strong) id inputValidator;
+@property (nonatomic, readonly, strong) id formatter;
+@property (nonatomic, readonly, copy) NSNumber *sectionPosition;
 
 @end

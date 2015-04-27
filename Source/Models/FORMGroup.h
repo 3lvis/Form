@@ -17,9 +17,9 @@
                           disabled:(BOOL)disabled
                  disabledFieldsIDs:(NSArray *)disabledFieldsIDs NS_DESIGNATED_INITIALIZER;
 
-- (NSArray *)fields;
+@property (nonatomic, readonly, copy) NSArray *fields;
 
-- (NSInteger)numberOfFields;
+@property (nonatomic, readonly) NSInteger numberOfFields;
 - (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections;
 - (void)removeSection:(FORMSection *)section;
 - (void)resetSectionPositions;

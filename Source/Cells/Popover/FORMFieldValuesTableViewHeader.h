@@ -12,7 +12,7 @@ static NSString * const FORMFieldValuesTableViewHeaderIdentifier = @"FORMFieldVa
 
 @property (nonatomic, weak) FORMField *field;
 
-- (CGFloat)labelHeight;
+@property (nonatomic, readonly) CGFloat labelHeight;
 
 - (void)setTitleLabelFont:(UIFont *)titleLabelFont UI_APPEARANCE_SELECTOR;
 - (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor UI_APPEARANCE_SELECTOR;

@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, FORMValidationResultType) {
 
 @interface FORMValidator : NSObject
 
-- (instancetype)initWithValidation:(FORMFieldValidation *)validation;
+- (instancetype)initWithValidation:(FORMFieldValidation *)validation NS_DESIGNATED_INITIALIZER;
 
 - (FORMValidationResultType)validateFieldValue:(id)fieldValue;
 

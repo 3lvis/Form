@@ -55,9 +55,9 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    XCTAssertEqualObjects([formData.values objectForKey:@"contract_type"], @0);
-    XCTAssertEqualObjects([formData.values objectForKey:@"start_date"], date);
-    XCTAssertEqualObjects([formData.values objectForKey:@"base_salary"], @2);
+    XCTAssertEqualObjects((formData.values)[@"contract_type"], @0);
+    XCTAssertEqualObjects((formData.values)[@"start_date"], date);
+    XCTAssertEqualObjects((formData.values)[@"base_salary"], @2);
 }
 
 - (void)testCalculatedValues {
@@ -70,9 +70,9 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    XCTAssertEqualObjects([formData.values objectForKey:@"base_salary"], @1);
-    XCTAssertEqualObjects([formData.values objectForKey:@"bonus"], @100);
-    XCTAssertEqualObjects([formData.values objectForKey:@"total"], @300);
+    XCTAssertEqualObjects((formData.values)[@"base_salary"], @1);
+    XCTAssertEqualObjects((formData.values)[@"bonus"], @100);
+    XCTAssertEqualObjects((formData.values)[@"total"], @300);
 }
 
 - (void)testFormGenerationSectionPositions {
