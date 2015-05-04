@@ -123,7 +123,7 @@
     FORMField *field;
 
     field = [[FORMField alloc] initWithDictionary:@{@"id" : @"text",
-                                                    @"type": @"text"}
+                                                    @"type" : @"text"}
                                          position:0
                                          disabled:NO
                                 disabledFieldsIDs:nil];
@@ -131,7 +131,7 @@
     XCTAssertNil(field.inputValidator);
 
     field = [[FORMField alloc] initWithDictionary:@{@"id" : @"name",
-                                                    @"type": @"text"}
+                                                    @"type" : @"text"}
                                          position:0
                                          disabled:NO
                                 disabledFieldsIDs:nil];
@@ -139,8 +139,8 @@
     XCTAssertEqualObjects([field.inputValidator class], [FORMNameInputValidator class]);
 
     field = [[FORMField alloc] initWithDictionary:@{@"id" : @"phone_number",
-                                                    @"type": @"text",
-                                                    @"input_type": @"number"}
+                                                    @"type" : @"text",
+                                                    @"input_type" : @"number"}
                                          position:0
                                          disabled:NO
                                 disabledFieldsIDs:nil];
@@ -148,8 +148,8 @@
     XCTAssertEqualObjects([field.inputValidator class], [FORMPhoneNumberInputValidator class]);
 
     field = [[FORMField alloc] initWithDictionary:@{@"id" : @"contact[0].phone_number",
-                                                    @"type": @"text",
-                                                    @"input_type": @"number"}
+                                                    @"type" : @"text",
+                                                    @"input_type" : @"number"}
                                          position:0
                                          disabled:NO
                                 disabledFieldsIDs:nil];
