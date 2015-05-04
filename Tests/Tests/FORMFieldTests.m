@@ -7,6 +7,8 @@
 #import "FORMDataSource.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 #import "NSDate+HYPString.h"
+#import "FORMNameInputValidator.h"
+#import "FORMPhoneNumberInputValidator.h"
 
 @interface FORMFieldTests : XCTestCase
 
@@ -115,6 +117,44 @@
     XCTAssertFalse(field.disabled);
     XCTAssertNil(field.validation);
     XCTAssertFalse(field.hidden);
+}
+
+- (void)testInputValidator {
+    FORMField *field;
+
+    field = [[FORMField alloc] initWithDictionary:@{@"id" : @"text",
+                                                    @"type" : @"text"}
+                                         position:0
+                                         disabled:NO
+                                disabledFieldsIDs:nil];
+
+    XCTAssertNil(field.inputValidator);
+
+    field = [[FORMField alloc] initWithDictionary:@{@"id" : @"name",
+                                                    @"type" : @"text"}
+                                         position:0
+                                         disabled:NO
+                                disabledFieldsIDs:nil];
+
+    XCTAssertEqualObjects([field.inputValidator class], [FORMNameInputValidator class]);
+
+    field = [[FORMField alloc] initWithDictionary:@{@"id" : @"phone_number",
+                                                    @"type" : @"text",
+                                                    @"input_type" : @"number"}
+                                         position:0
+                                         disabled:NO
+                                disabledFieldsIDs:nil];
+
+    XCTAssertEqualObjects([field.inputValidator class], [FORMPhoneNumberInputValidator class]);
+
+    field = [[FORMField alloc] initWithDictionary:@{@"id" : @"contact[0].phone_number",
+                                                    @"type" : @"text",
+                                                    @"input_type" : @"number"}
+                                         position:0
+                                         disabled:NO
+                                disabledFieldsIDs:nil];
+
+    XCTAssertEqualObjects([field.inputValidator class], [FORMNumberInputValidator class]);
 }
 
 @end
