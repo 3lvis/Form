@@ -167,8 +167,12 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
 - (id)inputValidator {
     FORMInputValidator *inputValidator;
+
     Class fieldValidator = [FORMClassFactory classFromString:self.fieldID withSuffix:@"InputValidator"];
-    Class typeValidator = [FORMClassFactory classFromString:self.typeString withSuffix:@"InputValidator"];
+
+    NSString *typeID = (self.inputTypeString != nil) ? self.inputTypeString : self.typeString;
+    Class typeValidator = [FORMClassFactory classFromString:typeID withSuffix:@"InputValidator"];
+
     SEL selector = NSSelectorFromString(FORMInputValidatorSelector);
 
     if (fieldValidator && [fieldValidator instanceMethodForSelector:selector]) {
