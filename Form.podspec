@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   }
   s.author = { "Hyper Interaktiv AS" => "ios@hyper.no" }
   s.social_media_url = "http://twitter.com/hyperoslo"
-  s.platform = :ios, '8.0'
+  s.platform = :ios, '7.0'
   s.source = {
     :git => 'https://github.com/hyperoslo/Form.git',
     :tag => s.version.to_s
