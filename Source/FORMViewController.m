@@ -27,7 +27,7 @@
 
 - (instancetype)initWithJSON:(id)JSON
             andInitialValues:(NSDictionary *)initialValues {
-    _layout = [[FORMLayout alloc] init];
+    _layout = [FORMLayout new];
     self = [super initWithCollectionViewLayout:_layout];
     if (!self) return nil;
 
