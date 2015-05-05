@@ -27,7 +27,8 @@
 - (instancetype)initWithJSON:(NSArray *)JSON
             andInitialValues:(NSDictionary *)initialValues {
     self = [super initWithJSON:JSON
-              andInitialValues:initialValues];
+              andInitialValues:initialValues
+                      disabled:YES];
     if (!self) return nil;
 
     [self.collectionView registerClass:[HYPImageFormFieldCell class]

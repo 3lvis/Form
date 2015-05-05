@@ -16,6 +16,7 @@ PODS:
     - NSString-HYPWordExtractor (~> 1.1)
     - NSString-ZENInflections (~> 1.2)
     - UIButton-ANDYHighlighted (~> 0.2.1)
+    - UIViewController-HYPKeyboardToolbar (~> 0.1)
   - Hex (1.1.1)
   - HYPImagePicker (0.3)
   - HYPMathParser (0.4.0)
@@ -45,7 +46,7 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Form: 85bb6d82a5b9219a3cee30cbaa145b0a84feb71b
+  Form: 97bc5b115e5e8f5715dd84de397191ee7039707b
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
   HYPMathParser: 234475b2d424fc9cc5a17bd2fef7b73e1c03dfd3

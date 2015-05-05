@@ -17,8 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 #ifdef DEBUG
-    if ([NSObject isUnitTesting]) return YES;
+    if ([NSObject isUnitTesting]) {
+        return YES;
+    }
 #endif
+
     [FORMDefaultStyle applyStyle];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -32,7 +35,8 @@
 
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"];
 
-    HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithJSON:JSON andInitialValues:dictionary];
+    HYPSampleCollectionViewController *sampleController = [[HYPSampleCollectionViewController alloc] initWithJSON:JSON
+                                                                                                 andInitialValues:dictionary];
 
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
 
