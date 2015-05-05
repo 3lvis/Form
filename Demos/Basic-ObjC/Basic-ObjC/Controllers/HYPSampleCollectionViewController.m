@@ -24,8 +24,10 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithJSON:(NSArray *)JSON andInitialValues:(NSDictionary *)initialValues {
-    self = [super initWithJSON:JSON andInitialValues:initialValues];
+- (instancetype)initWithJSON:(NSArray *)JSON
+            andInitialValues:(NSDictionary *)initialValues {
+    self = [super initWithJSON:JSON
+              andInitialValues:initialValues];
     if (!self) return nil;
 
     [self.collectionView registerClass:[HYPImageFormFieldCell class]
