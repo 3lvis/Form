@@ -1,4 +1,5 @@
 import UIKit
+import Form.FORMDefaultStyle
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
