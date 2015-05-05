@@ -1,9 +1,9 @@
 @import UIKit;
 @import Foundation;
 
-#import "FORMLayout.h"
+#import "FORMViewController.h"
 
-@interface HYPSampleCollectionViewController : UICollectionViewController
+@interface HYPSampleCollectionViewController : FORMViewController
 
 - (instancetype)initWithJSON:(NSArray *)JSON
             andInitialValues:(NSDictionary *)initialValues;
