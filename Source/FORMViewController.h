@@ -6,7 +6,7 @@
 
 @property (nonatomic, readonly) FORMDataSource *dataSource;
 
-- (instancetype)initWithJSON:(NSArray *)JSON
+- (instancetype)initWithJSON:(id)JSON
             andInitialValues:(NSDictionary *)initialValues;
 
 @end

@@ -8,7 +8,7 @@
 
 @interface FORMViewController ()
 
-@property (nonatomic, copy) NSArray *JSON;
+@property (nonatomic, copy) id JSON;
 @property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic) FORMDataSource *dataSource;
 @property (nonatomic) FORMLayout *layout;
@@ -25,7 +25,8 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithJSON:(NSArray *)JSON andInitialValues:(NSDictionary *)initialValues {
+- (instancetype)initWithJSON:(id)JSON
+            andInitialValues:(NSDictionary *)initialValues {
     FORMLayout *layout = [[FORMLayout alloc] init];
     self = [super initWithCollectionViewLayout:layout];
     if (!self) return nil;
