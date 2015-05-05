@@ -12,6 +12,7 @@
 @property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic) FORMDataSource *dataSource;
 @property (nonatomic) FORMLayout *layout;
+@property (nonatomic) BOOL disabled;
 
 @end
 
@@ -26,13 +27,15 @@
 #pragma mark - Initialization
 
 - (instancetype)initWithJSON:(id)JSON
-            andInitialValues:(NSDictionary *)initialValues {
+            andInitialValues:(NSDictionary *)initialValues
+                    disabled:(BOOL)disabled {
     _layout = [FORMLayout new];
     self = [super initWithCollectionViewLayout:_layout];
     if (!self) return nil;
 
     _JSON = JSON;
     _initialValues = initialValues;
+    _disabled = disabled;
 
     if ([NSObject isUnitTesting]) {
         [self.collectionView numberOfSections];
@@ -52,7 +55,7 @@
                                         collectionView:self.collectionView
                                                 layout:self.layout
                                                 values:self.initialValues
-                                              disabled:YES];
+                                              disabled:self.disabled];
 
     return _dataSource;
 }

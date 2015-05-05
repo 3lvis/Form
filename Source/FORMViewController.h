@@ -7,6 +7,7 @@
 @property (nonatomic, readonly) FORMDataSource *dataSource;
 
 - (instancetype)initWithJSON:(id)JSON
-            andInitialValues:(NSDictionary *)initialValues;
+            andInitialValues:(NSDictionary *)initialValues
+                    disabled:(BOOL)disabled;
 
 @end
