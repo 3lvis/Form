@@ -3,7 +3,7 @@ import UIKit
 class SampleCollectionViewController: FORMViewController {
 
   init(JSON: [String : AnyObject], initialValues: [String : AnyObject]) {
-    super.init(JSON: JSON, andInitialValues: initialValues)
+    super.init(JSON: JSON, andInitialValues: initialValues, disabled:true)
   }
 
   required init(coder aDecoder: NSCoder) {
