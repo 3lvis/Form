@@ -16,7 +16,6 @@
 #import "DDMathEvaluator+FORM.h"
 #import "NSString+HYPRelationshipParser.h"
 #import "NSDictionary+HYPNestedAttributes.h"
-@import HYPMathParser.DDExpression;
 
 @interface FORMData ()
 

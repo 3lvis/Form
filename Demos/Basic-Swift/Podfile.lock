@@ -38,17 +38,11 @@ PODS:
   - UIViewController-HYPKeyboardToolbar (0.1)
 
 DEPENDENCIES:
-  - Form (from `https://github.com/hyperoslo/Form.git`, branch `improve/swift-demo-using-frameworks`)
+  - Form (from `../../`)
 
 EXTERNAL SOURCES:
   Form:
-    :branch: improve/swift-demo-using-frameworks
-    :git: https://github.com/hyperoslo/Form.git
-
-CHECKOUT OPTIONS:
-  Form:
-    :commit: 6022da2b776b9ed45db5b40487da71f6fc58b9c7
-    :git: https://github.com/hyperoslo/Form.git
+    :path: ../../
 
 SPEC CHECKSUMS:
   Form: 97bc5b115e5e8f5715dd84de397191ee7039707b

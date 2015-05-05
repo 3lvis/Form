@@ -1,3 +1,5 @@
-use_frameworks!
+source 'https://github.com/CocoaPods/Specs.git'
 
-pod 'Form', git: 'https://github.com/hyperoslo/Form.git', branch: 'improve/swift-demo-using-frameworks'
+platform :ios, '7.0'
+
+pod 'Form', path: "../../"
