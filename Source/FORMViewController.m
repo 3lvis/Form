@@ -27,13 +27,12 @@
 
 - (instancetype)initWithJSON:(id)JSON
             andInitialValues:(NSDictionary *)initialValues {
-    FORMLayout *layout = [[FORMLayout alloc] init];
-    self = [super initWithCollectionViewLayout:layout];
+    _layout = [[FORMLayout alloc] init];
+    self = [super initWithCollectionViewLayout:_layout];
     if (!self) return nil;
 
     _JSON = JSON;
-    self.layout = layout;
-    self.initialValues = initialValues;
+    _initialValues = initialValues;
 
     if ([NSObject isUnitTesting]) {
         [self.collectionView numberOfSections];
