@@ -20,7 +20,7 @@ PODS:
   - HYPImagePicker (0.3)
   - HYPMathParser (0.4.0)
   - HYPNorwegianAccountNumber (1.2.1)
-  - HYPNorwegianSSN (1.10)
+  - HYPNorwegianSSN (1.10.1)
   - ISO8601DateFormatter (0.7)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSDictionary-HYPNestedAttributes (0.4.1):
@@ -50,7 +50,7 @@ SPEC CHECKSUMS:
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
   HYPMathParser: 234475b2d424fc9cc5a17bd2fef7b73e1c03dfd3
   HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
-  HYPNorwegianSSN: ffef3b2110b627dbb2273f912b439146493d49dd
+  HYPNorwegianSSN: 75e8b512f5a7be80dad61c3ba26494a5459a5b7a
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
   NSDictionary-HYPNestedAttributes: 783d3adcf9f8e9a554004ee225f1bc0cdf0cfdfe
@@ -64,4 +64,4 @@ SPEC CHECKSUMS:
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
-COCOAPODS: 0.36.4
+COCOAPODS: 0.37.0
