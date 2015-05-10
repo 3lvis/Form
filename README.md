@@ -163,8 +163,7 @@ Please check our [playbook](https://github.com/hyperoslo/playbook/blob/master/GI
 
 ## Credits
 
-[Hyper](http://hyper.no) made this. We're a digital communications agency with a passion for good code,
-and if you're using this library we probably want to [hire you](http://www.hyper.no/jobs/ios-developer).
+[Hyper](http://hyper.no) made this. We’re a digital communications agency with a passion for good code and delightful user experiences. If you’re using this library we probably want to [hire you](https://github.com/hyperoslo/iOS-playbook/blob/master/HYPER_RECIPES.md) (we consider remote employees too, the only requirement is that you’re awesome).
 
 ## License
 
