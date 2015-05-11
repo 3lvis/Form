@@ -46,6 +46,7 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
             FORMFieldValue *fieldValue = (FORMFieldValue *)field.value;
             self.fieldValueLabel.text = fieldValue.title;
         } else {
+            self.fieldValueLabel.text = nil;
 
             for (FORMFieldValue *fieldValue in field.values) {
                 if ([fieldValue identifierIsEqualTo:field.value]) {
