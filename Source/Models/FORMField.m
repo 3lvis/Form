@@ -133,6 +133,13 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
             break;
     }
 
+    if ([resultValue isKindOfClass:[NSString class]]) {
+        NSString *value = (NSString *)resultValue;
+        if (!value.length) {
+            resultValue = nil;
+        }
+    }
+
     _value = resultValue;
 }
 

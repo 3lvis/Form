@@ -157,4 +157,18 @@
     XCTAssertEqualObjects([field.inputValidator class], [FORMNumberInputValidator class]);
 }
 
+- (void)testEmptyValue {
+    FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id" : @"text",
+                                                               @"type" : @"text"}
+                                                    position:0
+                                                    disabled:NO
+                                           disabledFieldsIDs:nil];
+    field.value = @"Test";
+    XCTAssertEqualObjects(field.value, @"Test");
+
+    field.value = @"";
+    XCTAssertNil(field.value);
+
+}
+
 @end
