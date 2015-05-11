@@ -168,7 +168,6 @@
 
     field.value = @"";
     XCTAssertNil(field.value);
-
 }
 
 @end
