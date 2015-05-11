@@ -130,7 +130,9 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 }
 
 - (UIImage *)fieldIcon {
-    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
+
     UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
 
     switch (self.field.type) {
