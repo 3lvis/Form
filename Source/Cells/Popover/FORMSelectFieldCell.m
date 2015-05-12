@@ -17,8 +17,13 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
                  andContentSize:FORMSelectPopoverSize];
     if (!self) return nil;
 
-    self.iconImageView.image = [UIImage imageNamed:@"Form.bundle/arrow_down"];
+    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
 
+    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
+    self.iconImageView.image = [UIImage imageNamed:@"arrow_down"
+                                          inBundle:bundle
+                     compatibleWithTraitCollection:trait];
     return self;
 }
 
@@ -43,6 +48,7 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
             FORMFieldValue *fieldValue = (FORMFieldValue *)field.value;
             self.fieldValueLabel.text = fieldValue.title;
         } else {
+            self.fieldValueLabel.text = nil;
 
             for (FORMFieldValue *fieldValue in field.values) {
                 if ([fieldValue identifierIsEqualTo:field.value]) {

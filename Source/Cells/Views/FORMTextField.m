@@ -55,8 +55,15 @@ static BOOL enabledProperty;
 
     self.returnKeyType = UIReturnKeyDone;
 
+    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
+    
+    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
+
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clearButton setImage:[UIImage imageNamed:@"Form.bundle/clear"] forState:UIControlStateNormal];
+    [clearButton setImage:[UIImage imageNamed:@"clear"
+                                     inBundle:bundle
+                compatibleWithTraitCollection:trait] forState:UIControlStateNormal];
     [clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
     clearButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldClearButtonWidth, FORMTextFieldClearButtonHeight);
     self.rightView = clearButton;

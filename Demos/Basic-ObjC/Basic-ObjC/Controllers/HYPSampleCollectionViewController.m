@@ -16,89 +16,28 @@
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
-@property (nonatomic) FORMDataSource *dataSource;
-@property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic) HYPImagePicker *imagePicker;
-@property (nonatomic) FORMLayout *layout;
-@property (nonatomic, copy) NSArray *JSON;
 
 @end
 
 @implementation HYPSampleCollectionViewController
 
-#pragma mark - Deallocation
-
-- (void)dealloc {
-    [self hyp_removeKeyboardToolbarObservers];
-}
-
 #pragma mark - Initialization
 
-- (instancetype)initWithJSON:(NSArray *)JSON andInitialValues:(NSDictionary *)initialValues {
-    FORMLayout *layout = [[FORMLayout alloc] init];
-    self = [super initWithCollectionViewLayout:layout];
+- (instancetype)initWithJSON:(NSArray *)JSON
+            andInitialValues:(NSDictionary *)initialValues {
+    self = [super initWithJSON:JSON
+              andInitialValues:initialValues
+                      disabled:YES];
     if (!self) return nil;
-
-    _JSON = JSON;
-    self.layout = layout;
-    self.initialValues = initialValues;
 
     [self.collectionView registerClass:[HYPImageFormFieldCell class]
             forCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier];
-
-    if ([NSObject isUnitTesting]) {
-        [self.collectionView numberOfSections];
-    }
-
-    [self hyp_addKeyboardToolbarObservers];
 
     return self;
 }
 
 #pragma mark - Getters
-
-- (FORMDataSource *)dataSource {
-    if (_dataSource) return _dataSource;
-
-    _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
-                                        collectionView:self.collectionView
-                                                layout:self.layout
-                                                values:self.initialValues
-                                              disabled:YES];
-
-    _dataSource.configureCellForItemAtIndexPathBlock = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
-        id cell;
-        BOOL isImageCell = (field.type == FORMFieldTypeCustom && [field.typeString isEqual:@"image"]);
-        if (isImageCell) {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
-                                                             forIndexPath:indexPath];
-        }
-        return cell;
-    };
-
-    __weak typeof(self)weakSelf = self;
-
-    _dataSource.fieldUpdatedBlock = ^(id cell, FORMField *field) {
-        NSLog(@"field updated: %@ --- %@", field.fieldID, field.value);
-
-        BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
-
-        if (shouldUpdateStartDate) {
-            [weakSelf.dataSource fieldWithID:@"start_date"
-                       includingHiddenFields:YES
-                                  completion:^(FORMField *field, NSIndexPath *indexPath) {
-                                      if (field) {
-                                          field.value = [NSDate date];
-                                          field.minimumDate = [NSDate date];
-                                          [weakSelf.dataSource updateValuesWithDictionary:@{@"start_date" : [NSDate date]}];
-                                          [weakSelf.dataSource reloadFieldsAtIndexPaths:@[indexPath]];
-                                      }
-                                  }];
-        }
-    };
-
-    return _dataSource;
-}
 
 - (HYPImagePicker *)imagePicker {
     if (_imagePicker) return _imagePicker;
@@ -117,19 +56,50 @@
 
     self.navigationItem.title = @"Form";
 
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
     self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
-
-    self.collectionView.dataSource = self.dataSource;
 
     UIBarButtonItem *printValuesButton = [[UIBarButtonItem alloc] initWithTitle:@"Show Values"
                                                                           style:UIBarButtonItemStyleDone
                                                                          target:self
                                                                          action:@selector(printValuesAction)];
     self.navigationItem.rightBarButtonItem = printValuesButton;
+
+    [self setUpDataSource];
+}
+
+- (void)setUpDataSource {
+    self.dataSource.configureCellForItemAtIndexPathBlock = ^(FORMField *field, UICollectionView *collectionView, NSIndexPath *indexPath) {
+        id cell;
+        BOOL isImageCell = (field.type == FORMFieldTypeCustom && [field.typeString isEqual:@"image"]);
+        if (isImageCell) {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:HYPImageFormFieldCellIdentifier
+                                                             forIndexPath:indexPath];
+        }
+        return cell;
+    };
+
+    __weak typeof(self)weakSelf = self;
+
+    self.dataSource.fieldUpdatedBlock = ^(id cell, FORMField *field) {
+        NSLog(@"field updated: %@ --- %@", field.fieldID, field.value);
+
+        BOOL shouldUpdateStartDate = ([field.fieldID isEqualToString:@"contract_type"]);
+
+        if (shouldUpdateStartDate) {
+            [weakSelf.dataSource fieldWithID:@"start_date"
+                       includingHiddenFields:YES
+                                  completion:^(FORMField *field, NSIndexPath *indexPath) {
+                                      if (field) {
+                                          field.value = [NSDate date];
+                                          field.minimumDate = [NSDate date];
+                                          [weakSelf.dataSource updateValuesWithDictionary:@{@"start_date" : [NSDate date]}];
+                                          [weakSelf.dataSource reloadFieldsAtIndexPaths:@[indexPath]];
+                                      }
+                                  }];
+        }
+    };
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -246,25 +216,6 @@
     }
 
     [self.dataSource processTargets:@[target]];
-}
-
-#pragma mark - Required methods
-
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [self.dataSource sizeForFieldAtIndexPath:indexPath];
-}
-
-#pragma mark - Rotation Handling
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                duration:(NSTimeInterval)duration {
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-
-    [self.view endEditing:YES];
-
-    [self.collectionViewLayout invalidateLayout];
 }
 
 @end

@@ -384,11 +384,11 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 }
 
 - (BOOL)isDisabled {
-    return self.disabled;
+    return _disabled;
 }
 
 - (BOOL)isEnabled {
-    return !self.disabled;
+    return !_disabled;
 }
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary {

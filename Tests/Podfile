@@ -1,13 +1,11 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
-platform :ios, '7.0'
+use_frameworks!
 
 pod 'Hex'
+pod 'HYP8601'
 pod 'HYPImagePicker'
 pod 'HYPMathParser'
 pod 'HYPNorwegianAccountNumber'
 pod 'HYPNorwegianSSN'
-pod 'ISO8601DateFormatter'
 pod 'NSDate-HYPString'
 pod 'NSDictionary-ANDYSafeValue'
 pod 'NSDictionary-HYPImmutable'
@@ -20,3 +18,4 @@ pod 'NSString-HYPRelationshipParser'
 pod 'NSString-HYPWordExtractor'
 pod 'NSString-ZENInflections'
 pod 'UIButton-ANDYHighlighted'
+pod 'UIViewController-HYPKeyboardToolbar'

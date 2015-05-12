@@ -1,4 +1,5 @@
 import UIKit
+import Form.FORMDefaultStyle
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,14 +8,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-    if let JSON: AnyObject? = NSJSONSerialization.JSONObjectWithContentsOfFile("forms.json") {
-      let initialValues: Dictionary<NSObject, AnyObject> = [
+    if let JSON = NSJSONSerialization.JSONObjectWithContentsOfFile("forms.json") as? [String : AnyObject] {
+      let initialValues = [
         "address"    : "Burger Park 667",
         "end_date"   : "2017-10-31 23:00:00 +00:00",
         "first_name" : "Ola",
         "last_name"  : "Nordman",
         "start_date" : "2014-10-31 23:00:00 +00:00"]
-      let sampleController = SampleCollectionViewController(initialValues: initialValues, JSON: JSON)
+      let sampleController = SampleCollectionViewController(JSON: JSON, initialValues: initialValues)
       let rootViewController = UINavigationController(rootViewController: sampleController)
 
       rootViewController.view.tintColor = UIColor(fromHex: "5182AF")
