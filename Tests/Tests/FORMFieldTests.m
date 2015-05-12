@@ -17,6 +17,7 @@
 @implementation FORMFieldTests
 
 - (void)testInitWithDictionary {
+    [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
     FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id": @"first_name",
                                                                @"title": @"First name",
                                                                @"value": @"John Malkobitch",
