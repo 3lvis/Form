@@ -1031,7 +1031,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
         NSInteger index = [self indexForTemplateSectionWithID:sectionTemplateID inForm:group];
 
         NSDictionary *sectionTemplate = [self.sectionTemplatesDictionary valueForKey:sectionTemplateID];
-        NSMutableDictionary *templateSectionDictionary = [NSMutableDictionary dictionaryWithDictionary:sectionTemplate];
+        NSData *archivedTemplate = [NSKeyedArchiver archivedDataWithRootObject:sectionTemplate];
+        NSMutableDictionary* templateSectionDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:archivedTemplate];
         [templateSectionDictionary setValue:[NSString stringWithFormat:@"%@[%ld]", sectionTemplateID, (long)index] forKey:@"id"];
 
         NSArray *templateFields = [templateSectionDictionary andy_valueForKey:@"fields"];
