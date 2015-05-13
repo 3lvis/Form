@@ -5,8 +5,6 @@
 #import "FORMFieldValuesTableViewHeader.h"
 #import "FORMFieldValueCell.h"
 
-static const CGFloat FORMFieldValuesCellHeight = 44.0f;
-
 @interface FORMFieldValuesTableViewController ()
 
 @property (nonatomic) NSArray *values;
