@@ -26,7 +26,7 @@
 #pragma mark - Getters
 
 - (CGRect)titleLabelFrame {
-    return CGRectMake(0.0f, 8.0f, FORMFieldValuesHeaderWidth, FORMLabelHeight);
+    return CGRectMake(0.0f, FORMTitleLabelY, FORMFieldValuesHeaderWidth, FORMLabelHeight);
 }
 
 - (UILabel *)titleLabel {
