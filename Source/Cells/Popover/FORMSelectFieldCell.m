@@ -76,7 +76,7 @@ static const NSInteger FORMSelectMaxItemCount = 6;
         CGFloat labelHeight = round(self.fieldValuesController.headerView.labelHeight);
         CGSize customSize = CGSizeMake(currentSize.width, (FORMFieldValuesCellHeight * self.field.values.count) + labelHeight + headerViewHeight + FORMTitleLabelY);
 
-        [self.fieldValuesController setPreferredContentSize:customSize];
+        self.fieldValuesController.preferredContentSize = customSize;
     }
 }
 
