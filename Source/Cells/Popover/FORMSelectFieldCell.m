@@ -3,6 +3,7 @@
 #import "FORMFieldValue.h"
 
 static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f };
+static const NSInteger FORMSelectMaxItemCount = 6;
 
 @interface FORMSelectFieldCell () <FORMTextFieldDelegate, FORMFieldValuesTableViewControllerDelegate>
 
@@ -68,6 +69,15 @@ static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f 
 - (void)updateContentViewController:(UIViewController *)contentViewController
                           withField:(FORMField *)field {
     self.fieldValuesController.field = self.field;
+
+    if (self.field.values.count <= FORMSelectMaxItemCount) {
+        CGSize currentSize = FORMSelectPopoverSize;
+        CGFloat headerViewHeight = self.fieldValuesController.headerView.frame.size.height;
+        CGFloat labelHeight = round(self.fieldValuesController.headerView.labelHeight);
+        CGSize customSize = CGSizeMake(currentSize.width, (FORMFieldValuesCellHeight * self.field.values.count) + labelHeight + headerViewHeight + FORMTitleLabelY);
+
+        self.fieldValuesController.preferredContentSize = customSize;
+    }
 }
 
 #pragma mark - FORMFieldValuesTableViewControllerDelegate
