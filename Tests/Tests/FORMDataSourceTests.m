@@ -881,4 +881,31 @@
     XCTAssertEqualObjects(totalField.value, @"300");
 }
 
+- (void)testResetRemovedValues {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:NO];
+
+    FORMField *addField = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    FORMField *removeField = [dataSource fieldWithID:@"companies[0].remove" includingHiddenFields:NO];
+    XCTAssertNotNil(removeField);
+
+    [dataSource fieldCell:nil updatedWithField:removeField];
+
+    XCTAssertEqual(dataSource.removedValues.count, 2);
+
+    [dataSource resetRemovedValues];
+
+    XCTAssertEqual(dataSource.removedValues.count, 0);
+}
+
 @end

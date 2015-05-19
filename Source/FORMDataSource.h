@@ -151,6 +151,11 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
 - (void)updateValuesWithDictionary:(NSDictionary *)dictionary;
 
 /*!
+ * @discussion Convenience method for resetting the removed values from the Form
+ */
+- (void)resetRemovedValues;
+
+/*!
  * @discussion Reloads the form using the values from the @c dictionary, triggering targets and reloading
  * the updated cells
  * @param dictionary A dictionary of field value where @c key is the @c fieldID and the @c value is the field value

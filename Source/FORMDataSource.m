@@ -799,6 +799,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }
 
     self.formData.values = nil;
+    self.formData.removedValues = nil;
 
     [self.collapsedGroups removeAllObjects];
     [self.formData.hiddenFieldsAndFieldIDsDictionary removeAllObjects];
@@ -905,6 +906,10 @@ includingHiddenFields:(BOOL)includingHiddenFields
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         self.formData.values[key] = obj;
     }];
+}
+
+- (void)resetRemovedValues {
+    self.formData.removedValues = nil;
 }
 
 - (NSDictionary *)values {
