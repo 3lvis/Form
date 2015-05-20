@@ -33,13 +33,12 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _type = [self typeFromTypeString:self.typeString];
     _inputTypeString = [dictionary andy_valueForKey:@"input_type"];
-    _value = [dictionary andy_valueForKey:@"value"];
     _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
 
     NSNumber *width = [dictionary andy_valueForKey:@"size.width"] ?: @100;
     NSNumber *height = [dictionary andy_valueForKey:@"size.height"]?: @1;
     _size = CGSizeMake([width floatValue], [height floatValue]);
-    
+
     self.position = @(position);
 
     _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
@@ -75,9 +74,9 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
                        _type == FORMFieldTypeDateTime ||
                        _type == FORMFieldTypeTime);
 
-    if (_value && isDateType) {
+    if (self.value && isDateType) {
         ISO8601DateFormatter *dateFormatter = [ISO8601DateFormatter new];
-        _value = [dateFormatter dateFromString:_value];
+        self.value = [dateFormatter dateFromString:self.value];
     }
 
     return self;
@@ -120,7 +119,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         }
     }
 
-    _value = resultValue;
+    [super setValue:resultValue];
 }
 
 #pragma mark - Getters

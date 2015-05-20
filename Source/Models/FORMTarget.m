@@ -17,7 +17,7 @@
     _targetID = [dictionary andy_valueForKey:@"id"];
     self.typeString = [dictionary andy_valueForKey:@"type"];
     self.actionTypeString = [dictionary andy_valueForKey:@"action"];
-    self.targetValue = [dictionary andy_valueForKey:@"value"] ? : [dictionary andy_valueForKey:@"target_value"];
+    self.value = [dictionary andy_valueForKey:@"value"] ? : [dictionary andy_valueForKey:@"target_value"];
     self.condition = [dictionary andy_valueForKey:@"condition"];
 
     return self;
@@ -31,8 +31,8 @@
     if (self.actionType == FORMTargetActionUpdate &&
         self.type == FORMTargetTypeField) {
 
-        if (self.targetValue != nil) {
-            values[@"targetValue"] = self.targetValue;
+        if (self.value != nil) {
+            values[@"value"] = self.value;
         }
 
         unsigned int numberOfProperties = 0;
@@ -323,8 +323,8 @@
     BOOL sameCondition = (object.condition == nil ||
                           [object.condition isEqualToString:self.condition]);
 
-    BOOL sameTargetValue = (object.targetValue == nil ||
-                            [object.targetValue isEqual:self.targetValue]);
+    BOOL sameTargetValue = (object.value == nil ||
+                            [object.value isEqual:self.value]);
 
     BOOL equal = (sameTargetID &&
                   object.actionType == self.actionType &&
@@ -333,7 +333,13 @@
                   sameTargetValue);
 
     if (equal && self.value && object.value) {
-        equal = ([self.value identifierIsEqualTo:object.value.valueID]);
+        if ([self.value isKindOfClass:[FORMFieldValue class]] &&
+            [object.value isKindOfClass:[FORMFieldValue class]]) {
+            FORMFieldValue *value = (FORMFieldValue *)self.value;
+            equal = ([value identifierIsEqualTo:[object.value valueID]]);
+        } else {
+            equal = ([self.value identifierIsEqualTo:[object.value valueID]]);
+        }
     }
 
     return equal;
@@ -341,7 +347,7 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"\n — Target: %@ —\n value: %@\n type: %@\n action type: %@\n condition: %@\n",
-            self.targetID, self.targetValue, self.typeString, self.actionTypeString, self.condition];
+            self.targetID, self.value, self.typeString, self.actionTypeString, self.condition];
 }
 
 @end
