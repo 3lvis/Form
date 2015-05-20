@@ -7,9 +7,10 @@
         "id": "section",
         "fields": [
           {
-            "id": "textie",
-            "title": "Some text",
-            "type": "text",
+            "id": "amount",
+            "title": "Amount",
+            "type": "number",
+            "value": 12,
             "size": {
               "width": 25,
               "height": 1

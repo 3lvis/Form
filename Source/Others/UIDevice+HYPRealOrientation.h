@@ -2,7 +2,7 @@
 
 @interface UIDevice (HYPRealOrientation)
 
-- (BOOL)hyp_isPortrait;
-- (BOOL)hyp_isLandscape;
+@property (nonatomic, readonly) BOOL hyp_isPortrait;
+@property (nonatomic, readonly) BOOL hyp_isLandscape;
 
 @end

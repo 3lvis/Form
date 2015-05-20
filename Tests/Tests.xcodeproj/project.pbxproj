@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14298D6E1ADDA78F00607A49 /* FORMValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14298D6D1ADDA78F00607A49 /* FORMValidatorTests.m */; };
+		143D89451AEE46CC00F17FF5 /* FORMFieldValuesTableViewHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143D89441AEE46CC00F17FF5 /* FORMFieldValuesTableViewHeaderTests.swift */; };
 		1440AF0D1AC1D76500F15D15 /* FORMGroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1440AF0C1AC1D76500F15D15 /* FORMGroupTests.m */; };
 		1449AE741AA07E0700BCC40E /* FORMField+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1449AE731AA07E0700BCC40E /* FORMField+Tests.m */; };
 		144A28BB1A99B2CF004A9086 /* FORMBaseFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28521A99B2CF004A9086 /* FORMBaseFieldCell.m */; };
@@ -81,12 +82,13 @@
 		14F594A51AE0618300772756 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F594A11AE0618300772756 /* arrow_down@2x.png */; };
 		14F594A61AE0618300772756 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F594A21AE0618300772756 /* clear@2x.png */; };
 		14F5AF6D1AE0522400FF71AD /* postal_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 14F5AF6C1AE0522400FF71AD /* postal_codes.json */; };
+		446C42661AF8B38F0002DFE9 /* FORMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446C42651AF8B38F0002DFE9 /* FORMViewController.m */; };
+		44713C611AE8E9DC00AA97DA /* simple-number-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 44713C601AE8E9DC00AA97DA /* simple-number-field.json */; };
 		44932E771AE79BBD00A159BE /* simple-section.json in Resources */ = {isa = PBXBuildFile; fileRef = 44932E761AE79BBD00A159BE /* simple-section.json */; };
-		4496E4961AE7913400F731C9 /* simple-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 4496E4951AE7913400F731C9 /* simple-field.json */; };
-		82AB828048DF535A1FFE4CC3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F9DD801EDC647B835EB2CF /* libPods.a */; };
+		4496E4961AE7913400F731C9 /* simple-text-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 4496E4951AE7913400F731C9 /* simple-text-field.json */; };
+		8EC9C8158643C507F883EEC4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E09ABAE07DB25A266537B76 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BD2405701AE6B38D00592E19 /* default-values-in-template.json in Resources */ = {isa = PBXBuildFile; fileRef = BD24056F1AE6B38D00592E19 /* default-values-in-template.json */; };
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
-		BD7339B41AE66DA50004DF8F /* FORMFieldValuesTableViewHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7339B31AE66DA50004DF8F /* FORMFieldValuesTableViewHeaderTests.swift */; };
 		BD92FBDA1AE61FF000D45BD4 /* dynamic-formulas.json in Resources */ = {isa = PBXBuildFile; fileRef = BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */; };
 		BDB7E31F1AA7016D00AF00BC /* FORMPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB7E31E1AA7016D00AF00BC /* FORMPostalCodeManager.m */; };
 		D581C23F1AE78D4B00E985A9 /* FORMFieldBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D581C23E1AE78D4B00E985A9 /* FORMFieldBase.m */; };
@@ -99,6 +101,7 @@
 /* Begin PBXFileReference section */
 		0F976971F56B077A5DA2E58E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		14298D6D1ADDA78F00607A49 /* FORMValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMValidatorTests.m; sourceTree = "<group>"; };
+		143D89441AEE46CC00F17FF5 /* FORMFieldValuesTableViewHeaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORMFieldValuesTableViewHeaderTests.swift; sourceTree = "<group>"; };
 		1440AF0C1AC1D76500F15D15 /* FORMGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMGroupTests.m; sourceTree = "<group>"; };
 		1449AE721AA07E0700BCC40E /* FORMField+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FORMField+Tests.h"; sourceTree = "<group>"; };
 		1449AE731AA07E0700BCC40E /* FORMField+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FORMField+Tests.m"; sourceTree = "<group>"; };
@@ -223,15 +226,17 @@
 		14F594A11AE0618300772756 /* arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
 		14F594A21AE0618300772756 /* clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear@2x.png"; sourceTree = "<group>"; };
 		14F5AF6C1AE0522400FF71AD /* postal_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postal_codes.json; sourceTree = "<group>"; };
+		446C42641AF8B38F0002DFE9 /* FORMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMViewController.h; sourceTree = "<group>"; };
+		446C42651AF8B38F0002DFE9 /* FORMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMViewController.m; sourceTree = "<group>"; };
+		44713C601AE8E9DC00AA97DA /* simple-number-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-number-field.json"; sourceTree = "<group>"; };
 		44932E761AE79BBD00A159BE /* simple-section.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-section.json"; sourceTree = "<group>"; };
-		4496E4951AE7913400F731C9 /* simple-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-field.json"; sourceTree = "<group>"; };
+		4496E4951AE7913400F731C9 /* simple-text-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-text-field.json"; sourceTree = "<group>"; };
+		4E09ABAE07DB25A266537B76 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		653AC6BBDF66E205BA44BA17 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		B3F9DD801EDC647B835EB2CF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD24056F1AE6B38D00592E19 /* default-values-in-template.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-values-in-template.json"; sourceTree = "<group>"; };
 		BD5845731AC4074600596C62 /* FORMTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTooltipView.h; sourceTree = "<group>"; };
 		BD5845741AC4074600596C62 /* FORMTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTooltipView.m; sourceTree = "<group>"; };
 		BD7339B21AE66DA50004DF8F /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		BD7339B31AE66DA50004DF8F /* FORMFieldValuesTableViewHeaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORMFieldValuesTableViewHeaderTests.swift; sourceTree = "<group>"; };
 		BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dynamic-formulas.json"; sourceTree = "<group>"; };
 		BDB7E31D1AA7016D00AF00BC /* FORMPostalCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMPostalCodeManager.h; sourceTree = "<group>"; };
 		BDB7E31E1AA7016D00AF00BC /* FORMPostalCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPostalCodeManager.m; sourceTree = "<group>"; };
@@ -249,7 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82AB828048DF535A1FFE4CC3 /* libPods.a in Frameworks */,
+				8EC9C8158643C507F883EEC4 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,8 +450,9 @@
 				149C291F1A9A23DD00F88B91 /* number-formula.json */,
 				14F5AF6C1AE0522400FF71AD /* postal_codes.json */,
 				144B80281AA882DB009C69DC /* section-field-position.json */,
-				4496E4951AE7913400F731C9 /* simple-field.json */,
+				44713C601AE8E9DC00AA97DA /* simple-number-field.json */,
 				44932E761AE79BBD00A159BE /* simple-section.json */,
+				4496E4951AE7913400F731C9 /* simple-text-field.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -475,13 +481,12 @@
 		14C4182A1A01919C00636FD6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D5B56C081AE5221C00DD8816 /* Formatters */,
+				BD7339B21AE66DA50004DF8F /* Tests-Bridging-Header.h */,
 				149C29131A9A23DD00F88B91 /* FORMDataSourceTests.m */,
 				149C29151A9A23DD00F88B91 /* FORMDataTests.m */,
 				D581C2401AE793E700E985A9 /* FORMFieldBaseTests.m */,
 				149C29121A9A23DD00F88B91 /* FORMFieldTests.m */,
 				D5DFAA1A1AA87A9B0096FBFB /* FORMFieldValidationTests.m */,
-				BD7339B31AE66DA50004DF8F /* FORMFieldValuesTableViewHeaderTests.swift */,
 				149C29111A9A23DD00F88B91 /* FORMFieldValueTests.m */,
 				1440AF0C1AC1D76500F15D15 /* FORMGroupTests.m */,
 				149C29181A9A23DD00F88B91 /* FORMPopoverFieldCellTests.m */,
@@ -490,10 +495,11 @@
 				149C29171A9A23DD00F88B91 /* FORMTests.m */,
 				149C29191A9A23DD00F88B91 /* FORMTextFieldCellTests.m */,
 				14298D6D1ADDA78F00607A49 /* FORMValidatorTests.m */,
+				143D89441AEE46CC00F17FF5 /* FORMFieldValuesTableViewHeaderTests.swift */,
+				D5B56C081AE5221C00DD8816 /* Formatters */,
 				149C290E1A9A23DD00F88B91 /* Helpers */,
 				149C291A1A9A23DD00F88B91 /* JSONs */,
 				14C4182B1A01919C00636FD6 /* Supporting Files */,
-				BD7339B21AE66DA50004DF8F /* Tests-Bridging-Header.h */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -513,20 +519,22 @@
 				144A286F1A99B2CF004A9086 /* Formatters */,
 				144A287A1A99B2CF004A9086 /* FORMBackgroundView.h */,
 				144A287B1A99B2CF004A9086 /* FORMBackgroundView.m */,
+				144A28801A99B2CF004A9086 /* FORMData.h */,
+				144A28811A99B2CF004A9086 /* FORMData.m */,
 				144A287C1A99B2CF004A9086 /* FORMDataSource.h */,
 				144A287D1A99B2CF004A9086 /* FORMDataSource.m */,
 				1452EB601AA9BCFC0002863A /* FORMDefaultStyle.h */,
 				1452EB611AA9BCFC0002863A /* FORMDefaultStyle.m */,
-				144A287E1A99B2CF004A9086 /* FORMLayout.h */,
-				144A287F1A99B2CF004A9086 /* FORMLayout.m */,
-				144A28801A99B2CF004A9086 /* FORMData.h */,
-				144A28811A99B2CF004A9086 /* FORMData.m */,
-				14AFC10F1AA7CF5C00583FC0 /* FORMSeparatorView.h */,
-				14AFC1101AA7CF5C00583FC0 /* FORMSeparatorView.m */,
 				144A28821A99B2CF004A9086 /* FORMGroupHeaderView.h */,
 				144A28831A99B2CF004A9086 /* FORMGroupHeaderView.m */,
+				144A287E1A99B2CF004A9086 /* FORMLayout.h */,
+				144A287F1A99B2CF004A9086 /* FORMLayout.m */,
+				14AFC10F1AA7CF5C00583FC0 /* FORMSeparatorView.h */,
+				14AFC1101AA7CF5C00583FC0 /* FORMSeparatorView.m */,
 				BD5845731AC4074600596C62 /* FORMTooltipView.h */,
 				BD5845741AC4074600596C62 /* FORMTooltipView.m */,
+				446C42641AF8B38F0002DFE9 /* FORMViewController.h */,
+				446C42651AF8B38F0002DFE9 /* FORMViewController.m */,
 				144A28861A99B2CF004A9086 /* Input Validators */,
 				144A28971A99B2CF004A9086 /* Models */,
 				144A28A61A99B2CF004A9086 /* Others */,
@@ -572,7 +580,7 @@
 		B49F68CCC7CDB91DBD7BBB43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3F9DD801EDC647B835EB2CF /* libPods.a */,
+				4E09ABAE07DB25A266537B76 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -597,6 +605,7 @@
 				14C418231A01919C00636FD6 /* Frameworks */,
 				14C418241A01919C00636FD6 /* Resources */,
 				B357F789DA74D1EC966B1C3D /* Copy Pods Resources */,
+				A2EDF5FFF9061B8DA45F541A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -647,9 +656,10 @@
 				14B564731A06D87B00342CDA /* .travis.yml in Resources */,
 				BD92FBDA1AE61FF000D45BD4 /* dynamic-formulas.json in Resources */,
 				149C292A1A9A23DD00F88B91 /* default-values.json in Resources */,
+				44713C611AE8E9DC00AA97DA /* simple-number-field.json in Resources */,
 				14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */,
 				149C292B1A9A23DD00F88B91 /* field-validations.json in Resources */,
-				4496E4961AE7913400F731C9 /* simple-field.json in Resources */,
+				4496E4961AE7913400F731C9 /* simple-text-field.json in Resources */,
 				14F594A41AE0618300772756 /* clock@2x.png in Resources */,
 				1492C05A1A9F740900D80D91 /* dynamic.json in Resources */,
 				149C29331A9A251800F88B91 /* forms.json in Resources */,
@@ -682,6 +692,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A2EDF5FFF9061B8DA45F541A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B357F789DA74D1EC966B1C3D /* Copy Pods Resources */ = {
@@ -725,6 +750,7 @@
 				144A28BD1A99B2CF004A9086 /* FORMDateFieldCell.m in Sources */,
 				14298D6E1ADDA78F00607A49 /* FORMValidatorTests.m in Sources */,
 				149C29261A9A23DD00F88B91 /* FORMTargetTests.m in Sources */,
+				446C42661AF8B38F0002DFE9 /* FORMViewController.m in Sources */,
 				144A28DE1A99B2CF004A9086 /* FORMFieldValue.m in Sources */,
 				144A28CA1A99B2CF004A9086 /* FORMFormatter.m in Sources */,
 				144A28C11A99B2CF004A9086 /* FORMPopoverFieldCell.m in Sources */,
@@ -751,7 +777,7 @@
 				144A28C01A99B2CF004A9086 /* FORMFieldValuesTableViewHeader.m in Sources */,
 				149C29281A9A23DD00F88B91 /* FORMPopoverFieldCellTests.m in Sources */,
 				D5B56C0A1AE52F8500DD8816 /* FORMEmailFormatterTests.m in Sources */,
-				BD7339B41AE66DA50004DF8F /* FORMFieldValuesTableViewHeaderTests.swift in Sources */,
+				143D89451AEE46CC00F17FF5 /* FORMFieldValuesTableViewHeaderTests.swift in Sources */,
 				144A28DF1A99B2CF004A9086 /* FORMGroup.m in Sources */,
 				144A28C81A99B2CF004A9086 /* FORMBankAccountNumberFormatter.m in Sources */,
 				144A28C71A99B2CF004A9086 /* FORMTextFieldTypeManager.m in Sources */,
@@ -815,7 +841,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -856,7 +882,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

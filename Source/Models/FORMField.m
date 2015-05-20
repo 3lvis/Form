@@ -36,10 +36,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _value = [dictionary andy_valueForKey:@"value"];
     _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
 
-    NSNumber *width = [dictionary andy_valueForKey:@"size.width"];
-    NSNumber *height = [dictionary andy_valueForKey:@"size.height"];
-    if (!height || !width) abort();
-
+    NSNumber *width = [dictionary andy_valueForKey:@"size.width"] ?: @100;
+    NSNumber *height = [dictionary andy_valueForKey:@"size.height"]?: @1;
     _size = CGSizeMake([width floatValue], [height floatValue]);
     
     self.position = @(position);
@@ -115,6 +113,13 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
             break;
     }
 
+    if ([resultValue isKindOfClass:[NSString class]]) {
+        NSString *value = (NSString *)resultValue;
+        if (!value.length) {
+            resultValue = nil;
+        }
+    }
+
     _value = resultValue;
 }
 
@@ -149,8 +154,12 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
 - (id)inputValidator {
     FORMInputValidator *inputValidator;
+
     Class fieldValidator = [FORMClassFactory classFromString:self.fieldID withSuffix:@"InputValidator"];
-    Class typeValidator = [FORMClassFactory classFromString:self.typeString withSuffix:@"InputValidator"];
+
+    NSString *typeID = (self.inputTypeString != nil) ? self.inputTypeString : self.typeString;
+    Class typeValidator = [FORMClassFactory classFromString:typeID withSuffix:@"InputValidator"];
+
     SEL selector = NSSelectorFromString(FORMInputValidatorSelector);
 
     if (fieldValidator && [fieldValidator instanceMethodForSelector:selector]) {

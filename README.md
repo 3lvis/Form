@@ -63,7 +63,7 @@ This are the required steps to create a basic form with a first name field.
 
 #### In your iPad app
 
-##### AppDelegate
+**AppDelegate**
 
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -74,47 +74,9 @@ This are the required steps to create a basic form with a first name field.
 }
 ```
 
-##### UICollectionViewController
-```objc
-- (FORMDataSource *)dataSource {
-    if (_dataSource) return _dataSource;
+**Subclass**
 
-    _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
-                                        collectionView:self.collectionView
-                                                layout:self.layout
-                                                values:@{@"first_name" : @"Ola"}
-                                              disabled:NO];
-
-    return _dataSource;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    self.collectionView.dataSource = self.dataSource;
-}
-
-
-#pragma mark - UICollectionViewDelegate
-
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [self.dataSource sizeForFieldAtIndexPath:indexPath];
-}
-
-#pragma mark - Rotation Handling
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                duration:(NSTimeInterval)duration {
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation
-                                   duration:duration];
-
-    [self.view endEditing:YES];
-
-    [self.collectionViewLayout invalidateLayout];
-}
-```
+Make sure that your `UICollectionViewController` is a subclass of `FORMViewController`.
 
 ---------------------------
 
@@ -201,8 +163,7 @@ Please check our [playbook](https://github.com/hyperoslo/playbook/blob/master/GI
 
 ## Credits
 
-[Hyper](http://hyper.no) made this. We're a digital communications agency with a passion for good code,
-and if you're using this library we probably want to [hire you](http://www.hyper.no/jobs/ios-developer).
+[Hyper](http://hyper.no) made this. We’re a digital communications agency with a passion for good code and delightful user experiences. If you’re using this library we probably want to [hire you](https://github.com/hyperoslo/iOS-playbook/blob/master/HYPER_RECIPES.md) (we consider remote employees too, the only requirement is that you’re awesome).
 
 ## License
 

@@ -1,11 +1,11 @@
 PODS:
-  - Form (3.3.3):
+  - Form (3.4.0):
     - Hex (~> 1.1.1)
+    - HYP8601 (~> 0.7.2)
     - HYPImagePicker (~> 0.3)
-    - HYPMathParser (~> 0.3)
+    - HYPMathParser (~> 0.4.1)
     - HYPNorwegianAccountNumber (~> 1.2.1)
-    - HYPNorwegianSSN (~> 1.10)
-    - ISO8601DateFormatter (~> 0.7)
+    - HYPNorwegianSSN (~> 1.10.2)
     - NSDictionary-ANDYSafeValue (~> 0.3)
     - NSDictionary-HYPNestedAttributes (~> 0.4.1)
     - NSJSONSerialization-ANDYJSONFile (~> 1.1)
@@ -13,15 +13,16 @@ PODS:
     - NSString-HYPContainsString (~> 0.1)
     - NSString-HYPFormula (~> 1.6.1)
     - NSString-HYPRelationshipParser (~> 0.4.1)
-    - NSString-HYPWordExtractor (~> 1.1)
+    - NSString-HYPWordExtractor (~> 1.2)
     - NSString-ZENInflections (~> 1.2)
     - UIButton-ANDYHighlighted (~> 0.2.1)
+    - UIViewController-HYPKeyboardToolbar (~> 0.1)
   - Hex (1.1.1)
+  - HYP8601 (0.7.2)
   - HYPImagePicker (0.3)
-  - HYPMathParser (0.3)
+  - HYPMathParser (0.4.1)
   - HYPNorwegianAccountNumber (1.2.1)
-  - HYPNorwegianSSN (1.10)
-  - ISO8601DateFormatter (0.7)
+  - HYPNorwegianSSN (1.10.2)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSDictionary-HYPNestedAttributes (0.4.1):
     - NSString-HYPRelationshipParser (~> 0.4.1)
@@ -42,16 +43,16 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Form:
-    :path: ../../
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  Form: 6e7b5fac363f46c2fdedc62ee09e92489a51c850
+  Form: 2a2f9ed0ee19f7b153b9b5a8bcf19811d028b847
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
+  HYP8601: 0118757c1332620748c75e7218e7b6b849686d06
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
-  HYPMathParser: c10c542e7f8b391568d12cde536e13c9c70ec034
+  HYPMathParser: 146a4981427a0b46cc9af823b210bfefdf0a7107
   HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
-  HYPNorwegianSSN: ffef3b2110b627dbb2273f912b439146493d49dd
-  ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
+  HYPNorwegianSSN: 1eb54f1488ac24cdd7d0aee34e10d0f826c27fc1
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
   NSDictionary-HYPNestedAttributes: 783d3adcf9f8e9a554004ee225f1bc0cdf0cfdfe
   NSJSONSerialization-ANDYJSONFile: 4a92ca174d5ccde13015e853e9eb62440459b478
@@ -64,4 +65,4 @@ SPEC CHECKSUMS:
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
-COCOAPODS: 0.36.4
+COCOAPODS: 0.37.1

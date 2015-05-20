@@ -46,7 +46,7 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
               collectionView:(UICollectionView *)collectionView
                       layout:(FORMLayout *)layout
                       values:(NSDictionary *)values
-                    disabled:(BOOL)disabled;
+                    disabled:(BOOL)disabled NS_DESIGNATED_INITIALIZER;
 
 /*!
  * Provides a configuration block to optionally set up subclasses of @c FORMBaseFieldCell
@@ -91,13 +91,13 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
  * @discussion A method to check if the Form is disabled.
  * @return @c YES if the Form is disabled.
  */
-- (BOOL)isDisabled;
+@property (nonatomic, getter=isDisabled, readonly) BOOL disabled;
 
 /*!
  * @discussion A method to check if the Form is enabled.
  * @return @c YES if the Form is enabled.
  */
-- (BOOL)isEnabled;
+@property (nonatomic, getter=isEnabled, readonly) BOOL enabled;
 
 /*!
  * @discussion Processes a collection of targets, they could be show, hide, update, enable or disable.
@@ -109,18 +109,18 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
  * @discussion A method to retrieve invalid fields.
  * @return A dictionary of invalid fields where the key is the @c fieldID and the value the @c FORMField.
  */
-- (NSDictionary *)invalidFields;
+@property (nonatomic, readonly, copy) NSDictionary *invalidFields;
 
 /*!
  * @discussion A method to retrieve required fields.
  * @return A dictionary of required fields where the key is the @c fieldID and the value the @c FORMField.
  */
-- (NSDictionary *)requiredFields;
+@property (nonatomic, readonly, copy) NSDictionary *requiredFields;
 
 /*!
  * @return @YES if all the fields are valid
  */
-- (BOOL)isValid;
+@property (nonatomic, getter=isValid, readonly) BOOL valid;
 
 /*!
  * Resets the values of all the fields
@@ -136,13 +136,13 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
  * @discussion The values for all the fields
  * @return A dictionary of field values where @c key is the @c fieldID and the @c value is the field value
  */
-- (NSDictionary *)values;
+@property (nonatomic, readonly, copy) NSDictionary *values;
 
 /*!
  * @discussion Returns values for the removed fields (doesn't contain collapsed fields, just removed ones)
  * @return A dictionary of removed values where @c key is the @c fieldID and the @c value is the field value
  */
-- (NSDictionary *)removedValues;
+@property (nonatomic, readonly, copy) NSDictionary *removedValues;
 
 /*!
  * @discussion Replaces the field values
@@ -167,7 +167,7 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
 /*!
  * @return  Returns the number of fields in Form
  */
-- (NSInteger)numberOfFields;
+@property (nonatomic, readonly) NSInteger numberOfFields;
 
 /*!
  * @param fieldID The identifier for the field

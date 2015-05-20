@@ -1,14 +1,7 @@
-//
-//  DDMathEvaluator+FORM.m
-//  FORM
-//
-//  Created by Christoffer Winterkvist on 1/9/15.
-//  Copyright (c) 2015 Hyper. All rights reserved.
-//
-
 #import "DDMathEvaluator+FORM.h"
 #import "DDExpression.h"
 #import "_DDVariableExpression.h"
+@import HYPMathParser._DDVariableExpression;
 
 @implementation DDMathEvaluator (FORM)
 
@@ -20,8 +13,7 @@
         if (args.count < 2) {
             *error = [NSError errorWithDomain:DDMathParserErrorDomain
                                          code:DDErrorCodeInvalidNumberOfArguments
-                                     userInfo:@{NSLocalizedDescriptionKey : @"Invalid number of variables"
-                                                }];
+                                     userInfo:@{NSLocalizedDescriptionKey : @"Invalid number of variables"}];
         }
 
         NSArray *arguments = [args subarrayWithRange:NSMakeRange(1, args.count-1)];

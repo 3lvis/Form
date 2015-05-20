@@ -1,10 +1,10 @@
 PODS:
   - Hex (1.1.1)
+  - HYP8601 (0.7.2)
   - HYPImagePicker (0.3)
-  - HYPMathParser (0.3)
+  - HYPMathParser (0.4.1)
   - HYPNorwegianAccountNumber (1.2.1)
-  - HYPNorwegianSSN (1.10)
-  - ISO8601DateFormatter (0.7)
+  - HYPNorwegianSSN (1.10.2)
   - NSDate-HYPString (0.2)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSDictionary-HYPImmutable (0.2)
@@ -19,14 +19,15 @@ PODS:
   - NSString-HYPWordExtractor (1.2)
   - NSString-ZENInflections (1.2)
   - UIButton-ANDYHighlighted (0.2.1)
+  - UIViewController-HYPKeyboardToolbar (0.1)
 
 DEPENDENCIES:
   - Hex
+  - HYP8601
   - HYPImagePicker
   - HYPMathParser
   - HYPNorwegianAccountNumber
   - HYPNorwegianSSN
-  - ISO8601DateFormatter
   - NSDate-HYPString
   - NSDictionary-ANDYSafeValue
   - NSDictionary-HYPImmutable
@@ -39,14 +40,15 @@ DEPENDENCIES:
   - NSString-HYPWordExtractor
   - NSString-ZENInflections
   - UIButton-ANDYHighlighted
+  - UIViewController-HYPKeyboardToolbar
 
 SPEC CHECKSUMS:
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
+  HYP8601: 0118757c1332620748c75e7218e7b6b849686d06
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
-  HYPMathParser: c10c542e7f8b391568d12cde536e13c9c70ec034
+  HYPMathParser: 146a4981427a0b46cc9af823b210bfefdf0a7107
   HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
-  HYPNorwegianSSN: ffef3b2110b627dbb2273f912b439146493d49dd
-  ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
+  HYPNorwegianSSN: 1eb54f1488ac24cdd7d0aee34e10d0f826c27fc1
   NSDate-HYPString: b87cf854edd44ec1e186b32526c601502180846d
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
   NSDictionary-HYPImmutable: 5ab45ed9d8127636467736b51700d886bfcc48db
@@ -59,5 +61,6 @@ SPEC CHECKSUMS:
   NSString-HYPWordExtractor: 7484da8d2d23e41b24b0bdb218293ab349f9f650
   NSString-ZENInflections: 35ae6d02981b1def07bd6dc8e6455e827453bc29
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
+  UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
 COCOAPODS: 0.37.1

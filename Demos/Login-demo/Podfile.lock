@@ -1,8 +1,8 @@
 PODS:
-  - Form (3.3.3):
+  - Form (3.4.0):
     - Hex (~> 1.1.1)
     - HYPImagePicker (~> 0.3)
-    - HYPMathParser (~> 0.3)
+    - HYPMathParser (~> 0.4.0)
     - HYPNorwegianAccountNumber (~> 1.2.1)
     - HYPNorwegianSSN (~> 1.10)
     - ISO8601DateFormatter (~> 0.7)
@@ -16,11 +16,12 @@ PODS:
     - NSString-HYPWordExtractor (~> 1.1)
     - NSString-ZENInflections (~> 1.2)
     - UIButton-ANDYHighlighted (~> 0.2.1)
+    - UIViewController-HYPKeyboardToolbar (~> 0.1)
   - Hex (1.1.1)
   - HYPImagePicker (0.3)
-  - HYPMathParser (0.3)
+  - HYPMathParser (0.4.0)
   - HYPNorwegianAccountNumber (1.2.1)
-  - HYPNorwegianSSN (1.10)
+  - HYPNorwegianSSN (1.10.1)
   - ISO8601DateFormatter (0.7)
   - NSDictionary-ANDYSafeValue (0.3)
   - NSDictionary-HYPNestedAttributes (0.4.1):
@@ -34,21 +35,22 @@ PODS:
   - NSString-HYPWordExtractor (1.2)
   - NSString-ZENInflections (1.2)
   - UIButton-ANDYHighlighted (0.2.1)
+  - UIViewController-HYPKeyboardToolbar (0.1)
 
 DEPENDENCIES:
   - Form (from `../../`)
 
 EXTERNAL SOURCES:
   Form:
-    :path: "../../"
+    :path: ../../
 
 SPEC CHECKSUMS:
-  Form: 6e7b5fac363f46c2fdedc62ee09e92489a51c850
+  Form: 95b18c872ca40ecdadbde38ebded2cd41c50b520
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
-  HYPMathParser: c10c542e7f8b391568d12cde536e13c9c70ec034
+  HYPMathParser: 234475b2d424fc9cc5a17bd2fef7b73e1c03dfd3
   HYPNorwegianAccountNumber: b0062d7419d217123dff0ef04f1931ed5f1e3bbf
-  HYPNorwegianSSN: ffef3b2110b627dbb2273f912b439146493d49dd
+  HYPNorwegianSSN: 75e8b512f5a7be80dad61c3ba26494a5459a5b7a
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   NSDictionary-ANDYSafeValue: c15ff39a6b1b82a52ea277c64520c7b574715afc
   NSDictionary-HYPNestedAttributes: 783d3adcf9f8e9a554004ee225f1bc0cdf0cfdfe
@@ -60,5 +62,6 @@ SPEC CHECKSUMS:
   NSString-HYPWordExtractor: 7484da8d2d23e41b24b0bdb218293ab349f9f650
   NSString-ZENInflections: 35ae6d02981b1def07bd6dc8e6455e827453bc29
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
+  UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
-COCOAPODS: 0.36.4
+COCOAPODS: 0.37.0
