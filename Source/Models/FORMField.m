@@ -91,6 +91,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         case FORMFieldTypeNumber:
         case FORMFieldTypeFloat: {
             if (![fieldValue isKindOfClass:[NSString class]]) {
+#warning failing here
                 resultValue = [fieldValue stringValue];
             }
         } break;
