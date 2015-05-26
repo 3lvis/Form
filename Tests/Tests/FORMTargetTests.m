@@ -93,7 +93,7 @@
                                  @"condition": @"$employment_type == 2 && !missing($temporary_employee_reason)"};
 
     FORMTarget *target = [[FORMTarget alloc] initWithDictionary:targetJSON];
-    NSArray *fieldProperties = [target fieldPropertiesToUpdate];
+    NSArray *fieldProperties = [target propertiesToUpdate];
     XCTAssertEqual(fieldProperties.count, 1);
     XCTAssertEqualObjects(fieldProperties, @[@"validation"]);
 
@@ -104,7 +104,7 @@
                    @"condition": @"$employment_type == 2 && !missing($temporary_employee_reason)"};
 
     target = [[FORMTarget alloc] initWithDictionary:targetJSON];
-    fieldProperties = [target fieldPropertiesToUpdate];
+    fieldProperties = [target propertiesToUpdate];
     XCTAssertEqual(fieldProperties.count, 0);
 
     targetJSON = @{@"id": @"end_date",
@@ -114,7 +114,7 @@
                    @"condition": @"$employment_type == 2 && !missing($temporary_employee_reason)"};
 
     target = [[FORMTarget alloc] initWithDictionary:targetJSON];
-    fieldProperties = [target fieldPropertiesToUpdate];
+    fieldProperties = [target propertiesToUpdate];
     XCTAssertEqual(fieldProperties.count, 0);
 }
 

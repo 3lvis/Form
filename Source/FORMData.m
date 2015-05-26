@@ -811,7 +811,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
                }];
 
         if (field) {
-            NSArray *properties = [target fieldPropertiesToUpdate];
+            NSArray *properties = [target propertiesToUpdate];
             for (NSString *propertyName in properties) {
                 id value = [target valueForKey:propertyName];
 

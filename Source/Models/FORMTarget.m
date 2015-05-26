@@ -25,7 +25,7 @@
 
 #pragma mark - Public Methods
 
-- (NSArray *)fieldPropertiesToUpdate {
+- (NSArray *)propertiesToUpdate {
     NSMutableArray *values = [NSMutableArray new];
 
     if (self.actionType == FORMTargetActionUpdate &&
