@@ -202,19 +202,16 @@
             }
         }
 
-
         for (FORMField *field in group.fields) {
-
             if (field.hidden){
                 [hideTargets addObject:[FORMTarget hideFieldTargetWithID:field.fieldID]];
             }
 
-            if ([initialValues andy_valueForKey:field.fieldID]) {
+            id initialValue = [initialValues andy_valueForKey:field.fieldID];
+            if (initialValue) {
                 if (field.type == FORMFieldTypeSelect) {
                     for (FORMFieldValue *value in field.values) {
-
-                        BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:field.fieldID]]);
-                        if (isInitialValue) {
+                        if ([value identifierIsEqualTo:initialValue]) {
                             field.value = value;
                         }
                     }
@@ -226,15 +223,10 @@
             }
 
             for (FORMFieldValue *fieldValue in field.values) {
-
                 id initialValue = [initialValues andy_valueForKey:field.fieldID];
-
                 BOOL fieldHasInitialValue = (initialValue != nil);
                 if (fieldHasInitialValue) {
-
-                    BOOL fieldValueMatchesInitialValue = ([fieldValue identifierIsEqualTo:initialValue]);
-                    if (fieldValueMatchesInitialValue) {
-
+                    if ([fieldValue identifierIsEqualTo:initialValue]) {
                         for (FORMTarget *target in fieldValue.targets) {
                             if ([self evaluateCondition:target.condition]) {
                                 if (target.actionType == FORMTargetActionHide) {
@@ -281,15 +273,11 @@
 
     for (FORMTarget *target in hideTargets) {
         if ([self evaluateCondition:target.condition]) {
-
             if (target.type == FORMTargetTypeField) {
-
                 FORMField *field = [self fieldWithID:target.targetID
                                includingHiddenFields:YES];
                 [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
-
             } else if (target.type == FORMTargetTypeSection) {
-
                 FORMSection *section = [self sectionWithID:target.targetID];
                 [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
             }
@@ -299,7 +287,6 @@
     for (FORMTarget *target in hideTargets) {
         if ([self evaluateCondition:target.condition]) {
             if (target.type == FORMTargetTypeField) {
-
                 FORMField *field = [self fieldWithID:target.targetID
                                includingHiddenFields:NO];
                 if (field) {
@@ -308,9 +295,7 @@
                                 inGroups:self.groups];
                     [section resetFieldPositions];
                 }
-
             } else if (target.type == FORMTargetTypeSection) {
-
                 FORMSection *section = [self sectionWithID:target.targetID];
                 if (section) {
                     FORMGroup *group = section.group;
@@ -828,34 +813,17 @@ includingHiddenFields:(BOOL)includingHiddenFields
         }];
 
         if (field) {
-            NSDictionary *fieldProperties = [target fieldPropertiesToUpdate];
-            if (fieldProperties.count > 0) {
-                for (NSString *fieldPropertyKey in fieldProperties) {
-                    id fieldPropertyValue = fieldProperties[fieldPropertyKey];
-
-                    if ([fieldPropertyKey isEqualToString:@"value"]) {
-                        if (field.type == FORMFieldTypeSelect) {
-                            FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:fieldPropertyValue];
-
-                            if (selectedFieldValue) {
-                                [self.values setObject:selectedFieldValue.valueID forKey:field.fieldID];
-                                field.value = selectedFieldValue;
-                            }
-
-                        } else {
-                            field.value = fieldPropertyValue;
-                            [self.values setObject:field.value forKey:field.fieldID];
-                        }
-                    } else {
-                        @try {
-                            [field setValue:fieldPropertyValue forKey:fieldPropertyKey];
-                        }
-                        @catch (NSException * e) {
-                            NSLog(@"Error: tried to set value for key that doesn't exist:%@", fieldPropertyKey);
-                        }
+            if (target.value) {
+                if (field.type == FORMFieldTypeSelect) {
+                    FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.value];
+                    if (selectedFieldValue) {
+                        (self.values)[field.fieldID] = selectedFieldValue.valueID;
+                        field.value = selectedFieldValue;
                     }
+                } else {
+                    field.value = target.value;
+                    (self.values)[field.fieldID] = field.value;
                 }
-
             } else if (target.actionType == FORMTargetActionClear) {
                 field.value = nil;
                 (self.values)[field.fieldID] = [NSNull null];
