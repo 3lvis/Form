@@ -9,6 +9,7 @@
 @property (nonatomic) NSString *info;
 @property (nonatomic) NSDate *minimumDate;
 @property (nonatomic) NSDate *maximumDate;
+@property (nonatomic) id value;
 
 @property (nonatomic) FORMFieldValidation *validation;
 @property (nonatomic) NSString *formula;

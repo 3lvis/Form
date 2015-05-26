@@ -3,6 +3,7 @@
 #import "NSDictionary+ANDYSafeValue.h"
 #import "ISO8601DateFormatter.h"
 #import "FORMFieldValidation.h"
+#import "FORMFieldValue.h"
 
 @implementation FORMFieldBase
 
@@ -34,9 +35,12 @@
     }
 
     _formula = [dictionary andy_valueForKey:@"formula"];
+    _value = [dictionary andy_valueForKey:@"value"];
 
     return self;
 }
+
+#pragma mark - Others
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"\n — Field Element: \n title: %@\n info: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n",

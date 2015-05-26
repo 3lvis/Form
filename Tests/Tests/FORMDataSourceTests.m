@@ -110,7 +110,7 @@
 }
 
 - (void)testUpdatingTargetValue {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"target-condition.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
@@ -123,7 +123,7 @@
     XCTAssertNil(targetField.value);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.targetValue = @"John Hyperseed";
+    updateTarget.value = @"John Hyperseed";
 
     [dataSource processTargets:@[updateTarget]];
     XCTAssertEqualObjects(targetField.value, @"John Hyperseed");
@@ -164,7 +164,7 @@
 }
 
 - (void)testTargetCondition {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"target-condition.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
@@ -175,13 +175,12 @@
 
     FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
-    FORMFieldValue *fieldValue = usernameField.value;
-    XCTAssertEqualObjects(fieldValue.valueID, @0);
+    XCTAssertEqualObjects(usernameField.value, @0);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.targetValue = @"Mr.Melk";
+    updateTarget.value = @"Mr.Melk";
 
-    updateTarget.condition = @"$username == 2";
+    updateTarget.condition = @"$username == 1";
     [dataSource processTargets:@[updateTarget]];
     XCTAssertNil(displayNameField.value);
 
@@ -191,7 +190,7 @@
 }
 
 - (void)testTargetValidation {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"target-condition.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
@@ -203,14 +202,14 @@
     FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.targetValue = @"Mr.Melk";
+    updateTarget.value = @"7 words";
     [dataSource processTargets:@[updateTarget]];
-    XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
+    XCTAssertEqualObjects(displayNameField.value, @"7 words");
+    XCTAssertTrue([displayNameField valid]);
 
-    updateTarget.validation = [[FORMFieldValidation alloc]
-                                            initWithDictionary:@{@"required": @YES,
-                                                                 @"min_length": @1,
-                                                                 @"max_length": @4}];
+    updateTarget.validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"required": @YES,
+                                                                                @"min_length": @1,
+                                                                                @"max_length": @4}];
     [dataSource processTargets:@[updateTarget]];
     [displayNameField validate];
     XCTAssertFalse([displayNameField valid]);
@@ -893,8 +892,8 @@
                                                                values:nil
                                                              disabled:NO];
 
-	FORMField *addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
-	XCTAssertNotNil(addField);
+    FORMField *addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
 
     [dataSource fieldCell:nil updatedWithField:addField];
 
