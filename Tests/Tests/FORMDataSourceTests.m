@@ -228,8 +228,7 @@
     FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
 
 
-    NSDictionary *targetJSON = @{
-                                 @"id": @"display_name",
+    NSDictionary *targetJSON = @{@"id": @"display_name",
                                  @"type": @"field",
                                  @"action": @"update",
                                  @"title": @"Nice display name",
