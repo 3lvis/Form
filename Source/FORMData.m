@@ -814,7 +814,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
             NSArray *properties = [target fieldPropertiesToUpdate];
             for (NSString *propertyName in properties) {
                 id value = [target valueForKey:propertyName];
-                if (value && ![propertyName isEqualToString:@"value"]) {
+
+                if (![propertyName isEqualToString:@"value"]) {
                     [field setValue:value forKey:propertyName];
                 }
             }
@@ -853,8 +854,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
                             }
                         } else {
                             FORMFieldValue *foundFieldValue = nil;
-                            for (FORMFieldValue *fieldValue in field.values) {
-                                if ([fieldValue identifierIsEqualTo:field.value]) {
+                            for (FORMFieldValue *fieldValue in targetField.values) {
+                                if ([fieldValue identifierIsEqualTo:targetField.value]) {
                                     foundFieldValue = fieldValue;
                                 }
                             }
