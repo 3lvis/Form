@@ -1,39 +1,14 @@
 import UIKit
+import Form.FORMViewController
 
-class SampleCollectionViewController: UICollectionViewController {
+class SampleCollectionViewController: FORMViewController {
 
-  var formDataSource: FORMDataSource?
-  var layout: FORMLayout
-
-  var initialValues :Dictionary<NSObject, AnyObject>?
-  var JSON: AnyObject?
-
-  init(initialValues: Dictionary<NSObject, AnyObject>, JSON: AnyObject?) {
-    self.initialValues = initialValues
-    self.JSON = JSON
-    self.layout = FORMLayout()
-
-    super.init(collectionViewLayout: self.layout)
+  init(JSON: [String : AnyObject], initialValues: [String : AnyObject]) {
+    super.init(JSON: JSON, andInitialValues: initialValues, disabled:true)
   }
 
   required init(coder aDecoder: NSCoder) {
-    self.layout = FORMLayout()
-
-    super.init(coder: aDecoder)
-  }
-
-  // MARK: Getters
-
-  func dataSource() -> FORMDataSource {
-    if self.formDataSource == nil {
-      self.formDataSource = FORMDataSource(JSON: self.JSON,
-        collectionView: self.collectionView,
-        layout: self.layout,
-        values: self.initialValues,
-        disabled: true)
-    }
-
-    return self.formDataSource!
+    fatalError("Not supported")
   }
 
   // MARK: View life cycle
@@ -41,9 +16,7 @@ class SampleCollectionViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.edgesForExtendedLayout = .None
     self.collectionView?.backgroundColor = UIColor(fromHex: "DAE2EA")
-    self.collectionView?.dataSource = self.dataSource()
   }
 
   override func viewDidAppear(animated: Bool) {
@@ -91,25 +64,25 @@ class SampleCollectionViewController: UICollectionViewController {
 
   func readOnly(sender: UISwitch) {
     if sender.on {
-      self.dataSource().disable()
+      self.dataSource.disable()
     } else {
-      self.dataSource().enable()
+      self.dataSource.enable()
     }
   }
 
   func validateButtonAction() {
-    if self.dataSource().isValid() {
+    if self.dataSource.valid {
       UIAlertView(title: "Everything is valid, you get a 🍬!",
         message: nil,
         delegate: nil,
         cancelButtonTitle: "No thanks!").show()
     } else {
-      self.dataSource().validate()
+      self.dataSource.validate()
     }
   }
 
   func updateButtonAction() {
-    self.dataSource().reloadWithDictionary(["first_name" : "Hodo",
+    self.dataSource.reloadWithDictionary(["first_name" : "Hodo",
       "salary_type" : 1,
       "hourly_pay_level" : 1,
       "hourly_pay_premium_percent" : 10,
@@ -117,14 +90,8 @@ class SampleCollectionViewController: UICollectionViewController {
       "start_date" : NSNull(),
       "username": 1
       ])
+
     self.collectionView?.reloadData()
   }
-
-  // MARK: UICollectionViewDelegate
-
-  func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-    return self.dataSource().sizeForFieldAtIndexPath(indexPath)
-  }
-
 }
 

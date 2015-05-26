@@ -53,7 +53,7 @@
     [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"username"]]];
     field = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingGroups:dataSource.groups];
-    XCTAssertEqual(index, 1);
+    XCTAssertEqual(index, 2);
     [dataSource processTargets:[FORMTarget showFieldTargetsWithIDs:@[@"first_name",
                                                                      @"address"]]];
 
@@ -141,6 +141,26 @@
 
     FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
     XCTAssertNotNil(usernameField.value);
+}
+
+- (void)testDefaultValueInTemplate {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"default-values-in-template.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    FORMField *addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    FORMField *ticketTypeField = [dataSource fieldWithID:@"tickets[0].type" includingHiddenFields:NO];
+    XCTAssertNotNil(ticketTypeField);
+    XCTAssertEqualObjects(ticketTypeField.value, @1);
 }
 
 - (void)testCondition {
@@ -785,6 +805,80 @@
 
     FORMSection *section = [dataSource sectionWithID:@"contacts[0]"];
     XCTAssertEqualObjects(section.position, @3);
+}
+
+- (void)testDynamicTargetCondition {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:@{@"email" : @"john.hyperseed"}
+                                                             disabled:YES];
+
+    FORMField *emailField = [dataSource fieldWithID:@"email" includingHiddenFields:YES];
+    NSString *expectedEmail = @"john.hyperseed@hyper.no";
+
+    FORMField *addField = [dataSource fieldWithID:@"companies.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    XCTAssertEqualObjects(emailField.value, expectedEmail);
+}
+
+- (void)testDynamicFormulas {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"dynamic-formulas.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:NO];
+
+	FORMField *addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
+	XCTAssertNotNil(addField);
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    FORMField *priceField = [dataSource fieldWithID:@"tickets[0].price" includingHiddenFields:NO];
+    XCTAssertNotNil(priceField);
+    FORMTarget *priceTarget = [[priceField targets] firstObject];
+    FORMField *quantityField = [dataSource fieldWithID:@"tickets[0].quantity" includingHiddenFields:NO];
+    XCTAssertNotNil(quantityField);
+    FORMField *totalField = [dataSource fieldWithID:@"tickets[0].total" includingHiddenFields:NO];
+    XCTAssertNotNil(totalField);
+
+    [dataSource reloadWithDictionary:@{@"tickets[0].price" : @100,
+                                       @"tickets[0].quantity" : @3}];
+
+    XCTAssertEqualObjects(priceTarget.targetID, @"tickets[0].total");
+    XCTAssertEqualObjects(totalField.formula, @"tickets[0].quantity * tickets[0].price");
+    XCTAssertEqualObjects(totalField.value, @"300");
+
+    addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
+    XCTAssertNotNil(addField);
+
+    // Second add
+
+    [dataSource fieldCell:nil updatedWithField:addField];
+
+    priceField = [dataSource fieldWithID:@"tickets[1].price" includingHiddenFields:NO];
+    XCTAssertNotNil(priceField);
+    priceTarget = [[priceField targets] firstObject];
+    quantityField = [dataSource fieldWithID:@"tickets[1].quantity" includingHiddenFields:NO];
+    XCTAssertNotNil(quantityField);
+    totalField = [dataSource fieldWithID:@"tickets[1].total" includingHiddenFields:NO];
+    XCTAssertNotNil(totalField);
+
+    [dataSource reloadWithDictionary:@{@"tickets[1].price" : @100,
+                                       @"tickets[1].quantity" : @3}];
+
+    XCTAssertEqualObjects(priceTarget.targetID, @"tickets[1].total");
+    XCTAssertEqualObjects(totalField.formula, @"tickets[1].quantity * tickets[1].price");
+    XCTAssertEqualObjects(totalField.value, @"300");
 }
 
 @end

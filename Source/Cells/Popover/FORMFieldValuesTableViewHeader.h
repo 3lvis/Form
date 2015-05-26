@@ -4,12 +4,16 @@
 
 static const CGFloat FORMFieldValuesHeaderWidth = 320.0f;
 static const CGFloat FORMFieldValuesHeaderHeight = 66.0f;
+static const CGFloat FORMLabelHeight = 25.0f;
+static const CGFloat FORMTitleLabelY = 8.0f;
 
 static NSString * const FORMFieldValuesTableViewHeaderIdentifier = @"FORMFieldValuesTableViewHeaderIdentifier";
 
 @interface FORMFieldValuesTableViewHeader : UITableViewHeaderFooterView
 
 @property (nonatomic, weak) FORMField *field;
+
+@property (nonatomic, readonly) CGFloat labelHeight;
 
 - (void)setTitleLabelFont:(UIFont *)titleLabelFont UI_APPEARANCE_SELECTOR;
 - (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor UI_APPEARANCE_SELECTOR;

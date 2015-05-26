@@ -257,7 +257,17 @@
           {
             "id":"start_date",
             "title":"Start date",
+            "info":"The day of employment",
             "type":"date",
+            "size":{
+              "width":25,
+              "height":1
+            }
+          },
+          {
+            "id":"start_time",
+            "title":"Start time",
+            "type":"time",
             "size":{
               "width":25,
               "height":1
@@ -267,14 +277,32 @@
             "id":"end_date",
             "title":"End date",
             "type":"date",
+            "validations":{
+              "compare_to":"start_date",
+              "compare_rule":">"
+            },
             "size":{
               "width":25,
               "height":1
             }
           },
           {
+            "id":"end_time",
+            "title":"End time",
+            "type":"time",
+            "size":{
+              "width":25,
+              "height":1
+            },
+            "validations":{
+              "required":true,
+              "min_length":2
+            }
+          },
+          {
             "id":"contract_type",
             "title":"Contract type",
+            "info":"Type of contract\n Permanent or temporary",
             "type":"select",
             "size":{
               "width":50,
@@ -284,10 +312,16 @@
               {
                 "id":0,
                 "title":"Permanent",
+                "info":"Regular employee",
                 "default":true,
                 "targets":[
                   {
                     "id":"end_date",
+                    "type":"field",
+                    "action":"show"
+                  },
+                  {
+                    "id":"end_time",
                     "type":"field",
                     "action":"show"
                   },
@@ -304,6 +338,11 @@
                 "targets":[
                   {
                     "id":"end_date",
+                    "type":"field",
+                    "action":"hide"
+                  },
+                  {
+                    "id":"end_time",
                     "type":"field",
                     "action":"hide"
                   },

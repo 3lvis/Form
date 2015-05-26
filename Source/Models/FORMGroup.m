@@ -92,7 +92,7 @@
     NSInteger count = 0;
 
     for (FORMSection *section in self.sections) {
-        if (![deletedSections objectForKey:section.sectionID]) {
+        if (!deletedSections[section.sectionID]) {
             count += section.fields.count;
         }
     }

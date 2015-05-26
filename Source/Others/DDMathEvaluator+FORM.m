@@ -1,14 +1,7 @@
-//
-//  DDMathEvaluator+FORM.m
-//  FORM
-//
-//  Created by Christoffer Winterkvist on 1/9/15.
-//  Copyright (c) 2015 Hyper. All rights reserved.
-//
-
 #import "DDMathEvaluator+FORM.h"
 #import "DDExpression.h"
 #import "_DDVariableExpression.h"
+@import HYPMathParser._DDVariableExpression;
 
 @implementation DDMathEvaluator (FORM)
 
@@ -20,15 +13,14 @@
         if (args.count < 2) {
             *error = [NSError errorWithDomain:DDMathParserErrorDomain
                                          code:DDErrorCodeInvalidNumberOfArguments
-                                     userInfo:@{NSLocalizedDescriptionKey : @"Invalid number of variables"
-                                                }];
+                                     userInfo:@{NSLocalizedDescriptionKey : @"Invalid number of variables"}];
         }
 
         NSArray *arguments = [args subarrayWithRange:NSMakeRange(1, args.count-1)];
         NSNumber *isEqual = @YES;
         NSString *baseKey = [args[0] variable];
-        NSString *baseValue = (variables[baseKey]) ?: baseKey;
-        NSString *otherValue;
+        id baseValue = (variables[baseKey]) ?: baseKey;
+        id otherValue;
 
         for (DDExpression *expression in arguments) {
             if (![expression isKindOfClass:[_DDVariableExpression class]]) {
@@ -38,7 +30,7 @@
 
             otherValue = (variables[expression.variable]) ?: expression.variable;
 
-            if (![baseValue isEqualToString:otherValue]) {
+            if (![baseValue isEqual:otherValue]) {
                 isEqual = @NO;
                 break;
             }
@@ -58,7 +50,8 @@
         NSString *baseKey = [args[0] variable];
         NSString *baseValue = variables[baseKey];
         BOOL baseValueIsPresent = (baseValue || ![baseValue isKindOfClass:[NSNull class]]);
-        NSNumber *present = (baseValueIsPresent) ? @YES : @NO;
+        BOOL isEmptyString = ([baseValue isKindOfClass:[NSString class]] && [baseValue length] < 1);
+        NSNumber *present = (baseValueIsPresent && !isEmptyString) ? @YES : @NO;
 
         return [DDExpression numberExpressionWithNumber:present];
     };
@@ -74,7 +67,8 @@
         NSString *baseKey = [args[0] variable];
         NSString *baseValue = variables[baseKey];
         BOOL baseValueIsMissing = (!baseValue || [baseValue isKindOfClass:[NSNull class]]);
-        NSNumber *missing = (baseValueIsMissing) ? @YES : @NO;
+        BOOL isEmptyString = ([baseValue isKindOfClass:[NSString class]] && [baseValue length] < 1);
+        NSNumber *missing = (baseValueIsMissing || isEmptyString) ? @YES : @NO;
 
         return [DDExpression numberExpressionWithNumber:missing];
     };

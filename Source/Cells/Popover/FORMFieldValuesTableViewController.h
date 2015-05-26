@@ -7,6 +7,8 @@
 
 @protocol FORMFieldValuesTableViewControllerDelegate;
 
+static const CGFloat FORMFieldValuesCellHeight = 44.0f;
+
 @interface FORMFieldValuesTableViewController : UITableViewController
 
 @property (nonatomic, weak) FORMField *field;

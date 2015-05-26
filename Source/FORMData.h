@@ -21,9 +21,9 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
             disabledFieldIDs:(NSArray *)disabledFieldIDs
                     disabled:(BOOL)disabled NS_DESIGNATED_INITIALIZER;
 
-- (NSDictionary *)invalidFormFields;
+@property (nonatomic, readonly, copy) NSDictionary *invalidFormFields;
 
-- (NSDictionary *)requiredFormFields;
+@property (nonatomic, readonly, copy) NSDictionary *requiredFormFields;
 
 - (NSMutableDictionary *)valuesForFormula:(FORMField *)field;
 
@@ -57,11 +57,11 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 
 - (void)enable;
 
-- (BOOL)isDisabled;
+@property (nonatomic, getter=isDisabled, readonly) BOOL disabled;
 
-- (BOOL)isEnabled;
+@property (nonatomic, getter=isEnabled, readonly) BOOL enabled;
 
-- (NSInteger)numberOfFields;
+@property (nonatomic, readonly) NSInteger numberOfFields;
 
 - (void)insertTemplateSectionWithID:(NSString *)sectionTemplateID
                  intoCollectionView:(UICollectionView *)collectionView

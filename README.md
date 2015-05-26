@@ -1,5 +1,10 @@
 ![Form logo](https://raw.githubusercontent.com/hyperoslo/Form/master/Images/logo-v6.png)
 
+[![Version](https://img.shields.io/cocoapods/v/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
+[![License](https://img.shields.io/cocoapods/l/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
+[![Platform](https://img.shields.io/cocoapods/p/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
+[![Join the chat at https://gitter.im/hyperoslo/Form](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hyperoslo/Form?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The most flexible and powerful way to build a form on iOS.
 
 Form came out from our need to have a form that could share logic between our iOS apps and our web clients. We found that JSON was the best way to achieve this.
@@ -14,6 +19,7 @@ Form includes the following features:
 - [Targets](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L127): `hide`, `show`, `update`, `enable`, `disable` or `clear` a field using a target. It's pretty powerful, and you can even set a condition for your target to run
 - [Dropdowns](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L122): Generating dropdowns is as easy as adding values to your field, values support `default` flags, targets (in case you want to trigger hiding a field based on a selection), string and numeric values or showing additional info (in case you want to hint the consequences of your selection).
 
+<<<<<<< HEAD
 Don't forget to check our [Basic Demo (Objective-C)](https://github.com/hyperoslo/Form/tree/master/Demos/Basic-ObjC) for a basic example on how to use Form. We also have a [Swift version](https://github.com/hyperoslo/Form/tree/master/Demos/Basic-Swift).
 
 Form works both on the iPhone and the iPad.
@@ -38,6 +44,13 @@ Form works both on the iPhone and the iPad.
 - Credits
 - License
 
+Form works both on the iPhone and the iPad.
+
+You can try one of our [demos](/Demos) by running this command in your Terminal:
+
+```ruby
+pod try Form
+```
 
 ## Usage
 
@@ -71,7 +84,9 @@ This are the required steps to create a basic form with a first name field.
 ]
 ```
 
-### AppDelegate
+#### In your iPad app
+
+**AppDelegate**
 
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -82,27 +97,9 @@ This are the required steps to create a basic form with a first name field.
 }
 ```
 
-### UICollectionViewController
-```objc
-- (FORMDataSource *)dataSource {
-    if (_dataSource) return _dataSource;
+**Subclass**
 
-    _dataSource = [[FORMDataSource alloc] initWithJSON:self.JSON
-                                        collectionView:self.collectionView
-                                                layout:self.layout
-                                                values:@{@"first_name" : @"Ola"}
-                                              disabled:NO];
-
-    return _dataSource;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    self.collectionView.dataSource = self.dataSource;
-}
-
-```
+Make sure that your `UICollectionViewController` is a subclass of `FORMViewController`.
 
 ## Features
 
@@ -209,8 +206,7 @@ Please check our [playbook](https://github.com/hyperoslo/playbook/blob/master/GI
 
 ## Credits
 
-[Hyper](http://hyper.no) made this. We're a digital communications agency with a passion for good code,
-and if you're using this library we probably want to [hire you](http://www.hyper.no/jobs/ios-developer).
+[Hyper](http://hyper.no) made this. We’re a digital communications agency with a passion for good code and delightful user experiences. If you’re using this library we probably want to [hire you](https://github.com/hyperoslo/iOS-playbook/blob/master/HYPER_RECIPES.md) (we consider remote employees too, the only requirement is that you’re awesome).
 
 ## License
 

@@ -11,7 +11,6 @@
 #import "HYPParsedRelationship.h"
 
 #import "UIColor+Hex.h"
-#import "UIScreen+HYPLiveBounds.h"
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
@@ -269,7 +268,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     FORMGroup *group = self.formData.groups[indexPath.section];
     NSArray *fields = group.fields;
 
-    CGRect bounds = [[UIScreen mainScreen] hyp_liveBounds];
+    CGRect bounds = self.collectionView.bounds;
     CGFloat deviceWidth = CGRectGetWidth(bounds) - (FORMMarginHorizontal * 2);
     CGFloat width = 0.0f;
     CGFloat height = 0.0f;
@@ -308,6 +307,8 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 }
 
 - (void)disable {
+    self.formData.removedValues = nil;
+
     [self disable:YES];
 }
 
@@ -385,11 +386,11 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 }
 
 - (BOOL)isDisabled {
-    return self.disabled;
+    return _disabled;
 }
 
 - (BOOL)isEnabled {
-    return !self.disabled;
+    return !_disabled;
 }
 
 - (void)reloadWithDictionary:(NSDictionary *)dictionary {
@@ -554,6 +555,10 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
             FORMSection *section = [self.formData sectionWithID:sectionID];
             [self.formData removeSection:section
                         inCollectionView:self.collectionView];
+        }
+
+        if (field.targets) {
+            [self processTargets:field.targets];
         }
     }
 
@@ -724,7 +729,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (void)keyboardDidShow:(NSNotification *)notification {
     CGRect keyboardEndFrame;
-    [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    [(notification.userInfo)[UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
 
     NSInteger height = CGRectGetHeight(keyboardEndFrame);
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
@@ -743,7 +748,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (void)keyboardDidHide:(NSNotification *)notification {
     CGRect keyboardEndFrame;
-    [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    [(notification.userInfo)[UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
 
     [UIView animateWithDuration:FORMKeyboardAnimationDuration animations:^{
         self.collectionView.contentInset = self.originalInset;
@@ -796,6 +801,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     }
 
     self.formData.values = nil;
+    self.formData.removedValues = nil;
 
     [self.collapsedGroups removeAllObjects];
     [self.formData.hiddenFieldsAndFieldIDsDictionary removeAllObjects];

@@ -5,8 +5,6 @@
 #import "FORMFieldValuesTableViewHeader.h"
 #import "FORMFieldValueCell.h"
 
-static const CGFloat FORMFieldValuesCellHeight = 44.0f;
-
 @interface FORMFieldValuesTableViewController ()
 
 @property (nonatomic) NSArray *values;
@@ -31,7 +29,7 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
     _field = field;
 
     self.values = [NSArray arrayWithArray:field.values];
-
+    self.headerView.field = field;
     [self.tableView reloadData];
 }
 
@@ -48,6 +46,15 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
     [self.tableView registerClass:[FORMFieldValuesTableViewHeader class] forHeaderFooterViewReuseIdentifier:FORMFieldValuesTableViewHeaderIdentifier];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.tableView reloadData];
+    }];
+}
+
 #pragma mark - TableViewDelegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -57,11 +64,17 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (self.customHeight) {
-        return self.customHeight;
+    NSInteger headerHeight;
+    if (self.customHeight > 0.0f) {
+        headerHeight = self.customHeight;
+    } else if (self.field.info) {
+        [self.headerView setField:self.field];
+        headerHeight = [self.headerView labelHeight];
     } else {
-        return (self.field.info) ? FORMFieldValuesHeaderHeight : FORMFieldValuesCellHeight;
+        headerHeight = FORMFieldValuesCellHeight;
     }
+
+    return headerHeight;
 }
 
 #pragma mark - Table View Data Source
@@ -80,11 +93,15 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
         FORMFieldValue *currentFieldValue = self.field.value;
 
         if ([currentFieldValue identifierIsEqualTo:fieldValue.valueID]) {
-            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [tableView selectRowAtIndexPath:indexPath
+                                   animated:NO
+                             scrollPosition:UITableViewScrollPositionNone];
         }
     } else {
         if ([fieldValue identifierIsEqualTo:self.field.value]) {
-            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [tableView selectRowAtIndexPath:indexPath
+                                   animated:NO
+                             scrollPosition:UITableViewScrollPositionNone];
         }
     }
 
@@ -95,7 +112,8 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
     FORMFieldValue *fieldValue = self.values[indexPath.row];
 
     if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
-        [self.delegate fieldValuesTableViewController:self didSelectedValue:fieldValue];
+        [self.delegate fieldValuesTableViewController:self
+                                     didSelectedValue:fieldValue];
     }
 }
 

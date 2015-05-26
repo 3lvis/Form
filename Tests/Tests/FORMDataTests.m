@@ -12,6 +12,12 @@
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
+@interface FORMData (FORMDataTests)
+
+- (BOOL)evaluateCondition:(NSString *)condition;
+
+@end
+
 @interface FORMDataTests : XCTestCase
 
 @end
@@ -49,9 +55,9 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    XCTAssertEqualObjects([formData.values objectForKey:@"contract_type"], @0);
-    XCTAssertEqualObjects([formData.values objectForKey:@"start_date"], date);
-    XCTAssertEqualObjects([formData.values objectForKey:@"base_salary"], @2);
+    XCTAssertEqualObjects((formData.values)[@"contract_type"], @0);
+    XCTAssertEqualObjects((formData.values)[@"start_date"], date);
+    XCTAssertEqualObjects((formData.values)[@"base_salary"], @2);
 }
 
 - (void)testCalculatedValues {
@@ -64,9 +70,9 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    XCTAssertEqualObjects([formData.values objectForKey:@"base_salary"], @1);
-    XCTAssertEqualObjects([formData.values objectForKey:@"bonus"], @100);
-    XCTAssertEqualObjects([formData.values objectForKey:@"total"], @300);
+    XCTAssertEqualObjects((formData.values)[@"base_salary"], @1);
+    XCTAssertEqualObjects((formData.values)[@"bonus"], @100);
+    XCTAssertEqualObjects((formData.values)[@"total"], @300);
 }
 
 - (void)testFormGenerationSectionPositions {
@@ -105,7 +111,7 @@
     XCTAssertEqualObjects(field.position, @2);
 }
 
-- (void)testSectionPositionForHideAndShowTargets {
+- (void)testSectionPositionForHideTargets {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -121,11 +127,90 @@
     [formData hideTargets:@[target]];
     section = [formData sectionWithID:@"section-2"];
     XCTAssertEqualObjects(section.position, @1);
+}
 
-    target = [FORMTarget showSectionTargetWithID:@"section-1"];
-    [formData showTargets:@[target]];
-    section = [formData sectionWithID:@"section-2"];
-    XCTAssertEqualObjects(section.position, @2);
+- (void)testSectionPositionForShowTargets {
+  NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
+                                                           inBundle:[NSBundle bundleForClass:[self class]]];
+
+  FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                        initialValues:nil
+                                     disabledFieldIDs:nil
+                                             disabled:NO];
+
+  FORMSection *section = [formData sectionWithID:@"section-2"];
+  FORMTarget *target = [FORMTarget hideSectionTargetWithID:@"section-2"];
+
+  XCTAssertEqualObjects(section.position, @2);
+  [formData hideTargets:@[target]];
+  [formData showTargets:@[target]];
+  XCTAssertEqualObjects(section.position, @2);
+}
+
+- (void)testFieldPositionConsistency {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    NSArray *hideFields = [FORMTarget hideFieldTargetsWithIDs:@[@"end_date", @"end_time"]];
+    NSArray *showFields = [FORMTarget showFieldTargetsWithIDs:@[@"end_date", @"end_time"]];
+    FORMField *endDate = [formData fieldWithID:@"end_date" includingHiddenFields:YES];
+    FORMField *endTime = [formData fieldWithID:@"end_time" includingHiddenFields:YES];
+    NSNumber *expectedEndDatePosition = endDate.position;
+    NSNumber *expectedEndTimePosition = endTime.position;
+
+    [formData hideTargets:hideFields];
+    XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
+    XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+
+    [formData showTargets:showFields];
+    XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
+    XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+
+    [formData hideTargets:hideFields];
+    XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
+    XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+
+    [formData showTargets:showFields];
+    XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
+    XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+}
+
+- (void)testSectionPositionConsistency {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    NSArray *hideSections = [FORMTarget hideFieldTargetsWithIDs:@[@"personal-details-0", @"personal-details-1"]];
+    NSArray *showSections = [FORMTarget showFieldTargetsWithIDs:@[@"personal-details-0", @"personal-details-1"]];
+
+    FORMSection *firstSection = [formData sectionWithID:@"personal-details-0"];
+    FORMSection *secondSection = [formData sectionWithID:@"personal-details-1"];
+
+    NSNumber *expectedPersonalDetailsPosition = firstSection.position;
+    NSNumber *expectedSectiondPersonalDetailsPosition = secondSection.position;
+
+    [formData hideTargets:hideSections];
+    XCTAssertEqualObjects(firstSection.position, expectedPersonalDetailsPosition);
+    XCTAssertEqualObjects(secondSection.position, expectedSectiondPersonalDetailsPosition);
+
+    [formData showTargets:showSections];
+    XCTAssertEqualObjects(firstSection.position, expectedPersonalDetailsPosition);
+    XCTAssertEqualObjects(secondSection.position, expectedSectiondPersonalDetailsPosition);
+
+    [formData hideTargets:hideSections];
+    XCTAssertEqualObjects(firstSection.position, expectedPersonalDetailsPosition);
+    XCTAssertEqualObjects(secondSection.position, expectedSectiondPersonalDetailsPosition);
+
+    [formData showTargets:showSections];
+    XCTAssertEqualObjects(firstSection.position, expectedPersonalDetailsPosition);
+    XCTAssertEqualObjects(secondSection.position, expectedSectiondPersonalDetailsPosition);
 }
 
 - (void)testRequiredFields {
@@ -602,6 +687,117 @@
     NSArray *removedSections = [formData removedSectionsUsingInitialValues:initialValues];
     NSArray *sectionIDs = [removedSections valueForKey:@"sectionID"];
     XCTAssertEqual(sectionIDs.count, 0);
+}
+
+- (void)testTargetConditions {
+
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:@{@"first_name":@"Frank",
+                                                          @"last_name":@"Underwood",
+                                                          @"display_name":@"",
+                                                          @"username": [NSNull null],
+                                                          @"base_salary" : @150,
+                                                          @"bonus_enabled" : @YES,
+                                                          }
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    XCTAssertTrue([formData evaluateCondition:@"present($first_name)"]);
+    XCTAssertTrue([formData evaluateCondition:@"present($last_name)"]);
+    XCTAssertFalse([formData evaluateCondition:@"present($display_name)"]);
+
+    XCTAssertFalse([formData evaluateCondition:@"missing($first_name)"]);
+    XCTAssertFalse([formData evaluateCondition:@"missing($last_name)"]);
+    XCTAssertTrue([formData evaluateCondition:@"missing($display_name)"]);
+
+    XCTAssertFalse([formData evaluateCondition:@"equals($first_name, \"Claire\")"]);
+    XCTAssertTrue([formData evaluateCondition:@"equals($last_name, \"Underwood\")"]);
+
+    XCTAssertFalse([formData evaluateCondition:@"equals($username, \"Francis\")"]);
+    XCTAssertFalse([formData evaluateCondition:@"equals($base_salary, 150)"]);
+    XCTAssertFalse([formData evaluateCondition:@"equals($bonus_enabled, 1)"]);
+}
+
+- (void)testCleaningUpFieldValueWhenHiddingAndShowing {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-text-field.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:@{@"textie" : @"some text"}
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    XCTAssertEqual(formData.values.count, 1);
+
+    FORMTarget *target = [FORMTarget hideFieldTargetWithID:@"textie"];
+    [formData hideTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 0);
+
+    target = [FORMTarget showFieldTargetWithID:@"textie"];
+    [formData showTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 1);
+}
+
+- (void)testCleaningUpSectionValueWhenHiddingAndShowing {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-section.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:@{@"first_name" : @"John",
+                                                          @"last_name" : @"Minion"}
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    XCTAssertEqual(formData.values.count, 2);
+
+    FORMTarget *target = [FORMTarget hideSectionTargetWithID:@"section"];
+    [formData hideTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 0);
+
+    target = [FORMTarget showSectionTargetWithID:@"section"];
+    [formData showTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 2);
+}
+
+- (void)testCleaningUpSelectFieldWhenHiddingAndShowing {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"default-values.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    XCTAssertEqualObjects(formData.values[@"contract_type"], @0);
+
+    FORMTarget *target = [FORMTarget hideFieldTargetWithID:@"contract_type"];
+    [formData hideTargets:@[target]];
+
+    XCTAssertEqual(formData.values.count, 0);
+
+    target = [FORMTarget showFieldTargetWithID:@"contract_type"];
+    [formData showTargets:@[target]];
+
+    XCTAssertEqualObjects(formData.values[@"contract_type"], @0);
+}
+
+- (void)testInitializatingAFieldWithAValueInTheJSON {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"simple-text-field.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    XCTAssertEqualObjects(formData.values[@"textie"], @"1");
 }
 
 @end
