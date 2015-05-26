@@ -699,7 +699,9 @@ includingHiddenFields:(BOOL)includingHiddenFields
                     [group.sections insertObject:section atIndex:sectionIndex];
                     [group resetSectionPositions];
 
-                    [self updateHiddenSectionsPositionsInGroup:group usingOffset:sectionIndex withDelta:1];
+                    [self updateHiddenSectionsPositionsInGroup:group
+                                                   usingOffset:sectionIndex
+                                                     withDelta:1];
                 }
             }
 
@@ -756,7 +758,9 @@ includingHiddenFields:(BOOL)includingHiddenFields
                     [self.values removeObjectForKey:field.fieldID];
                 }
 
-                [self updateHiddenSectionsPositionsInGroup:section.group usingOffset:[section.position integerValue] withDelta:-1];
+                [self updateHiddenSectionsPositionsInGroup:section.group
+                                               usingOffset:[section.position integerValue]
+                                                 withDelta:-1];
             }
         }
     }
