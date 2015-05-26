@@ -25,6 +25,28 @@
 
 #pragma mark - Public Methods
 
+- (NSArray *)fieldPropertiesToUpdate {
+    NSMutableArray *values = [NSMutableArray new];
+
+    if (self.actionType == FORMTargetActionUpdate &&
+        self.type == FORMTargetTypeField) {
+
+        unsigned int numberOfProperties = 0;
+        objc_property_t *propertyArray = class_copyPropertyList([FORMFieldBase class], &numberOfProperties);
+
+        for (NSUInteger i = 0; i < numberOfProperties; i++) {
+            objc_property_t property = propertyArray[i];
+            NSString *propertyName = [[NSString alloc] initWithUTF8String:property_getName(property)];
+            id value = [self valueForKey:propertyName];
+            if (value != nil) {
+                [values addObject:propertyName];
+            }
+        }
+    }
+
+    return [values copy];
+}
+
 + (FORMTarget *)fieldTargetWithID:(NSString *)targetID
                  actionTypeString:(NSString *)actionTypeString {
     return [self targetWithID:targetID

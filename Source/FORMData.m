@@ -791,28 +791,34 @@ includingHiddenFields:(BOOL)includingHiddenFields
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
-
         BOOL shouldContinue = (![self evaluateCondition:target.condition] ||
                                target.type == FORMTargetTypeSection ||
                                (self.hiddenFieldsAndFieldIDsDictionary)[target.targetID]);
-
         if (shouldContinue) {
             continue;
         }
 
-
         __block FORMField *field = nil;
-
-        [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *foundField, NSIndexPath *indexPath) {
-            if (foundField) {
-                field = foundField;
-                if (indexPath) {
-                    [updatedIndexPaths addObject:indexPath];
-                }
-            }
-        }];
+        [self fieldWithID:target.targetID
+    includingHiddenFields:YES
+               completion:^(FORMField *foundField, NSIndexPath *indexPath) {
+                   if (foundField) {
+                       field = foundField;
+                       if (indexPath) {
+                           [updatedIndexPaths addObject:indexPath];
+                       }
+                   }
+               }];
 
         if (field) {
+            NSArray *properties = [target fieldPropertiesToUpdate];
+            for (NSString *propertyName in properties) {
+                id value = [target valueForKey:propertyName];
+                if (value && ![propertyName isEqualToString:@"value"]) {
+                    [field setValue:value forKey:propertyName];
+                }
+            }
+
             if (target.value) {
                 if (field.type == FORMFieldTypeSelect) {
                     FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.value];
@@ -827,24 +833,21 @@ includingHiddenFields:(BOOL)includingHiddenFields
             } else if (target.actionType == FORMTargetActionClear) {
                 field.value = nil;
                 (self.values)[field.fieldID] = [NSNull null];
-            } else if (field.formula) {
+            }
+
+            if (field.formula) {
                 NSArray *fieldIDs = [field.formula hyp_variables];
                 NSMutableDictionary *values = [NSMutableDictionary new];
 
                 for (NSString *fieldID in fieldIDs) {
-
                     id value = (self.values)[fieldID];
                     BOOL isNumericField = (field.type == FORMFieldTypeFloat || field.type == FORMFieldTypeNumber);
                     NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
 
                     FORMField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
-
                     if (targetField.type == FORMFieldTypeSelect) {
-
                         if ([targetField.value isKindOfClass:[FORMFieldValue class]]) {
-
                             FORMFieldValue *fieldValue = targetField.value;
-
                             if (fieldValue.value) {
                                 [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
                             }

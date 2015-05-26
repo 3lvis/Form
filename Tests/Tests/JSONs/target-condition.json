@@ -1,0 +1,39 @@
+[
+  {
+    "id":"personal-details",
+    "title":"Personal Details",
+    "sections":[
+      {
+        "id":"personal-details-0",
+        "fields":[
+          {
+            "id":"display_name",
+            "title":"Display name",
+            "type":"text"
+          }
+        ]
+      },
+      {
+        "id":"personal-details-1",
+        "fields":[
+          {
+            "id":"username",
+            "title":"Username",
+            "type":"select",
+            "values":[
+              {
+                "id":0,
+                "title":"Generated",
+                "default":true
+              },
+              {
+                "id":1,
+                "title":"Override"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
