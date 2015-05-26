@@ -87,36 +87,40 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 - (void)setValue:(id)fieldValue {
     id resultValue = fieldValue;
 
-    switch (self.type) {
-        case FORMFieldTypeNumber:
-        case FORMFieldTypeFloat: {
-            if (![fieldValue isKindOfClass:[NSString class]]) {
-#warning failing here
-                resultValue = [fieldValue stringValue];
+    if ([fieldValue isKindOfClass:[FORMFieldValue class]]) {
+        FORMFieldValue *value = (FORMFieldValue *)fieldValue;
+        resultValue = value.valueID;
+    } else {
+        switch (self.type) {
+            case FORMFieldTypeNumber:
+            case FORMFieldTypeFloat: {
+                if (![fieldValue isKindOfClass:[NSString class]]) {
+                    resultValue = [fieldValue stringValue];
+                }
+            } break;
+
+            case FORMFieldTypeDateTime:
+            case FORMFieldTypeTime:
+            case FORMFieldTypeDate: {
+                if ([fieldValue isKindOfClass:[NSString class]]) {
+                    NSDateFormatter *formatter = [NSDateFormatter new];
+                    [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"];
+                    resultValue = [formatter dateFromString:fieldValue];
+                }
+            } break;
+
+            case FORMFieldTypeText:
+            case FORMFieldTypeSelect:
+            case FORMFieldTypeButton:
+            case FORMFieldTypeCustom:
+                break;
+        }
+
+        if ([resultValue isKindOfClass:[NSString class]]) {
+            NSString *value = (NSString *)resultValue;
+            if (!value.length) {
+                resultValue = nil;
             }
-        } break;
-
-        case FORMFieldTypeDateTime:
-        case FORMFieldTypeTime:
-        case FORMFieldTypeDate: {
-            if ([fieldValue isKindOfClass:[NSString class]]) {
-                NSDateFormatter *formatter = [NSDateFormatter new];
-                [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"];
-                resultValue = [formatter dateFromString:fieldValue];
-            }
-        } break;
-
-        case FORMFieldTypeText:
-        case FORMFieldTypeSelect:
-        case FORMFieldTypeButton:
-        case FORMFieldTypeCustom:
-            break;
-    }
-
-    if ([resultValue isKindOfClass:[NSString class]]) {
-        NSString *value = (NSString *)resultValue;
-        if (!value.length) {
-            resultValue = nil;
         }
     }
 
