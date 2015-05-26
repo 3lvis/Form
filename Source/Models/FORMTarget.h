@@ -31,8 +31,6 @@ typedef NS_ENUM(NSInteger, FORMTargetActionType) {
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
-- (NSDictionary *)fieldPropertiesToUpdate;
-
 + (void)filteredTargets:(NSArray*)targets
                filtered:(void (^)(NSArray *shownTargets,
                                   NSArray *hiddenTargets,

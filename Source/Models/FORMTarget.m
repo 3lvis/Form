@@ -25,32 +25,6 @@
 
 #pragma mark - Public Methods
 
-- (NSDictionary *)fieldPropertiesToUpdate {
-    NSMutableDictionary *values = [NSMutableDictionary new];
-
-    if (self.actionType == FORMTargetActionUpdate &&
-        self.type == FORMTargetTypeField) {
-
-        if (self.value != nil) {
-            values[@"value"] = self.value;
-        }
-
-        unsigned int numberOfProperties = 0;
-        objc_property_t *propertyArray = class_copyPropertyList([FORMFieldBase class], &numberOfProperties);
-
-        for (NSUInteger i = 0; i < numberOfProperties; i++) {
-            objc_property_t property = propertyArray[i];
-            NSString *propertyName = [[NSString alloc] initWithUTF8String:property_getName(property)];
-            id value = [self valueForKey:propertyName];
-            if (value != nil) {
-                values[propertyName] = value;
-            }
-        }
-    }
-
-    return [NSDictionary dictionaryWithDictionary:values];
-}
-
 + (FORMTarget *)fieldTargetWithID:(NSString *)targetID
                  actionTypeString:(NSString *)actionTypeString {
     return [self targetWithID:targetID
