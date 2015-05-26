@@ -1,6 +1,6 @@
 #import "FORMTarget.h"
 
-
+#import <objc/runtime.h>
 #import "NSDictionary+ANDYSafeValue.h"
 
 @interface FORMTarget ()
@@ -11,16 +11,40 @@
 #pragma mark - Initializers
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    self = [super init];
+    self = [super initWithDictionary:dictionary];
     if (!self) return nil;
 
     _targetID = [dictionary andy_valueForKey:@"id"];
     self.typeString = [dictionary andy_valueForKey:@"type"];
     self.actionTypeString = [dictionary andy_valueForKey:@"action"];
-    self.targetValue = [dictionary andy_valueForKey:@"target_value"];
+    self.value = [dictionary andy_valueForKey:@"value"] ? : [dictionary andy_valueForKey:@"target_value"];
     self.condition = [dictionary andy_valueForKey:@"condition"];
 
     return self;
+}
+
+#pragma mark - Public Methods
+
+- (NSArray *)propertiesToUpdate {
+    NSMutableArray *values = [NSMutableArray new];
+
+    if (self.actionType == FORMTargetActionUpdate &&
+        self.type == FORMTargetTypeField) {
+
+        unsigned int numberOfProperties = 0;
+        objc_property_t *propertyArray = class_copyPropertyList([FORMFieldBase class], &numberOfProperties);
+
+        for (NSUInteger i = 0; i < numberOfProperties; i++) {
+            objc_property_t property = propertyArray[i];
+            NSString *propertyName = [[NSString alloc] initWithUTF8String:property_getName(property)];
+            id value = [self valueForKey:propertyName];
+            if (value != nil) {
+                [values addObject:propertyName];
+            }
+        }
+    }
+
+    return [values copy];
 }
 
 + (FORMTarget *)fieldTargetWithID:(NSString *)targetID
@@ -295,8 +319,8 @@
     BOOL sameCondition = (object.condition == nil ||
                           [object.condition isEqualToString:self.condition]);
 
-    BOOL sameTargetValue = (object.targetValue == nil ||
-                            [object.targetValue isEqual:self.targetValue]);
+    BOOL sameTargetValue = (object.value == nil ||
+                            [object.value isEqual:self.value]);
 
     BOOL equal = (sameTargetID &&
                   object.actionType == self.actionType &&
@@ -305,7 +329,13 @@
                   sameTargetValue);
 
     if (equal && self.value && object.value) {
-        equal = ([self.value identifierIsEqualTo:object.value.valueID]);
+        if ([self.value isKindOfClass:[FORMFieldValue class]] &&
+            [object.value isKindOfClass:[FORMFieldValue class]]) {
+            FORMFieldValue *value = (FORMFieldValue *)self.value;
+            equal = ([value identifierIsEqualTo:[object.value valueID]]);
+        } else {
+            equal = ([self.value identifierIsEqualTo:[object.value valueID]]);
+        }
     }
 
     return equal;
@@ -313,7 +343,7 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"\n — Target: %@ —\n value: %@\n type: %@\n action type: %@\n condition: %@\n",
-            self.targetID, self.targetValue, self.typeString, self.actionTypeString, self.condition];
+            self.targetID, self.value, self.typeString, self.actionTypeString, self.condition];
 }
 
 @end

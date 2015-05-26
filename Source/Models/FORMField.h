@@ -6,6 +6,7 @@
 @class FORMFieldValidation;
 
 #import "FORMValidator.h"
+#import "FORMFieldBase.h"
 
 typedef NS_ENUM(NSInteger, FORMFieldType) {
     FORMFieldTypeText = 0,
@@ -19,26 +20,19 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
     FORMFieldTypeCustom
 };
 
-@interface FORMField : NSObject
+@interface FORMField : FORMFieldBase
 
 @property (nonatomic) NSString *fieldID;
-@property (nonatomic) NSString *title;
-@property (nonatomic) NSString *info;
-@property (nonatomic) BOOL hidden;
-@property (nonatomic) CGSize size;
-@property (nonatomic) NSNumber *position;
-@property (nonatomic) id value;
 @property (nonatomic) NSString *typeString;
 @property (nonatomic) NSString *inputTypeString;
 @property (nonatomic) FORMFieldType type;
 @property (nonatomic) NSArray *values;
 @property (nonatomic, getter=isDisabled) BOOL disabled;
 @property (nonatomic) BOOL initiallyDisabled;
-@property (nonatomic) NSDate *minimumDate;
-@property (nonatomic) NSDate *maximumDate;
+@property (nonatomic) BOOL hidden;
+@property (nonatomic) NSNumber *position;
+@property (nonatomic) CGSize size;
 
-@property (nonatomic) FORMFieldValidation *validation;
-@property (nonatomic) NSString *formula;
 @property (nonatomic) NSArray *targets;
 
 @property (nonatomic) FORMSection *section;
