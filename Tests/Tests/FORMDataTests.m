@@ -155,24 +155,25 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-//    FORMSection *section = [formData sectionWithID:@"employment-0"];
     NSArray *hideFields = [FORMTarget hideFieldTargetsWithIDs:@[@"end_date", @"end_time"]];
     NSArray *showFields = [FORMTarget showFieldTargetsWithIDs:@[@"end_date", @"end_time"]];
     FORMField *endDate = [formData fieldWithID:@"end_date" includingHiddenFields:YES];
     FORMField *endTime = [formData fieldWithID:@"end_time" includingHiddenFields:YES];
-
     NSNumber *expectedEndDatePosition = endDate.position;
     NSNumber *expectedEndTimePosition = endTime.position;
 
     [formData hideTargets:hideFields];
     XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
     XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+
     [formData showTargets:showFields];
     XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
     XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+
     [formData hideTargets:hideFields];
     XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
     XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+
     [formData showTargets:showFields];
     XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
     XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
