@@ -170,6 +170,12 @@
     [formData showTargets:showFields];
     XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
     XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+    [formData hideTargets:hideFields];
+    XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
+    XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+    [formData showTargets:showFields];
+    XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
+    XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
 }
 
 - (void)testRequiredFields {
