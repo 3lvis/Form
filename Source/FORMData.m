@@ -458,6 +458,16 @@
     }
 }
 
+- (void)updateHiddenSectionsPositionsInGroup:(FORMGroup *)group usingOffset:(NSInteger)offset withDelta:(NSInteger)delta {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"group = %@ && position > %ld", group, offset];
+
+    NSArray *hiddenSections = [[self.hiddenSections allValues] filteredArrayUsingPredicate:predicate];
+
+    [hiddenSections enumerateObjectsUsingBlock:^(FORMSection *section, NSUInteger idx, BOOL *stop) {
+        section.position = @([section.position integerValue] + delta);
+    }];
+}
+
 #pragma mark - Field
 
 - (FORMField *)fieldWithID:(NSString *)fieldID
@@ -688,6 +698,10 @@ includingHiddenFields:(BOOL)includingHiddenFields
                     FORMGroup *group = self.groups[[section.group.position integerValue]];
                     [group.sections insertObject:section atIndex:sectionIndex];
                     [group resetSectionPositions];
+
+                    [self updateHiddenSectionsPositionsInGroup:group
+                                                   usingOffset:sectionIndex
+                                                     withDelta:1];
                 }
             }
 
@@ -743,6 +757,10 @@ includingHiddenFields:(BOOL)includingHiddenFields
                 for (FORMField *field in section.fields) {
                     [self.values removeObjectForKey:field.fieldID];
                 }
+
+                [self updateHiddenSectionsPositionsInGroup:section.group
+                                               usingOffset:[section.position integerValue]
+                                                 withDelta:-1];
             }
         }
     }
@@ -767,16 +785,22 @@ includingHiddenFields:(BOOL)includingHiddenFields
                  }];
     }
 
+    NSMutableSet *resetSections = [NSMutableSet new];
+
     for (FORMField *field in deletedFields) {
         [self indexForFieldWithID:field.fieldID
                   inSectionWithID:field.section.sectionID
                        completion:^(FORMSection *section, NSInteger index) {
                            if (section) {
                                [section.fields removeObjectAtIndex:index];
-                               [section resetFieldPositions];
+                               [resetSections addObject:section];
                            }
                        }];
     }
+
+    [resetSections enumerateObjectsUsingBlock:^(FORMSection *section, BOOL *stop) {
+        [section resetFieldPositions];
+    }];
 
     for (FORMSection *section in deletedSections) {
         FORMGroup *group = self.groups[[section.group.position integerValue]];
