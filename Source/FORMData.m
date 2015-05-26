@@ -767,16 +767,22 @@ includingHiddenFields:(BOOL)includingHiddenFields
                  }];
     }
 
+    NSMutableSet *resetSections = [NSMutableSet new];
+
     for (FORMField *field in deletedFields) {
         [self indexForFieldWithID:field.fieldID
                   inSectionWithID:field.section.sectionID
                        completion:^(FORMSection *section, NSInteger index) {
                            if (section) {
                                [section.fields removeObjectAtIndex:index];
-                               [section resetFieldPositions];
+                               [resetSections addObject:section];
                            }
                        }];
     }
+
+    [resetSections enumerateObjectsUsingBlock:^(FORMSection *section, BOOL *stop) {
+        [section resetFieldPositions];
+    }];
 
     for (FORMSection *section in deletedSections) {
         FORMGroup *group = self.groups[[section.group.position integerValue]];
