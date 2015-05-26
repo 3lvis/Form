@@ -22,6 +22,5 @@
 @property (nonatomic, readonly) NSInteger numberOfFields;
 - (NSInteger)numberOfFields:(NSMutableDictionary *)deletedSections;
 - (void)removeSection:(FORMSection *)section;
-- (void)resetSectionPositions;
 
 @end

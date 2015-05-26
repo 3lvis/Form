@@ -133,13 +133,6 @@
     if (!found) index = [self.sections count];
 
     [self.sections removeObjectAtIndex:index];
-    [self resetSectionPositions];
-}
-
-- (void)resetSectionPositions {
-    [self.sections enumerateObjectsUsingBlock:^(FORMSection *section, NSUInteger idx, BOOL *stop) {
-        section.position = @(idx);
-    }];
 }
 
 @end

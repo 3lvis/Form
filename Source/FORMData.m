@@ -687,7 +687,6 @@ includingHiddenFields:(BOOL)includingHiddenFields
                     NSInteger sectionIndex = [section indexInGroups:self.groups];
                     FORMGroup *group = self.groups[[section.group.position integerValue]];
                     [group.sections insertObject:section atIndex:sectionIndex];
-                    [group resetSectionPositions];
                 }
             }
 
