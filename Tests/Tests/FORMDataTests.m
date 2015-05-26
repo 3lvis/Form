@@ -111,7 +111,7 @@
     XCTAssertEqualObjects(field.position, @2);
 }
 
-- (void)testSectionPositionForHideAndShowTargets {
+- (void)testSectionPositionForHideTargets {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -127,11 +127,24 @@
     [formData hideTargets:@[target]];
     section = [formData sectionWithID:@"section-2"];
     XCTAssertEqualObjects(section.position, @1);
+}
 
-    target = [FORMTarget showSectionTargetWithID:@"section-1"];
-    [formData showTargets:@[target]];
-    section = [formData sectionWithID:@"section-2"];
-    XCTAssertEqualObjects(section.position, @2);
+- (void)testSectionPositionForShowTargets {
+  NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"section-field-position.json"
+                                                           inBundle:[NSBundle bundleForClass:[self class]]];
+
+  FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                        initialValues:nil
+                                     disabledFieldIDs:nil
+                                             disabled:NO];
+
+  FORMSection *section = [formData sectionWithID:@"section-2"];
+  FORMTarget *target = [FORMTarget hideSectionTargetWithID:@"section-2"];
+
+  XCTAssertEqualObjects(section.position, @2);
+  [formData hideTargets:@[target]];
+  [formData showTargets:@[target]];
+  XCTAssertEqualObjects(section.position, @2);
 }
 
 - (void)testRequiredFields {
