@@ -147,7 +147,7 @@
   XCTAssertEqualObjects(section.position, @2);
 }
 
-- (void)testPositionConsistency {
+- (void)testFieldPositionConsistency {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
     FORMData *formData = [[FORMData alloc] initWithJSON:JSON
@@ -177,6 +177,40 @@
     [formData showTargets:showFields];
     XCTAssertEqualObjects(endDate.position, expectedEndDatePosition);
     XCTAssertEqualObjects(endTime.position, expectedEndTimePosition);
+}
+
+- (void)testSectionPositionConsistency {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    NSArray *hideSections = [FORMTarget hideFieldTargetsWithIDs:@[@"personal-details-0", @"personal-details-1"]];
+    NSArray *showSections = [FORMTarget showFieldTargetsWithIDs:@[@"personal-details-0", @"personal-details-1"]];
+
+    FORMSection *firstSection = [formData sectionWithID:@"personal-details-0"];
+    FORMSection *secondSection = [formData sectionWithID:@"personal-details-1"];
+
+    NSNumber *expectedPersonalDetailsPosition = firstSection.position;
+    NSNumber *expectedSectiondPersonalDetailsPosition = secondSection.position;
+
+    [formData hideTargets:hideSections];
+    XCTAssertEqualObjects(firstSection.position, expectedPersonalDetailsPosition);
+    XCTAssertEqualObjects(secondSection.position, expectedSectiondPersonalDetailsPosition);
+
+    [formData showTargets:showSections];
+    XCTAssertEqualObjects(firstSection.position, expectedPersonalDetailsPosition);
+    XCTAssertEqualObjects(secondSection.position, expectedSectiondPersonalDetailsPosition);
+
+    [formData hideTargets:hideSections];
+    XCTAssertEqualObjects(firstSection.position, expectedPersonalDetailsPosition);
+    XCTAssertEqualObjects(secondSection.position, expectedSectiondPersonalDetailsPosition);
+
+    [formData showTargets:showSections];
+    XCTAssertEqualObjects(firstSection.position, expectedPersonalDetailsPosition);
+    XCTAssertEqualObjects(secondSection.position, expectedSectiondPersonalDetailsPosition);
 }
 
 - (void)testRequiredFields {
