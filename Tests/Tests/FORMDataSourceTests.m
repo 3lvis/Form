@@ -110,7 +110,7 @@
 }
 
 - (void)testUpdatingTargetValue {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"target-condition.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
