@@ -202,16 +202,19 @@
             }
         }
 
+
         for (FORMField *field in group.fields) {
+
             if (field.hidden){
                 [hideTargets addObject:[FORMTarget hideFieldTargetWithID:field.fieldID]];
             }
 
-            id initialValue = [initialValues andy_valueForKey:field.fieldID];
-            if (initialValue) {
+            if ([initialValues andy_valueForKey:field.fieldID]) {
                 if (field.type == FORMFieldTypeSelect) {
                     for (FORMFieldValue *value in field.values) {
-                        if ([value identifierIsEqualTo:initialValue]) {
+
+                        BOOL isInitialValue = ([value identifierIsEqualTo:[initialValues andy_valueForKey:field.fieldID]]);
+                        if (isInitialValue) {
                             field.value = value;
                         }
                     }
@@ -223,10 +226,15 @@
             }
 
             for (FORMFieldValue *fieldValue in field.values) {
+
                 id initialValue = [initialValues andy_valueForKey:field.fieldID];
+
                 BOOL fieldHasInitialValue = (initialValue != nil);
                 if (fieldHasInitialValue) {
-                    if ([fieldValue identifierIsEqualTo:initialValue]) {
+
+                    BOOL fieldValueMatchesInitialValue = ([fieldValue identifierIsEqualTo:initialValue]);
+                    if (fieldValueMatchesInitialValue) {
+
                         for (FORMTarget *target in fieldValue.targets) {
                             if ([self evaluateCondition:target.condition]) {
                                 if (target.actionType == FORMTargetActionHide) {
@@ -273,11 +281,15 @@
 
     for (FORMTarget *target in hideTargets) {
         if ([self evaluateCondition:target.condition]) {
+
             if (target.type == FORMTargetTypeField) {
+
                 FORMField *field = [self fieldWithID:target.targetID
                                includingHiddenFields:YES];
                 [self.hiddenFieldsAndFieldIDsDictionary addEntriesFromDictionary:@{target.targetID : field}];
+
             } else if (target.type == FORMTargetTypeSection) {
+
                 FORMSection *section = [self sectionWithID:target.targetID];
                 [self.hiddenSections addEntriesFromDictionary:@{target.targetID : section}];
             }
@@ -287,6 +299,7 @@
     for (FORMTarget *target in hideTargets) {
         if ([self evaluateCondition:target.condition]) {
             if (target.type == FORMTargetTypeField) {
+
                 FORMField *field = [self fieldWithID:target.targetID
                                includingHiddenFields:NO];
                 if (field) {
@@ -295,7 +308,9 @@
                                 inGroups:self.groups];
                     [section resetFieldPositions];
                 }
+
             } else if (target.type == FORMTargetTypeSection) {
+
                 FORMSection *section = [self sectionWithID:target.targetID];
                 if (section) {
                     FORMGroup *group = section.group;
@@ -815,71 +830,71 @@ includingHiddenFields:(BOOL)includingHiddenFields
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
+
         BOOL shouldContinue = (![self evaluateCondition:target.condition] ||
                                target.type == FORMTargetTypeSection ||
                                (self.hiddenFieldsAndFieldIDsDictionary)[target.targetID]);
+
         if (shouldContinue) {
             continue;
         }
 
+
         __block FORMField *field = nil;
-        [self fieldWithID:target.targetID
-    includingHiddenFields:YES
-               completion:^(FORMField *foundField, NSIndexPath *indexPath) {
-                   if (foundField) {
-                       field = foundField;
-                       if (indexPath) {
-                           [updatedIndexPaths addObject:indexPath];
-                       }
-                   }
-               }];
 
-        if (field) {
-            NSArray *properties = [target propertiesToUpdate];
-            for (NSString *propertyName in properties) {
-                id value = [target valueForKey:propertyName];
-
-                if (![propertyName isEqualToString:@"value"]) {
-                    [field setValue:value forKey:propertyName];
+        [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *foundField, NSIndexPath *indexPath) {
+            if (foundField) {
+                field = foundField;
+                if (indexPath) {
+                    [updatedIndexPaths addObject:indexPath];
                 }
             }
+        }];
 
-            if (target.value) {
+        if (field) {
+            if (target.targetValue) {
+
                 if (field.type == FORMFieldTypeSelect) {
-                    FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.value];
+                    FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.targetValue];
+
                     if (selectedFieldValue) {
                         (self.values)[field.fieldID] = selectedFieldValue.valueID;
                         field.value = selectedFieldValue;
                     }
+
                 } else {
-                    field.value = target.value;
+                    field.value = target.targetValue;
                     (self.values)[field.fieldID] = field.value;
                 }
+
             } else if (target.actionType == FORMTargetActionClear) {
                 field.value = nil;
                 (self.values)[field.fieldID] = [NSNull null];
-            }
-
-            if (field.formula) {
+            } else if (field.formula) {
                 NSArray *fieldIDs = [field.formula hyp_variables];
                 NSMutableDictionary *values = [NSMutableDictionary new];
 
                 for (NSString *fieldID in fieldIDs) {
+
                     id value = (self.values)[fieldID];
                     BOOL isNumericField = (field.type == FORMFieldTypeFloat || field.type == FORMFieldTypeNumber);
                     NSString *defaultEmptyValue = (isNumericField) ? @"0" : @"";
 
                     FORMField *targetField = [self fieldWithID:fieldID includingHiddenFields:YES];
+
                     if (targetField.type == FORMFieldTypeSelect) {
+
                         if ([targetField.value isKindOfClass:[FORMFieldValue class]]) {
+
                             FORMFieldValue *fieldValue = targetField.value;
+
                             if (fieldValue.value) {
                                 [values addEntriesFromDictionary:@{fieldID : fieldValue.value}];
                             }
                         } else {
                             FORMFieldValue *foundFieldValue = nil;
-                            for (FORMFieldValue *fieldValue in targetField.values) {
-                                if ([fieldValue identifierIsEqualTo:targetField.value]) {
+                            for (FORMFieldValue *fieldValue in field.values) {
+                                if ([fieldValue identifierIsEqualTo:field.value]) {
                                     foundFieldValue = fieldValue;
                                 }
                             }

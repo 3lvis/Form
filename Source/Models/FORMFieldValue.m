@@ -48,9 +48,4 @@
     return NO;
 }
 
-- (NSString *)debugDescription {
-    return [NSString stringWithFormat:@"\n — Field value: %@ —\n title: %@\n Info: %@\n Value: %@\n defaultValue: %@\n Targets: %@\n",
-            self.valueID, self.title, self.info, self.value, self.defaultValue ? @"YES" : @"NO", self.targets];
-}
-
 @end

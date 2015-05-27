@@ -110,7 +110,7 @@
 }
 
 - (void)testUpdatingTargetValue {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"target-condition.json"
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
@@ -123,7 +123,7 @@
     XCTAssertNil(targetField.value);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.value = @"John Hyperseed";
+    updateTarget.targetValue = @"John Hyperseed";
 
     [dataSource processTargets:@[updateTarget]];
     XCTAssertEqualObjects(targetField.value, @"John Hyperseed");
@@ -163,59 +163,7 @@
     XCTAssertEqualObjects(ticketTypeField.value, @1);
 }
 
-- (void)testTargetCondition {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"target-condition.json"
-                                                             inBundle:[NSBundle bundleForClass:[self class]]];
-
-    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                       collectionView:nil
-                                                               layout:nil
-                                                               values:nil
-                                                             disabled:YES];
-
-    FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
-    FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
-    XCTAssertEqualObjects(usernameField.value, @0);
-
-    FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.value = @"Mr.Melk";
-
-    updateTarget.condition = @"$username == 1";
-    [dataSource processTargets:@[updateTarget]];
-    XCTAssertNil(displayNameField.value);
-
-    updateTarget.condition = @"$username == 0";
-    [dataSource processTargets:@[updateTarget]];
-    XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
-}
-
-- (void)testTargetValidation {
-    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"target-condition.json"
-                                                             inBundle:[NSBundle bundleForClass:[self class]]];
-
-    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-                                                       collectionView:nil
-                                                               layout:nil
-                                                               values:nil
-                                                             disabled:YES];
-
-    FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
-
-    FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.value = @"7 words";
-    [dataSource processTargets:@[updateTarget]];
-    XCTAssertEqualObjects(displayNameField.value, @"7 words");
-    XCTAssertTrue([displayNameField valid]);
-
-    updateTarget.validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"required": @YES,
-                                                                                @"min_length": @1,
-                                                                                @"max_length": @4}];
-    [dataSource processTargets:@[updateTarget]];
-    [displayNameField validate];
-    XCTAssertFalse([displayNameField valid]);
-}
-
-- (void)testTargetFieldAttributes {
+- (void)testCondition {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
 
@@ -226,21 +174,20 @@
                                                              disabled:YES];
 
     FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
+    FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
+    FORMFieldValue *fieldValue = usernameField.value;
+    XCTAssertEqualObjects(fieldValue.valueID, @0);
 
+    FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
+    updateTarget.targetValue = @"Mr.Melk";
 
-    NSDictionary *targetJSON = @{@"id": @"display_name",
-                                 @"type": @"field",
-                                 @"action": @"update",
-                                 @"title": @"Nice display name",
-                                 @"info": @"Nice display name",
-                                 @"formula": @"first_name"};
-
-    FORMTarget *updateTarget = [[FORMTarget alloc] initWithDictionary:targetJSON];
-
+    updateTarget.condition = @"$username == 2";
     [dataSource processTargets:@[updateTarget]];
-    XCTAssertEqualObjects(displayNameField.title, @"Nice display name");
-    XCTAssertEqualObjects(displayNameField.info, @"Nice display name");
-    XCTAssertEqualObjects(displayNameField.formula, @"first_name");
+    XCTAssertNil(displayNameField.value);
+
+    updateTarget.condition = @"$username == 0";
+    [dataSource processTargets:@[updateTarget]];
+    XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
 }
 
 #pragma mark - reloadWithDictionary
@@ -891,8 +838,8 @@
                                                                values:nil
                                                              disabled:NO];
 
-    FORMField *addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
-    XCTAssertNotNil(addField);
+	FORMField *addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
+	XCTAssertNotNil(addField);
 
     [dataSource fieldCell:nil updatedWithField:addField];
 

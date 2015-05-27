@@ -85,37 +85,4 @@
 
 }
 
-- (void)testFieldPropertiesToUpdate {
-    NSDictionary *targetJSON = @{@"id": @"end_date",
-                                 @"type": @"field",
-                                 @"action": @"update",
-                                 @"validations": @{ @"required": @NO },
-                                 @"condition": @"$employment_type == 2 && !missing($temporary_employee_reason)"};
-
-    FORMTarget *target = [[FORMTarget alloc] initWithDictionary:targetJSON];
-    NSArray *fieldProperties = [target propertiesToUpdate];
-    XCTAssertEqual(fieldProperties.count, 1);
-    XCTAssertEqualObjects(fieldProperties, @[@"validation"]);
-
-    targetJSON = @{@"id": @"end_date",
-                   @"type": @"field",
-                   @"action": @"show",
-                   @"validations": @{ @"required": @NO },
-                   @"condition": @"$employment_type == 2 && !missing($temporary_employee_reason)"};
-
-    target = [[FORMTarget alloc] initWithDictionary:targetJSON];
-    fieldProperties = [target propertiesToUpdate];
-    XCTAssertEqual(fieldProperties.count, 0);
-
-    targetJSON = @{@"id": @"end_date",
-                   @"type": @"section",
-                   @"action": @"update",
-                   @"validations": @{ @"required": @NO },
-                   @"condition": @"$employment_type == 2 && !missing($temporary_employee_reason)"};
-
-    target = [[FORMTarget alloc] initWithDictionary:targetJSON];
-    fieldProperties = [target propertiesToUpdate];
-    XCTAssertEqual(fieldProperties.count, 0);
-}
-
 @end
