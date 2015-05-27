@@ -172,13 +172,13 @@
                     "id":"first_name",
                     "type":"field",
                     "action":"update",
-                    "target_value":"Mr."
+                    "value":"Mr."
                   },
                   {
                     "id":"last_name",
                     "type":"field",
                     "action":"update",
-                    "target_value":"Melk"
+                    "value":"Melk"
                   },
                   {
                     "id":"display_name",
@@ -189,7 +189,7 @@
                     "id":"contract_type",
                     "type":"field",
                     "action":"update",
-                    "target_value":0
+                    "value":0
                   }
                 ]
               },
@@ -212,13 +212,13 @@
                     "id":"first_name",
                     "type":"field",
                     "action":"update",
-                    "target_value":"John"
+                    "value":"John"
                   },
                   {
                     "id":"last_name",
                     "type":"field",
                     "action":"update",
-                    "target_value":"Hyperseed"
+                    "value":"Hyperseed"
                   },
                   {
                     "id":"display_name",
@@ -229,7 +229,7 @@
                     "id":"contract_type",
                     "type":"field",
                     "action":"update",
-                    "target_value":1
+                    "value":1
                   }
                 ]
               }
