@@ -800,4 +800,16 @@
     XCTAssertEqualObjects(formData.values[@"textie"], @"1");
 }
 
+- (void)testCrashingJSON {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"crashy.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    XCTAssertNil(formData.values);
+}
+
 @end

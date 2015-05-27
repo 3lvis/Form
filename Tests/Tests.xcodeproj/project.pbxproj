@@ -56,6 +56,7 @@
 		144A28EA1A99B2CF004A9086 /* FORMValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A28B91A99B2CF004A9086 /* FORMValidator.m */; };
 		144B80291AA882DB009C69DC /* section-field-position.json in Resources */ = {isa = PBXBuildFile; fileRef = 144B80281AA882DB009C69DC /* section-field-position.json */; };
 		1452EB621AA9BCFC0002863A /* FORMDefaultStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1452EB611AA9BCFC0002863A /* FORMDefaultStyle.m */; };
+		1464531D1B16206500E8D67A /* crashy.json in Resources */ = {isa = PBXBuildFile; fileRef = 1464531C1B16206500E8D67A /* crashy.json */; };
 		1492C05A1A9F740900D80D91 /* dynamic.json in Resources */ = {isa = PBXBuildFile; fileRef = 1492C0591A9F740900D80D91 /* dynamic.json */; };
 		149C29211A9A23DD00F88B91 /* FORMFieldValueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29111A9A23DD00F88B91 /* FORMFieldValueTests.m */; };
 		149C29221A9A23DD00F88B91 /* FORMFieldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 149C29121A9A23DD00F88B91 /* FORMFieldTests.m */; };
@@ -195,6 +196,7 @@
 		144B80281AA882DB009C69DC /* section-field-position.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "section-field-position.json"; sourceTree = "<group>"; };
 		1452EB601AA9BCFC0002863A /* FORMDefaultStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMDefaultStyle.h; sourceTree = "<group>"; };
 		1452EB611AA9BCFC0002863A /* FORMDefaultStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMDefaultStyle.m; sourceTree = "<group>"; };
+		1464531C1B16206500E8D67A /* crashy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crashy.json; sourceTree = "<group>"; };
 		1492C0591A9F740900D80D91 /* dynamic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dynamic.json; sourceTree = "<group>"; };
 		149C29111A9A23DD00F88B91 /* FORMFieldValueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValueTests.m; sourceTree = "<group>"; };
 		149C29121A9A23DD00F88B91 /* FORMFieldTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldTests.m; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 		149C291A1A9A23DD00F88B91 /* JSONs */ = {
 			isa = PBXGroup;
 			children = (
+				1464531C1B16206500E8D67A /* crashy.json */,
 				BD24056F1AE6B38D00592E19 /* default-values-in-template.json */,
 				149C291B1A9A23DD00F88B91 /* default-values.json */,
 				BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */,
@@ -656,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				149C292C1A9A23DD00F88B91 /* multiple-show-hide-field-targets.json in Resources */,
+				1464531D1B16206500E8D67A /* crashy.json in Resources */,
 				14B564731A06D87B00342CDA /* .travis.yml in Resources */,
 				442E70501B147608000118F0 /* target-condition.json in Resources */,
 				BD92FBDA1AE61FF000D45BD4 /* dynamic-formulas.json in Resources */,
