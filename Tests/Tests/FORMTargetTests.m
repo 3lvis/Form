@@ -40,38 +40,44 @@
     XCTAssertEqualObjects(target.actionTypeString, @"enable");
     XCTAssertEqual(target.type, FORMTargetTypeField);
     XCTAssertEqual(target.actionType, FORMTargetActionEnable);
+
+    target = [FORMTarget new];
+    target.typeString = @"something_else";
+    target.actionTypeString = @"something_else";
+    XCTAssertEqual(target.type, FORMTargetTypeNone);
+    XCTAssertEqual(target.actionType, FORMTargetActionNone);
 }
 
 - (void)testFilteredTargets {
     NSMutableArray *targets = [NSMutableArray new];
 
-    [targets addObject:[FORMTarget showFieldTargetWithID:@"first_name"]];
-    [targets addObject:[FORMTarget showFieldTargetWithID:@"first_name"]];
-    [targets addObject:[FORMTarget showFieldTargetWithID:@"first_name"]];
+    [targets addObjectsFromArray:[FORMTarget showFieldTargetsWithIDs:@[@"first_name"]]];
+    [targets addObjectsFromArray:[FORMTarget showFieldTargetsWithIDs:@[@"first_name"]]];
+    [targets addObjectsFromArray:[FORMTarget showFieldTargetsWithIDs:@[@"first_name"]]];
 
-    [targets addObject:[FORMTarget hideFieldTargetWithID:@"last_name"]];
-    [targets addObject:[FORMTarget hideFieldTargetWithID:@"last_name"]];
-    [targets addObject:[FORMTarget hideFieldTargetWithID:@"last_name"]];
+    [targets addObjectsFromArray:[FORMTarget hideFieldTargetsWithIDs:@[@"last_name"]]];
+    [targets addObjectsFromArray:[FORMTarget hideFieldTargetsWithIDs:@[@"last_name"]]];
+    [targets addObjectsFromArray:[FORMTarget hideFieldTargetsWithIDs:@[@"last_name"]]];
 
-    [targets addObject:[FORMTarget enableFieldTargetWithID:@"start_date"]];
-    [targets addObject:[FORMTarget enableFieldTargetWithID:@"start_date"]];
-    [targets addObject:[FORMTarget enableFieldTargetWithID:@"start_date"]];
+    [targets addObjectsFromArray:[FORMTarget enableFieldTargetsWithIDs:@[@"start_date"]]];
+    [targets addObjectsFromArray:[FORMTarget enableFieldTargetsWithIDs:@[@"start_date"]]];
+    [targets addObjectsFromArray:[FORMTarget enableFieldTargetsWithIDs:@[@"start_date"]]];
 
-    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
-    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
-    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
+    [targets addObjectsFromArray:[FORMTarget disableFieldTargetsWithIDs:@[@"end_date"]]];
+    [targets addObjectsFromArray:[FORMTarget disableFieldTargetsWithIDs:@[@"end_date"]]];
+    [targets addObjectsFromArray:[FORMTarget disableFieldTargetsWithIDs:@[@"end_date"]]];
 
-    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
-    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
-    [targets addObject:[FORMTarget disableFieldTargetWithID:@"end_date"]];
+    [targets addObjectsFromArray:[FORMTarget disableFieldTargetsWithIDs:@[@"end_date"]]];
+    [targets addObjectsFromArray:[FORMTarget disableFieldTargetsWithIDs:@[@"end_date"]]];
+    [targets addObjectsFromArray:[FORMTarget disableFieldTargetsWithIDs:@[@"end_date"]]];
 
-    [targets addObject:[FORMTarget updateFieldTargetWithID:@"bonus_enabled"]];
-    [targets addObject:[FORMTarget updateFieldTargetWithID:@"bonus_enabled"]];
-    [targets addObject:[FORMTarget updateFieldTargetWithID:@"bonus_enabled"]];
+    [targets addObjectsFromArray:[FORMTarget updateFieldTargetsWithIDs:@[@"bonus_enabled"]]];
+    [targets addObjectsFromArray:[FORMTarget updateFieldTargetsWithIDs:@[@"bonus_enabled"]]];
+    [targets addObjectsFromArray:[FORMTarget updateFieldTargetsWithIDs:@[@"bonus_enabled"]]];
 
-    [targets addObject:[FORMTarget clearFieldTargetWithID:@"salary"]];
-    [targets addObject:[FORMTarget clearFieldTargetWithID:@"salary"]];
-    [targets addObject:[FORMTarget clearFieldTargetWithID:@"salary"]];
+    [targets addObjectsFromArray:[FORMTarget clearFieldTargetsWithIDs:@[@"salary"]]];
+    [targets addObjectsFromArray:[FORMTarget clearFieldTargetsWithIDs:@[@"salary"]]];
+    [targets addObjectsFromArray:[FORMTarget clearFieldTargetsWithIDs:@[@"salary"]]];
 
     [FORMTarget filteredTargets:targets
                        filtered:^(NSArray *shownTargets, NSArray *hiddenTargets, NSArray *updatedTargets,
@@ -82,7 +88,6 @@
                            XCTAssertEqual(enabledTargets.count, 1);
                            XCTAssertEqual(disabledTargets.count, 1);
                        }];
-
 }
 
 - (void)testFieldPropertiesToUpdate {
