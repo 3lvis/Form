@@ -909,7 +909,7 @@
 
     XCTAssertEqualObjects(priceTarget.targetID, @"tickets[0].total");
     XCTAssertEqualObjects(totalField.formula, @"tickets[0].quantity * tickets[0].price");
-    XCTAssertEqualObjects(totalField.value, @"300");
+    XCTAssertEqualObjects(totalField.value, @300);
 
     addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
     XCTAssertNotNil(addField);
@@ -931,7 +931,7 @@
 
     XCTAssertEqualObjects(priceTarget.targetID, @"tickets[1].total");
     XCTAssertEqualObjects(totalField.formula, @"tickets[1].quantity * tickets[1].price");
-    XCTAssertEqualObjects(totalField.value, @"300");
+    XCTAssertEqualObjects(totalField.value, @300);
 }
 
 @end
