@@ -26,6 +26,22 @@
     XCTAssertNotNil(fieldValue);
     XCTAssertEqualObjects(fieldValue.valueID, @0);
     XCTAssertEqualObjects(fieldValue.title, @"Full time");
+    XCTAssertFalse(fieldValue.defaultValue);
+}
+
+- (void)testIdentifierIsEqualTo {
+    FORMFieldValue *fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": @NO}];
+    XCTAssertTrue([fieldValue identifierIsEqualTo:@NO]);
+
+    NSDate *date = [NSDate date];
+    fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": date}];
+    XCTAssertTrue([fieldValue identifierIsEqualTo:date]);
+
+    fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": @"hello"}];
+    XCTAssertTrue([fieldValue identifierIsEqualTo:@"hello"]);
+
+    fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": @"hello"}];
+    XCTAssertFalse([fieldValue identifierIsEqualTo:nil]);
 }
 
 @end
