@@ -14,7 +14,7 @@
     self.minimumLength = [dictionary andy_valueForKey:@"min_length"];
     self.maximumValue = [dictionary andy_valueForKey:@"max_value"];
     self.minimumValue = [dictionary andy_valueForKey:@"min_value"];
-    self.required = [[dictionary andy_valueForKey:@"required"] boolValue];
+    self.required = [dictionary andy_valueForKey:@"required"];
 
     return self;
 }

@@ -53,7 +53,7 @@ static const NSInteger FORMSelectMaxItemCount = 6;
 
             for (FORMFieldValue *fieldValue in field.values) {
                 if ([fieldValue identifierIsEqualTo:field.value]) {
-                    field.value = fieldValue;
+                    field.value = fieldValue.valueID;
                     self.fieldValueLabel.text = fieldValue.title;
                     break;
                 }
@@ -84,7 +84,7 @@ static const NSInteger FORMSelectMaxItemCount = 6;
 
 - (void)fieldValuesTableViewController:(FORMFieldValuesTableViewController *)fieldValuesTableViewController
                       didSelectedValue:(FORMFieldValue *)selectedValue {
-    self.field.value = selectedValue;
+    self.field.value = selectedValue.valueID;
 
     [self updateWithField:self.field];
 

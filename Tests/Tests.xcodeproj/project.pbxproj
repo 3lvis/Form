@@ -84,6 +84,7 @@
 		14F594A61AE0618300772756 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F594A21AE0618300772756 /* clear@2x.png */; };
 		14F5AF6D1AE0522400FF71AD /* postal_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 14F5AF6C1AE0522400FF71AD /* postal_codes.json */; };
 		442E70501B147608000118F0 /* target-condition.json in Resources */ = {isa = PBXBuildFile; fileRef = 442E704F1B147608000118F0 /* target-condition.json */; };
+		443AACD61B1706F400263042 /* NSString+FORMCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 443AACD51B1706F400263042 /* NSString+FORMCondition.m */; };
 		446C42661AF8B38F0002DFE9 /* FORMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446C42651AF8B38F0002DFE9 /* FORMViewController.m */; };
 		44713C611AE8E9DC00AA97DA /* simple-number-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 44713C601AE8E9DC00AA97DA /* simple-number-field.json */; };
 		44932E771AE79BBD00A159BE /* simple-section.json in Resources */ = {isa = PBXBuildFile; fileRef = 44932E761AE79BBD00A159BE /* simple-section.json */; };
@@ -230,6 +231,8 @@
 		14F594A21AE0618300772756 /* clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear@2x.png"; sourceTree = "<group>"; };
 		14F5AF6C1AE0522400FF71AD /* postal_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postal_codes.json; sourceTree = "<group>"; };
 		442E704F1B147608000118F0 /* target-condition.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "target-condition.json"; sourceTree = "<group>"; };
+		443AACD41B1706F400263042 /* NSString+FORMCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FORMCondition.h"; sourceTree = "<group>"; };
+		443AACD51B1706F400263042 /* NSString+FORMCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FORMCondition.m"; sourceTree = "<group>"; };
 		446C42641AF8B38F0002DFE9 /* FORMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMViewController.h; sourceTree = "<group>"; };
 		446C42651AF8B38F0002DFE9 /* FORMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMViewController.m; sourceTree = "<group>"; };
 		44713C601AE8E9DC00AA97DA /* simple-number-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-number-field.json"; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 				144A28A31A99B2CF004A9086 /* FORMSection.m */,
 				144A28A41A99B2CF004A9086 /* FORMTarget.h */,
 				144A28A51A99B2CF004A9086 /* FORMTarget.m */,
+				443AACD41B1706F400263042 /* NSString+FORMCondition.h */,
+				443AACD51B1706F400263042 /* NSString+FORMCondition.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -748,6 +753,7 @@
 				144A28E91A99B2CF004A9086 /* FORMSocialSecurityNumberValidator.m in Sources */,
 				BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */,
 				144A28CB1A99B2CF004A9086 /* FORMPhoneNumberFormatter.m in Sources */,
+				443AACD61B1706F400263042 /* NSString+FORMCondition.m in Sources */,
 				144A28D71A99B2CF004A9086 /* FORMNumberInputValidator.m in Sources */,
 				144A28BE1A99B2CF004A9086 /* FORMFieldValueCell.m in Sources */,
 				14AFC1111AA7CF5C00583FC0 /* FORMSeparatorView.m in Sources */,

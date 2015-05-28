@@ -17,7 +17,7 @@
     cell.field = field;
     XCTAssertTrue(cell.fieldValueLabel.userInteractionEnabled);
 
-    field.disabled = YES;
+    field.disabled = @YES;
     cell.field = field;
     XCTAssertFalse(cell.fieldValueLabel.userInteractionEnabled);
 }

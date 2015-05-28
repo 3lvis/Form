@@ -346,10 +346,10 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
         BOOL shouldChangeState = (![self.formData.disabledFieldsIDs containsObject:fieldID]);
 
         if (disabled) {
-            field.disabled = YES;
+            field.disabled = @YES;
         } else if (shouldChangeState) {
             if (!field.initiallyDisabled) {
-                field.disabled = NO;
+                field.disabled = @NO;
             }
 
             if (field.targets.count > 0) {

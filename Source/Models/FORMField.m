@@ -33,7 +33,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _type = [self typeFromTypeString:self.typeString];
     _inputTypeString = [dictionary andy_valueForKey:@"input_type"];
-    _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
+    _hidden = [dictionary andy_valueForKey:@"hidden"];
 
     NSNumber *width = [dictionary andy_valueForKey:@"size.width"] ?: @100;
     NSNumber *height = [dictionary andy_valueForKey:@"size.height"]?: @1;
@@ -41,7 +41,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     self.position = @(position);
 
-    _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
+    _disabled = [dictionary andy_valueForKey:@"disabled"];
     _initiallyDisabled = _disabled;
 
     NSMutableArray *targets = [NSMutableArray new];
@@ -55,13 +55,13 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:_fieldID]);
 
-    if (shouldDisable) _disabled = YES;
+    if (shouldDisable) _disabled = @YES;
 
     NSMutableArray *values = [NSMutableArray new];
-    NSArray *dataSourceValues = [dictionary andy_valueForKey:@"values"];
+    NSArray *fieldValues = [dictionary andy_valueForKey:@"values"];
 
-    if (dataSourceValues) {
-        for (NSDictionary *valueDict in dataSourceValues) {
+    if (fieldValues) {
+        for (NSDictionary *valueDict in fieldValues) {
             FORMFieldValue *fieldValue = [[FORMFieldValue alloc] initWithDictionary:valueDict];
             fieldValue.field = self;
             [values addObject:fieldValue];
@@ -92,13 +92,6 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         resultValue = value.valueID;
     } else {
         switch (self.type) {
-            case FORMFieldTypeNumber:
-            case FORMFieldTypeFloat: {
-                if (![fieldValue isKindOfClass:[NSString class]]) {
-                    resultValue = [fieldValue stringValue];
-                }
-            } break;
-
             case FORMFieldTypeDateTime:
             case FORMFieldTypeTime:
             case FORMFieldTypeDate: {
@@ -109,6 +102,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
                 }
             } break;
 
+            case FORMFieldTypeNumber:
+            case FORMFieldTypeFloat:
             case FORMFieldTypeText:
             case FORMFieldTypeSelect:
             case FORMFieldTypeButton:
@@ -236,7 +231,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 - (FORMFieldValue *)selectFieldValueWithValueID:(id)fieldValueID {
     for (FORMFieldValue *fieldValue in self.values) {
         if ([fieldValue identifierIsEqualTo:fieldValueID]) {
-            self.value = fieldValue;
+            self.value = fieldValue.valueID;
             return self.value;
         }
     }

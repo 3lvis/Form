@@ -11,12 +11,7 @@
 
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
-
-@interface FORMData (FORMDataTests)
-
-- (BOOL)evaluateCondition:(NSString *)condition;
-
-@end
+#import "NSString+FORMCondition.h"
 
 @interface FORMDataTests : XCTestCase
 
@@ -705,20 +700,20 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    XCTAssertTrue([formData evaluateCondition:@"present($first_name)"]);
-    XCTAssertTrue([formData evaluateCondition:@"present($last_name)"]);
-    XCTAssertFalse([formData evaluateCondition:@"present($display_name)"]);
+    XCTAssertTrue([@"present($first_name)" evaluateWithValues:formData.values]);
+    XCTAssertTrue([@"present($last_name)" evaluateWithValues:formData.values]);
+    XCTAssertFalse([@"present($display_name)" evaluateWithValues:formData.values]);
 
-    XCTAssertFalse([formData evaluateCondition:@"missing($first_name)"]);
-    XCTAssertFalse([formData evaluateCondition:@"missing($last_name)"]);
-    XCTAssertTrue([formData evaluateCondition:@"missing($display_name)"]);
+    XCTAssertFalse([@"missing($first_name)" evaluateWithValues:formData.values]);
+    XCTAssertFalse([@"missing($last_name)" evaluateWithValues:formData.values]);
+    XCTAssertTrue([@"missing($display_name)" evaluateWithValues:formData.values]);
 
-    XCTAssertFalse([formData evaluateCondition:@"equals($first_name, \"Claire\")"]);
-    XCTAssertTrue([formData evaluateCondition:@"equals($last_name, \"Underwood\")"]);
+    XCTAssertFalse([@"equals($first_name, \"Claire\")" evaluateWithValues:formData.values]);
+    XCTAssertTrue([@"equals($last_name, \"Underwood\")" evaluateWithValues:formData.values]);
 
-    XCTAssertFalse([formData evaluateCondition:@"equals($username, \"Francis\")"]);
-    XCTAssertFalse([formData evaluateCondition:@"equals($base_salary, 150)"]);
-    XCTAssertFalse([formData evaluateCondition:@"equals($bonus_enabled, 1)"]);
+    XCTAssertFalse([@"equals($username, \"Francis\")" evaluateWithValues:formData.values]);
+    XCTAssertFalse([@"equals($base_salary, 150)" evaluateWithValues:formData.values]);
+    XCTAssertFalse([@"equals($bonus_enabled, 1)" evaluateWithValues:formData.values]);
 }
 
 - (void)testCleaningUpFieldValueWhenHiddingAndShowing {
@@ -809,7 +804,7 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    XCTAssertNil(formData.values);
+    XCTAssertEqual(formData.values.count, 1);
 }
 
 @end

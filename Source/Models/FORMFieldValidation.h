@@ -10,7 +10,7 @@
 @property (nonatomic) NSNumber *minimumLength;
 @property (nonatomic) NSNumber *maximumValue;
 @property (nonatomic) NSNumber *minimumValue;
-@property (nonatomic, getter = isRequired) BOOL required;
+@property (nonatomic) NSNumber *required;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
