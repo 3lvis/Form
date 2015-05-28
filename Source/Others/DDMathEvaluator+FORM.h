@@ -2,6 +2,6 @@
 
 @interface DDMathEvaluator (FORM)
 
-+ (NSDictionary *)hyp_directoryFunctions;
++ (NSDictionary *)hyp_directoryFunctionsWithError:(NSError **)error;
 
 @end

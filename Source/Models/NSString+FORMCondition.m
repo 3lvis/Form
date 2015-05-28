@@ -5,22 +5,21 @@
 
 @implementation NSString (FORMCondition)
 
-- (BOOL)evaluateWithValues:(NSDictionary *)values; {
+- (BOOL)evaluateWithValues:(NSDictionary *)values error:(NSError **)error {
     DDMathEvaluator *evaluator = [DDMathEvaluator defaultMathEvaluator];
 
-    NSDictionary *functionDictonary = [DDMathEvaluator hyp_directoryFunctions];
+    NSDictionary *functionDictonary = [DDMathEvaluator hyp_directoryFunctionsWithError:error];
     [functionDictonary enumerateKeysAndObjectsUsingBlock:^(id key, id function, BOOL *stop) {
         [evaluator registerFunction:function forName:key];
     }];
 
     BOOL evaluatedResult = NO;
 
-    NSError *error;
-    DDExpression *expression = [DDExpression expressionFromString:self error:&error];
-    if (!error && values) {
+    DDExpression *expression = [DDExpression expressionFromString:self error:error];
+    if (values) {
         NSNumber *result = [evaluator evaluateExpression:expression
                                        withSubstitutions:values
-                                                   error:&error];
+                                                   error:error];
         evaluatedResult = [result boolValue];
     }
 

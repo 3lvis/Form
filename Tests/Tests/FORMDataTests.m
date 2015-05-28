@@ -700,20 +700,21 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    XCTAssertTrue([@"present($first_name)" evaluateWithValues:formData.values]);
-    XCTAssertTrue([@"present($last_name)" evaluateWithValues:formData.values]);
-    XCTAssertFalse([@"present($display_name)" evaluateWithValues:formData.values]);
+    NSError *error = nil;
+    XCTAssertTrue([@"present($first_name)" evaluateWithValues:formData.values error:&error]);
+    XCTAssertTrue([@"present($last_name)" evaluateWithValues:formData.values error:&error]);
+    XCTAssertFalse([@"present($display_name)" evaluateWithValues:formData.values error:&error]);
 
-    XCTAssertFalse([@"missing($first_name)" evaluateWithValues:formData.values]);
-    XCTAssertFalse([@"missing($last_name)" evaluateWithValues:formData.values]);
-    XCTAssertTrue([@"missing($display_name)" evaluateWithValues:formData.values]);
+    XCTAssertFalse([@"missing($first_name)" evaluateWithValues:formData.values error:&error]);
+    XCTAssertFalse([@"missing($last_name)" evaluateWithValues:formData.values error:&error]);
+    XCTAssertTrue([@"missing($display_name)" evaluateWithValues:formData.values error:&error]);
 
-    XCTAssertFalse([@"equals($first_name, \"Claire\")" evaluateWithValues:formData.values]);
-    XCTAssertTrue([@"equals($last_name, \"Underwood\")" evaluateWithValues:formData.values]);
+    XCTAssertFalse([@"equals($first_name, \"Claire\")" evaluateWithValues:formData.values error:&error]);
+    XCTAssertTrue([@"equals($last_name, \"Underwood\")" evaluateWithValues:formData.values error:&error]);
 
-    XCTAssertFalse([@"equals($username, \"Francis\")" evaluateWithValues:formData.values]);
-    XCTAssertFalse([@"equals($base_salary, 150)" evaluateWithValues:formData.values]);
-    XCTAssertFalse([@"equals($bonus_enabled, 1)" evaluateWithValues:formData.values]);
+    XCTAssertFalse([@"equals($username, \"Francis\")" evaluateWithValues:formData.values error:&error]);
+    XCTAssertFalse([@"equals($base_salary, 150)" evaluateWithValues:formData.values error:&error]);
+    XCTAssertFalse([@"equals($bonus_enabled, 1)" evaluateWithValues:formData.values error:&error]);
 }
 
 - (void)testCleaningUpFieldValueWhenHiddingAndShowing {

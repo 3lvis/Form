@@ -123,7 +123,8 @@
 
                 if ([fieldValue identifierIsEqualTo:initialValue] || shouldUseDefaultValue) {
                     for (FORMTarget *target in fieldValue.targets) {
-                        if (!target.condition || [target.condition evaluateWithValues:initialValues]) {
+                        NSError *error = nil;
+                        if (!target.condition || [target.condition evaluateWithValues:initialValues error:&error]) {
                             switch (target.actionType) {
                                 case FORMTargetActionHide:
                                     [hideTargets addObject:target];
@@ -157,7 +158,8 @@
     [self updateTargets:updateTargets];
 
     for (FORMTarget *target in hideTargets) {
-        if (!target.condition || [target.condition evaluateWithValues:self.values]) {
+        NSError *error = nil;
+        if (!target.condition || [target.condition evaluateWithValues:self.values error:&error]) {
             if (target.type == FORMTargetTypeField) {
                 FORMField *field = [self fieldWithID:target.targetID
                                includingHiddenFields:YES];
@@ -170,7 +172,8 @@
     }
 
     for (FORMTarget *target in hideTargets) {
-        if (!target.condition || [target.condition evaluateWithValues:self.values]) {
+        NSError *error = nil;
+        if (!target.condition || [target.condition evaluateWithValues:self.values error:&error]) {
             if (target.type == FORMTargetTypeField) {
                 FORMField *field = [self fieldWithID:target.targetID
                                includingHiddenFields:NO];
@@ -598,7 +601,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
     NSMutableArray *insertedIndexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
-        if (target.condition && ![target.condition evaluateWithValues:self.values]) {
+        NSError *error = nil;
+        if (target.condition && ![target.condition evaluateWithValues:self.values error:&error]) {
             continue;
         }
 
@@ -680,7 +684,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
     NSMutableArray *deletedSections = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
-        if (target.condition && ![target.condition evaluateWithValues:self.values]) {
+        NSError *error = nil;
+        if (target.condition && ![target.condition evaluateWithValues:self.values error:&error]) {
             continue;
         }
 
@@ -772,7 +777,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
     NSMutableArray *updatedIndexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
-        BOOL shouldContinue = ((target.condition && ![target.condition evaluateWithValues:self.values]) ||
+        NSError *error = nil;
+        BOOL shouldContinue = ((target.condition && ![target.condition evaluateWithValues:self.values error:&error]) ||
                                target.type == FORMTargetTypeSection ||
                                (self.hiddenFieldsAndFieldIDsDictionary)[target.targetID]);
         if (shouldContinue) {
@@ -896,7 +902,8 @@ includingHiddenFields:(BOOL)includingHiddenFields
     NSMutableArray *indexPaths = [NSMutableArray new];
 
     for (FORMTarget *target in targets) {
-        if (target.condition && ![target.condition evaluateWithValues:self.values]) {
+        NSError *error = nil;
+        if (target.condition && ![target.condition evaluateWithValues:self.values error:&error]) {
             continue;
         }
         if (target.type == FORMTargetTypeSection) {
