@@ -846,16 +846,9 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
             if (target.value) {
                 if (field.type == FORMFieldTypeSelect) {
-                    id valueID;
-                    if ([target.value isKindOfClass:[FORMFieldValue class]]) {
-                        FORMFieldValue *value = (FORMFieldValue *)target.value;
-                        valueID = value.valueID;
-                    } else {
-                        valueID = target.value;
-                    }
-                    id selectedFieldValue = [field selectFieldValueWithValueID:valueID];
+                    FORMFieldValue *selectedFieldValue = [field selectFieldValueWithValueID:target.value];
                     if (selectedFieldValue) {
-                        (self.values)[field.fieldID] = selectedFieldValue;
+                        (self.values)[field.fieldID] = selectedFieldValue.valueID;
                         field.value = selectedFieldValue;
                     }
                 } else {

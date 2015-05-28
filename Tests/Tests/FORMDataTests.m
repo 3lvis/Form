@@ -809,7 +809,7 @@
                                        disabledFieldIDs:nil
                                                disabled:NO];
 
-    XCTAssertEqual(formData.values.count, 1);
+    XCTAssertNil(formData.values);
 }
 
 @end
