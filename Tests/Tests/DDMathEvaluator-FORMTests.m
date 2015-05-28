@@ -11,8 +11,9 @@
 - (void)testDirectoryFunctionsWithError {
     NSError *error = nil;
     NSDictionary *dictionary = [DDMathEvaluator hyp_directoryFunctionsWithError:&error];
-    NSArray *keys =  @[@"present", @"equals", @"missing"];
-    XCTAssertEqualObjects(dictionary.allKeys, keys);
+    NSArray *keys = [dictionary.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    NSArray *comparedKeys = [@[@"present", @"equals", @"missing"] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    XCTAssertEqualObjects(keys, comparedKeys);
 }
 
 @end
