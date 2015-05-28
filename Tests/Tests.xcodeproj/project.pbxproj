@@ -103,6 +103,27 @@
 		44E38BBA1B173B39009B5CA9 /* FORMGroupHeaderViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BB91B173B39009B5CA9 /* FORMGroupHeaderViewTests.m */; };
 		44E38BBC1B173B47009B5CA9 /* FORMLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BBB1B173B47009B5CA9 /* FORMLayoutTests.m */; };
 		44E38BBE1B173B5C009B5CA9 /* FORMSeparatorViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BBD1B173B5C009B5CA9 /* FORMSeparatorViewTests.m */; };
+		44E38BC01B173BB5009B5CA9 /* FORMTooltipViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BBF1B173BB5009B5CA9 /* FORMTooltipViewTests.m */; };
+		44E38BC21B173BC5009B5CA9 /* FORMViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BC11B173BC5009B5CA9 /* FORMViewControllerTests.m */; };
+		44E38BC41B173BD5009B5CA9 /* FORMBankAccountFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BC31B173BD5009B5CA9 /* FORMBankAccountFormatterTests.m */; };
+		44E38BC61B173BFB009B5CA9 /* FORMFloatFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BC51B173BFB009B5CA9 /* FORMFloatFormatterTests.m */; };
+		44E38BC81B173C04009B5CA9 /* FORMFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BC71B173C04009B5CA9 /* FORMFormatterTests.m */; };
+		44E38BCA1B173C1D009B5CA9 /* FORMPhoneNumberFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BC91B173C1D009B5CA9 /* FORMPhoneNumberFormatterTests.m */; };
+		44E38BCC1B173C2E009B5CA9 /* FORMSocialSecurityNumberFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BCB1B173C2E009B5CA9 /* FORMSocialSecurityNumberFormatterTests.m */; };
+		44E38BCE1B173C3D009B5CA9 /* FORMBankAccountNumberInputValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BCD1B173C3D009B5CA9 /* FORMBankAccountNumberInputValidatorTests.m */; };
+		44E38BD01B173C4D009B5CA9 /* FORMFloatInputValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BCF1B173C4D009B5CA9 /* FORMFloatInputValidatorTests.m */; };
+		44E38BD21B173C62009B5CA9 /* FORMInputValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BD11B173C62009B5CA9 /* FORMInputValidatorTests.m */; };
+		44E38BD41B173C6E009B5CA9 /* FORMNameInputValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BD31B173C6E009B5CA9 /* FORMNameInputValidatorTests.m */; };
+		44E38BD61B173C7A009B5CA9 /* FORMNumberInputValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BD51B173C7A009B5CA9 /* FORMNumberInputValidatorTests.m */; };
+		44E38BD81B173C84009B5CA9 /* FORMPostalCodeInputValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BD71B173C84009B5CA9 /* FORMPostalCodeInputValidatorTests.m */; };
+		44E38BDA1B173C94009B5CA9 /* FORMSocialSecurityNumberInputValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BD91B173C94009B5CA9 /* FORMSocialSecurityNumberInputValidatorTests.m */; };
+		44E38BDC1B173C9B009B5CA9 /* FORMClassFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BDB1B173C9B009B5CA9 /* FORMClassFactoryTests.m */; };
+		44E38BDE1B173CFA009B5CA9 /* NSString-FORMConditionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BDD1B173CFA009B5CA9 /* NSString-FORMConditionTests.m */; };
+		44E38BE01B173D29009B5CA9 /* DDMathEvaluator-FORMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BDF1B173D29009B5CA9 /* DDMathEvaluator-FORMTests.m */; };
+		44E38BE21B173D32009B5CA9 /* FORMPostalCodeManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BE11B173D32009B5CA9 /* FORMPostalCodeManagerTests.m */; };
+		44E38BE41B173D64009B5CA9 /* FORMBankAccountNumberValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BE31B173D64009B5CA9 /* FORMBankAccountNumberValidatorTests.m */; };
+		44E38BE61B173D72009B5CA9 /* FORMPostalCodeValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BE51B173D72009B5CA9 /* FORMPostalCodeValidatorTests.m */; };
+		44E38BE81B173D7E009B5CA9 /* FORMSocialSecurityNumberValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E38BE71B173D7E009B5CA9 /* FORMSocialSecurityNumberValidatorTests.m */; };
 		8EC9C8158643C507F883EEC4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E09ABAE07DB25A266537B76 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BD2405701AE6B38D00592E19 /* default-values-in-template.json in Resources */ = {isa = PBXBuildFile; fileRef = BD24056F1AE6B38D00592E19 /* default-values-in-template.json */; };
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
@@ -265,6 +286,27 @@
 		44E38BB91B173B39009B5CA9 /* FORMGroupHeaderViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMGroupHeaderViewTests.m; sourceTree = "<group>"; };
 		44E38BBB1B173B47009B5CA9 /* FORMLayoutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMLayoutTests.m; sourceTree = "<group>"; };
 		44E38BBD1B173B5C009B5CA9 /* FORMSeparatorViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSeparatorViewTests.m; sourceTree = "<group>"; };
+		44E38BBF1B173BB5009B5CA9 /* FORMTooltipViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTooltipViewTests.m; sourceTree = "<group>"; };
+		44E38BC11B173BC5009B5CA9 /* FORMViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMViewControllerTests.m; sourceTree = "<group>"; };
+		44E38BC31B173BD5009B5CA9 /* FORMBankAccountFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMBankAccountFormatterTests.m; sourceTree = "<group>"; };
+		44E38BC51B173BFB009B5CA9 /* FORMFloatFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFloatFormatterTests.m; sourceTree = "<group>"; };
+		44E38BC71B173C04009B5CA9 /* FORMFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFormatterTests.m; sourceTree = "<group>"; };
+		44E38BC91B173C1D009B5CA9 /* FORMPhoneNumberFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPhoneNumberFormatterTests.m; sourceTree = "<group>"; };
+		44E38BCB1B173C2E009B5CA9 /* FORMSocialSecurityNumberFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSocialSecurityNumberFormatterTests.m; sourceTree = "<group>"; };
+		44E38BCD1B173C3D009B5CA9 /* FORMBankAccountNumberInputValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMBankAccountNumberInputValidatorTests.m; sourceTree = "<group>"; };
+		44E38BCF1B173C4D009B5CA9 /* FORMFloatInputValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFloatInputValidatorTests.m; sourceTree = "<group>"; };
+		44E38BD11B173C62009B5CA9 /* FORMInputValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMInputValidatorTests.m; sourceTree = "<group>"; };
+		44E38BD31B173C6E009B5CA9 /* FORMNameInputValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMNameInputValidatorTests.m; sourceTree = "<group>"; };
+		44E38BD51B173C7A009B5CA9 /* FORMNumberInputValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMNumberInputValidatorTests.m; sourceTree = "<group>"; };
+		44E38BD71B173C84009B5CA9 /* FORMPostalCodeInputValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPostalCodeInputValidatorTests.m; sourceTree = "<group>"; };
+		44E38BD91B173C94009B5CA9 /* FORMSocialSecurityNumberInputValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSocialSecurityNumberInputValidatorTests.m; sourceTree = "<group>"; };
+		44E38BDB1B173C9B009B5CA9 /* FORMClassFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMClassFactoryTests.m; sourceTree = "<group>"; };
+		44E38BDD1B173CFA009B5CA9 /* NSString-FORMConditionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString-FORMConditionTests.m"; sourceTree = "<group>"; };
+		44E38BDF1B173D29009B5CA9 /* DDMathEvaluator-FORMTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDMathEvaluator-FORMTests.m"; sourceTree = "<group>"; };
+		44E38BE11B173D32009B5CA9 /* FORMPostalCodeManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPostalCodeManagerTests.m; sourceTree = "<group>"; };
+		44E38BE31B173D64009B5CA9 /* FORMBankAccountNumberValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMBankAccountNumberValidatorTests.m; sourceTree = "<group>"; };
+		44E38BE51B173D72009B5CA9 /* FORMPostalCodeValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPostalCodeValidatorTests.m; sourceTree = "<group>"; };
+		44E38BE71B173D7E009B5CA9 /* FORMSocialSecurityNumberValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSocialSecurityNumberValidatorTests.m; sourceTree = "<group>"; };
 		4E09ABAE07DB25A266537B76 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		653AC6BBDF66E205BA44BA17 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BD24056F1AE6B38D00592E19 /* default-values-in-template.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-values-in-template.json"; sourceTree = "<group>"; };
@@ -518,9 +560,14 @@
 		14C4182A1A01919C00636FD6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				44E38BDF1B173D29009B5CA9 /* DDMathEvaluator-FORMTests.m */,
 				44E38BB71B173A21009B5CA9 /* FORMBackgroundViewTests.m */,
+				44E38BC31B173BD5009B5CA9 /* FORMBankAccountFormatterTests.m */,
+				44E38BCD1B173C3D009B5CA9 /* FORMBankAccountNumberInputValidatorTests.m */,
+				44E38BE31B173D64009B5CA9 /* FORMBankAccountNumberValidatorTests.m */,
 				44E38BA51B17391A009B5CA9 /* FORMBaseFieldCellTests.m */,
 				44E38BA71B173939009B5CA9 /* FORMButtonFieldCellTests.m */,
+				44E38BDB1B173C9B009B5CA9 /* FORMClassFactoryTests.m */,
 				149C29131A9A23DD00F88B91 /* FORMDataSourceTests.m */,
 				149C29151A9A23DD00F88B91 /* FORMDataTests.m */,
 				44E38BA91B173961009B5CA9 /* FORMDateFieldCellTests.m */,
@@ -533,21 +580,37 @@
 				44E38BAD1B1739B9009B5CA9 /* FORMFieldValuesTableViewControllerTests.m */,
 				143D89441AEE46CC00F17FF5 /* FORMFieldValuesTableViewHeaderTests.swift */,
 				149C29111A9A23DD00F88B91 /* FORMFieldValueTests.m */,
+				44E38BC51B173BFB009B5CA9 /* FORMFloatFormatterTests.m */,
+				44E38BCF1B173C4D009B5CA9 /* FORMFloatInputValidatorTests.m */,
+				44E38BC71B173C04009B5CA9 /* FORMFormatterTests.m */,
 				44E38BB91B173B39009B5CA9 /* FORMGroupHeaderViewTests.m */,
 				1440AF0C1AC1D76500F15D15 /* FORMGroupTests.m */,
+				44E38BD11B173C62009B5CA9 /* FORMInputValidatorTests.m */,
 				44E38BBB1B173B47009B5CA9 /* FORMLayoutTests.m */,
+				44E38BD31B173C6E009B5CA9 /* FORMNameInputValidatorTests.m */,
+				44E38BD51B173C7A009B5CA9 /* FORMNumberInputValidatorTests.m */,
+				44E38BC91B173C1D009B5CA9 /* FORMPhoneNumberFormatterTests.m */,
 				149C29181A9A23DD00F88B91 /* FORMPopoverFieldCellTests.m */,
+				44E38BD71B173C84009B5CA9 /* FORMPostalCodeInputValidatorTests.m */,
+				44E38BE11B173D32009B5CA9 /* FORMPostalCodeManagerTests.m */,
+				44E38BE51B173D72009B5CA9 /* FORMPostalCodeValidatorTests.m */,
 				149C29141A9A23DD00F88B91 /* FORMSectionTests.m */,
 				44E38BAF1B1739DA009B5CA9 /* FORMSelectFieldCellTests.m */,
 				44E38BBD1B173B5C009B5CA9 /* FORMSeparatorViewTests.m */,
+				44E38BCB1B173C2E009B5CA9 /* FORMSocialSecurityNumberFormatterTests.m */,
+				44E38BD91B173C94009B5CA9 /* FORMSocialSecurityNumberInputValidatorTests.m */,
+				44E38BE71B173D7E009B5CA9 /* FORMSocialSecurityNumberValidatorTests.m */,
 				149C29161A9A23DD00F88B91 /* FORMTargetTests.m */,
 				149C29171A9A23DD00F88B91 /* FORMTests.m */,
 				149C29191A9A23DD00F88B91 /* FORMTextFieldCellTests.m */,
 				44E38BB31B173A03009B5CA9 /* FORMTextFieldTests.m */,
 				44E38BB51B173A0F009B5CA9 /* FORMTextFieldTypeManagerTests.m */,
+				44E38BBF1B173BB5009B5CA9 /* FORMTooltipViewTests.m */,
 				14298D6D1ADDA78F00607A49 /* FORMValidatorTests.m */,
+				44E38BC11B173BC5009B5CA9 /* FORMViewControllerTests.m */,
 				149C290E1A9A23DD00F88B91 /* Helpers */,
 				149C291A1A9A23DD00F88B91 /* JSONs */,
+				44E38BDD1B173CFA009B5CA9 /* NSString-FORMConditionTests.m */,
 				14C4182B1A01919C00636FD6 /* Supporting Files */,
 				BD7339B21AE66DA50004DF8F /* Tests-Bridging-Header.h */,
 			);
@@ -775,11 +838,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E38BC61B173BFB009B5CA9 /* FORMFloatFormatterTests.m in Sources */,
 				1452EB621AA9BCFC0002863A /* FORMDefaultStyle.m in Sources */,
+				44E38BD41B173C6E009B5CA9 /* FORMNameInputValidatorTests.m in Sources */,
 				144A28BF1A99B2CF004A9086 /* FORMFieldValuesTableViewController.m in Sources */,
 				44E38BB01B1739DA009B5CA9 /* FORMSelectFieldCellTests.m in Sources */,
 				144A28E81A99B2CF004A9086 /* FORMPostalCodeValidator.m in Sources */,
 				144A28D01A99B2CF004A9086 /* FORMData.m in Sources */,
+				44E38BDC1B173C9B009B5CA9 /* FORMClassFactoryTests.m in Sources */,
 				D5DFAA1B1AA87A9B0096FBFB /* FORMFieldValidationTests.m in Sources */,
 				144A28C51A99B2CF004A9086 /* FORMFieldValueLabel.m in Sources */,
 				144A28E91A99B2CF004A9086 /* FORMSocialSecurityNumberValidator.m in Sources */,
@@ -787,6 +853,7 @@
 				144A28CB1A99B2CF004A9086 /* FORMPhoneNumberFormatter.m in Sources */,
 				443AACD61B1706F400263042 /* NSString+FORMCondition.m in Sources */,
 				144A28D71A99B2CF004A9086 /* FORMNumberInputValidator.m in Sources */,
+				44E38BE01B173D29009B5CA9 /* DDMathEvaluator-FORMTests.m in Sources */,
 				144A28BE1A99B2CF004A9086 /* FORMFieldValueCell.m in Sources */,
 				14AFC1111AA7CF5C00583FC0 /* FORMSeparatorView.m in Sources */,
 				144A28E51A99B2CF004A9086 /* UIDevice+HYPRealOrientation.m in Sources */,
@@ -797,17 +864,20 @@
 				14298D6E1ADDA78F00607A49 /* FORMValidatorTests.m in Sources */,
 				44E38BAA1B173961009B5CA9 /* FORMDateFieldCellTests.m in Sources */,
 				149C29261A9A23DD00F88B91 /* FORMTargetTests.m in Sources */,
+				44E38BC41B173BD5009B5CA9 /* FORMBankAccountFormatterTests.m in Sources */,
 				44E38BB81B173A21009B5CA9 /* FORMBackgroundViewTests.m in Sources */,
 				44E38BBE1B173B5C009B5CA9 /* FORMSeparatorViewTests.m in Sources */,
 				446C42661AF8B38F0002DFE9 /* FORMViewController.m in Sources */,
 				144A28DE1A99B2CF004A9086 /* FORMFieldValue.m in Sources */,
 				144A28CA1A99B2CF004A9086 /* FORMFormatter.m in Sources */,
 				144A28C11A99B2CF004A9086 /* FORMPopoverFieldCell.m in Sources */,
+				44E38BE21B173D32009B5CA9 /* FORMPostalCodeManagerTests.m in Sources */,
 				149C29311A9A241D00F88B91 /* FORMImageFormFieldCell.m in Sources */,
 				D581C2411AE793E700E985A9 /* FORMFieldBaseTests.m in Sources */,
 				144A28D41A99B2CF004A9086 /* FORMFloatInputValidator.m in Sources */,
 				144A28C31A99B2CF004A9086 /* FORMTextFieldCell.m in Sources */,
 				144A28CF1A99B2CF004A9086 /* FORMLayout.m in Sources */,
+				44E38BCE1B173C3D009B5CA9 /* FORMBankAccountNumberInputValidatorTests.m in Sources */,
 				1440AF0D1AC1D76500F15D15 /* FORMGroupTests.m in Sources */,
 				44E38BBC1B173B47009B5CA9 /* FORMLayoutTests.m in Sources */,
 				144A28E21A99B2CF004A9086 /* DDMathEvaluator+FORM.m in Sources */,
@@ -817,43 +887,57 @@
 				144A28D91A99B2CF004A9086 /* FORMPostalCodeInputValidator.m in Sources */,
 				44E38BA41B1738C8009B5CA9 /* FORMEmailFormatterTests.m in Sources */,
 				149C29211A9A23DD00F88B91 /* FORMFieldValueTests.m in Sources */,
+				44E38BD21B173C62009B5CA9 /* FORMInputValidatorTests.m in Sources */,
 				144A28D81A99B2CF004A9086 /* FORMPhoneNumberInputValidator.m in Sources */,
 				149C29231A9A23DD00F88B91 /* FORMDataSourceTests.m in Sources */,
+				44E38BD81B173C84009B5CA9 /* FORMPostalCodeInputValidatorTests.m in Sources */,
+				44E38BDA1B173C94009B5CA9 /* FORMSocialSecurityNumberInputValidatorTests.m in Sources */,
 				44E38BB61B173A0F009B5CA9 /* FORMTextFieldTypeManagerTests.m in Sources */,
 				144A28E71A99B2CF004A9086 /* FORMBankAccountNumberValidator.m in Sources */,
 				44E38BA61B17391A009B5CA9 /* FORMBaseFieldCellTests.m in Sources */,
 				149C29291A9A23DD00F88B91 /* FORMTextFieldCellTests.m in Sources */,
 				144A28DD1A99B2CF004A9086 /* FORMFieldValidation.m in Sources */,
+				44E38BC21B173BC5009B5CA9 /* FORMViewControllerTests.m in Sources */,
 				44E38BAC1B173970009B5CA9 /* FORMFieldValueCellTests.m in Sources */,
+				44E38BD01B173C4D009B5CA9 /* FORMFloatInputValidatorTests.m in Sources */,
 				1449AE741AA07E0700BCC40E /* FORMField+Tests.m in Sources */,
 				144A28C21A99B2CF004A9086 /* FORMSelectFieldCell.m in Sources */,
 				144A28E01A99B2CF004A9086 /* FORMSection.m in Sources */,
 				144A28C01A99B2CF004A9086 /* FORMFieldValuesTableViewHeader.m in Sources */,
+				44E38BE81B173D7E009B5CA9 /* FORMSocialSecurityNumberValidatorTests.m in Sources */,
 				149C29281A9A23DD00F88B91 /* FORMPopoverFieldCellTests.m in Sources */,
 				143D89451AEE46CC00F17FF5 /* FORMFieldValuesTableViewHeaderTests.swift in Sources */,
+				44E38BC01B173BB5009B5CA9 /* FORMTooltipViewTests.m in Sources */,
 				44E38BBA1B173B39009B5CA9 /* FORMGroupHeaderViewTests.m in Sources */,
 				44E38BB21B1739EF009B5CA9 /* FORMFieldValueLabelTests.m in Sources */,
 				144A28DF1A99B2CF004A9086 /* FORMGroup.m in Sources */,
 				144A28C81A99B2CF004A9086 /* FORMBankAccountNumberFormatter.m in Sources */,
 				144A28C71A99B2CF004A9086 /* FORMTextFieldTypeManager.m in Sources */,
 				44E38BA81B173939009B5CA9 /* FORMButtonFieldCellTests.m in Sources */,
+				44E38BCC1B173C2E009B5CA9 /* FORMSocialSecurityNumberFormatterTests.m in Sources */,
+				44E38BC81B173C04009B5CA9 /* FORMFormatterTests.m in Sources */,
 				144A28CD1A99B2CF004A9086 /* FORMBackgroundView.m in Sources */,
 				144A28D51A99B2CF004A9086 /* FORMInputValidator.m in Sources */,
+				44E38BE61B173D72009B5CA9 /* FORMPostalCodeValidatorTests.m in Sources */,
 				149C29241A9A23DD00F88B91 /* FORMSectionTests.m in Sources */,
 				144A28EA1A99B2CF004A9086 /* FORMValidator.m in Sources */,
 				144A28DA1A99B2CF004A9086 /* FORMSocialSecurityNumberInputValidator.m in Sources */,
 				149C29251A9A23DD00F88B91 /* FORMDataTests.m in Sources */,
+				44E38BE41B173D64009B5CA9 /* FORMBankAccountNumberValidatorTests.m in Sources */,
 				44E38BB41B173A03009B5CA9 /* FORMTextFieldTests.m in Sources */,
 				149C29221A9A23DD00F88B91 /* FORMFieldTests.m in Sources */,
 				144A28DB1A99B2CF004A9086 /* FORMClassFactory.m in Sources */,
 				144A28BB1A99B2CF004A9086 /* FORMBaseFieldCell.m in Sources */,
 				144A28C91A99B2CF004A9086 /* FORMFloatFormatter.m in Sources */,
 				144A28E11A99B2CF004A9086 /* FORMTarget.m in Sources */,
+				44E38BDE1B173CFA009B5CA9 /* NSString-FORMConditionTests.m in Sources */,
 				144A28D11A99B2CF004A9086 /* FORMGroupHeaderView.m in Sources */,
 				D5B56C071AE51C7800DD8816 /* FORMEmailFormatter.m in Sources */,
 				144A28BC1A99B2CF004A9086 /* FORMButtonFieldCell.m in Sources */,
 				144A28DC1A99B2CF004A9086 /* FORMField.m in Sources */,
 				44E38BAE1B1739B9009B5CA9 /* FORMFieldValuesTableViewControllerTests.m in Sources */,
+				44E38BD61B173C7A009B5CA9 /* FORMNumberInputValidatorTests.m in Sources */,
+				44E38BCA1B173C1D009B5CA9 /* FORMPhoneNumberFormatterTests.m in Sources */,
 				144A28C61A99B2CF004A9086 /* FORMTextField.m in Sources */,
 				144A28D61A99B2CF004A9086 /* FORMNameInputValidator.m in Sources */,
 			);
