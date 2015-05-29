@@ -42,7 +42,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     self.position = @(position);
 
     _disabled = [dictionary andy_valueForKey:@"disabled"];
-    _initiallyDisabled = _disabled;
+    _initiallyDisabled = _disabled.boolValue;
 
     NSMutableArray *targets = [NSMutableArray new];
 
