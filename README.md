@@ -154,6 +154,8 @@ In the following example we show how to hide or show a field based on a dropdown
 **Form** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
+use_frameworks!
+
 pod 'Form'
 ```
 
