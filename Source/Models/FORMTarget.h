@@ -21,7 +21,6 @@ typedef NS_ENUM(NSInteger, FORMTargetActionType) {
 
 @interface FORMTarget : FORMFieldBase
 
-@property (nonatomic, copy) NSString *targetID;
 @property (nonatomic, copy) NSString *typeString;
 @property (nonatomic, copy) NSString *actionTypeString;
 @property (nonatomic, copy) NSString *condition;
@@ -32,6 +31,8 @@ typedef NS_ENUM(NSInteger, FORMTargetActionType) {
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
 - (NSArray *)propertiesToUpdate;
+
+- (FORMFieldValue *)fieldValueWithRawValue:(id)rawValue;
 
 + (void)filteredTargets:(NSArray*)targets
                filtered:(void (^)(NSArray *shownTargets,

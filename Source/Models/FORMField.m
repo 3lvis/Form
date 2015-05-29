@@ -16,6 +16,9 @@ static NSString * const FORMFieldSelectType = @"select";
 static NSString * const FORMInputValidatorSelector = @"validateString:text:";
 static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
+@interface FORMField () <FORMFieldBaseDataSource>
+@end
+
 @implementation FORMField
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
@@ -25,10 +28,9 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     self = [super initWithDictionary:dictionary];
     if (!self) return nil;
 
-    NSString *remoteID = [dictionary andy_valueForKey:@"id"];
+    self.dataSource = self;
 
     _valid = YES;
-    _fieldID = remoteID;
     _validationResultType = FORMValidationResultTypeValid;
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _type = [self typeFromTypeString:self.typeString];
@@ -53,8 +55,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _targets = targets;
 
-    BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:_fieldID]);
-
+    BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:self.fieldID]);
     if (shouldDisable) _disabled = @YES;
 
     NSMutableArray *values = [NSMutableArray new];
@@ -73,10 +74,9 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     BOOL isDateType = (_type == FORMFieldTypeDate ||
                        _type == FORMFieldTypeDateTime ||
                        _type == FORMFieldTypeTime);
-
-    if (self.value && isDateType) {
+    if (self.fieldValue.value && isDateType) {
         ISO8601DateFormatter *dateFormatter = [ISO8601DateFormatter new];
-        self.value = [dateFormatter dateFromString:self.value];
+        self.fieldValue = [self fieldValueWithRawValue:[dateFormatter dateFromString:self.fieldValue.value]];
     }
 
     return self;
@@ -84,72 +84,28 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
 #pragma mark - Setters
 
-- (void)setValue:(id)fieldValue {
-    id resultValue = fieldValue;
+- (id)transformedRawValue:(id)rawValue {
+    id resultValue = rawValue;
 
-    if ([fieldValue isKindOfClass:[FORMFieldValue class]]) {
-        FORMFieldValue *value = (FORMFieldValue *)fieldValue;
-        resultValue = value.valueID;
-    } else {
-        switch (self.type) {
-            case FORMFieldTypeDateTime:
-            case FORMFieldTypeTime:
-            case FORMFieldTypeDate: {
-                if ([fieldValue isKindOfClass:[NSString class]]) {
-                    NSDateFormatter *formatter = [NSDateFormatter new];
-                    [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"];
-                    resultValue = [formatter dateFromString:fieldValue];
-                }
-            } break;
-
-            case FORMFieldTypeNumber:
-            case FORMFieldTypeFloat:
-            case FORMFieldTypeText:
-            case FORMFieldTypeSelect:
-            case FORMFieldTypeButton:
-            case FORMFieldTypeCustom:
-                break;
-        }
-
-        if ([resultValue isKindOfClass:[NSString class]]) {
-            NSString *value = (NSString *)resultValue;
-            if (!value.length) {
-                resultValue = nil;
-            }
+    if (self.type == FORMFieldTypeDate) {
+        if ([rawValue isKindOfClass:[NSString class]]) {
+            NSDateFormatter *formatter = [NSDateFormatter new];
+            [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"];
+            resultValue = [formatter dateFromString:rawValue];
         }
     }
 
-    [super setValue:resultValue];
+    if ([resultValue isKindOfClass:[NSString class]]) {
+        NSString *value = (NSString *)resultValue;
+        if (!value.length) {
+            resultValue = nil;
+        }
+    }
+
+    return resultValue;
 }
 
 #pragma mark - Getters
-
-- (id)rawFieldValue {
-    if ([self.value isKindOfClass:[FORMFieldValue class]]) {
-        return [self.value valueID];
-    }
-
-    switch (self.type) {
-        case FORMFieldTypeFloat:
-            if ([self.value isKindOfClass:[NSString class]]) {
-                self.value = [self.value stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            }
-            return @([self.value floatValue]);
-        case FORMFieldTypeNumber:
-            return @([self.value integerValue]);
-
-        case FORMFieldTypeText:
-        case FORMFieldTypeSelect:
-        case FORMFieldTypeDate:
-        case FORMFieldTypeDateTime:
-        case FORMFieldTypeTime:
-            return self.value;
-
-        case FORMFieldTypeButton:
-        case FORMFieldTypeCustom:
-            return nil;
-    }
-}
 
 - (id)inputValidator {
     FORMInputValidator *inputValidator;
@@ -222,7 +178,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
 - (FORMFieldValue *)fieldValueWithID:(id)fieldValueID {
     for (FORMFieldValue *fieldValue in self.values) {
-        if ([fieldValue identifierIsEqualTo:self.value]) return fieldValue;
+        if ([fieldValue identifierIsEqualTo:self.fieldValue]) return fieldValue;
     }
 
     return nil;
@@ -231,12 +187,20 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 - (FORMFieldValue *)selectFieldValueWithValueID:(id)fieldValueID {
     for (FORMFieldValue *fieldValue in self.values) {
         if ([fieldValue identifierIsEqualTo:fieldValueID]) {
-            self.value = fieldValue.valueID;
-            return self.value;
+            self.fieldValue = fieldValue.fieldValueID;
+            return self.fieldValue;
         }
     }
 
     return nil;
+}
+
+- (FORMFieldValue *)fieldValueWithRawValue:(id)rawValue {
+    FORMFieldValue *fieldValue = [FORMFieldValue new];
+    fieldValue.fieldValueID = [NSString stringWithFormat:@"%@-value", self.fieldID];
+    fieldValue.value = rawValue;
+
+    return fieldValue;
 }
 
 - (FORMValidationResultType)validate {
@@ -246,12 +210,12 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     validatorClass = ([FORMClassFactory classFromString:self.fieldID withSuffix:@"Validator"]) ?: [FORMValidator class];
     validator = [[validatorClass alloc] initWithValidation:self.validation];
 
-    self.validationResultType = [validator validateFieldValue:self.value];
+    self.validationResultType = [validator validateFieldValue:self.fieldValue];
 
     if (self.validation.compareToFieldID.length) {
         FORMField *field = [self.class fieldForFieldID:self.validation.compareToFieldID inSection:self.section];
-        id dependantFieldValue = field.value;
-        self.validationResultType = [validator validateFieldValue:self.value withDependentValue:dependantFieldValue withComparator:self.validation.compareRule];
+        id dependantFieldValue = field.fieldValue;
+        self.validationResultType = [validator validateFieldValue:self.fieldValue withDependentValue:dependantFieldValue withComparator:self.validation.compareRule];
     }
 
     self.valid = (self.validationResultType == FORMValidationResultTypeValid);
@@ -301,10 +265,10 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
 - (NSArray *)safeTargets {
     if (self.type == FORMFieldTypeSelect) {
-        if ([self.value isKindOfClass:[FORMFieldValue class]]) {
-            if ([self.value targets].count > 0) return [self.value targets];
+        if ([self.fieldValue isKindOfClass:[FORMFieldValue class]]) {
+            if ([self.fieldValue targets].count > 0) return [self.fieldValue targets];
         } else {
-            FORMFieldValue *fieldValue = [self fieldValueWithID:self.value];
+            FORMFieldValue *fieldValue = [self fieldValueWithID:self.fieldValue];
             if (fieldValue.targets.count > 0) return fieldValue.targets;
         }
     } else {
@@ -325,7 +289,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 - (NSString *)description {
     return [NSString stringWithFormat:@"\n — Field: %@ —\n title: %@\n info: %@\n size: %@\n position: %@\n value: %@\n type: %@\n values: %@\n disabled: %@\n initiallyDisabled: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n valid: %@\n sectionSeparator: %@\n",
             self.fieldID, self.title, self.info, NSStringFromCGSize(self.size), self.position,
-            self.value, self.typeString, self.values, (self.isDisabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
+            self.fieldValue.value, self.typeString, self.values, (self.isDisabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
             self.maximumDate, self.validation, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
 }
 

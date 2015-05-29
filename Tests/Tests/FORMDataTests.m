@@ -256,7 +256,7 @@
     FORMField *firstNameField = [dataSource fieldWithID:@"first_name" includingHiddenFields:NO];
     XCTAssertNotNil(firstNameField);
     XCTAssertEqualObjects(firstNameField.fieldID, @"first_name");
-    XCTAssertEqualObjects(firstNameField.value, @"Elvis");
+    XCTAssertEqualObjects(firstNameField.fieldValue.value, @"Elvis");
 
     FORMField *startDateField = [dataSource fieldWithID:@"start_date" includingHiddenFields:NO];
     XCTAssertNotNil(startDateField);
@@ -419,23 +419,23 @@
 
     FORMField *field = [formData fieldWithID:@"companies[0].name" includingHiddenFields:NO];
     XCTAssertNotNil(field);
-    XCTAssertEqualObjects(field.value, @"Facebook");
+    XCTAssertEqualObjects(field.fieldValue.value, @"Facebook");
 
     field = [formData fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
     XCTAssertNotNil(field);
-    XCTAssertEqualObjects(field.value, @"1222333");
+    XCTAssertEqualObjects(field.fieldValue.value, @"1222333");
 
     field = [formData fieldWithID:@"companies[1].name" includingHiddenFields:NO];
     XCTAssertNotNil(field);
-    XCTAssertEqualObjects(field.value, @"Google");
+    XCTAssertEqualObjects(field.fieldValue.value, @"Google");
 
     field = [formData fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
     XCTAssertNotNil(field);
-    XCTAssertNil(field.value);
+    XCTAssertNil(field.fieldValue.value);
 
     field = [formData fieldWithID:@"email" includingHiddenFields:NO];
     XCTAssertNotNil(field);
-    XCTAssertEqualObjects(field.value, @"hi@there.com");
+    XCTAssertEqualObjects(field.fieldValue.value, @"hi@there.com");
 }
 
 - (void)testRemovedValuesWhenRemovingDynamicSection {

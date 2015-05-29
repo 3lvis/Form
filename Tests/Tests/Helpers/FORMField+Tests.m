@@ -121,14 +121,14 @@
     field.position = @2;
 
     FORMFieldValue *value1 = [FORMFieldValue new];
-    value1.valueID = @0;
+    value1.fieldValueID = @0;
     value1.title = @"Permanent";
     value1.targets = @[[FORMTarget showFieldTargetWithID:@"end_date"],
                        [FORMTarget showSectionTargetWithID:@"employment-2"]];
     value1.field = field;
 
     FORMFieldValue *value2 = [FORMFieldValue new];
-    value2.valueID = @1;
+    value2.fieldValueID = @1;
     value2.title = @"Temporary";
     value2.targets = @[[FORMTarget hideFieldTargetWithID:@"end_date"],
                        [FORMTarget hideSectionTargetWithID:@"employment-2"]];
@@ -146,21 +146,21 @@
     field.position = @0;
 
     FORMFieldValue *value1 = [FORMFieldValue new];
-    value1.valueID = @"base_salary_1";
+    value1.fieldValueID = @"base_salary_1";
     value1.title = @"Base salary 1";
     value1.field = field;
     value1.value = @100;
     value1.field = field;
 
     FORMFieldValue *value2 = [FORMFieldValue new];
-    value2.valueID = @"base_salary_2";
+    value2.fieldValueID = @"base_salary_2";
     value2.title = @"Base salary 2";
     value2.field = field;
     value2.value = @114;
     value2.field = field;
 
     FORMFieldValue *value3 = [FORMFieldValue new];
-    value3.valueID = @"base_salary_3";
+    value3.fieldValueID = @"base_salary_3";
     value3.title = @"Base salary 3";
     value3.field = field;
     value3.value = @454;
@@ -176,13 +176,13 @@
     field.position = @1;
 
     FORMFieldValue *value1 = [FORMFieldValue new];
-    value1.valueID = @"bonus_enabled_yes";
+    value1.fieldValueID = @"bonus_enabled_yes";
     value1.title = @"YES";
     value1.field = field;
     value1.field = field;
 
     FORMFieldValue *value2 = [FORMFieldValue new];
-    value2.valueID = @"bonus_enabled_no";
+    value2.fieldValueID = @"bonus_enabled_no";
     value2.title = @"NO";
     value2.field = field;
     value2.field = field;

@@ -69,7 +69,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
     _formData = [[FORMData alloc] initWithJSON:JSON
                                  initialValues:values
-                              disabledFieldIDs:@[]
+                              disabledFieldIDs:nil
                                       disabled:disabled];
 
     [collectionView registerClass:[FORMTextFieldCell class]
@@ -355,9 +355,9 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
             if (field.targets.count > 0) {
                 [self processTargets:field.targets];
             } else if (field.type == FORMFieldTypeSelect) {
-                BOOL hasFieldValue = (field.value && [field.value isKindOfClass:[FORMFieldValue class]]);
+                BOOL hasFieldValue = (field.fieldValue && [field.fieldValue isKindOfClass:[FORMFieldValue class]]);
                 if (hasFieldValue) {
-                    FORMFieldValue *fieldValue = (FORMFieldValue *)field.value;
+                    FORMFieldValue *fieldValue = (FORMFieldValue *)field.fieldValue;
 
                     NSMutableArray *targets = [NSMutableArray new];
 
@@ -406,7 +406,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                             BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
                             if (field) {
-                                field.value = (shouldBeNil) ? nil : value;
+                                field.fieldValue = (shouldBeNil) ? nil : [field fieldValueWithRawValue:value];
                                 if (indexPath) {
                                     [updatedIndexPaths addObject:indexPath];
                                 }
@@ -414,7 +414,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                             } else {
                                 field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
                                 if (field) {
-                                    field.value = (shouldBeNil) ? nil : value;
+                                    field.fieldValue = (shouldBeNil) ? nil : [field fieldValueWithRawValue:value];
                                 }
                             }
                         }];
@@ -473,7 +473,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                             BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
                             if (field) {
-                                field.value = (shouldBeNil) ? nil : value;
+                                field.fieldValue = (shouldBeNil) ? nil : [field fieldValueWithRawValue:value];
                                 if (indexPath) {
                                     [updatedIndexPaths addObject:indexPath];
                                 }
@@ -481,7 +481,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                             } else {
                                 field = ([self fieldInDeletedFields:key]) ?: [self fieldInDeletedSections:key];
                                 if (field) {
-                                    field.value = (shouldBeNil) ? nil : value;
+                                    field.fieldValue = (shouldBeNil) ? nil : [field fieldValueWithRawValue:value];
                                 }
                             }
                         }];
@@ -566,18 +566,18 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                            [components.lastObject isEqualToString:FORMDynamicRemoveFieldID]) &&
                          field != nil);
     if (isValidField) {
-        if (!field.value) {
+        if (!field.fieldValue) {
             [self.formData.values removeObjectForKey:field.fieldID];
-        } else if ([field.value isKindOfClass:[FORMFieldValue class]]) {
-            FORMFieldValue *fieldValue = field.value;
-            self.formData.values[field.fieldID] = fieldValue.valueID;
+        } else if ([field.fieldValue isKindOfClass:[FORMFieldValue class]]) {
+            FORMFieldValue *fieldValue = field.fieldValue;
+            self.formData.values[field.fieldID] = fieldValue.fieldValueID;
         } else {
-            self.formData.values[field.fieldID] = field.value;
+            self.formData.values[field.fieldID] = field.fieldValue;
         }
 
-        BOOL hasFieldValue = (field.value && [field.value isKindOfClass:[FORMFieldValue class]]);
+        BOOL hasFieldValue = (field.fieldValue && [field.fieldValue isKindOfClass:[FORMFieldValue class]]);
         if (hasFieldValue) {
-            FORMFieldValue *fieldValue = field.value;
+            FORMFieldValue *fieldValue = field.fieldValue;
             [self processTargets:fieldValue.targets];
         } else if (field.targets.count > 0) {
             [self processTargets:field.targets];
@@ -796,7 +796,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 - (void)reset {
     for (FORMGroup *group in self.formData.groups) {
         for (FORMField *field in group.fields) {
-            field.value = nil;
+            field.fieldValue = nil;
         }
     }
 

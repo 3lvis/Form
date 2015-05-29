@@ -10,7 +10,7 @@
     self = [super init];
     if (!self) return nil;
 
-    _valueID = [dictionary andy_valueForKey:@"id"];
+    _fieldValueID = [dictionary andy_valueForKey:@"id"];
     _title = [dictionary andy_valueForKey:@"title"];
     _info = [dictionary andy_valueForKey:@"info"];
     _value = [dictionary andy_valueForKey:@"value"];
@@ -24,7 +24,7 @@
     }
 
     for (FORMTarget *target in targets) {
-        target.value = self.valueID;
+        target.fieldValue = self.fieldValueID;
     }
 
     _targets = targets;
@@ -35,12 +35,12 @@
 - (BOOL)identifierIsEqualTo:(id)identifier {
     if (!identifier) return NO;
 
-    if ([self.valueID isKindOfClass:[NSString class]]) {
-        return [self.valueID isEqualToString:identifier];
-    } else if ([self.valueID isKindOfClass:[NSNumber class]]) {
-        return [self.valueID isEqualToNumber:identifier];
-    } else if ([self.valueID isKindOfClass:[NSDate class]]) {
-        return [self.valueID isEqualToDate:identifier];
+    if ([self.fieldValueID isKindOfClass:[NSString class]]) {
+        return [self.fieldValueID isEqualToString:identifier];
+    } else if ([self.fieldValueID isKindOfClass:[NSNumber class]]) {
+        return [self.fieldValueID isEqualToNumber:identifier];
+    } else if ([self.fieldValueID isKindOfClass:[NSDate class]]) {
+        return [self.fieldValueID isEqualToDate:identifier];
     } else {
         abort();
     }
@@ -50,7 +50,7 @@
 
 - (NSString *)debugDescription {
     return [NSString stringWithFormat:@"\n — Field value: %@ —\n title: %@\n Info: %@\n Value: %@\n defaultValue: %@\n Targets: %@\n",
-            self.valueID, self.title, self.info, self.value, self.isDefaultValue ? @"YES" : @"NO", self.targets];
+            self.fieldValueID, self.title, self.info, self.value, self.isDefaultValue ? @"YES" : @"NO", self.targets];
 }
 
 @end

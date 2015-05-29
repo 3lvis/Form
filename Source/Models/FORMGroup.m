@@ -59,7 +59,7 @@
 
     for (NSDictionary *targetDict in array) {
         FORMTarget *target = [FORMTarget new];
-        target.targetID = [targetDict andy_valueForKey:@"id"];
+        target.fieldID = [targetDict andy_valueForKey:@"id"];
         target.typeString = [targetDict andy_valueForKey:@"type"];
         target.actionTypeString = [targetDict andy_valueForKey:@"action"];
         [targets addObject:target];
@@ -106,7 +106,7 @@
     for (FORMSection *section in self.sections) {
         [fields addObject:[NSString stringWithFormat:@"--- Section: %@ ---", section.sectionID]];
         for (FORMField *field in section.fields) {
-            [fields addObject:[NSString stringWithFormat:@"%@ --- %@ (section %@ : field %@)\n", field.fieldID, field.value, field.section.position, field.position]];
+            [fields addObject:[NSString stringWithFormat:@"%@ --- %@ (section %@ : field %@)\n", field.fieldID, field.fieldValue.value, field.section.position, field.position]];
         }
         [fields addObject:@" "];
     }

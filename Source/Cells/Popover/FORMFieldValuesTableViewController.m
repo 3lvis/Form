@@ -89,16 +89,16 @@
     FORMFieldValue *fieldValue = self.values[indexPath.row];
     cell.fieldValue = fieldValue;
 
-    if ([self.field.value isKindOfClass:[FORMFieldValue class]]) {
-        FORMFieldValue *currentFieldValue = self.field.value;
+    if ([self.field.fieldValue isKindOfClass:[FORMFieldValue class]]) {
+        FORMFieldValue *currentFieldValue = self.field.fieldValue;
 
-        if ([currentFieldValue identifierIsEqualTo:fieldValue.valueID]) {
+        if ([currentFieldValue identifierIsEqualTo:fieldValue.fieldValueID]) {
             [tableView selectRowAtIndexPath:indexPath
                                    animated:NO
                              scrollPosition:UITableViewScrollPositionNone];
         }
     } else {
-        if ([fieldValue identifierIsEqualTo:self.field.value]) {
+        if ([fieldValue identifierIsEqualTo:self.field.fieldValue]) {
             [tableView selectRowAtIndexPath:indexPath
                                    animated:NO
                              scrollPosition:UITableViewScrollPositionNone];

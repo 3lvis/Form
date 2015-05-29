@@ -78,18 +78,18 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 
     FORMFieldValue *confirmValue = [FORMFieldValue new];
     confirmValue.title = NSLocalizedString(@"Confirm", nil);
-    confirmValue.valueID = [NSDate date];
+    confirmValue.fieldValueID = [NSDate date];
     confirmValue.value = @YES;
 
     FORMFieldValue *clearValue = [FORMFieldValue new];
     clearValue.title = NSLocalizedString(@"Clear", nil);
-    clearValue.valueID = [NSDate date];
+    clearValue.fieldValueID = [NSDate date];
     clearValue.value = @NO;
 
     field.values = @[confirmValue, clearValue];
 
-    if (field.value) {
-        self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.value
+    if (field.fieldValue) {
+        self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.fieldValue.value
                                                                    dateStyle:[self dateStyleForField:field]
                                                                    timeStyle:[self timeStyleForField:field]];
     } else {
@@ -165,8 +165,8 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
         [self.datePicker setFrame:frame];
     }
 
-    if (self.field.value) {
-        self.datePicker.date = self.field.value;
+    if (self.field.fieldValue) {
+        self.datePicker.date = self.field.fieldValue.value;
     }
 
     if (self.field.minimumDate) {
@@ -197,9 +197,9 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 - (void)fieldValuesTableViewController:(FORMFieldValuesTableViewController *)fieldValuesTableViewController
                       didSelectedValue:(FORMFieldValue *)selectedValue {
     if ([selectedValue.value boolValue] == YES) {
-        self.field.value = self.datePicker.date;
+        self.field.fieldValue = [self.field fieldValueWithRawValue:self.datePicker.date];
     } else {
-        self.field.value = nil;
+        self.field.fieldValue = nil;
     }
 
     [self updateWithField:self.field];

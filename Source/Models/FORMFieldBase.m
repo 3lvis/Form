@@ -13,6 +13,7 @@
     self = [super init];
     if (!self) return nil;
 
+    _fieldID = [dictionary andy_valueForKey:@"id"];
     _title = [dictionary andy_valueForKey:@"title"];
     _info = [dictionary andy_valueForKey:@"info"];
 
@@ -35,7 +36,32 @@
     }
 
     _formula = [dictionary andy_valueForKey:@"formula"];
-    _value = [dictionary andy_valueForKey:@"value"];
+
+    FORMFieldValue *fieldValue;
+    id value;
+    if ([dictionary andy_valueForKey:@"value"]) {
+        value = [dictionary andy_valueForKey:@"value"];
+    } else if ([dictionary andy_valueForKey:@"field_value"]) {
+        value = [dictionary andy_valueForKey:@"field_value"];
+    } else if ([dictionary andy_valueForKey:@"target_value"]) {
+        value = [dictionary andy_valueForKey:@"target_value"];
+    }
+
+    if ([value isKindOfClass:[NSDictionary class]]) {
+        fieldValue = [[FORMFieldValue alloc] initWithDictionary:value];
+        if ([self.dataSource respondsToSelector:@selector(transformedRawValue:)]) {
+            fieldValue.value = [self.dataSource transformedRawValue:self.fieldValue.value];
+        }
+    } else {
+        fieldValue = [FORMFieldValue new];
+        fieldValue.fieldValueID = [NSString stringWithFormat:@"%@-value", self.fieldID];
+        if ([self.dataSource respondsToSelector:@selector(transformedRawValue:)]) {
+            fieldValue.value = [self.dataSource transformedRawValue:self.fieldValue.value];
+        } else {
+            fieldValue.value = value;
+        }
+    }
+    self.fieldValue = fieldValue;
 
     return self;
 }

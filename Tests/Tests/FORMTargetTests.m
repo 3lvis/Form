@@ -11,7 +11,7 @@
 - (void)testInitWithDictionary {
     FORMTarget *target = [FORMTarget showFieldTargetWithID:@"start_date"];
     XCTAssertNotNil(target);
-    XCTAssertEqualObjects(target.targetID, @"start_date");
+    XCTAssertEqualObjects(target.fieldID, @"start_date");
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"show");
     XCTAssertEqual(target.type, FORMTargetTypeField);
@@ -19,7 +19,7 @@
 
     target = [FORMTarget hideSectionTargetWithID:@"section_id"];
     XCTAssertNotNil(target);
-    XCTAssertEqualObjects(target.targetID, @"section_id");
+    XCTAssertEqualObjects(target.fieldID, @"section_id");
     XCTAssertEqualObjects(target.typeString, @"section");
     XCTAssertEqualObjects(target.actionTypeString, @"hide");
     XCTAssertEqual(target.type, FORMTargetTypeSection);
@@ -27,7 +27,7 @@
 
     target = [FORMTarget disableFieldTargetWithID:@"first_name"];
     XCTAssertNotNil(target);
-    XCTAssertEqualObjects(target.targetID, @"first_name");
+    XCTAssertEqualObjects(target.fieldID, @"first_name");
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"disable");
     XCTAssertEqual(target.type, FORMTargetTypeField);
@@ -35,7 +35,7 @@
 
     target = [FORMTarget enableFieldTargetWithID:@"last_name"];
     XCTAssertNotNil(target);
-    XCTAssertEqualObjects(target.targetID, @"last_name");
+    XCTAssertEqualObjects(target.fieldID, @"last_name");
     XCTAssertEqualObjects(target.typeString, @"field");
     XCTAssertEqualObjects(target.actionTypeString, @"enable");
     XCTAssertEqual(target.type, FORMTargetTypeField);

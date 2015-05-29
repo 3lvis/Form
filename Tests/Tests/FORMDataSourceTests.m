@@ -120,13 +120,13 @@
                                                              disabled:YES];
 
     FORMField *targetField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
-    XCTAssertNil(targetField.value);
+    XCTAssertNil(targetField.fieldValue.value);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.value = @"John Hyperseed";
+    updateTarget.fieldValue = [updateTarget fieldValueWithRawValue:@"John Hyperseed"];
 
     [dataSource processTargets:@[updateTarget]];
-    XCTAssertEqualObjects(targetField.value, @"John Hyperseed");
+    XCTAssertEqualObjects(targetField.fieldValue.value, @"John Hyperseed");
 }
 
 - (void)testDefaultValue {
@@ -140,7 +140,7 @@
                                                              disabled:YES];
 
     FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
-    XCTAssertNotNil(usernameField.value);
+    XCTAssertNotNil(usernameField.fieldValue.value);
 }
 
 - (void)testDefaultValueInTemplate {
@@ -160,7 +160,7 @@
 
     FORMField *ticketTypeField = [dataSource fieldWithID:@"tickets[0].type" includingHiddenFields:NO];
     XCTAssertNotNil(ticketTypeField);
-    XCTAssertEqualObjects(ticketTypeField.value, @1);
+    XCTAssertEqualObjects(ticketTypeField.fieldValue.value, @1);
 }
 
 - (void)testTargetCondition {
@@ -175,18 +175,18 @@
 
     FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
-    XCTAssertEqualObjects(usernameField.value, @0);
+    XCTAssertEqualObjects(usernameField.fieldValue.value, @0);
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.value = @"Mr.Melk";
+    updateTarget.fieldValue = [updateTarget fieldValueWithRawValue:@"Mr.Melk"];;
 
     updateTarget.condition = @"$username == 1";
     [dataSource processTargets:@[updateTarget]];
-    XCTAssertNil(displayNameField.value);
+    XCTAssertNil(displayNameField.fieldValue.value);
 
     updateTarget.condition = @"$username == 0";
     [dataSource processTargets:@[updateTarget]];
-    XCTAssertEqualObjects(displayNameField.value, @"Mr.Melk");
+    XCTAssertEqualObjects(displayNameField.fieldValue.value, @"Mr.Melk");
 }
 
 - (void)testTargetValidation {
@@ -202,9 +202,9 @@
     FORMField *displayNameField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
 
     FORMTarget *updateTarget = [FORMTarget updateFieldTargetWithID:@"display_name"];
-    updateTarget.value = @"7 words";
+    updateTarget.fieldValue = [updateTarget fieldValueWithRawValue:@"7 words"];
     [dataSource processTargets:@[updateTarget]];
-    XCTAssertEqualObjects(displayNameField.value, @"7 words");
+    XCTAssertEqualObjects(displayNameField.fieldValue.value, @"7 words");
     XCTAssertTrue([displayNameField valid]);
 
     updateTarget.validation = [[FORMFieldValidation alloc] initWithDictionary:@{@"required": @YES,
@@ -259,7 +259,7 @@
                                        @"last_name" : @"Nunez"}];
 
     FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
-    XCTAssertEqualObjects(field.value, @"Elvis Nunez");
+    XCTAssertEqualObjects(field.fieldValue.value, @"Elvis Nunez");
 }
 
 #pragma mark - testResetDynamicSectionsWithDictionary
@@ -505,12 +505,12 @@
     FORMField *firstNameField = [dataSource fieldWithID:@"first_name" includingHiddenFields:YES];
     XCTAssertNotNil(firstNameField);
 
-    firstNameField.value = @"John";
-    XCTAssertNotNil(firstNameField.value);
+    firstNameField.fieldValue = [firstNameField fieldValueWithRawValue:@"John"];;
+    XCTAssertNotNil(firstNameField.fieldValue.value);
 
     FORMTarget *clearTarget = [FORMTarget clearFieldTargetWithID:@"first_name"];
     [dataSource processTargets:@[clearTarget]];
-    XCTAssertNil(firstNameField.value);
+    XCTAssertNil(firstNameField.fieldValue.value);
 }
 
 - (void)testFormFieldsAreValid {
@@ -596,22 +596,22 @@
     XCTAssertNotNil(section);
 
     FORMField *field = [dataSource fieldWithID:@"companies[0].name" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.value, @"Facebook");
+    XCTAssertEqualObjects(field.fieldValue.value, @"Facebook");
 
     field = [dataSource fieldWithID:@"companies[0].phone_number" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.value, @"1222333");
+    XCTAssertEqualObjects(field.fieldValue.value, @"1222333");
 
     section = [dataSource sectionWithID:@"companies[1]"];
     XCTAssertNotNil(section);
 
     field = [dataSource fieldWithID:@"companies[1].name" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.value, @"Google");
+    XCTAssertEqualObjects(field.fieldValue.value, @"Google");
 
     field = [dataSource fieldWithID:@"companies[1].phone_number" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.value, @"4555666");
+    XCTAssertEqualObjects(field.fieldValue.value, @"4555666");
 
     field = [dataSource fieldWithID:@"email" includingHiddenFields:NO];
-    XCTAssertEqualObjects(field.value, @"hi@there.com");
+    XCTAssertEqualObjects(field.fieldValue.value, @"hi@there.com");
 }
 
 - (void)testAddingMultipleDynamicSections {
@@ -878,7 +878,7 @@
 
     [dataSource fieldCell:nil updatedWithField:addField];
 
-    XCTAssertEqualObjects(emailField.value, expectedEmail);
+    XCTAssertEqualObjects(emailField.fieldValue.value, expectedEmail);
 }
 
 - (void)testDynamicFormulas {
@@ -907,9 +907,9 @@
     [dataSource reloadWithDictionary:@{@"tickets[0].price" : @100,
                                        @"tickets[0].quantity" : @3}];
 
-    XCTAssertEqualObjects(priceTarget.targetID, @"tickets[0].total");
+    XCTAssertEqualObjects(priceTarget.fieldID, @"tickets[0].total");
     XCTAssertEqualObjects(totalField.formula, @"tickets[0].quantity * tickets[0].price");
-    XCTAssertEqualObjects(totalField.value, @300);
+    XCTAssertEqualObjects(totalField.fieldValue.value, @300);
 
     addField = [dataSource fieldWithID:@"tickets.add" includingHiddenFields:NO];
     XCTAssertNotNil(addField);
@@ -929,9 +929,9 @@
     [dataSource reloadWithDictionary:@{@"tickets[1].price" : @100,
                                        @"tickets[1].quantity" : @3}];
 
-    XCTAssertEqualObjects(priceTarget.targetID, @"tickets[1].total");
+    XCTAssertEqualObjects(priceTarget.fieldID, @"tickets[1].total");
     XCTAssertEqualObjects(totalField.formula, @"tickets[1].quantity * tickets[1].price");
-    XCTAssertEqualObjects(totalField.value, @300);
+    XCTAssertEqualObjects(totalField.fieldValue.value, @300);
 }
 
 @end

@@ -35,7 +35,7 @@
     XCTAssertEqualObjects(field.position, @0);
     XCTAssertEqualObjects(field.fieldID, @"first_name");
     XCTAssertEqualObjects(field.title, @"First name");
-    XCTAssertEqualObjects(field.value, @"John Malkobitch");
+    XCTAssertEqualObjects(field.fieldValue.value, @"John Malkobitch");
     XCTAssertEqualObjects(field.typeString, @"name");
     XCTAssertTrue(field.type == FORMFieldTypeText);
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
@@ -61,7 +61,7 @@
 
     XCTAssertEqualObjects([field.minimumDate hyp_dateString], @"2000-01-01");
     XCTAssertEqualObjects([field.maximumDate hyp_dateString], @"2015-01-01");
-    XCTAssertEqualObjects([field.value hyp_dateString], @"2014-01-01");
+    XCTAssertEqualObjects([field.fieldValue.value hyp_dateString], @"2014-01-01");
 
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
     XCTAssertTrue(field.isDisabled);
@@ -86,7 +86,7 @@
 
     XCTAssertEqualObjects([field.minimumDate hyp_dateString], @"2000-01-01");
     XCTAssertEqualObjects([field.maximumDate hyp_dateString], @"2015-01-01");
-    XCTAssertEqualObjects([field.value hyp_dateString], @"2014-01-01");
+    XCTAssertEqualObjects([field.fieldValue.value hyp_dateString], @"2014-01-01");
 
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
     XCTAssertTrue(field.isDisabled);
@@ -112,7 +112,7 @@
 
     XCTAssertEqualObjects([field.minimumDate hyp_dateString], @"2002-01-01");
     XCTAssertEqualObjects([field.maximumDate hyp_dateString], @"2013-01-01");
-    XCTAssertEqualObjects([field.value hyp_dateString], @"2011-01-01");
+    XCTAssertEqualObjects([field.fieldValue.value hyp_dateString], @"2011-01-01");
 
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(15, 2)));
     XCTAssertFalse(field.isDisabled);
@@ -164,11 +164,11 @@
                                                     position:0
                                                     disabled:NO
                                            disabledFieldsIDs:nil];
-    field.value = @"Test";
-    XCTAssertEqualObjects(field.value, @"Test");
+    field.fieldValue = [field fieldValueWithRawValue:@"Test"];
+    XCTAssertEqualObjects(field.fieldValue.value, @"Test");
 
-    field.value = @"";
-    XCTAssertNil(field.value);
+    field.fieldValue = [field fieldValueWithRawValue:@""];
+    XCTAssertNil(field.fieldValue.value);
 }
 
 @end

@@ -44,16 +44,16 @@ static const NSInteger FORMSelectMaxItemCount = 6;
 - (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
 
-    if (field.value) {
-        if ([field.value isKindOfClass:[FORMFieldValue class]]) {
-            FORMFieldValue *fieldValue = (FORMFieldValue *)field.value;
+    if (field.fieldValue) {
+        if ([field.fieldValue isKindOfClass:[FORMFieldValue class]]) {
+            FORMFieldValue *fieldValue = (FORMFieldValue *)field.fieldValue;
             self.fieldValueLabel.text = fieldValue.title;
         } else {
             self.fieldValueLabel.text = nil;
 
             for (FORMFieldValue *fieldValue in field.values) {
-                if ([fieldValue identifierIsEqualTo:field.value]) {
-                    field.value = fieldValue.valueID;
+                if ([fieldValue identifierIsEqualTo:field.fieldValue]) {
+                    field.fieldValue = fieldValue.fieldValueID;
                     self.fieldValueLabel.text = fieldValue.title;
                     break;
                 }
@@ -84,7 +84,7 @@ static const NSInteger FORMSelectMaxItemCount = 6;
 
 - (void)fieldValuesTableViewController:(FORMFieldValuesTableViewController *)fieldValuesTableViewController
                       didSelectedValue:(FORMFieldValue *)selectedValue {
-    self.field.value = selectedValue.valueID;
+    self.field.fieldValue = selectedValue.fieldValueID;
 
     [self updateWithField:self.field];
 

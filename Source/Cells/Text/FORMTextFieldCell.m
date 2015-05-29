@@ -1,6 +1,7 @@
 #import "FORMTextFieldCell.h"
 
 #import "FORMTooltipView.h"
+#import "FORMFieldValue.h"
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMTooltipViewMinimumWidth = 90.0f;
@@ -190,21 +191,21 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 #pragma mark - Private methods
 
 - (NSString *)rawTextForField:(FORMField *)field {
-    NSString *rawText = field.value;
+    NSString *rawText = field.fieldValue.value;
 
-    if (field.value) {
+    if (field.fieldValue) {
         switch (field.type) {
             case FORMFieldTypeNumber: {
-                if ([field.value isKindOfClass:[NSNumber class]]) {
-                    NSNumber *value = field.value;
+                if ([field.fieldValue isKindOfClass:[NSNumber class]]) {
+                    NSNumber *value = field.fieldValue.value;
                     rawText = [value stringValue];
                 }
             } break;
             case FORMFieldTypeFloat: {
-                NSNumber *value = field.value;
+                NSNumber *value = field.fieldValue.value;
 
-                if ([field.value isKindOfClass:[NSString class]]) {
-                    NSMutableString *fieldValue = [field.value mutableCopy];
+                if ([field.fieldValue isKindOfClass:[NSString class]]) {
+                    NSMutableString *fieldValue = [field.fieldValue mutableCopy];
                     [fieldValue replaceOccurrencesOfString:@","
                                                 withString:@"."
                                                    options:NSCaseInsensitiveSearch
@@ -240,7 +241,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 }
 
 - (void)clearAction {
-    self.field.value = nil;
+    self.field.fieldValue = nil;
     [self updateWithField:self.field];
 }
 
@@ -330,7 +331,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
 - (void)textFormField:(FORMTextField *)textField
     didUpdateWithText:(NSString *)text {
-    self.field.value = text;
+    self.field.fieldValue = [self.field fieldValueWithRawValue:text];
     [self validate];
 
     if (!self.textField.valid) {

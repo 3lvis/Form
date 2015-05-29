@@ -34,15 +34,15 @@
 - (void)testRawTextForField {
     FORMTextFieldCell *cell = [FORMTextFieldCell new];
     FORMField *field = [FORMField new];
-    field.value = @1;
+    field.fieldValue = [field fieldValueWithRawValue:@1];
     field.type = FORMFieldTypeNumber;
     XCTAssertEqualObjects([cell rawTextForField:field], @"1");
 
-    field.value = @1.1;
+    field.fieldValue = [field fieldValueWithRawValue:@1.1];
     field.type = FORMFieldTypeFloat;
     XCTAssertEqualObjects([cell rawTextForField:field], @"1.10");
 
-    field.value = @"1";
+    field.fieldValue = [field fieldValueWithRawValue:@"1"];
     field.type = FORMFieldTypeText;
     XCTAssertEqualObjects([cell rawTextForField:field], @"1");
 }

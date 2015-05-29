@@ -22,7 +22,6 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 
 @interface FORMField : FORMFieldBase
 
-@property (nonatomic) NSString *fieldID;
 @property (nonatomic) NSString *typeString;
 @property (nonatomic) NSString *inputTypeString;
 @property (nonatomic) FORMFieldType type;
@@ -36,7 +35,6 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) BOOL sectionSeparator;
 @property (nonatomic, readonly) FORMValidationResultType validate;
 @property (nonatomic, readonly, copy) NSArray *safeTargets;
-@property (nonatomic, readonly) id rawFieldValue;
 @property (nonatomic, readonly) id inputValidator;
 @property (nonatomic, readonly) id formatter;
 @property (nonatomic, readonly, copy) NSNumber *sectionPosition;
@@ -54,6 +52,8 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 - (FORMFieldType)typeFromTypeString:(NSString *)typeString;
 
 - (FORMFieldValue *)selectFieldValueWithValueID:(id)fieldValueID;
+
+- (FORMFieldValue *)fieldValueWithRawValue:(id)rawValue;
 
 - (NSUInteger)indexInSectionUsingGroups:(NSArray *)groups;
 
