@@ -44,15 +44,6 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic, getter = isDisabled) BOOL disabled;
 @property (nonatomic, getter = isHidden) BOOL hidden;
 
-// FORMFieldBase
-@property (nonatomic) NSString *title;
-@property (nonatomic) NSString *info;
-@property (nonatomic) NSDate *minimumDate;
-@property (nonatomic) NSDate *maximumDate;
-@property (nonatomic) id value;
-@property (nonatomic) FORMFieldValidation *validation;
-@property (nonatomic) NSString *formula;
-
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
                           position:(NSInteger)position
                           disabled:(BOOL)disabled
