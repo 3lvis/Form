@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A49A4CC1266829DA220CDA4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC563973FE23E4F285E91561 /* libPods.a */; };
+		068D10B226CDF7A0FF0A35B7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E8C0071C3E51B47B0E10B8A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F6AF1D111A9DC7F6000433CA /* JSON.json in Resources */ = {isa = PBXBuildFile; fileRef = F6AF1D101A9DC7F6000433CA /* JSON.json */; };
 		F6AF1D171A9DCAFE000433CA /* HYPDemoLoginCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6AF1D161A9DCAFE000433CA /* HYPDemoLoginCollectionViewController.m */; };
 		F6D859A21A9D336600546123 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D859A11A9D336600546123 /* main.m */; };
@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		0313BC2E4AA3CA8483A52793 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		89A08BABBCCE352EAE0C2077 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		DC563973FE23E4F285E91561 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E8C0071C3E51B47B0E10B8A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6AF1D101A9DC7F6000433CA /* JSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JSON.json; sourceTree = "<group>"; };
 		F6AF1D151A9DCAFE000433CA /* HYPDemoLoginCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPDemoLoginCollectionViewController.h; sourceTree = "<group>"; };
 		F6AF1D161A9DCAFE000433CA /* HYPDemoLoginCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPDemoLoginCollectionViewController.m; sourceTree = "<group>"; };
@@ -39,7 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A49A4CC1266829DA220CDA4 /* libPods.a in Frameworks */,
+				068D10B226CDF7A0FF0A35B7 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +49,7 @@
 		2785BE7685DBBBEB1079AE4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DC563973FE23E4F285E91561 /* libPods.a */,
+				8E8C0071C3E51B47B0E10B8A /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -126,6 +126,7 @@
 				F6D859991A9D336600546123 /* Frameworks */,
 				F6D8599A1A9D336600546123 /* Resources */,
 				5087E4353B480F3B1D9C3E5D /* Copy Pods Resources */,
+				96AF40477FC1032D567103AA /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -143,7 +144,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "Ramon Gilabert";
+				ORGANIZATIONNAME = "Hyper AS";
 				TargetAttributes = {
 					F6D8599B1A9D336600546123 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -196,6 +197,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96AF40477FC1032D567103AA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DAFF3A509D62E425DC9DBDA7 /* Check Pods Manifest.lock */ = {
@@ -282,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -318,7 +334,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;

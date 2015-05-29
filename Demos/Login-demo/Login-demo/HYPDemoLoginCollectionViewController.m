@@ -65,10 +65,6 @@
     self.collectionView.dataSource = self.dataSource;
     self.collectionView.contentInset = UIEdgeInsetsMake([UIScreen mainScreen].bounds.size.width/3, 0, 0, 0);
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    
-    UIImageView *formLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"form-logo"]];
-    formLogo.contentMode = UIViewContentModeTop;
-    self.collectionView.backgroundView = formLogo;
 }
 
 #pragma mark - UICollectionViewDelegate
