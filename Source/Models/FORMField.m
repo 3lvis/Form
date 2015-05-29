@@ -325,7 +325,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 - (NSString *)description {
     return [NSString stringWithFormat:@"\n — Field: %@ —\n title: %@\n info: %@\n size: %@\n position: %@\n value: %@\n type: %@\n values: %@\n disabled: %@\n initiallyDisabled: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n valid: %@\n sectionSeparator: %@\n",
             self.fieldID, self.title, self.info, NSStringFromCGSize(self.size), self.position,
-            self.value, self.typeString, self.values, (self.disabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
+            self.value, self.typeString, self.values, (self.disabled.boolValue) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
             self.maximumDate, self.validation, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
 }
 

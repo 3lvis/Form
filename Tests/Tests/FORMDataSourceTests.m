@@ -106,7 +106,7 @@
                                                              disabled:YES];
 
     FORMField *totalField = [dataSource fieldWithID:@"total" includingHiddenFields:YES];
-    XCTAssertTrue(totalField.disabled);
+    XCTAssertTrue(totalField.disabled.boolValue);
 }
 
 - (void)testUpdatingTargetValue {

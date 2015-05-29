@@ -39,8 +39,8 @@
     XCTAssertEqualObjects(field.typeString, @"name");
     XCTAssertTrue(field.type == FORMFieldTypeText);
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
-    XCTAssertFalse(field.disabled);
-    XCTAssertTrue(field.hidden);
+    XCTAssertFalse(field.disabled.boolValue);
+    XCTAssertTrue(field.hidden.boolValue);
     XCTAssertNotNil(field.validation);
 
     field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_date",
@@ -64,9 +64,9 @@
     XCTAssertEqualObjects([field.value hyp_dateString], @"2014-01-01");
 
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
-    XCTAssertTrue(field.disabled);
+    XCTAssertTrue(field.disabled.boolValue);
     XCTAssertNil(field.validation);
-    XCTAssertFalse(field.hidden);
+    XCTAssertFalse(field.hidden.boolValue);
 
     field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_time",
                                                     @"title": @"Start time",
@@ -89,9 +89,9 @@
     XCTAssertEqualObjects([field.value hyp_dateString], @"2014-01-01");
 
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(10, 4)));
-    XCTAssertTrue(field.disabled);
+    XCTAssertTrue(field.disabled.boolValue);
     XCTAssertNil(field.validation);
-    XCTAssertFalse(field.hidden);
+    XCTAssertFalse(field.hidden.boolValue);
 
 
     field = [[FORMField alloc] initWithDictionary:@{@"id": @"dateAndTime",
@@ -115,9 +115,9 @@
     XCTAssertEqualObjects([field.value hyp_dateString], @"2011-01-01");
 
     XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(15, 2)));
-    XCTAssertFalse(field.disabled);
+    XCTAssertFalse(field.disabled.boolValue);
     XCTAssertNil(field.validation);
-    XCTAssertFalse(field.hidden);
+    XCTAssertFalse(field.hidden.boolValue);
 }
 
 - (void)testInputValidator {

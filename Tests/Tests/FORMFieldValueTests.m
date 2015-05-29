@@ -19,14 +19,14 @@
     XCTAssertEqualObjects(fieldValue.title, @"Contract Type");
     XCTAssertEqualObjects(fieldValue.info, @"This is ma' contract");
     XCTAssertEqualObjects(fieldValue.value, @1);
-    XCTAssertTrue(fieldValue.defaultValue);
+    XCTAssertTrue(fieldValue.defaultValue.boolValue);
 
     fieldValue = [[FORMFieldValue alloc] initWithDictionary:@{@"id": @0,
                                                               @"title": @"Full time"}];
     XCTAssertNotNil(fieldValue);
     XCTAssertEqualObjects(fieldValue.valueID, @0);
     XCTAssertEqualObjects(fieldValue.title, @"Full time");
-    XCTAssertFalse(fieldValue.defaultValue);
+    XCTAssertFalse(fieldValue.defaultValue.boolValue);
 }
 
 - (void)testIdentifierIsEqualTo {

@@ -21,7 +21,7 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"{required: %@\n, minimumLength: %@\n, maximumLength: %@\n, format: %@\n, minimumValue: %@\n, maximumValue: %@\n",
-            (self.required) ? @"YES" : @"NO", self.minimumLength, self.maximumLength,
+            (self.required.boolValue) ? @"YES" : @"NO", self.minimumLength, self.maximumLength,
             self.format, self.minimumValue, self.maximumValue];
 }
 
