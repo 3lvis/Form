@@ -17,7 +17,7 @@
                                                                  @"min_value": @1.1,
                                                                  @"max_value": @9.9}];
     XCTAssertNotNil(fieldValidation);
-    XCTAssertTrue(fieldValidation.required.boolValue);
+    XCTAssertTrue(fieldValidation.isRequired);
     XCTAssertEqualObjects(fieldValidation.minimumLength, @1);
     XCTAssertEqualObjects(fieldValidation.maximumLength, @10);
     XCTAssertEqualObjects(fieldValidation.format, @"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}");
@@ -27,7 +27,7 @@
     fieldValidation = [[FORMFieldValidation alloc]
                                             initWithDictionary:@{}];
     XCTAssertNotNil(fieldValidation);
-    XCTAssertFalse(fieldValidation.required.boolValue);
+    XCTAssertFalse(fieldValidation.isRequired);
     XCTAssertNil(fieldValidation.minimumLength);
     XCTAssertNil(fieldValidation.maximumLength);
     XCTAssertNil(fieldValidation.format);

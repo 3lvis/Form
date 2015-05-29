@@ -91,11 +91,11 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
 - (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
 
-    self.iconImageView.hidden = field.disabled.boolValue;
+    self.iconImageView.hidden = field.isDisabled;
 
     self.fieldValueLabel.hidden = (field.sectionSeparator);
-    self.fieldValueLabel.enabled = !field.disabled.boolValue;
-    self.fieldValueLabel.userInteractionEnabled = !field.disabled.boolValue;
+    self.fieldValueLabel.enabled = !field.isDisabled;
+    self.fieldValueLabel.userInteractionEnabled = !field.isDisabled;
     self.fieldValueLabel.valid = field.valid;
 }
 

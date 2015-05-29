@@ -183,7 +183,7 @@
 		144A287E1A99B2CF004A9086 /* FORMLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMLayout.h; sourceTree = "<group>"; };
 		144A287F1A99B2CF004A9086 /* FORMLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMLayout.m; sourceTree = "<group>"; };
 		144A28801A99B2CF004A9086 /* FORMData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMData.h; sourceTree = "<group>"; };
-		144A28811A99B2CF004A9086 /* FORMData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMData.m; sourceTree = "<group>"; };
+		144A28811A99B2CF004A9086 /* FORMData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FORMData.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		144A28821A99B2CF004A9086 /* FORMGroupHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMGroupHeaderView.h; sourceTree = "<group>"; };
 		144A28831A99B2CF004A9086 /* FORMGroupHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMGroupHeaderView.m; sourceTree = "<group>"; };
 		144A28871A99B2CF004A9086 /* FORMBankAccountNumberInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMBankAccountNumberInputValidator.h; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		144A289C1A99B2CF004A9086 /* FORMFieldValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMFieldValidation.h; sourceTree = "<group>"; };
 		144A289D1A99B2CF004A9086 /* FORMFieldValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValidation.m; sourceTree = "<group>"; };
 		144A289E1A99B2CF004A9086 /* FORMFieldValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMFieldValue.h; sourceTree = "<group>"; };
-		144A289F1A99B2CF004A9086 /* FORMFieldValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValue.m; sourceTree = "<group>"; };
+		144A289F1A99B2CF004A9086 /* FORMFieldValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FORMFieldValue.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		144A28A01A99B2CF004A9086 /* FORMGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMGroup.h; sourceTree = "<group>"; };
 		144A28A11A99B2CF004A9086 /* FORMGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMGroup.m; sourceTree = "<group>"; };
 		144A28A21A99B2CF004A9086 /* FORMSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMSection.h; sourceTree = "<group>"; };

@@ -27,19 +27,22 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) NSString *inputTypeString;
 @property (nonatomic) FORMFieldType type;
 @property (nonatomic) NSArray *values;
-@property (nonatomic) NSNumber *disabled;
 @property (nonatomic) BOOL initiallyDisabled;
-@property (nonatomic) NSNumber *hidden;
 @property (nonatomic) NSNumber *position;
 @property (nonatomic) CGSize size;
-
+@property (nonatomic) NSNumber *disabled;
+@property (nonatomic) NSNumber *hidden;
 @property (nonatomic) NSArray *targets;
-
 @property (nonatomic) FORMSection *section;
-
 @property (nonatomic) BOOL valid;
 @property (nonatomic) FORMValidationResultType validationResultType;
 @property (nonatomic) BOOL sectionSeparator;
+@property (nonatomic, readonly) FORMValidationResultType validate;
+@property (nonatomic, readonly, copy) NSArray *safeTargets;
+@property (nonatomic, readonly) id rawFieldValue;
+@property (nonatomic, readonly) id inputValidator;
+@property (nonatomic, readonly) id formatter;
+@property (nonatomic, readonly, copy) NSNumber *sectionPosition;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
                           position:(NSInteger)position
@@ -54,12 +57,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 
 - (NSUInteger)indexInSectionUsingGroups:(NSArray *)groups;
 
-@property (nonatomic, readonly, copy) NSArray *safeTargets;
-
-@property (nonatomic, readonly) FORMValidationResultType validate;
-@property (nonatomic, readonly, strong) id rawFieldValue;
-@property (nonatomic, readonly, strong) id inputValidator;
-@property (nonatomic, readonly, strong) id formatter;
-@property (nonatomic, readonly, copy) NSNumber *sectionPosition;
+- (BOOL)isDisabled;
+- (BOOL)isHidden;
 
 @end

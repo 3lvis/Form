@@ -23,7 +23,7 @@
     if (!self.validation) return FORMValidationResultTypeValid;
 
     if (!fieldValue) {
-        if (self.validation.required.boolValue) {
+        if (self.validation.isRequired) {
             return FORMValidationResultTypeInvalidValueMissing;
         } else {
             return FORMValidationResultTypeValid;

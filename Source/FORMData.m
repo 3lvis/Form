@@ -110,12 +110,12 @@
         for (FORMField *field in group.fields) {
             id initialValue = [initialValues andy_valueForKey:field.fieldID];
 
-            if (field.hidden.boolValue){
+            if (field.isHidden){
                 [hideTargets addObject:[FORMTarget hideFieldTargetWithID:field.fieldID]];
             }
 
             for (FORMFieldValue *fieldValue in field.values) {
-                BOOL shouldUseDefaultValue = (fieldValue.defaultValue.boolValue && !field.value);
+                BOOL shouldUseDefaultValue = (fieldValue.isDefaultValue && !field.value);
                 if (shouldUseDefaultValue) {
                     field.value = fieldValue.valueID;
                     self.values[field.fieldID] = fieldValue.valueID;
@@ -285,7 +285,7 @@
     for (FORMGroup *group in self.groups) {
         for (FORMSection *section in group.sections) {
             for (FORMField *field in section.fields) {
-                if (field.validation && field.validation.required.boolValue) {
+                if (field.validation && field.validation.isRequired) {
                     requiredFields[field.fieldID] = field;
                 }
             }

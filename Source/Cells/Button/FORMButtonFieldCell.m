@@ -41,8 +41,8 @@
 - (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
 
-    self.button.enabled = !field.disabled.boolValue;
-    self.disabled = field.disabled.boolValue;
+    self.button.enabled = !field.isDisabled;
+    self.disabled = field.isDisabled;
     self.headingLabel.hidden = YES;
 
     [self.button setTitle:field.title forState:UIControlStateNormal];

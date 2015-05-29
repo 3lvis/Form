@@ -78,21 +78,21 @@
     [dataSource enable];
 
     FORMField *targetField = [dataSource fieldWithID:@"base_salary" includingHiddenFields:YES];
-    XCTAssertFalse(targetField.disabled.boolValue);
+    XCTAssertFalse(targetField.isDisabled);
 
     FORMTarget *disableTarget = [FORMTarget disableFieldTargetWithID:@"base_salary"];
     [dataSource processTargets:@[disableTarget]];
-    XCTAssertTrue(targetField.disabled.boolValue);
+    XCTAssertTrue(targetField.isDisabled);
 
     FORMTarget *enableTarget = [FORMTarget enableFieldTargetWithID:@"base_salary"];
     [dataSource processTargets:@[enableTarget]];
-    XCTAssertFalse(targetField.disabled.boolValue);
+    XCTAssertFalse(targetField.isDisabled);
 
     [dataSource disable];
-    XCTAssertTrue(targetField.disabled.boolValue);
+    XCTAssertTrue(targetField.isDisabled);
 
     [dataSource enable];
-    XCTAssertFalse(targetField.disabled.boolValue);
+    XCTAssertFalse(targetField.isDisabled);
 }
 
 - (void)testInitiallyDisabled {
@@ -106,7 +106,7 @@
                                                              disabled:YES];
 
     FORMField *totalField = [dataSource fieldWithID:@"total" includingHiddenFields:YES];
-    XCTAssertTrue(totalField.disabled.boolValue);
+    XCTAssertTrue(totalField.isDisabled);
 }
 
 - (void)testUpdatingTargetValue {

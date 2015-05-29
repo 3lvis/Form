@@ -16,4 +16,6 @@
 
 - (BOOL)identifierIsEqualTo:(id)identifier;
 
+- (BOOL)isDefaultValue;
+
 @end

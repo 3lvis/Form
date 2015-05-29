@@ -50,7 +50,11 @@
 
 - (NSString *)debugDescription {
     return [NSString stringWithFormat:@"\n — Field value: %@ —\n title: %@\n Info: %@\n Value: %@\n defaultValue: %@\n Targets: %@\n",
-            self.valueID, self.title, self.info, self.value, self.defaultValue.boolValue ? @"YES" : @"NO", self.targets];
+            self.valueID, self.title, self.info, self.value, self.isDefaultValue ? @"YES" : @"NO", self.targets];
+}
+
+- (BOOL)isDefaultValue {
+    return self.defaultValue.boolValue;
 }
 
 @end

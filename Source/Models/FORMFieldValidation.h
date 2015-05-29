@@ -14,4 +14,6 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
+- (BOOL)isRequired;
+
 @end
