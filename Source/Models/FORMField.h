@@ -27,11 +27,8 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) NSString *inputTypeString;
 @property (nonatomic) FORMFieldType type;
 @property (nonatomic) NSArray *values;
-@property (nonatomic) BOOL initiallyDisabled;
 @property (nonatomic) NSNumber *position;
 @property (nonatomic) CGSize size;
-@property (nonatomic) NSNumber *disabled;
-@property (nonatomic) NSNumber *hidden;
 @property (nonatomic) NSArray *targets;
 @property (nonatomic) FORMSection *section;
 @property (nonatomic) BOOL valid;
@@ -43,6 +40,18 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic, readonly) id inputValidator;
 @property (nonatomic, readonly) id formatter;
 @property (nonatomic, readonly, copy) NSNumber *sectionPosition;
+@property (nonatomic, getter = isInitiallyDisabled) BOOL initiallyDisabled;
+@property (nonatomic, getter = isDisabled) BOOL disabled;
+@property (nonatomic, getter = isHidden) BOOL hidden;
+
+// FORMFieldBase
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSString *info;
+@property (nonatomic) NSDate *minimumDate;
+@property (nonatomic) NSDate *maximumDate;
+@property (nonatomic) id value;
+@property (nonatomic) FORMFieldValidation *validation;
+@property (nonatomic) NSString *formula;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
                           position:(NSInteger)position
@@ -56,8 +65,5 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 - (FORMFieldValue *)selectFieldValueWithValueID:(id)fieldValueID;
 
 - (NSUInteger)indexInSectionUsingGroups:(NSArray *)groups;
-
-- (BOOL)isDisabled;
-- (BOOL)isHidden;
 
 @end

@@ -14,7 +14,7 @@
     self.minimumLength = [dictionary andy_valueForKey:@"min_length"];
     self.maximumValue = [dictionary andy_valueForKey:@"max_value"];
     self.minimumValue = [dictionary andy_valueForKey:@"min_value"];
-    self.required = [dictionary andy_valueForKey:@"required"];
+    self.required = [[dictionary andy_valueForKey:@"required"] boolValue];
 
     return self;
 }
@@ -23,10 +23,6 @@
     return [NSString stringWithFormat:@"{required: %@\n, minimumLength: %@\n, maximumLength: %@\n, format: %@\n, minimumValue: %@\n, maximumValue: %@\n",
             (self.isRequired) ? @"YES" : @"NO", self.minimumLength, self.maximumLength,
             self.format, self.minimumValue, self.maximumValue];
-}
-
-- (BOOL)isRequired {
-    return self.required.boolValue;
 }
 
 @end

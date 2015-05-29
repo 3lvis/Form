@@ -915,7 +915,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
         [self fieldWithID:target.targetID includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
             if (field) {
-                field.disabled = @(!enabled);
+                field.disabled = !enabled;
                 if (indexPath) {
                     [indexPaths addObject:indexPath];
                 }

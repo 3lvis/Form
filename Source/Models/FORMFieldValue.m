@@ -14,7 +14,7 @@
     _title = [dictionary andy_valueForKey:@"title"];
     _info = [dictionary andy_valueForKey:@"info"];
     _value = [dictionary andy_valueForKey:@"value"];
-    _defaultValue = [dictionary andy_valueForKey:@"default"];
+    _defaultValue = [[dictionary andy_valueForKey:@"default"] boolValue];
 
     NSMutableArray *targets = [NSMutableArray new];
 
@@ -51,10 +51,6 @@
 - (NSString *)debugDescription {
     return [NSString stringWithFormat:@"\n — Field value: %@ —\n title: %@\n Info: %@\n Value: %@\n defaultValue: %@\n Targets: %@\n",
             self.valueID, self.title, self.info, self.value, self.isDefaultValue ? @"YES" : @"NO", self.targets];
-}
-
-- (BOOL)isDefaultValue {
-    return self.defaultValue.boolValue;
 }
 
 @end

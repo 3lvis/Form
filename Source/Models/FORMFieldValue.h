@@ -10,12 +10,10 @@
 @property (nonatomic) NSArray *targets;
 @property (nonatomic) FORMField *field;
 @property (nonatomic) NSNumber *value;
-@property (nonatomic) NSNumber *defaultValue;
+@property (nonatomic, getter = isDefaultValue) BOOL defaultValue;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
 - (BOOL)identifierIsEqualTo:(id)identifier;
-
-- (BOOL)isDefaultValue;
 
 @end

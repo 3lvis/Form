@@ -33,7 +33,6 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _type = [self typeFromTypeString:self.typeString];
     _inputTypeString = [dictionary andy_valueForKey:@"input_type"];
-    _hidden = [dictionary andy_valueForKey:@"hidden"];
 
     NSNumber *width = [dictionary andy_valueForKey:@"size.width"] ?: @100;
     NSNumber *height = [dictionary andy_valueForKey:@"size.height"]?: @1;
@@ -41,7 +40,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     self.position = @(position);
 
-    _disabled = [dictionary andy_valueForKey:@"disabled"];
+    _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
+    _disabled = [[dictionary andy_valueForKey:@"disabled"] boolValue];
     _initiallyDisabled = _disabled;
 
     NSMutableArray *targets = [NSMutableArray new];
@@ -327,14 +327,6 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
             self.fieldID, self.title, self.info, NSStringFromCGSize(self.size), self.position,
             self.value, self.typeString, self.values, (self.isDisabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
             self.maximumDate, self.validation, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
-}
-
-- (BOOL)isDisabled {
-    return self.disabled.boolValue;
-}
-
-- (BOOL)isHidden {
-    return self.hidden.boolValue;
 }
 
 @end
