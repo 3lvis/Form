@@ -114,7 +114,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     switch (self.type) {
         case FORMFieldTypeNumber:
-        case FORMFieldTypeFloat: {
+	case FORMFieldTypeFloat:
+	case FORMFieldTypeCount: {
             if (![fieldValue isKindOfClass:[NSString class]]) {
                 resultValue = [fieldValue stringValue];
             }
@@ -161,6 +162,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
             }
             return @([self.value floatValue]);
         case FORMFieldTypeNumber:
+	case FORMFieldTypeCount:
             return @([self.value integerValue]);
 
         case FORMFieldTypeText:
@@ -238,6 +240,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         return FORMFieldTypeFloat;
     } else if ([typeString isEqualToString:@"number"]) {
         return FORMFieldTypeNumber;
+    } else if ([typeString isEqualToString:@"count"]) {
+	return FORMFieldTypeCount;
     } else if ([typeString isEqualToString:@"button"]) {
         return FORMFieldTypeButton;
     } else {

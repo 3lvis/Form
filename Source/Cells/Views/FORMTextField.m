@@ -8,6 +8,10 @@
 
 static const CGFloat FORMTextFieldClearButtonWidth = 30.0f;
 static const CGFloat FORMTextFieldClearButtonHeight = 20.0f;
+static const CGFloat FORMTextFieldMinusButtonWidth = 30.0f;
+static const CGFloat FORMTextFieldMinusButtonHeight = 20.0f;
+static const CGFloat FORMTextFieldPlusButtonWidth = 30.0f;
+static const CGFloat FORMTextFieldPlusButtonHeight = 20.0f;
 
 static UIColor *activeBackgroundColor;
 static UIColor *activeBorderColor;
@@ -144,6 +148,9 @@ static BOOL enabledProperty;
         type = FORMTextFieldTypeDefault;
     } else if ([typeString isEqualToString:@"password"]) {
         type = FORMTextFieldTypePassword;
+    } else if ([typeString isEqualToString:@"count"]) {
+	type = FORMTextFieldTypeCount;
+	[self setCountButtons];
     } else if (!typeString.length) {
         type = FORMTextFieldTypeDefault;
     } else {
@@ -175,6 +182,8 @@ static BOOL enabledProperty;
         inputType = FORMTextFieldInputTypeDefault;
     } else if ([inputTypeString isEqualToString:@"password"]) {
         inputType = FORMTextFieldInputTypePassword;
+    } else if ([inputTypeString isEqualToString:@"count"]) {
+	inputType = FORMTextFieldInputTypeCount;
     } else if (!inputTypeString.length) {
         inputType = FORMTextFieldInputTypeDefault;
     } else {
@@ -289,6 +298,30 @@ static BOOL enabledProperty;
     }
 }
 
+- (void)minusButtonAction {
+    NSNumber *number = [NSNumber numberWithInt:[self.rawText integerValue] - 1];
+    if ([number integerValue] < 0) {
+      self.rawText = @"0";
+    } else {
+      self.rawText = [number stringValue];
+    }
+
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+	[self.textFieldDelegate textFormField:self
+			    didUpdateWithText:self.rawText];
+    }
+}
+
+- (void)plusButtonAction {
+    NSNumber *number = [NSNumber numberWithInt:[self.rawText integerValue] + 1];
+    self.rawText = [number stringValue];
+
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
+	[self.textFieldDelegate textFormField:self
+			    didUpdateWithText:self.rawText];
+    }
+}
+
 #pragma mark - Appearance
 
 - (void)setActive:(BOOL)active {
@@ -331,6 +364,35 @@ static BOOL enabledProperty;
         self.backgroundColor = invalidBackgroundColor;
         self.layer.borderColor = invalidBorderColor.CGColor;
     }
+}
+
+- (void)setCountButtons {
+    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
+
+    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
+
+    UIButton *minusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [minusButton setImage:[UIImage imageNamed:@"minus"
+				     inBundle:bundle
+		compatibleWithTraitCollection:trait] forState:UIControlStateNormal];
+    [minusButton addTarget:self action:@selector(minusButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    minusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldMinusButtonWidth, FORMTextFieldMinusButtonHeight);
+
+    UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [plusButton setImage:[UIImage imageNamed:@"plus"
+				     inBundle:bundle
+		compatibleWithTraitCollection:trait] forState:UIControlStateNormal];
+    [plusButton addTarget:self action:@selector(plusButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    plusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldPlusButtonWidth, FORMTextFieldPlusButtonHeight);
+
+    self.leftView = minusButton;
+    self.leftViewMode = UITextFieldViewModeAlways;
+
+    self.rightView = plusButton;
+    self.rightViewMode = UITextFieldViewModeAlways;
+
+    self.textAlignment = NSTextAlignmentCenter;
 }
 
 - (void)setCustomFont:(UIFont *)font {

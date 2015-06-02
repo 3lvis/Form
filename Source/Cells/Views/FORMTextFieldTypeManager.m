@@ -13,6 +13,7 @@
         case FORMTextFieldInputTypeAddress     : [self setupAddressTextField:textField]; break;
         case FORMTextFieldInputTypeEmail       : [self setupEmailTextField:textField]; break;
         case FORMTextFieldInputTypePassword    : [self setupPasswordTextField:textField]; break;
+	case FORMTextFieldInputTypeCount       : [self setupCountTextField:textField]; break;
 
         case FORMTextFieldInputTypeUnknown:
             abort();
@@ -75,6 +76,13 @@
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.keyboardType = UIKeyboardTypeASCIICapable;
     textField.secureTextEntry = YES;
+}
+
+- (void)setupCountTextField:(UITextField *)textField {
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.keyboardType = UIKeyboardTypeNumberPad;
+    textField.secureTextEntry = NO;
 }
 
 @end

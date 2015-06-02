@@ -1,0 +1,23 @@
+[
+  {
+    "id": "group",
+    "title": "Group",
+    "sections": [
+      {
+	"id": "section",
+	"fields": [
+	  {
+	    "id": "count",
+	    "title": "My Counter",
+	    "type": "counter",
+	    "value": "1",
+	    "size": {
+	      "width": 25,
+	      "height": 1
+	    }
+	  }
+	]
+      }
+    ]
+  }
+]

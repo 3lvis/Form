@@ -196,7 +196,8 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 
     if (field.value) {
         switch (field.type) {
-            case FORMFieldTypeNumber: {
+	    case FORMFieldTypeNumber:
+	    case FORMFieldTypeCount: {
                 if ([field.value isKindOfClass:[NSNumber class]]) {
                     NSNumber *value = field.value;
                     rawText = [value stringValue];
