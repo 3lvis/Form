@@ -16,6 +16,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
     FORMFieldTypeFloat,
     FORMFieldTypeNumber,
     FORMFieldTypeButton,
+    FORMFieldTypeCount,
     FORMFieldTypeCustom
 };
 
