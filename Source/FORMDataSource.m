@@ -394,6 +394,24 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return !_disabled;
 }
 
+- (void)collapseAllGroupsForCollectionView:(UICollectionView *)collectionView {
+    NSMutableArray *indexPaths = [NSMutableArray new];
+    [self.collapsedGroups removeAllObjects];
+
+    int groupCount = 0;
+    for (FORMGroup *formGroup in self.formData.groups) {
+	for (NSInteger i = 0; i < formGroup.fields.count; i++) {
+	    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:groupCount];
+	    [indexPaths addObject:indexPath];
+	}
+	[self.collapsedGroups addObject:@(groupCount)];
+	groupCount++;
+    }
+
+    [collectionView deleteItemsAtIndexPaths:indexPaths];
+    [collectionView.collectionViewLayout invalidateLayout];
+}
+
 - (void)reloadWithDictionary:(NSDictionary *)dictionary {
     [self.formData.values setValuesForKeysWithDictionary:dictionary];
 
