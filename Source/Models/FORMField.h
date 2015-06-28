@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) FORMFieldValidation *validation;
 @property (nonatomic) NSString *formula;
 @property (nonatomic) NSArray *targets;
+@property (nonatomic) NSDictionary *styles;
 
 @property (nonatomic) FORMSection *section;
 

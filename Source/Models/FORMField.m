@@ -72,6 +72,10 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     }
 
     _targets = targets;
+    
+    NSDictionary *styles = [dictionary andy_valueForKey:@"styles"];
+    
+    _styles = styles;
 
     BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:_fieldID]);
 
