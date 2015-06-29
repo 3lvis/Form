@@ -72,9 +72,9 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     }
 
     _targets = targets;
-    
+
     NSDictionary *styles = [dictionary andy_valueForKey:@"styles"];
-    
+
     _styles = styles;
 
     BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:_fieldID]);
@@ -114,8 +114,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     switch (self.type) {
         case FORMFieldTypeNumber:
-	case FORMFieldTypeFloat:
-	case FORMFieldTypeCount: {
+        case FORMFieldTypeFloat:
+        case FORMFieldTypeCount: {
             if (![fieldValue isKindOfClass:[NSString class]]) {
                 resultValue = [fieldValue stringValue];
             }
@@ -162,7 +162,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
             }
             return @([self.value floatValue]);
         case FORMFieldTypeNumber:
-	case FORMFieldTypeCount:
+        case FORMFieldTypeCount:
             return @([self.value integerValue]);
 
         case FORMFieldTypeText:
@@ -241,7 +241,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     } else if ([typeString isEqualToString:@"number"]) {
         return FORMFieldTypeNumber;
     } else if ([typeString isEqualToString:@"count"]) {
-	return FORMFieldTypeCount;
+        return FORMFieldTypeCount;
     } else if ([typeString isEqualToString:@"button"]) {
         return FORMFieldTypeButton;
     } else {

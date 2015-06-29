@@ -802,12 +802,12 @@
 
 - (void)testInitializatingACounterFieldWithAValueInTheJSON {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"counter-field.json"
-							     inBundle:[NSBundle bundleForClass:[self class]]];
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
 
     FORMData *formData = [[FORMData alloc] initWithJSON:JSON
-					  initialValues:nil
-				       disabledFieldIDs:nil
-					       disabled:NO];
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
 
     XCTAssertEqualObjects(formData.values[@"count"], @"1");
 }

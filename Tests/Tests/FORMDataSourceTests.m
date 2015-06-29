@@ -883,16 +883,16 @@
 
 - (void)testCollapseAllGroups{
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
-							     inBundle:[NSBundle bundleForClass:[self class]]];
-
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
-						       collectionView:nil
-							       layout:nil
-							       values:nil
-							     disabled:YES];
-
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+    
     [dataSource collapseAllGroupsForCollectionView:nil];
-
+    
     XCTAssertEqual([dataSource.collapsedGroups count], [dataSource.groups count]);
 }
 
