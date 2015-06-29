@@ -1,6 +1,7 @@
 #import "FORMTextFieldCell.h"
 
 #import "FORMTooltipView.h"
+#import "UIColor+Hex.h"
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMTooltipViewMinimumWidth = 90.0f;
@@ -180,6 +181,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
     self.textField.valid           = field.valid;
     self.textField.rawText         = [self rawTextForField:field];
     self.textField.info            = field.info;
+    self.textField.styles          = field.styles;
 }
 
 - (void)validate {
@@ -346,14 +348,31 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 #pragma mark - Styling
 
 - (void)setTooltipLabelFont:(UIFont *)tooltipLabelFont {
+    NSString *styleTooltipFont = [self.field.styles valueForKey:@"tooltip_font"];
+    NSString *styleTooltipFontSize = [self.field.styles valueForKey:@"tooltip_font_size"];
+    if ([styleTooltipFont length] > 0) {
+        if ([styleTooltipFontSize length] > 0) {
+            tooltipLabelFont = [UIFont fontWithName:styleTooltipFont size:[styleTooltipFontSize floatValue]];
+        } else {
+            tooltipLabelFont = [UIFont fontWithName:styleTooltipFont size:tooltipLabelFont.pointSize];
+        }
+    }
     self.tooltipLabel.font = tooltipLabelFont;
 }
 
 - (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor {
+    NSString *style = [self.field.styles valueForKey:@"tooltip_label_text_color"];
+    if ([style length] > 0) {
+        tooltipLabelTextColor = [UIColor colorFromHex:style];
+    }
     self.tooltipLabel.textColor = tooltipLabelTextColor;
 }
 
 - (void)setTooltipBackgroundColor:(UIColor *)tooltipBackgroundColor {
+    NSString *style = [self.field.styles valueForKey:@"tooltip_background_color"];
+    if ([style length] > 0) {
+        tooltipBackgroundColor = [UIColor colorFromHex:style];
+    }
     [FORMTooltipView setTintColor:tooltipBackgroundColor];
 }
 

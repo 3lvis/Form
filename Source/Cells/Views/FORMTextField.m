@@ -4,6 +4,8 @@
 
 #import "FORMTextFieldTypeManager.h"
 
+#import "UIColor+Hex.h"
+
 static const CGFloat FORMTextFieldClearButtonWidth = 30.0f;
 static const CGFloat FORMTextFieldClearButtonHeight = 20.0f;
 
@@ -332,75 +334,152 @@ static BOOL enabledProperty;
 }
 
 - (void)setCustomFont:(UIFont *)font {
+    NSString *styleFont = [self.styles valueForKey:@"font"];
+    NSString *styleFontSize = [self.styles valueForKey:@"font_size"];
+    if ([styleFont length] > 0) {
+        if ([styleFontSize length] > 0) {
+            font = [UIFont fontWithName:styleFont size:[styleFontSize floatValue]];
+        } else {
+            font = [UIFont fontWithName:styleFont size:font.pointSize];
+        }
+    }
     self.font = font;
 }
 
 - (void)setBorderWidth:(CGFloat)borderWidth {
+    NSString *style = [self.styles valueForKey:@"border_width"];
+    if ([style length] > 0) {
+        borderWidth = [style floatValue];
+    }
     self.layer.borderWidth = borderWidth;
 }
 
 - (void)setBorderColor:(UIColor *)borderColor {
+    NSString *style = [self.styles valueForKey:@"border_color"];
+    if ([style length] > 0) {
+        borderColor = [UIColor colorFromHex:style];
+    }
     self.layer.borderColor = borderColor.CGColor;
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
+    NSString *style = [self.styles valueForKey:@"corner_radius"];
+    if ([style length] > 0) {
+        cornerRadius = [style floatValue];
+    }
     self.layer.cornerRadius = cornerRadius;
 }
 
 - (void)setActiveBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"active_background_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     activeBackgroundColor = color;
 }
 
 - (void)setActiveBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"active_border_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     activeBorderColor = color;
 }
 
 - (void)setInactiveBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"inactive_background_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     inactiveBackgroundColor = color;
 }
 
 - (void)setInactiveBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"inactive_border_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     inactiveBorderColor = color;
 }
 
 - (void)setEnabledBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"enabled_background_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     enabledBackgroundColor = color;
 }
 
 - (void)setEnabledBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"enabled_border_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     enabledBorderColor = color;
 }
 
 - (void)setEnabledTextColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"enabled_text_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     enabledTextColor = color;
 }
 
 - (void)setDisabledBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"disabled_background_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     disabledBackgroundColor = color;
 }
 
 - (void)setDisabledBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"disabled_border_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     disabledBorderColor = color;
 }
 
 - (void)setDisabledTextColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"disabled_text_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     disabledTextColor = color;
     self.enabled = enabledProperty;
 }
 
 - (void)setValidBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"valid_background_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     validBackgroundColor = color;
 }
 
 - (void)setValidBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"valid_border_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     validBorderColor = color;
 }
 
 - (void)setInvalidBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"invalid_background_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     invalidBackgroundColor = color;
 }
 
 - (void)setInvalidBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"invalid_border_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     invalidBorderColor = color;
     self.enabled = enabledProperty;
 }
