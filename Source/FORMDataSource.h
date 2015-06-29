@@ -88,6 +88,11 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
 - (void)disable;
 
 /*!
+ * Collapse all groups in collection view
+ */
+- (void)collapseAllGroupsForCollectionView:(UICollectionView *)collectionView;
+
+/*!
  * @discussion A method to check if the Form is disabled.
  * @return @c YES if the Form is disabled.
  */
