@@ -893,7 +893,7 @@
 
     [dataSource collapseAllGroupsForCollectionView:nil];
 
-    XCTAssertTrue([dataSource.collapsedGroups count] == [dataSource.groups count]);
+    XCTAssertEqual([dataSource.collapsedGroups count], [dataSource.groups count]);
 }
 
 @end
