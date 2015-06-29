@@ -881,4 +881,19 @@
     XCTAssertEqualObjects(totalField.value, @"300");
 }
 
+- (void)testCollapseAllGroups{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+    
+    [dataSource collapseAllGroupsForCollectionView:nil];
+    
+    XCTAssertTrue([dataSource.collapsedGroups count] == 3);
+}
+
 @end
