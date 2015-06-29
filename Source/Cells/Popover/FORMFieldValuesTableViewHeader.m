@@ -36,7 +36,7 @@
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     _titleLabel.numberOfLines = 0;
-    _titleLabel.text = self.field.value;
+    _titleLabel.text = self.field.rawFieldValue;
 
     return _titleLabel;
 }
