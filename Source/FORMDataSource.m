@@ -396,17 +396,16 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (void)collapseAllGroupsForCollectionView:(UICollectionView *)collectionView {
     NSMutableArray *indexPaths = [NSMutableArray new];
-    [self.collapsedGroups removeAllObjects];
     
-    int groupCount = 0;
-    for (FORMGroup *formGroup in self.formData.groups) {
-        for (NSInteger i = 0; i < formGroup.fields.count; i++) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:groupCount];
-            [indexPaths addObject:indexPath];
+    [self.formData.groups enumerateObjectsUsingBlock:^(FORMGroup *formGroup, NSUInteger idx, BOOL *stop) {
+        if (![self.collapsedGroups containsObject:@(idx)]) {
+            for (NSInteger i = 0; i < formGroup.fields.count; i++) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:idx];
+                [indexPaths addObject:indexPath];
+            }
+            [self.collapsedGroups addObject:@(idx)];
         }
-        [self.collapsedGroups addObject:@(groupCount)];
-        groupCount++;
-    }
+    }];
     
     [collectionView deleteItemsAtIndexPaths:indexPaths];
     [collectionView.collectionViewLayout invalidateLayout];
