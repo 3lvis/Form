@@ -399,11 +399,19 @@ static BOOL enabledProperty;
     NSString *styleFont = [self.styles valueForKey:@"font"];
     NSString *styleFontSize = [self.styles valueForKey:@"font_size"];
     if ([styleFont length] > 0) {
+<<<<<<< HEAD
         if ([styleFontSize length] > 0) {
             font = [UIFont fontWithName:styleFont size:[styleFontSize floatValue]];
         } else {
             font = [UIFont fontWithName:styleFont size:font.pointSize];
         }
+=======
+	if ([styleFontSize length] > 0) {
+	    font = [UIFont fontWithName:styleFont size:[styleFontSize floatValue]];
+	} else {
+	    font = [UIFont fontWithName:styleFont size:font.pointSize];
+	}
+>>>>>>> Add custom styles to FORMTextFields
     }
     self.font = font;
 }
@@ -411,7 +419,11 @@ static BOOL enabledProperty;
 - (void)setBorderWidth:(CGFloat)borderWidth {
     NSString *style = [self.styles valueForKey:@"border_width"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         borderWidth = [style floatValue];
+=======
+	borderWidth = [style floatValue];
+>>>>>>> Add custom styles to FORMTextFields
     }
     self.layer.borderWidth = borderWidth;
 }
@@ -419,7 +431,11 @@ static BOOL enabledProperty;
 - (void)setBorderColor:(UIColor *)borderColor {
     NSString *style = [self.styles valueForKey:@"border_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         borderColor = [UIColor colorFromHex:style];
+=======
+	borderColor = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     self.layer.borderColor = borderColor.CGColor;
 }
@@ -427,7 +443,11 @@ static BOOL enabledProperty;
 - (void)setCornerRadius:(CGFloat)cornerRadius {
     NSString *style = [self.styles valueForKey:@"corner_radius"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         cornerRadius = [style floatValue];
+=======
+	cornerRadius = [style floatValue];
+>>>>>>> Add custom styles to FORMTextFields
     }
     self.layer.cornerRadius = cornerRadius;
 }
@@ -435,7 +455,11 @@ static BOOL enabledProperty;
 - (void)setActiveBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"active_background_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     activeBackgroundColor = color;
 }
@@ -443,7 +467,11 @@ static BOOL enabledProperty;
 - (void)setActiveBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"active_border_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     activeBorderColor = color;
 }
@@ -451,7 +479,11 @@ static BOOL enabledProperty;
 - (void)setInactiveBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"inactive_background_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     inactiveBackgroundColor = color;
 }
@@ -459,7 +491,11 @@ static BOOL enabledProperty;
 - (void)setInactiveBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"inactive_border_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     inactiveBorderColor = color;
 }
@@ -467,7 +503,11 @@ static BOOL enabledProperty;
 - (void)setEnabledBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"enabled_background_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     enabledBackgroundColor = color;
 }
@@ -475,7 +515,11 @@ static BOOL enabledProperty;
 - (void)setEnabledBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"enabled_border_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     enabledBorderColor = color;
 }
@@ -483,7 +527,11 @@ static BOOL enabledProperty;
 - (void)setEnabledTextColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"enabled_text_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     enabledTextColor = color;
 }
@@ -491,7 +539,11 @@ static BOOL enabledProperty;
 - (void)setDisabledBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"disabled_background_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     disabledBackgroundColor = color;
 }
@@ -499,7 +551,11 @@ static BOOL enabledProperty;
 - (void)setDisabledBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"disabled_border_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     disabledBorderColor = color;
 }
@@ -507,7 +563,11 @@ static BOOL enabledProperty;
 - (void)setDisabledTextColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"disabled_text_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     disabledTextColor = color;
     self.enabled = enabledProperty;
@@ -516,7 +576,11 @@ static BOOL enabledProperty;
 - (void)setValidBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"valid_background_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     validBackgroundColor = color;
 }
@@ -524,7 +588,11 @@ static BOOL enabledProperty;
 - (void)setValidBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"valid_border_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     validBorderColor = color;
 }
@@ -532,7 +600,11 @@ static BOOL enabledProperty;
 - (void)setInvalidBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"invalid_background_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     invalidBackgroundColor = color;
 }
@@ -540,7 +612,11 @@ static BOOL enabledProperty;
 - (void)setInvalidBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"invalid_border_color"];
     if ([style length] > 0) {
+<<<<<<< HEAD
         color = [UIColor colorFromHex:style];
+=======
+	color = [UIColor colorFromHex:style];
+>>>>>>> Add custom styles to FORMTextFields
     }
     invalidBorderColor = color;
     self.enabled = enabledProperty;
