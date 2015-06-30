@@ -199,14 +199,29 @@
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                        collectionView:nil
                                                                layout:nil
-                                                               values:nil
+                                                               values:@{@"username": @0}
                                                              disabled:YES];
 
+    FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
+    FORMFieldValue *usernameValue = usernameField.value;
+    XCTAssertTrue([usernameValue isKindOfClass:[FORMFieldValue class]]);
+
     [dataSource reloadWithDictionary:@{@"first_name" : @"Elvis",
-                                       @"last_name" : @"Nunez"}];
+                                       @"last_name" : @"Nunez",
+                                       @"username" : @1}];
 
     FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.value, @"Elvis Nunez");
+
+    usernameValue = usernameField.value;
+    XCTAssertTrue([usernameValue isKindOfClass:[FORMFieldValue class]]);
+    XCTAssertEqualObjects(usernameValue.valueID, @1);
+
+    [dataSource reloadWithDictionary:@{@"username" : @4}];
+    XCTAssertNil(usernameValue.value);
+
+    [dataSource reloadWithDictionary:@{@"username" : [NSNull null]}];
+    XCTAssertNil(usernameValue.value);
 }
 
 #pragma mark - testResetDynamicSectionsWithDictionary

@@ -424,7 +424,23 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                             BOOL shouldBeNil = ([value isEqual:[NSNull null]]);
 
                             if (field) {
-                                field.value = (shouldBeNil) ? nil : value;
+
+                                if (field.values.count) {
+                                    if (shouldBeNil) {
+                                        field.value = nil;
+                                    } else {
+                                        for (FORMFieldValue *fieldValue in field.values) {
+                                            if ([value isEqual:fieldValue.valueID]) {
+                                                field.value = fieldValue;
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                } else {
+                                    field.value = (shouldBeNil) ? nil : value;
+                                }
+
                                 if (indexPath) {
                                     [updatedIndexPaths addObject:indexPath];
                                 }
