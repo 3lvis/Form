@@ -203,10 +203,15 @@
                                                              disabled:YES];
 
     [dataSource reloadWithDictionary:@{@"first_name" : @"Elvis",
-                                       @"last_name" : @"Nunez"}];
+                                       @"last_name" : @"Nunez",
+                                       @"username": @0}];
 
     FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.value, @"Elvis Nunez");
+
+    FORMField *usernameField = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
+    FORMFieldValue *usernameValue = usernameField.value;
+    XCTAssertTrue([usernameValue isKindOfClass:[FORMFieldValue class]]);
 }
 
 #pragma mark - testResetDynamicSectionsWithDictionary
