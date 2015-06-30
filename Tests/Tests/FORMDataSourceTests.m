@@ -215,6 +215,10 @@
 
     usernameValue = usernameField.value;
     XCTAssertTrue([usernameValue isKindOfClass:[FORMFieldValue class]]);
+    XCTAssertEqualObjects(usernameValue.valueID, @1);
+
+    [dataSource reloadWithDictionary:@{@"username" : @4}];
+    XCTAssertNil(usernameValue.value);
 }
 
 #pragma mark - testResetDynamicSectionsWithDictionary
