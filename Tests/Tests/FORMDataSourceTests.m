@@ -219,6 +219,9 @@
 
     [dataSource reloadWithDictionary:@{@"username" : @4}];
     XCTAssertNil(usernameValue.value);
+
+    [dataSource reloadWithDictionary:@{@"username" : [NSNull null]}];
+    XCTAssertNil(usernameValue.value);
 }
 
 #pragma mark - testResetDynamicSectionsWithDictionary
