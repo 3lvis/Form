@@ -199,12 +199,11 @@
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                        collectionView:nil
                                                                layout:nil
-                                                               values:nil
+                                                               values:@{@"username": @0}
                                                              disabled:YES];
 
     [dataSource reloadWithDictionary:@{@"first_name" : @"Elvis",
-                                       @"last_name" : @"Nunez",
-                                       @"username": @0}];
+                                       @"last_name" : @"Nunez"}];
 
     FORMField *field = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
     XCTAssertEqualObjects(field.value, @"Elvis Nunez");
