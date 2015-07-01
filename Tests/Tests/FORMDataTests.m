@@ -812,4 +812,63 @@
     XCTAssertEqualObjects(formData.values[@"count"], @"1");
 }
 
+- (void)testFieldStyles {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"styled-fields.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+
+    FORMField *field = [formData fieldWithID:@"unstyled_button" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertNil(field.styles);
+    
+    // Button Styles
+    field = [formData fieldWithID:@"styled_button" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertNotNil(field.styles);
+    
+    XCTAssertEqualObjects([field.styles objectForKey:@"background_color"], @"#FF0000");
+
+    XCTAssertEqualObjects([field.styles objectForKey:@"highlighted_background_color"], @"#FF0000");
+    XCTAssertEqualObjects([field.styles objectForKey:@"title_color"], @"#000000");
+    XCTAssertEqualObjects([field.styles objectForKey:@"highlighted_title_color"], @"#000000");
+    XCTAssertEqualObjects([field.styles objectForKey:@"border_color"], @"#FF0000");
+    XCTAssertEqualObjects([field.styles objectForKey:@"corner_radius"], @"5.0f");
+    XCTAssertEqualObjects([field.styles objectForKey:@"border_width"], @"1.0f");
+    XCTAssertEqualObjects([field.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
+    XCTAssertEqualObjects([field.styles objectForKey:@"font_size"], @"16.0");
+    
+    // Text Field Styles
+    field = [formData fieldWithID:@"styled_text_field" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertNotNil(field.styles);
+    
+    XCTAssertEqualObjects([field.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
+    XCTAssertEqualObjects([field.styles objectForKey:@"font_size"], @"14.0");
+    XCTAssertEqualObjects([field.styles objectForKey:@"border_width"], @"1.0f");
+    XCTAssertEqualObjects([field.styles objectForKey:@"border_color"], @"#999999");
+    XCTAssertEqualObjects([field.styles objectForKey:@"corner_radius"], @"5.0f");
+    XCTAssertEqualObjects([field.styles objectForKey:@"active_background_color"], @"#FF0000");
+    XCTAssertEqualObjects([field.styles objectForKey:@"active_border_color"], @"#FF0000");
+    XCTAssertEqualObjects([field.styles objectForKey:@"inactive_background_color"], @"#999999");
+    XCTAssertEqualObjects([field.styles objectForKey:@"inactive_border_color"], @"#4C4C4C");
+    XCTAssertEqualObjects([field.styles objectForKey:@"enabled_background_color"], @"#FFFFFF");
+    XCTAssertEqualObjects([field.styles objectForKey:@"enabled_border_color"], @"#000000");
+    XCTAssertEqualObjects([field.styles objectForKey:@"enabled_text_color"], @"#000000");
+    XCTAssertEqualObjects([field.styles objectForKey:@"disabled_background_color"], @"#E6E6E6");
+    XCTAssertEqualObjects([field.styles objectForKey:@"disabled_border_color"], @"#666666");
+    XCTAssertEqualObjects([field.styles objectForKey:@"disabled_text_color"], @"#666666");
+    XCTAssertEqualObjects([field.styles objectForKey:@"valid_background_color"], @"#D6F5D6");
+    XCTAssertEqualObjects([field.styles objectForKey:@"valid_border_color"], @"#5CD65C");
+    XCTAssertEqualObjects([field.styles objectForKey:@"invalid_background_color"], @"#FFE6E6");
+    XCTAssertEqualObjects([field.styles objectForKey:@"invalid_border_color"], @"#FF3333");
+    XCTAssertEqualObjects([field.styles objectForKey:@"tooltip_font"], @"AvenirNext-Medium");
+    XCTAssertEqualObjects([field.styles objectForKey:@"tooltip_font_size"], @"14.0");
+    XCTAssertEqualObjects([field.styles objectForKey:@"tooltip_label_text_color"], @"#999999");
+    XCTAssertEqualObjects([field.styles objectForKey:@"tooltip_background_color"], @"#CCCCCC");
+}
+
 @end

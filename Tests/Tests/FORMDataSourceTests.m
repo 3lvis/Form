@@ -896,4 +896,61 @@
     XCTAssertEqual([dataSource.collapsedGroups count], [dataSource.groups count]);
 }
 
+- (void)testStyleFields {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"styled-fields.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    // Button Field Styles
+    FORMField *buttonField = [dataSource fieldWithID:@"styled_button" includingHiddenFields:NO];
+    XCTAssertNotNil(buttonField);
+    
+    [dataSource fieldCell:nil updatedWithField:buttonField];
+    XCTAssertNotNil(buttonField.styles);
+    XCTAssertEqualObjects([buttonField.styles objectForKey:@"background_color"], @"#FF0000");
+    XCTAssertEqualObjects([buttonField.styles objectForKey:@"highlighted_background_color"], @"#FF0000");
+    XCTAssertEqualObjects([buttonField.styles objectForKey:@"title_color"], @"#000000");
+    XCTAssertEqualObjects([buttonField.styles objectForKey:@"highlighted_title_color"], @"#000000");
+    XCTAssertEqualObjects([buttonField.styles objectForKey:@"border_color"], @"#FF0000");
+    XCTAssertEqualObjects([buttonField.styles objectForKey:@"corner_radius"], @"5.0f");
+    XCTAssertEqualObjects([buttonField.styles objectForKey:@"border_width"], @"1.0f");
+    XCTAssertEqualObjects([buttonField.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
+    XCTAssertEqualObjects([buttonField.styles objectForKey:@"font_size"], @"16.0");
+    
+    // Text Field Styles
+    FORMField *textField = [dataSource fieldWithID:@"styled_text_field" includingHiddenFields:NO];
+    XCTAssertNotNil(textField);
+    
+    [dataSource fieldCell:nil updatedWithField:textField];
+    XCTAssertNotNil(textField.styles);
+    XCTAssertEqualObjects([textField.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"font_size"], @"14.0");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"border_width"], @"1.0f");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"border_color"], @"#999999");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"corner_radius"], @"5.0f");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"active_background_color"], @"#FF0000");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"active_border_color"], @"#FF0000");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"inactive_background_color"], @"#999999");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"inactive_border_color"], @"#4C4C4C");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"enabled_background_color"], @"#FFFFFF");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"enabled_border_color"], @"#000000");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"enabled_text_color"], @"#000000");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"disabled_background_color"], @"#E6E6E6");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"disabled_border_color"], @"#666666");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"disabled_text_color"], @"#666666");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"valid_background_color"], @"#D6F5D6");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"valid_border_color"], @"#5CD65C");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"invalid_background_color"], @"#FFE6E6");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"invalid_border_color"], @"#FF3333");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_font"], @"AvenirNext-Medium");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_font_size"], @"14.0");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_label_text_color"], @"#999999");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_background_color"], @"#CCCCCC");
+}
+
 @end
