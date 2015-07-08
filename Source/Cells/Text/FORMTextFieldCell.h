@@ -5,6 +5,7 @@
 static NSString * const FORMResignFirstResponderNotification = @"FORMResignFirstResponderNotification";
 static NSString * const FORMDismissTooltipNotification = @"FORMDismissTooltipNotification";
 static NSString * const FORMTextFieldCellIdentifier = @"FORMTextFieldCellIdentifier";
+static NSString * const FORMCountFieldCellIdentifier = @"FORMCountFieldCellIdentifier";
 
 @interface FORMTextFieldCell : FORMBaseFieldCell
 
