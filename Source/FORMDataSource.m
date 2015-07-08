@@ -74,6 +74,9 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
     [collectionView registerClass:[FORMTextFieldCell class]
        forCellWithReuseIdentifier:FORMTextFieldCellIdentifier];
+    
+   [collectionView registerClass:[FORMTextFieldCell class]
+       forCellWithReuseIdentifier:FORMCountFieldCellIdentifier];
 
     [collectionView registerClass:[FORMSelectFieldCell class]
        forCellWithReuseIdentifier:FORMSelectFormFieldCellIdentifier];
@@ -161,6 +164,9 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
         case FORMFieldTypeFloat:
         case FORMFieldTypeNumber:
             identifier = FORMTextFieldCellIdentifier;
+            break;
+        case FORMFieldTypeCount:
+            identifier = FORMCountFieldCellIdentifier;
             break;
 
         case FORMFieldTypeButton:
