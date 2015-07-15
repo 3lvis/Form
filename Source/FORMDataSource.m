@@ -166,9 +166,6 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
         case FORMFieldTypeCount:
             identifier = FORMTextFieldCellIdentifier;
             break;
-        case FORMFieldTypeCount:
-            identifier = FORMCountFieldCellIdentifier;
-            break;
 
         case FORMFieldTypeButton:
             identifier = FORMButtonFieldCellIdentifier;
