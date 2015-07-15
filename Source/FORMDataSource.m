@@ -74,8 +74,8 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
     [collectionView registerClass:[FORMTextFieldCell class]
        forCellWithReuseIdentifier:FORMTextFieldCellIdentifier];
-    
-   [collectionView registerClass:[FORMTextFieldCell class]
+
+    [collectionView registerClass:[FORMTextFieldCell class]
        forCellWithReuseIdentifier:FORMCountFieldCellIdentifier];
 
     [collectionView registerClass:[FORMSelectFieldCell class]
@@ -163,8 +163,11 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
         case FORMFieldTypeText:
         case FORMFieldTypeFloat:
         case FORMFieldTypeNumber:
-        case FORMFieldTypeCount:
             identifier = FORMTextFieldCellIdentifier;
+            break;
+
+        case FORMFieldTypeCount:
+            identifier = FORMCountFieldCellIdentifier;
             break;
 
         case FORMFieldTypeButton:
@@ -399,7 +402,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (void)collapseAllGroupsForCollectionView:(UICollectionView *)collectionView {
     NSMutableArray *indexPaths = [NSMutableArray new];
-    
+
     [self.formData.groups enumerateObjectsUsingBlock:^(FORMGroup *formGroup, NSUInteger idx, BOOL *stop) {
         if (![self.collapsedGroups containsObject:@(idx)]) {
             for (NSInteger i = 0; i < formGroup.fields.count; i++) {
@@ -409,7 +412,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
             [self.collapsedGroups addObject:@(idx)];
         }
     }];
-    
+
     [collectionView deleteItemsAtIndexPaths:indexPaths];
     [collectionView.collectionViewLayout invalidateLayout];
 }
