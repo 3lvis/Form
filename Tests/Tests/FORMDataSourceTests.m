@@ -911,4 +911,17 @@
     XCTAssertEqual([dataSource.collapsedGroups count], [dataSource.groups count]);
 }
 
+- (void)testPreCollapsedGroups{
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"collapsed-groups.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:YES];
+
+    XCTAssertEqual([dataSource.collapsedGroups count], 1);
+}
+
 @end
