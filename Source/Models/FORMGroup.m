@@ -56,10 +56,6 @@
     return self;
 }
 
-- (void)updateGroupWithCollapsed:(BOOL)collapsed {
-    abort();
-}
-
 - (NSArray *)targetsUsingArray:(NSArray *)array {
     NSMutableArray *targets = [NSMutableArray new];
 
