@@ -113,6 +113,20 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     if (_collapsedGroups) return _collapsedGroups;
 
     _collapsedGroups = [NSMutableArray new];
+    
+    NSMutableArray *indexPaths = [NSMutableArray new];
+    
+    [self.formData.groups enumerateObjectsUsingBlock:^(FORMGroup *formGroup, NSUInteger idx, BOOL *stop) {
+        if (formGroup.collapsed) {
+            if (![_collapsedGroups containsObject:@(idx)]) {
+                for (NSInteger i = 0; i < formGroup.fields.count; i++) {
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:idx];
+                    [indexPaths addObject:indexPath];
+                }
+                [_collapsedGroups addObject:@(idx)];
+            }
+        }
+    }];
 
     return _collapsedGroups;
 }

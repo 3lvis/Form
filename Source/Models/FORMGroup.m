@@ -29,6 +29,8 @@
     self.groupID = [dictionary andy_valueForKey:@"id"];
     self.title = [dictionary andy_valueForKey:@"title"];
     self.position = @(position);
+    
+    self.collapsed = [[dictionary andy_valueForKey:@"collapsed"] boolValue];
 
     NSMutableArray *sections = [NSMutableArray new];
     NSArray *dataSourceSections = [dictionary andy_valueForKey:@"sections"];

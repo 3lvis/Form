@@ -10,6 +10,7 @@
 @property (nonatomic) NSMutableArray *sections;
 @property (nonatomic) NSNumber *position;
 
+@property (nonatomic) BOOL collapsed;
 @property (nonatomic) BOOL shouldValidate;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
