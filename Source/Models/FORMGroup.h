@@ -11,6 +11,7 @@
 @property (nonatomic) NSNumber *position;
 
 @property (nonatomic) BOOL collapsed;
+@property (nonatomic) BOOL collapsible;
 @property (nonatomic) BOOL shouldValidate;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary

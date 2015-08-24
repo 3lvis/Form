@@ -230,6 +230,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
             self.configureHeaderViewBlock(headerView, kind, indexPath, group);
         } else {
             headerView.headerLabel.text = group.title;
+            headerView.collapsible = group.collapsible;
             headerView.delegate = self;
         }
 
@@ -414,16 +415,22 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return !_disabled;
 }
 
+- (void)collapseAllGroups {
+    [self collapseAllGroupsForCollectionView:self.collectionView];
+}
+
 - (void)collapseAllGroupsForCollectionView:(UICollectionView *)collectionView {
     NSMutableArray *indexPaths = [NSMutableArray new];
 
     [self.formData.groups enumerateObjectsUsingBlock:^(FORMGroup *formGroup, NSUInteger idx, BOOL *stop) {
-        if (![self.collapsedGroups containsObject:@(idx)]) {
-            for (NSInteger i = 0; i < formGroup.fields.count; i++) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:idx];
-                [indexPaths addObject:indexPath];
+        if (formGroup.collapsible) {
+            if (![self.collapsedGroups containsObject:@(idx)]) {
+                for (NSInteger i = 0; i < formGroup.fields.count; i++) {
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:idx];
+                    [indexPaths addObject:indexPath];
+                }
+                [self.collapsedGroups addObject:@(idx)];
             }
-            [self.collapsedGroups addObject:@(idx)];
         }
     }];
 
@@ -990,7 +997,7 @@ includingHiddenFields:(BOOL)includingHiddenFields
         [self.collapsedGroups removeObject:@(group)];
         [collectionView insertItemsAtIndexPaths:indexPaths];
         [collectionView.collectionViewLayout invalidateLayout];
-    } else {
+    } else if (formGroup.collapsible) {
         [self.collapsedGroups addObject:@(group)];
         [collectionView deleteItemsAtIndexPaths:indexPaths];
         [collectionView.collectionViewLayout invalidateLayout];
