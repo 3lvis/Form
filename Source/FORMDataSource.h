@@ -88,6 +88,11 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
 - (void)disable;
 
 /*!
+ * Collapse all groups
+ */
+- (void)collapseAllGroups;
+
+/*!
  * Collapse all groups in collection view
  */
 - (void)collapseAllGroupsForCollectionView:(UICollectionView *)collectionView;

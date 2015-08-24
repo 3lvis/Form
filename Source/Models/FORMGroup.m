@@ -32,6 +32,12 @@
     
     self.collapsed = [[dictionary andy_valueForKey:@"collapsed"] boolValue];
     
+    if ([dictionary andy_valueForKey:@"collapsible"]) {
+        self.collapsible = [[dictionary andy_valueForKey:@"collapsible"] boolValue];
+    } else {
+        self.collapsible = YES;
+    }
+
     NSDictionary *styles = [dictionary andy_valueForKey:@"styles"];
     _styles = styles;
 
