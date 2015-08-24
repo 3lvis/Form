@@ -1,4 +1,5 @@
 #import "FORMGroupHeaderView.h"
+#import "UIColor+Hex.h"
 
 @interface FORMGroupHeaderView ()
 
@@ -61,14 +62,34 @@
 #pragma mark - Styling
 
 - (void)setHeaderLabelFont:(UIFont *)headerLabelFont {
+    NSString *styleFont = [self.styles valueForKey:@"font"];
+    NSString *styleFontSize = [self.styles valueForKey:@"font_size"];
+    if ([styleFont length] > 0) {
+        if ([styleFontSize length] > 0) {
+            headerLabelFont = [UIFont fontWithName:styleFont size:[styleFontSize floatValue]];
+        } else {
+            headerLabelFont = [UIFont fontWithName:styleFont size:headerLabelFont.pointSize];
+        }
+    }
+    
     self.headerLabel.font = headerLabelFont;
 }
 
 - (void)setHeaderLabelTextColor:(UIColor *)headerLabelTextColor {
+    NSString *style = [self.styles valueForKey:@"text_color"];
+    if ([style length] > 0) {
+        headerLabelTextColor = [UIColor colorFromHex:style];
+    }
+    
     self.headerLabel.textColor = headerLabelTextColor;
 }
 
 - (void)setHeaderBackgroundColor:(UIColor *)backgroundColor {
+    NSString *style = [self.styles valueForKey:@"background_color"];
+    if ([style length] > 0) {
+        backgroundColor = [UIColor colorFromHex:style];
+    }
+    
     self.backgroundColor = backgroundColor;
 }
 

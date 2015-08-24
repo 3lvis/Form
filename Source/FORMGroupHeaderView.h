@@ -12,6 +12,7 @@ static NSString * const FORMHeaderReuseIdentifier = @"FORMHeaderReuseIdentifier"
 
 @property (nonatomic) UILabel *headerLabel;
 @property (nonatomic) NSInteger group;
+@property (nonatomic, copy) NSDictionary *styles;
 
 @property (nonatomic, weak) id <FORMHeaderViewDelegate> delegate;
 

@@ -966,6 +966,25 @@
     XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_font_size"], @"14.0");
     XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_label_text_color"], @"#999999");
     XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_background_color"], @"#CCCCCC");
+    
+    
+    // Group Header Styles
+    NSArray *groups = [dataSource groups];
+    __block FORMGroup *group = nil;
+    [groups enumerateObjectsUsingBlock:^(FORMGroup *formGroup, NSUInteger idx, BOOL *stop) {
+        if ([formGroup.groupID isEqualToString:@"buttons"]) {
+            group = formGroup;
+        }
+    }];
+    
+    XCTAssertNotNil(group);
+    
+    [dataSource fieldCell:nil updatedWithField:textField];
+    XCTAssertNotNil(group.styles);
+    XCTAssertEqualObjects([group.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
+    XCTAssertEqualObjects([group.styles objectForKey:@"font_size"], @"17.0");
+    XCTAssertEqualObjects([group.styles objectForKey:@"text_color"], @"#000000");
+    XCTAssertEqualObjects([group.styles objectForKey:@"background_color"], @"#FFFFFF");
 }
 
 - (void)testPreCollapsedGroups{

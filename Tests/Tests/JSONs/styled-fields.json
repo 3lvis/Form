@@ -3,6 +3,12 @@
     {
       "id":"buttons",
       "title":"Buttons",
+      "styles":{
+        "text_color":"#000000",
+        "background_color":"#FFFFFF",
+        "font":"AvenirNext-DemiBold",
+        "font_size":"17.0"
+      },
       "sections":[
         {
           "id":"buttons-0",
