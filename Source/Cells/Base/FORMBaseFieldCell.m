@@ -135,7 +135,7 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 }
 
 - (void)setHeadingLabelTextColor:(UIColor *)color {
-    NSString *style = [self.styles valueForKey:@"heading_label_color"];
+    NSString *style = [self.styles valueForKey:@"heading_label_text_color"];
     if ([style length] > 0) {
         color = [UIColor colorFromHex:style];
     }
