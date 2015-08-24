@@ -72,25 +72,6 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
                               disabledFieldIDs:@[]
                                       disabled:disabled];
 
-    [collectionView registerClass:[FORMTextFieldCell class]
-       forCellWithReuseIdentifier:FORMTextFieldCellIdentifier];
-
-    [collectionView registerClass:[FORMTextFieldCell class]
-       forCellWithReuseIdentifier:FORMCountFieldCellIdentifier];
-
-    [collectionView registerClass:[FORMSelectFieldCell class]
-       forCellWithReuseIdentifier:FORMSelectFormFieldCellIdentifier];
-
-    [collectionView registerClass:[FORMDateFieldCell class]
-       forCellWithReuseIdentifier:FORMDateFormFieldCellIdentifier];
-
-    [collectionView registerClass:[FORMButtonFieldCell class]
-       forCellWithReuseIdentifier:FORMButtonFieldCellIdentifier];
-
-    [collectionView registerClass:[FORMGroupHeaderView class]
-       forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-              withReuseIdentifier:FORMHeaderReuseIdentifier];
-
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
                                                  name:UIKeyboardDidShowNotification
@@ -167,25 +148,36 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
         case FORMFieldTypeDate:
         case FORMFieldTypeDateTime:
         case FORMFieldTypeTime:
-            identifier = FORMDateFormFieldCellIdentifier;
+            identifier = [NSString stringWithFormat:@"%@-%@", FORMDateFormFieldCellIdentifier, field.fieldID];
+            [collectionView registerClass:[FORMDateFieldCell class]
+               forCellWithReuseIdentifier:identifier];
             break;
 
         case FORMFieldTypeSelect:
-            identifier = FORMSelectFormFieldCellIdentifier;
+            identifier = [NSString stringWithFormat:@"%@-%@", FORMSelectFormFieldCellIdentifier, field.fieldID];
+            [collectionView registerClass:[FORMSelectFieldCell class]
+               forCellWithReuseIdentifier:identifier];
             break;
 
         case FORMFieldTypeText:
         case FORMFieldTypeFloat:
         case FORMFieldTypeNumber:
-            identifier = FORMTextFieldCellIdentifier;
+            identifier = [NSString stringWithFormat:@"%@-%@", FORMTextFieldCellIdentifier, field.fieldID];
+            [collectionView registerClass:[FORMTextFieldCell class]
+               forCellWithReuseIdentifier:identifier];
+
             break;
 
         case FORMFieldTypeCount:
-            identifier = FORMCountFieldCellIdentifier;
+            identifier = [NSString stringWithFormat:@"%@-%@", FORMCountFieldCellIdentifier, field.fieldID];
+            [collectionView registerClass:[FORMTextFieldCell class]
+               forCellWithReuseIdentifier:identifier];
             break;
 
         case FORMFieldTypeButton:
-            identifier = FORMButtonFieldCellIdentifier;
+            identifier = [NSString stringWithFormat:@"%@-%@", FORMButtonFieldCellIdentifier, field.fieldID];
+            [collectionView registerClass:[FORMButtonFieldCell class]
+               forCellWithReuseIdentifier:identifier];
             break;
 
         case FORMFieldTypeCustom: abort();
@@ -210,6 +202,12 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     if (kind == UICollectionElementKindSectionHeader) {
         FORMGroup *group = self.formData.groups[indexPath.section];
         FORMGroupHeaderView *headerView;
+        
+        NSString *identifier = [NSString stringWithFormat:@"%@-%@", FORMHeaderReuseIdentifier, group.groupID];
+        [collectionView registerClass:[FORMGroupHeaderView class]
+           forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                  withReuseIdentifier:identifier];
+
 
         if (self.configureGroupHeaderAtIndexPathBlock) {
             id configuredGroupHeaderView = self.configureGroupHeaderAtIndexPathBlock(group, collectionView, indexPath);
@@ -220,7 +218,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
         if (!headerView) {
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                            withReuseIdentifier:FORMHeaderReuseIdentifier
+                                                            withReuseIdentifier:identifier
                                                                    forIndexPath:indexPath];
         }
 
@@ -230,6 +228,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
             self.configureHeaderViewBlock(headerView, kind, indexPath, group);
         } else {
             headerView.headerLabel.text = group.title;
+            headerView.styles = group.styles;
             headerView.delegate = self;
         }
 
