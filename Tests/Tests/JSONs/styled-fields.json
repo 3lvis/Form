@@ -73,7 +73,10 @@
                 "tooltip_font":"AvenirNext-Medium",
                 "tooltip_font_size":"14.0",
                 "tooltip_label_text_color":"#999999",
-                "tooltip_background_color":"#CCCCCC"
+                "tooltip_background_color":"#CCCCCC",
+                "heading_label_text_color":"#FF0000",
+                "heading_label_font":"AvenirNext-Medium",
+                "heading_label_font_size":"22.0",
               }
             }
           ]

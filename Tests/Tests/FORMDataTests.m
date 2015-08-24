@@ -869,6 +869,11 @@
     XCTAssertEqualObjects([field.styles objectForKey:@"tooltip_font_size"], @"14.0");
     XCTAssertEqualObjects([field.styles objectForKey:@"tooltip_label_text_color"], @"#999999");
     XCTAssertEqualObjects([field.styles objectForKey:@"tooltip_background_color"], @"#CCCCCC");
+    
+    // Heading Label Styles
+    XCTAssertEqualObjects([field.styles objectForKey:@"heading_label_font"], @"AvenirNext-Medium");
+    XCTAssertEqualObjects([field.styles objectForKey:@"heading_label_font_size"], @"22.0");
+    XCTAssertEqualObjects([field.styles objectForKey:@"heading_label_text_color"], @"#FF0000");
 }
 
 @end
