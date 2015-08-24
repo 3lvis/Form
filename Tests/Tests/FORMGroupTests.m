@@ -63,4 +63,25 @@
     XCTAssertTrue([dataSource groupIsCollapsed:[group.position integerValue]]);
 }
 
+- (void)testCollapsibilityOfGroups {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"collapsed-groups.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMLayout *layout = [FORMLayout new];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:layout
+                                                               values:nil
+                                                             disabled:NO];
+
+    FORMGroup *group = [dataSource groupWithID:@"personal-details"];
+    XCTAssertTrue([dataSource groupIsCollapsed:[group.position integerValue]]);
+    XCTAssertTrue(group.collapsible);
+    
+    group = [dataSource groupWithID:@"employment"];
+    XCTAssertFalse([dataSource groupIsCollapsed:[group.position integerValue]]);
+    XCTAssertFalse(group.collapsible);
+}
+
 @end

@@ -54,7 +54,9 @@
 
 - (void)headerTappedAction {
     if ([self.delegate respondsToSelector:@selector(groupHeaderViewWasPressed:)]) {
-        [self.delegate groupHeaderViewWasPressed:self];
+        if (self.collapsible) {
+            [self.delegate groupHeaderViewWasPressed:self];
+        }
     }
 }
 

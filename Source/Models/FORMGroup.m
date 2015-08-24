@@ -31,6 +31,12 @@
     self.position = @(position);
     
     self.collapsed = [[dictionary andy_valueForKey:@"collapsed"] boolValue];
+    
+    if ([dictionary andy_valueForKey:@"collapsible"]) {
+        self.collapsible = [[dictionary andy_valueForKey:@"collapsible"] boolValue];
+    } else {
+        self.collapsible = YES;
+    }
 
     NSMutableArray *sections = [NSMutableArray new];
     NSArray *dataSourceSections = [dictionary andy_valueForKey:@"sections"];

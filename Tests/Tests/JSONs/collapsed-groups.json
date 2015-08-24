@@ -251,6 +251,7 @@
   {
     "id":"employment",
     "title":"Employment",
+    "collapsible":false,
     "sections":[
       {
         "id":"employment-0",
