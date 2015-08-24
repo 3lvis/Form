@@ -47,4 +47,20 @@
 
 }
 
+- (void)testPreCollapsedGroups {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"collapsed-groups.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+
+    FORMLayout *layout = [FORMLayout new];
+
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:layout
+                                                               values:nil
+                                                             disabled:NO];
+
+    FORMGroup *group = [dataSource groupWithID:@"personal-details"];
+    XCTAssertTrue([dataSource groupIsCollapsed:[group.position integerValue]]);
+}
+
 @end

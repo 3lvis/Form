@@ -90,6 +90,7 @@
 		7A7DC4A41B1E197A0056E846 /* minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A7DC4A21B1E197A0056E846 /* minus@2x.png */; };
 		7A7DC4A51B1E197A0056E846 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A7DC4A31B1E197A0056E846 /* plus@2x.png */; };
 		7A94C1DF1B443DC700CE9524 /* styled-fields.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A94C1DE1B443DC700CE9524 /* styled-fields.json */; };
+		7A91EA801B61429300902BB4 /* collapsed-groups.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A91EA7F1B61429300902BB4 /* collapsed-groups.json */; };
 		8EC9C8158643C507F883EEC4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E09ABAE07DB25A266537B76 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BD2405701AE6B38D00592E19 /* default-values-in-template.json in Resources */ = {isa = PBXBuildFile; fileRef = BD24056F1AE6B38D00592E19 /* default-values-in-template.json */; };
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
@@ -239,6 +240,7 @@
 		7A7DC4A21B1E197A0056E846 /* minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus@2x.png"; sourceTree = "<group>"; };
 		7A7DC4A31B1E197A0056E846 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
 		7A94C1DE1B443DC700CE9524 /* styled-fields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "styled-fields.json"; sourceTree = "<group>"; };
+		7A91EA7F1B61429300902BB4 /* collapsed-groups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "collapsed-groups.json"; sourceTree = "<group>"; };
 		BD24056F1AE6B38D00592E19 /* default-values-in-template.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-values-in-template.json"; sourceTree = "<group>"; };
 		BD5845731AC4074600596C62 /* FORMTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTooltipView.h; sourceTree = "<group>"; };
 		BD5845741AC4074600596C62 /* FORMTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTooltipView.m; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				4496E4951AE7913400F731C9 /* simple-text-field.json */,
 				7A7DC4A01B1E18810056E846 /* counter-field.json */,
 				7A94C1DE1B443DC700CE9524 /* styled-fields.json */,
+				7A91EA7F1B61429300902BB4 /* collapsed-groups.json */,
 			);
 			path = JSONs;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				7A7DC4A11B1E18810056E846 /* counter-field.json in Resources */,
 				149C292A1A9A23DD00F88B91 /* default-values.json in Resources */,
 				44713C611AE8E9DC00AA97DA /* simple-number-field.json in Resources */,
+				7A91EA801B61429300902BB4 /* collapsed-groups.json in Resources */,
 				14C4183D1A019A1500636FD6 /* LICENSE.md in Resources */,
 				149C292B1A9A23DD00F88B91 /* field-validations.json in Resources */,
 				4496E4961AE7913400F731C9 /* simple-text-field.json in Resources */,
