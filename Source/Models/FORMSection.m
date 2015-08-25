@@ -19,6 +19,9 @@
     _isLast = isLastSection;
     _typeString  = [dictionary andy_valueForKey:@"type"] ?: @"default";
     _type = [self typeFromTypeString:_typeString];
+    
+    NSDictionary *styles = [dictionary andy_valueForKey:@"styles"];
+    _styles = styles;
 
     NSArray *dataSourceFields = [dictionary andy_valueForKey:@"fields"];
     NSMutableArray *fields = [NSMutableArray new];
@@ -71,6 +74,7 @@
         field.position = @(fields.count);
         field.section = self;
         field.fieldID = [NSString stringWithFormat:@"separator-%@", _sectionID];
+        field.styles = self.styles;
         [fields addObject:field];
     }
 

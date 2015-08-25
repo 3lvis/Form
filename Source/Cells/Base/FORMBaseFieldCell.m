@@ -75,6 +75,10 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
     self.headingLabel.text = field.title;
     self.styles = field.styles;
 
+    if (field.sectionSeparator) {
+        self.separatorView.styles = field.styles;
+    }
+    
     self.separatorView.hidden = !field.sectionSeparator;
 
     if (field.targets.count > 0) {

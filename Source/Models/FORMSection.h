@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, FORMSectionType) {
 @property (nonatomic) FORMGroup *group;
 @property (nonatomic) NSString *typeString;
 @property (nonatomic) FORMSectionType type;
+@property (nonatomic, copy) NSDictionary *styles;
 
 @property (nonatomic) BOOL shouldValidate;
 @property (nonatomic) BOOL containsSpecialField;

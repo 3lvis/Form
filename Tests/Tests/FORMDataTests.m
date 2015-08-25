@@ -874,6 +874,11 @@
     XCTAssertEqualObjects([field.styles objectForKey:@"heading_label_font"], @"AvenirNext-Medium");
     XCTAssertEqualObjects([field.styles objectForKey:@"heading_label_font_size"], @"22.0");
     XCTAssertEqualObjects([field.styles objectForKey:@"heading_label_text_color"], @"#FF0000");
+    
+    // Section Separator Styles
+    FORMSection *section = [formData sectionWithID:@"buttons-0"];
+    XCTAssertEqualObjects([section.styles objectForKey:@"separator_color"], @"#FF0000");
+    XCTAssertEqualObjects([section.styles objectForKey:@"height"], @"2.0");
 }
 
 @end
