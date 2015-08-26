@@ -1,4 +1,5 @@
 #import "FORMBackgroundView.h"
+#import "FORMLayoutAttributes.h"
 #import "UIColor+Hex.h"
 
 @interface FORMBackgroundView ()
@@ -6,6 +7,13 @@
 @end
 
 @implementation FORMBackgroundView
+
+- (void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
+    [super applyLayoutAttributes:layoutAttributes];
+    
+    FORMLayoutAttributes *backgroundLayoutAttributes = (FORMLayoutAttributes *)layoutAttributes;
+    self.styles = backgroundLayoutAttributes.styles;
+}
 
 #pragma mark - Drawing
 
