@@ -125,7 +125,7 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
     [[NSNotificationCenter defaultCenter] postNotificationName:FORMResignFirstResponderNotification object:nil];
 
     [self updateContentViewController:self.contentViewController withField:self.field];
-
+    self.contentViewController.preferredContentSize = _contentSize;
     self.contentViewController.modalPresentationStyle = UIModalPresentationPopover;
 
     UIPopoverPresentationController *presentationController = [self.contentViewController popoverPresentationController];
