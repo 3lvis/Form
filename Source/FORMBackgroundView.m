@@ -17,17 +17,19 @@
                                                               cornerRadii:CGSizeMake(5.0f, 5.0f)];
     [rectanglePath closePath];
 
-    [[UIColor whiteColor] setFill];
+    [self.groupColor setFill];
     [rectanglePath fill];
 }
 
-- (void)setGroupBackgroundColor:(UIColor *)backgroundColor {
+- (void)setGroupBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"background_color"];
     if ([style length] > 0) {
-        backgroundColor = [UIColor colorFromHex:style];
+        color = [UIColor colorFromHex:style];
+    } else {
+        color = [UIColor whiteColor];
     }
     
-    self.backgroundColor = backgroundColor;
+    self.groupColor = color;
 }
 
 @end

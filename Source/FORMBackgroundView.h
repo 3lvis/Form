@@ -7,7 +7,8 @@ static NSString * const FORMBackgroundKind = @"FORMBackgroundKind";
 @interface FORMBackgroundView : UICollectionReusableView
 
 @property (nonatomic, copy) NSDictionary *styles;
+@property (nonatomic, copy) UIColor *groupColor;
 
-- (void)setGroupBackgroundColor:(UIColor *)backgroundColor UI_APPEARANCE_SELECTOR;
+- (void)setGroupBackgroundColor:(UIColor *)color UI_APPEARANCE_SELECTOR;
 
 @end
