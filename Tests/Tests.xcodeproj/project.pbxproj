@@ -91,6 +91,7 @@
 		7A7DC4A51B1E197A0056E846 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A7DC4A31B1E197A0056E846 /* plus@2x.png */; };
 		7A91EA801B61429300902BB4 /* collapsed-groups.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A91EA7F1B61429300902BB4 /* collapsed-groups.json */; };
 		7A94C1DF1B443DC700CE9524 /* styled-fields.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A94C1DE1B443DC700CE9524 /* styled-fields.json */; };
+		7ACCACCB1B8E3FDC009B69AF /* FORMLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCACCA1B8E3FDC009B69AF /* FORMLayoutAttributes.m */; };
 		8EC9C8158643C507F883EEC4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E09ABAE07DB25A266537B76 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BD2405701AE6B38D00592E19 /* default-values-in-template.json in Resources */ = {isa = PBXBuildFile; fileRef = BD24056F1AE6B38D00592E19 /* default-values-in-template.json */; };
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
@@ -241,6 +242,8 @@
 		7A7DC4A31B1E197A0056E846 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
 		7A91EA7F1B61429300902BB4 /* collapsed-groups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "collapsed-groups.json"; sourceTree = "<group>"; };
 		7A94C1DE1B443DC700CE9524 /* styled-fields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "styled-fields.json"; sourceTree = "<group>"; };
+		7ACCACC91B8E3FDC009B69AF /* FORMLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMLayoutAttributes.h; sourceTree = "<group>"; };
+		7ACCACCA1B8E3FDC009B69AF /* FORMLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMLayoutAttributes.m; sourceTree = "<group>"; };
 		BD24056F1AE6B38D00592E19 /* default-values-in-template.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "default-values-in-template.json"; sourceTree = "<group>"; };
 		BD5845731AC4074600596C62 /* FORMTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTooltipView.h; sourceTree = "<group>"; };
 		BD5845741AC4074600596C62 /* FORMTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTooltipView.m; sourceTree = "<group>"; };
@@ -534,6 +537,8 @@
 				144A28831A99B2CF004A9086 /* FORMGroupHeaderView.m */,
 				144A287E1A99B2CF004A9086 /* FORMLayout.h */,
 				144A287F1A99B2CF004A9086 /* FORMLayout.m */,
+				7ACCACC91B8E3FDC009B69AF /* FORMLayoutAttributes.h */,
+				7ACCACCA1B8E3FDC009B69AF /* FORMLayoutAttributes.m */,
 				14AFC10F1AA7CF5C00583FC0 /* FORMSeparatorView.h */,
 				14AFC1101AA7CF5C00583FC0 /* FORMSeparatorView.m */,
 				BD5845731AC4074600596C62 /* FORMTooltipView.h */,
@@ -749,6 +754,7 @@
 				144A28D01A99B2CF004A9086 /* FORMData.m in Sources */,
 				D5DFAA1B1AA87A9B0096FBFB /* FORMFieldValidationTests.m in Sources */,
 				144A28C51A99B2CF004A9086 /* FORMFieldValueLabel.m in Sources */,
+				7ACCACCB1B8E3FDC009B69AF /* FORMLayoutAttributes.m in Sources */,
 				144A28E91A99B2CF004A9086 /* FORMSocialSecurityNumberValidator.m in Sources */,
 				BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */,
 				144A28CB1A99B2CF004A9086 /* FORMPhoneNumberFormatter.m in Sources */,

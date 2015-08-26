@@ -1,4 +1,5 @@
 #import "FORMLayout.h"
+#import "FORMLayoutAttributes.h"
 #import "FORMBackgroundView.h"
 #import "FORMBaseFieldCell.h"
 #import "FORMGroupHeaderView.h"
@@ -32,6 +33,10 @@
 
 @implementation FORMLayout
 
++ (Class)layoutAttributesClass {
+    return [FORMLayoutAttributes class];
+}
+
 #pragma mark - Initializers
 
 - (instancetype)init {
@@ -44,8 +49,6 @@
     self.minimumLineSpacing = 0.0f;
     self.minimumInteritemSpacing = 0.0f;
     self.headerReferenceSize = CGSizeMake(CGRectGetWidth(bounds), FORMHeaderHeight);
-
-    [self registerClass:[FORMBackgroundView class] forDecorationViewOfKind:FORMBackgroundKind];
 
     return self;
 }
@@ -118,12 +121,18 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind
                                                                   atIndexPath:(NSIndexPath *)indexPath {
-    if (![elementKind isEqualToString:FORMBackgroundKind]) {
+
+    NSArray *groups = [self.dataSource groups];
+    FORMGroup *group = [groups objectAtIndex:indexPath.section];
+    
+    NSString *viewOfKind = [NSString stringWithFormat:@"%@-%@", FORMBackgroundKind, group.groupID];
+    
+    if (![elementKind isEqualToString:viewOfKind]) {
         return [super layoutAttributesForDecorationViewOfKind:elementKind
                                                   atIndexPath:indexPath];
     } else {
-        UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
-                                                                                                                   withIndexPath:indexPath];
+        FORMLayoutAttributes *attributes = [FORMLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind
+                                                                                           withIndexPath:indexPath];
         UICollectionViewLayoutAttributes *headerAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                                                                                   atIndexPath:indexPath];
 
@@ -184,8 +193,15 @@
 
     for (NSInteger section = 0; section < sectionsCount; section++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
-        [attributes addObject:[self layoutAttributesForDecorationViewOfKind:FORMBackgroundKind
-                                                                atIndexPath:indexPath]];
+        FORMGroup *group = [[self.dataSource groups] objectAtIndex:section];
+        
+        NSString *viewOfKind = [NSString stringWithFormat:@"%@-%@", FORMBackgroundKind, group.groupID];
+        FORMLayoutAttributes *layoutAttributes = (FORMLayoutAttributes *)[self layoutAttributesForDecorationViewOfKind:viewOfKind
+                                                                atIndexPath:indexPath];
+
+        layoutAttributes.styles = group.styles;
+
+        [attributes addObject:layoutAttributes];
     }
 
     return attributes;
@@ -198,6 +214,10 @@
 
     if ([self.dataSource respondsToSelector:@selector(groups)]) {
         groups = [self.dataSource groups];
+        for (FORMGroup *group in groups) {
+            NSString *viewOfKind = [NSString stringWithFormat:@"%@-%@", FORMBackgroundKind, group.groupID];
+            [self registerClass:[FORMBackgroundView class] forDecorationViewOfKind:viewOfKind];
+        }
     } else {
         abort();
     }
