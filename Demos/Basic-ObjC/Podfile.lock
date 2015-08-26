@@ -43,7 +43,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Form:
-    :path: "../../"
+    :path: ../../
 
 SPEC CHECKSUMS:
   Form: 2a2f9ed0ee19f7b153b9b5a8bcf19811d028b847
@@ -65,4 +65,4 @@ SPEC CHECKSUMS:
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.37.2
