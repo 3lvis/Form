@@ -206,7 +206,7 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 
     [self validate];
 
-    [self.popoverController dismissPopoverAnimated:YES];
+    [fieldValuesTableViewController dismissViewControllerAnimated:YES completion:nil];
 
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];
