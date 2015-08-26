@@ -1,4 +1,5 @@
 #import "FORMBackgroundView.h"
+#import "UIColor+Hex.h"
 
 @interface FORMBackgroundView ()
 
@@ -18,6 +19,15 @@
 
     [[UIColor whiteColor] setFill];
     [rectanglePath fill];
+}
+
+- (void)setGroupBackgroundColor:(UIColor *)backgroundColor {
+    NSString *style = [self.styles valueForKey:@"background_color"];
+    if ([style length] > 0) {
+        backgroundColor = [UIColor colorFromHex:style];
+    }
+    
+    self.backgroundColor = backgroundColor;
 }
 
 @end
