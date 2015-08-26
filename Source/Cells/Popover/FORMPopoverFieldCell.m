@@ -40,17 +40,6 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
     return _fieldValueLabel;
 }
 
-- (UIPopoverController *)popoverController {
-    if (_popoverController) return _popoverController;
-
-    _popoverController = [[UIPopoverController alloc] initWithContentViewController:self.contentViewController];
-    _popoverController.delegate = self;
-    _popoverController.popoverContentSize = self.contentSize;
-    _popoverController.backgroundColor = [UIColor whiteColor];
-
-    return _popoverController;
-}
-
 - (UIImageView *)iconImageView {
     if (_iconImageView) return _iconImageView;
 
