@@ -6,13 +6,13 @@
 
 #pragma mark - Styling
 
-- (void)setBackgroundColor:(UIColor *)backgroundColor {
+- (void)setSeparatorColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:@"separator_color"];
     if ([style length] > 0) {
-        backgroundColor = [UIColor colorFromHex:style];
+        color = [UIColor colorFromHex:style];
     }
     
-    self.backgroundColor = backgroundColor;
+    self.backgroundColor = color;
 }
 
 - (void)setHeight:(CGFloat)height {

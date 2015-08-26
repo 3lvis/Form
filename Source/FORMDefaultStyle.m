@@ -23,8 +23,9 @@
     [[FORMBaseFieldCell appearance] setHeadingLabelTextColor:[UIColor colorFromHex:@"28649C"]];
 
     [[FORMBackgroundView appearance] setBackgroundColor:[UIColor colorFromHex:@"DAE2EA"]];
-
-    [[FORMSeparatorView appearance] setBackgroundColor:[UIColor colorFromHex:@"C6C6C6"]];
+    [[FORMBackgroundView appearance] setGroupBackgroundColor:[UIColor colorFromHex:@"DAE2EA"]];
+    
+    [[FORMSeparatorView appearance] setSeparatorColor:[UIColor colorFromHex:@"C6C6C6"]];
 
     [[FORMButtonFieldCell appearance] setBackgroundColor:[UIColor colorFromHex:@"3DAFEB"]];
     [[FORMButtonFieldCell appearance] setTitleLabelFont:[UIFont fontWithName:@"AvenirNext-DemiBold" size:16.0]];
