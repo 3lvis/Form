@@ -1,5 +1,5 @@
 PODS:
-  - Form (3.4.0):
+  - Form (3.5.0):
     - Hex (~> 1.1.1)
     - HYP8601 (~> 0.7.2)
     - HYPImagePicker (~> 0.3)
@@ -39,13 +39,14 @@ PODS:
 
 DEPENDENCIES:
   - Form (from `../../`)
+  - UIViewController-HYPKeyboardToolbar
 
 EXTERNAL SOURCES:
   Form:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  Form: 2a2f9ed0ee19f7b153b9b5a8bcf19811d028b847
+  Form: c64955d5c33c3e1dd0536d6cb7a0b1e9d567dffc
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYP8601: 0118757c1332620748c75e7218e7b6b849686d06
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
@@ -64,4 +65,4 @@ SPEC CHECKSUMS:
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.38.2
