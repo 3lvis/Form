@@ -63,11 +63,11 @@ static BOOL enabledProperty;
     [self addTarget:self action:@selector(textFieldDidReturn:) forControlEvents:UIControlEventEditingDidEndOnExit];
 
     self.returnKeyType = UIReturnKeyDone;
-    
+
     [self createClearButton];
     [self addClearButton];
     [self createCountButtons];
-    
+
     return self;
 }
 
@@ -349,11 +349,11 @@ static BOOL enabledProperty;
 }
 
 - (void)minusButtonAction {
-    NSNumber *number = [NSNumber numberWithInt:[self.rawText integerValue] - 1];
+    NSNumber *number = @([self.rawText integerValue] - 1);
     if ([number integerValue] < 0) {
-      self.rawText = @"0";
+        self.rawText = @"0";
     } else {
-      self.rawText = [number stringValue];
+        self.rawText = [number stringValue];
     }
 
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
@@ -363,7 +363,7 @@ static BOOL enabledProperty;
 }
 
 - (void)plusButtonAction {
-    NSNumber *number = [NSNumber numberWithInt:[self.rawText integerValue] + 1];
+    NSNumber *number = @([self.rawText integerValue] + 1);
     self.rawText = [number stringValue];
 
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
