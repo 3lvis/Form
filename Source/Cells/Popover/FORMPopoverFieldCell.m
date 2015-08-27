@@ -131,7 +131,6 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
     presentationController.sourceView = self;
     presentationController.sourceRect = self.bounds;
 
-    //TODO: get needed view controller
     UIViewController *topViewController = [self topViewController];
     [topViewController presentViewController:self.contentViewController animated:YES completion:nil];
 }
