@@ -1,6 +1,6 @@
 #import "FORMPopoverFieldCell.h"
 #import "FORMTextFieldCell.h"
-#import "UIViewController+TopViewController.h"
+#import "UIViewController+HYPTopViewController.h"
 
 static const CGFloat FORMIconButtonWidth = 32.0f;
 static const CGFloat FORMIconButtonHeight = 38.0f;
