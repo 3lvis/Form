@@ -1,10 +1,11 @@
 #import "FORMPopoverFieldCell.h"
 #import "FORMTextFieldCell.h"
+#import "UIViewController+HYPTopViewController.h"
 
 static const CGFloat FORMIconButtonWidth = 32.0f;
 static const CGFloat FORMIconButtonHeight = 38.0f;
 
-@interface FORMPopoverFieldCell () <FORMTitleLabelDelegate, UIPopoverControllerDelegate>
+@interface FORMPopoverFieldCell () <FORMTitleLabelDelegate>
 
 @property (nonatomic) UIViewController *contentViewController;
 @property (nonatomic) CGSize contentSize;
@@ -38,17 +39,6 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
     _fieldValueLabel.delegate = self;
 
     return _fieldValueLabel;
-}
-
-- (UIPopoverController *)popoverController {
-    if (_popoverController) return _popoverController;
-
-    _popoverController = [[UIPopoverController alloc] initWithContentViewController:self.contentViewController];
-    _popoverController.delegate = self;
-    _popoverController.popoverContentSize = self.contentSize;
-    _popoverController.backgroundColor = [UIColor whiteColor];
-
-    return _popoverController;
 }
 
 - (UIImageView *)iconImageView {
@@ -137,12 +127,13 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
 
     [self updateContentViewController:self.contentViewController withField:self.field];
 
-    if (!self.popoverController.isPopoverVisible) {
-        [self.popoverController presentPopoverFromRect:self.bounds
-                                                inView:self
-                              permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
-                                              animated:YES];
-    }
+    self.contentViewController.modalPresentationStyle = UIModalPresentationPopover;
+    UIPopoverPresentationController *presentationController = [self.contentViewController popoverPresentationController];
+    presentationController.sourceView = self;
+    presentationController.sourceRect = self.bounds;
+
+    UIViewController *topViewController = [UIViewController hyp_topViewController];
+    [topViewController presentViewController:self.contentViewController animated:YES completion:nil];
 }
 
 @end

@@ -82,6 +82,7 @@
 		14F594A51AE0618300772756 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F594A11AE0618300772756 /* arrow_down@2x.png */; };
 		14F594A61AE0618300772756 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F594A21AE0618300772756 /* clear@2x.png */; };
 		14F5AF6D1AE0522400FF71AD /* postal_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 14F5AF6C1AE0522400FF71AD /* postal_codes.json */; };
+		14F856B31B8F97EA00BBF337 /* UIViewController+HYPTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F856B21B8F97EA00BBF337 /* UIViewController+HYPTopViewController.m */; };
 		446C42661AF8B38F0002DFE9 /* FORMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446C42651AF8B38F0002DFE9 /* FORMViewController.m */; };
 		44713C611AE8E9DC00AA97DA /* simple-number-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 44713C601AE8E9DC00AA97DA /* simple-number-field.json */; };
 		44932E771AE79BBD00A159BE /* simple-section.json in Resources */ = {isa = PBXBuildFile; fileRef = 44932E761AE79BBD00A159BE /* simple-section.json */; };
@@ -230,6 +231,8 @@
 		14F594A11AE0618300772756 /* arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
 		14F594A21AE0618300772756 /* clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear@2x.png"; sourceTree = "<group>"; };
 		14F5AF6C1AE0522400FF71AD /* postal_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postal_codes.json; sourceTree = "<group>"; };
+		14F856B11B8F97EA00BBF337 /* UIViewController+HYPTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HYPTopViewController.h"; sourceTree = "<group>"; };
+		14F856B21B8F97EA00BBF337 /* UIViewController+HYPTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HYPTopViewController.m"; sourceTree = "<group>"; };
 		446C42641AF8B38F0002DFE9 /* FORMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMViewController.h; sourceTree = "<group>"; };
 		446C42651AF8B38F0002DFE9 /* FORMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMViewController.m; sourceTree = "<group>"; };
 		44713C601AE8E9DC00AA97DA /* simple-number-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-number-field.json"; sourceTree = "<group>"; };
@@ -406,6 +409,8 @@
 		144A28A61A99B2CF004A9086 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				14F856B11B8F97EA00BBF337 /* UIViewController+HYPTopViewController.h */,
+				14F856B21B8F97EA00BBF337 /* UIViewController+HYPTopViewController.m */,
 				144A28A71A99B2CF004A9086 /* DDMathEvaluator+FORM.h */,
 				144A28A81A99B2CF004A9086 /* DDMathEvaluator+FORM.m */,
 				BDB7E31D1AA7016D00AF00BC /* FORMPostalCodeManager.h */,
@@ -808,6 +813,7 @@
 				144A28BB1A99B2CF004A9086 /* FORMBaseFieldCell.m in Sources */,
 				144A28C91A99B2CF004A9086 /* FORMFloatFormatter.m in Sources */,
 				144A28E11A99B2CF004A9086 /* FORMTarget.m in Sources */,
+				14F856B31B8F97EA00BBF337 /* UIViewController+HYPTopViewController.m in Sources */,
 				144A28D11A99B2CF004A9086 /* FORMGroupHeaderView.m in Sources */,
 				D5B56C071AE51C7800DD8816 /* FORMEmailFormatter.m in Sources */,
 				144A28BC1A99B2CF004A9086 /* FORMButtonFieldCell.m in Sources */,
