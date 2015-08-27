@@ -81,6 +81,9 @@
                 "heading_label_text_color":"#FF0000",
                 "heading_label_font":"AvenirNext-Medium",
                 "heading_label_font_size":"22.0",
+                "clear_button_color":"#CCCCCC",
+                "minus_button_color":"#FF0000",
+                "plus_button_color":"#FF3333",
               }
             }
           ]

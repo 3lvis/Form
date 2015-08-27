@@ -966,6 +966,9 @@
     XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_font_size"], @"14.0");
     XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_label_text_color"], @"#999999");
     XCTAssertEqualObjects([textField.styles objectForKey:@"tooltip_background_color"], @"#CCCCCC");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"clear_button_color"], @"#CCCCCC");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"minus_button_color"], @"#FF0000");
+    XCTAssertEqualObjects([textField.styles objectForKey:@"plus_button_color"], @"#FF3333");
     
     
     // Group Header Styles
