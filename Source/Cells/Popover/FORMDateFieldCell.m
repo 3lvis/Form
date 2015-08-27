@@ -3,8 +3,7 @@
 
 static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
 
-@interface FORMDateFieldCell () <FORMTextFieldDelegate,
-UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
+@interface FORMDateFieldCell () <FORMTextFieldDelegate, FORMFieldValuesTableViewControllerDelegate>
 
 @property (nonatomic) UIDatePicker *datePicker;
 
@@ -157,6 +156,8 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field {
     self.fieldValuesController.field = self.field;
+    
+    contentViewController.preferredContentSize = FORMDatePopoverSize;
 
     if (self.field.info) {
         CGRect frame = self.datePicker.frame;
@@ -206,7 +207,7 @@ UIPopoverControllerDelegate, FORMFieldValuesTableViewControllerDelegate>
 
     [self validate];
 
-    [self.popoverController dismissPopoverAnimated:YES];
+    [fieldValuesTableViewController dismissViewControllerAnimated:YES completion:nil];
 
     if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
         [self.delegate fieldCell:self updatedWithField:self.field];

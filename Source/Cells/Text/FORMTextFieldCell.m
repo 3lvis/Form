@@ -10,7 +10,6 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 @interface FORMTextFieldCell () <FORMTextFieldDelegate>
 
 @property (nonatomic) FORMTextField *textField;
-@property (nonatomic) UIPopoverController *popoverController;
 @property (nonatomic) UILabel *tooltipLabel;
 @property (nonatomic) FORMTooltipView *tooltipView;
 @property (nonatomic) BOOL showTooltips;

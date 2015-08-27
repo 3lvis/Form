@@ -5,7 +5,6 @@
 @interface FORMPopoverFieldCell : FORMBaseFieldCell
 
 @property (nonatomic) FORMFieldValueLabel *fieldValueLabel;
-@property (nonatomic) UIPopoverController *popoverController;
 @property (nonatomic) UIImageView *iconImageView;
 
 - (instancetype)initWithFrame:(CGRect)frame contentViewController:(UIViewController *)controller
