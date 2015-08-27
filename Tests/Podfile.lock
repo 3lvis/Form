@@ -1,5 +1,5 @@
 PODS:
-  - Hex (1.1.1)
+  - Hex (2.0)
   - HYP8601 (0.7.2)
   - HYPImagePicker (0.3)
   - HYPMathParser (0.4.1)
@@ -43,7 +43,7 @@ DEPENDENCIES:
   - UIViewController-HYPKeyboardToolbar
 
 SPEC CHECKSUMS:
-  Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
+  Hex: 1800bd20206b93b10422d2289baa3787698825ad
   HYP8601: 0118757c1332620748c75e7218e7b6b849686d06
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
   HYPMathParser: 146a4981427a0b46cc9af823b210bfefdf0a7107
@@ -63,4 +63,4 @@ SPEC CHECKSUMS:
   UIButton-ANDYHighlighted: 3f5e9fb68fb3425bd9fddc030af452d3ac9d1613
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2
