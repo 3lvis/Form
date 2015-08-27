@@ -156,6 +156,8 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field {
     self.fieldValuesController.field = self.field;
+    
+    contentViewController.preferredContentSize = FORMDatePopoverSize;
 
     if (self.field.info) {
         CGRect frame = self.datePicker.frame;
