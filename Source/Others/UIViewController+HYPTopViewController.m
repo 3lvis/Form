@@ -1,8 +1,8 @@
-#import "UIViewController+TopViewController.h"
+#import "UIViewController+HYPTopViewController.h"
 
-@implementation UIViewController(TopViewController)
+@implementation UIViewController (HYPTopViewController)
 
-+ (UIViewController *) topViewController {
++ (UIViewController *)hyp_topViewController {
     UIViewController *topViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
 
     while (topViewController.presentedViewController) {
