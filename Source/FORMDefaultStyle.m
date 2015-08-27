@@ -64,6 +64,9 @@
     [[FORMTextField appearance] setValidBorderColor:[UIColor colorFromHex:@"3DAFEB"]];
     [[FORMTextField appearance] setInvalidBackgroundColor:[UIColor colorFromHex:@"FFD7D7"]];
     [[FORMTextField appearance] setInvalidBorderColor:[UIColor colorFromHex:@"EC3031"]];
+    [[FORMTextField appearance] setClearButtonColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMTextField appearance] setMinusButtonColor:[UIColor colorFromHex:@"3DAFEB"]];
+    [[FORMTextField appearance] setPlusButtonColor:[UIColor colorFromHex:@"3DAFEB"]];
 
     [[FORMFieldValueLabel appearance] setCustomFont:[UIFont fontWithName:@"AvenirNext-Regular" size:15.0]];
     [[FORMFieldValueLabel appearance] setTextColor:[UIColor colorFromHex:@"455C73"]];

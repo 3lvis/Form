@@ -35,6 +35,9 @@ static BOOL enabledProperty;
 @interface FORMTextField () <UITextFieldDelegate>
 
 @property (nonatomic, getter = isModified) BOOL modified;
+@property (nonatomic, retain) UIButton *clearButton;
+@property (nonatomic, retain) UIButton *minusButton;
+@property (nonatomic, retain) UIButton *plusButton;
 
 @end
 
@@ -60,21 +63,11 @@ static BOOL enabledProperty;
     [self addTarget:self action:@selector(textFieldDidReturn:) forControlEvents:UIControlEventEditingDidEndOnExit];
 
     self.returnKeyType = UIReturnKeyDone;
-
-    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
     
-    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
-
-    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clearButton setImage:[UIImage imageNamed:@"clear"
-                                     inBundle:bundle
-                compatibleWithTraitCollection:trait] forState:UIControlStateNormal];
-    [clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    clearButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldClearButtonWidth, FORMTextFieldClearButtonHeight);
-    self.rightView = clearButton;
-    self.rightViewMode = UITextFieldViewModeWhileEditing;
-
+    [self createClearButton];
+    [self addClearButton];
+    [self createCountButtons];
+    
     return self;
 }
 
@@ -124,7 +117,7 @@ static BOOL enabledProperty;
 
 - (void)setTypeString:(NSString *)typeString {
     _typeString = typeString;
-
+    
     FORMTextFieldType type;
     if ([typeString isEqualToString:@"name"]) {
         type = FORMTextFieldTypeName;
@@ -149,8 +142,8 @@ static BOOL enabledProperty;
     } else if ([typeString isEqualToString:@"password"]) {
         type = FORMTextFieldTypePassword;
     } else if ([typeString isEqualToString:@"count"]) {
-	type = FORMTextFieldTypeCount;
-	[self setCountButtons];
+        type = FORMTextFieldTypeCount;
+        [self addCountButtons];
     } else if (!typeString.length) {
         type = FORMTextFieldTypeDefault;
     } else {
@@ -183,7 +176,7 @@ static BOOL enabledProperty;
     } else if ([inputTypeString isEqualToString:@"password"]) {
         inputType = FORMTextFieldInputTypePassword;
     } else if ([inputTypeString isEqualToString:@"count"]) {
-	inputType = FORMTextFieldInputTypeCount;
+        inputType = FORMTextFieldInputTypeCount;
     } else if (!inputTypeString.length) {
         inputType = FORMTextFieldInputTypeDefault;
     } else {
@@ -287,6 +280,63 @@ static BOOL enabledProperty;
     }
 }
 
+#pragma mark - Buttons
+
+- (void)createCountButtons {
+    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
+
+    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
+
+    // Minus Button
+    UIImage *minusImage = [UIImage imageNamed:@"minus" inBundle:bundle compatibleWithTraitCollection:trait];
+    UIImage *minusImageTemplate = [minusImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.minusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.minusButton setImage:minusImageTemplate forState:UIControlStateNormal];
+    
+    [self.minusButton addTarget:self action:@selector(minusButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    self.minusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldMinusButtonWidth, FORMTextFieldMinusButtonHeight);
+
+    // Plus Button
+    UIImage *plusImage = [UIImage imageNamed:@"plus" inBundle:bundle compatibleWithTraitCollection:trait];
+    UIImage *plusImageTemplate = [plusImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.plusButton setImage:plusImageTemplate forState:UIControlStateNormal];
+    
+    [self.plusButton addTarget:self action:@selector(plusButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    self.plusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldPlusButtonWidth, FORMTextFieldPlusButtonHeight);
+}
+
+- (void)addCountButtons {
+    self.leftView = self.minusButton;
+    self.leftViewMode = UITextFieldViewModeAlways;
+
+    self.rightView = self.plusButton;
+    self.rightViewMode = UITextFieldViewModeAlways;
+
+    self.textAlignment = NSTextAlignmentCenter;
+}
+
+- (void)createClearButton {
+    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
+    
+    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
+
+    UIImage *clearImage = [UIImage imageNamed:@"clear" inBundle:bundle compatibleWithTraitCollection:trait];
+    UIImage *clearImageTemplate = [clearImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.clearButton setImage:clearImageTemplate forState:UIControlStateNormal];
+    
+    [self.clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    self.clearButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldClearButtonWidth, FORMTextFieldClearButtonHeight);
+}
+
+- (void)addClearButton {
+    self.rightView = self.clearButton;
+    self.rightViewMode = UITextFieldViewModeWhileEditing;
+}
+
 #pragma mark - Actions
 
 - (void)clearButtonAction {
@@ -364,35 +414,6 @@ static BOOL enabledProperty;
         self.backgroundColor = invalidBackgroundColor;
         self.layer.borderColor = invalidBorderColor.CGColor;
     }
-}
-
-- (void)setCountButtons {
-    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
-
-    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
-
-    UIButton *minusButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [minusButton setImage:[UIImage imageNamed:@"minus"
-				     inBundle:bundle
-		compatibleWithTraitCollection:trait] forState:UIControlStateNormal];
-    [minusButton addTarget:self action:@selector(minusButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    minusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldMinusButtonWidth, FORMTextFieldMinusButtonHeight);
-
-    UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [plusButton setImage:[UIImage imageNamed:@"plus"
-				     inBundle:bundle
-		compatibleWithTraitCollection:trait] forState:UIControlStateNormal];
-    [plusButton addTarget:self action:@selector(plusButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    plusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldPlusButtonWidth, FORMTextFieldPlusButtonHeight);
-
-    self.leftView = minusButton;
-    self.leftViewMode = UITextFieldViewModeAlways;
-
-    self.rightView = plusButton;
-    self.rightViewMode = UITextFieldViewModeAlways;
-
-    self.textAlignment = NSTextAlignmentCenter;
 }
 
 - (void)setCustomFont:(UIFont *)font {
@@ -544,6 +565,30 @@ static BOOL enabledProperty;
     }
     invalidBorderColor = color;
     self.enabled = enabledProperty;
+}
+
+- (void)setClearButtonColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"clear_button_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
+    self.clearButton.tintColor = color;
+}
+
+- (void)setMinusButtonColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"minus_button_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
+    self.minusButton.tintColor = color;
+}
+
+- (void)setPlusButtonColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:@"plus_button_color"];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
+    self.plusButton.tintColor = color;
 }
 
 @end

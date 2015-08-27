@@ -76,6 +76,10 @@ typedef NS_ENUM(NSInteger, FORMTextFieldInputType) {
 - (void)setInvalidBackgroundColor:(UIColor *)backgroundColor UI_APPEARANCE_SELECTOR;
 - (void)setInvalidBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;
 
+- (void)setClearButtonColor:(UIColor *)color UI_APPEARANCE_SELECTOR;
+- (void)setMinusButtonColor:(UIColor *)color UI_APPEARANCE_SELECTOR;
+- (void)setPlusButtonColor:(UIColor *)color UI_APPEARANCE_SELECTOR;
+
 @end
 
 @protocol FORMTextFieldDelegate <NSObject>
