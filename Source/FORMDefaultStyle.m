@@ -11,7 +11,7 @@
 #import "FORMButtonFieldCell.h"
 #import "FORMBaseFieldCell.h"
 
-#import "UIColor+Hex.h"
+@import Hex;
 
 @implementation FORMDefaultStyle
 
