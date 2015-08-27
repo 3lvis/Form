@@ -1,5 +1,6 @@
 #import "FORMPopoverFieldCell.h"
 #import "FORMTextFieldCell.h"
+#import "UIViewController+TopViewController.h"
 
 static const CGFloat FORMIconButtonWidth = 32.0f;
 static const CGFloat FORMIconButtonHeight = 38.0f;
@@ -131,18 +132,8 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
     presentationController.sourceView = self;
     presentationController.sourceRect = self.bounds;
 
-    UIViewController *topViewController = [self topViewController];
+    UIViewController *topViewController = [UIViewController topViewController];
     [topViewController presentViewController:self.contentViewController animated:YES completion:nil];
-}
-
-- (UIViewController *) topViewController {
-    UIViewController *topViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-
-    while (topViewController.presentedViewController) {
-        topViewController = topViewController.presentedViewController;
-    }
-
-    return topViewController;
 }
 
 @end
