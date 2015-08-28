@@ -1,7 +1,8 @@
 #import "FORMTextFieldCell.h"
 
 #import "FORMTooltipView.h"
-#import "UIColor+Hex.h"
+
+@import Hex;
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMTooltipViewMinimumWidth = 90.0f;

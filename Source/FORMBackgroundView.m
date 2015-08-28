@@ -1,6 +1,6 @@
 #import "FORMBackgroundView.h"
 #import "FORMLayoutAttributes.h"
-#import "UIColor+Hex.h"
+@import Hex;
 
 @interface FORMBackgroundView ()
 

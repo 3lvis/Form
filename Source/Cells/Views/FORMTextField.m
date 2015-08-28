@@ -4,7 +4,7 @@
 
 #import "FORMTextFieldTypeManager.h"
 
-#import "UIColor+Hex.h"
+@import Hex;
 
 static const CGFloat FORMTextFieldClearButtonWidth = 30.0f;
 static const CGFloat FORMTextFieldClearButtonHeight = 20.0f;

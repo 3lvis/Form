@@ -10,7 +10,7 @@
 #import "FORMFieldValue.h"
 #import "HYPParsedRelationship.h"
 
-#import "UIColor+Hex.h"
+@import Hex;
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"

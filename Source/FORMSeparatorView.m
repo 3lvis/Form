@@ -1,5 +1,5 @@
 #import "FORMSeparatorView.h"
-#import "UIColor+Hex.h"
+@import Hex;
 
 @implementation FORMSeparatorView
 

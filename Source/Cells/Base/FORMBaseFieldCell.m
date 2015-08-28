@@ -2,7 +2,7 @@
 
 #import "FORMSeparatorView.h"
 
-#import "UIColor+Hex.h"
+@import Hex;
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMTextFormFieldCellLabelMarginTop = 10.0f;

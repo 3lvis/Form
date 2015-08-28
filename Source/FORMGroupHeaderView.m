@@ -1,5 +1,5 @@
 #import "FORMGroupHeaderView.h"
-#import "UIColor+Hex.h"
+@import Hex;
 
 @interface FORMGroupHeaderView ()
 

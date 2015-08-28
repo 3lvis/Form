@@ -2,6 +2,6 @@
 
 @interface FORMLayoutAttributes : UICollectionViewLayoutAttributes
 
-@property (nonatomic, strong) NSDictionary *styles;
+@property (nonatomic) NSDictionary *styles;
 
 @end
