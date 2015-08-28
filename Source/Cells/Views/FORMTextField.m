@@ -4,6 +4,8 @@
 
 #import "FORMTextFieldTypeManager.h"
 
+@import Hex;
+
 static const CGFloat FORMTextFieldClearButtonWidth = 30.0f;
 static const CGFloat FORMTextFieldClearButtonHeight = 20.0f;
 static const CGFloat FORMTextFieldMinusButtonWidth = 30.0f;
@@ -30,9 +32,35 @@ static UIColor *invalidBorderColor;
 
 static BOOL enabledProperty;
 
+static NSString * const FORMTextFieldFontKey = @"font";
+static NSString * const FORMTextFieldFontSizeKey = @"font_size";
+static NSString * const FORMTextFieldBorderWidthKey = @"border_width";
+static NSString * const FORMTextFieldBorderColorKey = @"border_color";
+static NSString * const FORMTextFieldCornerRadiusKey = @"corner_radius";
+static NSString * const FORMTextFieldActiveBackgroundColorKey = @"active_background_color";
+static NSString * const FORMTextFieldActiveBorderColorKey = @"active_border_color";
+static NSString * const FORMTextFieldInactiveBackgroundColorKey = @"inactive_background_color";
+static NSString * const FORMTextFieldInactiveBorderColorKey = @"inactive_border_color";
+static NSString * const FORMTextFieldEnabledBackgroundColorKey = @"enabled_background_color";
+static NSString * const FORMTextFieldEnabledBorderColorKey = @"enabled_border_color";
+static NSString * const FORMTextFieldEnabledTextColorKey = @"enabled_text_color";
+static NSString * const FORMTextFieldDisabledBackgroundColorKey = @"disabled_background_color";
+static NSString * const FORMTextFieldDisabledBorderColorKey = @"disabled_border_color";
+static NSString * const FORMTextFieldDisabledTextColorKey = @"disabled_text_color";
+static NSString * const FORMTextFieldValidBackgroundColorKey = @"valid_background_color";
+static NSString * const FORMTextFieldValidBorderColorKey = @"valid_border_color";
+static NSString * const FORMTextFieldInvalidBackgroundColorKey = @"invalid_background_color";
+static NSString * const FORMTextFieldInvalidBorderColorKey = @"invalid_border_color";
+static NSString * const FORMTextFieldClearButtonColorKey = @"clear_button_color";
+static NSString * const FORMTextFieldMinusButtonColorKey = @"minus_button_color";
+static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
+
 @interface FORMTextField () <UITextFieldDelegate>
 
 @property (nonatomic, getter = isModified) BOOL modified;
+@property (nonatomic, retain) UIButton *clearButton;
+@property (nonatomic, retain) UIButton *minusButton;
+@property (nonatomic, retain) UIButton *plusButton;
 
 @end
 
@@ -59,19 +87,9 @@ static BOOL enabledProperty;
 
     self.returnKeyType = UIReturnKeyDone;
 
-    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
-
-    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
-
-    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clearButton setImage:[UIImage imageNamed:@"clear"
-                                     inBundle:bundle
-                compatibleWithTraitCollection:trait] forState:UIControlStateNormal];
-    [clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    clearButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldClearButtonWidth, FORMTextFieldClearButtonHeight);
-    self.rightView = clearButton;
-    self.rightViewMode = UITextFieldViewModeWhileEditing;
+    [self createClearButton];
+    [self addClearButton];
+    [self createCountButtons];
 
     return self;
 }
@@ -122,7 +140,7 @@ static BOOL enabledProperty;
 
 - (void)setTypeString:(NSString *)typeString {
     _typeString = typeString;
-
+    
     FORMTextFieldType type;
     if ([typeString isEqualToString:@"name"]) {
         type = FORMTextFieldTypeName;
@@ -148,7 +166,7 @@ static BOOL enabledProperty;
         type = FORMTextFieldTypePassword;
     } else if ([typeString isEqualToString:@"count"]) {
         type = FORMTextFieldTypeCount;
-        [self setCountButtons];
+        [self addCountButtons];
     } else if (!typeString.length) {
         type = FORMTextFieldTypeDefault;
     } else {
@@ -285,6 +303,63 @@ static BOOL enabledProperty;
     }
 }
 
+#pragma mark - Buttons
+
+- (void)createCountButtons {
+    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
+
+    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
+
+    // Minus Button
+    UIImage *minusImage = [UIImage imageNamed:@"minus" inBundle:bundle compatibleWithTraitCollection:trait];
+    UIImage *minusImageTemplate = [minusImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.minusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.minusButton setImage:minusImageTemplate forState:UIControlStateNormal];
+    
+    [self.minusButton addTarget:self action:@selector(minusButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    self.minusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldMinusButtonWidth, FORMTextFieldMinusButtonHeight);
+
+    // Plus Button
+    UIImage *plusImage = [UIImage imageNamed:@"plus" inBundle:bundle compatibleWithTraitCollection:trait];
+    UIImage *plusImageTemplate = [plusImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.plusButton setImage:plusImageTemplate forState:UIControlStateNormal];
+    
+    [self.plusButton addTarget:self action:@selector(plusButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    self.plusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldPlusButtonWidth, FORMTextFieldPlusButtonHeight);
+}
+
+- (void)addCountButtons {
+    self.leftView = self.minusButton;
+    self.leftViewMode = UITextFieldViewModeAlways;
+
+    self.rightView = self.plusButton;
+    self.rightViewMode = UITextFieldViewModeAlways;
+
+    self.textAlignment = NSTextAlignmentCenter;
+}
+
+- (void)createClearButton {
+    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
+    
+    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
+
+    UIImage *clearImage = [UIImage imageNamed:@"clear" inBundle:bundle compatibleWithTraitCollection:trait];
+    UIImage *clearImageTemplate = [clearImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.clearButton setImage:clearImageTemplate forState:UIControlStateNormal];
+    
+    [self.clearButton addTarget:self action:@selector(clearButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    self.clearButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldClearButtonWidth, FORMTextFieldClearButtonHeight);
+}
+
+- (void)addClearButton {
+    self.rightView = self.clearButton;
+    self.rightViewMode = UITextFieldViewModeWhileEditing;
+}
+
 #pragma mark - Actions
 
 - (void)clearButtonAction {
@@ -305,8 +380,8 @@ static BOOL enabledProperty;
     }
 
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
-        [self.textFieldDelegate textFormField:self
-                            didUpdateWithText:self.rawText];
+	[self.textFieldDelegate textFormField:self
+			    didUpdateWithText:self.rawText];
     }
 }
 
@@ -315,8 +390,8 @@ static BOOL enabledProperty;
     self.rawText = [number stringValue];
 
     if ([self.textFieldDelegate respondsToSelector:@selector(textFormField:didUpdateWithText:)]) {
-        [self.textFieldDelegate textFormField:self
-                            didUpdateWithText:self.rawText];
+	[self.textFieldDelegate textFormField:self
+			    didUpdateWithText:self.rawText];
     }
 }
 
@@ -364,107 +439,179 @@ static BOOL enabledProperty;
     }
 }
 
-- (void)setCountButtons {
-    NSString *bundlePath = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"Form.bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath: bundlePath];
-
-    UITraitCollection *trait = [UITraitCollection traitCollectionWithDisplayScale:2.0];
-
-    UIButton *minusButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [minusButton setImage:[UIImage imageNamed:@"minus"
-                                     inBundle:bundle
-                compatibleWithTraitCollection:trait] forState:UIControlStateNormal];
-    [minusButton addTarget:self action:@selector(minusButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    minusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldMinusButtonWidth, FORMTextFieldMinusButtonHeight);
-
-    UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [plusButton setImage:[UIImage imageNamed:@"plus"
-                                    inBundle:bundle
-               compatibleWithTraitCollection:trait] forState:UIControlStateNormal];
-    [plusButton addTarget:self action:@selector(plusButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    plusButton.frame = CGRectMake(0.0f, 0.0f, FORMTextFieldPlusButtonWidth, FORMTextFieldPlusButtonHeight);
-
-    self.leftView = minusButton;
-    self.leftViewMode = UITextFieldViewModeAlways;
-
-    self.rightView = plusButton;
-    self.rightViewMode = UITextFieldViewModeAlways;
-
-    self.textAlignment = NSTextAlignmentCenter;
-}
-
 - (void)setCustomFont:(UIFont *)font {
+    NSString *styleFont = [self.styles valueForKey:FORMTextFieldFontKey];
+    NSString *styleFontSize = [self.styles valueForKey:FORMTextFieldFontSizeKey];
+    if ([styleFont length] > 0) {
+        if ([styleFontSize length] > 0) {
+            font = [UIFont fontWithName:styleFont size:[styleFontSize floatValue]];
+        } else {
+            font = [UIFont fontWithName:styleFont size:font.pointSize];
+        }
+    }
     self.font = font;
 }
 
 - (void)setBorderWidth:(CGFloat)borderWidth {
+    NSString *style = [self.styles valueForKey:FORMTextFieldBorderWidthKey];
+    if ([style length] > 0) {
+        borderWidth = [style floatValue];
+    }
     self.layer.borderWidth = borderWidth;
 }
 
 - (void)setBorderColor:(UIColor *)borderColor {
+    NSString *style = [self.styles valueForKey:FORMTextFieldBorderColorKey];
+    if ([style length] > 0) {
+        borderColor = [UIColor colorFromHex:style];
+    }
     self.layer.borderColor = borderColor.CGColor;
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
+    NSString *style = [self.styles valueForKey:FORMTextFieldCornerRadiusKey];
+    if ([style length] > 0) {
+        cornerRadius = [style floatValue];
+    }
     self.layer.cornerRadius = cornerRadius;
 }
 
 - (void)setActiveBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldActiveBackgroundColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     activeBackgroundColor = color;
 }
 
 - (void)setActiveBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldActiveBorderColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     activeBorderColor = color;
 }
 
 - (void)setInactiveBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldInactiveBackgroundColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     inactiveBackgroundColor = color;
 }
 
 - (void)setInactiveBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldInactiveBorderColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     inactiveBorderColor = color;
 }
 
 - (void)setEnabledBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldEnabledBackgroundColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     enabledBackgroundColor = color;
 }
 
 - (void)setEnabledBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldEnabledBorderColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     enabledBorderColor = color;
 }
 
 - (void)setEnabledTextColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldEnabledTextColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     enabledTextColor = color;
 }
 
 - (void)setDisabledBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldDisabledBackgroundColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     disabledBackgroundColor = color;
 }
 
 - (void)setDisabledBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldDisabledBorderColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     disabledBorderColor = color;
 }
 
 - (void)setDisabledTextColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldDisabledTextColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     disabledTextColor = color;
     self.enabled = enabledProperty;
 }
 
 - (void)setValidBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldValidBackgroundColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     validBackgroundColor = color;
 }
 
 - (void)setValidBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldValidBorderColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     validBorderColor = color;
 }
 
 - (void)setInvalidBackgroundColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldInvalidBackgroundColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     invalidBackgroundColor = color;
 }
 
 - (void)setInvalidBorderColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldInvalidBorderColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
     invalidBorderColor = color;
     self.enabled = enabledProperty;
+}
+
+- (void)setClearButtonColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldClearButtonColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
+    self.clearButton.tintColor = color;
+}
+
+- (void)setMinusButtonColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldMinusButtonColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
+    self.minusButton.tintColor = color;
+}
+
+- (void)setPlusButtonColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMTextFieldPlusButtonColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
+    self.plusButton.tintColor = color;
 }
 
 @end

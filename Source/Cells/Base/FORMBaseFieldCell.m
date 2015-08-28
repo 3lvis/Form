@@ -2,10 +2,16 @@
 
 #import "FORMSeparatorView.h"
 
+@import Hex;
+
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMTextFormFieldCellLabelMarginTop = 10.0f;
 static const CGFloat FORMTextFormFieldCellLabelHeight = 20.0f;
 static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
+
+static NSString * const FORMHeadingLabelFontKey = @"heading_label_font";
+static NSString * const FORMHeadingLabelFontSizeKey = @"heading_label_font_size";
+static NSString * const FORMHeadingLabelTextColorKey = @"heading_label_text_color";
 
 @interface FORMBaseFieldCell ()
 
@@ -71,7 +77,12 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 - (void)updateWithField:(FORMField *)field {
     self.headingLabel.hidden = (field.sectionSeparator);
     self.headingLabel.text = field.title;
+    self.styles = field.styles;
 
+    if (field.sectionSeparator) {
+        self.separatorView.styles = field.styles;
+    }
+    
     self.separatorView.hidden = !field.sectionSeparator;
 
     if (field.targets.count > 0) {
@@ -118,10 +129,25 @@ static const CGFloat FORMTextFormFieldCellLabelMarginX = 5.0f;
 #pragma mark - Styling
 
 - (void)setHeadingLabelFont:(UIFont *)font {
+    NSString *styleFont = [self.styles valueForKey:FORMHeadingLabelFontKey];
+    NSString *styleFontSize = [self.styles valueForKey:FORMHeadingLabelFontSizeKey];
+    if ([styleFont length] > 0) {
+        if ([styleFontSize length] > 0) {
+            font = [UIFont fontWithName:styleFont size:[styleFontSize floatValue]];
+        } else {
+            font = [UIFont fontWithName:styleFont size:font.pointSize];
+        }
+    }
+    
     self.headingLabel.font = font;
 }
 
 - (void)setHeadingLabelTextColor:(UIColor *)color {
+    NSString *style = [self.styles valueForKey:FORMHeadingLabelTextColorKey];
+    if ([style length] > 0) {
+        color = [UIColor colorFromHex:style];
+    }
+    
     self.headingLabel.textColor = color;
 }
 

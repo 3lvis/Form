@@ -38,6 +38,9 @@
         self.collapsible = YES;
     }
 
+    NSDictionary *styles = [dictionary andy_valueForKey:@"styles"];
+    _styles = styles;
+
     NSMutableArray *sections = [NSMutableArray new];
     NSArray *dataSourceSections = [dictionary andy_valueForKey:@"sections"];
     NSDictionary *lastObject = [dataSourceSections lastObject];

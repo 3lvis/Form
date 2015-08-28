@@ -1,5 +1,16 @@
 #import "FORMButtonFieldCell.h"
 #import "UIButton+ANDYHighlighted.h"
+#import "UIColor+Hex.h"
+
+static NSString * const FORMButtonTitleLabelFontKey = @"font";
+static NSString * const FORMButtonTitleLabelFontSizeKey = @"font_size";
+static NSString * const FORMButtonBorderWidthKey = @"border_width";
+static NSString * const FORMButtonCornerRadiusKey = @"corner_radius";
+static NSString * const FORMButtonHighlightedTitleColorKey = @"highlighted_title_color";
+static NSString * const FORMButtonBorderColorKey = @"border_color";
+static NSString * const FORMButtonHighlightedBackgroundColorKey = @"highlighted_background_color";
+static NSString * const FORMButtonTitleColorKey = @"title_color";
+static NSString * const FORMButtonBackgroundColorKey = @"background_color";
 
 @interface FORMButtonFieldCell ()
 
@@ -79,34 +90,71 @@
 #pragma mark - Styling
 
 - (void)setTitleLabelFont:(UIFont *)titleLabelFont {
+    NSString *styleFont = [self.field.styles valueForKey:FORMButtonTitleLabelFontKey];
+    NSString *styleFontSize = [self.field.styles valueForKey:FORMButtonTitleLabelFontSizeKey];
+    if ([styleFont length] > 0) {
+        if ([styleFontSize length] > 0) {
+            titleLabelFont = [UIFont fontWithName:styleFont size:[styleFontSize floatValue]];
+        } else {
+            titleLabelFont = [UIFont fontWithName:styleFont size:titleLabelFont.pointSize];
+        }
+    }
     self.button.titleLabel.font = titleLabelFont;
 }
 
 - (void)setBorderWidth:(CGFloat)borderWidth {
+    NSString *style = [self.field.styles valueForKey:FORMButtonBorderWidthKey];
+    if ([style length] > 0) {
+        borderWidth = [style floatValue];
+    }
     self.button.layer.borderWidth = borderWidth;
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
+    NSString *style = [self.field.styles valueForKey:FORMButtonCornerRadiusKey];
+    if ([style length] > 0) {
+        cornerRadius = [style floatValue];
+    }
     self.button.layer.cornerRadius = cornerRadius;
 }
 
 - (void)setHighlightedTitleColor:(UIColor *)highlightedTitleColor {
+    NSString *style = [self.field.styles valueForKey:FORMButtonHighlightedTitleColorKey];
+    if ([style length] > 0) {
+        highlightedTitleColor = [UIColor colorFromHex:style];
+    }
     self.button.highlightedTitleColor = highlightedTitleColor;
 }
 
 - (void)setBorderColor:(UIColor *)borderColor {
+    NSString *style = [self.field.styles valueForKey:FORMButtonBorderColorKey];
+    if ([style length] > 0) {
+        borderColor = [UIColor colorFromHex:style];
+    }
     self.button.layer.borderColor = borderColor.CGColor;
 }
 
 - (void)setHighlightedBackgroundColor:(UIColor *)highlightedBackgroundColor {
+    NSString *style = [self.field.styles valueForKey:FORMButtonHighlightedBackgroundColorKey];
+    if ([style length] > 0) {
+        highlightedBackgroundColor = [UIColor colorFromHex:style];
+    }
     self.button.highlightedBackgroundColor = highlightedBackgroundColor;
 }
 
 - (void)setTitleColor:(UIColor *)titleColor {
+    NSString *style = [self.field.styles valueForKey:FORMButtonTitleColorKey];
+    if ([style length] > 0) {
+        titleColor = [UIColor colorFromHex:style];
+    }
     self.button.titleColor = titleColor;
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
+    NSString *style = [self.field.styles valueForKey:FORMButtonBackgroundColorKey];
+    if ([style length] > 0) {
+        backgroundColor = [UIColor colorFromHex:style];
+    }
     self.button.backgroundColor = backgroundColor;
 }
 
