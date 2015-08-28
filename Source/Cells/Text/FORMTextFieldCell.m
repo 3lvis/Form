@@ -9,6 +9,11 @@ static const CGFloat FORMTooltipViewMinimumWidth = 90.0f;
 static const CGFloat FORMTooltipViewHeight = 44.0f;
 static const NSInteger FORMTooltipNumberOfLines = 4;
 
+static NSString * const FORMTooltipFontKey = @"tooltip_font";
+static NSString * const FORMTooltipFontSizeKey = @"tooltip_font_size";
+static NSString * const FORMTooltipLabelTextColorKey = @"tooltip_label_text_color";
+static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_color";
+
 @interface FORMTextFieldCell () <FORMTextFieldDelegate>
 
 @property (nonatomic) FORMTextField *textField;
@@ -349,8 +354,8 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 #pragma mark - Styling
 
 - (void)setTooltipLabelFont:(UIFont *)tooltipLabelFont {
-    NSString *styleTooltipFont = [self.field.styles valueForKey:@"tooltip_font"];
-    NSString *styleTooltipFontSize = [self.field.styles valueForKey:@"tooltip_font_size"];
+    NSString *styleTooltipFont = [self.field.styles valueForKey:FORMTooltipFontKey];
+    NSString *styleTooltipFontSize = [self.field.styles valueForKey:FORMTooltipFontSizeKey];
     if ([styleTooltipFont length] > 0) {
         if ([styleTooltipFontSize length] > 0) {
             tooltipLabelFont = [UIFont fontWithName:styleTooltipFont size:[styleTooltipFontSize floatValue]];
@@ -362,7 +367,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 }
 
 - (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor {
-    NSString *style = [self.field.styles valueForKey:@"tooltip_label_text_color"];
+    NSString *style = [self.field.styles valueForKey:FORMTooltipLabelTextColorKey];
     if ([style length] > 0) {
         tooltipLabelTextColor = [UIColor colorFromHex:style];
     }
@@ -370,7 +375,7 @@ static const NSInteger FORMTooltipNumberOfLines = 4;
 }
 
 - (void)setTooltipBackgroundColor:(UIColor *)tooltipBackgroundColor {
-    NSString *style = [self.field.styles valueForKey:@"tooltip_background_color"];
+    NSString *style = [self.field.styles valueForKey:FORMTooltipBackgroundColorKey];
     if ([style length] > 0) {
         tooltipBackgroundColor = [UIColor colorFromHex:style];
     }

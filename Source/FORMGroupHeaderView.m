@@ -1,6 +1,11 @@
 #import "FORMGroupHeaderView.h"
 @import Hex;
 
+static NSString * const FORMHeaderLabelFontKey = @"font";
+static NSString * const FORMHeaderLabelFontSizeKey = @"font_size";
+static NSString * const FORMHeaderLabelTextColorKey = @"text_color";
+static NSString * const FORMHeaderBackgroundColorKey = @"background_color";
+
 @interface FORMGroupHeaderView ()
 
 @property (nonatomic) UIView *contentView;
@@ -64,8 +69,8 @@
 #pragma mark - Styling
 
 - (void)setHeaderLabelFont:(UIFont *)headerLabelFont {
-    NSString *styleFont = [self.styles valueForKey:@"font"];
-    NSString *styleFontSize = [self.styles valueForKey:@"font_size"];
+    NSString *styleFont = [self.styles valueForKey:FORMHeaderLabelFontKey];
+    NSString *styleFontSize = [self.styles valueForKey:FORMHeaderLabelFontSizeKey];
     if ([styleFont length] > 0) {
         if ([styleFontSize length] > 0) {
             headerLabelFont = [UIFont fontWithName:styleFont size:[styleFontSize floatValue]];
@@ -78,7 +83,7 @@
 }
 
 - (void)setHeaderLabelTextColor:(UIColor *)headerLabelTextColor {
-    NSString *style = [self.styles valueForKey:@"text_color"];
+    NSString *style = [self.styles valueForKey:FORMHeaderLabelTextColorKey];
     if ([style length] > 0) {
         headerLabelTextColor = [UIColor colorFromHex:style];
     }
@@ -87,7 +92,7 @@
 }
 
 - (void)setHeaderBackgroundColor:(UIColor *)backgroundColor {
-    NSString *style = [self.styles valueForKey:@"background_color"];
+    NSString *style = [self.styles valueForKey:FORMHeaderBackgroundColorKey];
     if ([style length] > 0) {
         backgroundColor = [UIColor colorFromHex:style];
     }
