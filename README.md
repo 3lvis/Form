@@ -61,7 +61,96 @@ This are the required steps to create a basic form with a first name field.
 ]
 ```
 
-### Styled Form
+
+#### In your iPad app
+
+**AppDelegate**
+
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Don't forget to set your style, or use the default one if you want
+    [FORMDefaultStyle applyStyle];
+
+    //...
+}
+```
+
+**Subclass**
+
+Make sure that your `UICollectionViewController` is a subclass of `FORMViewController`.
+
+---------------------------
+
+### Targets
+
+Targets are one of the most powerful features of form, and we support to `hide`, `show`, `update`, `enable`, `disable` or `clear` a field using a target. You can even set a condition for your target to run!
+
+In the following example we show how to hide or show a field based on a dropdown selection.
+
+![Targets](https://github.com/hyperoslo/Form/blob/master/Images/target.gif)
+
+#### JSON
+
+```json
+[
+  {
+    "id":"group-id",
+    "title":"Group title",
+    "sections":[
+      {
+        "id":"section-0",
+        "fields":[
+          {
+            "id":"employment_type",
+            "title":"Employment type",
+            "type":"select",
+            "size":{
+              "width":30,
+              "height":1
+            },
+            "values":[
+              {
+                "id":0,
+                "title":"Part time",
+                "default":true,
+                "targets":[
+                  {
+                    "id":"bonus",
+                    "type":"field",
+                    "action":"hide"
+                  }
+                ]
+              },
+              {
+                "id":1,
+                "title":"Full time",
+                "targets":[
+                  {
+                    "id":"bonus",
+                    "type":"field",
+                    "action":"show"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id":"bonus",
+            "title":"Bonus",
+            "type":"number",
+            "size":{
+              "width":30,
+              "height":1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+### Styling
 
 Form allows global and per-field styling. The table below shows the per-field styling options.
 
@@ -232,94 +321,6 @@ Form allows global and per-field styling. The table below shows the per-field st
             },
             "size":{
               "width":100,
-              "height":1
-            }
-          }
-        ]
-      }
-    ]
-  }
-]
-```
-
-#### In your iPad app
-
-**AppDelegate**
-
-```objc
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Don't forget to set your style, or use the default one if you want
-    [FORMDefaultStyle applyStyle];
-
-    //...
-}
-```
-
-**Subclass**
-
-Make sure that your `UICollectionViewController` is a subclass of `FORMViewController`.
-
----------------------------
-
-### Targets
-
-Targets are one of the most powerful features of form, and we support to `hide`, `show`, `update`, `enable`, `disable` or `clear` a field using a target. You can even set a condition for your target to run!
-
-In the following example we show how to hide or show a field based on a dropdown selection.
-
-![Targets](https://github.com/hyperoslo/Form/blob/master/Images/target.gif)
-
-#### JSON
-
-```json
-[
-  {
-    "id":"group-id",
-    "title":"Group title",
-    "sections":[
-      {
-        "id":"section-0",
-        "fields":[
-          {
-            "id":"employment_type",
-            "title":"Employment type",
-            "type":"select",
-            "size":{
-              "width":30,
-              "height":1
-            },
-            "values":[
-              {
-                "id":0,
-                "title":"Part time",
-                "default":true,
-                "targets":[
-                  {
-                    "id":"bonus",
-                    "type":"field",
-                    "action":"hide"
-                  }
-                ]
-              },
-              {
-                "id":1,
-                "title":"Full time",
-                "targets":[
-                  {
-                    "id":"bonus",
-                    "type":"field",
-                    "action":"show"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id":"bonus",
-            "title":"Bonus",
-            "type":"number",
-            "size":{
-              "width":30,
               "height":1
             }
           }
