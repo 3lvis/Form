@@ -12,7 +12,7 @@ Form came out from our need to have a form that could share logic between our iO
 Form includes the following features:
 
 - Multiple groups: For example, you can have a group for personal details and another one for shipping information
-- [Field validations](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L19): We support `required`, `max_length`, `min_length`, `min_value`, `max_value` and `format` (regex). We also support many field types, like `text`, `number`, `phone_number`, `email`, `date`, `name` and more
+- [Field validations](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L19): We support `required`, `max_length`, `min_length`, `min_value`, `max_value` and `format` (regex). We also support many field types, like `text`, `number`, `phone_number`, `email`, `date`, `name`, `count` and more
 - [Custom sizes](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L15): Total `width` is handled as 100% while `height` is handled in chunks of [85 px](https://github.com/hyperoslo/Form/blob/b1a542d042a45a9a3056fb8969b5704e51fda1f4/Source/Cells/Base/FORMBaseFieldCell.h#L15)
 - [Custom fields](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L78): You can register your custom fields, and it's pretty simple (our basic example includes how to make an `image` field)
 - [Formulas or computed values](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L47): We support fields that contain generated values from other fields
@@ -329,6 +329,55 @@ Form allows global and per-field styling. The table below shows the per-field st
     ]
   }
 ]
+```
+
+### Group Collapsibility
+
+Groups have two JSON based collapsibility options: `collapsed` and `collapsible`
+
+The `collapsed` option accepts `true` or `false` and defines the default state for the group it is added to. The default is `false`.
+
+The `collapsible` option also accepts `true` or `false` but defines whether or not a group can be collapsed at all. Defining this option as `false`, prevents a group from being collapsed on click or with `collapseAllGroupsForCollectionView`. The default is `true`.
+
+In your application code, you can also call `collapseAllGroupsForCollectionView` on the data source to collapse all groups in a collection view.
+
+### Counter Fields
+
+To make quick and easy integer adjustments without popping up a keyboard, you can use the  `count` field. It works just like a `number` field but provides a minus button in the UITextField's leftView and a plus button in the rightView. A tap on either will decrease or increase, respectively, the number by a value of one.
+
+#### Example JSON
+```json
+{
+  "groups":[
+    {
+      "id":"counter",
+      "title":"Counter Example",
+      "sections":[
+        {
+          "id":"counter-example",
+          "fields":[
+            {
+              "id":"guests",
+              "title":"Present Guests",
+              "info":"Press minus to decrease, plus to increase",
+              "type":"count",
+              "value":0,
+              "size":{
+                "width":25,
+                "height":1
+              },
+              "validations":{
+                "required":true,
+                "min_value":0,
+                "max_value":100
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
 
 ## Installation
