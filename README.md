@@ -62,7 +62,7 @@ This are the required steps to create a basic form with a first name field.
 ```
 
 
-#### In your iPad app
+#### In your iOS app
 
 **AppDelegate**
 
