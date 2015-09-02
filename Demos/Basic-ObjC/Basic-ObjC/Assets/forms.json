@@ -6,10 +6,6 @@
       "sections":[
         {
           "id":"personal-details-0",
-          "styles":{
-            "separator_color":"#FF0000",
-            "height":"4.0"
-          },
           "fields":[
             {
               "id":"first_name",
