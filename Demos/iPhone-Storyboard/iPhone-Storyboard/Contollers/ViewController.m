@@ -1,33 +1,31 @@
 #import "ViewController.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 
-@interface ViewController ()
-@property(nonatomic, strong) FORMDataSource *customDataSource;
-@end
-
 @implementation ViewController
 
+@synthesize dataSource = _dataSource;
+
 - (FORMDataSource *)dataSource {
-    if (_customDataSource) return _customDataSource;
+    if (_dataSource) return _dataSource;
 
     FORMLayout *layout = [FORMLayout new];
     self.collectionView.collectionViewLayout = layout;
 
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"Form.json"];
-    _customDataSource = [[FORMDataSource alloc] initWithJSON: JSON
+    _dataSource = [[FORMDataSource alloc] initWithJSON: JSON
                                               collectionView:self.collectionView
                                                       layout:layout
                                                       values:nil
                                                     disabled:NO];
 
-    _customDataSource.configureCellBlock = ^(FORMBaseFieldCell *cell,
+    _dataSource.configureCellBlock = ^(FORMBaseFieldCell *cell,
                                              NSIndexPath *indexPath,
                                              FORMField *field) {
         cell.field = field;
 
     };
 
-    return _customDataSource;
+    return _dataSource;
 }
 
 @end
