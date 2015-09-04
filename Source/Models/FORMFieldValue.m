@@ -11,8 +11,8 @@
     if (!self) return nil;
 
     _valueID = [dictionary andy_valueForKey:@"id"];
-    _title = [dictionary andy_valueForKey:@"title"];
-    _info = [dictionary andy_valueForKey:@"info"];
+    _title = NSLocalizedString([dictionary andy_valueForKey:@"title"], nil);
+    _info = NSLocalizedString([dictionary andy_valueForKey:@"info"], nil);
     _value = [dictionary andy_valueForKey:@"value"];
     _defaultValue = [[dictionary andy_valueForKey:@"default"] boolValue];
 

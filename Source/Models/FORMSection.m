@@ -43,8 +43,8 @@
         field.fieldID = [NSString stringWithFormat:@"%@.add", self.sectionID];
         field.typeString = @"button";
         field.type = FORMFieldTypeButton;
-
-        NSString *actionTitle = [dictionary andy_valueForKey:@"action_title"];
+        
+        NSString *actionTitle = NSLocalizedString([dictionary andy_valueForKey:@"action_title"], nil);
         if (!actionTitle) {
             NSLog(@"Specify and `action_title` for your dynamic section");
             abort();
