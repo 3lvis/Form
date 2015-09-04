@@ -36,7 +36,6 @@
 		45445B9B2AF71C6EB29E5561 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C74849DF53D9C3C7FE00770 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7A2BE3D81B91E5A0003ABE59 /* styled-forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "styled-forms.json"; sourceTree = "<group>"; };
-		C42B91771B99DCD900EF1CB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C42B91791B99DCE900EF1CB1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -292,7 +291,6 @@
 		C42B91781B99DCD900EF1CB1 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C42B91771B99DCD900EF1CB1 /* en */,
 				C42B91791B99DCE900EF1CB1 /* es */,
 			);
 			name = Localizable.strings;

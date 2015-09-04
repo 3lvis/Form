@@ -6,52 +6,51 @@
   Copyright (c) 2015 Hyper. All rights reserved.
 */
 
-"PersonalDetailsTitleKey" = "Detalles personales";
-"EmploymentTitleKey" = "Empleo";
+"Personal Details" = "Detalles personales";
+"Employment" = "Empleo";
 
-"FirstNameTitleKey" = "Primer nombre";
-"FirstNameInfoKey" = "Ingrese el primer nombre de la persona";
-"LastNameTitleKey" = "Apellido";
-"LastNameInfoKey" = "Apellido";
-"DisplayNameTitleKey" = "Nombre para mostrar";
-"DisplayNameInfoKey" = "Este es el nombre que será usado en la aplicación.";
-"AddressTitleKey" = "Dirección";
-"EmailTitleKey" = "Correo-e";
+"First name" = "Primer nombre";
+"Fornavn" = "Ingrese el primer nombre de la persona";
+"Last name" = "Apellido";
+"Family name" = "Apellido";
+"Display name" = "Nombre para mostrar";
+"This is the name that is going to be used across the application." = "Este es el nombre que será usado en la aplicación.";
+"Address" = "Dirección";
+"E-post" = "Correo-e";
 
-"StartDateTitleKey" = "Fecha de inicio";
-"DayOfEmploymentInfoKey" = "Día de inicio del empleo";
-"StartTimeTitleKey" = "Hora de inicio";
-"EndDateTitleKey" = "Fecha de culminación";
-"EndTimeTitleKey" = "Hora de culminación";
+"Start date" = "Fecha de inicio";
+"The day of employment" = "Día de inicio del empleo";
+"Start time" = "Hora de inicio";
+"End date" = "Fecha de culminación";
+"End time" = "Hora de culminación";
 
-"ContractTypeTitleKey" = "Tipo de contrato";
-"ContractTypeInfoKey" = "Tipo de contrato\n Permanente o temporal";
+"Contract type" = "Tipo de contrato";
+"Type of contract\n Permanent or temporary" = "Tipo de contrato\n Permanente o temporal";
 
-"PermanentEmployeeTitleKey" = "Permanente";
-"PermanentEmployeeInfoKey" = "Empleado regular";
-"TemporaryEmployeeTitleKey" = "Temporal";
-"TemporaryEmployeeInfoKey" = "Empleado temporal";
+"Permanent" = "Permanente";
+"Regular employee" = "Empleado regular";
+"Temporary" = "Temporal";
 
-"BaseSalaryTitleKey" = "Salario base";
-"Salary1TitleKey" = "Salario 1";
-"Salary2TitleKey" = "Salario 2";
-"Salary3TitleKey" = "Salario 3";
-"BonusEnabledTitleKey" = "Bono activo";
-"EnabledTitleKey" = "Sí";
-"DisabledTitleKey" = "No";
-"BonusTitleKey" = "Bono";
-"TotalTitleKey" = "Total";
+"Base salary" = "Salario base";
+"Salary 1" = "Salario 1";
+"Salary 2" = "Salario 2";
+"Salary 3" = "Salario 3";
+"Bonus enabled" = "Bono activo";
+"Ja" = "Sí";
+"Nei" = "No";
+"Bonus" = "Bono";
+"Total" = "Total";
 
-"AddCompanyTitleKey" = "Agregar compañía";
-"AddContactTitleKey" = "Agregar contacto";
+"ADD COMPANY ✛" = "Agregar compañía";
+"ADD CONTACT ✛" = "Agregar contacto";
 
-"CompanyNameTitleKey" = "Nombre de la compañía";
-"ContactNameTitleKey" = "Nombre de contacto";
-"PhoneTitleKey" = "Teléfono";
-"RemoveTitleKey" = "Eliminar";
+"Company Name" = "Nombre de la compañía";
+"Contact name" = "Nombre de contacto";
+"Phone number" = "Teléfono";
+"Remove" = "Eliminar";
 
 "Confirm" = "Confirmar";
 "Clear" = "Cancelar";
 
-"ImageButtonInfoKey" = "Información adicional";
-"ImageButtonMainTitleKey" = "Título principal";
+"Some info on the button" = "Información adicional";
+"Main Title" = "Título principal";

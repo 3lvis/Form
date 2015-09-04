@@ -54,7 +54,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
     label.font = [UIFont fontWithName:@"DIN-Medium" size:20.0];
     label.textColor = [UIColor colorFromHex:@"28649C"];
-    label.text = NSLocalizedString(@"ImageButtonMainTitleKey", nil);
+    label.text = NSLocalizedString(@"Main Title", nil);
 
     return label;
 }
@@ -65,7 +65,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
     infoLabel.font = [UIFont fontWithName:@"DIN-Regular" size:14.0];
     infoLabel.textColor = [UIColor colorFromHex:@"28649C"];
-    infoLabel.text = NSLocalizedString(@"ImageButtonInfoKey", nil);
+    infoLabel.text = NSLocalizedString(@"Some info on the button", nil);
     infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
     infoLabel.numberOfLines = 0;
 

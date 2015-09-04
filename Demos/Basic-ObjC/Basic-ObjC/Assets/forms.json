@@ -3,7 +3,6 @@
     {
       "id":"personal-details",
       "title":"Personal Details",
-      "localized_title_key":"PersonalDetailsTitleKey",
       "sections":[
         {
           "id":"personal-details-0",
@@ -11,9 +10,7 @@
             {
               "id":"first_name",
               "title":"First name",
-              "localized_title_key":"FirstNameTitleKey",
               "info":"Fornavn",
-              "localized_info_key":"FirstNameInfoKey",
               "type":"name",
               "disabled":true,
               "size":{
@@ -28,10 +25,8 @@
             {
               "id":"last_name",
               "title":"Last name",
-              "localized_title_key":"LastNameTitleKey",
               "type":"name",
               "info":"Family name",
-              "localized_info_key":"LastNameInfoKey",
               "size":{
                 "width":30,
                 "height":1
@@ -44,8 +39,6 @@
             {
               "id":"display_name",
               "title":"Display name",
-              "localized_title_key":"DisplayNameTitleKey",
-              "localized_info_key":"DisplayNameInfoKey",
               "info":"This is the name that is going to be used across the application.",
               "type":"text",
               "size":{
@@ -62,7 +55,6 @@
             {
               "id":"address",
               "title":"Address",
-              "localized_title_key":"AddressTitleKey",
               "type":"text",
               "size":{
                 "width":50,
@@ -72,7 +64,6 @@
             {
               "id":"email",
               "title":"E-post",
-              "localized_title_key":"EmailTitleKey",
               "info":"bork\nbork\nbork",
               "type":"email",
               "size":{
@@ -87,7 +78,6 @@
             {
               "id":"phone",
               "title":"Phone number",
-              "localized_title_key":"PhoneTitleKey",
               "type":"text",
               "input_type":"number",
               "size":{
@@ -111,7 +101,6 @@
     {
       "id":"employment",
       "title":"Employment",
-      "localized_title_key":"EmploymentTitleKey",
       "sections":[
         {
           "id":"employment-0",
@@ -119,8 +108,6 @@
             {
               "id":"start_date",
               "title":"Start date",
-              "localized_title_key":"StartDateTitleKey",
-              "localized_info_key":"DayOfEmploymentInfoKey",
               "info":"The day of employment",
               "type":"date",
               "size":{
@@ -131,7 +118,6 @@
             {
               "id":"start_time",
               "title":"Start time",
-              "localized_title_key":"StartTimeTitleKey",
               "type":"time",
               "size":{
                 "width":25,
@@ -141,7 +127,6 @@
             {
               "id":"end_date",
               "title":"End date",
-              "localized_title_key":"EndDateTitleKey",
               "type":"date",
               "validations":{
                 "compare_to":"start_date",
@@ -155,7 +140,6 @@
             {
               "id":"end_time",
               "title":"End time",
-              "localized_title_key":"EndTimeTitleKey",
               "type":"time",
               "size":{
                 "width":25,
@@ -169,9 +153,7 @@
             {
               "id":"contract_type",
               "title":"Contract type",
-              "localized_title_key":"ContractTypeTitleKey",
               "info":"Type of contract\n Permanent or temporary",
-              "localized_info_key":"ContractTypeInfoKey",
               "type":"select",
               "size":{
                 "width":50,
@@ -181,9 +163,7 @@
                 {
                   "id":0,
                   "title":"Permanent",
-                  "localized_title_key":"PermanentEmployeeTitleKey",
                   "info":"Regular employee",
-                  "localized_info_key":"PermanentEmployeeInfoKey",
                   "default":true,
                   "targets":[
                     {
@@ -206,8 +186,6 @@
                 {
                   "id":1,
                   "title":"Temporary",
-                  "localized_title_key":"TemporaryEmployeeTitleKey",
-                  "localized_info_key":"TemporaryEmployeeInfoKey",
                   "targets":[
                     {
                       "id":"end_date",
@@ -236,7 +214,6 @@
             {
               "id":"base_salary",
               "title":"Base salary",
-              "localized_title_key":"BaseSalaryTitleKey",
               "type":"select",
               "size":{
                 "width":25,
@@ -245,7 +222,6 @@
               "values":[
                 {
                   "title":"Salary 1",
-                  "localized_title_key":"Salary1TitleKey",
                   "id":0,
                   "value":100,
                   "targets":[
@@ -258,7 +234,6 @@
                 },
                 {
                   "title":"Salary 2",
-                  "localized_title_key":"Salary2TitleKey",
                   "id":1,
                   "value":200,
                   "targets":[
@@ -271,7 +246,6 @@
                 },
                 {
                   "title":"Salary 3",
-                  "localized_title_key":"Salary3TitleKey",
                   "id":2,
                   "value":10,
                   "targets":[
@@ -287,7 +261,6 @@
             {
               "id":"bonus_enabled",
               "title":"Bonus enabled",
-              "localized_title_key":"BonusEnabledTitleKey",
               "type":"select",
               "size":{
                 "width":25,
@@ -296,20 +269,17 @@
               "values":[
                 {
                   "id":true,
-                  "title":"Ja",
-                  "localized_title_key":"EnabledTitleKey"
+                  "title":"Ja"
                 },
                 {
                   "id":false,
-                  "title":"Nei",
-                  "localized_title_key":"DisabledTitleKey"
+                  "title":"Nei"
                 }
               ]
             },
             {
               "id":"bonus",
               "title":"Bonus",
-              "localized_title_key":"BonusTitleKey",
               "type":"float",
               "size":{
                 "width":25,
@@ -330,7 +300,6 @@
             {
               "id":"total",
               "title":"Total",
-              "localized_title_key":"TotalTitleKey",
               "type":"float",
               "size":{
                 "width":25,
@@ -344,14 +313,12 @@
         {
           "id":"companies",
           "type":"dynamic",
-          "localized_action_title_key":"AddCompanyTitleKey",
           "action_title":"ADD COMPANY ✛",
           "fields":null
         },
         {
           "id":"contacts",
           "type":"dynamic",
-          "localized_action_title_key":"AddContactTitleKey",
           "action_title":"ADD CONTACT ✛",
           "fields":null
         }
@@ -367,7 +334,6 @@
           {
             "id":"companies[:index].name",
             "title":"Company Name",
-            "localized_title_key":"CompanyNameTitleKey",
             "type":"name",
             "validations":{
               "required":true,
@@ -381,7 +347,6 @@
           {
             "id":"companies[:index].phone_number",
             "title":"Phone number",
-            "localized_title_key":"PhoneTitleKey",
             "type":"number",
             "size":{
               "width":30,
@@ -391,7 +356,6 @@
           {
             "id":"companies[:index].remove",
             "title":"Remove",
-            "localized_title_key":"RemoveTitleKey",
             "type":"button",
             "size":{
               "width":20,
@@ -406,7 +370,6 @@
           {
             "id":"contacts[:index].name",
             "title":"Contact name",
-            "localized_title_key":"ContactNameTitleKey",
             "type":"name",
             "validations":{
               "required":true,
@@ -420,7 +383,6 @@
           {
             "id":"contacts[:index].phone_number",
             "title":"Phone number",
-            "localized_title_key":"PhoneTitleKey",
             "type":"number",
             "size":{
               "width":30,
@@ -430,7 +392,6 @@
           {
             "id":"contacts[:index].remove",
             "title":"Remove",
-            "localized_title_key":"RemoveTitleKey",
             "type":"button",
             "size":{
               "width":20,
