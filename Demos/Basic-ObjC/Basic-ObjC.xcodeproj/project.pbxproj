@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		143E63791B9A33FB00F47029 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		14E49BF61A99B75500F19988 /* Basic-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Basic-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14E49BFA1A99B75500F19988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14E49BFB1A99B75500F19988 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -292,6 +293,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C42B91791B99DCE900EF1CB1 /* es */,
+				143E63791B9A33FB00F47029 /* en */,
 			);
 			name = Localizable.strings;
 			path = Assets;
