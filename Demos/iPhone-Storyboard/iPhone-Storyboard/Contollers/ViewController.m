@@ -18,13 +18,6 @@
                                                       values:nil
                                                     disabled:NO];
 
-    _dataSource.configureCellBlock = ^(FORMBaseFieldCell *cell,
-                                             NSIndexPath *indexPath,
-                                             FORMField *field) {
-        cell.field = field;
-
-    };
-
     return _dataSource;
 }
 
