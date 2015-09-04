@@ -27,7 +27,11 @@
     if (!self) return nil;
 
     self.groupID = [dictionary andy_valueForKey:@"id"];
-    self.title = [dictionary andy_valueForKey:@"title"];
+    if ([dictionary andy_valueForKey:@"localized_title_key"]) {
+        self.title = NSLocalizedString([dictionary andy_valueForKey:@"localized_title_key"], nil);
+    }else{
+        self.title = [dictionary andy_valueForKey:@"title"];
+    }
     self.position = @(position);
     
     self.collapsed = [[dictionary andy_valueForKey:@"collapsed"] boolValue];

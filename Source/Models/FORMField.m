@@ -30,13 +30,20 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _valid = YES;
     _fieldID = remoteID;
     _validationResultType = FORMValidationResultTypeValid;
-    _title = [dictionary andy_valueForKey:@"title"];
+    if ([dictionary andy_valueForKey:@"localized_title_key"]) {
+        _title = NSLocalizedString([dictionary andy_valueForKey:@"localized_title_key"], nil);
+    }else{
+        _title = [dictionary andy_valueForKey:@"title"];
+    }
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
     _type = [self typeFromTypeString:self.typeString];
     _inputTypeString = [dictionary andy_valueForKey:@"input_type"];
-    _info = [dictionary andy_valueForKey:@"info"];
-
+    if ([dictionary andy_valueForKey:@"localized_info_key"]) {
+        _info = NSLocalizedString([dictionary andy_valueForKey:@"localized_info_key"], nil);
+    }else{
+        _info = [dictionary andy_valueForKey:@"info"];
+    }
     NSNumber *width = [dictionary andy_valueForKey:@"size.width"] ?: @100;
     NSNumber *height = [dictionary andy_valueForKey:@"size.height"]?: @1;
     _size = CGSizeMake([width floatValue], [height floatValue]);

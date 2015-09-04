@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  Basic-ObjC
+
+  Created by Héctor Cen on 4/9/15.
+  Copyright (c) 2015 Hyper. All rights reserved.
+*/
+
+"PersonalDetailsTitleKey" = "Detalles personales";
+"EmploymentTitleKey" = "Empleo";
+
+"FirstNameTitleKey" = "Primer nombre";
+"FirstNameInfoKey" = "Ingrese el primer nombre de la persona";
+"LastNameTitleKey" = "Apellido";
+"LastNameInfoKey" = "Apellido";
+"DisplayNameTitleKey" = "Nombre para mostrar";
+"DisplayNameInfoKey" = "Este es el nombre que será usado en la aplicación.";
+"AddressTitleKey" = "Dirección";
+"EmailTitleKey" = "Correo-e";
+
+"StartDateTitleKey" = "Fecha de inicio";
+"DayOfEmploymentInfoKey" = "Día de inicio del empleo";
+"StartTimeTitleKey" = "Hora de inicio";
+"EndDateTitleKey" = "Fecha de culminación";
+"EndTimeTitleKey" = "Hora de culminación";
+
+"ContractTypeTitleKey" = "Tipo de contrato";
+"ContractTypeInfoKey" = "Tipo de contrato\n Permanente o temporal";
+
+"PermanentEmployeeTitleKey" = "Permanente";
+"PermanentEmployeeInfoKey" = "Empleado regular";
+"TemporaryEmployeeTitleKey" = "Temporal";
+"TemporaryEmployeeInfoKey" = "Empleado temporal";
+
+"BaseSalaryTitleKey" = "Salario base";
+"Salary1TitleKey" = "Salario 1";
+"Salary2TitleKey" = "Salario 2";
+"Salary3TitleKey" = "Salario 3";
+"BonusEnabledTitleKey" = "Bono activo";
+"EnabledTitleKey" = "Sí";
+"DisabledTitleKey" = "No";
+"BonusTitleKey" = "Bono";
+"TotalTitleKey" = "Total";
+
+"AddCompanyTitleKey" = "Agregar compañía";
+"AddContactTitleKey" = "Agregar contacto";
+
+"CompanyNameTitleKey" = "Nombre de la compañía";
+"ContactNameTitleKey" = "Nombre de contacto";
+"PhoneTitleKey" = "Teléfono";
+"RemoveTitleKey" = "Eliminar";
+
+"Confirm" = "Confirmar";
+"Clear" = "Cancelar";
+
+"ImageButtonInfoKey" = "Información adicional";
+"ImageButtonMainTitleKey" = "Título principal";

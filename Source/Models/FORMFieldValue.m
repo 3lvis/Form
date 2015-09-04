@@ -11,8 +11,16 @@
     if (!self) return nil;
 
     _valueID = [dictionary andy_valueForKey:@"id"];
-    _title = [dictionary andy_valueForKey:@"title"];
-    _info = [dictionary andy_valueForKey:@"info"];
+    if ([dictionary andy_valueForKey:@"localized_title_key"]) {
+        _title = NSLocalizedString([dictionary andy_valueForKey:@"localized_title_key"], nil);
+    }else{
+        _title = [dictionary andy_valueForKey:@"title"];
+    }
+    if ([dictionary andy_valueForKey:@"localized_info_key"]) {
+        _info = NSLocalizedString([dictionary andy_valueForKey:@"localized_info_key"], nil);
+    }else{
+        _info = [dictionary andy_valueForKey:@"info"];
+    }
     _value = [dictionary andy_valueForKey:@"value"];
     _defaultValue = [[dictionary andy_valueForKey:@"default"] boolValue];
 
