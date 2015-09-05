@@ -39,7 +39,6 @@ PODS:
 
 DEPENDENCIES:
   - Form (from `../../`)
-  - UIViewController-HYPKeyboardToolbar
 
 EXTERNAL SOURCES:
   Form:
