@@ -12,7 +12,7 @@
     self.collectionView.collectionViewLayout = layout;
 
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"Form.json"];
-    _dataSource = [[FORMDataSource alloc] initWithJSON: JSON
+    _dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                         collectionView:self.collectionView
                                                 layout:layout
                                                 values:nil
