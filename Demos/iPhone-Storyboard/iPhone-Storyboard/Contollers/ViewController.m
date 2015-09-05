@@ -21,4 +21,10 @@
     return _dataSource;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    self.collectionView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
+}
+
 @end
