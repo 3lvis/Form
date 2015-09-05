@@ -13,10 +13,10 @@
 
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"Form.json"];
     _dataSource = [[FORMDataSource alloc] initWithJSON: JSON
-                                              collectionView:self.collectionView
-                                                      layout:layout
-                                                      values:nil
-                                                    disabled:NO];
+                                        collectionView:self.collectionView
+                                                layout:layout
+                                                values:nil
+                                              disabled:NO];
 
     return _dataSource;
 }

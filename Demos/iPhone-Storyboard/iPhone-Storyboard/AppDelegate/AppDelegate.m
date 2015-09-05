@@ -5,9 +5,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-  [FORMDefaultStyle applyStyle];
+    [FORMDefaultStyle applyStyle];
 
-  return YES;
+    return YES;
 }
 
 @end
