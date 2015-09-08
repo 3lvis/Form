@@ -13,8 +13,8 @@
 
 #pragma mark - Initializers
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (instancetype)initWithReuseIdentifier:(NSString *)string {
+    self = [super initWithReuseIdentifier:string];
     if (!self) return nil;
 
     [self addSubview:self.titleLabel];
@@ -36,7 +36,7 @@
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     _titleLabel.numberOfLines = 0;
-    _titleLabel.text = self.field.rawFieldValue;
+    _titleLabel.text = self.field.title;
 
     return _titleLabel;
 }
