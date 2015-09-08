@@ -273,7 +273,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 }
 
 - (void)showTooltip {
-    if (self.field.info && [self.field.info length] > 0 && self.showTooltips) {
+    if (self.field.info && self.field.info.length > 0 && self.showTooltips) {
         self.tooltipView.alpha = 0.0f;
         [self.contentView addSubview:self.tooltipView];
         self.tooltipView.frame = [self tooltipViewFrame];
