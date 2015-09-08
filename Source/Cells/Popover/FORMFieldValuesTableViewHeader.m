@@ -13,8 +13,8 @@
 
 #pragma mark - Initializers
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (instancetype)initWithReuseIdentifier:(NSString *)string {
+    self = [super initWithReuseIdentifier:string];
     if (!self) return nil;
 
     [self addSubview:self.titleLabel];
