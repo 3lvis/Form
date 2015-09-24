@@ -23,7 +23,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'Hex', '~> 1.1.1'
   s.dependency 'HYP8601', '~> 0.7.2'
-  s.dependency 'HYPImagePicker', '~> 0.3'
   s.dependency 'HYPMathParser', '~> 0.4.1'
   s.dependency 'HYPNorwegianAccountNumber', '~> 1.2.1'
   s.dependency 'HYPNorwegianSSN', '~> 1.10.2'
