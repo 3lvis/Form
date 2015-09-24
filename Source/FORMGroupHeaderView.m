@@ -85,7 +85,7 @@ static NSString * const FORMHeaderBackgroundColorKey = @"background_color";
 - (void)setHeaderLabelTextColor:(UIColor *)headerLabelTextColor {
     NSString *style = [self.styles valueForKey:FORMHeaderLabelTextColorKey];
     if ([style length] > 0) {
-        headerLabelTextColor = [UIColor colorFromHex:style];
+        headerLabelTextColor = [[UIColor alloc] initWithHex:style];
     }
     
     self.headerLabel.textColor = headerLabelTextColor;
@@ -94,7 +94,7 @@ static NSString * const FORMHeaderBackgroundColorKey = @"background_color";
 - (void)setHeaderBackgroundColor:(UIColor *)backgroundColor {
     NSString *style = [self.styles valueForKey:FORMHeaderBackgroundColorKey];
     if ([style length] > 0) {
-        backgroundColor = [UIColor colorFromHex:style];
+        backgroundColor = [[UIColor alloc] initWithHex:style];
     }
     
     self.backgroundColor = backgroundColor;

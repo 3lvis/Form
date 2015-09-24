@@ -369,7 +369,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 - (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor {
     NSString *style = [self.field.styles valueForKey:FORMTooltipLabelTextColorKey];
     if ([style length] > 0) {
-        tooltipLabelTextColor = [UIColor colorFromHex:style];
+        tooltipLabelTextColor = [[UIColor alloc] initWithHex:style];
     }
     self.tooltipLabel.textColor = tooltipLabelTextColor;
 }
@@ -377,7 +377,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 - (void)setTooltipBackgroundColor:(UIColor *)tooltipBackgroundColor {
     NSString *style = [self.field.styles valueForKey:FORMTooltipBackgroundColorKey];
     if ([style length] > 0) {
-        tooltipBackgroundColor = [UIColor colorFromHex:style];
+        tooltipBackgroundColor = [[UIColor alloc] initWithHex:style];
     }
     [FORMTooltipView setTintColor:tooltipBackgroundColor];
 }

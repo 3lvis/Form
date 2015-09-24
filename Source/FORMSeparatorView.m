@@ -12,7 +12,7 @@ static NSString * const FORMSeparatorHeightKey = @"height";
 - (void)setSeparatorColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMSeparatorColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     
     self.backgroundColor = color;

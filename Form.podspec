@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Form"
-  s.version = "3.6.1"
+  s.version = "3.6.2"
   s.summary = "JSON driven form"
   s.homepage = "https://github.com/hyperoslo/Form"
   s.license = {
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation'
   s.requires_arc = true
 
-  s.dependency 'Hex', '~> 1.1.1'
+  s.dependency 'Hex', '~> 2.0'
   s.dependency 'HYP8601', '~> 0.7.2'
   s.dependency 'HYPMathParser', '~> 0.4.1'
   s.dependency 'HYPNorwegianAccountNumber', '~> 1.2.1'

@@ -467,7 +467,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setBorderColor:(UIColor *)borderColor {
     NSString *style = [self.styles valueForKey:FORMTextFieldBorderColorKey];
     if ([style length] > 0) {
-        borderColor = [UIColor colorFromHex:style];
+        borderColor = [[UIColor alloc] initWithHex:style];
     }
     self.layer.borderColor = borderColor.CGColor;
 }
@@ -475,7 +475,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     NSString *style = [self.styles valueForKey:FORMTextFieldBackgroundColorKey];
     if ([style length] > 0) {
-        backgroundColor = [UIColor colorFromHex:style];
+        backgroundColor = [[UIColor alloc] initWithHex:style];
     }
     self.layer.backgroundColor = backgroundColor.CGColor;
 }
@@ -491,7 +491,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setActiveBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldActiveBackgroundColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _activeBackgroundColor = color;
 }
@@ -499,7 +499,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setActiveBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldActiveBorderColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _activeBorderColor = color;
 }
@@ -507,7 +507,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setInactiveBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldInactiveBackgroundColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _inactiveBackgroundColor = color;
 }
@@ -515,7 +515,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setInactiveBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldInactiveBorderColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _inactiveBorderColor = color;
 }
@@ -523,7 +523,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setEnabledBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldEnabledBackgroundColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _enabledBackgroundColor = color;
 }
@@ -531,7 +531,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setEnabledBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldEnabledBorderColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _enabledBorderColor = color;
 }
@@ -539,7 +539,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setEnabledTextColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldEnabledTextColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _enabledTextColor = color;
 }
@@ -547,7 +547,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setDisabledBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldDisabledBackgroundColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _disabledBackgroundColor = color;
 }
@@ -555,7 +555,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setDisabledBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldDisabledBorderColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _disabledBorderColor = color;
 }
@@ -563,7 +563,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setDisabledTextColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldDisabledTextColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _disabledTextColor = color;
     self.enabled = enabledProperty;
@@ -572,7 +572,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setValidBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldValidBackgroundColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _validBackgroundColor = color;
 }
@@ -580,7 +580,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setValidBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldValidBorderColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _validBorderColor = color;
 }
@@ -588,7 +588,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setInvalidBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldInvalidBackgroundColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _invalidBackgroundColor = color;
 }
@@ -596,7 +596,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setInvalidBorderColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldInvalidBorderColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     _invalidBorderColor = color;
     self.enabled = enabledProperty;
@@ -605,7 +605,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setClearButtonColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldClearButtonColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     self.clearButton.tintColor = color;
 }
@@ -613,7 +613,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setMinusButtonColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldMinusButtonColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     self.minusButton.tintColor = color;
 }
@@ -621,7 +621,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setPlusButtonColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMTextFieldPlusButtonColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     self.plusButton.tintColor = color;
 }

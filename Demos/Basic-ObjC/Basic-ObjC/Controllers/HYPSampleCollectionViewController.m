@@ -10,9 +10,9 @@
 #import "FORMDefaultStyle.h"
 
 #import "NSObject+HYPTesting.h"
-#import "UIColor+Hex.h"
 #import "UIViewController+HYPKeyboardToolbar.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
+@import Hex;
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
@@ -58,7 +58,7 @@
 
     self.collectionView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
 
-    self.collectionView.backgroundColor = [UIColor colorFromHex:@"DAE2EA"];
+    self.collectionView.backgroundColor = [[UIColor alloc] initWithHex:@"DAE2EA"];
 
     UIBarButtonItem *printValuesButton = [[UIBarButtonItem alloc] initWithTitle:@"Show Values"
                                                                           style:UIBarButtonItemStyleDone
@@ -127,13 +127,13 @@
 
     UILabel *readOnlyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 90.0f, 40.0f)];
     readOnlyLabel.text = @"Read-only";
-    readOnlyLabel.textColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlyLabel.textColor = [[UIColor alloc] initWithHex:@"5182AF"];
     readOnlyLabel.font = [UIFont boldSystemFontOfSize:17.0f];
     [readOnlyView addSubview:readOnlyLabel];
 
     UISwitch *readOnlySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(90.0f, 5.0f, 40.0f, 40.0f)];
-    readOnlySwitch.tintColor = [UIColor colorFromHex:@"5182AF"];
-    readOnlySwitch.onTintColor = [UIColor colorFromHex:@"5182AF"];
+    readOnlySwitch.tintColor = [[UIColor alloc] initWithHex:@"5182AF"];
+    readOnlySwitch.onTintColor = [[UIColor alloc] initWithHex:@"5182AF"];
     readOnlySwitch.on = YES;
     [readOnlySwitch addTarget:self action:@selector(readOnly:) forControlEvents:UIControlEventValueChanged];
     [readOnlyView addSubview:readOnlySwitch];

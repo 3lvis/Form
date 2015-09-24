@@ -145,7 +145,7 @@ static NSString * const FORMHeadingLabelTextColorKey = @"heading_label_text_colo
 - (void)setHeadingLabelTextColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMHeadingLabelTextColorKey];
     if ([style length] > 0) {
-        color = [UIColor colorFromHex:style];
+        color = [[UIColor alloc] initWithHex:style];
     }
     
     self.headingLabel.textColor = color;

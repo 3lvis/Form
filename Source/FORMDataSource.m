@@ -10,7 +10,6 @@
 #import "FORMFieldValue.h"
 #import "HYPParsedRelationship.h"
 
-@import Hex;
 #import "NSString+HYPWordExtractor.h"
 #import "NSString+HYPFormula.h"
 #import "UIDevice+HYPRealOrientation.h"
@@ -20,6 +19,8 @@
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSDictionary+HYPNestedAttributes.h"
 #import "NSString+HYPRelationshipParser.h"
+
+@import Hex;
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
