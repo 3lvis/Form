@@ -7,7 +7,7 @@ class SampleCollectionViewController: FORMViewController {
     super.init(JSON: JSON, andInitialValues: initialValues, disabled:true)
   }
 
-  required init(coder aDecoder: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     fatalError("Not supported")
   }
 

@@ -6,7 +6,7 @@ class RootController: FORMViewController, CustomFieldDelegate {
         super.init(JSON: JSON, andInitialValues: initialValues, disabled:false)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("Not supported")
     }
 
@@ -35,6 +35,6 @@ class RootController: FORMViewController, CustomFieldDelegate {
     // MARK: CustomFieldDelegate
 
     func customFieldWasUpdated(text: String) {
-        println(text)
+        print(text)
     }
 }

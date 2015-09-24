@@ -2,7 +2,6 @@ PODS:
   - Form (3.6.1):
     - Hex (~> 1.1.1)
     - HYP8601 (~> 0.7.2)
-    - HYPImagePicker (~> 0.3)
     - HYPMathParser (~> 0.4.1)
     - HYPNorwegianAccountNumber (~> 1.2.1)
     - HYPNorwegianSSN (~> 1.10.2)
@@ -39,13 +38,14 @@ PODS:
 
 DEPENDENCIES:
   - Form (from `../../`)
+  - HYPImagePicker
 
 EXTERNAL SOURCES:
   Form:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  Form: 7f2efb256792d5005aa15eba0cf4ca7c5742c807
+  Form: 0e78a4ea95c9a41a11cd0f9e3d0eb0359fc5d2fe
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   HYP8601: 0118757c1332620748c75e7218e7b6b849686d06
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
