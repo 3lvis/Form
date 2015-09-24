@@ -8,7 +8,7 @@
 @property (nonatomic) UIImageView *iconImageView;
 
 - (instancetype)initWithFrame:(CGRect)frame contentViewController:(UIViewController *)controller
-               andContentSize:(CGSize)contentSize NS_DESIGNATED_INITIALIZER;
+               andContentSize:(CGSize)contentSize;
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field;
 

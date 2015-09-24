@@ -12,7 +12,7 @@
 @property (nonatomic) NSNumber *value;
 @property (nonatomic) BOOL defaultValue;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 - (BOOL)identifierIsEqualTo:(id)identifier;
 

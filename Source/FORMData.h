@@ -19,7 +19,7 @@ static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 - (instancetype)initWithJSON:(id)JSON
                initialValues:(NSDictionary *)initialValues
             disabledFieldIDs:(NSArray *)disabledFieldIDs
-                    disabled:(BOOL)disabled NS_DESIGNATED_INITIALIZER;
+                    disabled:(BOOL)disabled;
 
 @property (nonatomic, readonly, copy) NSDictionary *invalidFormFields;
 

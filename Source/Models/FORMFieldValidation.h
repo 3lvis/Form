@@ -12,6 +12,6 @@
 @property (nonatomic) NSNumber *minimumValue;
 @property (nonatomic, getter = isRequired) BOOL required;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

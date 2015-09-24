@@ -46,7 +46,7 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
               collectionView:(UICollectionView *)collectionView
                       layout:(FORMLayout *)layout
                       values:(NSDictionary *)values
-                    disabled:(BOOL)disabled NS_DESIGNATED_INITIALIZER;
+                    disabled:(BOOL)disabled;
 
 /*!
  * Provides a configuration block to optionally set up subclasses of @c FORMBaseFieldCell

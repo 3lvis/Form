@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, FORMSectionType) {
                           position:(NSInteger)position
                           disabled:(BOOL)disabled
                  disabledFieldsIDs:(NSArray *)disabledFieldsIDs
-                     isLastSection:(BOOL)isLastSection NS_DESIGNATED_INITIALIZER;
+                     isLastSection:(BOOL)isLastSection;
 
 + (void)sectionAndIndexForField:(FORMField *)field
                        inGroups:(NSArray *)groups

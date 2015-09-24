@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, FORMTargetActionType) {
 @property (nonatomic) FORMTargetType type;
 @property (nonatomic) FORMTargetActionType actionType;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 + (void)filteredTargets:(NSArray*)targets
                filtered:(void (^)(NSArray *shownTargets,
