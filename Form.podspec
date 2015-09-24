@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.dependency 'NSJSONSerialization-ANDYJSONFile', '~> 1.1'
   s.dependency 'NSObject-HYPTesting', '~> 1.2'
   s.dependency 'NSString-HYPContainsString', '~> 0.1'
-  s.dependency 'NSString-HYPFormula', '~> 1.6.1'
+  s.dependency 'NSString-HYPFormula', '~> 1.6.2'
   s.dependency 'NSString-HYPRelationshipParser', '~> 0.4.1'
   s.dependency 'NSString-HYPWordExtractor', '~> 1.2'
   s.dependency 'NSString-ZENInflections', '~> 1.2'
