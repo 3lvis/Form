@@ -1,0 +1,80 @@
+[
+  {
+    "id":"group-id",
+    "styles":{
+      "background_color":"122556"
+    },
+    "sections":[
+      {
+        "id":"section-0",
+        "fields":[
+          {
+            "id":"email",
+            "title":"Email",
+            "type":"email",
+            "input_type": "email",
+            "size":{
+              "width":100,
+              "height":1
+            },
+            "validations": {
+              "format":"[\\w._%+-]+@[\\w.-]+\\.\\w{2,}",
+              "required": true
+            }
+          },
+          {
+            "id":"card_number",
+            "title":"Card Number",
+            "type":"number",
+            "input_type": "number",
+            "size":{
+              "width":100,
+              "height":1
+            },
+            "validations": {
+              "max_length": 19,
+              "required": true
+            }
+          },
+          {
+            "id":"card_expiration_date",
+            "title":"Expiration date (MM/YY)",
+            "type":"text",
+            "input_type": "number",
+            "size":{
+              "width":60,
+              "height":1
+            },
+            "validations": {
+              "max_length": 5,
+              "required": true
+            }
+          },
+          {
+            "id":"cvc",
+            "title":"CVC",
+            "type":"number",
+            "input_type": "number",
+            "size":{
+              "width":40,
+              "height":1
+            },
+            "validations": {
+              "max_length": 3,
+              "required": true
+            }
+          },
+          {
+              "id":"pay_button",
+              "title":"Pay",
+              "type":"button",
+              "size":{
+                "width":100,
+                "height":1
+              }
+            }
+        ]
+      }
+    ]
+  }
+]
