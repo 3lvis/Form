@@ -30,6 +30,7 @@
 
     self.values = [NSArray arrayWithArray:field.values];
     self.headerView.field = field;
+    self.title = self.field.title;
     [self.tableView reloadData];
 }
 
