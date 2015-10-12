@@ -17,7 +17,6 @@
     self = [super initWithReuseIdentifier:string];
     if (!self) return nil;
 
-    [self addSubview:self.titleLabel];
     [self addSubview:self.infoLabel];
 
     return self;
