@@ -44,6 +44,12 @@
 
     [self.tableView registerClass:[FORMFieldValueCell class] forCellReuseIdentifier:FORMFieldValueCellIdentifer];
     [self.tableView registerClass:[FORMFieldValuesTableViewHeader class] forHeaderFooterViewReuseIdentifier:FORMFieldValuesTableViewHeaderIdentifier];
+
+    //TODO: check whether DONE needed at all: not needed on SELECT-style controllers
+    UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonDidTap)];
+    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonDidTap)];
+    self.navigationItem.leftBarButtonItem = cancel;
+    self.navigationItem.rightBarButtonItem = done;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -53,6 +59,16 @@
     [UIView animateWithDuration:0.3 animations:^{
         [self.tableView reloadData];
     }];
+}
+
+#pragma mark - Navigation Buttons Actions
+
+- (void)cancelButtonDidTap {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)doneButtonDidTap {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - TableViewDelegate
