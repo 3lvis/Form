@@ -65,11 +65,23 @@
 #pragma mark - Navigation Buttons Actions
 
 - (void)cancelButtonDidTap {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    FORMFieldValue *fieldValue = [FORMFieldValue new];
+    fieldValue.value = @NO;
+
+    if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
+        [self.delegate fieldValuesTableViewController:self
+                                     didSelectedValue:fieldValue];
+    }
 }
 
 - (void)doneButtonDidTap {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    FORMFieldValue *fieldValue = [FORMFieldValue new];
+    fieldValue.value = @YES;
+
+    if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
+        [self.delegate fieldValuesTableViewController:self
+                                     didSelectedValue:fieldValue];
+    }
 }
 
 #pragma mark - TableViewDelegate
