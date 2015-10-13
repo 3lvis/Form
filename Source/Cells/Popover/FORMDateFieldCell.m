@@ -72,6 +72,20 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
 
 #pragma mark - FORMBaseFormFieldCell
 
+- (void)updateWithField:(FORMField *)field {
+    [super updateWithField:field];
+
+    if (field.value) {
+        self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.value
+                                                                   dateStyle:[self dateStyleForField:field]
+                                                                   timeStyle:[self timeStyleForField:field]];
+    } else {
+        self.fieldValueLabel.text = nil;
+    }
+
+    self.iconImageView.image = [self fieldIcon];
+}
+
 - (NSDateFormatterStyle)dateStyleForField:(FORMField *)field {
 
     switch (field.type) {
