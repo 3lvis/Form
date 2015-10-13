@@ -1,7 +1,7 @@
 #import "FORMDateFieldCell.h"
 #import "FORMFieldValue.h"
 
-static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
+static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
 
 @interface FORMDateFieldCell () <FORMTextFieldDelegate, FORMFieldValuesTableViewControllerDelegate>
 
@@ -29,7 +29,7 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
 #pragma mark - Getters
 
 - (CGRect)datePickerFrame {
-    return CGRectMake(0.0f, 25.0f, FORMDatePopoverSize.width, 196);
+    return CGRectMake(0.0f, 25.0f, FORMDatePopoverSize.width, FORMDatePopoverSize.height);
 }
 
 - (UIDatePicker *)datePicker {
@@ -71,32 +71,6 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
 }
 
 #pragma mark - FORMBaseFormFieldCell
-
-- (void)updateWithField:(FORMField *)field {
-    [super updateWithField:field];
-
-    FORMFieldValue *confirmValue = [FORMFieldValue new];
-    confirmValue.title = NSLocalizedString(@"Confirm", nil);
-    confirmValue.valueID = [NSDate date];
-    confirmValue.value = @YES;
-
-    FORMFieldValue *clearValue = [FORMFieldValue new];
-    clearValue.title = NSLocalizedString(@"Clear", nil);
-    clearValue.valueID = [NSDate date];
-    clearValue.value = @NO;
-
-    field.values = @[confirmValue, clearValue];
-
-    if (field.value) {
-        self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.value
-                                                                   dateStyle:[self dateStyleForField:field]
-                                                                   timeStyle:[self timeStyleForField:field]];
-    } else {
-        self.fieldValueLabel.text = nil;
-    }
-
-    self.iconImageView.image = [self fieldIcon];
-}
 
 - (NSDateFormatterStyle)dateStyleForField:(FORMField *)field {
 
