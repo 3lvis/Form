@@ -2,7 +2,6 @@
 
 #import "FORMFieldValue.h"
 #import "FORMField.h"
-#import "FORMFieldValuesTableViewHeader.h"
 #import "FORMFieldValueCell.h"
 
 @interface FORMFieldValuesTableViewController ()
