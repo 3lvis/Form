@@ -62,7 +62,6 @@
 {
     CGFloat height = 0.0f;
     height += self.titleLabel.frame.origin.y * 2;
-    height += self.titleLabel.frame.size.height;
     height += self.infoLabel.frame.size.height;
 
     return height;
@@ -73,7 +72,6 @@
 - (void)setField:(FORMField *)field {
     _field = field;
 
-    self.titleLabel.text = field.title;
     self.infoLabel.text = field.info;
 
     [self updateLabelFrames];
