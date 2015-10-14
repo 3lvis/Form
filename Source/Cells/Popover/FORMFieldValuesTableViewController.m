@@ -6,6 +6,7 @@
 @interface FORMFieldValuesTableViewController ()
 
 @property (nonatomic) NSArray *values;
+@property (nonatomic) BOOL showDoneButton;
 
 @end
 
@@ -26,10 +27,21 @@
 - (void)setField:(FORMField *)field {
     _field = field;
 
+    self.showDoneButton = (_field.type == FORMFieldTypeDate || _field.type == FORMFieldTypeDateTime || _field.type == FORMFieldTypeTime);
+
     self.values = [NSArray arrayWithArray:field.values];
     self.headerView.field = field;
     self.title = self.field.title;
     [self.tableView reloadData];
+}
+
+- (void)setShowDoneButton:(BOOL)showDoneButton {
+    if (showDoneButton) {
+        UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonDidTap)];
+        self.navigationItem.rightBarButtonItem = done;
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 #pragma mark - View Lifecycle
@@ -44,11 +56,8 @@
     [self.tableView registerClass:[FORMFieldValueCell class] forCellReuseIdentifier:FORMFieldValueCellIdentifer];
     [self.tableView registerClass:[FORMFieldValuesTableViewHeader class] forHeaderFooterViewReuseIdentifier:FORMFieldValuesTableViewHeaderIdentifier];
 
-    //TODO: check whether DONE needed at all: not needed on SELECT-style controllers
     UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonDidTap)];
-    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonDidTap)];
     self.navigationItem.leftBarButtonItem = cancel;
-    self.navigationItem.rightBarButtonItem = done;
 }
 
 - (void)viewDidAppear:(BOOL)animated
