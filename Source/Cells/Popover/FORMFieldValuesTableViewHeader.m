@@ -94,11 +94,6 @@
 #pragma marks - Private methods
 
 - (void)updateLabelFrames {
-//    [self.titleLabel sizeToFit];
-//    CGRect titleFrame = self.titleLabel.frame;
-//    titleFrame.size.width = FORMFieldValuesHeaderWidth;
-//    self.titleLabel.frame = titleFrame;
-
     [self.infoLabel sizeToFit];
     CGRect infoFrame = self.infoLabel.frame;
     infoFrame.origin.y = [self infoLabelFrame].origin.y;
