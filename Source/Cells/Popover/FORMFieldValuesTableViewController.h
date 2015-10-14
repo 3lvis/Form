@@ -15,8 +15,13 @@ static const CGFloat FORMFieldValuesCellHeight = 44.0f;
 @property (nonatomic) FORMFieldValuesTableViewHeader *headerView;
 @property (nonatomic) CGFloat customHeight;
 
+@property (nonatomic) UIFont *titleLabelFont;
+@property (nonatomic) UIColor *titleLabelTextColor;
+
 @property (nonatomic, weak) id <FORMFieldValuesTableViewControllerDelegate> delegate;
 
+- (void)setTitleLabelFont:(UIFont *)titleLabelFont UI_APPEARANCE_SELECTOR;
+- (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor UI_APPEARANCE_SELECTOR;
 @end
 
 
