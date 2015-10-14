@@ -25,7 +25,7 @@
 #pragma mark - Getters
 
 - (CGRect)titleLabelFrame {
-    return CGRectMake(0.0f, FORMTitleLabelY, FORMFieldValuesHeaderWidth, FORMLabelHeight);
+    return CGRectMake(0.0f, FORMInfoLabelY, FORMFieldValuesHeaderWidth, FORMLabelHeight);
 }
 
 - (UILabel *)titleLabel {
@@ -42,9 +42,7 @@
 
 - (CGRect)infoLabelFrame
 {
-    CGFloat y = CGRectGetMaxY(self.titleLabel.frame);
-
-    return CGRectMake(0.0f, y, FORMFieldValuesHeaderWidth, FORMLabelHeight * 1.1);
+    return CGRectMake(0.0f, FORMInfoLabelY, FORMFieldValuesHeaderWidth, FORMLabelHeight * 1.1);
 }
 
 - (UILabel *)infoLabel {
@@ -96,10 +94,10 @@
 #pragma marks - Private methods
 
 - (void)updateLabelFrames {
-    [self.titleLabel sizeToFit];
-    CGRect titleFrame = self.titleLabel.frame;
-    titleFrame.size.width = FORMFieldValuesHeaderWidth;
-    self.titleLabel.frame = titleFrame;
+//    [self.titleLabel sizeToFit];
+//    CGRect titleFrame = self.titleLabel.frame;
+//    titleFrame.size.width = FORMFieldValuesHeaderWidth;
+//    self.titleLabel.frame = titleFrame;
 
     [self.infoLabel sizeToFit];
     CGRect infoFrame = self.infoLabel.frame;
