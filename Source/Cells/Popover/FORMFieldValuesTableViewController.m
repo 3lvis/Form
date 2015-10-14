@@ -94,14 +94,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    NSInteger headerHeight;
+    CGFloat headerHeight = 0.0f;
+
     if (self.customHeight > 0.0f) {
         headerHeight = self.customHeight;
     } else if (self.field.info) {
         [self.headerView setField:self.field];
         headerHeight = [self.headerView labelHeight];
-    } else {
-        headerHeight = FORMFieldValuesCellHeight;
     }
 
     return headerHeight;

@@ -59,7 +59,7 @@
 - (CGFloat)labelHeight
 {
     CGFloat height = 0.0f;
-    height += self.titleLabel.frame.origin.y * 2;
+    height += FORMInfoLabelY * 2;
     height += self.infoLabel.frame.size.height;
 
     return height;
