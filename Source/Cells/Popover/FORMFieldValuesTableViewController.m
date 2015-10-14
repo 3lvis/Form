@@ -63,13 +63,7 @@
 #pragma mark - Navigation Buttons Actions
 
 - (void)cancelButtonDidTap {
-    FORMFieldValue *fieldValue = [FORMFieldValue new];
-    fieldValue.value = @NO;
-
-    if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
-        [self.delegate fieldValuesTableViewController:self
-                                     didSelectedValue:fieldValue];
-    }
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doneButtonDidTap {
