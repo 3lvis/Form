@@ -3,7 +3,6 @@
 [![Version](https://img.shields.io/cocoapods/v/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
 [![License](https://img.shields.io/cocoapods/l/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
 [![Platform](https://img.shields.io/cocoapods/p/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
-[![Join the chat at https://gitter.im/hyperoslo/Form](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hyperoslo/Form?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The most flexible and powerful way to build a form on iOS.
 
