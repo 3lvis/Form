@@ -1,11 +1,3 @@
-//
-//  main.m
-//  LoginDemo
-//
-//  Created by Elvis Nuñez on 04/11/15.
-//
-//
-
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
