@@ -1,17 +1,7 @@
-//
-//  AppDelegate.h
-//  iPhone-Storyboard
-//
-//  Created by Elvis Nuñez on 04/11/15.
-//
-//
-
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic) UIWindow *window;
 
 @end
-

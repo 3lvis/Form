@@ -109,6 +109,9 @@
 		1408044D1BEA50C00098C288 /* simple-section.json in Resources */ = {isa = PBXBuildFile; fileRef = 1408042B1BEA50C00098C288 /* simple-section.json */; };
 		1408044E1BEA50C00098C288 /* simple-text-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 1408042C1BEA50C00098C288 /* simple-text-field.json */; };
 		1408044F1BEA50C00098C288 /* styled-fields.json in Resources */ = {isa = PBXBuildFile; fileRef = 1408042D1BEA50C00098C288 /* styled-fields.json */; };
+		148AAC191BEA593C007AB12F /* Form.json in Resources */ = {isa = PBXBuildFile; fileRef = 148AAC161BEA593C007AB12F /* Form.json */; };
+		148AAC1A1BEA593C007AB12F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 148AAC181BEA593C007AB12F /* ViewController.m */; };
+		148AAC1D1BEA5943007AB12F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148AAC1B1BEA5943007AB12F /* Main.storyboard */; };
 		14BD55EC1BEA538C0043A673 /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BD55DF1BEA538C0043A673 /* HYPImageFormFieldCell.m */; };
 		14BD55ED1BEA538C0043A673 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BD55E11BEA538C0043A673 /* HYPSampleCollectionViewController.m */; };
 		14BD55EE1BEA538C0043A673 /* form.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BD55E31BEA538C0043A673 /* form.png */; };
@@ -309,6 +312,10 @@
 		1408042D1BEA50C00098C288 /* styled-fields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "styled-fields.json"; sourceTree = "<group>"; };
 		146D72AC1AB782920058798C /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		146D72B11AB782920058798C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		148AAC161BEA593C007AB12F /* Form.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Form.json; sourceTree = "<group>"; };
+		148AAC171BEA593C007AB12F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		148AAC181BEA593C007AB12F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		148AAC1C1BEA5943007AB12F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14BD55DE1BEA538C0043A673 /* HYPImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPImageFormFieldCell.h; sourceTree = "<group>"; };
 		14BD55DF1BEA538C0043A673 /* HYPImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPImageFormFieldCell.m; sourceTree = "<group>"; };
 		14BD55E01BEA538C0043A673 /* HYPSampleCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSampleCollectionViewController.h; sourceTree = "<group>"; };
@@ -477,7 +484,11 @@
 			children = (
 				1406BBDB1BEA529600131623 /* AppDelegate.h */,
 				1406BBDC1BEA529600131623 /* AppDelegate.m */,
+				148AAC161BEA593C007AB12F /* Form.json */,
+				148AAC171BEA593C007AB12F /* ViewController.h */,
+				148AAC181BEA593C007AB12F /* ViewController.m */,
 				1406BBDE1BEA529600131623 /* Assets.xcassets */,
+				148AAC1B1BEA5943007AB12F /* Main.storyboard */,
 				1406BBE01BEA529600131623 /* LaunchScreen.storyboard */,
 				1406BBE31BEA529600131623 /* Info.plist */,
 				1406BBD81BEA529600131623 /* Supporting Files */,
@@ -1152,7 +1163,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1406BBDF1BEA529600131623 /* Assets.xcassets in Resources */,
+				148AAC191BEA593C007AB12F /* Form.json in Resources */,
 				1406BBE21BEA529600131623 /* LaunchScreen.storyboard in Resources */,
+				148AAC1D1BEA5943007AB12F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1554,6 +1567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				148AAC1A1BEA593C007AB12F /* ViewController.m in Sources */,
 				1406BBDD1BEA529600131623 /* AppDelegate.m in Sources */,
 				1406BBDA1BEA529600131623 /* main.m in Sources */,
 			);
@@ -1685,6 +1699,14 @@
 				1406BBE11BEA529600131623 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		148AAC1B1BEA5943007AB12F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				148AAC1C1BEA5943007AB12F /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		14BD55E51BEA538C0043A673 /* Localizable.strings */ = {
@@ -1858,7 +1880,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hyper.form.demo.iPhone-Storyboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1874,7 +1896,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hyper.form.demo.iPhone-Storyboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
