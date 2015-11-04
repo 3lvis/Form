@@ -415,6 +415,11 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     return !_disabled;
 }
 
+- (void)collapseGroup:(NSInteger)group {
+    [self collapseFieldsInGroup:group
+                 collectionView:self.collectionView];
+}
+
 - (void)collapseAllGroups {
     [self collapseAllGroupsForCollectionView:self.collectionView];
 }

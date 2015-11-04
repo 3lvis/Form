@@ -88,6 +88,12 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
 - (void)disable;
 
 /*!
+ * Collapse group with group id
+ * @param group A group id
+ */
+- (void)collapseGroup:(NSInteger)group;
+
+/*!
  * Collapse all groups
  */
 - (void)collapseAllGroups;
@@ -239,5 +245,11 @@ includingHiddenFields:(BOOL)includingHiddenFields
  * @param indexPaths A collection of indexPaths to reload
  */
 - (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths;
+
+/*!
+ * @discussion Check if group is collapsed
+ * @param group A group id
+ */
+- (BOOL)groupIsCollapsed:(NSInteger)group;
 
 @end
