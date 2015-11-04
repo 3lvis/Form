@@ -20,7 +20,7 @@ Form includes the following features:
 
 Form works both on the iPhone and the iPad.
 
-You can try one of our [demos](/Demos) by running this command in your Terminal:
+You can try one of our demos by running this command in your Terminal:
 
 ```ruby
 pod try Form
