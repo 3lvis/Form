@@ -137,7 +137,7 @@
                                          disabled:NO
                                 disabledFieldsIDs:nil];
 
-    XCTAssertEqualObjects([field.inputValidator class], [FORMNameInputValidator class]);
+    XCTAssertEqualObjects(NSStringFromClass([field.inputValidator class]), NSStringFromClass([FORMNameInputValidator class]));
 
     field = [[FORMField alloc] initWithDictionary:@{@"id" : @"phone_number",
                                                     @"type" : @"text",
@@ -146,7 +146,7 @@
                                          disabled:NO
                                 disabledFieldsIDs:nil];
 
-    XCTAssertEqualObjects([field.inputValidator class], [FORMPhoneNumberInputValidator class]);
+    XCTAssertEqualObjects(NSStringFromClass([field.inputValidator class]), NSStringFromClass([FORMPhoneNumberInputValidator class]));
 
     field = [[FORMField alloc] initWithDictionary:@{@"id" : @"contact[0].phone_number",
                                                     @"type" : @"text",
@@ -155,7 +155,7 @@
                                          disabled:NO
                                 disabledFieldsIDs:nil];
 
-    XCTAssertEqualObjects([field.inputValidator class], [FORMNumberInputValidator class]);
+    XCTAssertEqualObjects(NSStringFromClass([field.inputValidator class]), NSStringFromClass([FORMNumberInputValidator class]));
 }
 
 - (void)testEmptyValue {
