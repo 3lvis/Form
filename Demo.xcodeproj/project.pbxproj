@@ -17,7 +17,7 @@
 		1406BBA61BEA522900131623 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406BBA51BEA522900131623 /* AppController.swift */; };
 		1406BBA81BEA522900131623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1406BBA71BEA522900131623 /* Assets.xcassets */; };
 		1406BBAB1BEA522900131623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1406BBA91BEA522900131623 /* LaunchScreen.storyboard */; };
-		1406BBC81BEA525000131623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406BBC71BEA525000131623 /* AppDelegate.swift */; };
+		1406BBC81BEA525000131623 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406BBC71BEA525000131623 /* AppController.swift */; };
 		1406BBCA1BEA525000131623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1406BBC91BEA525000131623 /* Assets.xcassets */; };
 		1406BBCD1BEA525000131623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1406BBCB1BEA525000131623 /* LaunchScreen.storyboard */; };
 		1406BBDA1BEA529600131623 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1406BBD91BEA529600131623 /* main.m */; };
@@ -112,6 +112,9 @@
 		148AAC191BEA593C007AB12F /* Form.json in Resources */ = {isa = PBXBuildFile; fileRef = 148AAC161BEA593C007AB12F /* Form.json */; };
 		148AAC1A1BEA593C007AB12F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 148AAC181BEA593C007AB12F /* ViewController.m */; };
 		148AAC1D1BEA5943007AB12F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148AAC1B1BEA5943007AB12F /* Main.storyboard */; };
+		148AAC1F1BEA5A1F007AB12F /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AAC1E1BEA5A1F007AB12F /* RootController.swift */; };
+		148AAC231BEA5A26007AB12F /* FORMCustomStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 148AAC221BEA5A26007AB12F /* FORMCustomStyle.m */; };
+		148AAC251BEA5A3A007AB12F /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 148AAC241BEA5A3A007AB12F /* forms.json */; };
 		14BD55EC1BEA538C0043A673 /* HYPImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BD55DF1BEA538C0043A673 /* HYPImageFormFieldCell.m */; };
 		14BD55ED1BEA538C0043A673 /* HYPSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BD55E11BEA538C0043A673 /* HYPSampleCollectionViewController.m */; };
 		14BD55EE1BEA538C0043A673 /* form.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BD55E31BEA538C0043A673 /* form.png */; };
@@ -161,7 +164,7 @@
 		1406BBAA1BEA522900131623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1406BBAC1BEA522900131623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1406BBC51BEA525000131623 /* Payment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Payment.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1406BBC71BEA525000131623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1406BBC71BEA525000131623 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		1406BBC91BEA525000131623 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1406BBCC1BEA525000131623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1406BBCE1BEA525000131623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -316,6 +319,11 @@
 		148AAC171BEA593C007AB12F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		148AAC181BEA593C007AB12F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		148AAC1C1BEA5943007AB12F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		148AAC1E1BEA5A1F007AB12F /* RootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
+		148AAC201BEA5A25007AB12F /* Payment-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Payment-Bridging-Header.h"; sourceTree = "<group>"; };
+		148AAC211BEA5A26007AB12F /* FORMCustomStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMCustomStyle.h; sourceTree = "<group>"; };
+		148AAC221BEA5A26007AB12F /* FORMCustomStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMCustomStyle.m; sourceTree = "<group>"; };
+		148AAC241BEA5A3A007AB12F /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
 		14BD55DE1BEA538C0043A673 /* HYPImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPImageFormFieldCell.h; sourceTree = "<group>"; };
 		14BD55DF1BEA538C0043A673 /* HYPImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPImageFormFieldCell.m; sourceTree = "<group>"; };
 		14BD55E01BEA538C0043A673 /* HYPSampleCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPSampleCollectionViewController.h; sourceTree = "<group>"; };
@@ -471,10 +479,15 @@
 		1406BBC61BEA525000131623 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				1406BBC71BEA525000131623 /* AppDelegate.swift */,
+				1406BBC71BEA525000131623 /* AppController.swift */,
+				148AAC1E1BEA5A1F007AB12F /* RootController.swift */,
+				148AAC211BEA5A26007AB12F /* FORMCustomStyle.h */,
+				148AAC221BEA5A26007AB12F /* FORMCustomStyle.m */,
 				1406BBC91BEA525000131623 /* Assets.xcassets */,
 				1406BBCB1BEA525000131623 /* LaunchScreen.storyboard */,
+				148AAC241BEA5A3A007AB12F /* forms.json */,
 				1406BBCE1BEA525000131623 /* Info.plist */,
+				148AAC201BEA5A25007AB12F /* Payment-Bridging-Header.h */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1155,6 +1168,7 @@
 			files = (
 				1406BBCA1BEA525000131623 /* Assets.xcassets in Resources */,
 				1406BBCD1BEA525000131623 /* LaunchScreen.storyboard in Resources */,
+				148AAC251BEA5A3A007AB12F /* forms.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1559,7 +1573,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1406BBC81BEA525000131623 /* AppDelegate.swift in Sources */,
+				1406BBC81BEA525000131623 /* AppController.swift in Sources */,
+				148AAC1F1BEA5A1F007AB12F /* RootController.swift in Sources */,
+				148AAC231BEA5A26007AB12F /* FORMCustomStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1840,6 +1856,7 @@
 			baseConfigurationReference = EB58EAAFCF0E85A6279509FD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Payment/Info.plist;
@@ -1847,8 +1864,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyper.form.demo.Payment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Payment/Payment-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1857,6 +1875,7 @@
 			baseConfigurationReference = 3ED0D9F707E1C0B72BD639BC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Payment/Info.plist;
@@ -1864,7 +1883,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyper.form.demo.Payment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				SWIFT_OBJC_BRIDGING_HEADER = "Payment/Payment-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
