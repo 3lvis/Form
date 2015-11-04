@@ -88,6 +88,12 @@ typedef void (^FORMFieldFieldUpdatedBlock)(id cell,
 - (void)disable;
 
 /*!
+ * Collapse group with group id
+ * @param group A group id
+ */
+- (void)collapseGroup:(NSInteger)group;
+
+/*!
  * Collapse all groups
  */
 - (void)collapseAllGroups;
