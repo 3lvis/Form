@@ -1,6 +1,6 @@
 use_frameworks!
 
-pod 'Hex', '~> 1.1.1'
+pod 'Hex'
 pod 'HYP8601'
 pod 'HYPImagePicker'
 pod 'HYPMathParser'

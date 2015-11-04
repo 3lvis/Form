@@ -93,7 +93,7 @@
 		7A91EA801B61429300902BB4 /* collapsed-groups.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A91EA7F1B61429300902BB4 /* collapsed-groups.json */; };
 		7A94C1DF1B443DC700CE9524 /* styled-fields.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A94C1DE1B443DC700CE9524 /* styled-fields.json */; };
 		7ACCACCB1B8E3FDC009B69AF /* FORMLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCACCA1B8E3FDC009B69AF /* FORMLayoutAttributes.m */; };
-		8EC9C8158643C507F883EEC4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E09ABAE07DB25A266537B76 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8EC9C8158643C507F883EEC4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E09ABAE07DB25A266537B76 /* Pods.framework */; };
 		BD2405701AE6B38D00592E19 /* default-values-in-template.json in Resources */ = {isa = PBXBuildFile; fileRef = BD24056F1AE6B38D00592E19 /* default-values-in-template.json */; };
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
 		BD92FBDA1AE61FF000D45BD4 /* dynamic-formulas.json in Resources */ = {isa = PBXBuildFile; fileRef = BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */; };
