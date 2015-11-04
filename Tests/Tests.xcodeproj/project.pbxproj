@@ -93,11 +93,12 @@
 		7A91EA801B61429300902BB4 /* collapsed-groups.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A91EA7F1B61429300902BB4 /* collapsed-groups.json */; };
 		7A94C1DF1B443DC700CE9524 /* styled-fields.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A94C1DE1B443DC700CE9524 /* styled-fields.json */; };
 		7ACCACCB1B8E3FDC009B69AF /* FORMLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCACCA1B8E3FDC009B69AF /* FORMLayoutAttributes.m */; };
-		8EC9C8158643C507F883EEC4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E09ABAE07DB25A266537B76 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8EC9C8158643C507F883EEC4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E09ABAE07DB25A266537B76 /* Pods.framework */; };
 		BD2405701AE6B38D00592E19 /* default-values-in-template.json in Resources */ = {isa = PBXBuildFile; fileRef = BD24056F1AE6B38D00592E19 /* default-values-in-template.json */; };
 		BD5845751AC4074600596C62 /* FORMTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5845741AC4074600596C62 /* FORMTooltipView.m */; };
 		BD92FBDA1AE61FF000D45BD4 /* dynamic-formulas.json in Resources */ = {isa = PBXBuildFile; fileRef = BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */; };
 		BDB7E31F1AA7016D00AF00BC /* FORMPostalCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB7E31E1AA7016D00AF00BC /* FORMPostalCodeManager.m */; };
+		D52693DB1BEA4499005D7746 /* FORMInputValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D52693DA1BEA4499005D7746 /* FORMInputValidatorTests.m */; settings = {ASSET_TAGS = (); }; };
 		D5B56C071AE51C7800DD8816 /* FORMEmailFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B56C061AE51C7800DD8816 /* FORMEmailFormatter.m */; };
 		D5B56C0A1AE52F8500DD8816 /* FORMEmailFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B56C091AE52F8500DD8816 /* FORMEmailFormatterTests.m */; };
 		D5DFAA1B1AA87A9B0096FBFB /* FORMFieldValidationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DFAA1A1AA87A9B0096FBFB /* FORMFieldValidationTests.m */; };
@@ -254,6 +255,7 @@
 		BD92FBD91AE61FF000D45BD4 /* dynamic-formulas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dynamic-formulas.json"; sourceTree = "<group>"; };
 		BDB7E31D1AA7016D00AF00BC /* FORMPostalCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMPostalCodeManager.h; sourceTree = "<group>"; };
 		BDB7E31E1AA7016D00AF00BC /* FORMPostalCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPostalCodeManager.m; sourceTree = "<group>"; };
+		D52693DA1BEA4499005D7746 /* FORMInputValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMInputValidatorTests.m; sourceTree = "<group>"; };
 		D5B56C051AE51C7800DD8816 /* FORMEmailFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMEmailFormatter.h; sourceTree = "<group>"; };
 		D5B56C061AE51C7800DD8816 /* FORMEmailFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMEmailFormatter.m; sourceTree = "<group>"; };
 		D5B56C091AE52F8500DD8816 /* FORMEmailFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMEmailFormatterTests.m; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				149C29121A9A23DD00F88B91 /* FORMFieldTests.m */,
 				D5DFAA1A1AA87A9B0096FBFB /* FORMFieldValidationTests.m */,
 				149C29111A9A23DD00F88B91 /* FORMFieldValueTests.m */,
+				D52693DA1BEA4499005D7746 /* FORMInputValidatorTests.m */,
 				1440AF0C1AC1D76500F15D15 /* FORMGroupTests.m */,
 				149C29181A9A23DD00F88B91 /* FORMPopoverFieldCellTests.m */,
 				149C29141A9A23DD00F88B91 /* FORMSectionTests.m */,
@@ -812,6 +815,7 @@
 				149C29251A9A23DD00F88B91 /* FORMDataTests.m in Sources */,
 				149C29221A9A23DD00F88B91 /* FORMFieldTests.m in Sources */,
 				144A28DB1A99B2CF004A9086 /* FORMClassFactory.m in Sources */,
+				D52693DB1BEA4499005D7746 /* FORMInputValidatorTests.m in Sources */,
 				144A28BB1A99B2CF004A9086 /* FORMBaseFieldCell.m in Sources */,
 				144A28C91A99B2CF004A9086 /* FORMFloatFormatter.m in Sources */,
 				144A28E11A99B2CF004A9086 /* FORMTarget.m in Sources */,
