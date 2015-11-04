@@ -1,9 +1,9 @@
 use_frameworks!
 
-# When using more than one target in your project
-# link_with 'DemoProject', 'Tests'
+link_with 'Tests', 'Basic-ObjC', 'Basic-Swift', 'CustomField', 'LoginDemo', 'Payment', 'iPhone-Storyboard'
 
 pod 'Form', path: "."
 
 pod 'NSDate-HYPString'
 pod 'NSDictionary-HYPImmutable'
+pod 'HYPImagePicker'
