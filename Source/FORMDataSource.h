@@ -246,4 +246,10 @@ includingHiddenFields:(BOOL)includingHiddenFields
  */
 - (void)reloadFieldsAtIndexPaths:(NSArray *)indexPaths;
 
+/*!
+ * @discussion Check if group is collapsed
+ * @param group A group id
+ */
+- (BOOL)groupIsCollapsed:(NSInteger)group;
+
 @end
