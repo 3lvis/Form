@@ -109,6 +109,13 @@
 		1408044D1BEA50C00098C288 /* simple-section.json in Resources */ = {isa = PBXBuildFile; fileRef = 1408042B1BEA50C00098C288 /* simple-section.json */; };
 		1408044E1BEA50C00098C288 /* simple-text-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 1408042C1BEA50C00098C288 /* simple-text-field.json */; };
 		1408044F1BEA50C00098C288 /* styled-fields.json in Resources */ = {isa = PBXBuildFile; fileRef = 1408042D1BEA50C00098C288 /* styled-fields.json */; };
+		141274D71BFBBF90001A5DF9 /* SampleFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141274D61BFBBF90001A5DF9 /* SampleFormViewController.swift */; };
+		141274D91BFBC364001A5DF9 /* Form.json in Resources */ = {isa = PBXBuildFile; fileRef = 141274D81BFBC364001A5DF9 /* Form.json */; };
+		142F32CD1BFBBECF00368056 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142F32CC1BFBBECF00368056 /* AppDelegate.swift */; };
+		142F32CF1BFBBECF00368056 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142F32CE1BFBBECF00368056 /* ViewController.swift */; };
+		142F32D21BFBBECF00368056 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 142F32D01BFBBECF00368056 /* Main.storyboard */; };
+		142F32D41BFBBECF00368056 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 142F32D31BFBBECF00368056 /* Assets.xcassets */; };
+		142F32D71BFBBECF00368056 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 142F32D51BFBBECF00368056 /* LaunchScreen.storyboard */; };
 		148AAC191BEA593C007AB12F /* Form.json in Resources */ = {isa = PBXBuildFile; fileRef = 148AAC161BEA593C007AB12F /* Form.json */; };
 		148AAC1A1BEA593C007AB12F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 148AAC181BEA593C007AB12F /* ViewController.m */; };
 		148AAC1D1BEA5943007AB12F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148AAC1B1BEA5943007AB12F /* Main.storyboard */; };
@@ -136,6 +143,7 @@
 		14BD56231BEA57920043A673 /* HYPDemoLoginCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BD56211BEA57920043A673 /* HYPDemoLoginCollectionViewController.m */; };
 		14BD56241BEA57920043A673 /* JSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 14BD56221BEA57920043A673 /* JSON.json */; };
 		14BD56271BEA57FE0043A673 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14BD56251BEA57FE0043A673 /* Main.storyboard */; };
+		1DCBA45F9F392C91931EF819 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7313DABFEEF45FCCCD39281E /* Pods.framework */; };
 		49ACE10CFD7190EC1578FC7E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7313DABFEEF45FCCCD39281E /* Pods.framework */; };
 		515398D4642362B654DD5613 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7313DABFEEF45FCCCD39281E /* Pods.framework */; };
 		6C1C2B86F4E9644CBE25E84F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7313DABFEEF45FCCCD39281E /* Pods.framework */; };
@@ -313,6 +321,15 @@
 		1408042B1BEA50C00098C288 /* simple-section.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-section.json"; sourceTree = "<group>"; };
 		1408042C1BEA50C00098C288 /* simple-text-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "simple-text-field.json"; sourceTree = "<group>"; };
 		1408042D1BEA50C00098C288 /* styled-fields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "styled-fields.json"; sourceTree = "<group>"; };
+		141274D61BFBBF90001A5DF9 /* SampleFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleFormViewController.swift; sourceTree = "<group>"; };
+		141274D81BFBC364001A5DF9 /* Form.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Form.json; sourceTree = "<group>"; };
+		142F32CA1BFBBECF00368056 /* ModalForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModalForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		142F32CC1BFBBECF00368056 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		142F32CE1BFBBECF00368056 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		142F32D11BFBBECF00368056 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		142F32D31BFBBECF00368056 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		142F32D61BFBBECF00368056 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		142F32D81BFBBECF00368056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		146D72AC1AB782920058798C /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		146D72B11AB782920058798C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		148AAC161BEA593C007AB12F /* Form.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Form.json; sourceTree = "<group>"; };
@@ -400,6 +417,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				49ACE10CFD7190EC1578FC7E /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		142F32C71BFBBECF00368056 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DCBA45F9F392C91931EF819 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,6 +741,21 @@
 			path = JSONs;
 			sourceTree = "<group>";
 		};
+		142F32CB1BFBBECF00368056 /* ModalForm */ = {
+			isa = PBXGroup;
+			children = (
+				141274D81BFBC364001A5DF9 /* Form.json */,
+				142F32CC1BFBBECF00368056 /* AppDelegate.swift */,
+				142F32CE1BFBBECF00368056 /* ViewController.swift */,
+				141274D61BFBBF90001A5DF9 /* SampleFormViewController.swift */,
+				142F32D01BFBBECF00368056 /* Main.storyboard */,
+				142F32D31BFBBECF00368056 /* Assets.xcassets */,
+				142F32D51BFBBECF00368056 /* LaunchScreen.storyboard */,
+				142F32D81BFBBECF00368056 /* Info.plist */,
+			);
+			path = ModalForm;
+			sourceTree = "<group>";
+		};
 		146D728A1AB782920058798C = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +768,7 @@
 				1406BBC61BEA525000131623 /* Payment */,
 				1406BBD71BEA529600131623 /* iPhone-Storyboard */,
 				14BD56101BEA576F0043A673 /* LoginDemo */,
+				142F32CB1BFBBECF00368056 /* ModalForm */,
 				146D72941AB782920058798C /* Products */,
 				569CF9AF05C0CA47FE0F7A6C /* Pods */,
 				691ABA14AC3F9E90C68DC6E6 /* Frameworks */,
@@ -746,6 +787,7 @@
 				1406BBC51BEA525000131623 /* Payment.app */,
 				1406BBD61BEA529600131623 /* iPhone-Storyboard.app */,
 				14BD560F1BEA576F0043A673 /* LoginDemo.app */,
+				142F32CA1BFBBECF00368056 /* ModalForm.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1026,6 +1068,26 @@
 			productReference = 1406BBD61BEA529600131623 /* iPhone-Storyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
+		142F32C91BFBBECF00368056 /* ModalForm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 142F32DB1BFBBECF00368056 /* Build configuration list for PBXNativeTarget "ModalForm" */;
+			buildPhases = (
+				BF71FE884383EF1D0D3E36EA /* Check Pods Manifest.lock */,
+				142F32C61BFBBECF00368056 /* Sources */,
+				142F32C71BFBBECF00368056 /* Frameworks */,
+				142F32C81BFBBECF00368056 /* Resources */,
+				AAEB8106FF560F5A5F2CE4BC /* Embed Pods Frameworks */,
+				6C347E4CB83A329527A6D35B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ModalForm;
+			productName = ModalForm;
+			productReference = 142F32CA1BFBBECF00368056 /* ModalForm.app */;
+			productType = "com.apple.product-type.application";
+		};
 		146D72AB1AB782920058798C /* Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 146D72B91AB782920058798C /* Build configuration list for PBXNativeTarget "Tests" */;
@@ -1092,6 +1154,9 @@
 					1406BBD51BEA529600131623 = {
 						CreatedOnToolsVersion = 7.1;
 					};
+					142F32C91BFBBECF00368056 = {
+						CreatedOnToolsVersion = 7.1;
+					};
 					146D72AB1AB782920058798C = {
 						CreatedOnToolsVersion = 6.2;
 					};
@@ -1121,6 +1186,7 @@
 				1406BBC41BEA525000131623 /* Payment */,
 				1406BBD51BEA529600131623 /* iPhone-Storyboard */,
 				14BD560E1BEA576F0043A673 /* LoginDemo */,
+				142F32C91BFBBECF00368056 /* ModalForm */,
 			);
 		};
 /* End PBXProject section */
@@ -1180,6 +1246,17 @@
 				148AAC191BEA593C007AB12F /* Form.json in Resources */,
 				1406BBE21BEA529600131623 /* LaunchScreen.storyboard in Resources */,
 				148AAC1D1BEA5943007AB12F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		142F32C81BFBBECF00368056 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				142F32D71BFBBECF00368056 /* LaunchScreen.storyboard in Resources */,
+				141274D91BFBC364001A5DF9 /* Form.json in Resources */,
+				142F32D41BFBBECF00368056 /* Assets.xcassets in Resources */,
+				142F32D21BFBBECF00368056 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1401,6 +1478,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6C347E4CB83A329527A6D35B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		71AB9FE81C970D9EC2848972 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1491,6 +1583,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		AAEB8106FF560F5A5F2CE4BC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B05AA77C3DCCA6666F2EAABA /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1519,6 +1626,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF71FE884383EF1D0D3E36EA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C4D10C04E3E8E5917A98CE06 /* Copy Pods Resources */ = {
@@ -1586,6 +1708,16 @@
 				148AAC1A1BEA593C007AB12F /* ViewController.m in Sources */,
 				1406BBDD1BEA529600131623 /* AppDelegate.m in Sources */,
 				1406BBDA1BEA529600131623 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		142F32C61BFBBECF00368056 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				141274D71BFBBF90001A5DF9 /* SampleFormViewController.swift in Sources */,
+				142F32CF1BFBBECF00368056 /* ViewController.swift in Sources */,
+				142F32CD1BFBBECF00368056 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1713,6 +1845,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				1406BBE11BEA529600131623 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		142F32D01BFBBECF00368056 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				142F32D11BFBBECF00368056 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		142F32D51BFBBECF00368056 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				142F32D61BFBBECF00368056 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1920,6 +2068,37 @@
 			};
 			name = Release;
 		};
+		142F32D91BFBBECF00368056 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB58EAAFCF0E85A6279509FD /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = ModalForm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.ModalForm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		142F32DA1BFBBECF00368056 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3ED0D9F707E1C0B72BD639BC /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = ModalForm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.ModalForm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		146D72B41AB782920058798C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2104,6 +2283,15 @@
 			buildConfigurations = (
 				1406BBE51BEA529600131623 /* Debug */,
 				1406BBE61BEA529600131623 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		142F32DB1BFBBECF00368056 /* Build configuration list for PBXNativeTarget "ModalForm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				142F32D91BFBBECF00368056 /* Debug */,
+				142F32DA1BFBBECF00368056 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
