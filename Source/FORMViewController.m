@@ -8,11 +8,8 @@
 
 @interface FORMViewController ()
 
-@property (nonatomic, copy) id JSON;
-@property (nonatomic, copy) NSDictionary *initialValues;
 @property (nonatomic) FORMDataSource *dataSource;
 @property (nonatomic) FORMLayout *layout;
-@property (nonatomic) BOOL disabled;
 
 @end
 
@@ -26,6 +23,14 @@
 
 #pragma mark - Initialization
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+    }
+
+    return self;
+}
+
 - (instancetype)initWithJSON:(id)JSON
             andInitialValues:(NSDictionary *)initialValues
                     disabled:(BOOL)disabled {
@@ -36,12 +41,6 @@
     _JSON = JSON;
     _initialValues = initialValues;
     _disabled = disabled;
-
-    if ([NSObject isUnitTesting]) {
-        [self.collectionView numberOfSections];
-    }
-
-    [self hyp_addKeyboardToolbarObservers];
 
     return self;
 }
@@ -65,9 +64,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    _layout = (FORMLayout *)self.collectionView.collectionViewLayout;
+
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     self.collectionView.dataSource = self.dataSource;
+
+    self.layout.dataSource = self.dataSource;
+
+    if ([NSObject isUnitTesting]) {
+        [self.collectionView numberOfSections];
+    }
+
+    [self hyp_addKeyboardToolbarObservers];
 }
 
 #pragma mark - UICollectionViewDelegate
