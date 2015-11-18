@@ -4,7 +4,7 @@ import Form
 import NSJSONSerialization_ANDYJSONFile
 
 class SampleFormViewController: FORMViewController {
-    override internal var dataSource: FORMDataSource! {
+    override var dataSource: FORMDataSource! {
         get {
             let layout = FORMLayout()
             self.collectionView?.collectionViewLayout = layout
