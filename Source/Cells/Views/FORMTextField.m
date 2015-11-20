@@ -118,11 +118,18 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
     BOOL didFormat   = (text.length > super.text.length);
     BOOL cursorAtEnd = (newRawText.length == range.location);
 
+    [super setText:text];
     if ((didAddText && didFormat) || (didAddText && cursorAtEnd)) {
-        self.selectedTextRange = textRange;
-        [super setText:text];
+        if (range.location < text.length) {
+            UITextPosition *start = [self positionFromPosition:self.beginningOfDocument
+                                                        offset:range.location + 1];
+            UITextPosition *end = [self positionFromPosition:start
+                                                      offset:range.length];
+            UITextRange *newTextRange = [self textRangeFromPosition:start
+                                                         toPosition:end];
+            self.selectedTextRange = newTextRange;
+        }
     } else {
-        [super setText:text];
         self.selectedTextRange = textRange;
     }
 }
