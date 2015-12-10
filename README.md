@@ -198,6 +198,32 @@ To make quick and easy integer adjustments without popping up a keyboard, you ca
 }
 ```
 
+## FAQ
+
+### Get the contents of a field
+
+```objc
+FORMField *targetField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
+id value = targetField.value;
+// Do something with value
+```
+
+### Get all the values of the Form
+
+```objc
+NSDictionary *initialValues = @{@"email" : @"hi@there.com",
+                                @"companies[0].name" : @"Facebook",
+                                @"companies[0].phone_number" : @"1222333"};
+
+FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                   collectionView:nil
+                                                           layout:nil
+                                                           values:initialValues
+                                                         disabled:NO];
+NSDictionary *values = dataSource.values;
+// Do something with values
+```
+
 ## Installation
 
 **Form** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
