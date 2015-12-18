@@ -23,7 +23,7 @@ class SubtitleField: FORMBaseFieldCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.textView.text = "If you are an individual filling this petition, complete Item Number 1. If you are a company or an organization filling this petition, complate Item Number 2."
+        self.textView.text = "If you are an individual filling this petition, complete Item Number 1. If you are a company or an organization filling this petition, complete Item Number 2."
 
         self.addSubview(self.textView)
     }
