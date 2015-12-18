@@ -1,14 +1,14 @@
 import UIKit
 import Form.FORMBaseFieldCell
 
-protocol CustomFieldDelegate: class {
-    func customFieldWasUpdated(text: String)
+protocol BiographyFieldDelegate: class {
+    func biographyFieldWasUpdated(text: String)
 }
 
-class CustomField: FORMBaseFieldCell, UITextViewDelegate {
-    static let CellIdentifier = "CustomFieldIdentifier"
+class BiographyField: FORMBaseFieldCell, UITextViewDelegate {
+    static let CellIdentifier = "BiographyFieldIdentifier"
 
-    weak var customDelegate: CustomFieldDelegate? = nil
+    weak var biographyFieldDelegate: BiographyFieldDelegate? = nil
 
     lazy var textView: UITextView = {
         let horizontalMargin = 10.0
@@ -45,6 +45,6 @@ class CustomField: FORMBaseFieldCell, UITextViewDelegate {
     // MARK: UITextViewDelegate
 
     func textViewDidChange(textView: UITextView) {
-        self.customDelegate?.customFieldWasUpdated(textView.text)
+        self.biographyFieldDelegate?.biographyFieldWasUpdated(textView.text)
     }
 }
