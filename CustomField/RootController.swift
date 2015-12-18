@@ -1,7 +1,7 @@
 import UIKit
 import Form.FORMViewController
 
-class RootController: FORMViewController, CustomFieldDelegate {
+class RootController: FORMViewController {
     init(JSON: [String : AnyObject], initialValues: [String : AnyObject]) {
         super.init(JSON: JSON, andInitialValues: initialValues, disabled:false)
     }
@@ -10,31 +10,33 @@ class RootController: FORMViewController, CustomFieldDelegate {
         fatalError("Not supported")
     }
 
-    // MARK: View life cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.collectionView?.backgroundColor = UIColor(hex: "DAE2EA")
-
-        self.collectionView?.registerClass(CustomField.self, forCellWithReuseIdentifier: CustomField.CellIdentifier)
+        self.collectionView?.registerClass(BiographyField.self, forCellWithReuseIdentifier: BiographyField.CellIdentifier)
+        self.collectionView?.registerClass(SubtitleField.self, forCellWithReuseIdentifier: SubtitleField.CellIdentifier)
 
         let configureCellForItemAtIndexPathBlock: FORMConfigureCellForItemAtIndexPathBlock = { field, collectionView, indexPath in
-            if field.type == .Custom && field.typeString == "textye" {
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CustomField.CellIdentifier, forIndexPath: indexPath) as! CustomField
-                cell.customDelegate = self
+            if field.type == .Custom && field.typeString == "biography" {
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(BiographyField.CellIdentifier, forIndexPath: indexPath) as! BiographyField
+                cell.biographyFieldDelegate = self
+                return cell
+            } else if field.type == .Custom && field.typeString == "subtitle" {
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SubtitleField.CellIdentifier, forIndexPath: indexPath) as! SubtitleField
                 return cell
             }
+
 
             return nil
         }
 
         self.dataSource.configureCellForItemAtIndexPathBlock = configureCellForItemAtIndexPathBlock
     }
+}
 
-    // MARK: CustomFieldDelegate
-
-    func customFieldWasUpdated(text: String) {
+extension RootController: BiographyFieldDelegate {
+    func biographyFieldWasUpdated(text: String) {
         print(text)
     }
 }

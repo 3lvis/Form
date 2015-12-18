@@ -1,14 +1,14 @@
 import UIKit
 import Form.FORMBaseFieldCell
 
-protocol CustomFieldDelegate: class {
-    func customFieldWasUpdated(text: String)
+protocol BiographyFieldDelegate: class {
+    func biographyFieldWasUpdated(text: String)
 }
 
-class CustomField: FORMBaseFieldCell, UITextViewDelegate {
-    static let CellIdentifier = "CustomFieldIdentifier"
+class BiographyField: FORMBaseFieldCell {
+    static let CellIdentifier = "BiographyFieldIdentifier"
 
-    weak var customDelegate: CustomFieldDelegate? = nil
+    weak var biographyFieldDelegate: BiographyFieldDelegate? = nil
 
     lazy var textView: UITextView = {
         let horizontalMargin = 10.0
@@ -34,17 +34,17 @@ class CustomField: FORMBaseFieldCell, UITextViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.headingLabel.text = "Custom Field"
+        self.headingLabel.text = "Biography"
         self.addSubview(self.textView)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
-    // MARK: UITextViewDelegate
-
+extension BiographyField: UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
-        self.customDelegate?.customFieldWasUpdated(textView.text)
+        self.biographyFieldDelegate?.biographyFieldWasUpdated(textView.text)
     }
 }
