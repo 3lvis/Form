@@ -5,7 +5,7 @@ protocol BiographyFieldDelegate: class {
     func biographyFieldWasUpdated(text: String)
 }
 
-class BiographyField: FORMBaseFieldCell, UITextViewDelegate {
+class BiographyField: FORMBaseFieldCell {
     static let CellIdentifier = "BiographyFieldIdentifier"
 
     weak var biographyFieldDelegate: BiographyFieldDelegate? = nil
@@ -34,16 +34,16 @@ class BiographyField: FORMBaseFieldCell, UITextViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.headingLabel.text = "Custom Field"
+        self.headingLabel.text = "Biography"
         self.addSubview(self.textView)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
-    // MARK: UITextViewDelegate
-
+extension BiographyField: UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
         self.biographyFieldDelegate?.biographyFieldWasUpdated(textView.text)
     }

@@ -15,13 +15,18 @@ class RootController: FORMViewController {
 
         self.collectionView?.backgroundColor = UIColor(hex: "DAE2EA")
         self.collectionView?.registerClass(BiographyField.self, forCellWithReuseIdentifier: BiographyField.CellIdentifier)
+        self.collectionView?.registerClass(SubtitleField.self, forCellWithReuseIdentifier: SubtitleField.CellIdentifier)
 
         let configureCellForItemAtIndexPathBlock: FORMConfigureCellForItemAtIndexPathBlock = { field, collectionView, indexPath in
             if field.type == .Custom && field.typeString == "biography" {
                 let cell = collectionView.dequeueReusableCellWithReuseIdentifier(BiographyField.CellIdentifier, forIndexPath: indexPath) as! BiographyField
                 cell.biographyFieldDelegate = self
                 return cell
+            } else if field.type == .Custom && field.typeString == "subtitle" {
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SubtitleField.CellIdentifier, forIndexPath: indexPath) as! SubtitleField
+                return cell
             }
+
 
             return nil
         }
