@@ -47,6 +47,7 @@ static NSString * const FORMHeadingLabelTextColorKey = @"heading_label_text_colo
     if (_separatorView) return _separatorView;
 
     _separatorView = [[FORMSeparatorView alloc] initWithFrame:[self separatorViewFrame]];
+    _separatorView.hidden = YES;
 
     return _separatorView;
 }

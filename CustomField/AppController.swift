@@ -24,7 +24,6 @@ class AppController: UIResponder, UIApplicationDelegate {
             rootViewController.navigationBarHidden = true
 
             FORMDefaultStyle.applyStyle()
-            FORMSeparatorView.appearance().setSeparatorColor(UIColor.clearColor())
 
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             self.window?.rootViewController = rootViewController
