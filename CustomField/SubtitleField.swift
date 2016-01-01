@@ -7,11 +7,8 @@ class SubtitleField: FORMBaseFieldCell {
     lazy var textView: UITextView = {
         let horizontalMargin = 10.0
         let width = Double(self.frame.width) - horizontalMargin * 2.0
-
-        let topMargin = 30.0
-        let height = Double(self.frame.height) - topMargin
-
-        var frame = CGRect(x: horizontalMargin, y: topMargin - 20, width: width, height: height)
+        let height = Double(self.frame.height)
+        var frame = CGRect(x: horizontalMargin, y: 0, width: width, height: height)
         let view = UITextView(frame: frame)
 
         view.font = UIFont(name: "AvenirNext-Regular", size: 15.0)!
