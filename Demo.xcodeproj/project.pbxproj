@@ -34,8 +34,6 @@
 		140803DC1BEA50AB0098C288 /* FORMSelectFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803771BEA50AB0098C288 /* FORMSelectFieldCell.m */; };
 		140803DD1BEA50AB0098C288 /* FORMTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408037A1BEA50AB0098C288 /* FORMTextFieldCell.m */; };
 		140803DE1BEA50AB0098C288 /* FORMFieldValueLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408037D1BEA50AB0098C288 /* FORMFieldValueLabel.m */; };
-		140803DF1BEA50AB0098C288 /* FORMTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408037F1BEA50AB0098C288 /* FORMTextField.m */; };
-		140803E01BEA50AB0098C288 /* FORMTextFieldTypeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803811BEA50AB0098C288 /* FORMTextFieldTypeManager.m */; };
 		140803E11BEA50AB0098C288 /* FORMBankAccountNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803841BEA50AB0098C288 /* FORMBankAccountNumberFormatter.m */; };
 		140803E21BEA50AB0098C288 /* FORMEmailFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803861BEA50AB0098C288 /* FORMEmailFormatter.m */; };
 		140803E31BEA50AB0098C288 /* FORMFloatFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803881BEA50AB0098C288 /* FORMFloatFormatter.m */; };
@@ -45,7 +43,6 @@
 		140803E71BEA50AB0098C288 /* FORMBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803901BEA50AB0098C288 /* FORMBackgroundView.m */; };
 		140803E81BEA50AB0098C288 /* FORMData.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803921BEA50AB0098C288 /* FORMData.m */; };
 		140803E91BEA50AB0098C288 /* FORMDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803941BEA50AB0098C288 /* FORMDataSource.m */; };
-		140803EA1BEA50AB0098C288 /* FORMDefaultStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803961BEA50AB0098C288 /* FORMDefaultStyle.m */; };
 		140803EB1BEA50AB0098C288 /* FORMGroupHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 140803981BEA50AB0098C288 /* FORMGroupHeaderView.m */; };
 		140803EC1BEA50AB0098C288 /* FORMLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408039A1BEA50AB0098C288 /* FORMLayout.m */; };
 		140803ED1BEA50AB0098C288 /* FORMLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408039C1BEA50AB0098C288 /* FORMLayoutAttributes.m */; };
@@ -144,6 +141,7 @@
 		14BD56231BEA57920043A673 /* HYPDemoLoginCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BD56211BEA57920043A673 /* HYPDemoLoginCollectionViewController.m */; };
 		14BD56241BEA57920043A673 /* JSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 14BD56221BEA57920043A673 /* JSON.json */; };
 		14BD56271BEA57FE0043A673 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14BD56251BEA57FE0043A673 /* Main.storyboard */; };
+		14F00F171C384A4C002DBE72 /* FORMDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F00F161C384A4C002DBE72 /* FORMDefaultStyle.swift */; };
 		1DCBA45F9F392C91931EF819 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7313DABFEEF45FCCCD39281E /* Pods.framework */; };
 		49ACE10CFD7190EC1578FC7E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7313DABFEEF45FCCCD39281E /* Pods.framework */; };
 		515398D4642362B654DD5613 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7313DABFEEF45FCCCD39281E /* Pods.framework */; };
@@ -204,10 +202,6 @@
 		1408037A1BEA50AB0098C288 /* FORMTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTextFieldCell.m; sourceTree = "<group>"; };
 		1408037C1BEA50AB0098C288 /* FORMFieldValueLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMFieldValueLabel.h; sourceTree = "<group>"; };
 		1408037D1BEA50AB0098C288 /* FORMFieldValueLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValueLabel.m; sourceTree = "<group>"; };
-		1408037E1BEA50AB0098C288 /* FORMTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTextField.h; sourceTree = "<group>"; };
-		1408037F1BEA50AB0098C288 /* FORMTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTextField.m; sourceTree = "<group>"; };
-		140803801BEA50AB0098C288 /* FORMTextFieldTypeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMTextFieldTypeManager.h; sourceTree = "<group>"; };
-		140803811BEA50AB0098C288 /* FORMTextFieldTypeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTextFieldTypeManager.m; sourceTree = "<group>"; };
 		140803831BEA50AB0098C288 /* FORMBankAccountNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMBankAccountNumberFormatter.h; sourceTree = "<group>"; };
 		140803841BEA50AB0098C288 /* FORMBankAccountNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMBankAccountNumberFormatter.m; sourceTree = "<group>"; };
 		140803851BEA50AB0098C288 /* FORMEmailFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMEmailFormatter.h; sourceTree = "<group>"; };
@@ -226,8 +220,6 @@
 		140803921BEA50AB0098C288 /* FORMData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMData.m; sourceTree = "<group>"; };
 		140803931BEA50AB0098C288 /* FORMDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMDataSource.h; sourceTree = "<group>"; };
 		140803941BEA50AB0098C288 /* FORMDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMDataSource.m; sourceTree = "<group>"; };
-		140803951BEA50AB0098C288 /* FORMDefaultStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMDefaultStyle.h; sourceTree = "<group>"; };
-		140803961BEA50AB0098C288 /* FORMDefaultStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMDefaultStyle.m; sourceTree = "<group>"; };
 		140803971BEA50AB0098C288 /* FORMGroupHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMGroupHeaderView.h; sourceTree = "<group>"; };
 		140803981BEA50AB0098C288 /* FORMGroupHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMGroupHeaderView.m; sourceTree = "<group>"; };
 		140803991BEA50AB0098C288 /* FORMLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMLayout.h; sourceTree = "<group>"; };
@@ -376,6 +368,7 @@
 		14C0AF811BD6D4230009ECBE /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		14C0AF821BD6D4230009ECBE /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		14C0AF831BD6D4230009ECBE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		14F00F161C384A4C002DBE72 /* FORMDefaultStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORMDefaultStyle.swift; sourceTree = "<group>"; };
 		3ED0D9F707E1C0B72BD639BC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7313DABFEEF45FCCCD39281E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB58EAAFCF0E85A6279509FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -608,10 +601,6 @@
 			children = (
 				1408037C1BEA50AB0098C288 /* FORMFieldValueLabel.h */,
 				1408037D1BEA50AB0098C288 /* FORMFieldValueLabel.m */,
-				1408037E1BEA50AB0098C288 /* FORMTextField.h */,
-				1408037F1BEA50AB0098C288 /* FORMTextField.m */,
-				140803801BEA50AB0098C288 /* FORMTextFieldTypeManager.h */,
-				140803811BEA50AB0098C288 /* FORMTextFieldTypeManager.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -917,8 +906,7 @@
 				140803921BEA50AB0098C288 /* FORMData.m */,
 				140803931BEA50AB0098C288 /* FORMDataSource.h */,
 				140803941BEA50AB0098C288 /* FORMDataSource.m */,
-				140803951BEA50AB0098C288 /* FORMDefaultStyle.h */,
-				140803961BEA50AB0098C288 /* FORMDefaultStyle.m */,
+				14F00F161C384A4C002DBE72 /* FORMDefaultStyle.swift */,
 				140803971BEA50AB0098C288 /* FORMGroupHeaderView.h */,
 				140803981BEA50AB0098C288 /* FORMGroupHeaderView.m */,
 				140803991BEA50AB0098C288 /* FORMLayout.h */,
@@ -1730,7 +1718,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				140803D91BEA50AB0098C288 /* FORMFieldValuesTableViewController.m in Sources */,
-				140803E01BEA50AB0098C288 /* FORMTextFieldTypeManager.m in Sources */,
 				1408043D1BEA50C00098C288 /* FORMField+Tests.m in Sources */,
 				140803FC1BEA50AB0098C288 /* FORMFieldValue.m in Sources */,
 				140803F01BEA50AB0098C288 /* FORMViewController.m in Sources */,
@@ -1745,7 +1732,6 @@
 				140803D81BEA50AB0098C288 /* FORMFieldValueCell.m in Sources */,
 				140804331BEA50C00098C288 /* FORMFieldValuesTableViewHeaderTests.swift in Sources */,
 				140804371BEA50C00098C288 /* FORMPopoverFieldCellTests.m in Sources */,
-				140803EA1BEA50AB0098C288 /* FORMDefaultStyle.m in Sources */,
 				140803E61BEA50AB0098C288 /* FORMSocialSecurityNumberFormatter.m in Sources */,
 				140803EC1BEA50AB0098C288 /* FORMLayout.m in Sources */,
 				1408042E1BEA50C00098C288 /* FORMDataSourceTests.m in Sources */,
@@ -1774,7 +1760,6 @@
 				140804321BEA50C00098C288 /* FORMFieldValidationTests.m in Sources */,
 				140804031BEA50AB0098C288 /* UIViewController+HYPTopViewController.m in Sources */,
 				140803EF1BEA50AB0098C288 /* FORMTooltipView.m in Sources */,
-				140803DF1BEA50AB0098C288 /* FORMTextField.m in Sources */,
 				140804041BEA50AB0098C288 /* FORMBankAccountNumberValidator.m in Sources */,
 				140803F81BEA50AB0098C288 /* FORMSocialSecurityNumberInputValidator.m in Sources */,
 				140803FB1BEA50AB0098C288 /* FORMFieldValidation.m in Sources */,
@@ -1784,6 +1769,7 @@
 				140803DC1BEA50AB0098C288 /* FORMSelectFieldCell.m in Sources */,
 				140803F31BEA50AB0098C288 /* FORMInputValidator.m in Sources */,
 				140803F91BEA50AB0098C288 /* FORMClassFactory.m in Sources */,
+				14F00F171C384A4C002DBE72 /* FORMDefaultStyle.swift in Sources */,
 				140803EE1BEA50AB0098C288 /* FORMSeparatorView.m in Sources */,
 				140803DA1BEA50AB0098C288 /* FORMFieldValuesTableViewHeader.m in Sources */,
 				140803E31BEA50AB0098C288 /* FORMFloatFormatter.m in Sources */,

@@ -1,6 +1,14 @@
-#import "FORMDefaultStyle.h"
+import UIKit
 
-#import "FORMTextField.h"
+public class FORMDefaultStyle: NSObject {
+    public class func applyStyle() {
+        FORMBaseFieldCell.appearance()
+    }
+}
+
+/*#import "FORMDefaultStyle.h"
+
+@import FormTextField;
 #import "FORMBackgroundView.h"
 #import "FORMSeparatorView.h"
 #import "FORMFieldValueLabel.h"
@@ -24,7 +32,7 @@
 
     [[FORMBackgroundView appearance] setBackgroundColor:[[UIColor alloc] initWithHex:@"DAE2EA"]];
     [[FORMBackgroundView appearance] setGroupBackgroundColor:[[UIColor alloc] initWithHex:@"DAE2EA"]];
-    
+
     [[FORMSeparatorView appearance] setSeparatorColor:[[UIColor alloc] initWithHex:@"C6C6C6"]];
 
     [[FORMButtonFieldCell appearance] setBackgroundColor:[[UIColor alloc] initWithHex:@"3DAFEB"]];
@@ -45,7 +53,41 @@
     [[FORMFieldValueCell appearance] setSelectedBackgroundViewColor:[[UIColor alloc] initWithHex:@"008ED9"]];
     [[FORMFieldValueCell appearance] setSelectedBackgroundFontColor:[UIColor whiteColor]];
 
-    [[FORMTextField appearance] setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:15.0]];
+    let enabledBackgroundColor = UIColor(hex: "E1F5FF")
+    let enabledBorderColor = UIColor(hex: "3DAFEB")
+    let enabledTextColor = UIColor(hex: "455C73")
+    let activeBorderColor = UIColor(hex: "3DAFEB")
+
+    FormTextField.appearance().borderWidth = 1
+    FormTextField.appearance().cornerRadius = 5
+    FormTextField.appearance().accessoryButtonColor = activeBorderColor
+    FormTextField.appearance().font = UIFont(name: "AvenirNext-Regular", size: 15)
+
+    FormTextField.appearance().enabledBackgroundColor = enabledBackgroundColor
+    FormTextField.appearance().enabledBorderColor = enabledBorderColor
+    FormTextField.appearance().enabledTextColor = enabledTextColor
+
+    FormTextField.appearance().validBackgroundColor = enabledBackgroundColor
+    FormTextField.appearance().validBorderColor = enabledBorderColor
+    FormTextField.appearance().validTextColor = enabledTextColor
+
+    FormTextField.appearance().activeBackgroundColor = enabledBackgroundColor
+    FormTextField.appearance().activeBorderColor = activeBorderColor
+    FormTextField.appearance().activeTextColor = enabledTextColor
+
+    FormTextField.appearance().inactiveBackgroundColor = enabledBackgroundColor
+    FormTextField.appearance().inactiveBorderColor = enabledBorderColor
+    FormTextField.appearance().inactiveTextColor = enabledTextColor
+
+    FormTextField.appearance().disabledBackgroundColor = UIColor(hex: "F5F5F8")
+    FormTextField.appearance().disabledBorderColor = UIColor(hex: "DEDEDE")
+    FormTextField.appearance().disabledTextColor = UIColor.whiteColor()
+
+    FormTextField.appearance().invalidBackgroundColor = UIColor(hex: "FFD7D7")
+    FormTextField.appearance().invalidBorderColor = UIColor(hex: "EC3031")
+    FormTextField.appearance().invalidTextColor = UIColor(hex: "EC3031")
+
+    /*[[FORMTextField appearance] setFont:[UIFont fontWithName:@"AvenirNext-Regular" size:15.0]];
     [[FORMTextField appearance] setTextColor:[[UIColor alloc] initWithHex:@"455C73"]];
     [[FORMTextField appearance] setBorderWidth:1.0f];
     [[FORMTextField appearance] setBorderColor:[[UIColor alloc] initWithHex:@"3DAFEB"]];
@@ -66,7 +108,7 @@
     [[FORMTextField appearance] setInvalidBorderColor:[[UIColor alloc] initWithHex:@"EC3031"]];
     [[FORMTextField appearance] setClearButtonColor:[[UIColor alloc] initWithHex:@"3DAFEB"]];
     [[FORMTextField appearance] setMinusButtonColor:[[UIColor alloc] initWithHex:@"3DAFEB"]];
-    [[FORMTextField appearance] setPlusButtonColor:[[UIColor alloc] initWithHex:@"3DAFEB"]];
+    [[FORMTextField appearance] setPlusButtonColor:[[UIColor alloc] initWithHex:@"3DAFEB"]];*/
 
     [[FORMFieldValueLabel appearance] setCustomFont:[UIFont fontWithName:@"AvenirNext-Regular" size:15.0]];
     [[FORMFieldValueLabel appearance] setTextColor:[[UIColor alloc] initWithHex:@"455C73"]];
@@ -103,3 +145,4 @@
 }
 
 @end
+*/

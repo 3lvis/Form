@@ -5,7 +5,7 @@
 static const CGSize FORMSelectPopoverSize = { .width = 320.0f, .height = 308.0f };
 static const NSInteger FORMSelectMaxItemCount = 6;
 
-@interface FORMSelectFieldCell () <FORMTextFieldDelegate, FORMFieldValuesTableViewControllerDelegate>
+@interface FORMSelectFieldCell () <FORMFieldValuesTableViewControllerDelegate>
 
 @end
 
