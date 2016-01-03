@@ -1,7 +1,6 @@
 @import UIKit;
 @import Foundation;
-
-#import "FORMViewController.h"
+@import Form;
 
 @interface HYPSampleCollectionViewController : FORMViewController
 

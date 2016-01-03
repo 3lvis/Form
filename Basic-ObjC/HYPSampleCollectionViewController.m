@@ -1,17 +1,12 @@
 #import "HYPSampleCollectionViewController.h"
 
-#import "FORMDataSource.h"
-#import "FORMPostalCodeManager.h"
-#import "FORMFieldValue.h"
 #import "HYPImagePicker.h"
 #import "HYPImageFormFieldCell.h"
-#import "FORMData.h"
-#import "FORMTextFieldCell.h"
-
 #import "NSObject+HYPTesting.h"
 #import "UIViewController+HYPKeyboardToolbar.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
 @import Hex;
+@import Form;
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 
