@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-#import "FORMDefaultStyle.h"
+@import Form;
 
 @implementation AppDelegate
 
