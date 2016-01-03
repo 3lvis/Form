@@ -188,11 +188,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 }
 
 - (void)validate {
-#warning disabled
-    /*
-    BOOL validation = ([self.field validate] == FORMValidationResultTypeValid);
-    [self.textField setValid:validation];
-     */
+    [self.textField setValid:[self.field validate]];
 }
 
 #warning disabled

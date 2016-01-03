@@ -1,18 +1,12 @@
 @import UIKit;
 @import XCTest;
 
-/*
-#import "FORMValidator.h"
-#import "FORMBankAccountNumberValidator.h"
-#import "FORMPostalCodeValidator.h"
-#import "FORMSocialSecurityNumberValidator.h"
-
 @interface FORMValidatorTests : XCTestCase
 
 @end
 
 @implementation FORMValidatorTests
-
+/*
 - (void)testValid
 {
     FORMFieldValidation *validation = [[FORMFieldValidation alloc] initWithDictionary:nil];
@@ -71,7 +65,7 @@
 
     XCTAssertEqual(FORMValidationResultTypeValid, [validator validateFieldValue:@"A"]);
     XCTAssertEqual(FORMValidationResultTypeInvalidTooLong, [validator validateFieldValue:@"ABC"]);
-}
+}*/
 
 #pragma mark - Custom Validators
 
@@ -96,4 +90,4 @@
     XCTAssertEqual(FORMValidationResultTypeInvalidSSN, [validation validateFieldValue:@"00000000000"]);
 }*/
 
-//@end
+@end

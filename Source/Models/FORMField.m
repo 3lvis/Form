@@ -27,7 +27,6 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _valid = YES;
     _fieldID = remoteID;
-#warning _validationResultType = FORMValidationResultTypeValid;
     _title = NSLocalizedString([dictionary andy_valueForKey:@"title"], nil);
     _typeString  = [dictionary andy_valueForKey:@"type"];
     _hidden = [[dictionary andy_valueForKey:@"hidden"] boolValue];
@@ -268,7 +267,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     return nil;
 }
 
-- (id /*FORMValidationResultType*/)validate {
+- (BOOL)validate {
 #warning disabled
     /*
     id validator;
@@ -289,7 +288,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     return self.validationResultType;*/
 
-    return nil;
+    return YES;
 }
 
 #pragma mark - Public Methods

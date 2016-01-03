@@ -370,8 +370,6 @@
     XCTAssertEqual(numberOfSectionsWithHiddenTargets, 2);
 }
 
-#warning disabled
-/*
 - (void)testFormatValidation {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
@@ -382,11 +380,11 @@
                                                              disabled:NO];
 
     FORMField *emailField = [dataSource fieldWithID:@"email" includingHiddenFields:NO];
-    XCTAssertEqual(FORMValidationResultTypeInvalidFormat, [emailField validate]);
+    XCTAssertEqual(NO, [emailField validate]);
 
     [dataSource reloadWithDictionary:@{@"email" : @"teknologi@hyper.no"}];
-    XCTAssertEqual(FORMValidationResultTypeValid, [emailField validate]);
-}*/
+    XCTAssertEqual(YES, [emailField validate]);
+}
 
 - (void)testFieldWithIDIncludingHiddenFields {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
