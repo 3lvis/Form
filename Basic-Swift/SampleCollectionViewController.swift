@@ -72,10 +72,9 @@ class SampleCollectionViewController: FORMViewController {
 
     func validateButtonAction() {
         if self.dataSource.valid {
-            UIAlertView(title: "Everything is valid, you get a 🍬!",
-                message: nil,
-                delegate: nil,
-                cancelButtonTitle: "No thanks!").show()
+            let alertController = UIAlertController(title: "Everything is valid, you get a 🍬!", message: nil, preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
         } else {
             self.dataSource.validate()
         }
