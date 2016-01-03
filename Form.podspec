@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation'
   s.requires_arc = true
 
-  s.dependency 'FormTextField', '~> 0.7.1'
+  s.dependency 'FormTextField', '~> 0.7.2'
   s.dependency 'Hex', '~> 3.0.0'
   s.dependency 'HYP8601', '~> 0.7.2'
   s.dependency 'HYPMathParser', '~> 0.4.1'
