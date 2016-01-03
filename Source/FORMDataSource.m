@@ -848,11 +848,15 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     BOOL formIsValid = YES;
     for (FORMGroup *group in self.formData.groups) {
         for (FORMField *field in group.fields) {
+
+#warning disbled
+            /*
             FORMValidationResultType fieldValidation = [field validate];
             BOOL requiredFieldFailedValidation = (fieldValidation != FORMValidationResultTypeValid);
             if (requiredFieldFailedValidation) {
                 formIsValid = NO;
             }
+            */
         }
     }
 
@@ -892,7 +896,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     for (FORMGroup *group in self.formData.groups) {
         for (FORMField *field in group.fields) {
             if (![validatedFields containsObject:field.fieldID]) {
-                [field validate];
+#warning [field validate];
             }
         }
     }

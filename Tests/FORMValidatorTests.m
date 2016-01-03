@@ -1,6 +1,7 @@
 @import UIKit;
 @import XCTest;
 
+/*
 #import "FORMValidator.h"
 #import "FORMBankAccountNumberValidator.h"
 #import "FORMPostalCodeValidator.h"
@@ -95,4 +96,4 @@
     XCTAssertEqual(FORMValidationResultTypeInvalidSSN, [validation validateFieldValue:@"00000000000"]);
 }*/
 
-@end
+//@end

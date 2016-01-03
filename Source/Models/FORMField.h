@@ -5,8 +5,6 @@
 @class FORMFieldValue;
 @class FORMFieldValidation;
 
-#import "FORMValidator.h"
-
 typedef NS_ENUM(NSInteger, FORMFieldType) {
     FORMFieldTypeText = 0,
     FORMFieldTypeSelect,
@@ -46,7 +44,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) FORMSection *section;
 
 @property (nonatomic) BOOL valid;
-@property (nonatomic) FORMValidationResultType validationResultType;
+#warning @property (nonatomic) FORMValidationResultType validationResultType;
 @property (nonatomic) BOOL sectionSeparator;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
@@ -64,7 +62,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 
 @property (nonatomic, readonly, copy) NSArray *safeTargets;
 
-@property (nonatomic, readonly) FORMValidationResultType validate;
+@property (nonatomic, readonly) id /*FORMValidationResultType*/ validate;
 @property (nonatomic, readonly, strong) id rawFieldValue;
 @property (nonatomic, readonly, strong) id inputValidator;
 @property (nonatomic, readonly, strong) id formatter;

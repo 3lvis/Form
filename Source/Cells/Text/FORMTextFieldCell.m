@@ -15,7 +15,7 @@ static NSString * const FORMTooltipFontSizeKey = @"tooltip_font_size";
 static NSString * const FORMTooltipLabelTextColorKey = @"tooltip_label_text_color";
 static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_color";
 
-@interface FORMTextFieldCell () <FormTextFieldDelegate>
+@interface FORMTextFieldCell () //<FormTextFieldDelegate>
 
 @property (nonatomic) FormTextField *textField;
 @property (nonatomic) UILabel *tooltipLabel;
@@ -81,7 +81,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
     if (_textField) return _textField;
 
     _textField = [[FormTextField alloc] initWithFrame:[self textFieldFrame]];
-    _textField.textFieldDelegate = self;
+    //_textField.textFieldDelegate = self;
 
     return _textField;
 }
@@ -181,17 +181,22 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
     self.textField.hidden = (field.sectionSeparator);
 //    self.textField.inputValidator = [self.field inputValidator];
 //    self.textField.formatter = [self.field formatter];
-    self.textField.inputType = [self inputTypeForString:field.inputTypeString];
+//    self.textField.inputType = [self inputTypeForString:field.inputTypeString];
     self.textField.enabled = !field.disabled;
     self.textField.valid = field.valid;
     self.textField.text = [self rawTextForField:field];
 }
 
 - (void)validate {
+#warning disabled
+    /*
     BOOL validation = ([self.field validate] == FORMValidationResultTypeValid);
     [self.textField setValid:validation];
+     */
 }
 
+#warning disabled
+/*
 - (FormTextFieldInputType)inputTypeForString:(NSString *)inputTypeString {
     FormTextFieldInputType inputType;
     if ([inputTypeString isEqualToString:@"name"]) {
@@ -222,6 +227,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 
     return inputType;
 }
+*/
 
 #pragma mark - Private methods
 
