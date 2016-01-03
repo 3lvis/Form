@@ -178,20 +178,49 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 - (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
 
-#warning disabled some attributes
-    self.textField.hidden          = (field.sectionSeparator);
-    // self.textField.inputValidator  = [self.field inputValidator];
-    // self.textField.formatter       = [self.field formatter];
-    // self.textField.typeString      = field.typeString;
-    // self.textField.inputTypeString = field.inputTypeString;
-    self.textField.enabled         = !field.disabled;
-    self.textField.valid           = field.valid;
-    // self.textField.rawText         = [self rawTextForField:field];
+    self.textField.hidden = (field.sectionSeparator);
+//    self.textField.inputValidator = [self.field inputValidator];
+//    self.textField.formatter = [self.field formatter];
+    self.textField.inputType = [self inputTypeForString:field.inputTypeString];
+    self.textField.enabled = !field.disabled;
+    self.textField.valid = field.valid;
+    self.textField.text = [self rawTextForField:field];
 }
 
 - (void)validate {
     BOOL validation = ([self.field validate] == FORMValidationResultTypeValid);
     [self.textField setValid:validation];
+}
+
+- (FormTextFieldInputType)inputTypeForString:(NSString *)inputTypeString {
+    FormTextFieldInputType inputType;
+    if ([inputTypeString isEqualToString:@"name"]) {
+        inputType = FormTextFieldInputTypeName;
+    } else if ([inputTypeString isEqualToString:@"username"]) {
+        inputType = FormTextFieldInputTypeUsername;
+    } else if ([inputTypeString isEqualToString:@"phone"]) {
+        inputType = FormTextFieldInputTypePhoneNumber;
+    } else if ([inputTypeString isEqualToString:@"number"]) {
+        inputType = FormTextFieldInputTypeInteger;
+    } else if ([inputTypeString isEqualToString:@"float"]) {
+        inputType = FormTextFieldInputTypeDecimal;
+    } else if ([inputTypeString isEqualToString:@"address"]) {
+        inputType = FormTextFieldInputTypeAddress;
+    } else if ([inputTypeString isEqualToString:@"email"]) {
+        inputType = FormTextFieldInputTypeEmail;
+    } else if ([inputTypeString isEqualToString:@"text"]) {
+        inputType = FormTextFieldInputTypeDefault;
+    } else if ([inputTypeString isEqualToString:@"password"]) {
+        inputType = FormTextFieldInputTypePassword;
+    } else if ([inputTypeString isEqualToString:@"count"]) {
+        inputType = FormTextFieldInputTypeDefault;
+    } else if (!inputTypeString.length) {
+        inputType = FormTextFieldInputTypeDefault;
+    } else {
+        inputType = FormTextFieldInputTypeUnknown;
+    }
+
+    return inputType;
 }
 
 #pragma mark - Private methods
