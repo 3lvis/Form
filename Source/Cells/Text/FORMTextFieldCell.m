@@ -3,7 +3,6 @@
 #import "FORMTooltipView.h"
 
 @import Hex;
-@import FormTextField;
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMTooltipViewMinimumWidth = 90.0f;
@@ -15,12 +14,10 @@ static NSString * const FORMTooltipFontSizeKey = @"tooltip_font_size";
 static NSString * const FORMTooltipLabelTextColorKey = @"tooltip_label_text_color";
 static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_color";
 
-@interface FORMTextFieldCell () //<FormTextFieldDelegate>
+@interface FORMTextFieldCell ()
 
-@property (nonatomic) FormTextField *textField;
 @property (nonatomic) UILabel *tooltipLabel;
 @property (nonatomic) FORMTooltipView *tooltipView;
-@property (nonatomic) BOOL showTooltips;
 
 @end
 
@@ -175,55 +172,9 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
     self.textField.enabled = !disabled;
 }
 
-- (void)updateWithField:(FORMField *)field {
-    [super updateWithField:field];
-
-    self.textField.hidden = (field.sectionSeparator);
-//    self.textField.inputValidator = [self.field inputValidator];
-//    self.textField.formatter = [self.field formatter];
-//    self.textField.inputType = [self inputTypeForString:field.inputTypeString];
-    self.textField.enabled = !field.disabled;
-    self.textField.valid = field.valid;
-    self.textField.text = [self rawTextForField:field];
-}
-
 - (void)validate {
     [self.textField setValid:[self.field validate]];
 }
-
-#warning disabled
-/*
-- (FormTextFieldInputType)inputTypeForString:(NSString *)inputTypeString {
-    FormTextFieldInputType inputType;
-    if ([inputTypeString isEqualToString:@"name"]) {
-        inputType = FormTextFieldInputTypeName;
-    } else if ([inputTypeString isEqualToString:@"username"]) {
-        inputType = FormTextFieldInputTypeUsername;
-    } else if ([inputTypeString isEqualToString:@"phone"]) {
-        inputType = FormTextFieldInputTypePhoneNumber;
-    } else if ([inputTypeString isEqualToString:@"number"]) {
-        inputType = FormTextFieldInputTypeInteger;
-    } else if ([inputTypeString isEqualToString:@"float"]) {
-        inputType = FormTextFieldInputTypeDecimal;
-    } else if ([inputTypeString isEqualToString:@"address"]) {
-        inputType = FormTextFieldInputTypeAddress;
-    } else if ([inputTypeString isEqualToString:@"email"]) {
-        inputType = FormTextFieldInputTypeEmail;
-    } else if ([inputTypeString isEqualToString:@"text"]) {
-        inputType = FormTextFieldInputTypeDefault;
-    } else if ([inputTypeString isEqualToString:@"password"]) {
-        inputType = FormTextFieldInputTypePassword;
-    } else if ([inputTypeString isEqualToString:@"count"]) {
-        inputType = FormTextFieldInputTypeDefault;
-    } else if (!inputTypeString.length) {
-        inputType = FormTextFieldInputTypeDefault;
-    } else {
-        inputType = FormTextFieldInputTypeUnknown;
-    }
-
-    return inputType;
-}
-*/
 
 #pragma mark - Private methods
 
@@ -346,43 +297,6 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
             self.tooltipView.alpha = 1.0f;
         }];
     }
-}
-
-#pragma mark - FormTextFieldDelegate
-
-- (void)formTextFieldDidBeginEditing:(FormTextField * __nonnull)textField {
-    [self performSelector:@selector(showTooltip) withObject:nil afterDelay:0.1f];
-}
-
-- (void)formTextFieldDidEndEditing:(FormTextField * __nonnull)textField {
-    [self validate];
-
-    if (!self.textField.valid) {
-        [self.textField setValid:[self.field validate]];
-    }
-
-    if (self.showTooltips) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:FORMDismissTooltipNotification
-                                                            object:nil];
-    }
-}
-
-- (void)formTextField:(FormTextField * __nonnull)textField didUpdateWithText:(NSString * __nullable)text {
-    self.field.value = text;
-    [self validate];
-
-    if (!self.textField.valid) {
-        [self.textField setValid:[self.field validate]];
-    }
-
-    if ([self.delegate respondsToSelector:@selector(fieldCell:updatedWithField:)]) {
-        [self.delegate fieldCell:self
-                updatedWithField:self.field];
-    }
-}
-
-- (void)formTextFieldDidReturn:(FormTextField * __nonnull)textField {
-    
 }
 
 #pragma mark - Styling
