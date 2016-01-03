@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
       'Form' => ['Assets/*.{png}']
   }
-  s.source_files = 'Source/**/*.{h,m}'
+  s.source_files = 'Source/**/*.{h,m,swift}'
   s.frameworks = 'Foundation'
   s.requires_arc = true
 
