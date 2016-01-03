@@ -1,13 +1,12 @@
 #import "AppDelegate.h"
 
 #import "HYPSampleCollectionViewController.h"
-#import "FORMBackgroundView.h"
-#import "FORMLayout.h"
-#import "FORMDefaultStyle.h"
+
+@import Form;
+@import Hex;
 
 #import "NSObject+HYPTesting.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
-@import Hex;
 
 @interface AppDelegate ()
 

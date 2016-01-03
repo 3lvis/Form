@@ -17,7 +17,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 
 @interface FORMTextFieldCell () <FormTextFieldDelegate>
 
-@property (nonatomic) FORMTextField *textField;
+@property (nonatomic) FormTextField *textField;
 @property (nonatomic) UILabel *tooltipLabel;
 @property (nonatomic) FORMTooltipView *tooltipView;
 @property (nonatomic) BOOL showTooltips;
@@ -77,10 +77,10 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 
 #pragma mark - Getters
 
-- (FORMTextField *)textField {
+- (FormTextField *)textField {
     if (_textField) return _textField;
 
-    _textField = [[FORMTextField alloc] initWithFrame:[self textFieldFrame]];
+    _textField = [[FormTextField alloc] initWithFrame:[self textFieldFrame]];
     _textField.textFieldDelegate = self;
 
     return _textField;
@@ -178,16 +178,15 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 - (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
 
+#warning disabled some attributes
     self.textField.hidden          = (field.sectionSeparator);
-    self.textField.inputValidator  = [self.field inputValidator];
-    self.textField.formatter       = [self.field formatter];
-    self.textField.typeString      = field.typeString;
-    self.textField.inputTypeString = field.inputTypeString;
+    // self.textField.inputValidator  = [self.field inputValidator];
+    // self.textField.formatter       = [self.field formatter];
+    // self.textField.typeString      = field.typeString;
+    // self.textField.inputTypeString = field.inputTypeString;
     self.textField.enabled         = !field.disabled;
     self.textField.valid           = field.valid;
-    self.textField.rawText         = [self rawTextForField:field];
-    self.textField.info            = field.info;
-    self.textField.styles          = field.styles;
+    // self.textField.rawText         = [self rawTextForField:field];
 }
 
 - (void)validate {
@@ -320,16 +319,11 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 
 #pragma mark - FormTextFieldDelegate
 
-//func didBeginEditing(textField: FormTextField)
-//func didEndEditing(textField: FormTextField)
-//func didUpdateWithText(text: String?, textField: FormTextField)
-//func didReturn(textField: FormTextField)
-
-- (void)didBegingEditing:(FormTextField *)textField {
+- (void)formTextFieldDidBeginEditing:(FormTextField * __nonnull)textField {
     [self performSelector:@selector(showTooltip) withObject:nil afterDelay:0.1f];
 }
 
-- (void)didEndEditing:(FormTextField *)textField {
+- (void)formTextFieldDidEndEditing:(FormTextField * __nonnull)textField {
     [self validate];
 
     if (!self.textField.valid) {
@@ -342,8 +336,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
     }
 }
 
-- (void)textFormField:(FormTextField *)textField
-    didUpdateWithText:(NSString *)text {
+- (void)formTextField:(FormTextField * __nonnull)textField didUpdateWithText:(NSString * __nullable)text {
     self.field.value = text;
     [self validate];
 
@@ -355,6 +348,10 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
         [self.delegate fieldCell:self
                 updatedWithField:self.field];
     }
+}
+
+- (void)formTextFieldDidReturn:(FormTextField * __nonnull)textField {
+    
 }
 
 #pragma mark - Styling
