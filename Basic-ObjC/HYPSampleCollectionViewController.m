@@ -175,11 +175,9 @@
 
 - (void)validateButtonAction {
     if ([self.dataSource isValid]) {
-        [[[UIAlertView alloc] initWithTitle:@"Everything is valid, you get a candy!"
-                                    message:nil
-                                   delegate:nil
-                          cancelButtonTitle:@"No, thanks"
-                          otherButtonTitles:nil, nil] show];
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Everything is valid, you get a candy!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [controller addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:controller animated:YES completion:nil];
     } else {
         [self.dataSource validate];
     }
