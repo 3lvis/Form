@@ -32,13 +32,11 @@
 		140804331BEA50C00098C288 /* FORMFieldValuesTableViewHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1408040D1BEA50C00098C288 /* FORMFieldValuesTableViewHeaderTests.swift */; };
 		140804341BEA50C00098C288 /* FORMFieldValueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408040E1BEA50C00098C288 /* FORMFieldValueTests.m */; };
 		140804351BEA50C00098C288 /* FORMGroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408040F1BEA50C00098C288 /* FORMGroupTests.m */; };
-		140804361BEA50C00098C288 /* FORMInputValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 140804101BEA50C00098C288 /* FORMInputValidatorTests.m */; };
 		140804371BEA50C00098C288 /* FORMPopoverFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 140804111BEA50C00098C288 /* FORMPopoverFieldCellTests.m */; };
 		140804381BEA50C00098C288 /* FORMSectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 140804121BEA50C00098C288 /* FORMSectionTests.m */; };
 		140804391BEA50C00098C288 /* FORMTargetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 140804131BEA50C00098C288 /* FORMTargetTests.m */; };
 		1408043A1BEA50C00098C288 /* FORMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 140804141BEA50C00098C288 /* FORMTests.m */; };
 		1408043B1BEA50C00098C288 /* FORMTextFieldCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 140804151BEA50C00098C288 /* FORMTextFieldCellTests.m */; };
-		1408043C1BEA50C00098C288 /* FORMValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 140804161BEA50C00098C288 /* FORMValidatorTests.m */; };
 		1408043D1BEA50C00098C288 /* FORMField+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 140804191BEA50C00098C288 /* FORMField+Tests.m */; };
 		1408043E1BEA50C00098C288 /* FORMImageFormFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1408041B1BEA50C00098C288 /* FORMImageFormFieldCell.m */; };
 		1408043F1BEA50C00098C288 /* collapsed-groups.json in Resources */ = {isa = PBXBuildFile; fileRef = 1408041D1BEA50C00098C288 /* collapsed-groups.json */; };
@@ -141,13 +139,11 @@
 		1408040D1BEA50C00098C288 /* FORMFieldValuesTableViewHeaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORMFieldValuesTableViewHeaderTests.swift; sourceTree = "<group>"; };
 		1408040E1BEA50C00098C288 /* FORMFieldValueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValueTests.m; sourceTree = "<group>"; };
 		1408040F1BEA50C00098C288 /* FORMGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMGroupTests.m; sourceTree = "<group>"; };
-		140804101BEA50C00098C288 /* FORMInputValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMInputValidatorTests.m; sourceTree = "<group>"; };
 		140804111BEA50C00098C288 /* FORMPopoverFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMPopoverFieldCellTests.m; sourceTree = "<group>"; };
 		140804121BEA50C00098C288 /* FORMSectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSectionTests.m; sourceTree = "<group>"; };
 		140804131BEA50C00098C288 /* FORMTargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTargetTests.m; sourceTree = "<group>"; };
 		140804141BEA50C00098C288 /* FORMTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTests.m; sourceTree = "<group>"; };
 		140804151BEA50C00098C288 /* FORMTextFieldCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTextFieldCellTests.m; sourceTree = "<group>"; };
-		140804161BEA50C00098C288 /* FORMValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMValidatorTests.m; sourceTree = "<group>"; };
 		140804181BEA50C00098C288 /* FORMField+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FORMField+Tests.h"; sourceTree = "<group>"; };
 		140804191BEA50C00098C288 /* FORMField+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FORMField+Tests.m"; sourceTree = "<group>"; };
 		1408041A1BEA50C00098C288 /* FORMImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMImageFormFieldCell.h; sourceTree = "<group>"; };
@@ -488,13 +484,11 @@
 				1408040D1BEA50C00098C288 /* FORMFieldValuesTableViewHeaderTests.swift */,
 				1408040E1BEA50C00098C288 /* FORMFieldValueTests.m */,
 				1408040F1BEA50C00098C288 /* FORMGroupTests.m */,
-				140804101BEA50C00098C288 /* FORMInputValidatorTests.m */,
 				140804111BEA50C00098C288 /* FORMPopoverFieldCellTests.m */,
 				140804121BEA50C00098C288 /* FORMSectionTests.m */,
 				140804131BEA50C00098C288 /* FORMTargetTests.m */,
 				140804141BEA50C00098C288 /* FORMTests.m */,
 				140804151BEA50C00098C288 /* FORMTextFieldCellTests.m */,
-				140804161BEA50C00098C288 /* FORMValidatorTests.m */,
 				140804171BEA50C00098C288 /* Helpers */,
 				1408041C1BEA50C00098C288 /* JSONs */,
 				146D72B01AB782920058798C /* Supporting Files */,
@@ -1386,14 +1380,12 @@
 				1408042E1BEA50C00098C288 /* FORMDataSourceTests.m in Sources */,
 				140804351BEA50C00098C288 /* FORMGroupTests.m in Sources */,
 				140804391BEA50C00098C288 /* FORMTargetTests.m in Sources */,
-				1408043C1BEA50C00098C288 /* FORMValidatorTests.m in Sources */,
 				140804381BEA50C00098C288 /* FORMSectionTests.m in Sources */,
 				1408043E1BEA50C00098C288 /* FORMImageFormFieldCell.m in Sources */,
 				140804311BEA50C00098C288 /* FORMFieldTests.m in Sources */,
 				140804321BEA50C00098C288 /* FORMFieldValidationTests.m in Sources */,
 				1408042F1BEA50C00098C288 /* FORMDataTests.m in Sources */,
 				140804301BEA50C00098C288 /* FORMEmailFormatterTests.m in Sources */,
-				140804361BEA50C00098C288 /* FORMInputValidatorTests.m in Sources */,
 				140804341BEA50C00098C288 /* FORMFieldValueTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
