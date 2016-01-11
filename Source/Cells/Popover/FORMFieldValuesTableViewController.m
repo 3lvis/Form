@@ -40,7 +40,8 @@
 
     self.clearsSelectionOnViewWillAppear = NO;
 
-    self.tableView.rowHeight = FORMFieldValuesCellHeight;
+    //Make the rowheight estimated to make the height dynamic
+    self.tableView.estimatedRowHeight = FORMFieldValuesCellHeight;
 
     [self.tableView registerClass:[FORMFieldValueCell class] forCellReuseIdentifier:FORMFieldValueCellIdentifer];
     [self.tableView registerClass:[FORMFieldValuesTableViewHeader class] forHeaderFooterViewReuseIdentifier:FORMFieldValuesTableViewHeaderIdentifier];
@@ -89,6 +90,9 @@
     FORMFieldValue *fieldValue = self.values[indexPath.row];
     cell.fieldValue = fieldValue;
 
+    // By setting the number of lines to 0, we tell the label to resize automatically
+    cell.textLabel.numberOfLines = 0;
+    
     if ([self.field.value isKindOfClass:[FORMFieldValue class]]) {
         FORMFieldValue *currentFieldValue = self.field.value;
 
