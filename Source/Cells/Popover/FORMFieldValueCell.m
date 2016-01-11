@@ -11,9 +11,8 @@
     if (!self) return nil;
 
     self.textLabel.textAlignment = NSTextAlignmentLeft;
-
+    self.textLabel.numberOfLines = 0;
     self.detailTextLabel.textAlignment = NSTextAlignmentLeft;
-
     self.selectionStyle = UITableViewCellSelectionStyleGray;
     self.backgroundColor = [UIColor whiteColor];
     self.separatorInset = UIEdgeInsetsZero;
