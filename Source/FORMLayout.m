@@ -53,7 +53,7 @@
     return self;
 }
 
-#pragma mark - Overwrited Methods
+#pragma mark - Overridden Methods
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGRect bounds = self.collectionView.bounds;
