@@ -53,7 +53,7 @@
     [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"username"]]];
     field = [dataSource fieldWithID:@"username" includingHiddenFields:YES];
     index = [field indexInSectionUsingGroups:dataSource.groups];
-    XCTAssertEqual(index, 2);
+    XCTAssertEqual(index, 1);
     [dataSource processTargets:[FORMTarget showFieldTargetsWithIDs:@[@"first_name",
                                                                      @"address"]]];
 
@@ -790,7 +790,7 @@
         [fieldPositions addObject:field.position];
     }
 
-    NSArray *expectedUpdatedPositions = @[@0, @1, @2, @3, @4];
+    NSArray *expectedUpdatedPositions = @[@0, @1, @3, @4, @5];
     XCTAssertEqualObjects(fieldPositions, expectedUpdatedPositions);
 
     [dataSource processTargets:@[[FORMTarget showFieldTargetWithID:@"section-0-field-2"]]];
@@ -899,15 +899,15 @@
 - (void)testCollapseAllGroups{
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
-    
+
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                        collectionView:nil
                                                                layout:nil
                                                                values:nil
                                                              disabled:YES];
-    
+
     [dataSource collapseAllGroupsForCollectionView:nil];
-    
+
     XCTAssertEqual([dataSource.collapsedGroups count], [dataSource.groups count]);
 }
 
@@ -924,7 +924,7 @@
     // Button Field Styles
     FORMField *buttonField = [dataSource fieldWithID:@"styled_button" includingHiddenFields:NO];
     XCTAssertNotNil(buttonField);
-    
+
     [dataSource fieldCell:nil updatedWithField:buttonField];
     XCTAssertNotNil(buttonField.styles);
     XCTAssertEqualObjects([buttonField.styles objectForKey:@"background_color"], @"#FF0000");
@@ -936,11 +936,11 @@
     XCTAssertEqualObjects([buttonField.styles objectForKey:@"border_width"], @"1.0f");
     XCTAssertEqualObjects([buttonField.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
     XCTAssertEqualObjects([buttonField.styles objectForKey:@"font_size"], @"16.0");
-    
+
     // Text Field Styles
     FORMField *textField = [dataSource fieldWithID:@"styled_text_field" includingHiddenFields:NO];
     XCTAssertNotNil(textField);
-    
+
     [dataSource fieldCell:nil updatedWithField:textField];
     XCTAssertNotNil(textField.styles);
     XCTAssertEqualObjects([textField.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
@@ -969,8 +969,8 @@
     XCTAssertEqualObjects([textField.styles objectForKey:@"clear_button_color"], @"#CCCCCC");
     XCTAssertEqualObjects([textField.styles objectForKey:@"minus_button_color"], @"#FF0000");
     XCTAssertEqualObjects([textField.styles objectForKey:@"plus_button_color"], @"#FF3333");
-    
-    
+
+
     // Group Header Styles
     NSArray *groups = [dataSource groups];
     __block FORMGroup *group = nil;
@@ -979,9 +979,9 @@
             group = formGroup;
         }
     }];
-    
+
     XCTAssertNotNil(group);
-    
+
     [dataSource fieldCell:nil updatedWithField:textField];
     XCTAssertNotNil(group.styles);
     XCTAssertEqualObjects([group.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
@@ -1006,7 +1006,7 @@
 - (void)testCollapsibleGroups{
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"collapsed-groups.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
-    
+
     FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
                                                        collectionView:nil
                                                                layout:nil
@@ -1014,7 +1014,7 @@
                                                              disabled:YES];
 
     XCTAssertEqual([dataSource.collapsedGroups count], 1);
-    
+
     [dataSource collapseAllGroups];
     XCTAssertEqual([dataSource.collapsedGroups count], [dataSource.groups count] - 1);
 }
