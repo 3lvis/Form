@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) NSString *fieldID;
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *info;
+@property (nonatomic) NSString *placeholder;
 @property (nonatomic) BOOL hidden;
 @property (nonatomic) CGSize size;
 @property (nonatomic) NSNumber *position;

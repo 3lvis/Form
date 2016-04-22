@@ -20,6 +20,8 @@
     [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
     FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id": @"first_name",
                                                                @"title": @"First name",
+                                                               @"placeholder": @"placeholder",
+                                                               @"info": @"info",
                                                                @"value": @"John Malkobitch",
                                                                @"type": @"name",
                                                                @"size": @{@"width": @30,
@@ -35,6 +37,8 @@
     XCTAssertEqualObjects(field.position, @0);
     XCTAssertEqualObjects(field.fieldID, @"first_name");
     XCTAssertEqualObjects(field.title, @"First name");
+    XCTAssertEqualObjects(field.placeholder, @"placeholder");
+    XCTAssertEqualObjects(field.info, @"info");
     XCTAssertEqualObjects(field.value, @"John Malkobitch");
     XCTAssertEqualObjects(field.typeString, @"name");
     XCTAssertTrue(field.type == FORMFieldTypeText);
