@@ -1,5 +1,4 @@
 import UIKit
-import Form.FORMViewController
 
 class SampleCollectionViewController: FORMViewController {
 
