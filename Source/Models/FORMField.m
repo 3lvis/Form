@@ -36,6 +36,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     _type = [self typeFromTypeString:self.typeString];
     _inputTypeString = [dictionary andy_valueForKey:@"input_type"];
     _info = NSLocalizedString([dictionary andy_valueForKey:@"info"], nil);
+    _placeholder = NSLocalizedString([dictionary andy_valueForKey:@"placeholder"], nil);
     NSNumber *width = [dictionary andy_valueForKey:@"size.width"] ?: @100;
     NSNumber *height = [dictionary andy_valueForKey:@"size.height"]?: @1;
     _size = CGSizeMake([width floatValue], [height floatValue]);
@@ -351,8 +352,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n — Field: %@ —\n title: %@\n info: %@\n size: %@\n position: %@\n fieldValue: %@\n type: %@\n values: %@\n disabled: %@\n initiallyDisabled: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n valid: %@\n sectionSeparator: %@\n",
-            self.fieldID, self.title, self.info, NSStringFromCGSize(self.size), self.position,
+    return [NSString stringWithFormat:@"\n — Field: %@ —\n title: %@\n info: %@\n placeholder: %@\n size: %@\n position: %@\n fieldValue: %@\n type: %@\n values: %@\n disabled: %@\n initiallyDisabled: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n valid: %@\n sectionSeparator: %@\n",
+            self.fieldID, self.title, self.info, self.placeholder, NSStringFromCGSize(self.size), self.position,
             self.value, self.typeString, self.values, (self.disabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
             self.maximumDate, self.validation, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
 }
