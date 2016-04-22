@@ -331,6 +331,8 @@
 		142F32D31BFBBECF00368056 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		142F32D61BFBBECF00368056 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		142F32D81BFBBECF00368056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		143D06061CCA0B27005B5B5A /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		143D06071CCA0B27005B5B5A /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		146D72AC1AB782920058798C /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		146D72B11AB782920058798C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		148AAC161BEA593C007AB12F /* Form.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Form.json; sourceTree = "<group>"; };
@@ -682,6 +684,8 @@
 		140803C31BEA50AB0098C288 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				143D06061CCA0B27005B5B5A /* UIColor+Hex.h */,
+				143D06071CCA0B27005B5B5A /* UIColor+Hex.m */,
 				140803C41BEA50AB0098C288 /* DDMathEvaluator+FORM.h */,
 				140803C51BEA50AB0098C288 /* DDMathEvaluator+FORM.m */,
 				140803C61BEA50AB0098C288 /* FORMPostalCodeManager.h */,

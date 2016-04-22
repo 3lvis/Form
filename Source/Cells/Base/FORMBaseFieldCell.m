@@ -2,7 +2,7 @@
 
 #import "FORMSeparatorView.h"
 
-@import Hex;
+#import "UIColor+Hex.h"
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMTextFormFieldCellLabelMarginTop = 10.0f;
@@ -146,7 +146,7 @@ static NSString * const FORMHeadingLabelTextColorKey = @"heading_label_text_colo
 - (void)setHeadingLabelTextColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMHeadingLabelTextColorKey];
     if ([style length] > 0) {
-        color = [[UIColor alloc] initWithHex:style];
+        color = [UIColor form_colorFromHex:style];
     }
     
     self.headingLabel.textColor = color;

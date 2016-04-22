@@ -1,6 +1,6 @@
 #import "HYPImageFormFieldCell.h"
 
-@import Hex;
+#import "UIColor+Hex.h"
 
 static const CGFloat HYPImageFormFieldTopMargin = 20.0f;
 static const CGFloat HYPImageFormFieldHorizontalMargin = 10.0f;
@@ -27,7 +27,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
-    self.contentView.backgroundColor = [[UIColor alloc] initWithHex:@"F5F5F8"];
+    self.contentView.backgroundColor = [UIColor form_colorFromHex:@"F5F5F8"];
 
     self.contentView.layer.cornerRadius = 5.0f;
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -53,7 +53,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
                                    HYPImageFormFieldLabelsWidth, HYPImageFormFieldLabelHeight);
     UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
     label.font = [UIFont fontWithName:@"DIN-Medium" size:20.0];
-    label.textColor = [[UIColor alloc] initWithHex:@"28649C"];
+    label.textColor = [UIColor form_colorFromHex:@"28649C"];
     label.text = NSLocalizedString(@"Main Title", nil);
 
     return label;
@@ -64,7 +64,7 @@ static const CGFloat HYPImageFormFieldContainerWidth = 360.0f;
                                   HYPImageFormFieldLabelsWidth, HYPImageFormFieldInfoHeight);
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:infoFrame];
     infoLabel.font = [UIFont fontWithName:@"DIN-Regular" size:14.0];
-    infoLabel.textColor = [[UIColor alloc] initWithHex:@"28649C"];
+    infoLabel.textColor = [UIColor form_colorFromHex:@"28649C"];
     infoLabel.text = NSLocalizedString(@"Some info on the button", nil);
     infoLabel.lineBreakMode = NSLineBreakByWordWrapping;
     infoLabel.numberOfLines = 0;

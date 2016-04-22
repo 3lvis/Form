@@ -2,7 +2,7 @@
 
 #import "FORMTooltipView.h"
 
-@import Hex;
+#import "UIColor+Hex.h"
 
 static NSString * const FORMHideTooltips = @"FORMHideTooltips";
 static const CGFloat FORMTooltipViewMinimumWidth = 90.0f;
@@ -369,7 +369,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 - (void)setTooltipLabelTextColor:(UIColor *)tooltipLabelTextColor {
     NSString *style = [self.field.styles valueForKey:FORMTooltipLabelTextColorKey];
     if ([style length] > 0) {
-        tooltipLabelTextColor = [[UIColor alloc] initWithHex:style];
+        tooltipLabelTextColor = [UIColor form_colorFromHex:style];
     }
     self.tooltipLabel.textColor = tooltipLabelTextColor;
 }
@@ -377,7 +377,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 - (void)setTooltipBackgroundColor:(UIColor *)tooltipBackgroundColor {
     NSString *style = [self.field.styles valueForKey:FORMTooltipBackgroundColorKey];
     if ([style length] > 0) {
-        tooltipBackgroundColor = [[UIColor alloc] initWithHex:style];
+        tooltipBackgroundColor = [UIColor form_colorFromHex:style];
     }
     [FORMTooltipView setTintColor:tooltipBackgroundColor];
 }

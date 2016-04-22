@@ -7,7 +7,8 @@
 
 #import "NSObject+HYPTesting.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
-@import Hex;
+
+#import "UIColor+Hex.h"
 
 @interface AppDelegate ()
 
@@ -40,7 +41,7 @@
 
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:sampleController];
 
-    controller.view.tintColor = [[UIColor alloc] initWithHex:@"5182AF"];
+    controller.view.tintColor = [UIColor form_colorFromHex:@"5182AF"];
 
     controller.navigationBar.translucent = NO;
 

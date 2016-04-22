@@ -1,6 +1,6 @@
 #import "FORMButtonFieldCell.h"
 #import "UIButton+ANDYHighlighted.h"
-@import Hex;
+#import "UIColor+Hex.h"
 
 static NSString * const FORMButtonTitleLabelFontKey = @"font";
 static NSString * const FORMButtonTitleLabelFontSizeKey = @"font_size";
@@ -121,7 +121,7 @@ static NSString * const FORMButtonBackgroundColorKey = @"background_color";
 - (void)setHighlightedTitleColor:(UIColor *)highlightedTitleColor {
     NSString *style = [self.field.styles valueForKey:FORMButtonHighlightedTitleColorKey];
     if ([style length] > 0) {
-        highlightedTitleColor = [[UIColor alloc] initWithHex:style];
+        highlightedTitleColor = [UIColor form_colorFromHex:style];
     }
     self.button.highlightedTitleColor = highlightedTitleColor;
 }
@@ -129,7 +129,7 @@ static NSString * const FORMButtonBackgroundColorKey = @"background_color";
 - (void)setBorderColor:(UIColor *)borderColor {
     NSString *style = [self.field.styles valueForKey:FORMButtonBorderColorKey];
     if ([style length] > 0) {
-        borderColor = [[UIColor alloc] initWithHex:style];
+        borderColor = [UIColor form_colorFromHex:style];
     }
     self.button.layer.borderColor = borderColor.CGColor;
 }
@@ -137,7 +137,7 @@ static NSString * const FORMButtonBackgroundColorKey = @"background_color";
 - (void)setHighlightedBackgroundColor:(UIColor *)highlightedBackgroundColor {
     NSString *style = [self.field.styles valueForKey:FORMButtonHighlightedBackgroundColorKey];
     if ([style length] > 0) {
-        highlightedBackgroundColor = [[UIColor alloc] initWithHex:style];
+        highlightedBackgroundColor = [UIColor form_colorFromHex:style];
     }
     self.button.highlightedBackgroundColor = highlightedBackgroundColor;
 }
@@ -145,7 +145,7 @@ static NSString * const FORMButtonBackgroundColorKey = @"background_color";
 - (void)setTitleColor:(UIColor *)titleColor {
     NSString *style = [self.field.styles valueForKey:FORMButtonTitleColorKey];
     if ([style length] > 0) {
-        titleColor = [[UIColor alloc] initWithHex:style];
+        titleColor = [UIColor form_colorFromHex:style];
     }
     self.button.titleColor = titleColor;
 }
@@ -153,7 +153,7 @@ static NSString * const FORMButtonBackgroundColorKey = @"background_color";
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     NSString *style = [self.field.styles valueForKey:FORMButtonBackgroundColorKey];
     if ([style length] > 0) {
-        backgroundColor = [[UIColor alloc] initWithHex:style];
+        backgroundColor = [UIColor form_colorFromHex:style];
     }
     self.button.backgroundColor = backgroundColor;
 }

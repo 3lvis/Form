@@ -1,5 +1,5 @@
 #import "FORMSeparatorView.h"
-@import Hex;
+#import "UIColor+Hex.h"
 
 static NSString * const FORMSeparatorColorKey = @"separator_color";
 static NSString * const FORMSeparatorHeightKey = @"height";
@@ -12,7 +12,7 @@ static NSString * const FORMSeparatorHeightKey = @"height";
 - (void)setSeparatorColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMSeparatorColorKey];
     if ([style length] > 0) {
-        color = [[UIColor alloc] initWithHex:style];
+        color = [UIColor form_colorFromHex:style];
     }
     
     self.backgroundColor = color;

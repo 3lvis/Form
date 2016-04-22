@@ -1,5 +1,5 @@
 #import "FORMGroupHeaderView.h"
-@import Hex;
+#import "UIColor+Hex.h"
 
 static NSString * const FORMHeaderLabelFontKey = @"font";
 static NSString * const FORMHeaderLabelFontSizeKey = @"font_size";
@@ -85,7 +85,7 @@ static NSString * const FORMHeaderBackgroundColorKey = @"background_color";
 - (void)setHeaderLabelTextColor:(UIColor *)headerLabelTextColor {
     NSString *style = [self.styles valueForKey:FORMHeaderLabelTextColorKey];
     if ([style length] > 0) {
-        headerLabelTextColor = [[UIColor alloc] initWithHex:style];
+        headerLabelTextColor = [UIColor form_colorFromHex:style];
     }
     
     self.headerLabel.textColor = headerLabelTextColor;
@@ -94,7 +94,7 @@ static NSString * const FORMHeaderBackgroundColorKey = @"background_color";
 - (void)setHeaderBackgroundColor:(UIColor *)backgroundColor {
     NSString *style = [self.styles valueForKey:FORMHeaderBackgroundColorKey];
     if ([style length] > 0) {
-        backgroundColor = [[UIColor alloc] initWithHex:style];
+        backgroundColor = [UIColor form_colorFromHex:style];
     }
     
     self.backgroundColor = backgroundColor;

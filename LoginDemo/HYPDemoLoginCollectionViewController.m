@@ -2,7 +2,7 @@
 
 @import Form;
 @import NSJSONSerialization_ANDYJSONFile;
-@import Hex;
+#import "UIColor+Hex.h"
 
 @interface HYPDemoLoginCollectionViewController ()
 

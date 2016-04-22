@@ -1,6 +1,6 @@
 #import "FORMBackgroundView.h"
 #import "FORMLayoutAttributes.h"
-@import Hex;
+#import "UIColor+Hex.h"
 
 static NSString * const FORMGroupBackgroundColorKey = @"background_color";
 
@@ -34,7 +34,7 @@ static NSString * const FORMGroupBackgroundColorKey = @"background_color";
 - (void)setGroupBackgroundColor:(UIColor *)color {
     NSString *style = [self.styles valueForKey:FORMGroupBackgroundColorKey];
     if ([style length] > 0) {
-        color = [[UIColor alloc] initWithHex:style];
+        color = [UIColor form_colorFromHex:style];
     } else {
         color = [UIColor whiteColor];
     }
