@@ -8,12 +8,14 @@
 
     if (!valid) return valid;
 
+    NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+
     BOOL hasDelimiter = ([text hyp_containsString:@","] || [text hyp_containsString:@"."]);
-    BOOL stringIsNilOrComma = (!string || [string isEqualToString:@","]);
+    BOOL stringIsNilOrDecimalSeparator = (!string || [string isEqualToString:decimalSeparator]);
 
-    if (hasDelimiter && stringIsNilOrComma) return NO;
+    if (hasDelimiter && stringIsNilOrDecimalSeparator) return NO;
 
-    NSCharacterSet *floatSet = [NSCharacterSet characterSetWithCharactersInString:@"1234567890,"];
+    NSCharacterSet *floatSet = [NSCharacterSet characterSetWithCharactersInString: [NSString stringWithFormat:@"1234567890%@", decimalSeparator]];
     NSCharacterSet *stringSet = [NSCharacterSet characterSetWithCharactersInString:string];
 
     return [floatSet isSupersetOfSet:stringSet];
