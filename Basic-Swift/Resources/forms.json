@@ -40,6 +40,7 @@
               "id":"display_name",
               "title":"Display name",
               "info":"This is the name that is going to be used across the application.",
+              "placeholder": "Display name",
               "type":"text",
               "size":{
                 "width":40,

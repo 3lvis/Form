@@ -798,10 +798,6 @@ includingHiddenFields:(BOOL)includingHiddenFields
                        }];
     }
 
-    [resetSections enumerateObjectsUsingBlock:^(FORMSection *section, BOOL *stop) {
-        [section resetFieldPositions];
-    }];
-
     for (FORMSection *section in deletedSections) {
         FORMGroup *group = self.groups[[section.group.position integerValue]];
 
