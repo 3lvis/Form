@@ -6,7 +6,9 @@
     string = [super formatString:string reverse:reverse];
     if (!string) return nil;
 
-    if (reverse) {
+    NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+
+    if (reverse || [decimalSeparator isEqualToString:@"."]) {
         return [string stringByReplacingOccurrencesOfString:@"," withString:@"."];
     } else {
         return [string stringByReplacingOccurrencesOfString:@"." withString:@","];
