@@ -200,7 +200,7 @@ To make quick and easy integer adjustments without popping up a keyboard, you ca
 
 ## FAQ
 
-### Get the contents of a field
+### How do I get the contents of a field?
 
 ```objc
 FORMField *targetField = [dataSource fieldWithID:@"display_name" includingHiddenFields:YES];
@@ -208,7 +208,7 @@ id value = targetField.value;
 // Do something with value
 ```
 
-### Get all the values of the Form
+### How do I get all the values of the Form?
 
 ```objc
 NSDictionary *initialValues = @{@"email" : @"hi@there.com",
@@ -223,6 +223,12 @@ FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
 NSDictionary *values = dataSource.values;
 // Do something with values
 ```
+
+### How do I make a universal Form?
+
+You have to specify and iPhone specific JSON file. Something [like this](https://github.com/hyperoslo/Form/blob/master/iPhone-Storyboard/Form.json), check the iPhone-Storyboard demo for more information.
+
+We went for this approach since it gives the developers more control over the UI. You have to add a check for device and present the JSON file that matches the device.
 
 ## Installation
 
