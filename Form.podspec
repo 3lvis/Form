@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   s.dependency 'NSDictionary-ANDYSafeValue', '~> 0.3'
   s.dependency 'NSDictionary-HYPNestedAttributes', '~> 0.4.1'
   s.dependency 'NSJSONSerialization-ANDYJSONFile', '~> 1.1'
-  s.dependency 'NSObject-HYPTesting', '~> 1.2'
+  s.dependency 'NSObject-HYPTesting', '~> 1.2.1'
   s.dependency 'NSString-HYPContainsString', '~> 0.1'
   s.dependency 'NSString-HYPFormula', '~> 1.6.2'
   s.dependency 'NSString-HYPRelationshipParser', '~> 0.4.1'
