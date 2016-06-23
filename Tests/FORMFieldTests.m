@@ -175,4 +175,13 @@
     XCTAssertNil(field.value);
 }
 
+- (void)testDefaultInputType {
+    FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id" : @"number",
+                                                               @"type" : @"number"}
+                                                    position:0
+                                                    disabled:NO
+                                           disabledFieldsIDs:nil];
+    XCTAssertEqualObjects(field.inputTypeString, @"number");
+}
+
 @end
