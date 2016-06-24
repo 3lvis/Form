@@ -1,0 +1,90 @@
+{
+  "groups":[
+    {
+      "id":"personal-details",
+      "title":"Personal Details",
+      "sections":[
+        {
+          "id":"personal-details-0",
+          "fields":[
+            {
+              "id":"first_name",
+              "title":"First name",
+              "info":"Fornavn",
+              "type":"name",
+              "disabled":true,
+              "size":{
+                "width":50,
+                "height":1
+              },
+              "validations":{
+                "required":true,
+                "min_length":2
+              }
+            },
+            {
+              "id":"last_name",
+              "title":"Last name",
+              "type":"name",
+              "info":"Family name",
+              "size":{
+                "width":50,
+                "height":1
+              },
+              "validations":{
+                "required":true,
+                "min_length":2
+              }
+            },
+            {
+              "id":"biography",
+              "type":"biography",
+              "size":{
+                "width":100,
+                "height":2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id":"employment",
+      "title":"Employment",
+      "sections":[
+        {
+          "id":"employment-0",
+          "fields":[
+            {
+              "id":"subtitle",
+              "type":"subtitle",
+              "size":{
+                "width":100,
+                "height":0.7
+              }
+            },
+            {
+              "id":"start_date",
+              "title":"Start date",
+              "info":"The day of employment",
+              "type":"date",
+              "size":{
+                "width":50,
+                "height":1
+              }
+            },
+            {
+              "id":"end_date",
+              "title":"End date",
+              "type":"date",
+              "size":{
+                "width":50,
+                "height":1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

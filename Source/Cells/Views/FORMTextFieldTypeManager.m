@@ -14,9 +14,7 @@
         case FORMTextFieldInputTypeEmail       : [self setupEmailTextField:textField]; break;
         case FORMTextFieldInputTypePassword    : [self setupPasswordTextField:textField]; break;
         case FORMTextFieldInputTypeCount       : [self setupCountTextField:textField]; break;
-
-        case FORMTextFieldInputTypeUnknown:
-            abort();
+        case FORMTextFieldInputTypeUnknown     : [self setupDefaultTextField:textField]; break;
     }
 }
 

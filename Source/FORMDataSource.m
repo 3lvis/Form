@@ -95,9 +95,9 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     if (_collapsedGroups) return _collapsedGroups;
 
     _collapsedGroups = [NSMutableArray new];
-    
+
     NSMutableArray *indexPaths = [NSMutableArray new];
-    
+
     [self.formData.groups enumerateObjectsUsingBlock:^(FORMGroup *formGroup, NSUInteger idx, BOOL *stop) {
         if (formGroup.collapsed) {
             if (![_collapsedGroups containsObject:@(idx)]) {
@@ -203,7 +203,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
     if (kind == UICollectionElementKindSectionHeader) {
         FORMGroup *group = self.formData.groups[indexPath.section];
         FORMGroupHeaderView *headerView;
-        
+
         NSString *identifier = [NSString stringWithFormat:@"%@-%@", FORMHeaderReuseIdentifier, group.groupID];
         [collectionView registerClass:[FORMGroupHeaderView class]
            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -413,6 +413,11 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
 - (BOOL)isEnabled {
     return !_disabled;
+}
+
+- (void)collapseGroup:(NSInteger)group {
+    [self collapseFieldsInGroup:group
+                 collectionView:self.collectionView];
 }
 
 - (void)collapseAllGroups {

@@ -20,15 +20,19 @@
     }
 
     if (self.validation.maximumValue && text) {
-        NSMutableString *newString = [[NSMutableString alloc] initWithString:text];
-        [newString insertString:string atIndex:range.location];
-        NSNumberFormatter *formatter = [NSNumberFormatter new];
-        formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
-        NSNumber *newValue = [formatter numberFromString:newString];
-        NSNumber *maxValue = self.validation.maximumValue;
+        if (range.location != NSNotFound && range.location <= text.length) {
+            NSMutableString *newString = [[NSMutableString alloc] initWithString:text];
+            [newString insertString:string atIndex:range.location];
+            NSNumberFormatter *formatter = [NSNumberFormatter new];
+            formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+            NSNumber *newValue = [formatter numberFromString:newString];
+            NSNumber *maxValue = self.validation.maximumValue;
 
-        BOOL eligibleForCompare = (newValue && maxValue);
-        if (eligibleForCompare) valid = ([newValue floatValue] <= [maxValue floatValue]);
+            BOOL eligibleForCompare = (newValue && maxValue);
+            if (eligibleForCompare) valid = ([newValue floatValue] <= [maxValue floatValue]);
+        } else {
+          valid = NO;
+        }
     }
 
     return valid;
