@@ -48,7 +48,6 @@
 - (CGFloat)labelHeight
 {
     CGFloat height = 0.0f;
-    height += FORMInfoLabelY * 2;
     height += self.infoLabel.frame.size.height;
 
     return height;
@@ -79,6 +78,7 @@
     CGRect infoFrame = self.infoLabel.frame;
     infoFrame.origin.y = [self infoLabelFrame].origin.y;
     infoFrame.size.width = FORMFieldValuesHeaderWidth;
+    infoFrame.size.height = self.infoLabel.frame.size.height + 10.0;
     self.infoLabel.frame = infoFrame;
 }
 
