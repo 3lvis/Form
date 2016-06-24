@@ -4,7 +4,6 @@
 
 @interface FORMFieldValuesTableViewHeader ()
 
-@property (nonatomic) UILabel *titleLabel;
 @property (nonatomic) UILabel *infoLabel;
 
 @end
@@ -24,25 +23,15 @@
 
 #pragma mark - Getters
 
-- (CGRect)titleLabelFrame {
-    return CGRectMake(0.0f, FORMInfoLabelY, FORMFieldValuesHeaderWidth, FORMLabelHeight);
-}
-
-- (UILabel *)titleLabel {
-    if (_titleLabel) return _titleLabel;
-
-    _titleLabel = [[UILabel alloc] initWithFrame:[self titleLabelFrame]];
-    _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-    _titleLabel.numberOfLines = 0;
-    _titleLabel.text = self.field.title;
-
-    return _titleLabel;
-}
-
-- (CGRect)infoLabelFrame
-{
-    return CGRectMake(0.0f, FORMInfoLabelY, FORMFieldValuesHeaderWidth, FORMLabelHeight * 1.1);
+- (CGRect)infoLabelFrame {
+    CGFloat x = 0;
+    CGFloat width = FORMFieldValuesHeaderWidth;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        CGRect bounds = [[UIScreen mainScreen] bounds];
+        width = bounds.size.width;
+        x = (width - FORMFieldValuesHeaderWidth) / 2.0;
+    }
+    return CGRectMake(x, FORMInfoLabelY, width, FORMLabelHeight * 1.1);
 }
 
 - (UILabel *)infoLabel {
@@ -73,14 +62,6 @@
     self.infoLabel.text = field.info;
 
     [self updateLabelFrames];
-}
-
-- (void)setTitleLabelFont:(UIFont *)titleLabelFont {
-    self.titleLabel.font = titleLabelFont;
-}
-
-- (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor {
-    self.titleLabel.textColor = titleLabelTextColor;
 }
 
 - (void)setInfoLabelFont:(UIFont *)infoLabelFont {
