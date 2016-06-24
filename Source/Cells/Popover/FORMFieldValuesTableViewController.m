@@ -6,7 +6,6 @@
 @interface FORMFieldValuesTableViewController ()
 
 @property (nonatomic) NSArray *values;
-@property (nonatomic) BOOL showDoneButton;
 
 @end
 
@@ -27,21 +26,19 @@
 - (void)setField:(FORMField *)field {
     _field = field;
 
-    self.showDoneButton = (_field.type == FORMFieldTypeDate || _field.type == FORMFieldTypeDateTime || _field.type == FORMFieldTypeTime);
+    UIBarButtonItem *clear = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", nil) style:UIBarButtonItemStylePlain target:self action:@selector(clearButtonDidTap)];
+    BOOL shouldShowDoneButton = (_field.type == FORMFieldTypeDate || _field.type == FORMFieldTypeDateTime || _field.type == FORMFieldTypeTime);
+    if (shouldShowDoneButton) {
+        UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonDidTap)];
+        self.navigationItem.rightBarButtonItems = @[done, clear];
+    } else {
+        self.navigationItem.rightBarButtonItem = clear;
+    }
 
     self.values = [NSArray arrayWithArray:field.values];
     self.headerView.field = field;
     self.title = self.field.title;
     [self.tableView reloadData];
-}
-
-- (void)setShowDoneButton:(BOOL)showDoneButton {
-    if (showDoneButton) {
-        UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonDidTap)];
-        self.navigationItem.rightBarButtonItem = done;
-    } else {
-        self.navigationItem.rightBarButtonItem = nil;
-    }
 }
 
 #pragma mark - View Lifecycle
@@ -78,6 +75,16 @@
 - (void)doneButtonDidTap {
     FORMFieldValue *fieldValue = [FORMFieldValue new];
     fieldValue.value = @YES;
+
+    if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
+        [self.delegate fieldValuesTableViewController:self
+                                     didSelectedValue:fieldValue];
+    }
+}
+
+- (void)clearButtonDidTap {
+    FORMFieldValue *fieldValue = [FORMFieldValue new];
+    fieldValue.value = @NO;
 
     if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
         [self.delegate fieldValuesTableViewController:self
