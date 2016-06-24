@@ -127,13 +127,15 @@ static const CGFloat FORMIconButtonHeight = 38.0f;
 
     [self updateContentViewController:self.contentViewController withField:self.field];
 
-    self.contentViewController.modalPresentationStyle = UIModalPresentationPopover;
-    UIPopoverPresentationController *presentationController = [self.contentViewController popoverPresentationController];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.contentViewController];
+
+    navigationController.modalPresentationStyle = UIModalPresentationPopover;
+    UIPopoverPresentationController *presentationController = [navigationController popoverPresentationController];
     presentationController.sourceView = self;
     presentationController.sourceRect = self.bounds;
 
     UIViewController *topViewController = [UIViewController hyp_topViewController];
-    [topViewController presentViewController:self.contentViewController animated:YES completion:nil];
+    [topViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end

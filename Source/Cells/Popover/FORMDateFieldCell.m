@@ -1,7 +1,7 @@
 #import "FORMDateFieldCell.h"
 #import "FORMFieldValue.h"
 
-static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
+static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
 
 @interface FORMDateFieldCell () <FORMTextFieldDelegate, FORMFieldValuesTableViewControllerDelegate>
 
@@ -19,7 +19,7 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
     if (!self) return nil;
 
     self.fieldValuesController.delegate = self;
-    self.fieldValuesController.customHeight = 197.0f;
+    self.fieldValuesController.customHeight = 200.0f;
     self.fieldValuesController.tableView.scrollEnabled = NO;
     [self.fieldValuesController.headerView addSubview:self.datePicker];
 
@@ -29,7 +29,12 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
 #pragma mark - Getters
 
 - (CGRect)datePickerFrame {
-    return CGRectMake(0.0f, 25.0f, FORMDatePopoverSize.width, 196);
+    CGFloat x = 0;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        CGRect bounds = [[UIScreen mainScreen] bounds];
+        x = (bounds.size.width - FORMDatePopoverSize.width) / 2.0;
+    }
+    return CGRectMake(x, 25.0f, FORMDatePopoverSize.width, FORMDatePopoverSize.height);
 }
 
 - (UIDatePicker *)datePicker {
@@ -74,18 +79,6 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 284.0f };
 
 - (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
-
-    FORMFieldValue *confirmValue = [FORMFieldValue new];
-    confirmValue.title = NSLocalizedString(@"Confirm", nil);
-    confirmValue.valueID = [NSDate date];
-    confirmValue.value = @YES;
-
-    FORMFieldValue *clearValue = [FORMFieldValue new];
-    clearValue.title = NSLocalizedString(@"Clear", nil);
-    clearValue.valueID = [NSDate date];
-    clearValue.value = @NO;
-
-    field.values = @[confirmValue, clearValue];
 
     if (field.value) {
         self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.value

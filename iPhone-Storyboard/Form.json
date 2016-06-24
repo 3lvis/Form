@@ -26,6 +26,7 @@
                {
                   "id":"date",
                   "title":"Date*",
+                  "info":"This is a description",
                   "type":"date",
                   "size":{
                      "width":50
