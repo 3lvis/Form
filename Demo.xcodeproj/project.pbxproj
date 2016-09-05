@@ -150,6 +150,7 @@
 		649DE2B414E765BA54759ECE /* Pods_CocoaPods_Payment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA0E4E14E48A69AC562E605 /* Pods_CocoaPods_Payment.framework */; };
 		72DEC9A3753978AEF3383E56 /* Pods_CocoaPods_iPhone_Storyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F9A5FF448CDE99A084DAF4 /* Pods_CocoaPods_iPhone_Storyboard.framework */; };
 		7878EFBDBA2F722E24CF62C4 /* Pods_CocoaPods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF7319532C286F8BEAEFF49 /* Pods_CocoaPods_Tests.framework */; };
+		7A4ABAF31D7DBE7200DAE893 /* FORMSpacerFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4ABAF21D7DBE7200DAE893 /* FORMSpacerFieldCell.m */; };
 		825F6E98164CA04CDE12F270 /* Pods_CocoaPods_ModalForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C9B4BD521E20A90A708235 /* Pods_CocoaPods_ModalForm.framework */; };
 		82B59BA34A26252CFF5C11CB /* Pods_CocoaPods_Basic_ObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF9D9A1384FFF4964BDEA19 /* Pods_CocoaPods_Basic_ObjC.framework */; };
 /* End PBXBuildFile section */
@@ -385,6 +386,8 @@
 		50D77918C798DC1313D4D76D /* Pods-CocoaPods-iPhone-Storyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPods-iPhone-Storyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaPods-iPhone-Storyboard/Pods-CocoaPods-iPhone-Storyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		728B7C5A71C3BD93D42F469A /* Pods_CocoaPods_LoginDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_LoginDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7313DABFEEF45FCCCD39281E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A4ABAF11D7DBE7200DAE893 /* FORMSpacerFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMSpacerFieldCell.h; sourceTree = "<group>"; };
+		7A4ABAF21D7DBE7200DAE893 /* FORMSpacerFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMSpacerFieldCell.m; sourceTree = "<group>"; };
 		7A979DD3111677D9FF793855 /* Pods_CocoaPods_Basic_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_Basic_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		819E8FEB0A9EFC41EB1342E9 /* Pods-CocoaPods-CustomField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPods-CustomField.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaPods-CustomField/Pods-CocoaPods-CustomField.release.xcconfig"; sourceTree = "<group>"; };
 		882BE0937534429CE9BABA74 /* Pods-CocoaPods-ModalForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPods-ModalForm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaPods-ModalForm/Pods-CocoaPods-ModalForm.debug.xcconfig"; sourceTree = "<group>"; };
@@ -570,6 +573,7 @@
 		140803641BEA50AB0098C288 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7AB346BD1D78C83100AAAD2E /* Spacer */,
 				140803651BEA50AB0098C288 /* Base */,
 				140803681BEA50AB0098C288 /* Button */,
 				1408036B1BEA50AB0098C288 /* Popover */,
@@ -987,6 +991,15 @@
 				A8F9A5FF448CDE99A084DAF4 /* Pods_CocoaPods_iPhone_Storyboard.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7AB346BD1D78C83100AAAD2E /* Spacer */ = {
+			isa = PBXGroup;
+			children = (
+				7A4ABAF11D7DBE7200DAE893 /* FORMSpacerFieldCell.h */,
+				7A4ABAF21D7DBE7200DAE893 /* FORMSpacerFieldCell.m */,
+			);
+			path = Spacer;
 			sourceTree = "<group>";
 		};
 		FF2EDD4AF69815F8A16EEB10 /* Pods */ = {
@@ -1834,6 +1847,7 @@
 				1408042F1BEA50C00098C288 /* FORMDataTests.m in Sources */,
 				140803EB1BEA50AB0098C288 /* FORMGroupHeaderView.m in Sources */,
 				140804061BEA50AB0098C288 /* FORMSocialSecurityNumberValidator.m in Sources */,
+				7A4ABAF31D7DBE7200DAE893 /* FORMSpacerFieldCell.m in Sources */,
 				140803D51BEA50AB0098C288 /* FORMBaseFieldCell.m in Sources */,
 				140804301BEA50C00098C288 /* FORMEmailFormatterTests.m in Sources */,
 				140804361BEA50C00098C288 /* FORMInputValidatorTests.m in Sources */,

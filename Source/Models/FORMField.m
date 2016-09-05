@@ -137,6 +137,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         case FORMFieldTypeText:
         case FORMFieldTypeSelect:
         case FORMFieldTypeButton:
+        case FORMFieldTypeSpacer:
         case FORMFieldTypeCustom:
             break;
     }
@@ -176,6 +177,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
             return self.value;
 
         case FORMFieldTypeButton:
+        case FORMFieldTypeSpacer:
         case FORMFieldTypeCustom:
             return nil;
     }
@@ -247,6 +249,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         return FORMFieldTypeCount;
     } else if ([typeString isEqualToString:@"button"]) {
         return FORMFieldTypeButton;
+    } else if ([typeString isEqualToString:@"spacer"]) {
+        return FORMFieldTypeSpacer;
     } else {
         return FORMFieldTypeCustom;
     }

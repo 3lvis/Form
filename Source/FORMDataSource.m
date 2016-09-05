@@ -7,6 +7,7 @@
 #import "FORMSelectFieldCell.h"
 #import "FORMDateFieldCell.h"
 #import "FORMButtonFieldCell.h"
+#import "FORMSpacerFieldCell.h"
 #import "FORMFieldValue.h"
 #import "HYPParsedRelationship.h"
 
@@ -178,6 +179,12 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
         case FORMFieldTypeButton:
             identifier = [NSString stringWithFormat:@"%@-%@", FORMButtonFieldCellIdentifier, field.fieldID];
             [collectionView registerClass:[FORMButtonFieldCell class]
+               forCellWithReuseIdentifier:identifier];
+            break;
+            
+        case FORMFieldTypeSpacer:
+            identifier = FORMSpacerFieldCellIdentifier;
+            [collectionView registerClass:[FORMSpacerFieldCell class]
                forCellWithReuseIdentifier:identifier];
             break;
 
