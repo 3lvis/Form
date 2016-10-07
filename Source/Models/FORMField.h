@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) NSString *formula;
 @property (nonatomic) NSArray *targets;
 @property (nonatomic) NSDictionary *styles;
+@property (nonatomic) NSString *accessibilityLabel;
 
 @property (nonatomic) FORMSection *section;
 

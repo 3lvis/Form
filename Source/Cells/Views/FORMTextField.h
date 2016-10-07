@@ -48,6 +48,7 @@ typedef NS_ENUM(NSInteger, FORMTextFieldInputType) {
 @property (nonatomic) FORMTextFieldInputType inputType;
 @property (nonatomic, copy) NSString *info;
 @property (nonatomic, copy) NSDictionary *styles;
+@property (nonatomic, copy) NSString *accessibilityLabel;
 
 @property (nonatomic, getter = isValid)    BOOL valid;
 @property (nonatomic, getter = isActive)   BOOL active;

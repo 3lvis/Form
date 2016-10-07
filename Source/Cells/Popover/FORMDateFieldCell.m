@@ -84,11 +84,19 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
         self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.value
                                                                    dateStyle:[self dateStyleForField:field]
                                                                    timeStyle:[self timeStyleForField:field]];
+        
+        self.fieldValueLabel.accessibilityValue = self.fieldValueLabel.text;
     } else {
         self.fieldValueLabel.text = nil;
     }
 
     self.iconImageView.image = [self fieldIcon];
+    
+    if ([field.accessibilityLabel length] > 0) {
+        self.date.accessibilityLabel = field.accessibilityLabel;
+    } else {
+        self.date.accessibilityLabel = self.field.title;
+    }
 }
 
 - (NSDateFormatterStyle)dateStyleForField:(FORMField *)field {

@@ -55,6 +55,12 @@ static NSString * const FORMButtonBackgroundColorKey = @"background_color";
     self.button.enabled = !field.disabled;
     self.disabled = field.disabled;
     self.headingLabel.hidden = YES;
+    
+    if ([field.accessibilityLabel length] > 0) {
+        self.button.accessibilityLabel = field.accessibilityLabel;
+    } else {
+        self.button.accessibilityLabel = self.headingLabel.text;
+    }
 
     [self.button setTitle:field.title forState:UIControlStateNormal];
 }

@@ -188,6 +188,12 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
     self.textField.info            = field.info;
     self.textField.styles          = field.styles;
     self.textField.placeholder     = field.disabled ? nil : field.placeholder;
+    
+    if ([field.accessibilityLabel length] > 0) {
+        self.textField.accessibilityLabel = field.accessibilityLabel;
+    } else {
+        self.textField.accessibilityLabel = self.headingLabel.text;
+    }
 }
 
 - (void)validate {

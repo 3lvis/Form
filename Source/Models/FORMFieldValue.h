@@ -11,6 +11,7 @@
 @property (nonatomic) FORMField *field;
 @property (nonatomic) NSNumber *value;
 @property (nonatomic) BOOL defaultValue;
+@property (nonatomic, copy) NSString *accessibilityLabel;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

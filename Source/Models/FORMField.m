@@ -79,6 +79,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
     NSDictionary *styles = [dictionary andy_valueForKey:@"styles"];
 
     _styles = styles;
+    
+    _accessibilityLabel = NSLocalizedString([dictionary andy_valueForKey:@"accessibility_label"], nil);
 
     BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:_fieldID]);
 
