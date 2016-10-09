@@ -198,6 +198,44 @@ To make quick and easy integer adjustments without popping up a keyboard, you ca
 }
 ```
 
+### Accessibility Labels
+
+Accessibility labels are used by VoiceOver on iOS to provide feedback to users with visual impairments. According to Apple, the accessibility label attribute is "a short, localized word or phrase that succinctly describes the control or view, but does not identify the element's type. Examples are 'Add' or 'Play.'"
+
+Field values are automatically mapped to Accessibility Value attributes to provide accurate feedback to users.
+
+In addition to providing assistive feedback to users with impairments, accessibility labels can be useful for UI testing. Libraries such as [KIF](https://github.com/kif-framework/KIF), [EarlGrey](https://github.com/google/EarlGrey), and [Calabash](http://calaba.sh/) can use accessibility labels to access and control fields.
+
+#### Example JSON
+```json
+{
+  "groups":[
+    {
+      "id":"group1",
+      "title":"Accessibility Example",
+      "sections":[
+        {
+          "id":"section1",
+          "fields":[
+            {
+              "id":"first_name",
+              "title":"First Name",
+              "info":"Enter your first name",
+              "accessibility_label":"First Name Accessibility Label",
+              "type":"name",
+              "size":{
+                "width":25,
+                "height":1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 ## FAQ
 
 ### How do I get the contents of a field?
