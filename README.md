@@ -11,7 +11,7 @@ Form came out from our need to have a form that could share logic between our iO
 Form includes the following features:
 
 - Multiple groups: For example, you can have a group for personal details and another one for shipping information
-- [Field validations](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L19): We support `required`, `max_length`, `min_length`, `min_value`, `max_value` and `format` (regex). We also support many field types, like `text`, `number`, `phone_number`, `email`, `date`, `name`, `count` and more
+- [Field validations](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L19): We support `required`, `max_length`, `min_length`, `min_value`, `max_value` and `format` (regex). We also support many field types, like `text`, `number`, `phone_number`, `email`, `date`, `name`, `count`, `segment` and more
 - [Custom sizes](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L15): Total `width` is handled as 100% while `height` is handled in chunks of [85 px](https://github.com/hyperoslo/Form/blob/b1a542d042a45a9a3056fb8969b5704e51fda1f4/Source/Cells/Base/FORMBaseFieldCell.h#L15)
 - [Custom fields](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L78): You can register your custom fields, and it's pretty simple (our basic example includes how to make an `image` field)
 - [Formulas or computed values](https://github.com/hyperoslo/Form/blob/d426e7b090fee7a630d1208b87c63a85b6aaf5df/Demos/Basic-ObjC/Basic-ObjC/Assets/forms.json#L47): We support fields that contain generated values from other fields
@@ -188,6 +188,55 @@ To make quick and easy integer adjustments without popping up a keyboard, you ca
                 "required":true,
                 "min_value":0,
                 "max_value":100
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Segment Fields
+
+Segment fields can be used in place of text or select fields where the options are known and limited. Since segment fields do not require multiple taps or keyboard entry, data can be recorded quickly and easily with a single click. The `segment` field type allows for multiple values like the `select` field type and supports many of the same attributes.
+
+#### Example JSON
+```json
+{
+  "groups":[
+    {
+      "id":"group1",
+      "title":"Segment Example",
+      "sections":[
+        {
+          "id":"section1",
+          "fields":[
+            {
+              "id":"location",
+              "title":"Work Location",
+              "type":"segment",
+              "styles":{
+                "font":"AvenirNext-DemiBold",
+                "font_size":"16.0",
+                "tint_color":"#CBEDBF"
+              },
+              "values":[
+                {
+                  "id":"in_house",
+                  "title":"In-house",
+                  "info":"In-house employee",
+                  "default":true,
+                },
+                {
+                  "id":"remote",
+                  "title":"Remote",
+                }
+              ],
+              "size":{
+                "width":50,
+                "height":1
               }
             }
           ]

@@ -937,6 +937,16 @@
     XCTAssertEqualObjects([buttonField.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
     XCTAssertEqualObjects([buttonField.styles objectForKey:@"font_size"], @"16.0");
 
+    // Segment Field Styles
+    FORMField *segmentField = [dataSource fieldWithID:@"styled_segment" includingHiddenFields:NO];
+    XCTAssertNotNil(segmentField);
+    
+    [dataSource fieldCell:nil updatedWithField:segmentField];
+    XCTAssertNotNil(segmentField.styles);
+    XCTAssertEqualObjects([segmentField.styles objectForKey:@"tint_color"], @"#FF0000");
+    XCTAssertEqualObjects([segmentField.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
+    XCTAssertEqualObjects([segmentField.styles objectForKey:@"font_size"], @"16.0");
+    
     // Text Field Styles
     FORMField *textField = [dataSource fieldWithID:@"styled_text_field" includingHiddenFields:NO];
     XCTAssertNotNil(textField);

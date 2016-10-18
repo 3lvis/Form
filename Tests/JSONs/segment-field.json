@@ -1,0 +1,34 @@
+[
+  {
+    "id": "group",
+    "title": "Group",
+    "sections": [
+      {
+        "id": "section",
+        "fields": [
+          {
+            "id": "segment",
+            "title": "My Segment",
+            "type": "segment",
+            "value": "part_1",
+            "values":[
+              {
+                "id":"part_1",
+                "title":"Part 1",
+                "default":true,
+              },
+              {
+                "id":"part_2",
+                "title":"Part 2",
+              }
+            ],
+            "size": {
+              "width": 25,
+              "height": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

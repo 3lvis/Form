@@ -9,6 +9,7 @@
 #import "FORMFieldValuesTableViewHeader.h"
 #import "FORMTextFieldCell.h"
 #import "FORMButtonFieldCell.h"
+#import "FORMSegmentFieldCell.h"
 #import "FORMBaseFieldCell.h"
 
 @import Hex;
@@ -98,6 +99,11 @@
     [[FORMTextFieldCell appearance] setTooltipLabelFont:[UIFont fontWithName:@"AvenirNext-Medium" size:14.0]];
     [[FORMTextFieldCell appearance] setTooltipLabelTextColor:[[UIColor alloc] initWithHex:@"97591D"]];
     [[FORMTextFieldCell appearance] setTooltipBackgroundColor:[[UIColor alloc] initWithHex:@"FDFD54"]];
+    
+    [[FORMSegmentFieldCell appearance] setLabelFont:[UIFont fontWithName:@"AvenirNext-DemiBold" size:16.0]];
+    [[FORMSegmentFieldCell appearance] setBackgroundColor:[[UIColor alloc] initWithHex:@"FFFFFF"]];
+    [[FORMSegmentFieldCell appearance] setTintColor:[[UIColor alloc] initWithHex:@"3DAFEB"]];
+
 }
 
 @end

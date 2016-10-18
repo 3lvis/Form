@@ -85,6 +85,31 @@
                 "minus_button_color":"#FF0000",
                 "plus_button_color":"#FF3333",
               }
+            },
+            {
+              "id":"styled_segment",
+              "title":"Styled Segment",
+              "type":"segment",
+              "styles":{
+                "font":"AvenirNext-DemiBold",
+                "font_size":"16.0",
+                "tint_color":"#FF0000"
+              },
+              "values":[
+                {
+                  "id":"part_1",
+                  "title":"Part 1",
+                  "default":true,
+                },
+                {
+                  "id":"part_2",
+                  "title":"Part 2",
+                }
+              ],
+              "size":{
+                "width":40,
+                "height":1
+              },
             }
           ]
         }

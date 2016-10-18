@@ -158,6 +158,34 @@
     XCTAssertTrue(field.disabled);
     XCTAssertNil(field.validation);
     XCTAssertFalse(field.hidden);
+    
+    values = @[
+                @{@"id": @"part_1", @"title": @"Part 1"},
+                @{@"id": @"part_2", @"title": @"Part 2"},
+              ];
+    field = [[FORMField alloc] initWithDictionary:@{@"id": @"segment_control",
+                                                    @"title": @"Segment Control",
+                                                    @"accessibility_label": @"Accessibility label",
+                                                    @"type": @"segment",
+                                                    @"values":values,
+                                                    @"value":@"part_1",
+                                                    @"size": @{@"width": @30,
+                                                               @"height": @1}
+                                                    }
+                                         position:1
+                                         disabled:NO
+                                disabledFieldsIDs:@[@"segment_control"]];
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.typeString, @"segment");
+    XCTAssertTrue(field.type == FORMFieldTypeSegment);
+    
+    XCTAssertEqualObjects(field.value, @"part_1");
+    XCTAssertEqualObjects(field.accessibilityLabel, @"Accessibility label");
+    
+    XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
+    XCTAssertTrue(field.disabled);
+    XCTAssertNil(field.validation);
+    XCTAssertFalse(field.hidden);
 }
 
 - (void)testInputValidator {

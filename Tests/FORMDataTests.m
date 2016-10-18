@@ -811,6 +811,18 @@
 
     XCTAssertEqualObjects(formData.values[@"count"], @"1");
 }
+    
+- (void)testInitializatingASegmentFieldWithAValueInTheJSON {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"segment-field.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+    
+    XCTAssertEqualObjects(formData.values[@"segment"], @"part_1");
+}
 
 - (void)testFieldStyles {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"styled-fields.json"
@@ -838,6 +850,15 @@
     XCTAssertEqualObjects([field.styles objectForKey:@"border_color"], @"#FF0000");
     XCTAssertEqualObjects([field.styles objectForKey:@"corner_radius"], @"5.0f");
     XCTAssertEqualObjects([field.styles objectForKey:@"border_width"], @"1.0f");
+    XCTAssertEqualObjects([field.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
+    XCTAssertEqualObjects([field.styles objectForKey:@"font_size"], @"16.0");
+    
+    // Segment Styles
+    field = [formData fieldWithID:@"styled_segment" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertNotNil(field.styles);
+    
+    XCTAssertEqualObjects([field.styles objectForKey:@"tint_color"], @"#FF0000");
     XCTAssertEqualObjects([field.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
     XCTAssertEqualObjects([field.styles objectForKey:@"font_size"], @"16.0");
     
