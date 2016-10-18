@@ -12,7 +12,7 @@ class SubtitleField: FORMBaseFieldCell {
         let view = UITextView(frame: frame)
 
         view.font = UIFont(name: "AvenirNext-Regular", size: 15.0)!
-        view.textColor = UIColor.blackColor()
+        view.textColor = UIColor.black
 
         return view
     }()

@@ -11,8 +11,6 @@ class SampleCollectionViewController: FORMViewController {
         fatalError("Not supported")
     }
 
-    // MARK: View life cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,8 +57,6 @@ class SampleCollectionViewController: FORMViewController {
 
         self.navigationController?.setToolbarHidden(false, animated: true)
     }
-
-    // MARK: Actions
 
     func readOnly(_ sender: UISwitch) {
         if sender.isOn {

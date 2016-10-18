@@ -2,7 +2,7 @@ import UIKit
 import Form.FORMBaseFieldCell
 
 protocol BiographyFieldDelegate: class {
-    func biographyFieldWasUpdated(text: String)
+    func biographyFieldWasUpdated(_ text: String)
 }
 
 class BiographyField: FORMBaseFieldCell {
@@ -19,7 +19,7 @@ class BiographyField: FORMBaseFieldCell {
 
         var frame = CGRect(x: horizontalMargin, y: topMargin, width: width, height: height)
         let view = UITextView(frame: frame)
-        view.layer.borderColor = UIColor(hex: "35AEEE").CGColor
+        view.layer.borderColor = UIColor(hex: "35AEEE").cgColor
         view.layer.borderWidth = 1.0
         view.layer.cornerRadius = 5.0
 
@@ -44,7 +44,7 @@ class BiographyField: FORMBaseFieldCell {
 }
 
 extension BiographyField: UITextViewDelegate {
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         self.biographyFieldDelegate?.biographyFieldWasUpdated(textView.text)
     }
 }

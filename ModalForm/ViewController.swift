@@ -2,9 +2,9 @@ import UIKit
 import Form
 
 class ViewController: UIViewController {
-    @IBAction func showForm(sender: UIButton) {
+    @IBAction func showForm(_ sender: UIButton) {
         let formController = SampleFormViewController()
-        self.presentViewController(formController, animated: true, completion: nil)
+        self.present(formController, animated: true, completion: nil)
     }
 }
 
