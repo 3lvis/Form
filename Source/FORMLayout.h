@@ -8,7 +8,7 @@ static const NSInteger FORMMarginBottom = 30.0f;
 
 @interface FORMLayout : UICollectionViewFlowLayout
 
-@property (nonatomic, weak) id <FORMLayoutDataSource> dataSource;
+@property (nonatomic, strong) id <FORMLayoutDataSource> dataSource;
 
 @end
 
