@@ -4,7 +4,7 @@ import Form.FORMViewController
 class SampleCollectionViewController: FORMViewController {
 
     init(JSON: [String : AnyObject], initialValues: [String : AnyObject]) {
-        super.init(JSON: JSON, andInitialValues: initialValues, disabled:true)
+        super.init(json: JSON, andInitialValues: initialValues, disabled:true)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -19,37 +19,37 @@ class SampleCollectionViewController: FORMViewController {
         self.collectionView?.backgroundColor = UIColor(hex: "DAE2EA")
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         let validateButtonItem = UIBarButtonItem(title: "Validate",
-            style: .Done,
+            style: .done,
             target: self,
             action: NSSelectorFromString("validateButtonAction"))
 
         let updateButtonItem = UIBarButtonItem(title: "Update",
-            style: .Done,
+            style: .done,
             target: self,
             action: NSSelectorFromString("updateButtonAction"))
 
-        let flexibleBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace,
+        let flexibleBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
             target: nil,
             action: nil)
 
-        let readOnlyView = UIView(frame: CGRectMake(0.0, 0.0, 150.0, 40.0))
-        let readOnlyLabel = UILabel(frame: CGRectMake(0.0, 0.0, 90.0, 40.0))
+        let readOnlyView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 150.0, height: 40.0))
+        let readOnlyLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 90.0, height: 40.0))
         readOnlyLabel.text = "Read-Only"
         readOnlyLabel.textColor = UIColor(hex: "5182AF")
-        readOnlyLabel.font = UIFont.boldSystemFontOfSize(17.0)
+        readOnlyLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
 
         readOnlyView.addSubview(readOnlyLabel)
 
-        let readOnlySwitch = UISwitch(frame: CGRectMake(90.0, 5.0, 40.0, 40.0))
+        let readOnlySwitch = UISwitch(frame: CGRect(x: 90.0, y: 5.0, width: 40.0, height: 40.0))
         readOnlySwitch.tintColor = UIColor(hex: "5182AF")
-        readOnlySwitch.on = true
+        readOnlySwitch.isOn = true
         readOnlySwitch.addTarget(self,
             action: NSSelectorFromString("readOnly:"),
-            forControlEvents: .ValueChanged)
+            for: .valueChanged)
 
         readOnlyView.addSubview(readOnlySwitch)
 
@@ -62,8 +62,8 @@ class SampleCollectionViewController: FORMViewController {
 
     // MARK: Actions
 
-    func readOnly(sender: UISwitch) {
-        if sender.on {
+    func readOnly(_ sender: UISwitch) {
+        if sender.isOn {
             self.dataSource.disable()
         } else {
             self.dataSource.enable()
@@ -71,7 +71,7 @@ class SampleCollectionViewController: FORMViewController {
     }
 
     func validateButtonAction() {
-        if self.dataSource.valid {
+        if self.dataSource.isValid {
             UIAlertView(title: "Everything is valid, you get a 🍬!",
                 message: nil,
                 delegate: nil,
@@ -82,7 +82,7 @@ class SampleCollectionViewController: FORMViewController {
     }
     
     func updateButtonAction() {
-        self.dataSource.reloadWithDictionary(["first_name" : "Hodo",
+        self.dataSource.reload(with: ["first_name" : "Hodo",
             "salary_type" : 1,
             "hourly_pay_level" : 1,
             "hourly_pay_premium_percent" : 10,

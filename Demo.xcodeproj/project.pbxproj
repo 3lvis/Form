@@ -1220,6 +1220,7 @@
 					};
 					1406BB911BEA521F00131623 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0800;
 					};
 					1406BBA21BEA522900131623 = {
 						CreatedOnToolsVersion = 7.1;
@@ -2030,6 +2031,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hyper.form.demo.Basic-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -2047,6 +2049,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hyper.form.demo.Basic-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
