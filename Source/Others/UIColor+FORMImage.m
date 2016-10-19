@@ -4,7 +4,7 @@
 
 @implementation UIColor (FORMImage)
 
-- (UIColor *)form_image {
+- (UIImage *)form_image {
     CGRect rect = CGRectMake(0, 0, 1, 1);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

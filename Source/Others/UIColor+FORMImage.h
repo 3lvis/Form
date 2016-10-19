@@ -2,6 +2,6 @@
 
 @interface UIColor (FORMImage)
 
-- (UIColor *)form_image;
+- (UIImage *)form_image;
 
 @end
