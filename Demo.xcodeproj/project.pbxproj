@@ -346,6 +346,8 @@
 		148AAC211BEA5A26007AB12F /* FORMCustomStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMCustomStyle.h; sourceTree = "<group>"; };
 		148AAC221BEA5A26007AB12F /* FORMCustomStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMCustomStyle.m; sourceTree = "<group>"; };
 		148AAC241BEA5A3A007AB12F /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
+		148B812C1DB7FFF500381A95 /* UIColor+FORMImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+FORMImage.h"; sourceTree = "<group>"; };
+		148B812D1DB7FFF500381A95 /* UIColor+FORMImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FORMImage.m"; sourceTree = "<group>"; };
 		14B0B2421C24BC1D003633BD /* SubtitleField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleField.swift; sourceTree = "<group>"; };
 		14BD55DE1BEA538C0043A673 /* HYPImageFormFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPImageFormFieldCell.h; sourceTree = "<group>"; };
 		14BD55DF1BEA538C0043A673 /* HYPImageFormFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPImageFormFieldCell.m; sourceTree = "<group>"; };
@@ -722,6 +724,8 @@
 				140803C91BEA50AB0098C288 /* UIDevice+HYPRealOrientation.m */,
 				140803CA1BEA50AB0098C288 /* UIViewController+HYPTopViewController.h */,
 				140803CB1BEA50AB0098C288 /* UIViewController+HYPTopViewController.m */,
+				148B812C1DB7FFF500381A95 /* UIColor+FORMImage.h */,
+				148B812D1DB7FFF500381A95 /* UIColor+FORMImage.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";

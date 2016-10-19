@@ -1,5 +1,5 @@
 PODS:
-  - Form (3.11.0):
+  - Form (3.12.0):
     - Hex (~> 5.0.0)
     - HYP8601 (~> 0.7.2)
     - HYPMathParser (~> 0.4.1)
@@ -14,7 +14,6 @@ PODS:
     - NSString-HYPRelationshipParser (~> 0.4.1)
     - NSString-HYPWordExtractor (~> 1.2)
     - NSString-ZENInflections (~> 1.2)
-    - UIButton-ANDYHighlighted (~> 1.0.0)
     - UIViewController-HYPKeyboardToolbar (~> 0.1)
   - Hex (5.0.0)
   - HYP8601 (0.7.2)
@@ -35,7 +34,6 @@ PODS:
   - NSString-HYPRelationshipParser (0.4.1)
   - NSString-HYPWordExtractor (1.2)
   - NSString-ZENInflections (1.2)
-  - UIButton-ANDYHighlighted (1.0.0)
   - UIViewController-HYPKeyboardToolbar (0.1)
 
 DEPENDENCIES:
@@ -49,7 +47,7 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  Form: 40f309d8de442d457eef47f4100c18c7c5bb266a
+  Form: 2f32510ab694bf22e95471b385be9899efaf6c27
   Hex: 024e4dba5d5a9351e7817713f3dee61553258dcd
   HYP8601: 0118757c1332620748c75e7218e7b6b849686d06
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
@@ -67,7 +65,6 @@ SPEC CHECKSUMS:
   NSString-HYPRelationshipParser: 7fa231131e408f26b3b72a41157aa6620a195b4d
   NSString-HYPWordExtractor: 7484da8d2d23e41b24b0bdb218293ab349f9f650
   NSString-ZENInflections: 35ae6d02981b1def07bd6dc8e6455e827453bc29
-  UIButton-ANDYHighlighted: da99b536b0b4a3c8d86c15c9b38cb10fddb09be6
   UIViewController-HYPKeyboardToolbar: d5cb85447caeaf9e0e7ed575ce3b1576c7d53dd8
 
 PODFILE CHECKSUM: 0cd0340ed2ef2438b11e00aca5204da977f80e34
