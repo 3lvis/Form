@@ -439,14 +439,17 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 - (void)setValid:(BOOL)valid {
     _valid = valid;
 
-    if (!self.isEnabled) return;
-
-    if (valid) {
-        self.backgroundColor = self.validBackgroundColor;
-        self.layer.borderColor = self.validBorderColor.CGColor;
-    } else {
+    if (!valid) {
         self.backgroundColor = self.invalidBackgroundColor;
         self.layer.borderColor = self.invalidBorderColor.CGColor;
+    } else {
+        if (self.isEnabled) {
+            self.backgroundColor = self.validBackgroundColor;
+            self.layer.borderColor = self.validBorderColor.CGColor;
+        } else {
+            self.backgroundColor = self.disabledBackgroundColor;
+            self.layer.borderColor = self.disabledBorderColor.CGColor;
+        }
     }
 }
 

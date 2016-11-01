@@ -153,6 +153,7 @@
 		7A41ADEF1DABE0EB0063DB62 /* FORMSegmentFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A41ADEE1DABE0EB0063DB62 /* FORMSegmentFieldCell.m */; };
 		7A41ADF11DAC2FCD0063DB62 /* segment-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A41ADF01DAC2FCD0063DB62 /* segment-field.json */; };
 		7A4ABAF31D7DBE7200DAE893 /* FORMSpacerFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4ABAF21D7DBE7200DAE893 /* FORMSpacerFieldCell.m */; };
+		D52A11F41DC787F800BA9B7D /* FORMTextFieldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D52A11F31DC787F800BA9B7D /* FORMTextFieldTests.m */; };
 		DD2D2E0B94EE37F89BCDFCAC /* Pods_CocoaPods_CustomField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC79894F5CD7F07B01B8478F /* Pods_CocoaPods_CustomField.framework */; };
 		E729C7D8BA185F8123E09D36 /* Pods_CocoaPods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3E0C7B4B67ADD835AC2 /* Pods_CocoaPods_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -408,6 +409,7 @@
 		BC79894F5CD7F07B01B8478F /* Pods_CocoaPods_CustomField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_CustomField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C025B67A90F4BE1CF7A389AF /* Pods-CocoaPods-CustomField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPods-CustomField.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaPods-CustomField/Pods-CocoaPods-CustomField.release.xcconfig"; sourceTree = "<group>"; };
 		CEA50285E8AFDA9F3A506F1B /* Pods-CocoaPods-ModalForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPods-ModalForm.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaPods-ModalForm/Pods-CocoaPods-ModalForm.release.xcconfig"; sourceTree = "<group>"; };
+		D52A11F31DC787F800BA9B7D /* FORMTextFieldTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMTextFieldTests.m; sourceTree = "<group>"; };
 		DA1680CEB733AB129E652952 /* Pods-CocoaPods-iPhone-Storyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPods-iPhone-Storyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaPods-iPhone-Storyboard/Pods-CocoaPods-iPhone-Storyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		F1DE9D05F94D460F4D4CE3F5 /* Pods-CocoaPods-LoginDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPods-LoginDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaPods-LoginDemo/Pods-CocoaPods-LoginDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F8E43C00AF41F5D1C3BB40C5 /* Pods-CocoaPods-Payment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPods-Payment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaPods-Payment/Pods-CocoaPods-Payment.debug.xcconfig"; sourceTree = "<group>"; };
@@ -840,7 +842,6 @@
 				1408040A1BEA50C00098C288 /* FORMEmailFormatterTests.m */,
 				1408040B1BEA50C00098C288 /* FORMFieldTests.m */,
 				1408040C1BEA50C00098C288 /* FORMFieldValidationTests.m */,
-				1408040D1BEA50C00098C288 /* FORMFieldValuesTableViewHeaderTests.swift */,
 				1408040E1BEA50C00098C288 /* FORMFieldValueTests.m */,
 				1408040F1BEA50C00098C288 /* FORMGroupTests.m */,
 				140804101BEA50C00098C288 /* FORMInputValidatorTests.m */,
@@ -850,6 +851,8 @@
 				140804141BEA50C00098C288 /* FORMTests.m */,
 				140804151BEA50C00098C288 /* FORMTextFieldCellTests.m */,
 				140804161BEA50C00098C288 /* FORMValidatorTests.m */,
+				1408040D1BEA50C00098C288 /* FORMFieldValuesTableViewHeaderTests.swift */,
+				D52A11F31DC787F800BA9B7D /* FORMTextFieldTests.m */,
 				140804171BEA50C00098C288 /* Helpers */,
 				1408041C1BEA50C00098C288 /* JSONs */,
 				146D72B01AB782920058798C /* Supporting Files */,
@@ -1866,6 +1869,7 @@
 				140803FB1BEA50AB0098C288 /* FORMFieldValidation.m in Sources */,
 				140803E71BEA50AB0098C288 /* FORMBackgroundView.m in Sources */,
 				140803FE1BEA50AB0098C288 /* FORMSection.m in Sources */,
+				D52A11F41DC787F800BA9B7D /* FORMTextFieldTests.m in Sources */,
 				140803F21BEA50AB0098C288 /* FORMFloatInputValidator.m in Sources */,
 				140803DC1BEA50AB0098C288 /* FORMSelectFieldCell.m in Sources */,
 				140803F31BEA50AB0098C288 /* FORMInputValidator.m in Sources */,

@@ -177,6 +177,8 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
 - (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
 
+    [self validate];
+
     self.textField.hidden          = (field.sectionSeparator);
     self.textField.inputValidator  = [self.field inputValidator];
     self.textField.formatter       = [self.field formatter];
