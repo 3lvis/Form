@@ -25,7 +25,7 @@
 
     [[FORMBackgroundView appearance] setBackgroundColor:[[UIColor alloc] initWithHex:@"DAE2EA"]];
     [[FORMBackgroundView appearance] setGroupBackgroundColor:[[UIColor alloc] initWithHex:@"DAE2EA"]];
-    
+
     [[FORMSeparatorView appearance] setSeparatorColor:[[UIColor alloc] initWithHex:@"C6C6C6"]];
 
     [[FORMButtonFieldCell appearance] setBackgroundColor:[[UIColor alloc] initWithHex:@"3DAFEB"]];
@@ -93,17 +93,19 @@
     [[FORMGroupHeaderView appearance] setHeaderLabelTextColor:[[UIColor alloc] initWithHex:@"455C73"]];
     [[FORMGroupHeaderView appearance] setHeaderBackgroundColor:[UIColor whiteColor]];
 
+    [[FORMFieldValuesTableViewHeader appearance] setTitleLabelFont:[UIFont fontWithName:@"AvenirNext-Medium" size:17.0]];
+    [[FORMFieldValuesTableViewHeader appearance] setTitleLabelTextColor:[[UIColor alloc] initWithHex:@"455C73"]];
     [[FORMFieldValuesTableViewHeader appearance] setInfoLabelFont:[UIFont fontWithName:@"AvenirNext-UltraLight" size:17.0]];
     [[FORMFieldValuesTableViewHeader appearance] setInfoLabelTextColor:[[UIColor alloc] initWithHex:@"28649C"]];
 
     [[FORMTextFieldCell appearance] setTooltipLabelFont:[UIFont fontWithName:@"AvenirNext-Medium" size:14.0]];
     [[FORMTextFieldCell appearance] setTooltipLabelTextColor:[[UIColor alloc] initWithHex:@"97591D"]];
     [[FORMTextFieldCell appearance] setTooltipBackgroundColor:[[UIColor alloc] initWithHex:@"FDFD54"]];
-    
+
     [[FORMSegmentFieldCell appearance] setLabelFont:[UIFont fontWithName:@"AvenirNext-DemiBold" size:16.0]];
     [[FORMSegmentFieldCell appearance] setBackgroundColor:[[UIColor alloc] initWithHex:@"FFFFFF"]];
     [[FORMSegmentFieldCell appearance] setTintColor:[[UIColor alloc] initWithHex:@"3DAFEB"]];
-
+    
 }
 
 @end

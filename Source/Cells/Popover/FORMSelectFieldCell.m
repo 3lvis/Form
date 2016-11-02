@@ -62,7 +62,7 @@ static const NSInteger FORMSelectMaxItemCount = 6;
     } else {
         self.fieldValueLabel.text = nil;
     }
-    
+
     if ([field.accessibilityLabel length] > 0) {
         self.fieldValueLabel.accessibilityLabel = field.accessibilityLabel;
     } else {

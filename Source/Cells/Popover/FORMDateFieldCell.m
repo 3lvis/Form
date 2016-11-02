@@ -1,7 +1,8 @@
 #import "FORMDateFieldCell.h"
 #import "FORMFieldValue.h"
 
-static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
+static const CGSize FORMDatePadPopoverSize = { 320.0f, 284.0f };
+static const CGSize FORMDatePhonePopoverSize = { 320.0f, 200.0f };
 
 @interface FORMDateFieldCell () <FORMTextFieldDelegate, FORMFieldValuesTableViewControllerDelegate>
 
@@ -14,8 +15,10 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
 #pragma mark - Initializers
 
 - (instancetype)initWithFrame:(CGRect)frame {
+    CGSize popoverSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? FORMDatePadPopoverSize : FORMDatePhonePopoverSize;
+
     self = [super initWithFrame:frame contentViewController:self.fieldValuesController
-                 andContentSize:FORMDatePopoverSize];
+                 andContentSize:popoverSize];
     if (!self) return nil;
 
     self.fieldValuesController.delegate = self;
@@ -29,12 +32,15 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
 #pragma mark - Getters
 
 - (CGRect)datePickerFrame {
-    CGFloat x = 0;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        CGRect bounds = [[UIScreen mainScreen] bounds];
-        x = (bounds.size.width - FORMDatePopoverSize.width) / 2.0;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return CGRectMake(0.0f, 25.0f, FORMDatePadPopoverSize.width, 196);
     }
-    return CGRectMake(x, 25.0f, FORMDatePopoverSize.width, FORMDatePopoverSize.height);
+
+    CGFloat x = 0;
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    x = (bounds.size.width - FORMDatePhonePopoverSize.width) / 2.0;
+
+    return CGRectMake(x, 25.0f, FORMDatePhonePopoverSize.width, FORMDatePhonePopoverSize.height);
 }
 
 - (UIDatePicker *)datePicker {
@@ -80,18 +86,32 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
 - (void)updateWithField:(FORMField *)field {
     [super updateWithField:field];
 
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        FORMFieldValue *confirmValue = [FORMFieldValue new];
+        confirmValue.title = NSLocalizedString(@"Confirm", nil);
+        confirmValue.valueID = [NSDate date];
+        confirmValue.value = @YES;
+
+        FORMFieldValue *clearValue = [FORMFieldValue new];
+        clearValue.title = NSLocalizedString(@"Clear", nil);
+        clearValue.valueID = [NSDate date];
+        clearValue.value = @NO;
+
+        field.values = @[confirmValue, clearValue];
+    }
+
     if (field.value) {
         self.fieldValueLabel.text = [NSDateFormatter localizedStringFromDate:field.value
                                                                    dateStyle:[self dateStyleForField:field]
                                                                    timeStyle:[self timeStyleForField:field]];
-        
+
         self.fieldValueLabel.accessibilityValue = self.fieldValueLabel.text;
     } else {
         self.fieldValueLabel.text = nil;
     }
 
     self.iconImageView.image = [self fieldIcon];
-    
+
     if ([field.accessibilityLabel length] > 0) {
         self.date.accessibilityLabel = field.accessibilityLabel;
     } else {
@@ -139,13 +159,13 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
         case FORMFieldTypeDate:
         case FORMFieldTypeDateTime:
             return [UIImage imageNamed:@"calendar"
-                                  inBundle:bundle
-             compatibleWithTraitCollection:trait];
+                              inBundle:bundle
+         compatibleWithTraitCollection:trait];
             break;
         case FORMFieldTypeTime:
             return [UIImage imageNamed:@"clock"
                               inBundle:bundle
-         compatibleWithTraitCollection:trait];
+            compatibleWithTraitCollection:trait];
             break;
         default:
             return nil;
@@ -157,8 +177,9 @@ static const CGSize FORMDatePopoverSize = { 320.0f, 200.0f };
 
 - (void)updateContentViewController:(UIViewController *)contentViewController withField:(FORMField *)field {
     self.fieldValuesController.field = self.field;
-    
-    contentViewController.preferredContentSize = FORMDatePopoverSize;
+
+    CGSize popoverSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? FORMDatePadPopoverSize : FORMDatePhonePopoverSize;
+    contentViewController.preferredContentSize = popoverSize;
 
     if (self.field.info) {
         CGRect frame = self.datePicker.frame;

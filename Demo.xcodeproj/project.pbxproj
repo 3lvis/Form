@@ -378,7 +378,6 @@
 		14BD56211BEA57920043A673 /* HYPDemoLoginCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPDemoLoginCollectionViewController.m; sourceTree = "<group>"; };
 		14BD56221BEA57920043A673 /* JSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JSON.json; sourceTree = "<group>"; };
 		14BD56261BEA57FE0043A673 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		14C0AF7F1BD6D4230009ECBE /* .slather.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .slather.yml; sourceTree = "<group>"; };
 		14C0AF801BD6D4230009ECBE /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		14C0AF811BD6D4230009ECBE /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		14C0AF821BD6D4230009ECBE /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
@@ -982,7 +981,6 @@
 		14C136501AB7849300B7B07A /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				14C0AF7F1BD6D4230009ECBE /* .slather.yml */,
 				14C0AF801BD6D4230009ECBE /* .travis.yml */,
 				14C0AF811BD6D4230009ECBE /* CHANGELOG.md */,
 				14C0AF821BD6D4230009ECBE /* CONTRIBUTING.md */,
