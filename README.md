@@ -317,6 +317,36 @@ You have to specify and iPhone specific JSON file. Something [like this](https:/
 
 We went for this approach since it gives the developers more control over the UI. You have to add a check for device and present the JSON file that matches the device.
 
+### How do I dynamically update a field's values?
+
+The method below takes two arguments: `fieldID` and `options`. The `fieldID` argument is simply an NSString with the ID of the field to update. The `options` argument is an NSArray of NSDictionaries with `valueID`, `valueName`, and `defaultValue` keys. A similar approach could be used to take data from another method or web-service and update your field with it. This approach can be used with `select` and `segment` fields.
+
+```objc
+- (void)updateSelectField:(NSString *)fieldID withOptions:(NSArray *)options {
+    __weak typeof(self)weakSelf = self;
+
+    [self.dataSource fieldWithID:fieldID includingHiddenFields:YES completion:^(FORMField *field, NSIndexPath *indexPath) {
+        NSMutableArray *values = @[].mutableCopy;
+
+        for (NSDictionary *option in options) {
+            FORMFieldValue *fieldValue = [FORMFieldValue new];
+            fieldValue.valueID = [option valueForKey:@"valueID"];
+            fieldValue.title = [option valueForKey:@"valueName"];
+            fieldValue.default = [option valueForKey:@"defaultValue"];
+            fieldValue.field = field;
+
+            [values addObject:fieldValue];
+        }
+
+        field.values = [values copy];
+
+        if (!field.hidden) {
+          [weakSelf.dataSource reloadFieldsAtIndexPaths:@[indexPath]];
+        }
+    }];
+}
+```
+
 ## Installation
 
 **Form** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
