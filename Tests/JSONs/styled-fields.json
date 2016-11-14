@@ -110,6 +110,19 @@
                 "width":40,
                 "height":1
               },
+            },
+            {
+              "id":"styled_switch",
+              "title":"Styled Switch",
+              "type":"switch",
+              "styles":{
+                "background_color":"#FFFFFF",
+                "tint_color":"#FF0000"
+              },
+              "size":{
+                "width":40,
+                "height":1
+              },
             }
           ]
         }

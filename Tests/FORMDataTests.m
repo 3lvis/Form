@@ -824,6 +824,18 @@
     XCTAssertEqualObjects(formData.values[@"segment"], @"part_1");
 }
 
+- (void)testInitializatingASwitchFieldWithAValueInTheJSON {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"switch-field.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    
+    FORMData *formData = [[FORMData alloc] initWithJSON:JSON
+                                          initialValues:nil
+                                       disabledFieldIDs:nil
+                                               disabled:NO];
+    
+    XCTAssertEqualObjects(formData.values[@"switch"], @YES);
+}
+
 - (void)testFieldStyles {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"styled-fields.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];
@@ -861,6 +873,14 @@
     XCTAssertEqualObjects([field.styles objectForKey:@"tint_color"], @"#FF0000");
     XCTAssertEqualObjects([field.styles objectForKey:@"font"], @"AvenirNext-DemiBold");
     XCTAssertEqualObjects([field.styles objectForKey:@"font_size"], @"16.0");
+    
+    // Switch Styles
+    field = [formData fieldWithID:@"styled_switch" includingHiddenFields:NO];
+    XCTAssertNotNil(field);
+    XCTAssertNotNil(field.styles);
+    
+    XCTAssertEqualObjects([field.styles objectForKey:@"tint_color"], @"#FF0000");
+    XCTAssertEqualObjects([field.styles objectForKey:@"background_color"], @"#FFFFFF");
     
     // Text Field Styles
     field = [formData fieldWithID:@"styled_text_field" includingHiddenFields:NO];

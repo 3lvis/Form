@@ -186,6 +186,29 @@
     XCTAssertTrue(field.disabled);
     XCTAssertNil(field.validation);
     XCTAssertFalse(field.hidden);
+    
+    field = [[FORMField alloc] initWithDictionary:@{@"id": @"switch_control",
+                                                    @"title": @"Switch Control",
+                                                    @"accessibility_label": @"Accessibility label",
+                                                    @"type": @"switch",
+                                                    @"value": @YES,
+                                                    @"size": @{@"width": @30,
+                                                               @"height": @1}
+                                                    }
+                                         position:1
+                                         disabled:NO
+                                disabledFieldsIDs:@[@"switch_control"]];
+    XCTAssertNotNil(field);
+    XCTAssertEqualObjects(field.typeString, @"switch");
+    XCTAssertTrue(field.type == FORMFieldTypeSwitch);
+    
+    XCTAssertEqualObjects(field.value, @YES);
+    XCTAssertEqualObjects(field.accessibilityLabel, @"Accessibility label");
+    
+    XCTAssertTrue(CGSizeEqualToSize(field.size, CGSizeMake(30, 1)));
+    XCTAssertTrue(field.disabled);
+    XCTAssertNil(field.validation);
+    XCTAssertFalse(field.hidden);
 }
 
 - (void)testInputValidator {

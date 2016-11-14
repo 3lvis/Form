@@ -1,0 +1,23 @@
+[
+  {
+    "id": "group",
+    "title": "Group",
+    "sections": [
+      {
+        "id": "section",
+        "fields": [
+          {
+            "id": "switch",
+            "title": "My Switch",
+            "type": "switch",
+            "value": true,
+            "size": {
+              "width": 25,
+              "height": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

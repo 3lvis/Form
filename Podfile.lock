@@ -44,7 +44,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Form:
-    :path: "."
+    :path: .
 
 SPEC CHECKSUMS:
   Form: 21a16754109802adc59e764a287b6983949cc0c6
