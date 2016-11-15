@@ -34,7 +34,7 @@
 }
 
 - (BOOL)identifierIsEqualTo:(id)identifier {
-    if (!identifier) return NO;
+    if (!identifier || !self.valueID) return NO;
 
     if ([self.valueID isKindOfClass:[NSString class]]) {
         return [self.valueID isEqualToString:identifier];
