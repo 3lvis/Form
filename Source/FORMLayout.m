@@ -57,7 +57,7 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGRect bounds = self.collectionView.bounds;
-    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *attributes = [[super layoutAttributesForItemAtIndexPath:indexPath] copy];
 
     BOOL isFirstItemInSection = (indexPath.item == 0);
     CGFloat layoutWidth = CGRectGetWidth(self.collectionView.frame) - self.sectionInset.left - self.sectionInset.right;
@@ -142,7 +142,7 @@
         if (fields.count > 0) {
             NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:fields.count - 1
                                                              inSection:indexPath.section];
-            UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:lastIndexPath];
+            UICollectionViewLayoutAttributes *attributes = [[super layoutAttributesForItemAtIndexPath:lastIndexPath] copy];
             height = attributes.frame.origin.y + attributes.frame.size.height - (self.sectionInset.bottom);
         }
 
@@ -151,7 +151,7 @@
             if (previousFields.count > 0) {
                 NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:previousFields.count - 1
                                                                      inSection:indexPath.section - 1];
-                UICollectionViewLayoutAttributes *previousAttribute = [super layoutAttributesForItemAtIndexPath:previousIndexPath];
+                UICollectionViewLayoutAttributes *previousAttribute = [[super layoutAttributesForItemAtIndexPath:previousIndexPath] copy];
                 height -= previousAttribute.frame.origin.y + previousAttribute.frame.size.height + self.sectionInset.bottom;
             } else {
                 NSIndexPath *previousIndexPath = [NSIndexPath indexPathForItem:previousFields.count - 1
