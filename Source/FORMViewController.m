@@ -41,6 +41,8 @@
         [self.collectionView numberOfSections];
     }
 
+    self.collectionView.bounces = NO;
+    
     [self hyp_addKeyboardToolbarObservers];
 
     return self;
