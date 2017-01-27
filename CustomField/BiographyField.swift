@@ -8,7 +8,7 @@ protocol BiographyFieldDelegate: class {
 class BiographyField: FORMBaseFieldCell {
     static let CellIdentifier = "BiographyFieldIdentifier"
 
-    weak var biographyFieldDelegate: BiographyFieldDelegate? = nil
+    weak var biographyFieldDelegate: BiographyFieldDelegate?
 
     lazy var textView: UITextView = {
         let horizontalMargin = 10.0

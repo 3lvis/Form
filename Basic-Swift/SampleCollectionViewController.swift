@@ -3,8 +3,8 @@ import Form.FORMViewController
 
 class SampleCollectionViewController: FORMViewController {
 
-    init(JSON: [String : AnyObject], initialValues: [String : AnyObject]) {
-        super.init(json: JSON, andInitialValues: initialValues, disabled:true)
+    init(JSON: [String: AnyObject], initialValues: [String: AnyObject]) {
+        super.init(json: JSON, andInitialValues: initialValues, disabled: true)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -21,18 +21,18 @@ class SampleCollectionViewController: FORMViewController {
         super.viewDidAppear(animated)
 
         let validateButtonItem = UIBarButtonItem(title: "Validate",
-            style: .done,
-            target: self,
-            action: NSSelectorFromString("validateButtonAction"))
+                                                 style: .done,
+                                                 target: self,
+                                                 action: NSSelectorFromString("validateButtonAction"))
 
         let updateButtonItem = UIBarButtonItem(title: "Update",
-            style: .done,
-            target: self,
-            action: NSSelectorFromString("updateButtonAction"))
+                                               style: .done,
+                                               target: self,
+                                               action: NSSelectorFromString("updateButtonAction"))
 
         let flexibleBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-            target: nil,
-            action: nil)
+                                                    target: nil,
+                                                    action: nil)
 
         let readOnlyView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 150.0, height: 40.0))
         let readOnlyLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 90.0, height: 40.0))
@@ -46,8 +46,8 @@ class SampleCollectionViewController: FORMViewController {
         readOnlySwitch.tintColor = UIColor(hex: "5182AF")
         readOnlySwitch.isOn = true
         readOnlySwitch.addTarget(self,
-            action: NSSelectorFromString("readOnly:"),
-            for: .valueChanged)
+                                 action: NSSelectorFromString("readOnly:"),
+                                 for: .valueChanged)
 
         readOnlyView.addSubview(readOnlySwitch)
 
@@ -75,18 +75,18 @@ class SampleCollectionViewController: FORMViewController {
             self.dataSource.validate()
         }
     }
-    
+
     func updateButtonAction() {
-        self.dataSource.reload(with: ["first_name" : "Hodo",
-            "salary_type" : 1,
-            "hourly_pay_level" : 1,
-            "hourly_pay_premium_percent" : 10,
-            "hourly_pay_premium_currency" : 10,
-            "start_date" : NSNull(),
-            "username": 1
-            ])
-        
+        self.dataSource.reload(with: [
+            "first_name": "Hodo",
+            "salary_type": 1,
+            "hourly_pay_level": 1,
+            "hourly_pay_premium_percent": 10,
+            "hourly_pay_premium_currency": 10,
+            "start_date": NSNull(),
+            "username": 1,
+        ])
+
         self.collectionView?.reloadData()
     }
 }
-

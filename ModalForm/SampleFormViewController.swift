@@ -5,7 +5,7 @@ import NSJSONSerialization_ANDYJSONFile
 class SampleFormViewController: FORMViewController {
     init() {
         let JSON = JSONSerialization.jsonObject(withContentsOfFile: "Form.json")
-        super.init(json: JSON, andInitialValues: nil, disabled:false)
+        super.init(json: JSON, andInitialValues: nil, disabled: false)
     }
 
     required init?(coder aDecoder: NSCoder) {

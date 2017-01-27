@@ -2,8 +2,8 @@ import UIKit
 import Form.FORMViewController
 
 class RootController: FORMViewController {
-    init(JSON: [String : AnyObject], initialValues: [String : AnyObject]) {
-        super.init(json: JSON, andInitialValues: initialValues, disabled:false)
+    init(JSON: [String: AnyObject], initialValues: [String: AnyObject]) {
+        super.init(json: JSON, andInitialValues: initialValues, disabled: false)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -26,7 +26,6 @@ class RootController: FORMViewController {
                 let cell = collectionView!.dequeueReusableCell(withReuseIdentifier: SubtitleField.CellIdentifier, for: indexPath!) as! SubtitleField
                 return cell
             }
-
 
             return nil
         }
