@@ -1,6 +1,6 @@
 {
   "name": "Form",
-  "version": "3.12.1",
+  "version": "3.13.0",
   "summary": "JSON driven form",
   "homepage": "https://github.com/hyperoslo/Form",
   "license": {
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/hyperoslo/Form.git",
-    "tag": "3.12.1"
+    "tag": "3.13.0"
   },
   "resource_bundles": {
     "Form": [
