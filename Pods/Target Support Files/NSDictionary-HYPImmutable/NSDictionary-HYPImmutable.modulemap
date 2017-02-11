@@ -1,0 +1,6 @@
+framework module NSDictionary_HYPImmutable {
+  umbrella header "NSDictionary-HYPImmutable-umbrella.h"
+
+  export *
+  module * { export * }
+}

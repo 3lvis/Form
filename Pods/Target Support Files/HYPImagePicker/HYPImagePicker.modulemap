@@ -1,0 +1,6 @@
+framework module HYPImagePicker {
+  umbrella header "HYPImagePicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

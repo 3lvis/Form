@@ -1,0 +1,6 @@
+framework module NSString_ZENInflections {
+  umbrella header "NSString-ZENInflections-umbrella.h"
+
+  export *
+  module * { export * }
+}

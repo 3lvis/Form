@@ -1,0 +1,6 @@
+framework module UIViewController_HYPKeyboardToolbar {
+  umbrella header "UIViewController-HYPKeyboardToolbar-umbrella.h"
+
+  export *
+  module * { export * }
+}

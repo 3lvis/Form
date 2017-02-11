@@ -1,0 +1,6 @@
+framework module NSString_HYPFormula {
+  umbrella header "NSString-HYPFormula-umbrella.h"
+
+  export *
+  module * { export * }
+}

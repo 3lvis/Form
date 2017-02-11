@@ -1,0 +1,6 @@
+framework module Pods_CocoaPods_LoginDemo {
+  umbrella header "Pods-CocoaPods-LoginDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

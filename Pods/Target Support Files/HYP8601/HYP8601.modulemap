@@ -1,0 +1,6 @@
+framework module HYP8601 {
+  umbrella header "HYP8601-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module HYPMathParser {
+  umbrella header "HYPMathParser-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module NSObject_HYPTesting {
+  umbrella header "NSObject-HYPTesting-umbrella.h"
+
+  export *
+  module * { export * }
+}

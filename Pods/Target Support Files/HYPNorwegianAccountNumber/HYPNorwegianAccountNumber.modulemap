@@ -1,0 +1,6 @@
+framework module HYPNorwegianAccountNumber {
+  umbrella header "HYPNorwegianAccountNumber-umbrella.h"
+
+  export *
+  module * { export * }
+}

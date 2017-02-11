@@ -1,0 +1,6 @@
+framework module Pods_CocoaPods_iPhone_Storyboard {
+  umbrella header "Pods-CocoaPods-iPhone-Storyboard-umbrella.h"
+
+  export *
+  module * { export * }
+}

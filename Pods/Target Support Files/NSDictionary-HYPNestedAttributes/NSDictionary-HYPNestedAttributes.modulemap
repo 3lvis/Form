@@ -1,0 +1,6 @@
+framework module NSDictionary_HYPNestedAttributes {
+  umbrella header "NSDictionary-HYPNestedAttributes-umbrella.h"
+
+  export *
+  module * { export * }
+}

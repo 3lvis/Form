@@ -1,0 +1,6 @@
+framework module NSString_HYPContainsString {
+  umbrella header "NSString-HYPContainsString-umbrella.h"
+
+  export *
+  module * { export * }
+}
