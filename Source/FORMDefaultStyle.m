@@ -12,8 +12,7 @@
 #import "FORMSegmentFieldCell.h"
 #import "FORMSwitchFieldCell.h"
 #import "FORMBaseFieldCell.h"
-
-@import Hex;
+#import "UIColor+Hex.h"
 
 @implementation FORMDefaultStyle
 

@@ -1,6 +1,6 @@
 #import "HYPImageFormFieldCell.h"
 
-@import Hex;
+#import "UIColor+Hex.h"
 
 static const CGFloat HYPImageFormFieldTopMargin = 20.0f;
 static const CGFloat HYPImageFormFieldHorizontalMargin = 10.0f;

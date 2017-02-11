@@ -1,5 +1,5 @@
 #import "FORMGroupHeaderView.h"
-@import Hex;
+#import "UIColor+Hex.h"
 
 static NSString * const FORMHeaderLabelFontKey = @"font";
 static NSString * const FORMHeaderLabelFontSizeKey = @"font_size";

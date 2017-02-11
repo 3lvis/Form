@@ -12,7 +12,7 @@
 #import "NSObject+HYPTesting.h"
 #import "UIViewController+HYPKeyboardToolbar.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
-@import Hex;
+#import "UIColor+Hex.h"
 
 @interface HYPSampleCollectionViewController () <HYPImagePickerDelegate>
 

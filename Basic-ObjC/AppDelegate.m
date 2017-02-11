@@ -7,7 +7,7 @@
 
 #import "NSObject+HYPTesting.h"
 #import "NSJSONSerialization+ANDYJSONFile.h"
-@import Hex;
+#import "UIColor+Hex.h"
 
 @interface AppDelegate ()
 

@@ -1,5 +1,5 @@
 #import "FORMSegmentFieldCell.h"
-@import Hex;
+#import "UIColor+Hex.h"
 #import "FORMFieldValue.h"
 
 static NSString * const FORMSegmentLabelFontKey = @"font";

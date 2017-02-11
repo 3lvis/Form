@@ -1,7 +1,6 @@
 import UIKit
 import Form.FORMDefaultStyle
 import NSJSONSerialization_ANDYJSONFile
-import Hex
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

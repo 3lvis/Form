@@ -1,5 +1,5 @@
 #import "FORMSpacerFieldCell.h"
-@import Hex;
+#import "UIColor+Hex.h"
 
 @interface FORMSpacerFieldCell ()
 

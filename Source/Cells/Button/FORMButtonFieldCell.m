@@ -1,6 +1,6 @@
 #import "FORMButtonFieldCell.h"
-@import Hex;
 #import "UIColor+FORMImage.h"
+#import "UIColor+Hex.h"
 
 static NSString * const FORMButtonTitleLabelFontKey = @"font";
 static NSString * const FORMButtonTitleLabelFontSizeKey = @"font_size";

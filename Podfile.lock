@@ -1,6 +1,5 @@
 PODS:
   - Form (3.12.1):
-    - Hex (~> 5.0.0)
     - HYP8601 (~> 0.7.2)
     - HYPMathParser (~> 0.4.1)
     - HYPNorwegianAccountNumber (~> 1.2.1)
@@ -15,7 +14,6 @@ PODS:
     - NSString-HYPWordExtractor (~> 1.2)
     - NSString-ZENInflections (~> 1.2)
     - UIViewController-HYPKeyboardToolbar (~> 0.1)
-  - Hex (5.0.0)
   - HYP8601 (0.7.2)
   - HYPImagePicker (0.3)
   - HYPMathParser (0.4.1)
@@ -47,8 +45,7 @@ EXTERNAL SOURCES:
     :path: .
 
 SPEC CHECKSUMS:
-  Form: f66b7743e6ab31fc723c3bfe52c299a183564c5c
-  Hex: 024e4dba5d5a9351e7817713f3dee61553258dcd
+  Form: 858d75c6a6264b97d70c9f803a19b9b8222f0cad
   HYP8601: 0118757c1332620748c75e7218e7b6b849686d06
   HYPImagePicker: 5c6e463ec15ae6b647355eb11f3f310342616fbf
   HYPMathParser: 146a4981427a0b46cc9af823b210bfefdf0a7107

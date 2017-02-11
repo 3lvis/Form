@@ -12,7 +12,7 @@
 #import "FORMBaseFieldCell.h"
 #import "FORMTextField.h"
 
-@import Hex;
+#import "UIColor+Hex.h"
 
 @implementation FORMCustomStyle
 

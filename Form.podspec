@@ -21,7 +21,6 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation'
   s.requires_arc = true
 
-  s.dependency 'Hex', '~> 5.0.0'
   s.dependency 'HYP8601', '~> 0.7.2'
   s.dependency 'HYPMathParser', '~> 0.4.1'
   s.dependency 'HYPNorwegianAccountNumber', '~> 1.2.1'

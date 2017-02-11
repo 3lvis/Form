@@ -27,9 +27,6 @@
   "frameworks": "Foundation",
   "requires_arc": true,
   "dependencies": {
-    "Hex": [
-      "~> 5.0.0"
-    ],
     "HYP8601": [
       "~> 0.7.2"
     ],

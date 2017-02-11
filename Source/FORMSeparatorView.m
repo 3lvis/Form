@@ -1,5 +1,5 @@
 #import "FORMSeparatorView.h"
-@import Hex;
+#import "UIColor+Hex.h"
 
 static NSString * const FORMSeparatorColorKey = @"separator_color";
 static NSString * const FORMSeparatorHeightKey = @"height";

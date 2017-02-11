@@ -51,6 +51,7 @@
 #import "DDMathEvaluator+FORM.h"
 #import "FORMPostalCodeManager.h"
 #import "UIColor+FORMImage.h"
+#import "UIColor+Hex.h"
 #import "UIDevice+HYPRealOrientation.h"
 #import "UIViewController+HYPTopViewController.h"
 #import "FORMBankAccountNumberValidator.h"

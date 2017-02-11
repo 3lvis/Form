@@ -1,5 +1,5 @@
 #import "FORMSwitchFieldCell.h"
-@import Hex;
+#import "UIColor+Hex.h"
 #import "FORMFieldValue.h"
 
 static NSString * const FORMSwitchTintColorKey = @"tint_color";

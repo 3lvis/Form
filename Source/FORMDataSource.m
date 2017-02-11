@@ -22,8 +22,7 @@
 #import "NSDictionary+ANDYSafeValue.h"
 #import "NSDictionary+HYPNestedAttributes.h"
 #import "NSString+HYPRelationshipParser.h"
-
-@import Hex;
+#import "UIColor+Hex.h"
 
 static const CGFloat FORMDispatchTime = 0.05f;
 
