@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
 [![License](https://img.shields.io/cocoapods/l/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
 [![Platform](https://img.shields.io/cocoapods/p/Form.svg?style=flat)](http://cocoadocs.org/docsets/Form)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/hyperoslo/Form)
 
 The most flexible and powerful way to build a form on iOS.
 
@@ -396,6 +397,8 @@ pod 'Form'
 ## Contributing
 
 Please check our [playbook](https://github.com/hyperoslo/playbook/blob/master/GIT_AND_GITHUB.md) for guidelines on contributing.
+
+Detailed discussions regarding code might be easier to have in the [Form channel on Gitter](https://gitter.im/hyperoslo/Form).
 
 ## Credits
 
