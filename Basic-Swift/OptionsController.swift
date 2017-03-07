@@ -2,17 +2,17 @@ import UIKit
 
 class OptionsController: UITableViewController {
     enum OptionType: Int {
-        case simple
+        case simpleField
+        case calculatedField
 
         static var count: Int {
-            return 1
+            return 2
         }
 
         var title: String {
             switch self {
-            case .simple:
-                return "Simple"
-
+            case .simpleField: return "Simple field"
+            case .calculatedField: return "Calculated field"
             }
         }
     }
@@ -44,8 +44,11 @@ class OptionsController: UITableViewController {
         let type = OptionType(rawValue: indexPath.row)!
 
         switch type {
-        case .simple:
-            let controller = SimpleController()
+        case .simpleField:
+            let controller = LoadedFromJSONFileController(fileName: "simple-field.json")
+            self.navigationController?.pushViewController(controller, animated: true)
+        case .calculatedField:
+            let controller = LoadedFromJSONFileController(fileName: "calculated-field.json")
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }

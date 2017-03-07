@@ -1,12 +1,12 @@
 import UIKit
 import Form.FORMViewController
 
-class SimpleController: FORMViewController {
+class LoadedFromJSONFileController: FORMViewController {
 
-    init() {
-        let JSON = JSONSerialization.jsonObject(withContentsOfFile: "forms.json") as! [String: AnyObject]
+    init(fileName: String) {
+        let JSON = JSONSerialization.jsonObject(withContentsOfFile: fileName)
 
-        super.init(json: JSON, andInitialValues: [String: AnyObject](), disabled: false)
+        super.init(json: JSON, andInitialValues: [String: AnyObject](), disabled: true)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -23,6 +23,7 @@ class SimpleController: FORMViewController {
     }
 
     func printValues() {
+        self.dataSource.enable()
         print(self.dataSource.values)
     }
 }

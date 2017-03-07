@@ -10,7 +10,6 @@
             {
               "id":"first_name",
               "title":"First name",
-              "info":"First name Info",
               "type":"name",
               "size":{
                 "width":30,
