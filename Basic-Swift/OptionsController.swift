@@ -4,15 +4,17 @@ class OptionsController: UITableViewController {
     enum OptionType: Int {
         case simpleField
         case calculatedField
+        case customValidator
 
         static var count: Int {
-            return 2
+            return 3
         }
 
         var title: String {
             switch self {
             case .simpleField: return "Simple field"
             case .calculatedField: return "Calculated field"
+            case .customValidator: return "Custom validator"
             }
         }
     }
@@ -49,6 +51,9 @@ class OptionsController: UITableViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         case .calculatedField:
             let controller = LoadedFromJSONFileController(fileName: "calculated-field.json")
+            self.navigationController?.pushViewController(controller, animated: true)
+        case .customValidator:
+            let controller = LoadedFromJSONFileController(fileName: "custom-validator.json")
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }

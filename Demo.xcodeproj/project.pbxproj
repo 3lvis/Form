@@ -122,6 +122,8 @@
 		148AAC1F1BEA5A1F007AB12F /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AAC1E1BEA5A1F007AB12F /* RootController.swift */; };
 		148AAC231BEA5A26007AB12F /* FORMCustomStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 148AAC221BEA5A26007AB12F /* FORMCustomStyle.m */; };
 		148AAC251BEA5A3A007AB12F /* forms.json in Resources */ = {isa = PBXBuildFile; fileRef = 148AAC241BEA5A3A007AB12F /* forms.json */; };
+		1490AEC71E6F683200390F96 /* custom-validator.json in Resources */ = {isa = PBXBuildFile; fileRef = 1490AEC61E6F683200390F96 /* custom-validator.json */; };
+		1490AECB1E6F69F300390F96 /* FORMBrandedValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1490AECA1E6F69F300390F96 /* FORMBrandedValidator.m */; };
 		1498FDD01E6F5D8100C29DFB /* LoadedFromJSONFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498FDCF1E6F5D8100C29DFB /* LoadedFromJSONFileController.swift */; };
 		1498FDD21E6F629600C29DFB /* calculated-field.json in Resources */ = {isa = PBXBuildFile; fileRef = 1498FDD11E6F629600C29DFB /* calculated-field.json */; };
 		14B0B2431C24BC1D003633BD /* SubtitleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B0B2421C24BC1D003633BD /* SubtitleField.swift */; };
@@ -353,6 +355,10 @@
 		148AAC241BEA5A3A007AB12F /* forms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forms.json; sourceTree = "<group>"; };
 		148B812C1DB7FFF500381A95 /* UIColor+FORMImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+FORMImage.h"; sourceTree = "<group>"; };
 		148B812D1DB7FFF500381A95 /* UIColor+FORMImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FORMImage.m"; sourceTree = "<group>"; };
+		1490AEC61E6F683200390F96 /* custom-validator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "custom-validator.json"; sourceTree = "<group>"; };
+		1490AEC81E6F69F300390F96 /* Basic-Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Basic-Swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		1490AEC91E6F69F300390F96 /* FORMBrandedValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORMBrandedValidator.h; sourceTree = "<group>"; };
+		1490AECA1E6F69F300390F96 /* FORMBrandedValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORMBrandedValidator.m; sourceTree = "<group>"; };
 		1498FDCF1E6F5D8100C29DFB /* LoadedFromJSONFileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadedFromJSONFileController.swift; sourceTree = "<group>"; };
 		1498FDD11E6F629600C29DFB /* calculated-field.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "calculated-field.json"; sourceTree = "<group>"; };
 		14A7BCB4CC2A98B141271002 /* Pods-CocoaPods-LoginDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPods-LoginDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaPods-LoginDemo/Pods-CocoaPods-LoginDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -523,6 +529,9 @@
 				1406BB941BEA521F00131623 /* AppDelegate.swift */,
 				14BD55F81BEA54260043A673 /* OptionsController.swift */,
 				1498FDCF1E6F5D8100C29DFB /* LoadedFromJSONFileController.swift */,
+				1490AEC91E6F69F300390F96 /* FORMBrandedValidator.h */,
+				1490AECA1E6F69F300390F96 /* FORMBrandedValidator.m */,
+				1490AEC81E6F69F300390F96 /* Basic-Swift-Bridging-Header.h */,
 				14BD55F41BEA54260043A673 /* Resources */,
 				1406BB961BEA521F00131623 /* Assets.xcassets */,
 				1406BB981BEA521F00131623 /* LaunchScreen.storyboard */,
@@ -910,6 +919,7 @@
 			children = (
 				14BD55F51BEA54260043A673 /* simple-field.json */,
 				1498FDD11E6F629600C29DFB /* calculated-field.json */,
+				1490AEC61E6F683200390F96 /* custom-validator.json */,
 				14BD55F61BEA54260043A673 /* Images */,
 			);
 			path = Resources;
@@ -1246,7 +1256,7 @@
 					};
 					1406BB911BEA521F00131623 = {
 						CreatedOnToolsVersion = 7.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 					1406BBA21BEA522900131623 = {
 						CreatedOnToolsVersion = 7.1;
@@ -1320,6 +1330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1406BB971BEA521F00131623 /* Assets.xcassets in Resources */,
+				1490AEC71E6F683200390F96 /* custom-validator.json in Resources */,
 				1406BB9A1BEA521F00131623 /* LaunchScreen.storyboard in Resources */,
 				1498FDD21E6F629600C29DFB /* calculated-field.json in Resources */,
 				14BD55FB1BEA54260043A673 /* camera-icon@2x.png in Resources */,
@@ -1788,6 +1799,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1490AECB1E6F69F300390F96 /* FORMBrandedValidator.m in Sources */,
 				14BD55FC1BEA54260043A673 /* OptionsController.swift in Sources */,
 				1498FDD01E6F5D8100C29DFB /* LoadedFromJSONFileController.swift in Sources */,
 				1406BB951BEA521F00131623 /* AppDelegate.swift in Sources */,
@@ -2061,6 +2073,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Basic-Swift/Info.plist";
@@ -2068,6 +2081,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hyper.form.demo.Basic-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Basic-Swift/Basic-Swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -2080,6 +2094,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Basic-Swift/Info.plist";
@@ -2087,6 +2102,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hyper.form.demo.Basic-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Basic-Swift/Basic-Swift-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

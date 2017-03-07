@@ -1,0 +1,24 @@
+{
+  "groups":[
+    {
+      "id":"group-1",
+      "title":"Group 1",
+      "sections":[
+        {
+          "id":"section-1",
+          "fields":[
+            {
+              "id":"branded",
+              "title":"branded",
+              "type":"text",
+              "size":{
+                "width":30,
+                "height":1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
