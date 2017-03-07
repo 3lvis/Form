@@ -6,7 +6,7 @@ class LoadedFromJSONFileController: FORMViewController {
     init(fileName: String) {
         let JSON = JSONSerialization.jsonObject(withContentsOfFile: fileName)
 
-        super.init(json: JSON, andInitialValues: [String: AnyObject](), disabled: true)
+        super.init(json: JSON, andInitialValues: [String: AnyObject](), disabled: false)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -23,7 +23,6 @@ class LoadedFromJSONFileController: FORMViewController {
     }
 
     func printValues() {
-        self.dataSource.enable()
         print(self.dataSource.values)
     }
 }
