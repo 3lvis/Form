@@ -22,6 +22,7 @@
 
 @property (nonatomic) DDMathEvaluator *evaluator;
 @property (nonatomic) BOOL disabledForm;
+@property (nonatomic) id JSON;
 
 @end
 
@@ -34,6 +35,7 @@
     self = [super init];
     if (!self) return nil;
 
+    _JSON = JSON;
     _disabledFieldsIDs = disabledFieldIDs;
     _disabledForm = disabled;
 
@@ -684,6 +686,16 @@ includingHiddenFields:(BOOL)includingHiddenFields
                         if ([section.sectionID isEqualToString:field.section.sectionID]) {
                             foundSection = YES;
                             NSInteger fieldIndex = [field indexInSectionUsingGroups:self.groups];
+                            
+                            NSArray *fieldIDs = [self fieldIDsFromJSON];
+                            if ([fieldIDs containsObject:field.fieldID]) {
+                                fieldIndex = [fieldIDs indexOfObject:field.fieldID];
+                                
+                                while([section.fields count] < fieldIndex) {
+                                    fieldIndex--;
+                                }
+                            }
+                            
                             [section.fields insertObject:field atIndex:fieldIndex];
                             [section resetFieldPositions];
                         }
@@ -1220,6 +1232,36 @@ includingHiddenFields:(BOOL)includingHiddenFields
 
         [self.values andy_setValue:value forKey:field.fieldID];
     }
+}
+
+- (NSArray *)fieldIDsFromJSON {
+    NSMutableArray *fieldIDs = [[_JSON valueForKeyPath:@"groups.sections.fields.id"] mutableCopy];
+    [fieldIDs removeObjectIdenticalTo:[NSNull null]];
+    
+    return [self flatten:fieldIDs];
+}
+
+- (NSArray *)flatten:(NSArray *)array {
+    __weak NSArray *nestedArray = array;
+    __block NSArray *(^flatten)(NSArray *) = ^NSArray *(NSArray *input) {
+        NSMutableArray *result = [NSMutableArray array];
+        
+        for (id obj in input) {
+            if ([obj isKindOfClass:[NSArray class]]) {
+                [result addObjectsFromArray:flatten(obj)];
+            } else {
+                [result addObject:obj];
+            }
+        }
+        
+        if (input == nestedArray) {
+            flatten = nil;
+        }
+        
+        return result;
+    };
+    
+    return flatten(array);
 }
 
 @end
