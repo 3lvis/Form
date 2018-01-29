@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) NSString *info;
 @property (nonatomic) NSString *placeholder;
 @property (nonatomic) BOOL hidden;
+@property (nonatomic) BOOL readonly;
 @property (nonatomic) CGSize size;
 @property (nonatomic) NSNumber *position;
 @property (nonatomic) id value;

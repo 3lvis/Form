@@ -239,14 +239,15 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 
 - (BOOL)textFieldShouldBeginEditing:(FORMTextField *)textField {
     BOOL selectable = (textField.type == FORMTextFieldTypeSelect ||
-                       textField.type == FORMTextFieldTypeDate);
+                       textField.type == FORMTextFieldTypeDate ||
+                       !textField.readonly);
 
     if (selectable &&
         [self.textFieldDelegate respondsToSelector:@selector(textFormFieldDidBeginEditing:)]) {
         [self.textFieldDelegate textFormFieldDidBeginEditing:self];
     }
 
-    return !selectable;
+    return !textField.readonly && !selectable;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -285,7 +286,8 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
 
 - (BOOL)canBecomeFirstResponder {
     BOOL isTextField = (self.type != FORMTextFieldTypeSelect &&
-                        self.type != FORMTextFieldTypeDate);
+                        self.type != FORMTextFieldTypeDate &&
+                        !self.readonly);
 
     return (isTextField && self.enabled) ?: [super canBecomeFirstResponder];
 }
