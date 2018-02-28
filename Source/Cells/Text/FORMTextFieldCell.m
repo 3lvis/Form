@@ -189,6 +189,7 @@ static NSString * const FORMTooltipBackgroundColorKey = @"tooltip_background_col
     self.textField.rawText         = [self rawTextForField:field];
     self.textField.info            = field.info;
     self.textField.styles          = field.styles;
+    self.textField.data            = field.data;
     self.textField.placeholder     = field.disabled ? nil : field.placeholder;
     self.textField.readonly        = field.readonly;
     

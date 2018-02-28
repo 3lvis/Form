@@ -81,6 +81,10 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
     _styles = styles;
     
+    NSDictionary *data = [dictionary andy_valueForKey:@"data"];
+    
+    _data = data;
+    
     _accessibilityLabel = NSLocalizedString([dictionary andy_valueForKey:@"accessibility_label"], nil);
 
     BOOL shouldDisable = (disabled || [disabledFieldsIDs containsObject:_fieldID]);
@@ -370,10 +374,11 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n — Field: %@ —\n title: %@\n info: %@\n placeholder: %@\n size: %@\n position: %@\n fieldValue: %@\n type: %@\n values: %@\n disabled: %@\n initiallyDisabled: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n valid: %@\n sectionSeparator: %@\n",
+    return [NSString stringWithFormat:@"\n — Field: %@ —\n title: %@\n info: %@\n placeholder: %@\n size: %@\n position: %@\n fieldValue: %@\n type: %@\n values: %@\n disabled: %@\n initiallyDisabled: %@\n minimumDate: %@\n maximumDate: %@\n validations: %@\n formula: %@\n valid: %@\n sectionSeparator: %@\n readonly: %@\n data: %@ \n",
             self.fieldID, self.title, self.info, self.placeholder, NSStringFromCGSize(self.size), self.position,
             self.value, self.typeString, self.values, (self.disabled) ? @"YES" : @"NO", (self.initiallyDisabled) ? @"YES" : @"NO", self.minimumDate,
-            self.maximumDate, self.validation, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO"];
+            self.maximumDate, self.validation, self.formula, (self.valid) ? @"YES" : @"NO", (self.sectionSeparator) ? @"YES" : @"NO",
+            (self.readonly) ? @"YES" : @"NO", self.data];
 }
 
 @end

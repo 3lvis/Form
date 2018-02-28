@@ -30,7 +30,6 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) NSString *info;
 @property (nonatomic) NSString *placeholder;
 @property (nonatomic) BOOL hidden;
-@property (nonatomic) BOOL readonly;
 @property (nonatomic) CGSize size;
 @property (nonatomic) NSNumber *position;
 @property (nonatomic) id value;
@@ -39,6 +38,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) FORMFieldType type;
 @property (nonatomic) NSArray *values;
 @property (nonatomic, getter=isDisabled) BOOL disabled;
+@property (nonatomic, getter=isReadonly) BOOL readonly;
 @property (nonatomic) BOOL initiallyDisabled;
 @property (nonatomic) NSDate *minimumDate;
 @property (nonatomic) NSDate *maximumDate;
@@ -47,6 +47,7 @@ typedef NS_ENUM(NSInteger, FORMFieldType) {
 @property (nonatomic) NSString *formula;
 @property (nonatomic) NSArray *targets;
 @property (nonatomic) NSDictionary *styles;
+@property (nonatomic) NSDictionary *data;
 @property (nonatomic) NSString *accessibilityLabel;
 
 @property (nonatomic) FORMSection *section;

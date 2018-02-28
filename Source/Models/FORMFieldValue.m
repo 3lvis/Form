@@ -16,6 +16,7 @@
     _value = [dictionary andy_valueForKey:@"value"];
     _defaultValue = [[dictionary andy_valueForKey:@"default"] boolValue];
     _accessibilityLabel = NSLocalizedString([dictionary andy_valueForKey:@"accessibility_label"], nil);
+    _data = [dictionary andy_valueForKey:@"data"];
     
     NSMutableArray *targets = [NSMutableArray new];
 

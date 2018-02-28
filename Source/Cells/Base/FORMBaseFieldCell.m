@@ -69,16 +69,31 @@ static NSString * const FORMHeadingLabelTextColorKey = @"heading_label_text_colo
     [self updateWithField:field];
 }
 
+- (void)setReadonly:(BOOL)readonly {
+    _readonly = readonly;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:FORMHideTooltips
+                                                        object:@(!readonly)];
+    
+    [self updateFieldWithReadonly:readonly];
+}
+
 #pragma mark - Overwritables
 
 - (void)updateFieldWithDisabled:(BOOL)disabled {
     abort();
 }
 
+- (void)updateFieldWithReadonly:(BOOL)readonly {
+    _readonly = readonly;
+}
+
 - (void)updateWithField:(FORMField *)field {
     self.headingLabel.hidden = (field.sectionSeparator);
     self.headingLabel.text = field.title;
     self.styles = field.styles;
+    self.readonly = field.readonly;
+    self.data = field.data;
 
     if (field.sectionSeparator) {
         self.separatorView.styles = field.styles;

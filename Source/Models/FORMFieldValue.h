@@ -7,6 +7,7 @@
 @property (nonatomic) id valueID;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *info;
+@property (nonatomic, copy) NSDictionary *data;
 @property (nonatomic) NSArray *targets;
 @property (nonatomic) FORMField *field;
 @property (nonatomic) NSNumber *value;

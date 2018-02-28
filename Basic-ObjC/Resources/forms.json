@@ -8,6 +8,19 @@
           "id":"personal-details-0",
           "fields":[
             {
+              "id":"employee_id",
+              "title":"Employee ID",
+              "type":"count",
+              "readonly":true,
+              "size":{
+                "width":30,
+                "height":1
+              },
+              "validations":{
+                "required":true
+              }
+            },
+            {
               "id":"first_name",
               "title":"First name",
               "accessibility_label":"First Name Accessibility Label",

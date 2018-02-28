@@ -422,6 +422,10 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
     }
 }
 
+- (void)setReadonly:(BOOL)readonly {
+    _readonly = readonly;
+}
+
 - (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
 

@@ -23,11 +23,14 @@ static const CGFloat FORMFieldCellLeftMargin = 10.0f;
 
 @property (nonatomic) FORMField *field;
 @property (nonatomic, getter = isDisabled) BOOL disabled;
+@property (nonatomic, getter = isReadonly) BOOL readonly;
 @property (nonatomic, copy) NSDictionary *styles;
+@property (nonatomic, copy) NSDictionary *data;
 
 @property (nonatomic, weak) id <FORMBaseFieldCellDelegate> delegate;
 
 - (void)updateFieldWithDisabled:(BOOL)disabled;
+- (void)updateFieldWithReadonly:(BOOL)readonly;
 - (void)updateWithField:(FORMField *)field;
 - (void)validate;
 
