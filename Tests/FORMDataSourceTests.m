@@ -109,6 +109,34 @@
     XCTAssertTrue(totalField.disabled);
 }
 
+- (void)testInitiallyReadwrite {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:NO];
+    
+    FORMField *totalField = [dataSource fieldWithID:@"total" includingHiddenFields:YES];
+    XCTAssertFalse(totalField.readonly);
+}
+
+- (void)testInitiallyReadonly {
+    NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
+                                                             inBundle:[NSBundle bundleForClass:[self class]]];
+    
+    FORMDataSource *dataSource = [[FORMDataSource alloc] initWithJSON:JSON
+                                                       collectionView:nil
+                                                               layout:nil
+                                                               values:nil
+                                                             disabled:NO];
+    
+    FORMField *employeeDependentsField = [dataSource fieldWithID:@"employee_dependents" includingHiddenFields:YES];
+    XCTAssertTrue(employeeDependentsField.readonly);
+}
+
 - (void)testUpdatingTargetValue {
     NSArray *JSON = [NSJSONSerialization JSONObjectWithContentsOfFile:@"forms.json"
                                                              inBundle:[NSBundle bundleForClass:[self class]]];

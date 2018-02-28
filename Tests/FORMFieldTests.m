@@ -48,6 +48,7 @@
     XCTAssertFalse(field.disabled);
     XCTAssertTrue(field.hidden);
     XCTAssertNotNil(field.validation);
+    XCTAssertFalse(field.readonly);
 
     field = [[FORMField alloc] initWithDictionary:@{@"id": @"start_date",
                                                     @"title": @"Start date",
@@ -269,6 +270,28 @@
                                                     disabled:NO
                                            disabledFieldsIDs:nil];
     XCTAssertEqualObjects(field.inputTypeString, @"number");
+}
+
+- (void)testReadonly {
+    FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id" : @"number",
+                                                               @"type" : @"count",
+                                                               @"readonly" : @YES}
+                                                    position:0
+                                                    disabled:NO
+                                           disabledFieldsIDs:nil];
+    XCTAssertTrue(field.readonly);
+}
+
+- (void)testData {
+    FORMField *field = [[FORMField alloc] initWithDictionary:@{@"id" : @"number",
+                                                               @"type" : @"count",
+                                                               @"data" : @{
+                                                                 @"remote_id": @"1234"
+                                                               }}
+                                                    position:0
+                                                    disabled:NO
+                                           disabledFieldsIDs:nil];
+    XCTAssertEqualObjects([field.data objectForKey:@"remote_id"], @"1234");
 }
 
 @end

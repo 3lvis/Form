@@ -11,7 +11,6 @@
               "id":"employee_id",
               "title":"Employee ID",
               "type":"count",
-              "readonly":true,
               "size":{
                 "width":30,
                 "height":1
@@ -61,6 +60,19 @@
                 "height":1
               },
               "formula":"first_name last_name"
+            },
+            {
+              "id":"employee_dependents",
+              "title":"Employee ID",
+              "type":"count",
+              "readonly":true,
+              "size":{
+                "width":30,
+                "height":1
+              },
+              "validations":{
+                "required":true
+              }
             }
           ]
         },
