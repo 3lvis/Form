@@ -40,10 +40,10 @@ static NSString * const FORMSegmentBackgroundColorKey = @"background_color";
     self.segment.enabled = !field.disabled;
     self.disabled = field.disabled;
     
-    NSInteger *selectedIndex = [self.segment selectedSegmentIndex];
+    NSInteger selectedIndex = [self.segment selectedSegmentIndex];
     
     [self.segment removeAllSegments];
-    
+
     [field.values enumerateObjectsUsingBlock:^(FORMFieldValue *value, NSUInteger index, BOOL *stop) {
         [self.segment insertSegmentWithTitle:value.title atIndex:index animated:NO];
 

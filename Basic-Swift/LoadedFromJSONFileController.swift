@@ -22,7 +22,7 @@ class LoadedFromJSONFileController: FORMViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Values", style: .done, target: self, action: #selector(printValues))
     }
 
-    func printValues() {
+    @objc func printValues() {
         print(self.dataSource.values)
     }
 }

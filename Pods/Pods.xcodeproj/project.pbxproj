@@ -1450,31 +1450,31 @@
 		03B9FA96988B5BC8CC4E56CD /* NSString-HYPRelationshipParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString-HYPRelationshipParser-dummy.m"; sourceTree = "<group>"; };
 		03BCCA1EB2DEF046CA836F2A /* DDExpressionRewriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDExpressionRewriter.m; path = DDMathParser/DDExpressionRewriter.m; sourceTree = "<group>"; };
 		047B9D0B2BA0F08DA9F21594 /* NSDictionary_ANDYSafeValue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSDictionary_ANDYSafeValue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0514F7FDC95BAB580EFECB45 /* plus@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "plus@2x.png"; sourceTree = "<group>"; };
+		0514F7FDC95BAB580EFECB45 /* plus@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
 		059521A021726C5CCC9A467B /* FORMBackgroundView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMBackgroundView.h; sourceTree = "<group>"; };
-		05E71810EC2A431D387F0F29 /* Pods-CocoaPods-Payment.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CocoaPods-Payment.modulemap"; sourceTree = "<group>"; };
+		05E71810EC2A431D387F0F29 /* Pods-CocoaPods-Payment.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CocoaPods-Payment.modulemap"; sourceTree = "<group>"; };
 		074C0BC350D08C44DA4C5260 /* FORMFloatInputValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMFloatInputValidator.h; sourceTree = "<group>"; };
 		079429B0A32E26B1AD6A86C1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		082678451CDD92AB9CC51131 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
 		08F5A59BC2FEF0F6A0C62BA7 /* NSDictionary-ANDYSafeValue-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary-ANDYSafeValue-prefix.pch"; sourceTree = "<group>"; };
 		0950209DE9B6904860F83DD2 /* FORMSwitchFieldCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMSwitchFieldCell.h; sourceTree = "<group>"; };
 		098D60C5F092B30BD48AE401 /* UIViewController_HYPKeyboardToolbar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIViewController_HYPKeyboardToolbar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BBE4F8100F3BF38332147B5 /* Pods_CocoaPods_Basic_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CocoaPods_Basic_Swift.framework; path = "Pods-CocoaPods-Basic-Swift.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C11FCF87C30F13C48734C20 /* HYP8601.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HYP8601.modulemap; sourceTree = "<group>"; };
+		0BBE4F8100F3BF38332147B5 /* Pods_CocoaPods_Basic_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_Basic_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C11FCF87C30F13C48734C20 /* HYP8601.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HYP8601.modulemap; sourceTree = "<group>"; };
 		0C310314A67ABBF2A9A6B3BF /* Pods-CocoaPods-iPhone-Storyboard-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-iPhone-Storyboard-frameworks.sh"; sourceTree = "<group>"; };
 		0C5939CA5EDC81C7E7A5893B /* DDMathEvaluator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMathEvaluator.m; path = DDMathParser/DDMathEvaluator.m; sourceTree = "<group>"; };
 		0D6C36CF5E0904DD2FB377BB /* Pods-CocoaPods-iPhone-Storyboard-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-iPhone-Storyboard-resources.sh"; sourceTree = "<group>"; };
 		0E142837DEB12C3634DA4071 /* Pods-CocoaPods-ModalForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-ModalForm.debug.xcconfig"; sourceTree = "<group>"; };
 		0EFC34D34B31EEC9755D1F54 /* NSString+HYPContainsString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+HYPContainsString.h"; path = "Source/NSString+HYPContainsString.h"; sourceTree = "<group>"; };
 		0F61129C5F5F61E8010DACD8 /* Pods-CocoaPods-ModalForm-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-ModalForm-frameworks.sh"; sourceTree = "<group>"; };
-		1061A0694CAE5A048187D542 /* NSString_HYPWordExtractor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSString_HYPWordExtractor.framework; path = "NSString-HYPWordExtractor.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1061A0694CAE5A048187D542 /* NSString_HYPWordExtractor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSString_HYPWordExtractor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		110C9CF5472575E2CE65DBB8 /* FORMSeparatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMSeparatorView.h; sourceTree = "<group>"; };
 		11B6D1BFABDD980FDA26383C /* FORMTooltipView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMTooltipView.h; sourceTree = "<group>"; };
 		12FDC9FC63F59D9CF564B725 /* HYPImagePicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYPImagePicker-prefix.pch"; sourceTree = "<group>"; };
 		1377F024BE534FB92596AB05 /* NSDictionary+HYPNestedAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+HYPNestedAttributes.h"; path = "Source/NSDictionary+HYPNestedAttributes.h"; sourceTree = "<group>"; };
 		13CB32E898CD8D79E04198A7 /* FORMDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMDataSource.m; sourceTree = "<group>"; };
 		161BA2B8E8BB1EBA017501E3 /* Pods-CocoaPods-Basic-ObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-Basic-ObjC.release.xcconfig"; sourceTree = "<group>"; };
-		161F158B52E8AF3BBC017CA6 /* calendar@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "calendar@2x.png"; sourceTree = "<group>"; };
+		161F158B52E8AF3BBC017CA6 /* calendar@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
 		163D1E73E56B8DF5505F945D /* Pods-CocoaPods-LoginDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CocoaPods-LoginDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		16A54DBA93ED335C3559CA1E /* NSString_HYPRelationshipParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSString_HYPRelationshipParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		171D466FB2019F52920EDCEA /* NSString+HYPWordExtractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+HYPWordExtractor.h"; path = "Source/NSString+HYPWordExtractor.h"; sourceTree = "<group>"; };
@@ -1490,7 +1490,7 @@
 		1C9A142BAF66032EF7560D1B /* Pods-CocoaPods-Basic-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CocoaPods-Basic-Swift-umbrella.h"; sourceTree = "<group>"; };
 		1CACFBFB9604886028D61BED /* HYPMathParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HYPMathParser-dummy.m"; sourceTree = "<group>"; };
 		1E162F4C58D336EB8CAE7869 /* FORMSection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMSection.m; sourceTree = "<group>"; };
-		1E98C9A60BB8E4EFEB9AD9D2 /* UIViewController_HYPKeyboardToolbar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UIViewController_HYPKeyboardToolbar.framework; path = "UIViewController-HYPKeyboardToolbar.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E98C9A60BB8E4EFEB9AD9D2 /* UIViewController_HYPKeyboardToolbar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIViewController_HYPKeyboardToolbar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		204E4E8B7D0BF1FBF0CA0033 /* _DDParserTerm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _DDParserTerm.h; path = DDMathParser/_DDParserTerm.h; sourceTree = "<group>"; };
 		20ACBD7A1F5B3DEBE31C5B3C /* UIViewController+HYPTopViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HYPTopViewController.m"; sourceTree = "<group>"; };
 		20C72EF315F86B32E4AFB9A7 /* FORMGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMGroup.m; sourceTree = "<group>"; };
@@ -1499,21 +1499,21 @@
 		2393C8CE6167C739157C8AA6 /* FORMPhoneNumberInputValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMPhoneNumberInputValidator.h; sourceTree = "<group>"; };
 		239DC46D01A9ABE94B40F22A /* Form-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Form-dummy.m"; sourceTree = "<group>"; };
 		242662A14075638468580EBC /* FORMPostalCodeManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMPostalCodeManager.h; sourceTree = "<group>"; };
-		24E4CC68948BE23D2FAA3EA2 /* HYP8601.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HYP8601.framework; path = HYP8601.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		24FFF1C7DD2DCE0DF95B91AF /* minus@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "minus@2x.png"; sourceTree = "<group>"; };
+		24E4CC68948BE23D2FAA3EA2 /* HYP8601.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYP8601.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24FFF1C7DD2DCE0DF95B91AF /* minus@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "minus@2x.png"; sourceTree = "<group>"; };
 		2502C71BBDDF2F7824C61FF7 /* Pods-CocoaPods-Basic-ObjC-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-Basic-ObjC-frameworks.sh"; sourceTree = "<group>"; };
 		2515D3764210E7FC6A0A85C4 /* NSDictionary-HYPNestedAttributes-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary-HYPNestedAttributes-prefix.pch"; sourceTree = "<group>"; };
 		25DBE561CDAA65A8521BB792 /* NSString-HYPContainsString.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSString-HYPContainsString.xcconfig"; sourceTree = "<group>"; };
 		2616C6C14A99FCC216D6048F /* FORMTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMTextField.m; sourceTree = "<group>"; };
 		262D0144FE7EC9CCA455DB00 /* Pods-CocoaPods-Payment-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-Payment-resources.sh"; sourceTree = "<group>"; };
 		27A2BFD338CDCAF4B23AADB7 /* NSObject-HYPTesting-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSObject-HYPTesting-dummy.m"; sourceTree = "<group>"; };
-		282DE038A5307C30F49F439A /* Form.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Form.modulemap; sourceTree = "<group>"; };
+		282DE038A5307C30F49F439A /* Form.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Form.modulemap; sourceTree = "<group>"; };
 		284964E22C2A7AB8284AD83E /* _DDVariableExpression.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _DDVariableExpression.h; path = DDMathParser/_DDVariableExpression.h; sourceTree = "<group>"; };
-		2876232C2B6C447704724785 /* NSString-HYPFormula.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSString-HYPFormula.modulemap"; sourceTree = "<group>"; };
+		2876232C2B6C447704724785 /* NSString-HYPFormula.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSString-HYPFormula.modulemap"; sourceTree = "<group>"; };
 		2910C9555FBEA441EA9DD53F /* NSDictionary-HYPImmutable-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary-HYPImmutable-dummy.m"; sourceTree = "<group>"; };
 		2A59231FE89146F61CBA321F /* FORMBankAccountNumberValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMBankAccountNumberValidator.m; sourceTree = "<group>"; };
 		2AE27090FC9E516E73B3E9DA /* FORMSocialSecurityNumberValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMSocialSecurityNumberValidator.m; sourceTree = "<group>"; };
-		2AE3B8087ED42CC4A839A8DD /* Form.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Form.framework; path = Form.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AE3B8087ED42CC4A839A8DD /* Form.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Form.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B144628C9F0C95B559CEB52 /* FORMViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMViewController.h; sourceTree = "<group>"; };
 		2B9393C4F4E63C04605A1B3A /* Pods-CocoaPods-ModalForm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CocoaPods-ModalForm-dummy.m"; sourceTree = "<group>"; };
 		2BA629FFF6C06160F06C1F5D /* HYPImagePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HYPImagePicker.h; path = Source/HYPImagePicker.h; sourceTree = "<group>"; };
@@ -1525,12 +1525,12 @@
 		2DE3934F7A17D7084A6A6795 /* Pods-CocoaPods-Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-Tests-frameworks.sh"; sourceTree = "<group>"; };
 		2E303ECE1931F53C57FB9762 /* _DDDecimalFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _DDDecimalFunctions.h; path = DDMathParser/_DDDecimalFunctions.h; sourceTree = "<group>"; };
 		2E5691F1958D6810A365220D /* DDParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDParser.m; path = DDMathParser/DDParser.m; sourceTree = "<group>"; };
-		2EA7BEB4BFC69AE6D7254022 /* Pods_CocoaPods_LoginDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CocoaPods_LoginDemo.framework; path = "Pods-CocoaPods-LoginDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EA7BEB4BFC69AE6D7254022 /* Pods_CocoaPods_LoginDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_LoginDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EE03F0604307D67B57692A /* FORMData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMData.m; sourceTree = "<group>"; };
 		3164E8264CFD1139D0DEEE1A /* NSString-HYPRelationshipParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSString-HYPRelationshipParser.xcconfig"; sourceTree = "<group>"; };
 		31F759D739F0D55631551C3E /* FORMFieldValuesTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValuesTableViewController.m; sourceTree = "<group>"; };
 		32689DF30838D479F7C4B443 /* FORMFieldValueCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMFieldValueCell.h; sourceTree = "<group>"; };
-		32B35086342C69230A6F9121 /* NSJSONSerialization-ANDYJSONFile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSJSONSerialization-ANDYJSONFile.modulemap"; sourceTree = "<group>"; };
+		32B35086342C69230A6F9121 /* NSJSONSerialization-ANDYJSONFile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSJSONSerialization-ANDYJSONFile.modulemap"; sourceTree = "<group>"; };
 		32D34DE508C6AD4E33A96147 /* _DDNumberTerm.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _DDNumberTerm.m; path = DDMathParser/_DDNumberTerm.m; sourceTree = "<group>"; };
 		340B67815798517CA21F88D9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		350E5E8648469F5D8C124B93 /* NSDictionary+HYPImmutable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+HYPImmutable.m"; path = "Source/NSDictionary+HYPImmutable.m"; sourceTree = "<group>"; };
@@ -1538,39 +1538,39 @@
 		36A2A7B64AE025E7E490AD05 /* Pods-CocoaPods-Basic-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CocoaPods-Basic-Swift-dummy.m"; sourceTree = "<group>"; };
 		3706ADF4C43ED480C5C39EE6 /* NSString+HYPContainsString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+HYPContainsString.m"; path = "Source/NSString+HYPContainsString.m"; sourceTree = "<group>"; };
 		371153E6EED98D2D595BB672 /* HYP8601.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYP8601.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3822A76E9A4866B5DCEFDA6C /* NSObject_HYPTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSObject_HYPTesting.framework; path = "NSObject-HYPTesting.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3822A76E9A4866B5DCEFDA6C /* NSObject_HYPTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSObject_HYPTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		386E576983C5858A04AD51AD /* DDMathStringToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMathStringToken.h; path = DDMathParser/DDMathStringToken.h; sourceTree = "<group>"; };
 		3A8EBD6AAAFA5439AC91F146 /* FORMValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMValidator.m; sourceTree = "<group>"; };
 		3DABADA4C69A347C4E190FDF /* _DDRewriteRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _DDRewriteRule.h; path = DDMathParser/_DDRewriteRule.h; sourceTree = "<group>"; };
 		3E2D454BB595AB39C85CA883 /* Pods-CocoaPods-ModalForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-ModalForm.release.xcconfig"; sourceTree = "<group>"; };
 		3EB0A7998354EA5F017A9FA5 /* _DDFunctionTerm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _DDFunctionTerm.h; path = DDMathParser/_DDFunctionTerm.h; sourceTree = "<group>"; };
 		403465D00A04D100314A86E0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40E2F7FEE2E610C9812B30E7 /* arrow_down@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
+		40E2F7FEE2E610C9812B30E7 /* arrow_down@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
 		427D7DBD360EE0CB2B80C537 /* HYPNorwegianAccountNumber.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HYPNorwegianAccountNumber.xcconfig; sourceTree = "<group>"; };
 		4290EB6D179E9814B0CD6B3C /* FORMField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMField.h; sourceTree = "<group>"; };
 		42AFE190D344E3A60C60A68E /* FORMTooltipView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMTooltipView.m; sourceTree = "<group>"; };
-		42B20F8EAD938A33EDEC01D8 /* NSString_HYPFormula.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSString_HYPFormula.framework; path = "NSString-HYPFormula.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4356DDD02B4129CFFA9D3414 /* Pods-CocoaPods-ModalForm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CocoaPods-ModalForm.modulemap"; sourceTree = "<group>"; };
+		42B20F8EAD938A33EDEC01D8 /* NSString_HYPFormula.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSString_HYPFormula.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4356DDD02B4129CFFA9D3414 /* Pods-CocoaPods-ModalForm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CocoaPods-ModalForm.modulemap"; sourceTree = "<group>"; };
 		43C232EA05EA3AFFE432363A /* FORMNameInputValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMNameInputValidator.m; sourceTree = "<group>"; };
 		444B91869BA6C2BB8A0F7D81 /* FORMLayoutAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMLayoutAttributes.h; sourceTree = "<group>"; };
 		446A95640808DD32495A1010 /* HYPNorwegianSSN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPNorwegianSSN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45FC12238DCA098D8E0AB2BC /* DDMathEvaluator+FORM.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DDMathEvaluator+FORM.m"; sourceTree = "<group>"; };
 		4653501ABC7C15D260295FE4 /* FORMFieldValue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValue.m; sourceTree = "<group>"; };
 		46DCD6B90CCCCCC9A97C05A9 /* Pods-CocoaPods-Basic-ObjC-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CocoaPods-Basic-ObjC-acknowledgements.plist"; sourceTree = "<group>"; };
-		46E20A3E0D8BCC218EC30BDF /* Pods_CocoaPods_iPhone_Storyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CocoaPods_iPhone_Storyboard.framework; path = "Pods-CocoaPods-iPhone-Storyboard.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46E20A3E0D8BCC218EC30BDF /* Pods_CocoaPods_iPhone_Storyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_iPhone_Storyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		471CFB826571C874070B99EA /* FORMPhoneNumberFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMPhoneNumberFormatter.h; sourceTree = "<group>"; };
-		48988FAFDF451B5CB417BABA /* Pods_CocoaPods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CocoaPods_Tests.framework; path = "Pods-CocoaPods-Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48988FAFDF451B5CB417BABA /* Pods_CocoaPods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F517FD21F42274917D176A /* NSString+ZENInflections.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+ZENInflections.h"; path = "NSString-ZENInflections/NSString+ZENInflections.h"; sourceTree = "<group>"; };
 		49D8C72D8B5D87CA42DB2CBB /* NSDictionary+HYPImmutable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+HYPImmutable.h"; path = "Source/NSDictionary+HYPImmutable.h"; sourceTree = "<group>"; };
 		49ED6F04282E86512BAB0013 /* FORMFieldValueCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValueCell.m; sourceTree = "<group>"; };
 		4C123D78C03315DF1E1BE0E9 /* NSDictionary-ANDYSafeValue-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary-ANDYSafeValue-umbrella.h"; sourceTree = "<group>"; };
 		4D7D2B268439AE930ED0E958 /* HYPNorwegianAccountNumber-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYPNorwegianAccountNumber-prefix.pch"; sourceTree = "<group>"; };
 		4D993F62930BB3E63696952A /* NSString+HYPRelationshipParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+HYPRelationshipParser.m"; path = "Source/NSString+HYPRelationshipParser.m"; sourceTree = "<group>"; };
-		4E4793F09234DFAB8D11A83A /* NSString-ZENInflections.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSString-ZENInflections.modulemap"; sourceTree = "<group>"; };
+		4E4793F09234DFAB8D11A83A /* NSString-ZENInflections.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSString-ZENInflections.modulemap"; sourceTree = "<group>"; };
 		4E653EBCEA7B7134D5095D8F /* Pods-CocoaPods-ModalForm-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CocoaPods-ModalForm-acknowledgements.plist"; sourceTree = "<group>"; };
 		50793B5CB7E0735A3F0EBAE1 /* Pods-CocoaPods-iPhone-Storyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-iPhone-Storyboard.release.xcconfig"; sourceTree = "<group>"; };
 		50F28273F84E975DA06B2857 /* Pods-CocoaPods-LoginDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-LoginDemo-resources.sh"; sourceTree = "<group>"; };
-		511A99F7D41AA41DA37FDE66 /* NSDictionary-HYPNestedAttributes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSDictionary-HYPNestedAttributes.modulemap"; sourceTree = "<group>"; };
+		511A99F7D41AA41DA37FDE66 /* NSDictionary-HYPNestedAttributes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSDictionary-HYPNestedAttributes.modulemap"; sourceTree = "<group>"; };
 		517C53110D7DFAC819890A72 /* FORMClassFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMClassFactory.m; sourceTree = "<group>"; };
 		5195A339817810D522545320 /* NSDate+HYPString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+HYPString.m"; path = "Source/NSDate+HYPString.m"; sourceTree = "<group>"; };
 		52CB0FC2773FD8341D3985A6 /* DDExpressionRewriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDExpressionRewriter.h; path = DDMathParser/DDExpressionRewriter.h; sourceTree = "<group>"; };
@@ -1579,11 +1579,11 @@
 		54060F143087DDC24D76C900 /* FORMTarget.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMTarget.m; sourceTree = "<group>"; };
 		543AA112E2968741FAD7B19C /* FORMSocialSecurityNumberInputValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMSocialSecurityNumberInputValidator.h; sourceTree = "<group>"; };
 		5459980F7FEB84529C1C6D6C /* NSDictionary-HYPNestedAttributes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary-HYPNestedAttributes-dummy.m"; sourceTree = "<group>"; };
-		57091C0B49E8585E044D1B79 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		57091C0B49E8585E044D1B79 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5773F3D351FE6C4EDEC5E040 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		579D73543D0204461B53437D /* FORMPostalCodeInputValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMPostalCodeInputValidator.h; sourceTree = "<group>"; };
 		57CF8468400C266E8CB1D6E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57E75BE1463011157554DDDA /* Pods_CocoaPods_ModalForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CocoaPods_ModalForm.framework; path = "Pods-CocoaPods-ModalForm.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57E75BE1463011157554DDDA /* Pods_CocoaPods_ModalForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_ModalForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57EBC4A89DF0563772B1AA5D /* NSString-ZENInflections-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString-ZENInflections-umbrella.h"; sourceTree = "<group>"; };
 		587FB8B8F35365CEBEF53084 /* Pods-CocoaPods-ModalForm-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-ModalForm-resources.sh"; sourceTree = "<group>"; };
 		58DDA888BDCD178E9F5D815E /* NSString-HYPWordExtractor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString-HYPWordExtractor-prefix.pch"; sourceTree = "<group>"; };
@@ -1592,7 +1592,7 @@
 		59ACB7AA21221F66350E3F25 /* _DDVariableExpression.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _DDVariableExpression.m; path = DDMathParser/_DDVariableExpression.m; sourceTree = "<group>"; };
 		5B72AEF7177FBF7D96222EEE /* _DDPrecisionFunctionEvaluator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _DDPrecisionFunctionEvaluator.m; path = DDMathParser/_DDPrecisionFunctionEvaluator.m; sourceTree = "<group>"; };
 		5C5DA33D053FC91AD787AE3C /* Pods-CocoaPods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		5C8A1FFDC7006214AFD1804B /* NSDictionary_ANDYSafeValue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSDictionary_ANDYSafeValue.framework; path = "NSDictionary-ANDYSafeValue.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C8A1FFDC7006214AFD1804B /* NSDictionary_ANDYSafeValue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSDictionary_ANDYSafeValue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DAE72966A14E5BA44FBBBAF /* FORMSocialSecurityNumberFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMSocialSecurityNumberFormatter.h; sourceTree = "<group>"; };
 		5DC7B9676589D47730BB4323 /* NSDate-HYPString-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDate-HYPString-umbrella.h"; sourceTree = "<group>"; };
 		5E5B1898113CC33086DFC965 /* Pods-CocoaPods-iPhone-Storyboard-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CocoaPods-iPhone-Storyboard-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -1615,11 +1615,11 @@
 		673376841C7D668C76C7A87F /* FORMSwitchFieldCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMSwitchFieldCell.m; sourceTree = "<group>"; };
 		678A777838D603B5618BDAEC /* FORMPopoverFieldCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMPopoverFieldCell.m; sourceTree = "<group>"; };
 		6865FB3228D26D0B1D358F6B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68E240508E6E55B108EEB938 /* NSDate-HYPString.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSDate-HYPString.modulemap"; sourceTree = "<group>"; };
-		692309CC41D1B42A1AB0F1F8 /* NSDate_HYPString.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSDate_HYPString.framework; path = "NSDate-HYPString.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68E240508E6E55B108EEB938 /* NSDate-HYPString.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSDate-HYPString.modulemap"; sourceTree = "<group>"; };
+		692309CC41D1B42A1AB0F1F8 /* NSDate_HYPString.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSDate_HYPString.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		696A81B7355CC0EBBCB49D7D /* DDParserTypes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDParserTypes.m; path = DDMathParser/DDParserTypes.m; sourceTree = "<group>"; };
-		69B3B5F54EB3379C064A2A5A /* NSDictionary_HYPNestedAttributes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSDictionary_HYPNestedAttributes.framework; path = "NSDictionary-HYPNestedAttributes.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A18A9F6978D486860D1AE67 /* Pods-CocoaPods-CustomField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CocoaPods-CustomField.modulemap"; sourceTree = "<group>"; };
+		69B3B5F54EB3379C064A2A5A /* NSDictionary_HYPNestedAttributes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSDictionary_HYPNestedAttributes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A18A9F6978D486860D1AE67 /* Pods-CocoaPods-CustomField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CocoaPods-CustomField.modulemap"; sourceTree = "<group>"; };
 		6BBA8FABDB4D70B70CA11309 /* DDExpression.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDExpression.h; path = DDMathParser/DDExpression.h; sourceTree = "<group>"; };
 		6BC8A3DB96B9BCD68C2F0DE4 /* NSDictionary-HYPNestedAttributes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary-HYPNestedAttributes-umbrella.h"; sourceTree = "<group>"; };
 		6CC52BD995185AD7A2CCA462 /* FORMDateFieldCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMDateFieldCell.m; sourceTree = "<group>"; };
@@ -1642,7 +1642,7 @@
 		742A1DF2A94B608DF7D72C85 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7461CA71FB4373B6A5D556B7 /* UIViewController+HYPTopViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HYPTopViewController.h"; sourceTree = "<group>"; };
 		749ED01E683E739CBD1E1CC1 /* DDMathParserMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMathParserMacros.h; path = DDMathParser/DDMathParserMacros.h; sourceTree = "<group>"; };
-		74DDE75908D7274D3DA38064 /* Pods-CocoaPods-iPhone-Storyboard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CocoaPods-iPhone-Storyboard.modulemap"; sourceTree = "<group>"; };
+		74DDE75908D7274D3DA38064 /* Pods-CocoaPods-iPhone-Storyboard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CocoaPods-iPhone-Storyboard.modulemap"; sourceTree = "<group>"; };
 		758913D0702B6A170CDDF753 /* Pods-CocoaPods-CustomField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CocoaPods-CustomField-dummy.m"; sourceTree = "<group>"; };
 		75D77FAAA221C4E1275EC896 /* Pods-CocoaPods-Payment-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-Payment-frameworks.sh"; sourceTree = "<group>"; };
 		76898011805774D770B8A8E0 /* NSString_HYPWordExtractor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSString_HYPWordExtractor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1660,15 +1660,15 @@
 		7F82F542EE2978B007A428C7 /* NSDate-HYPString.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSDate-HYPString.xcconfig"; sourceTree = "<group>"; };
 		7F93B338153631510444B2E5 /* _DDOperatorTerm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _DDOperatorTerm.h; path = DDMathParser/_DDOperatorTerm.h; sourceTree = "<group>"; };
 		81289B2B4EDC10821EC1A02A /* DDMathStringToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMathStringToken.m; path = DDMathParser/DDMathStringToken.m; sourceTree = "<group>"; };
-		814FAE5E28F2F962159CA89D /* clock@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "clock@2x.png"; sourceTree = "<group>"; };
+		814FAE5E28F2F962159CA89D /* clock@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
 		8162C746A26D88232960676F /* UIDevice+HYPRealOrientation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIDevice+HYPRealOrientation.h"; sourceTree = "<group>"; };
-		8207E2735022CF5DB5164A2A /* Pods_CocoaPods_CustomField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CocoaPods_CustomField.framework; path = "Pods-CocoaPods-CustomField.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8207E2735022CF5DB5164A2A /* Pods_CocoaPods_CustomField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_CustomField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D389136FEE5447BE1C0B1F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		836D60F92736BA3C65E601D4 /* FORMPhoneNumberInputValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMPhoneNumberInputValidator.m; sourceTree = "<group>"; };
 		83D9DA57DCB6467DAA8EE5B4 /* DDMathOperator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMathOperator.h; path = DDMathParser/DDMathOperator.h; sourceTree = "<group>"; };
 		8418883D0DECC0CF2EC83D98 /* Pods-CocoaPods-CustomField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-CustomField.debug.xcconfig"; sourceTree = "<group>"; };
 		849FE122BD8CE5B611E7BC2A /* Pods-CocoaPods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-Tests-resources.sh"; sourceTree = "<group>"; };
-		857DE0C4639618A82CAF3568 /* NSString_HYPRelationshipParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSString_HYPRelationshipParser.framework; path = "NSString-HYPRelationshipParser.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		857DE0C4639618A82CAF3568 /* NSString_HYPRelationshipParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSString_HYPRelationshipParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85C7E62CB1B8F7267483987D /* Pods-CocoaPods-Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CocoaPods-Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		85CB07025245C212DF234EB2 /* NSString+HYPFormula.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+HYPFormula.h"; path = "Source/NSString+HYPFormula.h"; sourceTree = "<group>"; };
 		8666B90B177EE30060A3A79B /* NSJSONSerialization-ANDYJSONFile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSJSONSerialization-ANDYJSONFile.xcconfig"; sourceTree = "<group>"; };
@@ -1678,7 +1678,7 @@
 		88023F3F97B07435601C074B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8826090F39D63A4B29B4D1FF /* FORMGroupHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMGroupHeaderView.m; sourceTree = "<group>"; };
 		88C78B9A5D4779095AF7032A /* FORMTextFieldCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMTextFieldCell.m; sourceTree = "<group>"; };
-		8A2C62D79F517E507E0787D9 /* NSString_HYPContainsString.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSString_HYPContainsString.framework; path = "NSString-HYPContainsString.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A2C62D79F517E507E0787D9 /* NSString_HYPContainsString.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSString_HYPContainsString.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE8D95B8B60245AE8897255 /* FORMSpacerFieldCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMSpacerFieldCell.m; sourceTree = "<group>"; };
 		8C66AA4D6790655A13B9F4F9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C7D2F96E66B8C28E67F5A43 /* FORMFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMFormatter.h; sourceTree = "<group>"; };
@@ -1693,22 +1693,22 @@
 		93CE62D2A4831B2A1A48762B /* Pods-CocoaPods-LoginDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CocoaPods-LoginDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		942F368EB3D707BF9D9D1A19 /* _DDFunctionEvaluator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _DDFunctionEvaluator.m; path = DDMathParser/_DDFunctionEvaluator.m; sourceTree = "<group>"; };
 		9678C5DE7B1CC3EC49653E20 /* FORMBaseFieldCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMBaseFieldCell.h; sourceTree = "<group>"; };
-		9690628FA3AA7DD9D7EB7CBD /* Pods_CocoaPods_Basic_ObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CocoaPods_Basic_ObjC.framework; path = "Pods-CocoaPods-Basic-ObjC.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9690628FA3AA7DD9D7EB7CBD /* Pods_CocoaPods_Basic_ObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_Basic_ObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		969A164B356EB57A1253843A /* NSString+HYPFormula.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+HYPFormula.m"; path = "Source/NSString+HYPFormula.m"; sourceTree = "<group>"; };
-		9A7C1DE474ACA92C74B32CDF /* NSDictionary-HYPImmutable.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSDictionary-HYPImmutable.modulemap"; sourceTree = "<group>"; };
+		9A7C1DE474ACA92C74B32CDF /* NSDictionary-HYPImmutable.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSDictionary-HYPImmutable.modulemap"; sourceTree = "<group>"; };
 		9B1579DBD440DD353A29AB3B /* FORMNumberInputValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMNumberInputValidator.m; sourceTree = "<group>"; };
 		9C010A1148A0847FEAB4ABA4 /* DDParserTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDParserTypes.h; path = DDMathParser/DDParserTypes.h; sourceTree = "<group>"; };
 		9D74AB01742367B733C46865 /* Pods-CocoaPods-Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CocoaPods-Tests-umbrella.h"; sourceTree = "<group>"; };
 		9D8E797582C7325E189EC546 /* FORMBankAccountNumberInputValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMBankAccountNumberInputValidator.m; sourceTree = "<group>"; };
 		9DBDF7B444CA94671AD041EF /* NSJSONSerialization-ANDYJSONFile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization-ANDYJSONFile-dummy.m"; sourceTree = "<group>"; };
-		9DE3FFA3D08A930D5983DA86 /* NSDictionary-ANDYSafeValue.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSDictionary-ANDYSafeValue.modulemap"; sourceTree = "<group>"; };
+		9DE3FFA3D08A930D5983DA86 /* NSDictionary-ANDYSafeValue.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSDictionary-ANDYSafeValue.modulemap"; sourceTree = "<group>"; };
 		9E39E8F22F43D263EBD41550 /* UIColor+Hex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		A01AB318587EC68605C55FDC /* DDTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDTypes.h; path = DDMathParser/DDTypes.h; sourceTree = "<group>"; };
 		A23F4ACD2CBF30787FFE8D06 /* Pods-CocoaPods-Basic-ObjC-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CocoaPods-Basic-ObjC-resources.sh"; sourceTree = "<group>"; };
 		A443328BB80D94B3704394D0 /* Pods-CocoaPods-CustomField-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CocoaPods-CustomField-umbrella.h"; sourceTree = "<group>"; };
-		A452396898C4D590DDDF4487 /* NSObject-HYPTesting.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSObject-HYPTesting.modulemap"; sourceTree = "<group>"; };
+		A452396898C4D590DDDF4487 /* NSObject-HYPTesting.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSObject-HYPTesting.modulemap"; sourceTree = "<group>"; };
 		A4CDBA940E727BC0947D6121 /* FORMFieldValidation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMFieldValidation.h; sourceTree = "<group>"; };
-		A4EDF7F1D7202065214FC3C2 /* Pods-CocoaPods-Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CocoaPods-Tests.modulemap"; sourceTree = "<group>"; };
+		A4EDF7F1D7202065214FC3C2 /* Pods-CocoaPods-Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CocoaPods-Tests.modulemap"; sourceTree = "<group>"; };
 		A5F004271958C13D5CFF597C /* NSString-HYPWordExtractor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString-HYPWordExtractor-dummy.m"; sourceTree = "<group>"; };
 		A62F2892E53F3CF3D4EDB5B3 /* FORMField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMField.m; sourceTree = "<group>"; };
 		A67F84D200574C7EE723773E /* Form-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Form-prefix.pch"; sourceTree = "<group>"; };
@@ -1725,13 +1725,13 @@
 		AC8F69F2EEAF48D27EEC68CB /* HYPMathParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPMathParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF18855C7FFE1DA8EDD9658 /* NSString_HYPFormula.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSString_HYPFormula.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD02C6C5D7741B0FCF666A85 /* Pods-CocoaPods-iPhone-Storyboard-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CocoaPods-iPhone-Storyboard-acknowledgements.plist"; sourceTree = "<group>"; };
-		AD28772320A7725E8C083D5E /* HYPMathParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HYPMathParser.framework; path = HYPMathParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD28772320A7725E8C083D5E /* HYPMathParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPMathParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5EEA6147F5B0EB973648CD /* HYP8601-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HYP8601-dummy.m"; sourceTree = "<group>"; };
 		ADF879498A3EB74ED5408CCC /* NSString+HYPWordExtractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+HYPWordExtractor.m"; path = "Source/NSString+HYPWordExtractor.m"; sourceTree = "<group>"; };
-		AED627B08B82E9F47B0DCB6A /* NSString_ZENInflections.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSString_ZENInflections.framework; path = "NSString-ZENInflections.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AED627B08B82E9F47B0DCB6A /* NSString_ZENInflections.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSString_ZENInflections.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF46D600BDE406E7449385E1 /* NSString_HYPContainsString.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSString_HYPContainsString.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7CCDCBC6613D16589C1597 /* FORMValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMValidator.h; sourceTree = "<group>"; };
-		B02F6F595B6C259066F57A26 /* NSDictionary_HYPImmutable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSDictionary_HYPImmutable.framework; path = "NSDictionary-HYPImmutable.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B02F6F595B6C259066F57A26 /* NSDictionary_HYPImmutable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSDictionary_HYPImmutable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03F8970E4EB226C5CA8CA94 /* FORMPostalCodeManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMPostalCodeManager.m; sourceTree = "<group>"; };
 		B145F0A462E38BA130D7A599 /* HYPMathParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HYPMathParser.xcconfig; sourceTree = "<group>"; };
 		B1CC2C6647FF40FE5F26B6FD /* HYPImagePicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HYPImagePicker-dummy.m"; sourceTree = "<group>"; };
@@ -1742,8 +1742,8 @@
 		B4AD72C4F36AFEDA3944D3F1 /* FORMSocialSecurityNumberFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMSocialSecurityNumberFormatter.m; sourceTree = "<group>"; };
 		B51BD52C0B031F96CAF393E8 /* FORMBankAccountNumberFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMBankAccountNumberFormatter.h; sourceTree = "<group>"; };
 		B52DC24794C4DF0B90BCBE53 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B57889B892A8B5DB58DE670A /* Pods-CocoaPods-Basic-ObjC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CocoaPods-Basic-ObjC.modulemap"; sourceTree = "<group>"; };
-		B5CF9F78E2F686BAF72C102F /* Pods-CocoaPods-LoginDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CocoaPods-LoginDemo.modulemap"; sourceTree = "<group>"; };
+		B57889B892A8B5DB58DE670A /* Pods-CocoaPods-Basic-ObjC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CocoaPods-Basic-ObjC.modulemap"; sourceTree = "<group>"; };
+		B5CF9F78E2F686BAF72C102F /* Pods-CocoaPods-LoginDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CocoaPods-LoginDemo.modulemap"; sourceTree = "<group>"; };
 		B6E8399B293531532279D5B3 /* NSDate+HYPString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+HYPString.h"; path = "Source/NSDate+HYPString.h"; sourceTree = "<group>"; };
 		B732129FB7B5A17135FF8DCE /* UIColor+FORMImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FORMImage.m"; sourceTree = "<group>"; };
 		B7BF96E5DD4406F3B45B6644 /* FORMLayoutAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMLayoutAttributes.m; sourceTree = "<group>"; };
@@ -1757,7 +1757,7 @@
 		BAED002703F0D6C9876728C0 /* _DDParserTerm.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _DDParserTerm.m; path = DDMathParser/_DDParserTerm.m; sourceTree = "<group>"; };
 		BB2F76C986DAE08BAE9E6A62 /* FORMFieldValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMFieldValue.h; sourceTree = "<group>"; };
 		BB3E7F1CB278004E2C02A7CA /* Pods-CocoaPods-Basic-Swift-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CocoaPods-Basic-Swift-acknowledgements.markdown"; sourceTree = "<group>"; };
-		BBDBEFD1E807A59ABFD474AB /* HYPImagePicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HYPImagePicker.modulemap; sourceTree = "<group>"; };
+		BBDBEFD1E807A59ABFD474AB /* HYPImagePicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HYPImagePicker.modulemap; sourceTree = "<group>"; };
 		BBF715E33E9CBE5956D9C480 /* FORMBaseFieldCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMBaseFieldCell.m; sourceTree = "<group>"; };
 		BC07E9AD600D978A4F8AAF10 /* FORMFieldValuesTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMFieldValuesTableViewController.h; sourceTree = "<group>"; };
 		BC6F904A346FDD6CE22C25F3 /* _DDNumberTerm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _DDNumberTerm.h; path = DDMathParser/_DDNumberTerm.h; sourceTree = "<group>"; };
@@ -1768,29 +1768,29 @@
 		BE0F49F14D958B8A44DF6E35 /* FORMTextFieldTypeManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMTextFieldTypeManager.m; sourceTree = "<group>"; };
 		BF0F2B91B894FB73652E338C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFDEC723F44D10239947D421 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C039EC1AB2B907AC66B97D87 /* NSJSONSerialization_ANDYJSONFile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NSJSONSerialization_ANDYJSONFile.framework; path = "NSJSONSerialization-ANDYJSONFile.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C039EC1AB2B907AC66B97D87 /* NSJSONSerialization_ANDYJSONFile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSJSONSerialization_ANDYJSONFile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C074C574459908B054F013F5 /* NSString-HYPWordExtractor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString-HYPWordExtractor-umbrella.h"; sourceTree = "<group>"; };
 		C10F1EAB70BD1E59D7D38D24 /* _DDFunctionTerm.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _DDFunctionTerm.m; path = DDMathParser/_DDFunctionTerm.m; sourceTree = "<group>"; };
 		C17FFAED61589BF04550A3E6 /* FORMTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMTextField.h; sourceTree = "<group>"; };
 		C185EC3025481B428B2428B7 /* HYPNorwegianSSN.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HYPNorwegianSSN.m; path = Source/HYPNorwegianSSN.m; sourceTree = "<group>"; };
 		C1EDC489F26516B209D96A14 /* FORMFieldValuesTableViewHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMFieldValuesTableViewHeader.m; sourceTree = "<group>"; };
 		C411D51F6827E2640E3F1A5E /* NSDictionary-ANDYSafeValue.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSDictionary-ANDYSafeValue.xcconfig"; sourceTree = "<group>"; };
-		C59EA989A24CDCD29A7D20D4 /* Pods_CocoaPods_Payment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CocoaPods_Payment.framework; path = "Pods-CocoaPods-Payment.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C59EA989A24CDCD29A7D20D4 /* Pods_CocoaPods_Payment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPods_Payment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F174448AAB73864DFEA7F6 /* FORMFloatFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMFloatFormatter.m; sourceTree = "<group>"; };
 		C7EF5CE83C78D02E3143AD0D /* _DDFunctionExpression.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _DDFunctionExpression.h; path = DDMathParser/_DDFunctionExpression.h; sourceTree = "<group>"; };
 		C89A591A3B70376F6ED2F162 /* Pods-CocoaPods-Payment-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CocoaPods-Payment-dummy.m"; sourceTree = "<group>"; };
 		C985C33ABF7C34FE4B605351 /* NSJSONSerialization+ANDYJSONFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSJSONSerialization+ANDYJSONFile.m"; path = "NSJSONSerialization-ANDYJSONFile/NSJSONSerialization+ANDYJSONFile.m"; sourceTree = "<group>"; };
 		CA113B3119934E62DF465BC4 /* Pods-CocoaPods-Basic-Swift-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CocoaPods-Basic-Swift-acknowledgements.plist"; sourceTree = "<group>"; };
 		CA98A8915636781F4B77BB31 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CAAD7243C473EEBE16D1F762 /* HYPNorwegianAccountNumber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HYPNorwegianAccountNumber.framework; path = HYPNorwegianAccountNumber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAAD7243C473EEBE16D1F762 /* HYPNorwegianAccountNumber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPNorwegianAccountNumber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACCF7910F2CFEBF499201B5 /* NSObject+HYPTesting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+HYPTesting.m"; path = "Source/NSObject+HYPTesting.m"; sourceTree = "<group>"; };
 		CB073EE0C958865DD931CBD2 /* FORMGroupHeaderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMGroupHeaderView.h; sourceTree = "<group>"; };
 		CBDD507392515A78CC3253E8 /* Pods-CocoaPods-Basic-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-Basic-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		CC380FEC196AA4832FFCE154 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC431EB4CFF4D08C2E2F668A /* NSString-HYPRelationshipParser-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString-HYPRelationshipParser-umbrella.h"; sourceTree = "<group>"; };
 		CD7CD217AC80F9665D500196 /* _DDVariableTerm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _DDVariableTerm.h; path = DDMathParser/_DDVariableTerm.h; sourceTree = "<group>"; };
-		CDDC23FC0709B92BE3ED7138 /* Pods-CocoaPods-Basic-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CocoaPods-Basic-Swift.modulemap"; sourceTree = "<group>"; };
-		CEA6106949295D4CDD9A1D0D /* NSString-HYPRelationshipParser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSString-HYPRelationshipParser.modulemap"; sourceTree = "<group>"; };
+		CDDC23FC0709B92BE3ED7138 /* Pods-CocoaPods-Basic-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CocoaPods-Basic-Swift.modulemap"; sourceTree = "<group>"; };
+		CEA6106949295D4CDD9A1D0D /* NSString-HYPRelationshipParser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSString-HYPRelationshipParser.modulemap"; sourceTree = "<group>"; };
 		CECE7ECB6D4CABC44F19BFCE /* FORMPostalCodeValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMPostalCodeValidator.h; sourceTree = "<group>"; };
 		CF235495D666540761E610F6 /* Pods-CocoaPods-Basic-ObjC-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CocoaPods-Basic-ObjC-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D081D127E44ED1B0754AC7E9 /* NSString-ZENInflections-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString-ZENInflections-dummy.m"; sourceTree = "<group>"; };
@@ -1798,7 +1798,7 @@
 		D3EF1B82A25578544F0148BE /* Pods-CocoaPods-Basic-ObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-Basic-ObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		D4CAE6043BCEF4BAE5F5C452 /* NSObject_HYPTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSObject_HYPTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54527CB048F23153FB1B8BB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D55177FA25E754A8C60B952B /* UIViewController-HYPKeyboardToolbar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "UIViewController-HYPKeyboardToolbar.modulemap"; sourceTree = "<group>"; };
+		D55177FA25E754A8C60B952B /* UIViewController-HYPKeyboardToolbar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "UIViewController-HYPKeyboardToolbar.modulemap"; sourceTree = "<group>"; };
 		D5A32373230A75A65B62BCC4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6E3F43EE45F72EF7817E21B /* DDMathOperator_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMathOperator_Internal.h; path = DDMathParser/DDMathOperator_Internal.h; sourceTree = "<group>"; };
 		D879B2D6FD4BDC87AC1CBE04 /* FORMBankAccountNumberFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMBankAccountNumberFormatter.m; sourceTree = "<group>"; };
@@ -1807,15 +1807,15 @@
 		D91BFB269C146327067EECAC /* Pods-CocoaPods-Payment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-Payment.debug.xcconfig"; sourceTree = "<group>"; };
 		D9D2E097E04B054AB24EBCED /* NSString-HYPContainsString-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString-HYPContainsString-prefix.pch"; sourceTree = "<group>"; };
 		DA30916AF32BA067615B27AD /* NSDictionary+ANDYSafeValue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+ANDYSafeValue.m"; path = "Source/NSDictionary+ANDYSafeValue.m"; sourceTree = "<group>"; };
-		DAE6520236AC7C8A63867826 /* Form.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Form.bundle; path = Form.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAE6520236AC7C8A63867826 /* Form.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Form.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB20F9C64624CA66D10D5DB7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB640D53E229B56A29C2DB5D /* NSObject-HYPTesting-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSObject-HYPTesting-umbrella.h"; sourceTree = "<group>"; };
 		DB74B0165AC7B3802B462996 /* Pods-CocoaPods-LoginDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-LoginDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		DB8F02CB53AC503888F7CAFC /* FORMBankAccountNumberInputValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMBankAccountNumberInputValidator.h; sourceTree = "<group>"; };
 		DC2B6E3EE4057A9ED4ED5BA2 /* HYPNorwegianSSN-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYPNorwegianSSN-umbrella.h"; sourceTree = "<group>"; };
-		DC4F4A4717A15A261D61288E /* clear@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "clear@2x.png"; sourceTree = "<group>"; };
+		DC4F4A4717A15A261D61288E /* clear@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "clear@2x.png"; sourceTree = "<group>"; };
 		DD5E2A831A67E4A0780B970B /* ResourceBundle-Form-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Form-Info.plist"; sourceTree = "<group>"; };
-		DF4E27E3C6581E23D1251351 /* NSString-HYPWordExtractor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSString-HYPWordExtractor.modulemap"; sourceTree = "<group>"; };
+		DF4E27E3C6581E23D1251351 /* NSString-HYPWordExtractor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSString-HYPWordExtractor.modulemap"; sourceTree = "<group>"; };
 		DFE7D1CE2332250501A4E0AE /* FORMGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMGroup.h; sourceTree = "<group>"; };
 		E1080D2AE486E795D79361CF /* HYPNorwegianAccountNumber-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HYPNorwegianAccountNumber-dummy.m"; sourceTree = "<group>"; };
 		E148B338C7E0324A294A4EB1 /* FORMDefaultStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMDefaultStyle.h; sourceTree = "<group>"; };
@@ -1824,7 +1824,7 @@
 		E22153CA70CDEA4879BEAA51 /* NSString-HYPContainsString-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString-HYPContainsString-dummy.m"; sourceTree = "<group>"; };
 		E276BA025190170D05278CFF /* FORMSeparatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMSeparatorView.m; sourceTree = "<group>"; };
 		E2BCD8AD1160FB7E1079C446 /* DDMathStringTokenizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMathStringTokenizer.m; path = DDMathParser/DDMathStringTokenizer.m; sourceTree = "<group>"; };
-		E3179D2EA16073D6F229D679 /* HYPNorwegianSSN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HYPNorwegianSSN.framework; path = HYPNorwegianSSN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3179D2EA16073D6F229D679 /* HYPNorwegianSSN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPNorwegianSSN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E332293299DCE2AF25EEC2CB /* NSDictionary-HYPImmutable.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSDictionary-HYPImmutable.xcconfig"; sourceTree = "<group>"; };
 		E3E53CA8AF9CF56D7EDBC745 /* FORMSpacerFieldCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMSpacerFieldCell.h; sourceTree = "<group>"; };
 		E490C84902E5056A934FE2A7 /* FORMLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMLayout.h; sourceTree = "<group>"; };
@@ -1832,7 +1832,7 @@
 		E6E3791C63B4123907D00803 /* FORMFloatFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMFloatFormatter.h; sourceTree = "<group>"; };
 		E6F3CB2DD72BC0A2F1412388 /* NSString+ZENInflections.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+ZENInflections.m"; path = "NSString-ZENInflections/NSString+ZENInflections.m"; sourceTree = "<group>"; };
 		E7A4BF4F1FDDC4865389CC92 /* NSJSONSerialization-ANDYJSONFile-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization-ANDYJSONFile-prefix.pch"; sourceTree = "<group>"; };
-		E7B35A1F0C53B0AC025D2656 /* HYPNorwegianAccountNumber.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HYPNorwegianAccountNumber.modulemap; sourceTree = "<group>"; };
+		E7B35A1F0C53B0AC025D2656 /* HYPNorwegianAccountNumber.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HYPNorwegianAccountNumber.modulemap; sourceTree = "<group>"; };
 		E80FF520681D56CE6FE493F0 /* NSString-HYPWordExtractor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSString-HYPWordExtractor.xcconfig"; sourceTree = "<group>"; };
 		E856E094ED5A911DA038F60E /* HYPImagePicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYPImagePicker-umbrella.h"; sourceTree = "<group>"; };
 		E8C2FF1183293D045239A0AB /* FORMViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FORMViewController.m; sourceTree = "<group>"; };
@@ -1861,17 +1861,17 @@
 		F248EC74D6088977E91207B6 /* NSJSONSerialization-ANDYJSONFile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization-ANDYJSONFile-umbrella.h"; sourceTree = "<group>"; };
 		F303A90E5D8E56DD8B077A65 /* HYPMathParser-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYPMathParser-umbrella.h"; sourceTree = "<group>"; };
 		F3914BB9539C95001C078826 /* Pods-CocoaPods-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CocoaPods-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		F41BD76DBF16183D2099000B /* HYPMathParser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HYPMathParser.modulemap; sourceTree = "<group>"; };
-		F45022EAEDE19FADDEC6798F /* HYPImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HYPImagePicker.framework; path = HYPImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F41BD76DBF16183D2099000B /* HYPMathParser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HYPMathParser.modulemap; sourceTree = "<group>"; };
+		F45022EAEDE19FADDEC6798F /* HYPImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HYPImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4EB5F26A8D42AA443D315D4 /* FORMFieldValuesTableViewHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FORMFieldValuesTableViewHeader.h; sourceTree = "<group>"; };
-		F4F4D4AB250433467B9FBE3D /* NSString-HYPContainsString.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "NSString-HYPContainsString.modulemap"; sourceTree = "<group>"; };
+		F4F4D4AB250433467B9FBE3D /* NSString-HYPContainsString.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "NSString-HYPContainsString.modulemap"; sourceTree = "<group>"; };
 		F758188D87B2F3CCDDB60CCC /* Pods-CocoaPods-CustomField-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CocoaPods-CustomField-acknowledgements.plist"; sourceTree = "<group>"; };
 		F7999BDCE18687C6E77CA8AB /* NSString-ZENInflections.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSString-ZENInflections.xcconfig"; sourceTree = "<group>"; };
 		F8742695CDCBC2440F0F47BA /* DDMathParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMathParser.h; path = DDMathParser/DDMathParser.h; sourceTree = "<group>"; };
 		F8DAB32F4D40D9FC1EF012F1 /* DDMathOperator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMathOperator.m; path = DDMathParser/DDMathOperator.m; sourceTree = "<group>"; };
 		F93A393A6457381C4439A512 /* NSString-HYPFormula.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSString-HYPFormula.xcconfig"; sourceTree = "<group>"; };
 		F94D5A20B2BF27F0707611B5 /* Pods-CocoaPods-Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CocoaPods-Tests-dummy.m"; sourceTree = "<group>"; };
-		FCE6F4DB31752974D513956F /* HYPNorwegianSSN.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HYPNorwegianSSN.modulemap; sourceTree = "<group>"; };
+		FCE6F4DB31752974D513956F /* HYPNorwegianSSN.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HYPNorwegianSSN.modulemap; sourceTree = "<group>"; };
 		FE5A826CA81E0EB9F507A6B5 /* NSString-HYPFormula-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString-HYPFormula-prefix.pch"; sourceTree = "<group>"; };
 		FE949D63B2D7F7251C5C0C10 /* Pods-CocoaPods-Basic-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CocoaPods-Basic-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		FEE16B6DDE80041E77E284EA /* NSString-ZENInflections-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString-ZENInflections-prefix.pch"; sourceTree = "<group>"; };
@@ -2170,7 +2170,6 @@
 				350E5E8648469F5D8C124B93 /* NSDictionary+HYPImmutable.m */,
 				B0096B5284FD2EBB82DE4122 /* Support Files */,
 			);
-			name = "NSDictionary-HYPImmutable";
 			path = "NSDictionary-HYPImmutable";
 			sourceTree = "<group>";
 		};
@@ -2181,7 +2180,6 @@
 				19DDFAE1B19CA82C48F03310 /* UIViewController+HYPKeyboardToolbar.m */,
 				1292C48C7D69656ED8E9765D /* Support Files */,
 			);
-			name = "UIViewController-HYPKeyboardToolbar";
 			path = "UIViewController-HYPKeyboardToolbar";
 			sourceTree = "<group>";
 		};
@@ -2220,7 +2218,6 @@
 				C985C33ABF7C34FE4B605351 /* NSJSONSerialization+ANDYJSONFile.m */,
 				7DE54B2DE522267FA65ED2ED /* Support Files */,
 			);
-			name = "NSJSONSerialization-ANDYJSONFile";
 			path = "NSJSONSerialization-ANDYJSONFile";
 			sourceTree = "<group>";
 		};
@@ -2254,7 +2251,6 @@
 				2A65E2F70DF981F7AED83ABE /* Others */,
 				4C607500ABEF94F17DB17F39 /* Validators */,
 			);
-			name = Source;
 			path = Source;
 			sourceTree = "<group>";
 		};
@@ -2265,7 +2261,6 @@
 				E6F3CB2DD72BC0A2F1412388 /* NSString+ZENInflections.m */,
 				0637D0B8B94240B4C7B49E82 /* Support Files */,
 			);
-			name = "NSString-ZENInflections";
 			path = "NSString-ZENInflections";
 			sourceTree = "<group>";
 		};
@@ -2276,7 +2271,6 @@
 				3706ADF4C43ED480C5C39EE6 /* NSString+HYPContainsString.m */,
 				48FE00266191C73FD77BC36D /* Support Files */,
 			);
-			name = "NSString-HYPContainsString";
 			path = "NSString-HYPContainsString";
 			sourceTree = "<group>";
 		};
@@ -2308,7 +2302,6 @@
 				92E4F3C918E5DB2938D7494B /* FORMTextFieldTypeManager.h */,
 				BE0F49F14D958B8A44DF6E35 /* FORMTextFieldTypeManager.m */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -2332,7 +2325,6 @@
 				543AA112E2968741FAD7B19C /* FORMSocialSecurityNumberInputValidator.h */,
 				65F08270B251F9973B778868 /* FORMSocialSecurityNumberInputValidator.m */,
 			);
-			name = "Input Validators";
 			path = "Input Validators";
 			sourceTree = "<group>";
 		};
@@ -2352,7 +2344,6 @@
 				7461CA71FB4373B6A5D556B7 /* UIViewController+HYPTopViewController.h */,
 				20ACBD7A1F5B3DEBE31C5B3C /* UIViewController+HYPTopViewController.m */,
 			);
-			name = Others;
 			path = Others;
 			sourceTree = "<group>";
 		};
@@ -2389,7 +2380,6 @@
 				2CD3796C441CA6B20E3351AF /* FORMTarget.h */,
 				54060F143087DDC24D76C900 /* FORMTarget.m */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -2402,7 +2392,6 @@
 				4D993F62930BB3E63696952A /* NSString+HYPRelationshipParser.m */,
 				8DAD5E6A0E5FDC8FD5458D67 /* Support Files */,
 			);
-			name = "NSString-HYPRelationshipParser";
 			path = "NSString-HYPRelationshipParser";
 			sourceTree = "<group>";
 		};
@@ -2414,7 +2403,6 @@
 				0950209DE9B6904860F83DD2 /* FORMSwitchFieldCell.h */,
 				673376841C7D668C76C7A87F /* FORMSwitchFieldCell.m */,
 			);
-			name = Switch;
 			path = Switch;
 			sourceTree = "<group>";
 		};
@@ -2425,7 +2413,6 @@
 				969A164B356EB57A1253843A /* NSString+HYPFormula.m */,
 				7DC278578F7BBDA22F4C61AA /* Support Files */,
 			);
-			name = "NSString-HYPFormula";
 			path = "NSString-HYPFormula";
 			sourceTree = "<group>";
 		};
@@ -2435,7 +2422,6 @@
 				9678C5DE7B1CC3EC49653E20 /* FORMBaseFieldCell.h */,
 				BBF715E33E9CBE5956D9C480 /* FORMBaseFieldCell.m */,
 			);
-			name = Base;
 			path = Base;
 			sourceTree = "<group>";
 		};
@@ -2474,7 +2460,6 @@
 				F175E1E4F496189A93EE39F7 /* HYPNorwegianAccountNumber.m */,
 				622E8EA22EDB0FEDEBA0FE29 /* Support Files */,
 			);
-			name = HYPNorwegianAccountNumber;
 			path = HYPNorwegianAccountNumber;
 			sourceTree = "<group>";
 		};
@@ -2522,7 +2507,6 @@
 				AF7CCDCBC6613D16589C1597 /* FORMValidator.h */,
 				3A8EBD6AAAFA5439AC91F146 /* FORMValidator.m */,
 			);
-			name = Validators;
 			path = Validators;
 			sourceTree = "<group>";
 		};
@@ -2555,7 +2539,6 @@
 				5195A339817810D522545320 /* NSDate+HYPString.m */,
 				80DAAF361CFC069811352F93 /* Support Files */,
 			);
-			name = "NSDate-HYPString";
 			path = "NSDate-HYPString";
 			sourceTree = "<group>";
 		};
@@ -2625,7 +2608,6 @@
 				038BC060738B88176D675255 /* FORMTextFieldCell.h */,
 				88C78B9A5D4779095AF7032A /* FORMTextFieldCell.m */,
 			);
-			name = Text;
 			path = Text;
 			sourceTree = "<group>";
 		};
@@ -2671,7 +2653,6 @@
 				186DA5DE4A78E8E027BC76DB /* FORMSelectFieldCell.h */,
 				73B5AD40E49B474C427ED553 /* FORMSelectFieldCell.m */,
 			);
-			name = Popover;
 			path = Popover;
 			sourceTree = "<group>";
 		};
@@ -2783,7 +2764,6 @@
 				ADF879498A3EB74ED5408CCC /* NSString+HYPWordExtractor.m */,
 				3F157CDC4088E0A9523D2A67 /* Support Files */,
 			);
-			name = "NSString-HYPWordExtractor";
 			path = "NSString-HYPWordExtractor";
 			sourceTree = "<group>";
 		};
@@ -2794,7 +2774,6 @@
 				EB1AC1CAA49417A28FA5F45B /* ISO8601DateFormatter.m */,
 				610AD2872AF841A1ADA97EA2 /* Support Files */,
 			);
-			name = HYP8601;
 			path = HYP8601;
 			sourceTree = "<group>";
 		};
@@ -2893,7 +2872,6 @@
 				6AB5EED149F5DFAE69A96E0D /* Text */,
 				2683FACE464DA1BB7BD6D503 /* Views */,
 			);
-			name = Cells;
 			path = Cells;
 			sourceTree = "<group>";
 		};
@@ -2921,7 +2899,6 @@
 				5DAE72966A14E5BA44FBBBAF /* FORMSocialSecurityNumberFormatter.h */,
 				B4AD72C4F36AFEDA3944D3F1 /* FORMSocialSecurityNumberFormatter.m */,
 			);
-			name = Formatters;
 			path = Formatters;
 			sourceTree = "<group>";
 		};
@@ -2932,7 +2909,6 @@
 				B360564B3840A79B16F1AE58 /* HYPImagePicker.m */,
 				13A63DFB820889FB9A62F463 /* Support Files */,
 			);
-			name = HYPImagePicker;
 			path = HYPImagePicker;
 			sourceTree = "<group>";
 		};
@@ -2946,7 +2922,6 @@
 				24FFF1C7DD2DCE0DF95B91AF /* minus@2x.png */,
 				0514F7FDC95BAB580EFECB45 /* plus@2x.png */,
 			);
-			name = Assets;
 			path = Assets;
 			sourceTree = "<group>";
 		};
@@ -3005,7 +2980,6 @@
 				E187403F49B83964289F4063 /* NSString+HYPMathParsing.m */,
 				B03348745A540C1019422C86 /* Support Files */,
 			);
-			name = HYPMathParser;
 			path = HYPMathParser;
 			sourceTree = "<group>";
 		};
@@ -3015,7 +2989,6 @@
 				92FFA71E7C6510CAAF455B2D /* FORMButtonFieldCell.h */,
 				ED64AE0785479F14CE6B4036 /* FORMButtonFieldCell.m */,
 			);
-			name = Button;
 			path = Button;
 			sourceTree = "<group>";
 		};
@@ -3052,7 +3025,6 @@
 				7BAC653A50F1AD80749B07EA /* NSDictionary+HYPNestedAttributes.m */,
 				671FAED38DF20FED878B5464 /* Support Files */,
 			);
-			name = "NSDictionary-HYPNestedAttributes";
 			path = "NSDictionary-HYPNestedAttributes";
 			sourceTree = "<group>";
 		};
@@ -3063,7 +3035,6 @@
 				DA30916AF32BA067615B27AD /* NSDictionary+ANDYSafeValue.m */,
 				96A954F64CEDFFF09CB7196B /* Support Files */,
 			);
-			name = "NSDictionary-ANDYSafeValue";
 			path = "NSDictionary-ANDYSafeValue";
 			sourceTree = "<group>";
 		};
@@ -3101,7 +3072,6 @@
 				E3E53CA8AF9CF56D7EDBC745 /* FORMSpacerFieldCell.h */,
 				8BE8D95B8B60245AE8897255 /* FORMSpacerFieldCell.m */,
 			);
-			name = Spacer;
 			path = Spacer;
 			sourceTree = "<group>";
 		};
@@ -3112,7 +3082,6 @@
 				C185EC3025481B428B2428B7 /* HYPNorwegianSSN.m */,
 				3EDC048956F7312AE2B1091B /* Support Files */,
 			);
-			name = HYPNorwegianSSN;
 			path = HYPNorwegianSSN;
 			sourceTree = "<group>";
 		};
@@ -3141,7 +3110,6 @@
 				CACCF7910F2CFEBF499201B5 /* NSObject+HYPTesting.m */,
 				CAFD7B94B15E8F82608E1182 /* Support Files */,
 			);
-			name = "NSObject-HYPTesting";
 			path = "NSObject-HYPTesting";
 			sourceTree = "<group>";
 		};
@@ -4087,7 +4055,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 903BF9834F1A4A559976EF4B /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -6156,19 +6124,31 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
@@ -7139,20 +7119,32 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",

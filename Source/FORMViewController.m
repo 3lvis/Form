@@ -82,10 +82,8 @@
 
 #pragma mark - Rotation Handling
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                duration:(NSTimeInterval)duration {
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation
-                                   duration:duration];
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 
     [self.view endEditing:YES];
 

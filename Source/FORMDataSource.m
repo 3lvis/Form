@@ -102,12 +102,12 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
 
     [self.formData.groups enumerateObjectsUsingBlock:^(FORMGroup *formGroup, NSUInteger idx, BOOL *stop) {
         if (formGroup.collapsed) {
-            if (![_collapsedGroups containsObject:@(idx)]) {
+            if (![self->_collapsedGroups containsObject:@(idx)]) {
                 for (NSInteger i = 0; i < formGroup.fields.count; i++) {
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:idx];
                     [indexPaths addObject:indexPath];
                 }
-                [_collapsedGroups addObject:@(idx)];
+                [self->_collapsedGroups addObject:@(idx)];
             }
         }
     }];
