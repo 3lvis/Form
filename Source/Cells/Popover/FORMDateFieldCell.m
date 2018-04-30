@@ -184,7 +184,7 @@ static const CGSize FORMDatePhonePopoverSize = { 320.0f, 200.0f };
     if (self.field.info) {
         CGRect frame = self.datePicker.frame;
         frame.origin.y = 50.0f;
-        frame.size.height -= 25.0f;
+        frame.size.height = [self datePickerFrame].size.height - 25.0f;
         [self.datePicker setFrame:frame];
     }
 
