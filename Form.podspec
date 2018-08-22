@@ -2,16 +2,16 @@ Pod::Spec.new do |s|
   s.name = "Form"
   s.version = "3.14.0"
   s.summary = "JSON driven form"
-  s.homepage = "https://github.com/hyperoslo/Form"
+  s.homepage = "https://github.com/3lvis/Form"
   s.license = {
     :type => 'MIT',
     :file => 'LICENSE.md'
   }
-  s.author = { "Hyper Interaktiv AS" => "ios@hyper.no" }
-  s.social_media_url = "http://twitter.com/hyperoslo"
+  s.author = { "Elvis Nuñez" => "elvisnunez@me.com" }
+  s.social_media_url = "http://twitter.com/3lvis"
   s.platform = :ios, '9.0'
   s.source = {
-    :git => 'https://github.com/hyperoslo/Form.git',
+    :git => 'https://github.com/3lvis/Form.git',
     :tag => s.version.to_s
   }
   s.resource_bundles = {

@@ -1,5 +1,6 @@
 Licensed under the **MIT** license
 
+> Copyright (c) 2018 Elvis Nuñez
 > Copyright (c) 2016 - 2017 Hyper Interaktiv
 >
 > Permission is hereby granted, free of charge, to any person obtaining
