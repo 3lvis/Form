@@ -394,15 +394,9 @@ use_frameworks!
 pod 'Form'
 ```
 
-## Contributing
-
-Please check our [playbook](https://github.com/3lvis/playbook/blob/master/GIT_AND_GITHUB.md) for guidelines on contributing.
-
-Detailed discussions regarding code might be easier to have in the [Form channel on Gitter](https://gitter.im/3lvis/Form).
-
 ## Credits
 
-[Hyper](http://hyper.no) made this. We’re a digital communications agency with a passion for good code and delightful user experiences. If you’re using this library we probably want to [hire you](https://github.com/3lvis/iOS-playbook/blob/master/HYPER_RECIPES.md) (we consider remote employees too, the only requirement is that you’re awesome).
+This library was originally done at [Hyper](http://hyper.no). A digital communications agency with a passion for good code and delightful user experiences. They were kind enough to transfer it to me for further development.
 
 ## License
 
