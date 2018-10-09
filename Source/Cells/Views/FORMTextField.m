@@ -167,7 +167,7 @@ static NSString * const FORMTextFieldPlusButtonColorKey = @"plus_button_color";
         type = FORMTextFieldTypeEmail;
     } else if ([typeString isEqualToString:@"date"]) {
         type = FORMTextFieldTypeDate;
-    } else if ([typeString isEqualToString:@"select"]) {
+    } else if ([typeString isEqualToString:@"select"] || [typeString isEqualToString:@"multi_select"]) {
         type = FORMTextFieldTypeSelect;
     } else if ([typeString isEqualToString:@"text"]) {
         type = FORMTextFieldTypeDefault;

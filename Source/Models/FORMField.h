@@ -10,6 +10,7 @@
 typedef NS_ENUM(NSInteger, FORMFieldType) {
     FORMFieldTypeText = 0,
     FORMFieldTypeSelect,
+    FORMFieldTypeMultiSelect,
     FORMFieldTypeDate,
     FORMFieldTypeDateTime,
     FORMFieldTypeTime,

@@ -72,6 +72,29 @@
             return FORMValidationResultTypeInvalidFormat;
         }
     }
+    
+    if ([fieldValue isKindOfClass:[NSArray class]]) {
+        // multi_select validation
+        NSMutableArray *selectedValue = [[NSMutableArray alloc] init];
+        for (id value in fieldValue) {
+            if ([value isKindOfClass:[FORMFieldValue class]] && ((FORMFieldValue *)value).selected) {
+                [selectedValue addObject:value];
+            }
+        }
+        if (self.validation.isRequired && selectedValue.count == 0) {
+            return FORMValidationResultTypeInvalidValueMissing;
+        }
+        if (self.validation.minimumLength > 0) {
+            if (selectedValue.count < [self.validation.minimumLength unsignedIntegerValue]) {
+                return FORMValidationResultTypeInvalidTooShort;
+            }
+        }
+        if (self.validation.maximumLength > 0) {
+            if (selectedValue.count > [self.validation.maximumLength unsignedIntegerValue]) {
+                return FORMValidationResultTypeInvalidTooLong;
+            }
+        }
+    }
 
     return FORMValidationResultTypeValid;
 }

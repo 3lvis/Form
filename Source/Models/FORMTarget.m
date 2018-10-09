@@ -261,6 +261,34 @@
 
     for (FORMTarget *target in targets) {
 
+        if (target.value.field.type == FORMFieldTypeMultiSelect) {
+            switch (target.actionType) {
+                case FORMTargetActionShow:
+                case FORMTargetActionHide:
+                // selected XOR hide action
+                if ((target.actionType == FORMTargetActionHide) != (target.value.selected)) {
+                    if (![shown containsObject:target]) [shown addObject:target];
+                } else {
+                    if (![hidden containsObject:target]) [hidden addObject:target];
+                }
+                break;
+                case FORMTargetActionEnable:
+                case FORMTargetActionDisable:
+                // selected XOR disable action
+                if ((target.actionType == FORMTargetActionDisable) != (target.value.selected)) {
+                    if (![enabled containsObject:target]) [enabled addObject:target];
+                } else {
+                    if (![disabled containsObject:target]) [disabled addObject:target];
+                }
+                break;
+                case FORMTargetActionClear:
+                case FORMTargetActionUpdate:
+                if (![updated containsObject:target]) [updated addObject:target];
+                break;
+                case FORMTargetActionNone:
+                break;
+            }
+        } else {
         switch (target.actionType) {
             case FORMTargetActionShow:
                 if (![shown containsObject:target]) [shown addObject:target];
@@ -280,6 +308,7 @@
                 break;
             case FORMTargetActionNone:
                 break;
+            }
         }
     }
 

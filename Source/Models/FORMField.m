@@ -138,6 +138,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
         case FORMFieldTypeText:
         case FORMFieldTypeSelect:
+        case FORMFieldTypeMultiSelect:
         case FORMFieldTypeButton:
         case FORMFieldTypeSpacer:
         case FORMFieldTypeSegment:
@@ -175,6 +176,7 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
 
         case FORMFieldTypeText:
         case FORMFieldTypeSelect:
+        case FORMFieldTypeMultiSelect:
         case FORMFieldTypeDate:
         case FORMFieldTypeDateTime:
         case FORMFieldTypeTime:
@@ -241,6 +243,8 @@ static NSString * const FORMFormatterSelector = @"formatString:reverse:";
         return FORMFieldTypeText;
     } else if ([typeString isEqualToString:@"select"]) {
         return FORMFieldTypeSelect;
+    } else if ([typeString isEqualToString:@"multi_select"]) {
+        return FORMFieldTypeMultiSelect;
     } else if ([typeString isEqualToString:@"date"]) {
         return FORMFieldTypeDate;
     } else if ([typeString isEqualToString:@"date_time"]) {

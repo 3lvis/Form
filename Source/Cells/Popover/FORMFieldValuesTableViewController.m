@@ -41,6 +41,7 @@
 
     self.values = [NSArray arrayWithArray:field.values];
     self.headerView.field = field;
+    self.tableView.allowsMultipleSelection = (field.type == FORMFieldTypeMultiSelect);
     [self.tableView reloadData];
 }
 
@@ -132,7 +133,24 @@
     FORMFieldValue *fieldValue = self.values[indexPath.row];
     cell.fieldValue = fieldValue;
 
-    if ([self.field.value isKindOfClass:[FORMFieldValue class]]) {
+    if ([self.field.value isKindOfClass:[NSArray class]]) {
+        for (id currentValue in self.field.value) {
+            if ([currentValue isKindOfClass:[FORMFieldValue class]]) {
+                FORMFieldValue *currentFieldValue = currentValue;
+                if (currentFieldValue.selected && [currentFieldValue identifierIsEqualTo:fieldValue.valueID]) {
+                    [tableView selectRowAtIndexPath:indexPath
+                                           animated:NO
+                                     scrollPosition:UITableViewScrollPositionNone];
+                }
+            } else {
+                if ([currentValue identifierIsEqualTo:self.field.value]) {
+                    [tableView selectRowAtIndexPath:indexPath
+                                           animated:NO
+                                     scrollPosition:UITableViewScrollPositionNone];
+                }
+            }
+        }
+    } else if ([self.field.value isKindOfClass:[FORMFieldValue class]]) {
         FORMFieldValue *currentFieldValue = self.field.value;
 
         if ([currentFieldValue identifierIsEqualTo:fieldValue.valueID]) {
@@ -153,7 +171,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FORMFieldValue *fieldValue = self.values[indexPath.row];
+    fieldValue.selected = true;
+    if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
+        [self.delegate fieldValuesTableViewController:self
+                                     didSelectedValue:fieldValue];
+    }
+}
 
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    FORMFieldValue *fieldValue = self.values[indexPath.row];
+    fieldValue.selected = false;
     if ([self.delegate respondsToSelector:@selector(fieldValuesTableViewController:didSelectedValue:)]) {
         [self.delegate fieldValuesTableViewController:self
                                      didSelectedValue:fieldValue];

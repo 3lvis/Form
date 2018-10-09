@@ -157,6 +157,7 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
             break;
 
         case FORMFieldTypeSelect:
+        case FORMFieldTypeMultiSelect:
             identifier = [NSString stringWithFormat:@"%@-%@", FORMSelectFormFieldCellIdentifier, field.fieldID];
             [collectionView registerClass:[FORMSelectFieldCell class]
                forCellWithReuseIdentifier:identifier];
@@ -657,14 +658,30 @@ static const CGFloat FORMKeyboardAnimationDuration = 0.3f;
         } else if ([field.value isKindOfClass:[FORMFieldValue class]]) {
             FORMFieldValue *fieldValue = field.value;
             self.formData.values[field.fieldID] = fieldValue.valueID;
+        } else if ([field.value isKindOfClass:[NSArray class]]) {
+            NSMutableArray *mutableValue = [[NSMutableArray alloc] init];
+            for (id value in field.value) {
+                if ([value isKindOfClass:[FORMFieldValue class]] && ((FORMFieldValue *)value).selected) {
+                    [mutableValue addObject:((FORMFieldValue *)value).valueID];
+                }
+            }
+            self.formData.values[field.fieldID] = [mutableValue copy];
         } else {
             self.formData.values[field.fieldID] = field.value;
         }
 
-        BOOL hasFieldValue = (field.value && [field.value isKindOfClass:[FORMFieldValue class]]);
+        BOOL hasFieldValue = (field.value && ([field.value isKindOfClass:[FORMFieldValue class]] || [field.value isKindOfClass:[NSArray class]]));
         if (hasFieldValue) {
-            FORMFieldValue *fieldValue = field.value;
-            [self processTargets:fieldValue.targets];
+            if ([field.value isKindOfClass:[NSArray class]]) {
+                for (id fieldValue in field.value) {
+                    if ([fieldValue isKindOfClass:[FORMFieldValue class]]) {
+                        [self processTargets:((FORMFieldValue *)fieldValue).targets];
+                    }
+                }
+            } else {
+                FORMFieldValue *fieldValue = field.value;
+                [self processTargets:fieldValue.targets];
+            }
         } else if (field.targets.count > 0) {
             [self processTargets:field.targets];
         }
